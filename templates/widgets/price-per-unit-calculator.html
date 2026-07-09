@@ -1,0 +1,31 @@
+<p style="font-size:0.9em;color:var(--text-muted);margin:0 0 1rem">Compare the price-per-unit of up to two options to find the better value.</p>
+<div class="field-row">
+  <div class="field">
+    <label for="ppu-cost1">Option 1 — Total Price ($)</label>
+    <input type="number" autocomplete="off" id="ppu-cost1" value="12.99" min="0" step="0.01">
+  </div>
+  <div class="field">
+    <label for="ppu-qty1">Option 1 — Quantity (units)</label>
+    <input type="number" autocomplete="off" id="ppu-qty1" value="16" min="1" step="1">
+  </div>
+</div>
+<div class="field-row">
+  <div class="field">
+    <label for="ppu-cost2">Option 2 — Total Price ($) <span style="font-size:0.8em;color:var(--text-muted)">(optional)</span></label>
+    <input type="number" autocomplete="off" id="ppu-cost2" value="21.99" min="0" step="0.01">
+  </div>
+  <div class="field">
+    <label for="ppu-qty2">Option 2 — Quantity (units) <span style="font-size:0.8em;color:var(--text-muted)">(optional)</span></label>
+    <input type="number" autocomplete="off" id="ppu-qty2" value="30" min="1" step="1">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="Option 1: Total Price ÷ Quantity. The unit cost for the first option."><span class="stat-label">Option 1 — Per Unit</span><span class="stat-value" id="ppu-result1">—</span></div>
+  <div class="stat" data-tooltip="Option 2: Total Price ÷ Quantity. The unit cost for the second option. Compare against Option 1 to find the better value."><span class="stat-label">Option 2 — Per Unit</span><span class="stat-value" id="ppu-result2">—</span></div>
+  <div class="stat" data-tooltip="Which option has the lower cost per unit and by what percentage. Useful for comparing bulk buys, different package sizes, or supplier quotes."><span class="stat-label">Better Value</span><span class="stat-value" id="ppu-verdict">—</span></div>
+</div>
+<div id="ppu-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="ppu-copy" class="secondary">Copy results</button>
+  <button id="ppu-share" class="secondary">Share results</button>
+</div>

@@ -1,0 +1,52 @@
+<div class="field-row">
+  <div class="field">
+    <label for="spc-cogs">Cost per customer / month ($)</label>
+    <input type="number" autocomplete="off" id="spc-cogs" value="8" min="0" step="0.5">
+  </div>
+  <div class="field">
+    <label for="spc-margin">Target gross margin (%)</label>
+    <input type="number" autocomplete="off" id="spc-margin" value="75" min="0" max="99" step="1">
+  </div>
+  <div class="field">
+    <label for="spc-customers">Active customers (or target)</label>
+    <input type="number" autocomplete="off" id="spc-customers" value="200" min="1" step="10">
+  </div>
+  <div class="field">
+    <label for="spc-competitor">Competitor mid-tier price ($)</label>
+    <input type="number" autocomplete="off" id="spc-competitor" value="49" min="1" step="1">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="Cost per customer ÷ (1 − target margin). The floor price required to achieve your target gross margin. Pricing below this destroys margin at scale."><span class="stat-label">Minimum price (target margin)</span><span class="stat-value" id="spc-min-price">—</span></div>
+  <div class="stat" data-tooltip="(Starter price − cost per customer) ÷ Starter price. Actual gross margin at the Starter tier price. SaaS targets: 70–80% for hosted software."><span class="stat-label">Gross margin at Starter price</span><span class="stat-value" id="spc-gross-margin">—</span></div>
+</div>
+<table class="calc-table" style="margin-top:1.25rem">
+  <thead>
+    <tr><th>Tier</th><th>Monthly price</th><th>Annual (17% off)</th><th>Est. MRR</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Starter</td>
+      <td id="spc-starter-price">—</td>
+      <td id="spc-annual-starter">—</td>
+      <td id="spc-starter-mrr">—</td>
+    </tr>
+    <tr>
+      <td>Pro</td>
+      <td id="spc-pro-price">—</td>
+      <td id="spc-annual-pro">—</td>
+      <td id="spc-pro-mrr">—</td>
+    </tr>
+    <tr>
+      <td>Business</td>
+      <td id="spc-business-price">—</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table>
+<div id="spc-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="spc-copy" class="secondary">Copy results</button>
+  <button id="spc-share" class="secondary">Share results</button>
+</div>

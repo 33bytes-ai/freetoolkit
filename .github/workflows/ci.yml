@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: "**/package-lock.json"
+
+      - name: Install Python deps
+        run: pip install -e ".[dev]"
+
+      - name: Run JS tests
+        run: make test-js
+
+      - name: Run Python tests
+        run: make test-py
+
+      - name: Run Python build
+        run: make build
+
+      - name: Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            file://${{ github.workspace }}/dist/index.html
+          configPath: "./.lighthouserc.json"
+          uploadArtifacts: false
+          temporaryPublicStorage: false
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: dist/
+          retention-days: 7

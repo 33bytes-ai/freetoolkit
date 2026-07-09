@@ -1,0 +1,33 @@
+<div class="field-row">
+  <div class="field">
+    <label for="vat-amount">Amount ($)</label>
+    <input type="number" autocomplete="off" id="vat-amount" value="100" min="0" step="0.01">
+  </div>
+  <div class="field">
+    <label for="vat-rate">VAT / tax rate</label>
+    <select id="vat-rate">
+      <option value="20">UK VAT — 20%</option>
+      <option value="23">Ireland VAT — 23%</option>
+      <option value="21">Germany VAT — 19% (enter custom)</option>
+      <option value="10">Australia GST — 10%</option>
+      <option value="5">Canada GST — 5%</option>
+      <option value="custom">Custom rate</option>
+    </select>
+  </div>
+  <div class="field" id="vat-custom-row" style="display:none">
+    <label for="vat-custom-pct">Custom rate (%)</label>
+    <input type="number" autocomplete="off" id="vat-custom-pct" value="20" min="0" max="100" step="0.1">
+  </div>
+</div>
+<div class="checkbox-row">
+  <label><input type="radio" name="vat-mode" id="vat-add" value="add" checked> Add tax to amount (net → gross)</label>
+  <label><input type="radio" name="vat-mode" id="vat-remove" value="remove"> Remove tax from amount (gross → net)</label>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="Amount before tax. If removing tax: gross ÷ (1 + rate). If adding tax: your original input amount."><div class="num" id="vat-net">$0</div><div class="label">Net (ex-tax)</div></div>
+  <div class="stat" data-tooltip="The VAT or GST amount. If adding: net × rate. If removing: gross − net. This is the amount that goes to the tax authority."><div class="num" id="vat-tax-amount">$0</div><div class="label">Tax amount</div></div>
+  <div class="stat" data-tooltip="Amount including tax. If adding: net × (1 + rate). If removing: your original input amount."><div class="num" id="vat-gross">$0</div><div class="label">Gross (inc-tax)</div></div>
+</div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="vat-share" class="secondary">Share results</button>
+</div>

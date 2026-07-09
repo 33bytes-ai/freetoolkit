@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+{% block head_extra %}
+<style>
+  /* Smooth scrolling for the whole home page */
+  html { scroll-behavior: smooth; }
+</style>
+{% endblock %}
+{% block content %}
+
+<!-- Glassmorphism Hero -->
+<div class="home-hero" id="main">
+  <canvas id="hero-shader-canvas" class="hero-shader-canvas" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="hero-glass">
+      <h1>Free calculators for <span class="htc-wrapper"><span id="hero-text-cycle" class="htc-word">founders</span></span></h1>
+      <p class="hero-sub">
+        Stripe fees, MRR, LTV/CAC, runway, churn, NPS, pricing impact, freelance rates and more.
+        All math runs instantly in your browser — no sign-up, no data uploaded.
+      </p>
+
+      <div class="hero-stats">
+        <div class="hero-stat-item">
+          <span class="stat-num hero-count" data-count="{{ tools | length }}">{{ tools | length }}</span>
+          <span class="stat-label">Free calculators</span>
+        </div>
+        <div class="hero-stat-item">
+          <span class="stat-num">100%</span>
+          <span class="stat-label">Browser-based</span>
+        </div>
+        <div class="hero-stat-item">
+          <span class="stat-num">$0</span>
+          <span class="stat-label">Cost forever</span>
+        </div>
+      </div>
+
+      <div class="hero-categories">
+        {% for category in categories %}
+        <a href="#cat-{{ category | lower | replace(' ', '-') }}" class="hero-cat-badge">{{ category }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include "ads_slot.html" %}
+
+<!-- Social proof trust bar -->
+<div class="trust-bar reveal">
+  <div class="wrap">
+    <ul class="trust-items">
+      <li><strong>{{ tools | length }}</strong> free calculators</li>
+      <li><strong>{{ categories | length }}</strong> categories</li>
+      <li><strong>{{ all_intent_pages | length }}+</strong> related guides</li>
+      <li>No sign-up &amp; no data uploaded</li>
+      <li>Open-source on GitHub</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Featured: newest tools -->
+{% set new_tools = tools | selectattr("new") | list %}
+{% if new_tools %}
+<section class="wrap home-section reveal" style="padding-top:1.5rem">
+  <div class="home-section-header">
+    <h2>Recently added</h2>
+    <a href="/tools/" style="font-size:0.88rem;color:var(--accent)">View all →</a>
+  </div>
+  <div class="tool-grid">
+    {% for tool in new_tools[:3] %}
+    <a class="tool-card" href="/tools/{{ tool.slug }}/">
+      <h3>{{ tool.nav_title }} <span style="font-size:0.65rem;font-weight:600;color:#fff;background:#16a34a;border-radius:99px;padding:0.1rem 0.5rem;vertical-align:middle;margin-left:0.4rem">NEW</span></h3>
+      <p>{{ tool.short }}</p>
+      {% if tool.date_added %}<span style="font-size:0.75rem;color:var(--text-muted)">{{ tool.date_added }}</span>{% endif %}
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<!-- Tool sections -->
+{% for category in categories %}
+{% set cat_tools = tools_by_category.get(category, []) %}
+{% if cat_tools %}
+<section class="wrap home-section" id="cat-{{ category | lower | replace(' ', '-') }}">
+  <div class="home-section-header reveal">
+    <h2>{{ category }}</h2>
+    <span class="tool-count">{{ cat_tools | length }} tools</span>
+  </div>
+  <div class="tool-grid reveal-group">
+    {% for tool in cat_tools %}
+    <a class="tool-card reveal-child" href="/tools/{{ tool.slug }}/">
+      <h3>{{ tool.nav_title or tool.title }}</h3>
+      <p>{{ tool.short }}</p>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+{% endfor %}
+
+<!-- About section -->
+<section class="wrap intro-text reveal" style="padding-top:2.5rem; border-top:1px solid var(--border); margin-top:2rem;">
+  <h2>Why FounderCalc?</h2>
+  <p>
+    Generic utility tools compete against 10-year-old domains with millions of backlinks.
+    FounderCalc focuses exclusively on the calculations that indie founders, bootstrapped SaaS builders,
+    and freelancers actually need — the ones that involve real business math with real stakes.
+  </p>
+  <p>
+    Every calculator runs 100% in your browser. Nothing you type is ever sent to a server.
+    No accounts. No tracking. No cookies beyond what your browser sets automatically.
+    If you need a calculator that isn't here yet, <a href="/contact/">let us know</a>.
+  </p>
+</section>
+
+{% if site.formspree_id %}
+<!-- Newsletter -->
+<section class="wrap newsletter-section reveal">
+  <div class="newsletter-card">
+    <h2>Get notified when new calculators ship</h2>
+    <p>No spam. One short email per new tool, max once a month.</p>
+    <form action="https://formspree.io/f/{{ site.formspree_id }}" method="POST" class="newsletter-form">
+      <input type="hidden" name="_subject" value="Newsletter — FounderCalc">
+      <label for="nl-email" class="sr-only">Your email address</label>
+      <input id="nl-email" type="email" name="email" placeholder="you@company.com" required autocomplete="email">
+      <button type="submit" class="btn-primary">Subscribe</button>
+    </form>
+    <p class="form-fine">Your email is only used for this newsletter. Unsubscribe any time.</p>
+  </div>
+</section>
+{% endif %}
+
+<!-- Testimonials -->
+<section class="testimonials-section">
+  <div class="wrap">
+    <p class="testimonials-label">What users say</p>
+    <h2 class="testimonials-title">Trusted by founders &amp; freelancers</h2>
+  </div>
+  <div class="testimonials-columns-mask">
+    <div class="testimonials-columns">
+
+      <div class="tst-col">
+        <div class="tst-col-inner" style="animation-duration:22s">
+          <div class="tst-card"><p>"Finally a clean break-even calculator that doesn't require a spreadsheet. I shared it with my co-founder and we use it every week."</p><div class="tst-author"><img src="https://i.pravatar.cc/40?img=1" alt=""><div><strong>Alex M.</strong><span>SaaS Founder</span></div></div></div>
+          <div class="tst-card"><p>"The LTV/CAC calculator helped me realize we were burning twice what we should on paid ads. Restructured the whole channel mix in a week."</p><div class="tst-author"><img src="https://i.pravatar.cc/40?img=2" alt=""><div><strong>Sarah K.</strong><span>Growth Lead</span></div></div></div>
+          <div class="tst-card"><p>"I use the freelance rate calculator every time I onboard a new client. Sets a realistic floor instantly."</p><div class="tst-author"><img src="https://i.pravatar.cc/40?img=3" alt=""><div><strong>James R.</strong><span>Freelance Dev</span></div></div></div>
+          <div class="tst-card"><p>"Stripe fee calculator saved me from a pricing mistake. I was quoting prices that left me with almost nothing after fees."</p><div class="tst-author"><img src="https://i.pravatar.cc/40?img=4" alt=""><div><strong>Priya T.</strong><span>Indie Hacker</span></div></div></div>
+          <div class="tst-card"><p>"The Rule of 40 calculator gave me the exact number I needed for my Series A deck. Investors asked where I got the metric, I told them here."</p><div class="tst-author"><img src="https://i.pravatar.cc/40?img=5" alt=""><div><strong>Daniel W.</strong><span>CEO, B2B SaaS</span></div></div></div>
+        </div>
+      </div>
+
+      <div class="tst-col tst-col--hidden-sm">
+        <div class="tst-col-inner" style="animation-duration:28s;animation-delay:-8s">
+          <div class="tst-card"><p>"The TAM/SAM/SOM calculator made me realize our initial market sizing was off by 10x. Embarrassing to find out early, but better now than in a pitch."</p><div class="tst-author"><img src="https://i.pravatar.cc/40?img=6" alt=""><div><strong>Lena B.</strong><span>Pre-seed Founder</span></div></div></div>
+          <div class="tst-card"><p>"Burn multiple calculator. Simple, fast, no account. This is what a tool site should feel like."</p><div class="tst-author"><img src="https://i.pravatar.cc/40?img=7" alt=""><div><strong>Marcus O.</strong><span>CFO, Startup</span></div></div></div>
+          <div class="tst-card"><p>"The churn cohort calculator helped me understand why our LTV estimates were wrong. We had higher early churn than we thought."</p><div class="tst-author"><img src="https://i.pravatar.cc/40?img=8" alt=""><div><strong>Yuki H.</strong><span>Product Manager</span></div></div></div>
+          <div class="tst-card"><p>"Used the ROE calculator for a board meeting presentation. The DuPont breakdown in the guide below it is genuinely useful context."</p><div class="tst-author"><img src="https://i.pravatar.cc/40?img=9" alt=""><div><strong>Nina C.</strong><span>Finance Director</span></div></div></div>
+          <div class="tst-card"><p>"NPS calculator is dead simple but I keep coming back to it after every survey cycle. It's bookmarked."</p><div class="tst-author"><img src="https://i.pravatar.cc/40?img=10" alt=""><div><strong>Omar F.</strong><span>Customer Success</span></div></div></div>
+        </div>
+      </div>
+
+      <div class="tst-col tst-col--hidden-md">
+        <div class="tst-col-inner" style="animation-duration:25s;animation-delay:-14s">
+          <div class="tst-card"><p>"The equity dilution calculator walked me through a convertible note scenario I couldn't figure out in my head. Bookmarked instantly."</p><div class="tst-author"><img src="https://i.pravatar.cc/40?img=11" alt=""><div><strong>Chris N.</strong><span>Angel Investor</span></div></div></div>
+          <div class="tst-card"><p>"Sales velocity calculator finally made sense of why our pipeline conversion wasn't translating to quota attainment."</p><div class="tst-author"><img src="https://i.pravatar.cc/40?img=12" alt=""><div><strong>Rachel S.</strong><span>VP Sales</span></div></div></div>
+          <div class="tst-card"><p>"DSO calculator caught a collections drift we didn't notice — AR was creeping up while revenue was flat. Pure working capital leak."</p><div class="tst-author"><img src="https://i.pravatar.cc/40?img=13" alt=""><div><strong>Tom L.</strong><span>COO</span></div></div></div>
+          <div class="tst-card"><p>"The segment margin calculator is what I wanted from Excel but without building a model from scratch every time."</p><div class="tst-author"><img src="https://i.pravatar.cc/40?img=14" alt=""><div><strong>Fatima A.</strong><span>FP&amp;A Analyst</span></div></div></div>
+          <div class="tst-card"><p>"Used the magic number calculator before a board meeting. It explained our GTM efficiency gap better than any slide."</p><div class="tst-author"><img src="https://i.pravatar.cc/40?img=15" alt=""><div><strong>Ben K.</strong><span>SaaS CMO</span></div></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script src="/static/js/hero-shader.js" defer></script>
+<script src="/static/js/home.js" defer></script>
+{% endblock %}

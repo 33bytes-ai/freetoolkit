@@ -1,0 +1,45 @@
+<div class="calc-grid">
+  <label for="cc-total">Total ARR / annual revenue ($)</label>
+  <input type="number" id="cc-total" min="0" step="10000" value="1000000" autocomplete="off">
+
+  <label for="cc-c1">Customer 1 ARR ($) — largest</label>
+  <input type="number" id="cc-c1" min="0" step="1000" value="250000" autocomplete="off">
+
+  <label for="cc-c2">Customer 2 ARR ($)</label>
+  <input type="number" id="cc-c2" min="0" step="1000" value="150000" autocomplete="off">
+
+  <label for="cc-c3">Customer 3 ARR ($)</label>
+  <input type="number" id="cc-c3" min="0" step="1000" value="100000" autocomplete="off">
+
+  <label for="cc-c4">Customer 4 ARR ($)</label>
+  <input type="number" id="cc-c4" min="0" step="1000" value="0" autocomplete="off">
+
+  <label for="cc-c5">Customer 5 ARR ($)</label>
+  <input type="number" id="cc-c5" min="0" step="1000" value="0" autocomplete="off">
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card" data-tooltip="Sum of entered customers ÷ Total ARR. Revenue share of your top customers combined. VCs flag anything above 20% from one customer as a business-risk.">
+    <span class="stat-label">Top-N Concentration</span>
+    <span class="stat-value" id="cc-top-pct">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Largest customer ARR ÷ Total ARR. The single most important concentration metric. Above 10% raises acquirer concerns; above 20% can materially affect valuation.">
+    <span class="stat-label">Largest Customer %</span>
+    <span class="stat-value" id="cc-largest">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Sum of (each customer share)². HHI ranges from 0 (perfect distribution) to 10,000 (one customer = 100% of revenue). Below 1,500 = low concentration; above 2,500 = high.">
+    <span class="stat-label">HHI Index</span>
+    <span class="stat-value" id="cc-hhi">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="100% − Top-N Concentration. Revenue share from customers not in your entered list. A healthy long tail reduces single-customer risk.">
+    <span class="stat-label">Remaining Customers %</span>
+    <span class="stat-value" id="cc-remaining">--</span>
+  </div>
+</div>
+
+<div id="cc-insight" class="insight-box" aria-live="polite"></div>
+
+<div class="calc-actions">
+  <button id="cc-share" class="btn-secondary">Share</button>
+  <button id="cc-copy" class="btn-secondary">Copy results</button>
+</div>

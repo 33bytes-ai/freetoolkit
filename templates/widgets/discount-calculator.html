@@ -1,0 +1,29 @@
+<div class="field-row">
+  <div class="field">
+    <label for="dc-original">Original price ($)</label>
+    <input type="number" autocomplete="off" id="dc-original" value="99" min="0.01" step="1">
+  </div>
+  <div class="field">
+    <label for="dc-discount">Discount % <span style="font-size:0.8em;color:var(--text-muted)">(or leave blank)</span></label>
+    <input type="number" autocomplete="off" id="dc-discount" value="20" min="0" max="100" step="1">
+  </div>
+  <div class="field">
+    <label for="dc-sale">Or enter sale price ($) <span style="font-size:0.8em;color:var(--text-muted)">(override above)</span></label>
+    <input type="number" autocomplete="off" id="dc-sale" placeholder="e.g. 79" min="0" step="1">
+  </div>
+  <div class="field">
+    <label for="dc-cogs">COGS / unit cost ($) <span style="font-size:0.8em;color:var(--text-muted)">(for margin calc)</span></label>
+    <input type="number" autocomplete="off" id="dc-cogs" value="30" min="0" step="1">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="Original price minus the discount amount. This is the price your customer pays."><span class="stat-label">Sale Price</span><span class="stat-value" id="dc-sale-price">—</span></div>
+  <div class="stat" data-tooltip="Original price × discount percentage. The dollar value you're giving up from the original price."><span class="stat-label">Discount Amount</span><span class="stat-value" id="dc-disc-amount">—</span></div>
+  <div class="stat" data-tooltip="(Original − Sale Price) ÷ Original × 100. The percentage reduction from the original price."><span class="stat-label">Discount %</span><span class="stat-value" id="dc-disc-pct">—</span></div>
+  <div class="stat" data-tooltip="(Sale Price − COGS) ÷ Sale Price × 100. Your gross margin after applying the discount. Watch that discounting doesn't push this below your break-even margin."><span class="stat-label">Margin After Discount</span><span class="stat-value" id="dc-margin">—</span></div>
+</div>
+<div id="dc-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="dc-copy" class="secondary">Copy results</button>
+  <button id="dc-share" class="secondary">Share results</button>
+</div>

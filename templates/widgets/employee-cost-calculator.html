@@ -1,0 +1,36 @@
+<div class="calc-grid">
+  <label for="ec-salary">Base annual salary ($)</label>
+  <input type="number" id="ec-salary" min="0" step="1000" value="100000" autocomplete="off">
+
+  <label for="ec-benefits">Annual benefits cost ($, health/dental/vision/401k match)</label>
+  <input type="number" id="ec-benefits" min="0" step="500" value="15000" autocomplete="off">
+
+  <label for="ec-bonus">Bonus, equity, or other variable comp ($)</label>
+  <input type="number" id="ec-bonus" min="0" step="500" value="10000" autocomplete="off">
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card" data-tooltip="FICA (7.65% on first $168,600), FUTA (0.6% on first $7,000), and SUTA on first $7,000. Employer side of payroll taxes; not deducted from the employee's paycheck.">
+    <span class="stat-label">Employer Payroll Taxes</span>
+    <span class="stat-value" id="ec-taxes">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Salary + Benefits + Bonus + Payroll Taxes. The all-in annual cost to the company. Typically 1.25–1.4× the base salary for a US employee with standard benefits.">
+    <span class="stat-label">Total Employer Cost</span>
+    <span class="stat-value" id="ec-total">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Total Employer Cost ÷ Base Salary. How many dollars the company spends per dollar of salary. 1.3× is a common rule of thumb; high-benefit tech packages can reach 1.5×.">
+    <span class="stat-label">Cost Multiplier</span>
+    <span class="stat-value" id="ec-multiplier">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Total Employer Cost ÷ 2080 hours (52 weeks × 40 hours). The true loaded cost per hour, useful for project costing and build-vs-contractor decisions.">
+    <span class="stat-label">Effective Hourly Cost</span>
+    <span class="stat-value" id="ec-hourly">--</span>
+  </div>
+</div>
+
+<div id="ec-insight" class="insight-box" aria-live="polite"></div>
+
+<div class="calc-actions">
+  <button id="ec-share-btn" class="btn-secondary">Share</button>
+  <button id="ec-copy" class="btn-secondary">Copy results</button>
+</div>

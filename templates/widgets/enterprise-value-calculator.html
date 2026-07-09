@@ -1,0 +1,35 @@
+<div class="field-row">
+  <div class="field">
+    <label for="ev-mktcap">Market Capitalization ($)</label>
+    <input type="number" autocomplete="off" id="ev-mktcap" value="500000000" min="0" step="1000000">
+  </div>
+  <div class="field">
+    <label for="ev-debt">Total Debt ($)</label>
+    <input type="number" autocomplete="off" id="ev-debt" value="80000000" min="0" step="1000000">
+  </div>
+</div>
+<div class="field-row">
+  <div class="field">
+    <label for="ev-cash">Cash &amp; Equivalents ($)</label>
+    <input type="number" autocomplete="off" id="ev-cash" value="30000000" min="0" step="1000000">
+  </div>
+  <div class="field">
+    <label for="ev-ebitda">EBITDA ($) <span style="font-size:0.8em;color:var(--text-muted)">(optional — for EV/EBITDA)</span></label>
+    <input type="number" autocomplete="off" id="ev-ebitda" value="50000000" min="0" step="1000000">
+  </div>
+</div>
+<div class="field" style="max-width:260px">
+  <label for="ev-revenue">Revenue ($) <span style="font-size:0.8em;color:var(--text-muted)">(optional — for EV/Revenue)</span></label>
+  <input type="number" autocomplete="off" id="ev-revenue" value="200000000" min="0" step="1000000">
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="Market Cap + Total Debt − Cash. The total acquisition cost of a business including its debt obligations. Unlike market cap, it's capital-structure neutral — allows apples-to-apples comparison between levered and unlevered businesses."><span class="stat-label">Enterprise Value</span><span class="stat-value" id="ev-result">—</span></div>
+  <div class="stat" data-tooltip="EV ÷ EBITDA. The most common acquisition multiple. Private equity typical range: 6–12×; tech companies: 15–30×; distressed: below 5×."><span class="stat-label">EV/EBITDA</span><span class="stat-value" id="ev-ev-ebitda">—</span></div>
+  <div class="stat" data-tooltip="EV ÷ Revenue. Revenue multiple. High-growth SaaS at 5–20× revenue; mature businesses at 0.5–2×."><span class="stat-label">EV/Revenue</span><span class="stat-value" id="ev-ev-revenue">—</span></div>
+  <div class="stat" data-tooltip="EV − Total Debt + Cash. The implied equity value after adjusting for net debt. This is what equity holders actually own after all liabilities are settled."><span class="stat-label">Implied Equity Value</span><span class="stat-value" id="ev-equity-val">—</span></div>
+</div>
+<div id="ev-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="ev-copy" class="secondary">Copy results</button>
+  <button id="ev-share" class="secondary">Share results</button>
+</div>

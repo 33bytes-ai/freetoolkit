@@ -1,0 +1,25 @@
+<div class="field-row">
+  <div class="field">
+    <label for="pi-current-price">Current price ($/month)</label>
+    <input type="number" autocomplete="off" id="pi-current-price" value="49" min="0" step="1">
+  </div>
+  <div class="field">
+    <label for="pi-customers">Current paying customers</label>
+    <input type="number" autocomplete="off" id="pi-customers" value="100" min="1" step="1">
+  </div>
+  <div class="field">
+    <label for="pi-new-price">Proposed new price ($/month)</label>
+    <input type="number" autocomplete="off" id="pi-new-price" value="69" min="0" step="1">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="Current price × current customers. Baseline monthly recurring revenue before the price change."><div class="num" id="pi-out-current-rev">$0</div><div class="label">Current MRR</div></div>
+  <div class="stat" data-tooltip="New price × current customers (assuming 0% churn from the price increase). The theoretical maximum revenue if every customer accepts the new price."><div class="num" id="pi-out-new-rev">$0</div><div class="label">New MRR (full retention)</div></div>
+  <div class="stat" data-tooltip="New MRR − Current MRR. Revenue uplift assuming no customer leaves due to the price change. Actual gain will be lower if some customers churn."><div class="num" id="pi-out-delta">+$0</div><div class="label">Revenue gain (full retention)</div></div>
+  <div class="stat" data-tooltip="Current MRR ÷ New MRR. The minimum % of customers who must stay at the new price for revenue to hold flat. If actual retention exceeds this, revenue grows."><div class="num" id="pi-out-breakeven">0%</div><div class="label">Break-even retention needed</div></div>
+</div>
+<div id="pi-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="pi-copy" class="secondary">Copy results</button>
+  <button id="pi-share" class="secondary">Share results</button>
+</div>

@@ -1,0 +1,162 @@
+[
+  {
+    "title": "CI/CD GitHub Actions — make test à chaque push",
+    "description": "Créer .github/workflows/ci.yml qui exécute `make test` (Node + pytest) sur chaque push et PR. Empêche toute régression silencieuse. Ajouter un badge status dans le README.",
+    "impact": 9,
+    "effort": 2,
+    "risk": 1,
+    "status": "done"
+  },
+  {
+    "title": "FAQ schema JSON-LD sur les pages outils",
+    "description": "Générer automatiquement un bloc <script type='application/ld+json'> FAQPage à partir des questions/réponses déjà présentes dans le body markdown de chaque outil. Rich results Google = CTR +15–30% estimé.",
+    "impact": 9,
+    "effort": 4,
+    "risk": 2,
+    "status": "pending"
+  },
+  {
+    "title": "Pages pays Stripe programmatiques (UK, CA, AU, EU, IN)",
+    "description": "Créer content/countries.yaml et un template intent_country.html pour générer 5–10 pages '/tools/stripe-fee-calculator/stripe-fees-[country]/' pré-remplies avec les taux locaux. Faible concurrence, fort volume longue traîne.",
+    "impact": 9,
+    "effort": 5,
+    "risk": 2,
+    "status": "pending"
+  },
+  {
+    "title": "Remplacer og:image SVG par PNG statique",
+    "description": "Créer /static/img/og.png (1200×630) pour le partage social. Facebook, LinkedIn et Twitter/X ne prévisualisent pas les SVG. Ajouter og:image:width et og:image:height dans base.html.",
+    "impact": 7,
+    "effort": 2,
+    "risk": 1,
+    "status": "pending"
+  },
+  {
+    "title": "Header Content-Security-Policy dans nginx.conf",
+    "description": "Ajouter un CSP restrictif dans nginx.conf : self pour scripts/styles, pagead2.googlesyndication.com pour AdSense, bloquer inline scripts non-nonce. Améliore sécurité et confiance AdSense.",
+    "impact": 7,
+    "effort": 3,
+    "risk": 3,
+    "status": "pending"
+  },
+  {
+    "title": "Tests dynamiques — lire tools.yaml au lieu de listes hard-codées",
+    "description": "Remplacer TOOL_SLUGS et INTENT_PAGES dans test_build.py par un chargement dynamique depuis content/tools.yaml et content/intent_pages.yaml. Élimine la désynchronisation garantie à chaque ajout d'outil.",
+    "impact": 8,
+    "effort": 2,
+    "risk": 1,
+    "status": "done"
+  },
+  {
+    "title": "Étendre la couverture tests JS à tous les outils (22)",
+    "description": "Ajouter des tests unitaires pour les 19 calculateurs non couverts ou partiellement couverts dans test_tools.js. Minimum : 2 tests par outil (cas nominal + validation entrée invalide). Objectif : 60+ tests.",
+    "impact": 8,
+    "effort": 6,
+    "risk": 1,
+    "status": "pending"
+  },
+  {
+    "title": "WebApplication schema JSON-LD par page outil",
+    "description": "Ajouter un schema WebApplication ou SoftwareApplication par page outil dans le template tool.html. Renforce les signaux E-E-A-T et peut générer des rich results pour les outils en ligne.",
+    "impact": 7,
+    "effort": 3,
+    "risk": 1,
+    "status": "pending"
+  },
+  {
+    "title": "Dark mode CSS via prefers-color-scheme",
+    "description": "Ajouter un media query @prefers-color-scheme: dark dans style.css avec une palette alternative (fond sombre, variables CSS overridées). Audience tech >40% dark mode. Aucun JS requis.",
+    "impact": 6,
+    "effort": 3,
+    "risk": 1,
+    "status": "pending"
+  },
+  {
+    "title": "Respect du DNT dans tracker.js",
+    "description": "Vérifier navigator.doNotTrack === '1' au démarrage de tracker.js et désactiver le tracking localStorage si activé. Conformité GDPR et signal de bonne foi pour les utilisateurs privacy-conscious.",
+    "impact": 5,
+    "effort": 1,
+    "risk": 1,
+    "status": "done"
+  },
+  {
+    "title": "Améliorer new_tool.py — widget numérique cohérent",
+    "description": "Refactoriser le widget généré par scripts/new_tool.py pour générer un template d'inputs numériques (input[type=number], output-box, insight div) cohérent avec le pattern réel. Ajouter mise à jour automatique de test_build.py.",
+    "impact": 6,
+    "effort": 3,
+    "risk": 2,
+    "status": "pending"
+  },
+  {
+    "title": "Page de comparaison Stripe vs PayPal vs Shopify",
+    "description": "Créer une page /compare/stripe-vs-paypal/ ciblant 'stripe vs paypal fees' (~8k/mois, faible concurrence). Tableau de comparaison interactif tirant les calculs des trois calculateurs existants. Liens internes vers les 3 outils.",
+    "impact": 8,
+    "effort": 4,
+    "risk": 2,
+    "status": "pending"
+  },
+  {
+    "title": "Sitemap avec lastmod dynamique",
+    "description": "Modifier write_sitemap() dans build.py pour inclure <lastmod> basé sur datetime.date.today() pour les pages statiques et sur un champ 'updated' optionnel dans tools.yaml. Améliore le crawl budget Google.",
+    "impact": 5,
+    "effort": 2,
+    "risk": 1,
+    "status": "pending"
+  },
+  {
+    "title": "Pages intent supplémentaires (30 → 45 pages total)",
+    "description": "Doubler les pages intent programmatiques en ajoutant 2–3 pages par calculateur non encore couvert (profit-margin, break-even, vat, paypal-fee, churn, etc.). Objectif : 30+ nouvelles pages indexées à faible concurrence.",
+    "impact": 9,
+    "effort": 6,
+    "risk": 1,
+    "status": "pending"
+  },
+  {
+    "title": "Remplacer document.execCommand fallback dans common.js",
+    "description": "Supprimer le fallback textarea/execCommand (déprécié) dans copyToClipboard(). Utiliser uniquement navigator.clipboard.writeText() avec un message d'erreur UI si non disponible (HTTPS requis de toute façon).",
+    "impact": 4,
+    "effort": 1,
+    "risk": 1,
+    "status": "done"
+  },
+  {
+    "title": "TTL et limite de taille pour localStorage tracker",
+    "description": "Ajouter dans tracker.js un nettoyage périodique des données > 90 jours et une limite de 500ko. Évite la saturation du localStorage après un usage prolongé. Purger les entrées les plus anciennes si dépassement.",
+    "impact": 4,
+    "effort": 2,
+    "risk": 1,
+    "status": "pending"
+  },
+  {
+    "title": "Corriger _rejectattr pour supporter d'autres opérateurs",
+    "description": "Étendre la fonction _rejectattr dans build.py pour supporter 'ne', 'lt', 'gt' en plus de 'eq', et lever une ValueError explicite pour les opérateurs inconnus au lieu de retourner silencieusement la liste complète.",
+    "impact": 4,
+    "effort": 1,
+    "risk": 1,
+    "status": "done"
+  },
+  {
+    "title": "Capture email fondateurs (newsletter / lead magnet)",
+    "description": "Ajouter un formulaire d'inscription email discret (bottom-of-page ou exit-intent) connecté à ConvertKit ou Beehiiv (plan gratuit). Construire une liste de fondateurs pour distribution directe des nouveaux outils.",
+    "impact": 7,
+    "effort": 4,
+    "risk": 2,
+    "status": "pending"
+  },
+  {
+    "title": "Validation widget manquant au build — erreur explicite",
+    "description": "Dans build.py, avant le rendu de chaque outil, vérifier que templates/widgets/<slug>.html existe et lever une erreur claire si absent. Évite une erreur Jinja2 cryptique découverte seulement au runtime.",
+    "impact": 5,
+    "effort": 1,
+    "risk": 1,
+    "status": "done"
+  },
+  {
+    "title": "Rapport de performance Lighthouse en CI",
+    "description": "Ajouter une étape dans le workflow CI qui lance `npx lighthouse-ci` sur dist/ (serve local) et échoue si Performance < 90 ou SEO < 95. Prévient les régressions de Core Web Vitals avant déploiement.",
+    "impact": 7,
+    "effort": 4,
+    "risk": 2,
+    "status": "pending"
+  }
+]

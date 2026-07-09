@@ -1,0 +1,39 @@
+<div class="calc-grid">
+  <label for="pp-investment">Initial investment ($)</label>
+  <input type="number" id="pp-investment" min="0" step="10000" value="200000" autocomplete="off">
+
+  <label for="pp-cashflow">Annual net cash flow ($)</label>
+  <input type="number" id="pp-cashflow" min="0" step="10000" value="80000" autocomplete="off">
+
+  <label for="pp-discount">Discount rate % (optional)</label>
+  <input type="number" id="pp-discount" min="0" max="50" step="0.5" value="10" autocomplete="off">
+
+  <label for="pp-years">Analysis period (years)</label>
+  <input type="number" id="pp-years" min="1" max="30" step="1" value="5" autocomplete="off">
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card" data-tooltip="Initial Investment ÷ Annual Cash Flow. Years to recover the investment with no time value of money adjustment. Simple but ignores the cost of capital.">
+    <span class="stat-label">Simple Payback</span>
+    <span class="stat-value" id="pp-result">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Simple payback period × 12. The same result expressed in months. Useful for investments with sub-year payback horizons.">
+    <span class="stat-label">Payback in Months</span>
+    <span class="stat-value" id="pp-months">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Payback using discounted cash flows. Each year's cash flow is discounted by your cost of capital, so recovery takes longer than the simple payback.">
+    <span class="stat-label">Discounted Payback</span>
+    <span class="stat-value" id="pp-disc-pb">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="(Total Cash Flows − Initial Investment) ÷ Initial Investment × 100, over the analysis period. Undiscounted return on investment across all years.">
+    <span class="stat-label">ROI at Period End</span>
+    <span class="stat-value" id="pp-roi-yrs">--</span>
+  </div>
+</div>
+
+<div id="pp-insight" class="insight-box" aria-live="polite"></div>
+
+<div class="calc-actions">
+  <button id="pp-share" class="btn-secondary">Share</button>
+  <button id="pp-copy" class="btn-secondary">Copy results</button>
+</div>

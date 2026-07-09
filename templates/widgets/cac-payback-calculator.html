@@ -1,0 +1,39 @@
+<div class="tool-widget" role="main">
+  <div class="field-row">
+    <div class="field">
+      <label for="cpp-cac">Customer Acquisition Cost / CAC ($)</label>
+      <input id="cpp-cac" type="number" min="0" step="100" value="1200" placeholder="e.g. 1200">
+      <span class="field__error-msg"></span>
+    </div>
+    <div class="field">
+      <label for="cpp-arpu">Monthly ARPU ($) <span style="font-size:0.8em;color:var(--text-muted)">avg revenue per customer</span></label>
+      <input id="cpp-arpu" type="number" min="0" step="10" value="150" placeholder="e.g. 150">
+      <span class="field__error-msg"></span>
+    </div>
+    <div class="field">
+      <label for="cpp-margin">Gross margin (%)</label>
+      <input id="cpp-margin" type="number" min="1" max="100" step="1" value="75" placeholder="e.g. 75">
+      <span class="field__error-msg"></span>
+    </div>
+  </div>
+  <div class="output-grid">
+    <div class="output-box" data-tooltip="CAC ÷ Monthly Gross Profit per customer. How many months before you've recovered the cost of acquiring a customer. VC benchmark: ≤12 months.">
+      <span class="label">Payback period</span>
+      <span class="value" id="cpp-out-months">—</span>
+    </div>
+    <div class="output-box" data-tooltip="Payback period in years for easier comparison to LTV or investment horizons.">
+      <span class="label">Payback (years)</span>
+      <span class="value" id="cpp-out-years">—</span>
+    </div>
+    <div class="output-box" data-tooltip="ARPU × gross margin ÷ 100. The monthly gross profit contribution per customer — what actually pays back your CAC.">
+      <span class="label">Monthly gross profit / customer</span>
+      <span class="value" id="cpp-out-mgp">—</span>
+    </div>
+    <div class="output-box" data-tooltip="3× CAC — the minimum LTV investors expect to justify the acquisition cost. Ensure your average customer stays long enough to reach this threshold.">
+      <span class="label">LTV target (3× CAC)</span>
+      <span class="value" id="cpp-out-ltv3x">—</span>
+    </div>
+  </div>
+  <div id="cpp-insight" class="calc-insight" style="display:none"></div>
+</div>
+<script src="/static/js/tools/cac-payback-calculator.js" defer></script>

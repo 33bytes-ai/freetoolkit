@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% block head_extra %}
+<meta name="keywords" content="{% for tool in tools[:10] %}{{ tool.nav_title }}{% if not loop.last %}, {% endif %}{% endfor %}, free business calculators">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "All Free Business Calculators",
+  "url": "{{ site.base_url }}/tools/",
+  "description": "{{ site.description }}",
+  "hasPart": [
+    {% for tool in tools %}
+    { "@type": "WebApplication", "name": {{ tool.title | tojson }}, "url": "{{ site.base_url }}/tools/{{ tool.slug }}/" }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endblock %}
+{% block content %}
+<section class="wrap content-page">
+  <h1>All Free Business Calculators</h1>
+  <p class="tool-short">{{ tools | length }} tools — all run in your browser, no sign-up required.</p>
+
+  <nav class="cat-jump-bar" aria-label="Jump to category" style="display:flex;flex-wrap:wrap;gap:0.4rem;margin:1rem 0 0.5rem">
+    {% for category in categories %}
+    {% if tools_by_category.get(category) %}
+    <a href="#cat-{{ category | lower | replace(' ', '-') }}" class="cat-filter-btn" style="font-size:0.8rem">{{ category }}</a>
+    {% endif %}
+    {% endfor %}
+  </nav>
+
+  <div role="search" class="tools-filter-bar" style="margin:0.75rem 0 1rem;display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap">
+    <input id="tool-search" type="search" placeholder="Filter calculators…" aria-label="Filter calculators"
+      style="padding:0.55rem 0.85rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg);color:var(--text);font-size:0.95rem;width:100%;max-width:360px">
+    <kbd id="search-hint" style="font-size:0.78rem;padding:0.15rem 0.45rem;border:1px solid var(--border);border-radius:4px;background:var(--surface);color:var(--text-muted);white-space:nowrap;user-select:none">/</kbd>
+    <button id="sort-new" class="cat-filter-btn" style="margin-left:auto" aria-pressed="false">⚡ Newest first</button>
+  </div>
+
+  {% for category in categories %}
+  {% set cat_tools = tools_by_category.get(category, []) %}
+  {% if cat_tools %}
+  <div class="tools-index-section" data-category="{{ category }}">
+    {% set guide_count = intent_count_by_category.get(category, 0) %}
+    <h2>{{ category }} <span class="category-count" style="font-size:0.75rem;font-weight:500;color:var(--text-muted);background:var(--surface);border:1px solid var(--border);border-radius:99px;padding:0.15rem 0.6rem;vertical-align:middle;margin-left:0.4rem">{{ cat_tools | length }} tools{% if guide_count %} · {{ guide_count }} guides{% endif %}</span></h2>
+    <div class="tool-grid">
+      {% for tool in cat_tools %}
+      <a class="tool-card" href="/tools/{{ tool.slug }}/" aria-label="{{ tool.nav_title }} — {{ tool.short[:80] }}" data-title="{{ tool.nav_title | lower }}" data-short="{{ tool.short | lower }}" data-idx="{{ loop.index }}">
+        <h3>{{ tool.nav_title }}{% if tool.new %} <span style="font-size:0.65rem;font-weight:600;color:#fff;background:#4f7ef8;border-radius:99px;padding:0.1rem 0.5rem;vertical-align:middle;margin-left:0.4rem;letter-spacing:0.02em">NEW</span>{% endif %}</h3>
+        <p>{{ tool.short }}</p>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+
+  <p id="tools-count" style="font-size:0.82rem;color:var(--text-muted);margin:0 0 0.5rem">Showing all {{ tools | length }} calculators</p>
+  <p id="tools-no-match" style="display:none;color:var(--text-muted);padding:2rem 0">No calculators match your search.</p>
+</section>
+<script>
+(function () {
+  var input = document.getElementById("tool-search");
+  if (!input) return;
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "/" && document.activeElement !== input && !e.ctrlKey && !e.metaKey && !e.altKey) {
+      e.preventDefault();
+      input.focus();
+      input.select();
+    }
+    if (e.key === "Escape" && document.activeElement === input) {
+      input.blur();
+    }
+  });
+  var hint = document.getElementById("search-hint");
+  input.addEventListener("focus", function () { if (hint) hint.style.display = "none"; });
+  input.addEventListener("blur", function () { if (hint) hint.style.display = ""; });
+  input.addEventListener("input", function () {
+    var q = this.value.trim().toLowerCase();
+    var cards = document.querySelectorAll(".tool-card[data-title]");
+    var visible = 0;
+    cards.forEach(function (card) {
+      var match = !q || card.dataset.title.includes(q) || card.dataset.short.includes(q);
+      card.style.display = match ? "" : "none";
+      if (match) visible++;
+      // Highlight matching text in the h3
+      var h3 = card.querySelector("h3");
+      if (h3) {
+        if (!h3.dataset.original) h3.dataset.original = h3.innerHTML;
+        if (!q) {
+          h3.innerHTML = h3.dataset.original;
+        } else {
+          var orig = h3.dataset.original;
+          var re = new RegExp("(" + q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "gi");
+          h3.innerHTML = orig.replace(re, '<mark style="background:rgba(79,126,248,0.25);border-radius:2px;padding:0 1px">$1</mark>');
+        }
+      }
+    });
+    document.querySelectorAll(".tools-index-section").forEach(function (sec) {
+      var anyVisible = sec.querySelectorAll(".tool-card[style=''],.tool-card:not([style])").length > 0
+        || Array.from(sec.querySelectorAll(".tool-card")).some(function (c) { return c.style.display !== "none"; });
+      sec.style.display = anyVisible ? "" : "none";
+    });
+    document.getElementById("tools-no-match").style.display = visible === 0 ? "" : "none";
+    var countEl = document.getElementById("tools-count");
+    if (countEl) countEl.textContent = q ? "Showing " + visible + " of {{ tools | length }} calculators" : "Showing all {{ tools | length }} calculators";
+  });
+
+  // Newest-first sort toggle
+  var sortBtn = document.getElementById("sort-new");
+  var sortedActive = false;
+  if (sortBtn) {
+    sortBtn.addEventListener("click", function () {
+      sortedActive = !sortedActive;
+      sortBtn.classList.toggle("active", sortedActive);
+      sortBtn.setAttribute("aria-pressed", sortedActive ? "true" : "false");
+      sortBtn.textContent = sortedActive ? "⚡ Default order" : "⚡ Newest first";
+      document.querySelectorAll(".tool-grid").forEach(function (grid) {
+        var cards = Array.from(grid.querySelectorAll(".tool-card"));
+        if (sortedActive) {
+          cards.sort(function (a, b) { return parseInt(b.dataset.idx, 10) - parseInt(a.dataset.idx, 10); });
+        } else {
+          cards.sort(function (a, b) { return parseInt(a.dataset.idx, 10) - parseInt(b.dataset.idx, 10); });
+        }
+        cards.forEach(function (c) { grid.appendChild(c); });
+      });
+    });
+  }
+
+  // Count-up animation on category count badges
+  var badges = document.querySelectorAll(".category-count");
+  if ("IntersectionObserver" in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        obs.unobserve(entry.target);
+        var el = entry.target;
+        var target = parseInt(el.textContent, 10);
+        if (isNaN(target)) return;
+        var start = 0;
+        var step = Math.ceil(target / 12);
+        el.textContent = 0;
+        var iv = setInterval(function () {
+          start = Math.min(start + step, target);
+          el.textContent = start;
+          if (start >= target) clearInterval(iv);
+        }, 40);
+      });
+    }, { threshold: 0.5 });
+    badges.forEach(function (b) { obs.observe(b); });
+  }
+})();
+</script>
+{% endblock %}

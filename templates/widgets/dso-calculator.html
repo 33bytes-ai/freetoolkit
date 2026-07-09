@@ -1,0 +1,41 @@
+<p style="font-size:0.85rem;color:var(--text-muted);margin:0 0 0.75rem">Enter accounts receivable and credit sales for the same period to calculate Days Sales Outstanding.</p>
+
+<div class="input-grid">
+  <div class="input-group">
+    <label for="dso-ar">Accounts Receivable ($)</label>
+    <input type="number" id="dso-ar" min="0" step="1000" value="150000" autocomplete="off">
+    <span class="input-hint">Current outstanding receivables balance</span>
+  </div>
+  <div class="input-group">
+    <label for="dso-sales">Total Credit Sales ($)</label>
+    <input type="number" id="dso-sales" min="0" step="1000" value="450000" autocomplete="off">
+    <span class="input-hint">Revenue on credit for the period</span>
+  </div>
+  <div class="input-group">
+    <label for="dso-days">Period Length (days)</label>
+    <input type="number" id="dso-days" min="1" max="365" step="1" value="90" autocomplete="off">
+    <span class="input-hint">90 = quarterly, 365 = annual</span>
+  </div>
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card" data-tooltip="AR ÷ (Credit Sales ÷ Period Days). How many days on average it takes to collect payment after a sale. Industry benchmark: 30–45 days. Below 30 = excellent collections.">
+    <span class="stat-label">Days Sales Outstanding</span>
+    <span class="stat-value" id="dso-out-dso">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Credit Sales ÷ AR. How many times per period you collect your full AR balance. Higher = faster collections. Benchmark: 8–12× annually (30–45 day DSO).">
+    <span class="stat-label">AR Turnover Ratio</span>
+    <span class="stat-value" id="dso-out-turnover">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="What your AR balance should be if you hit a 30-day DSO. Compare to actual AR to see the cash improvement opportunity from faster collections.">
+    <span class="stat-label">Target AR at 30-day DSO</span>
+    <span class="stat-value" id="dso-out-target-ar">--</span>
+  </div>
+</div>
+
+<div id="dso-insight" class="insight-box" aria-live="polite"></div>
+
+<div class="calc-actions">
+  <button id="dso-share" class="btn-secondary">Share</button>
+  <button id="dso-copy" class="btn-secondary">Copy results</button>
+</div>

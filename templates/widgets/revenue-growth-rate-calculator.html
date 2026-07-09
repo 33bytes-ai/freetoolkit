@@ -1,0 +1,30 @@
+<div class="field-row">
+  <div class="field">
+    <label for="rgr-prev">Previous period revenue ($)</label>
+    <input type="number" autocomplete="off" id="rgr-prev" value="800000" min="0" step="10000">
+  </div>
+  <div class="field">
+    <label for="rgr-curr">Current period revenue ($)</label>
+    <input type="number" autocomplete="off" id="rgr-curr" value="1000000" min="0" step="10000">
+  </div>
+</div>
+<div class="field-row">
+  <div class="field">
+    <label for="rgr-years">Years between periods <span style="font-size:0.8em;color:var(--text-muted)">(for CAGR)</span></label>
+    <input type="number" autocomplete="off" id="rgr-years" value="1" min="1" max="50" step="1">
+  </div>
+  <div class="field">
+    <label for="rgr-margin">Net profit margin (%) <span style="font-size:0.8em;color:var(--text-muted)">(for Rule of 40)</span></label>
+    <input type="number" autocomplete="off" id="rgr-margin" value="15" step="1">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="(Current − Previous) ÷ Previous × 100. Year-over-year or period-over-period revenue growth rate. High-growth SaaS: 50–100%+; established companies: 5–20%."><span class="stat-label">Growth Rate</span><span class="stat-value" id="rgr-result">—</span></div>
+  <div class="stat" data-tooltip="Compound Annual Growth Rate over multiple years. Smooths out year-to-year variability. More meaningful than simple growth rate for multi-year periods."><span class="stat-label">CAGR</span><span class="stat-value" id="rgr-cagr">—</span></div>
+  <div class="stat" data-tooltip="Growth Rate + Net Profit Margin. The Rule of 40 for SaaS: a healthy company's growth rate plus profit margin should exceed 40. A score of 40+ indicates balanced, sustainable growth."><span class="stat-label">Rule of 40 Score</span><span class="stat-value" id="rgr-r40">—</span></div>
+</div>
+<div id="rgr-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="rgr-copy" class="secondary">Copy results</button>
+  <button id="rgr-share" class="secondary">Share results</button>
+</div>

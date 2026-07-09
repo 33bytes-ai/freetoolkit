@@ -1,0 +1,30 @@
+# Site-wide configuration consumed by src/freetoolkit/build.py
+site:
+  name: "FounderCalc"
+  tagline: "Free business calculators for indie founders, freelancers and SaaS builders"
+  description: >
+    FounderCalc is a collection of free, instant business calculators —
+    Stripe fees, MRR, LTV/CAC, runway, profit margin, freelance rates and more.
+    All math runs in your browser. No sign-up, no uploads, no tracking.
+  base_url: "https://foundercalc.example.com"
+  twitter: ""
+
+  # Flip to true once AdSense application is approved (see docs/MONETIZATION.md).
+  # Business/SaaS calculator audience commands RPM of $8–20 vs $1–3 for general tools.
+  ads_enabled: false
+
+  # Set to your Formspree form ID to enable the newsletter signup form on the homepage.
+  # Get a free form at https://formspree.io — use the 8-character ID from your form URL.
+  formspree_id: ""
+
+# Navigation categories, in display order.
+categories:
+  - Payments
+  - SaaS Metrics
+  - Freelance
+  - Business Math
+  - Marketing
+  - Finance
+  - Valuation
+  - Tax & Compliance
+  - HR & People

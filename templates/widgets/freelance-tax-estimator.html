@@ -1,0 +1,39 @@
+<div class="calc-grid">
+  <label for="fte-profit">Annual net profit (freelance income after expenses) ($)</label>
+  <input type="number" id="fte-profit" min="0" step="1000" value="80000" autocomplete="off">
+
+  <label for="fte-other">Other W-2 or investment income ($, optional)</label>
+  <input type="number" id="fte-other" min="0" step="1000" value="0" autocomplete="off">
+
+  <label for="fte-status">Filing status</label>
+  <select id="fte-status" autocomplete="off">
+    <option value="single">Single</option>
+    <option value="mfj">Married Filing Jointly</option>
+  </select>
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card" data-tooltip="15.3% on net self-employment income (×92.35% since you deduct half). Covers Social Security (12.4%) and Medicare (2.9%). The biggest surprise for new freelancers — employees only see 7.65%.">
+    <span class="stat-label">Self-Employment Tax (15.3%)</span>
+    <span class="stat-value" id="fte-se-tax">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Federal income tax on net SE income minus the SE tax deduction and standard deduction. Uses 2024 marginal rates. Excludes state taxes — add 0–10% depending on your state.">
+    <span class="stat-label">Federal Income Tax</span>
+    <span class="stat-value" id="fte-fed-tax">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="SE Tax + Federal Income Tax. Set this aside every month as you earn — don't wait until April. A dedicated tax savings account prevents cash-flow surprises.">
+    <span class="stat-label">Total Estimated Tax</span>
+    <span class="stat-value" id="fte-total">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Total tax ÷ 4. The IRS requires quarterly estimated tax payments (April, June, September, January). Missing payments triggers an underpayment penalty.">
+    <span class="stat-label">Quarterly Payment Due</span>
+    <span class="stat-value" id="fte-quarterly">--</span>
+  </div>
+</div>
+
+<div id="fte-insight" class="insight-box" aria-live="polite"></div>
+
+<div class="calc-actions">
+  <button id="fte-share-btn" class="btn-secondary">Share</button>
+  <button id="fte-copy" class="btn-secondary">Copy results</button>
+</div>

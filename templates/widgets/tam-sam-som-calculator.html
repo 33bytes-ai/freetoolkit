@@ -1,0 +1,39 @@
+<div class="calc-grid">
+  <label for="tsm-population">Target customer population (# of potential customers)</label>
+  <input type="number" id="tsm-population" min="0" step="1000" value="100000" autocomplete="off">
+
+  <label for="tsm-spend">Average annual spend per customer ($)</label>
+  <input type="number" id="tsm-spend" min="0" step="100" value="5000" autocomplete="off">
+
+  <label for="tsm-serviceable">Serviceable market % (customers you can actually reach)</label>
+  <input type="number" id="tsm-serviceable" min="0" max="100" step="1" value="30" autocomplete="off">
+
+  <label for="tsm-share">Target market share % (realistic share you can capture)</label>
+  <input type="number" id="tsm-share" min="0" max="100" step="1" value="5" autocomplete="off">
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card" data-tooltip="Total Addressable Market = all potential customers × annual spend per customer. The theoretical maximum revenue if you captured 100% of the market.">
+    <span class="stat-label">TAM (Total Addressable)</span>
+    <span class="stat-value" id="tsm-tam">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Serviceable Addressable Market = TAM × serviceable %. The portion of the market you can actually reach with your current product, distribution, and geography.">
+    <span class="stat-label">SAM (Serviceable)</span>
+    <span class="stat-value" id="tsm-sam">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Serviceable Obtainable Market = SAM × target market share. The realistic near-term revenue you can capture given competition and GTM constraints.">
+    <span class="stat-label">SOM (Obtainable)</span>
+    <span class="stat-value" id="tsm-som">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="SOM as a percentage of TAM. Investors want to see a credible path from SOM to SAM expansion over time. SOM of 1–5% of TAM is typical for early-stage.">
+    <span class="stat-label">SOM / TAM Share</span>
+    <span class="stat-value" id="tsm-share-pct">--</span>
+  </div>
+</div>
+
+<div id="tsm-insight" class="insight-box" aria-live="polite"></div>
+
+<div class="calc-actions">
+  <button id="tsm-share-btn" class="btn-secondary">Share</button>
+  <button id="tsm-copy" class="btn-secondary">Copy results</button>
+</div>

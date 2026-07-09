@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="wrap content-page not-found">
+  <h1>Page not found</h1>
+  <p>The page you're looking for doesn't exist or has moved.</p>
+  <p><a href="/">Go back to the homepage</a> to browse all tools.</p>
+
+  <h2 style="margin-top:2rem">Popular calculators</h2>
+  <div class="tool-grid">
+    {% for category in categories %}
+    {% for tool in tools_by_category.get(category, [])[:2] %}
+    <a class="tool-card" href="/tools/{{ tool.slug }}/">
+      <h3>{{ tool.nav_title }}</h3>
+      <p>{{ tool.short }}</p>
+    </a>
+    {% endfor %}
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

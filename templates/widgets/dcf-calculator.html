@@ -1,0 +1,39 @@
+<div class="tool-widget" role="main">
+  <p style="font-size:0.85rem;color:var(--text-muted);margin:0 0 0.75rem">Enter projected Free Cash Flow for each year of your forecast period.</p>
+  <div id="dcf-cf-container"></div>
+  <div class="btn-row" style="margin-top:0.5rem">
+    <button type="button" id="dcf-add-year" class="btn">+ Add year</button>
+  </div>
+  <div class="field-row" style="margin-top:1rem">
+    <div class="field">
+      <label for="dcf-rate">Discount rate / WACC (%)</label>
+      <input id="dcf-rate" type="number" min="1" max="80" step="0.5" value="12" placeholder="e.g. 12">
+      <span class="field__error-msg"></span>
+    </div>
+    <div class="field">
+      <label for="dcf-tgrowth">Terminal growth rate (%)</label>
+      <input id="dcf-tgrowth" type="number" min="0" max="20" step="0.5" value="3" placeholder="e.g. 3">
+      <span class="field__error-msg"></span>
+    </div>
+  </div>
+  <div class="output-grid" style="margin-top:1rem">
+    <div class="output-box" data-tooltip="Sum of all forecast cash flows discounted back to today at your discount rate.">
+      <span class="label">PV of Cash Flows</span>
+      <span class="value" id="dcf-out-pvcf">—</span>
+    </div>
+    <div class="output-box" data-tooltip="The value of all cash flows beyond your forecast period, based on the terminal growth rate assumption.">
+      <span class="label">Terminal Value</span>
+      <span class="value" id="dcf-out-tv">—</span>
+    </div>
+    <div class="output-box" data-tooltip="Terminal value discounted back to today. Often 70–90% of total enterprise value.">
+      <span class="label">PV of Terminal Value</span>
+      <span class="value" id="dcf-out-pvtv">—</span>
+    </div>
+    <div class="output-box" data-tooltip="PV of cash flows + PV of terminal value. This is the intrinsic enterprise value. Subtract net debt to get equity value.">
+      <span class="label">Enterprise Value</span>
+      <span class="value" id="dcf-out-ev">—</span>
+    </div>
+  </div>
+  <div id="dcf-insight" class="calc-insight" style="display:none"></div>
+</div>
+<script src="/static/js/tools/dcf-calculator.js" defer></script>

@@ -1,0 +1,50 @@
+<div class="field-row">
+  <div class="field">
+    <label for="ebitda-revenue">Annual revenue ($)</label>
+    <input type="number" autocomplete="off" id="ebitda-revenue" value="5000000" min="0" step="100000">
+    <span class="field__error-msg"></span>
+  </div>
+  <div class="field">
+    <label for="ebitda-cogs">Cost of goods sold (COGS) ($)</label>
+    <input type="number" autocomplete="off" id="ebitda-cogs" value="750000" min="0" step="50000">
+    <span class="field__error-msg"></span>
+  </div>
+  <div class="field">
+    <label for="ebitda-opex">Operating expenses (OpEx) ($)</label>
+    <input type="number" autocomplete="off" id="ebitda-opex" value="1500000" min="0" step="50000">
+    <span class="field__error-msg"></span>
+  </div>
+  <div class="field">
+    <label for="ebitda-sga">Sales, General & Admin (SG&A) ($)</label>
+    <input type="number" autocomplete="off" id="ebitda-sga" value="500000" min="0" step="50000">
+    <span class="field__error-msg"></span>
+  </div>
+</div>
+<div class="field-row">
+  <div class="field">
+    <label for="ebitda-rd">Research & Development (R&D) ($)</label>
+    <input type="number" autocomplete="off" id="ebitda-rd" value="750000" min="0" step="50000">
+    <span class="field__error-msg"></span>
+  </div>
+  <div class="field">
+    <label for="ebitda-da">Depreciation & Amortization (D&A) ($) <span style="font-size:0.8em;color:var(--text-muted)">(to get EBIT)</span></label>
+    <input type="number" autocomplete="off" id="ebitda-da" value="100000" min="0" step="10000">
+    <span class="field__error-msg"></span>
+  </div>
+  <div class="field">
+    <label for="ebitda-multiple">EBITDA multiple <span style="font-size:0.8em;color:var(--text-muted)">(for valuation)</span></label>
+    <input type="number" autocomplete="off" id="ebitda-multiple" value="10" min="1" max="100" step="0.5">
+    <span class="field__error-msg"></span>
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="Revenue minus COGS, OpEx, SG&A, and R&D — before depreciation, interest, and taxes. The most-used profitability proxy in M&A deals."><span class="stat-label">EBITDA</span><span class="stat-value" id="ebitda-result">--</span></div>
+  <div class="stat" data-tooltip="EBITDA ÷ Revenue. Healthy SaaS: 15–25%+. PE firms look for 20%+ EBITDA margin for leveraged buyouts."><span class="stat-label">EBITDA Margin</span><span class="stat-value" id="ebitda-margin">--</span></div>
+  <div class="stat" data-tooltip="EBITDA minus Depreciation & Amortization. This is Operating Income (EBIT) — earnings before interest and taxes only."><span class="stat-label">EBIT (after D&A)</span><span class="stat-value" id="ebitda-ebit">--</span></div>
+  <div class="stat" data-tooltip="EBITDA × the multiple you entered. This is a quick enterprise value estimate using comparable company multiples."><span class="stat-label">Implied Valuation</span><span class="stat-value" id="ebitda-valuation">--</span></div>
+</div>
+<div id="ebitda-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="ebitda-copy" class="secondary">Copy results</button>
+  <button id="ebitda-share" class="secondary">Share results</button>
+</div>

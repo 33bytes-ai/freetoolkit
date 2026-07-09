@@ -1,0 +1,39 @@
+<div class="calc-grid">
+  <label for="mn-net-new-arr">Net new ARR this quarter ($)</label>
+  <input type="number" id="mn-net-new-arr" min="0" step="10000" value="500000" autocomplete="off">
+
+  <label for="mn-sm-spend">Prior quarter S&amp;M spend ($)</label>
+  <input type="number" id="mn-sm-spend" min="0" step="10000" value="400000" autocomplete="off">
+
+  <label for="mn-new-customers">New customers acquired (optional)</label>
+  <input type="number" id="mn-new-customers" min="0" step="1" value="" autocomplete="off">
+
+  <label for="mn-gross-margin">Gross margin % (for payback calc)</label>
+  <input type="number" id="mn-gross-margin" min="1" max="100" step="1" value="75" autocomplete="off">
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card" data-tooltip="Net new ARR ÷ prior quarter S&M spend. Above 0.75 = efficient GTM. Above 1.0 = excellent. Below 0.5 = rethink your go-to-market strategy.">
+    <span class="stat-label">Magic Number</span>
+    <span class="stat-value" id="mn-result">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Prior quarter S&M spend × 4. Your implied annual go-to-market investment rate.">
+    <span class="stat-label">Annualized S&amp;M</span>
+    <span class="stat-value" id="mn-ann-sm">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="S&M spend ÷ new customers acquired. Only available if you entered a new customer count. The average cost to win one customer.">
+    <span class="stat-label">Implied CAC</span>
+    <span class="stat-value" id="mn-cac">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Months until a new customer's gross profit covers the S&M cost to acquire them. Benchmark: under 12 months.">
+    <span class="stat-label">GTM Payback</span>
+    <span class="stat-value" id="mn-payback">--</span>
+  </div>
+</div>
+
+<div id="mn-insight" class="insight-box" aria-live="polite"></div>
+
+<div class="calc-actions">
+  <button id="mn-share" class="btn-secondary">Share</button>
+  <button id="mn-copy" class="btn-secondary">Copy results</button>
+</div>

@@ -1,0 +1,42 @@
+<div class="calc-grid">
+  <label for="cc-original">Cohort starting size (customers at month 0)</label>
+  <input type="number" id="cc-original" min="0" step="10" value="200" autocomplete="off">
+
+  <label for="cc-churned">Customers churned in first period</label>
+  <input type="number" id="cc-churned" min="0" step="1" value="20" autocomplete="off">
+
+  <label for="cc-mrevenue">Monthly revenue per customer ($)</label>
+  <input type="number" id="cc-mrevenue" min="0" step="10" value="99" autocomplete="off">
+
+  <label for="cc-mchurn">Monthly churn rate (%)</label>
+  <input type="number" id="cc-mchurn" min="0" max="100" step="0.1" value="2.5" autocomplete="off">
+
+  <label for="cc-months">Projection horizon (months)</label>
+  <input type="number" id="cc-months" min="1" max="60" step="1" value="12" autocomplete="off">
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card" data-tooltip="(Starting customers − Churned) ÷ Starting customers. Percentage of the original cohort still active after the first period. B2B SaaS benchmark: 85–95% after month 1.">
+    <span class="stat-label">Initial Cohort Retention</span>
+    <span class="stat-value" id="cc-retention">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Monthly Revenue per Customer ÷ Monthly Churn Rate. Average revenue per customer over their full lifetime, assuming a constant monthly churn rate.">
+    <span class="stat-label">LTV (from monthly churn)</span>
+    <span class="stat-value" id="cc-ltv">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="(1 − monthly churn rate)^projection_months. Fraction of the original cohort still active at the end of the horizon. Shows long-run attrition shape.">
+    <span class="stat-label">Projected Retention at Horizon</span>
+    <span class="stat-value" id="cc-ret-proj">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="ln(2) ÷ Monthly Churn Rate. Months until half the cohort has churned. A 2.5% monthly churn rate means ~27 months until 50% of customers are gone.">
+    <span class="stat-label">Cohort Half-Life</span>
+    <span class="stat-value" id="cc-half-life">--</span>
+  </div>
+</div>
+
+<div id="cc-insight" class="insight-box" aria-live="polite"></div>
+
+<div class="calc-actions">
+  <button id="cc-share-btn" class="btn-secondary">Share</button>
+  <button id="cc-copy" class="btn-secondary">Copy results</button>
+</div>

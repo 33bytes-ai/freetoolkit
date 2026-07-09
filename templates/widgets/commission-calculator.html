@@ -1,0 +1,31 @@
+<div class="field-row">
+  <div class="field">
+    <label for="comm-revenue">Revenue / sales closed ($)</label>
+    <input type="number" autocomplete="off" id="comm-revenue" value="150000" min="0" step="1000">
+  </div>
+  <div class="field">
+    <label for="comm-rate">Commission rate (%)</label>
+    <input type="number" autocomplete="off" id="comm-rate" value="8" min="0" max="100" step="0.5">
+  </div>
+</div>
+<div class="field-row">
+  <div class="field">
+    <label for="comm-base">Base salary ($) <span style="font-size:0.8em;color:var(--text-muted)">(for total comp)</span></label>
+    <input type="number" autocomplete="off" id="comm-base" value="60000" min="0" step="1000">
+  </div>
+  <div class="field">
+    <label for="comm-ote">On-Target Earnings OTE ($) <span style="font-size:0.8em;color:var(--text-muted)">(for attainment %)</span></label>
+    <input type="number" autocomplete="off" id="comm-ote" value="120000" min="0" step="5000">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="Revenue × Commission Rate. Gross commission earned before any clawbacks, splits, or draw deductions."><span class="stat-label">Commission Earned</span><span class="stat-value" id="comm-result">—</span></div>
+  <div class="stat" data-tooltip="Base salary + Commission. Total cash compensation for the period. Compare to OTE to measure quota performance."><span class="stat-label">Total Compensation</span><span class="stat-value" id="comm-total">—</span></div>
+  <div class="stat" data-tooltip="Commission ÷ Revenue × 100. The effective commission rate as a % of revenue. For tiered plans, this shows whether you've moved into a higher rate tier."><span class="stat-label">Effective Rate</span><span class="stat-value" id="comm-eff-rate">—</span></div>
+  <div class="stat" data-tooltip="Total Comp ÷ OTE × 100. Percentage of your on-target earnings achieved. 100% = at quota. Common SaaS benchmark: accelerators kick in above 100% OTE."><span class="stat-label">OTE Attainment</span><span class="stat-value" id="comm-attainment">—</span></div>
+</div>
+<div id="comm-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="comm-copy" class="secondary">Copy results</button>
+  <button id="comm-share" class="secondary">Share results</button>
+</div>

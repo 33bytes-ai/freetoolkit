@@ -1,0 +1,28 @@
+<div class="field-row">
+  <div class="field">
+    <label for="be-fixed">Monthly fixed costs ($)</label>
+    <input type="number" autocomplete="off" id="be-fixed" value="15000" min="0" step="100">
+    <span class="field__error-msg"></span>
+  </div>
+  <div class="field">
+    <label for="be-price">Price per unit / per customer ($)</label>
+    <input type="number" autocomplete="off" id="be-price" value="99" min="0" step="1">
+    <span class="field__error-msg"></span>
+  </div>
+  <div class="field">
+    <label for="be-variable">Variable cost per unit ($)</label>
+    <input type="number" autocomplete="off" id="be-variable" value="12" min="0" step="1">
+    <span class="field__error-msg"></span>
+  </div>
+</div>
+<div class="error-message" id="be-error"></div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="Unit selling price minus variable cost per unit. The contribution of each sale toward covering fixed costs."><div class="num" id="be-contribution">$0</div><div class="label">Contribution margin</div></div>
+  <div class="stat" data-tooltip="Contribution margin ÷ selling price. The percentage of each dollar of revenue that covers fixed costs and profit."><div class="num" id="be-cm-pct">0%</div><div class="label">Contribution margin %</div></div>
+  <div class="stat" data-tooltip="Fixed costs ÷ contribution margin per unit. The minimum units you must sell before making any profit."><div class="num" id="be-units">0</div><div class="label">Break-even units/customers</div></div>
+  <div class="stat" data-tooltip="Fixed costs ÷ contribution margin %. The revenue level at which operating profit equals zero. Below this you operate at a loss."><div class="num" id="be-revenue">$0</div><div class="label">Break-even revenue</div></div>
+</div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="be-copy" class="secondary">Copy results</button>
+  <button id="be-share" class="secondary">Share results</button>
+</div>

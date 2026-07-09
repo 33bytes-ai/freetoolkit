@@ -1,0 +1,9 @@
+name: freetoolkit
+priority: 9
+language: python
+enabled: true
+description: >
+  Static SEO tools website — 10 browser-based utilities (word counter,
+  JSON formatter, password generator, unit/color converters, etc.)
+  monetized via Google AdSense. Zero ongoing operational cost.
+stack: Python/Jinja2 build + vanilla JS + nginx + Docker

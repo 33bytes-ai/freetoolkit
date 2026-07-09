@@ -1,0 +1,39 @@
+<div class="calc-grid">
+  <label for="ed-pre-money">Pre-money valuation ($)</label>
+  <input type="number" id="ed-pre-money" min="0" step="100000" value="5000000" autocomplete="off">
+
+  <label for="ed-investment">Investment amount ($)</label>
+  <input type="number" id="ed-investment" min="0" step="100000" value="1000000" autocomplete="off">
+
+  <label for="ed-shares">Current shares outstanding (pre-round)</label>
+  <input type="number" id="ed-shares" min="1" step="100000" value="10000000" autocomplete="off">
+
+  <label for="ed-my-shares">Your current shares (to track dilution)</label>
+  <input type="number" id="ed-my-shares" min="0" step="10000" value="6000000" autocomplete="off">
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card" data-tooltip="Pre-money valuation + investment amount. The total value of the company after the round closes, including the new capital.">
+    <span class="stat-label">Post-money Valuation</span>
+    <span class="stat-value" id="ed-post-money">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Investment ÷ price per share. Price per share = pre-money valuation ÷ pre-round shares. New shares are issued to the investor at this price.">
+    <span class="stat-label">New Shares Issued</span>
+    <span class="stat-value" id="ed-new-shares">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Your shares ÷ (total pre-round shares + new investor shares). Your ownership percentage after dilution from this round.">
+    <span class="stat-label">Your Diluted Ownership</span>
+    <span class="stat-value" id="ed-my-pct">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Investor shares ÷ total post-round shares. The ownership percentage received by the investor for their investment at this pre-money valuation.">
+    <span class="stat-label">Investor Ownership</span>
+    <span class="stat-value" id="ed-investor-pct">--</span>
+  </div>
+</div>
+
+<div id="ed-insight" class="insight-box" aria-live="polite"></div>
+
+<div class="calc-actions">
+  <button id="ed-share" class="btn-secondary">Share</button>
+  <button id="ed-copy" class="btn-secondary">Copy results</button>
+</div>

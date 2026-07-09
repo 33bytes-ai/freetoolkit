@@ -1,0 +1,42 @@
+<div class="field-row">
+  <div class="field">
+    <label for="ue-cac">Customer Acquisition Cost — CAC ($)</label>
+    <input type="number" autocomplete="off" id="ue-cac" value="1200" min="0" step="50">
+  </div>
+  <div class="field">
+    <label for="ue-mrr">MRR per customer ($)</label>
+    <input type="number" autocomplete="off" id="ue-mrr" value="99" min="0" step="1">
+  </div>
+  <div class="field">
+    <label for="ue-margin">Gross margin (%)</label>
+    <input type="number" autocomplete="off" id="ue-margin" value="75" min="1" max="99" step="1">
+  </div>
+  <div class="field">
+    <label for="ue-lifetime">Avg customer lifetime (months)</label>
+    <input type="number" autocomplete="off" id="ue-lifetime" value="36" min="1" step="1">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="CAC ÷ (MRR × Gross Margin). Months to recover acquisition cost through gross profit. Target: <12 months for efficient SaaS growth."><span class="stat-label">CAC Payback</span><span class="stat-value" id="ue-payback">—</span></div>
+  <div class="stat" data-tooltip="MRR × Gross Margin × Avg Lifetime. Total gross profit from a customer over their relationship. Benchmark: LTV should be ≥3× CAC."><span class="stat-label">LTV</span><span class="stat-value" id="ue-ltv">—</span></div>
+  <div class="stat" data-tooltip="LTV ÷ CAC. The core SaaS efficiency metric. Below 1× = each customer costs more than they return. 3× is the minimum viable target; 5×+ is excellent."><span class="stat-label">LTV:CAC Ratio</span><span class="stat-value" id="ue-ltv-cac">—</span></div>
+  <div class="stat" data-tooltip="Net new ARR ÷ Prior quarter S&M spend. Requires optional inputs. Values >0.75 signal efficient go-to-market; >1.0 is exceptional."><span class="stat-label">Magic Number</span><span class="stat-value" id="ue-magic">—</span></div>
+</div>
+<div id="ue-insight" class="calc-insight" style="display:none"></div>
+<details style="margin-top:1rem">
+  <summary style="cursor:pointer;font-size:0.9rem;color:var(--text-muted)">Magic number inputs (optional)</summary>
+  <div class="field-row" style="margin-top:0.75rem">
+    <div class="field">
+      <label for="ue-net-arr">Net new ARR this quarter ($)</label>
+      <input type="number" autocomplete="off" id="ue-net-arr" value="0" min="0" step="1000">
+    </div>
+    <div class="field">
+      <label for="ue-sm-spend">Prior quarter S&amp;M spend ($)</label>
+      <input type="number" autocomplete="off" id="ue-sm-spend" value="0" min="0" step="1000">
+    </div>
+  </div>
+</details>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="ue-copy" class="secondary">Copy results</button>
+  <button id="ue-share" class="secondary">Share results</button>
+</div>

@@ -1,0 +1,31 @@
+<div class="field" style="max-width:220px; margin-bottom:1rem">
+  <label for="pt-visitors">Monthly visitors to pricing page</label>
+  <input type="number" autocomplete="off" id="pt-visitors" value="1000" min="1" step="100">
+</div>
+<table class="calc-table" id="pt-tiers">
+  <thead>
+    <tr><th>Tier name</th><th>Monthly price ($)</th><th>Conversion rate (%)</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><input type="text" class="tier-name" value="Starter" placeholder="Tier name"></td>
+      <td><input type="number" autocomplete="off" class="tier-price" value="29" min="0" step="1"></td>
+      <td><input type="number" autocomplete="off" class="tier-conv" value="4" min="0" max="100" step="0.1"></td>
+    </tr>
+    <tr>
+      <td><input type="text" class="tier-name" value="Pro" placeholder="Tier name"></td>
+      <td><input type="number" autocomplete="off" class="tier-price" value="99" min="0" step="1"></td>
+      <td><input type="number" autocomplete="off" class="tier-conv" value="1.5" min="0" max="100" step="0.1"></td>
+    </tr>
+    <tr>
+      <td><input type="text" class="tier-name" value="Business" placeholder="Tier name"></td>
+      <td><input type="number" autocomplete="off" class="tier-price" value="249" min="0" step="1"></td>
+      <td><input type="number" autocomplete="off" class="tier-conv" value="0.4" min="0" max="100" step="0.1"></td>
+    </tr>
+  </tbody>
+</table>
+<div id="pt-results"></div>
+<div id="pt-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="pt-share" class="secondary">Share page</button>
+</div>

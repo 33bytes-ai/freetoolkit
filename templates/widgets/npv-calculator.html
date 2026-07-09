@@ -1,0 +1,48 @@
+<div class="calc-grid">
+  <label for="npv-invest">Initial investment ($)</label>
+  <input type="number" id="npv-invest" min="0" step="10000" value="100000" autocomplete="off">
+
+  <label for="npv-rate">Discount rate / cost of capital (%)</label>
+  <input type="number" id="npv-rate" min="0" max="100" step="0.5" value="10" autocomplete="off">
+
+  <label for="npv-cf1">Year 1 cash flow ($)</label>
+  <input type="number" id="npv-cf1" step="1000" value="30000" autocomplete="off">
+
+  <label for="npv-cf2">Year 2 cash flow ($)</label>
+  <input type="number" id="npv-cf2" step="1000" value="35000" autocomplete="off">
+
+  <label for="npv-cf3">Year 3 cash flow ($)</label>
+  <input type="number" id="npv-cf3" step="1000" value="40000" autocomplete="off">
+
+  <label for="npv-cf4">Year 4 cash flow ($)</label>
+  <input type="number" id="npv-cf4" step="1000" value="40000" autocomplete="off">
+
+  <label for="npv-cf5">Year 5 cash flow ($)</label>
+  <input type="number" id="npv-cf5" step="1000" value="40000" autocomplete="off">
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card" data-tooltip="Sum of discounted future cash flows minus initial investment. Positive NPV = investment creates value. Negative NPV = destroys value at your cost of capital.">
+    <span class="stat-label">Net Present Value</span>
+    <span class="stat-value" id="npv-result">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="NPV ÷ Initial Investment + 1. Values above 1 indicate value creation. Useful for ranking competing projects when capital is constrained.">
+    <span class="stat-label">Profitability Index</span>
+    <span class="stat-value" id="npv-pi">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Years until cumulative undiscounted cash flows recover the initial investment. Simple payback ignores time value of money — use NPV for decision-making.">
+    <span class="stat-label">Simple Payback</span>
+    <span class="stat-value" id="npv-payback">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Sum of all 5 years of nominal (undiscounted) cash flows. Compare to initial investment to see the gross multiple before applying the discount rate.">
+    <span class="stat-label">Total Cash Flows</span>
+    <span class="stat-value" id="npv-total-cf">--</span>
+  </div>
+</div>
+
+<div id="npv-insight" class="insight-box" aria-live="polite"></div>
+
+<div class="calc-actions">
+  <button id="npv-share" class="btn-secondary">Share</button>
+  <button id="npv-copy" class="btn-secondary">Copy results</button>
+</div>

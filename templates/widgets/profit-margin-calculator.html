@@ -1,0 +1,54 @@
+<div class="field-row">
+  <div class="field">
+    <label for="pm-revenue">Revenue ($)</label>
+    <input type="number" autocomplete="off" id="pm-revenue" value="500000" min="0" step="1000">
+    <span class="field__error-msg"></span>
+  </div>
+  <div class="field">
+    <label for="pm-cogs">Cost of goods sold / COGS ($)</label>
+    <input type="number" autocomplete="off" id="pm-cogs" value="125000" min="0" step="1000">
+    <span class="field__error-msg"></span>
+  </div>
+</div>
+<div class="field-row">
+  <div class="field">
+    <label for="pm-opex">Operating expenses ($)</label>
+    <input type="number" autocomplete="off" id="pm-opex" value="200000" min="0" step="1000">
+    <span class="field__error-msg"></span>
+  </div>
+  <div class="field">
+    <label for="pm-taxes">Taxes & interest ($, optional)</label>
+    <input type="number" autocomplete="off" id="pm-taxes" value="0" min="0" step="1000">
+    <span class="field__error-msg"></span>
+  </div>
+</div>
+<div class="output-grid">
+  <div class="output-box" data-tooltip="Revenue minus COGS. The money left after direct production costs, before operating expenses.">
+    <span class="label">Gross profit</span>
+    <span class="value" id="pm-gross-profit"></span>
+  </div>
+  <div class="output-box" data-tooltip="Gross profit ÷ revenue. SaaS: 70–85% is healthy. Manufacturing: 20–40% is typical.">
+    <span class="label">Gross margin</span>
+    <span class="value" id="pm-gross-margin"></span>
+  </div>
+  <div class="output-box" data-tooltip="Gross profit minus operating expenses. Profit from core operations before interest and taxes (EBIT).">
+    <span class="label">Operating profit</span>
+    <span class="value" id="pm-op-profit"></span>
+  </div>
+  <div class="output-box" data-tooltip="Operating profit ÷ revenue. Measures how efficiently you convert revenue into operating profit.">
+    <span class="label">Operating margin</span>
+    <span class="value" id="pm-op-margin"></span>
+  </div>
+  <div class="output-box" data-tooltip="Operating profit minus taxes and interest. The bottom line — what the business actually keeps.">
+    <span class="label">Net profit</span>
+    <span class="value" id="pm-net-profit"></span>
+  </div>
+  <div class="output-box" data-tooltip="Net profit ÷ revenue. Profitable companies target 10–20%+ net margin depending on the sector.">
+    <span class="label">Net margin</span>
+    <span class="value" id="pm-net-margin"></span>
+  </div>
+</div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="pm-copy" class="secondary">Copy results</button>
+  <button id="pm-share" class="secondary">Share results</button>
+</div>

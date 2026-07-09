@@ -1,0 +1,25 @@
+<div class="field-row">
+  <div class="field">
+    <label for="roa-income">Net income ($)</label>
+    <input type="number" autocomplete="off" id="roa-income" value="500000" step="10000">
+  </div>
+  <div class="field">
+    <label for="roa-assets">Total assets ($)</label>
+    <input type="number" autocomplete="off" id="roa-assets" value="5000000" min="1" step="100000">
+  </div>
+</div>
+<div class="field">
+  <label for="roa-revenue">Annual revenue ($) <span style="font-size:0.8em;color:var(--text-muted)">(for DuPont decomposition)</span></label>
+  <input type="number" autocomplete="off" id="roa-revenue" value="3000000" min="0" step="100000">
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="Net Income ÷ Total Assets × 100. How efficiently the business converts its asset base into profit. ROA > 5% is generally considered good; banks typically target 1–2%."><span class="stat-label">Return on Assets (ROA)</span><span class="stat-value" id="roa-result">—</span></div>
+  <div class="stat" data-tooltip="Revenue ÷ Total Assets. How efficiently assets generate revenue. Higher turnover + higher net margin = higher ROA (DuPont identity)."><span class="stat-label">Asset Turnover</span><span class="stat-value" id="roa-turnover">—</span></div>
+  <div class="stat" data-tooltip="Net Income ÷ Revenue × 100. Net profit as a % of revenue. Multiply by asset turnover to get ROA (DuPont decomposition)."><span class="stat-label">Net Profit Margin</span><span class="stat-value" id="roa-margin">—</span></div>
+  <div class="stat" data-tooltip="Total Assets expressed for reference. Verify this matches your balance sheet total assets (current + non-current)."><span class="stat-label">Total Assets</span><span class="stat-value" id="roa-assets-d">—</span></div>
+</div>
+<div id="roa-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="roa-copy" class="secondary">Copy results</button>
+  <button id="roa-share" class="secondary">Share results</button>
+</div>

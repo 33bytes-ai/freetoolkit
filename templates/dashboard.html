@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% block head_extra %}
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'nonce-{{ csp_nonce }}'">
+<style>
+.dash-header { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; margin-bottom:2rem; }
+.dash-header h1 { margin:0; font-size:1.6rem; }
+.dash-controls { display:flex; align-items:center; gap:1rem; flex-wrap:wrap; font-size:0.9rem; }
+.dash-controls label { display:flex; align-items:center; gap:0.4rem; }
+.dash-controls input[type=number] { width:70px; padding:0.3rem 0.4rem; border:1px solid var(--border); border-radius:6px; }
+.dash-kpi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1rem; margin-bottom:2rem; }
+.dash-kpi { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1rem 1.25rem; }
+.dash-kpi .kpi-label { font-size:0.8rem; text-transform:uppercase; letter-spacing:0.04em; color:var(--text-muted); }
+.dash-kpi .kpi-value { font-size:2rem; font-weight:700; color:var(--accent); margin-top:0.25rem; }
+.dash-section { margin-bottom:2rem; }
+.dash-section h2 { font-size:1.1rem; margin-bottom:0.75rem; padding-bottom:0.4rem; border-bottom:1px solid var(--border); }
+.dash-table { width:100%; border-collapse:collapse; font-size:0.9rem; }
+.dash-table th { text-align:left; padding:0.4rem 0.6rem; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.04em; color:var(--text-muted); border-bottom:1px solid var(--border); }
+.dash-table td { padding:0.45rem 0.6rem; border-bottom:1px solid var(--border); }
+.dash-table tr:last-child td { border-bottom:none; }
+.dash-table a { color:var(--accent); text-decoration:none; }
+.dash-empty { color:var(--text-muted); font-size:0.9rem; padding:1rem; background:var(--bg); border-radius:8px; border:1px dashed var(--border); }
+.dash-note { font-size:0.82rem; color:var(--text-muted); margin-top:0.5rem; }
+#dash-empty-msg { text-align:center; padding:3rem 1rem; }
+#dash-empty-msg h2 { margin-bottom:0.5rem; }
+#dash-empty-msg p { color:var(--text-muted); }
+</style>
+{% endblock %}
+{% block content %}
+<div id="dash-lock" style="display:none;position:fixed;inset:0;background:var(--bg);z-index:999;display:flex;align-items:center;justify-content:center;">
+  <div style="text-align:center;padding:2rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);max-width:340px;width:90%;">
+    <h2 style="margin-bottom:1rem">Dashboard</h2>
+    <label for="dash-pw" style="display:block;margin-bottom:0.5rem;color:var(--text-muted);font-size:0.9rem">Enter password to continue</label>
+    <input id="dash-pw" type="password" style="width:100%;padding:0.6rem 0.8rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg);color:var(--text);font-size:1rem;margin-bottom:0.75rem" autocomplete="current-password">
+    <button onclick="dashUnlock()" style="width:100%;padding:0.65rem;background:var(--accent);color:var(--accent-contrast);border:none;border-radius:var(--radius);font-size:1rem;cursor:pointer">Unlock</button>
+    <p id="dash-pw-err" style="color:#e05;font-size:0.85rem;margin-top:0.5rem;min-height:1.2em"></p>
+  </div>
+</div>
+<div id="dash-content" style="display:none">
+<div class="wrap" style="padding-top:1.5rem; padding-bottom:3rem;">
+  <div class="dash-header">
+    <h1>Analytics Dashboard</h1>
+    <div class="dash-controls">
+      <label>
+        RPM estimate ($):
+        <input type="number" id="dash-rpm" value="12" min="1" max="100" step="1">
+      </label>
+      <button id="dash-export" style="font-size:0.85rem;">Export CSV</button>
+      <button id="dash-reset" style="color:#b42318; border-color:#fda29b; font-size:0.85rem;">Reset data</button>
+    </div>
+  </div>
+
+  <p class="dash-note" id="dash-since">Local browser analytics only — data resets if you clear localStorage.</p>
+
+  <div id="dash-empty" style="display:none">
+    <div id="dash-empty-msg">
+      <h2>No data yet</h2>
+      <p>Browse some tool pages and the dashboard will populate automatically.<br>All data stays in your browser — nothing is sent to a server.</p>
+      <a href="/" class="btn-primary" style="display:inline-block; margin-top:1rem;">Explore tools →</a>
+    </div>
+  </div>
+
+  <div id="dash-content">
+    <div class="dash-kpi-grid">
+      <div class="dash-kpi"><div class="kpi-label">Total page views</div><div class="kpi-value" id="dash-total-views">—</div></div>
+      <div class="dash-kpi"><div class="kpi-label">Calculator uses</div><div class="kpi-value" id="dash-total-calc">—</div></div>
+      <div class="dash-kpi"><div class="kpi-label">Affiliate clicks</div><div class="kpi-value" id="dash-total-aff">—</div></div>
+      <div class="dash-kpi"><div class="kpi-label">Est. ad revenue</div><div class="kpi-value" id="dash-est-revenue">—</div></div>
+    </div>
+
+    <div class="dash-section">
+      <h2>Top pages by views</h2>
+      <div id="dash-pageviews-table"></div>
+      <p class="dash-note">Revenue estimate uses $<span id="dash-rpm-display">12</span> RPM. Adjust with the slider above.</p>
+    </div>
+
+    <div class="dash-section">
+      <h2>Most-used calculators</h2>
+      <div id="dash-calc-table"></div>
+    </div>
+
+    <div class="dash-section">
+      <h2>Affiliate link clicks</h2>
+      <div id="dash-aff-table"></div>
+    </div>
+
+    <p class="dash-note">
+      This dashboard tracks your own browsing activity in this browser via localStorage.
+      For production traffic data, deploy GoAccess on your nginx server logs (see <code>infra/docker-compose.yml</code>).
+    </p>
+  </div>
+</div>
+</div><!-- #dash-content -->
+<script src="/static/js/dashboard.js" defer nonce="{{ csp_nonce }}"></script>
+<script nonce="{{ csp_nonce }}">
+(function () {
+  var KEY = "ftk_dash_unlocked";
+  var HASH_KEY = "ftk_dash_hash";
+  var DEFAULT_HASH = "8c6976e5b5410415bde908bd4dee15dfb167a9c8ea29a5c4e3b834c1c9b2ab77"; // sha256("admin")
+  function sha256(str) {
+    // Simple FNV-based hash for the browser — not crypto-strength, just discourages casual browsing.
+    // Replace DEFAULT_HASH with your own sha256 for real protection.
+    var h = 0x811c9dc5;
+    for (var i = 0; i < str.length; i++) {
+      h ^= str.charCodeAt(i);
+      h = (h * 0x01000193) >>> 0;
+    }
+    return h.toString(16).padStart(8, "0");
+  }
+  var expectedHash = localStorage.getItem(HASH_KEY) || DEFAULT_HASH;
+  var lock = document.getElementById("dash-lock");
+  var content = document.getElementById("dash-content");
+  if (sessionStorage.getItem(KEY) === "1") {
+    lock.style.display = "none";
+    content.style.display = "";
+    return;
+  }
+  lock.style.display = "flex";
+  content.style.display = "none";
+  window.dashUnlock = function () {
+    var pw = document.getElementById("dash-pw").value;
+    if (sha256(pw) === expectedHash) {
+      sessionStorage.setItem(KEY, "1");
+      lock.style.display = "none";
+      content.style.display = "";
+    } else {
+      document.getElementById("dash-pw-err").textContent = "Incorrect password";
+      document.getElementById("dash-pw").select();
+    }
+  };
+  document.getElementById("dash-pw").addEventListener("keydown", function (e) {
+    if (e.key === "Enter") window.dashUnlock();
+  });
+})();
+</script>
+{% endblock %}

@@ -1,0 +1,28 @@
+<div class="field-row">
+  <div class="field">
+    <label for="s2h-salary">Annual salary ($)</label>
+    <input type="number" autocomplete="off" id="s2h-salary" value="100000" min="0" step="1000">
+  </div>
+  <div class="field">
+    <label for="s2h-hours">Hours per week</label>
+    <input type="number" autocomplete="off" id="s2h-hours" value="40" min="1" max="80" step="1">
+  </div>
+  <div class="field">
+    <label for="s2h-weeks">Paid weeks per year</label>
+    <input type="number" autocomplete="off" id="s2h-weeks" value="52" min="1" max="52" step="1">
+  </div>
+</div>
+<div class="field" style="max-width: 320px;">
+  <label for="s2h-tax">Effective tax rate (% for after-tax estimate)</label>
+  <input type="number" autocomplete="off" id="s2h-tax" value="25" min="0" max="60" step="1">
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="Annual salary ÷ (hours per week × paid weeks). Your hourly rate before taxes."><div class="num" id="s2h-hourly">$0</div><div class="label">Gross hourly</div></div>
+  <div class="stat" data-tooltip="Gross hourly × 8. Assumes 8-hour workday. Useful for daily billing rate comparisons."><div class="num" id="s2h-daily">$0</div><div class="label">Gross daily (8h)</div></div>
+  <div class="stat" data-tooltip="Annual salary ÷ paid weeks per year. Your gross weekly earnings before any deductions."><div class="num" id="s2h-weekly">$0</div><div class="label">Gross weekly</div></div>
+  <div class="stat" data-tooltip="Gross hourly × (1 − effective tax rate). Rough estimate of take-home pay per hour. Actual net pay depends on your tax situation, deductions, and jurisdiction."><div class="num" id="s2h-after-tax">$0</div><div class="label">After-tax hourly (est.)</div></div>
+</div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="s2h-copy" class="secondary">Copy results</button>
+  <button id="s2h-share" class="secondary">Share results</button>
+</div>

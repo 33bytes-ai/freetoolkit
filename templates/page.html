@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block head_extra %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.base_url }}/" },
+    { "@type": "ListItem", "position": 2, "name": {{ page.title | tojson }}, "item": "{{ site.base_url }}/{{ page.slug }}/" }
+  ]
+}
+</script>
+{% if page.schema_itemlist %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": {{ page.title | tojson }},
+  "itemListElement": [
+    {% for item in page.schema_itemlist %}
+    { "@type": "ListItem", "position": {{ loop.index }}, "name": {{ item.name | tojson }}, "url": {{ item.url | tojson }} }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
+{% endblock %}
+{% block content %}
+<section class="wrap content-page">
+  <h1>{{ page.title }}</h1>
+  <article>
+    {{ page.content | safe }}
+  </article>
+</section>
+{% endblock %}

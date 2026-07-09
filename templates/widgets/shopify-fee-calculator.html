@@ -1,0 +1,39 @@
+<div class="field-row">
+  <div class="field">
+    <label for="sh-amount">Sale amount ($)</label>
+    <input type="number" autocomplete="off" id="sh-amount" value="100" min="0" step="0.01">
+  </div>
+  <div class="field">
+    <label for="sh-plan">Shopify plan</label>
+    <select id="sh-plan">
+      <option value="basic">Basic ($39/mo)</option>
+      <option value="shopify" selected>Shopify ($105/mo)</option>
+      <option value="advanced">Advanced ($399/mo)</option>
+    </select>
+  </div>
+</div>
+<div class="checkbox-row">
+  <label><input type="checkbox" id="sh-shopify-pay" checked> Using Shopify Payments (no external gateway fee)</label>
+</div>
+<div class="output-grid">
+  <div class="output-box" data-tooltip="Credit/debit card processing fee charged by Shopify Payments. Rates vary by plan: Basic 2%, Shopify 1%, Advanced 0.5% (using Shopify Payments).">
+    <span class="label">Processing fee</span>
+    <span class="value" id="sh-out-proc"></span>
+  </div>
+  <div class="output-box" data-tooltip="Third-party transaction fee applies only if you use an external payment gateway instead of Shopify Payments (Basic: 2%, Shopify: 1%, Advanced: 0.5%).">
+    <span class="label">Transaction fee</span>
+    <span class="value" id="sh-out-tx"></span>
+  </div>
+  <div class="output-box" data-tooltip="Processing fee plus transaction fee combined. This is the total cost per sale on Shopify.">
+    <span class="label">Total fee</span>
+    <span class="value" id="sh-out-total"></span>
+  </div>
+  <div class="output-box" data-tooltip="What you net after all Shopify fees. Does not include monthly plan cost, which should be amortized over total transactions.">
+    <span class="label">You receive</span>
+    <span class="value" id="sh-out-net"></span>
+  </div>
+</div>
+<div id="sh-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="sh-share" class="secondary">Share results</button>
+</div>

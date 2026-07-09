@@ -1,0 +1,30 @@
+<div class="field-row">
+  <div class="field">
+    <label for="id-invoice">Invoice Amount ($)</label>
+    <input type="number" autocomplete="off" id="id-invoice" value="10000" min="0" step="100">
+  </div>
+  <div class="field">
+    <label for="id-discount">Early Payment Discount (%)</label>
+    <input type="number" autocomplete="off" id="id-discount" value="2" min="0" max="10" step="0.1">
+  </div>
+</div>
+<div class="field-row">
+  <div class="field">
+    <label for="id-pay-days">If paid within (days)</label>
+    <input type="number" autocomplete="off" id="id-pay-days" value="10" min="1" max="365" step="1">
+  </div>
+  <div class="field">
+    <label for="id-net-days">Net payment terms (days)</label>
+    <input type="number" autocomplete="off" id="id-net-days" value="30" min="1" max="365" step="1">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="Invoice Amount × Discount Rate. The cash you save by paying early — or the cost you absorb if offering this discount to customers."><span class="stat-label">Discount Savings</span><span class="stat-value" id="id-savings">—</span></div>
+  <div class="stat" data-tooltip="Invoice Amount × (1 − Discount Rate). The reduced amount due if you pay within the discount window."><span class="stat-label">Net Payment Amount</span><span class="stat-value" id="id-net-pay">—</span></div>
+  <div class="stat" data-tooltip="(Discount% ÷ (100 − Discount%)) × (365 ÷ Days Gained). The annualized cost of passing on the early payment discount. Compare this to your cost of capital: if your borrowing rate is lower, take the discount."><span class="stat-label">Annualized Cost</span><span class="stat-value" id="id-annual-rate">—</span></div>
+</div>
+<div id="id-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="id-copy" class="secondary">Copy results</button>
+  <button id="id-share" class="secondary">Share results</button>
+</div>

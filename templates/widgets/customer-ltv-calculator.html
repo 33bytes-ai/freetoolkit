@@ -1,0 +1,32 @@
+<div class="field-row">
+  <div class="field">
+    <label for="ltv-arpu">Monthly ARPU ($)</label>
+    <input type="number" autocomplete="off" id="ltv-arpu" value="99" min="0" step="1">
+    <span class="field__error-msg"></span>
+  </div>
+  <div class="field">
+    <label for="ltv-margin">Gross margin (%)</label>
+    <input type="number" autocomplete="off" id="ltv-margin" value="75" min="1" max="99" step="1">
+    <span class="field__error-msg"></span>
+  </div>
+  <div class="field">
+    <label for="ltv-churn">Monthly churn rate (%)</label>
+    <input type="number" autocomplete="off" id="ltv-churn" value="2" min="0.1" max="100" step="0.1">
+    <span class="field__error-msg"></span>
+  </div>
+  <div class="field">
+    <label for="ltv-cac">CAC ($) <span style="font-size:0.8em;color:var(--text-muted)">(optional)</span></label>
+    <input type="number" autocomplete="off" id="ltv-cac" value="500" min="0" step="10">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="ARPU × gross margin % ÷ monthly churn rate. Expected total gross profit from one customer over their lifetime."><span class="stat-label">Customer LTV</span><span class="stat-value" id="ltv-result">—</span></div>
+  <div class="stat" data-tooltip="1 ÷ monthly churn rate. Expected months a customer stays before churning."><span class="stat-label">Customer Lifetime</span><span class="stat-value" id="ltv-lifetime">—</span></div>
+  <div class="stat" data-tooltip="LTV ÷ CAC. Target: 3× minimum, 5× healthy, 8×+ excellent. Below 1× means you lose money on every customer."><span class="stat-label">LTV:CAC Ratio</span><span class="stat-value" id="ltv-ltvCac">—</span></div>
+  <div class="stat" data-tooltip="CAC ÷ (ARPU × gross margin %). Months to recover acquisition cost. Target: under 12 months for SMB SaaS."><span class="stat-label">CAC Payback</span><span class="stat-value" id="ltv-payback">—</span></div>
+</div>
+<div id="ltv-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="ltv-copy" class="secondary">Copy results</button>
+  <button id="ltv-share" class="secondary">Share results</button>
+</div>

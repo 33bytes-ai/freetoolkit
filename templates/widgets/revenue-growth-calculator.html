@@ -1,0 +1,25 @@
+<div class="field-row">
+  <div class="field">
+    <label for="rg-current">Current period revenue ($)</label>
+    <input type="number" autocomplete="off" id="rg-current" value="150000" min="0" step="1000">
+  </div>
+  <div class="field">
+    <label for="rg-prior">Prior period revenue ($)</label>
+    <input type="number" autocomplete="off" id="rg-prior" value="120000" min="0" step="1000">
+  </div>
+  <div class="field">
+    <label for="rg-years">Years between periods (for CAGR)</label>
+    <input type="number" autocomplete="off" id="rg-years" value="1" min="0.5" max="20" step="0.5">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="(Current − Prior) ÷ Prior × 100. The growth rate between these two specific periods."><span class="stat-label">Period Growth Rate</span><span class="stat-value" id="rg-mom">—</span></div>
+  <div class="stat" data-tooltip="Period growth rate extrapolated to annual. For monthly growth rates: (1 + monthly rate)^12 − 1. Useful for comparing different period lengths."><span class="stat-label">Annualised (from period)</span><span class="stat-value" id="rg-annual">—</span></div>
+  <div class="stat" data-tooltip="Compound Annual Growth Rate = (Current / Prior)^(1/years) − 1. The smoothed annual rate that gets you from prior to current over the specified number of years."><span class="stat-label">CAGR</span><span class="stat-value" id="rg-cagr">—</span></div>
+  <div class="stat" data-tooltip="72 ÷ CAGR (%). How many years until your revenue doubles at this growth rate. Uses the Rule of 72 approximation."><span class="stat-label">Doubling Time</span><span class="stat-value" id="rg-doubling">—</span></div>
+</div>
+<div id="rg-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="rg-copy" class="secondary">Copy results</button>
+  <button id="rg-share" class="secondary">Share results</button>
+</div>

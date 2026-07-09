@@ -1,0 +1,161 @@
+# PROJECT_STATE.md — FounderCalc / FreeToolKit
+
+_Mis à jour: 2026-06-16_
+
+---
+
+## Identité du projet
+
+| Clé | Valeur |
+|-----|--------|
+| Nom branding | **FounderCalc** |
+| Domaine cible | `foundercalc.com` (ou similaire — non encore enregistré) |
+| `base_url` actuel | `https://foundercalc.example.com` (placeholder) |
+| Niche | Calculateurs business pour fondateurs indie / SaaS / freelances |
+| Modèle de revenu | Google AdSense (RPM cible $8–20) + liens affiliés |
+| Phase actuelle | Build complet · Tests OK · **Déploiement non effectué** |
+
+---
+
+## Architecture
+
+### Stack technique
+
+| Couche | Technologie |
+|--------|-------------|
+| Build | Python 3.14 · Jinja2 · PyYAML · Markdown |
+| Frontend | HTML/CSS/JS vanilla, aucun framework, aucun bundler |
+| Serveur | nginx:1.27-alpine (Docker) |
+| Analytics | GoAccess sur logs nginx + tracker.js localStorage |
+| Tests JS | Node --test (34 tests, fonctions pures) |
+| Tests build | pytest (9 tests, validation dist/) |
+| Déploiement | `scripts/deploy.sh` (rsync + docker compose) |
+
+### Répertoire racine
+
+```
+content/         YAML + Markdown (données site)
+templates/       Jinja2 (base, index, tool, page, 404, dashboard, intent_page)
+templates/widgets/  Un HTML par outil (formulaire spécifique)
+static/css/      style.css (design system CSS custom properties)
+static/js/lib/   common.js (FTK namespace) · tracker.js (analytics)
+static/js/tools/ Un .js par outil (fonctions pures + init)
+src/freetoolkit/ build.py (générateur statique)
+tests/           test_build.py (pytest) · test_tools.js (Node)
+infra/           Dockerfile · docker-compose.yml · nginx.conf · goaccess.conf
+scripts/         deploy.sh · new_tool.py · analytics_report.sh
+docs/            ARCHITECTURE.md · DEPLOYMENT.md · MONETIZATION.md · GROWTH_PLAN.md
+dist/            Sortie du build (gitignorée)
+```
+
+---
+
+## Conventions de code
+
+### JS (outils)
+
+- IIFE strict : `(function() { "use strict"; ... })();`
+- Fonctions pures en haut de fichier — pas d'accès DOM, pas de globals, pas d'async
+- `init()` câble le DOM uniquement sur `DOMContentLoaded`
+- Guard `module.exports` pour les tests Node
+- Namespace `window.FTK` pour les helpers partagés (clipboard, flash, showError, showInsight)
+
+### Python (build)
+
+- `load_yaml()` / `load_page()` / `load_tools()` : chargeurs séparés par type
+- `render()` : abstraction Jinja2 centralisée
+- `_gzip_dist()` : pre-compression gzip niveau 9 pour tous les fichiers compressibles
+- Autoescape HTML activé dans l'environnement Jinja2
+
+### Templates Jinja2
+
+- `base.html` : layout shell (head, nav sticky, footer, tracker.js)
+- `tool.html` : étend base, inclut widget + ads_slot + affiliates + intent links
+- Filtre custom `rejectattr` (seulement `eq`) pour exclure l'outil courant des "related"
+
+### SEO / contenu
+
+- Chaque outil a : `title`, `short` (meta description), `keywords[]`, `body` (300+ mots markdown)
+- Pages intent programmatiques : `parent_tool` + `slug` + `body` ciblant une requête longue traîne
+- Liens affiliés par outil dans `affiliates.yaml` (disclosure `[Affiliate link]` auto-rendue)
+
+---
+
+## Catalogue d'outils (22 calculateurs)
+
+| Catégorie | Outils |
+|-----------|--------|
+| **Payments** | Stripe Fee · PayPal Fee · Shopify Fee |
+| **SaaS Metrics** | MRR/ARR · LTV/CAC · Runway · Churn Impact · ARR↔MRR Converter · NPS · Rule of 40 · CAC by Channel |
+| **Freelance** | Freelance Rate · Salary to Hourly · Freelance Project Estimate · Invoice Total |
+| **Business Math** | Profit Margin · Break-Even · VAT/Sales Tax · Price Impact · Pricing Tier Comparison · Sales Quota · Email ROI |
+
+### Pages intent existantes (14)
+
+- Stripe : subscriptions, vs PayPal, UK, India, $10, $1000
+- MRR : benchmarks croissance SaaS
+- LTV/CAC : benchmarks SaaS / e-commerce / agency
+- Runway : quand lever des fonds
+- Freelance Rate : par expérience
+- Rule of 40 : par tier ARR
+
+---
+
+## État actuel (2026-06-16)
+
+### Fait ✅
+
+- 22 calculateurs implémentés avec widgets, JS, SEO copy
+- 34 tests JS + 9 tests Python — tous passants (Node v24 / Python 3.14)
+- Build complet : `make build` génère dist/ avec gzip pre-compression
+- Infrastructure Docker + nginx + GoAccess documentée
+- Tracker localStorage + dashboard analytics
+- Liens affiliés + disclosure system
+- 14 pages intent programmatiques
+- Docs : ARCHITECTURE · DEPLOYMENT · MONETIZATION · GROWTH_PLAN
+
+### À faire (bloquant lancement) ❌
+
+- [ ] Enregistrer le domaine (≈$12/an)
+- [ ] Mettre à jour `base_url` dans `content/config.yaml`
+- [ ] Remplacer l'email placeholder dans `content/pages/contact.md`
+- [ ] Déployer sur VPS ou Cloudflare Pages
+- [ ] Soumettre sitemap à Google Search Console + Bing Webmaster Tools
+- [ ] Candidater à Google AdSense
+- [ ] Rejoindre les programmes affiliés (Paddle, Lemon Squeezy, FreshBooks…) et remplacer les IDs `YOURID`
+
+### À faire (croissance) 📈
+
+- [ ] CI/CD GitHub Actions
+- [ ] FAQ schema JSON-LD sur les pages outils
+- [ ] Pages pays Stripe (UK, CA, AU, EU, IN) — programmatiques via `countries.yaml`
+- [ ] Dark mode CSS
+- [ ] Améliorer couverture tests (tous les outils, pas seulement [:3])
+
+---
+
+## Commandes essentielles
+
+```bash
+make build          # Génère dist/
+make test           # 34 JS + 9 Python tests
+make serve          # Sert dist/ sur localhost:8080
+make serve-network  # Sert sur toutes interfaces (LAN)
+
+python scripts/new_tool.py \
+  --slug <slug> --title "Titre" --short "Description." --category "Catégorie"
+
+FREETOOLKIT_HOST=root@ip ./scripts/deploy.sh   # Déploiement VPS
+```
+
+---
+
+## Métriques cibles
+
+| Trafic | RPM estimé | Revenu mensuel |
+|--------|-----------|----------------|
+| 300 visiteurs/j | $12 | ~$180 |
+| 1 000 visiteurs/j | $15 | ~$675 |
+| 5 000 visiteurs/j | $15 | ~$3 375 |
+
+RPM business/SaaS = 5–8× supérieur aux outils génériques.

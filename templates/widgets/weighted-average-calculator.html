@@ -1,0 +1,28 @@
+<div class="tool-widget" role="main">
+  <table class="calc-table" style="margin-bottom:0.75rem">
+    <thead>
+      <tr>
+        <th>Value</th>
+        <th>Weight</th>
+        <th style="text-align:right">Share %</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="wa-rows"></tbody>
+  </table>
+  <div class="btn-row">
+    <button type="button" id="wa-add-row" class="btn">+ Add row</button>
+  </div>
+  <div class="output-grid" style="margin-top:1rem">
+    <div class="output-box" data-tooltip="The sum of (value × weight) for all rows divided by the total weight. Each value contributes proportionally to its assigned weight, not equally.">
+      <span class="label">Weighted Average</span>
+      <span class="value" id="wa-out-avg">—</span>
+    </div>
+    <div class="output-box" data-tooltip="The number of rows with a non-zero weight included in the calculation.">
+      <span class="label">Items counted</span>
+      <span class="value" id="wa-out-count">—</span>
+    </div>
+  </div>
+  <div id="wa-insight" class="calc-insight" style="display:none"></div>
+</div>
+<script src="/static/js/tools/weighted-average-calculator.js" defer></script>

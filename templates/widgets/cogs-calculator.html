@@ -1,0 +1,31 @@
+<div class="field-row">
+  <div class="field">
+    <label for="cogs-begin">Beginning inventory ($)</label>
+    <input type="number" autocomplete="off" id="cogs-begin" value="150000" min="0" step="10000">
+  </div>
+  <div class="field">
+    <label for="cogs-purchases">Purchases / production costs ($)</label>
+    <input type="number" autocomplete="off" id="cogs-purchases" value="900000" min="0" step="10000">
+  </div>
+</div>
+<div class="field-row">
+  <div class="field">
+    <label for="cogs-end">Ending inventory ($)</label>
+    <input type="number" autocomplete="off" id="cogs-end" value="180000" min="0" step="10000">
+  </div>
+  <div class="field">
+    <label for="cogs-revenue">Revenue ($) <span style="font-size:0.8em;color:var(--text-muted)">(for gross margin)</span></label>
+    <input type="number" autocomplete="off" id="cogs-revenue" value="1500000" min="0" step="10000">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="Beginning Inventory + Purchases − Ending Inventory. The standard COGS formula from the income statement. Represents the cost of inventory actually sold in the period."><span class="stat-label">Cost of Goods Sold</span><span class="stat-value" id="cogs-result">—</span></div>
+  <div class="stat" data-tooltip="Revenue − COGS. The profit remaining after direct production costs. This funds operating expenses, R&D, sales, and ultimately net income."><span class="stat-label">Gross Profit</span><span class="stat-value" id="cogs-gp">—</span></div>
+  <div class="stat" data-tooltip="(Revenue − COGS) ÷ Revenue × 100. Gross margin percentage. Retail: 20–50%; SaaS: 60–85%; Manufacturing: 25–45%."><span class="stat-label">Gross Margin</span><span class="stat-value" id="cogs-margin">—</span></div>
+  <div class="stat" data-tooltip="COGS ÷ Average Inventory. How many times you sell through your average inventory in the period. Higher = more efficient inventory management."><span class="stat-label">Inventory Turnover</span><span class="stat-value" id="cogs-turnover">—</span></div>
+</div>
+<div id="cogs-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="cogs-copy" class="secondary">Copy results</button>
+  <button id="cogs-share" class="secondary">Share results</button>
+</div>

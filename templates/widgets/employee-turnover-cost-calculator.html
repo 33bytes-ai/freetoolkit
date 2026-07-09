@@ -1,0 +1,46 @@
+<div class="tool-widget" role="main">
+  <div class="field-row">
+    <div class="field">
+      <label for="etc-salary">Average annual salary ($)</label>
+      <input id="etc-salary" type="number" min="0" step="1000" value="75000" placeholder="e.g. 75000">
+    </div>
+    <div class="field">
+      <label for="etc-headcount">Total headcount</label>
+      <input id="etc-headcount" type="number" min="1" step="1" value="50" placeholder="e.g. 50">
+    </div>
+    <div class="field">
+      <label for="etc-turnover">Annual turnover rate (%)</label>
+      <input id="etc-turnover" type="number" min="0" max="100" step="0.1" value="15" placeholder="e.g. 15">
+    </div>
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <label for="etc-days">Days to fill a role</label>
+      <input id="etc-days" type="number" min="0" step="1" value="42" placeholder="e.g. 42">
+    </div>
+    <div class="field">
+      <label for="etc-recruiting">External recruiting cost ($, 0 = estimate)</label>
+      <input id="etc-recruiting" type="number" min="0" step="500" value="0" placeholder="0 = auto estimate">
+    </div>
+  </div>
+  <div class="output-grid">
+    <div class="output-box" data-tooltip="The total estimated cost to replace one employee: recruiting, onboarding, productivity loss, and vacancy cost during the search period.">
+      <span class="label">Cost Per Departure</span>
+      <span class="value" id="etc-out-per-exit">—</span>
+    </div>
+    <div class="output-box" data-tooltip="Cost per departure × number of employees who leave per year (headcount × turnover rate). The total annual drag on your business from attrition.">
+      <span class="label">Annual Turnover Cost</span>
+      <span class="value" id="etc-out-annual">—</span>
+    </div>
+    <div class="output-box" data-tooltip="Cost per departure as a percentage of the departing employee's salary. Industry rule of thumb: 50–200% of salary depending on seniority.">
+      <span class="label">Cost as % of Salary</span>
+      <span class="value" id="etc-out-pct-salary">—</span>
+    </div>
+    <div class="output-box" data-tooltip="Annual turnover cost as a percentage of total payroll (headcount × average salary). Shows the hidden burden of attrition relative to your people budget.">
+      <span class="label">Cost as % of Payroll</span>
+      <span class="value" id="etc-out-pct-payroll">—</span>
+    </div>
+  </div>
+  <div id="etc-insight" class="calc-insight" style="display:none"></div>
+</div>
+<script src="/static/js/tools/employee-turnover-cost-calculator.js" defer></script>

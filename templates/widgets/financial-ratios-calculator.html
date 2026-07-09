@@ -1,0 +1,53 @@
+<div class="field-row">
+  <div class="field">
+    <label for="fr-revenue">Revenue ($)</label>
+    <input type="number" autocomplete="off" id="fr-revenue" value="5000000" min="0" step="100000">
+  </div>
+  <div class="field">
+    <label for="fr-cogs">Cost of Goods Sold ($)</label>
+    <input type="number" autocomplete="off" id="fr-cogs" value="2000000" min="0" step="100000">
+  </div>
+</div>
+<div class="field-row">
+  <div class="field">
+    <label for="fr-net-income">Net Income ($)</label>
+    <input type="number" autocomplete="off" id="fr-net-income" value="600000" step="10000">
+  </div>
+  <div class="field">
+    <label for="fr-assets">Total Assets ($)</label>
+    <input type="number" autocomplete="off" id="fr-assets" value="8000000" min="1" step="100000">
+  </div>
+</div>
+<div class="field-row">
+  <div class="field">
+    <label for="fr-equity">Shareholders' Equity ($)</label>
+    <input type="number" autocomplete="off" id="fr-equity" value="3000000" min="1" step="100000">
+  </div>
+  <div class="field">
+    <label for="fr-debt">Total Debt ($)</label>
+    <input type="number" autocomplete="off" id="fr-debt" value="2000000" min="0" step="100000">
+  </div>
+</div>
+<div class="field-row">
+  <div class="field">
+    <label for="fr-curr-assets">Current Assets ($)</label>
+    <input type="number" autocomplete="off" id="fr-curr-assets" value="1800000" min="0" step="100000">
+  </div>
+  <div class="field">
+    <label for="fr-curr-liab">Current Liabilities ($)</label>
+    <input type="number" autocomplete="off" id="fr-curr-liab" value="900000" min="1" step="100000">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="(Revenue − COGS) ÷ Revenue × 100. Profit after direct costs. SaaS: 60–85%; Manufacturing: 25–45%; Retail: 20–50%."><span class="stat-label">Gross Margin</span><span class="stat-value" id="fr-gross-margin">—</span></div>
+  <div class="stat" data-tooltip="Net Income ÷ Revenue × 100. Bottom-line profitability. Industry average: 7–10% for most sectors. Negative = operating at a loss."><span class="stat-label">Net Margin</span><span class="stat-value" id="fr-net-margin">—</span></div>
+  <div class="stat" data-tooltip="Net Income ÷ Shareholders' Equity × 100. Return on equity. S&P 500 average: ~15%. Above 20% = strong performance."><span class="stat-label">ROE</span><span class="stat-value" id="fr-roe">—</span></div>
+  <div class="stat" data-tooltip="Net Income ÷ Total Assets × 100. Asset efficiency. Banks: 1–2%; tech companies: 5–20%. Higher = better use of assets to generate profit."><span class="stat-label">ROA</span><span class="stat-value" id="fr-roa">—</span></div>
+  <div class="stat" data-tooltip="Total Debt ÷ Equity. Financial leverage ratio. < 1.0 = conservative; 1–2 = moderate; > 2 = leveraged. Asset-heavy industries tolerate higher ratios."><span class="stat-label">D/E Ratio</span><span class="stat-value" id="fr-dte">—</span></div>
+  <div class="stat" data-tooltip="Current Assets ÷ Current Liabilities. Short-term liquidity. < 1.0 = liquidity risk; 1–2 = healthy; > 3 may indicate idle assets."><span class="stat-label">Current Ratio</span><span class="stat-value" id="fr-current-ratio">—</span></div>
+</div>
+<div id="fr-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="fr-copy" class="secondary">Copy results</button>
+  <button id="fr-share" class="secondary">Share results</button>
+</div>

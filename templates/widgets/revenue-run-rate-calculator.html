@@ -1,0 +1,39 @@
+<div class="calc-grid">
+  <label for="rrr-revenue">Revenue for period ($)</label>
+  <input type="number" id="rrr-revenue" min="0" step="10000" value="250000" autocomplete="off">
+
+  <label for="rrr-months">Period length (months)</label>
+  <input type="number" id="rrr-months" min="1" max="12" step="1" value="3" autocomplete="off">
+
+  <label for="rrr-growth">Monthly growth rate % (optional)</label>
+  <input type="number" id="rrr-growth" min="0" max="100" step="0.5" value="5" autocomplete="off">
+
+  <label for="rrr-forward-months">Forward projection (months)</label>
+  <input type="number" id="rrr-forward-months" min="1" max="60" step="1" value="12" autocomplete="off">
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card" data-tooltip="(Period Revenue ÷ Period Months) × 12. If you earned $250K in 3 months, your ARR run rate is $1M. An extrapolation, not a guarantee.">
+    <span class="stat-label">Annual Run Rate</span>
+    <span class="stat-value" id="rrr-result">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Period Revenue ÷ Period Months. The average monthly revenue during this period. Use as a baseline for monthly projections.">
+    <span class="stat-label">Implied Monthly</span>
+    <span class="stat-value" id="rrr-monthly">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Cumulative revenue over the forward projection period at the specified growth rate. Compounds monthly from the implied monthly figure.">
+    <span class="stat-label">Projected Revenue</span>
+    <span class="stat-value" id="rrr-projected">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="The annualized run rate at the end of the forward projection period. Shows what your ARR would be if today's growth rate holds.">
+    <span class="stat-label">Forward Run Rate</span>
+    <span class="stat-value" id="rrr-fwd-rr">--</span>
+  </div>
+</div>
+
+<div id="rrr-insight" class="insight-box" aria-live="polite"></div>
+
+<div class="calc-actions">
+  <button id="rrr-share" class="btn-secondary">Share</button>
+  <button id="rrr-copy" class="btn-secondary">Copy results</button>
+</div>

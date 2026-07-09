@@ -1,0 +1,42 @@
+<div class="calc-grid">
+  <label for="inv-cogs">Annual COGS / cost of goods sold ($)</label>
+  <input type="number" id="inv-cogs" min="0" step="10000" value="1200000" autocomplete="off">
+
+  <label for="inv-begin">Beginning inventory ($)</label>
+  <input type="number" id="inv-begin" min="0" step="10000" value="180000" autocomplete="off">
+
+  <label for="inv-end">Ending inventory ($)</label>
+  <input type="number" id="inv-end" min="0" step="10000" value="220000" autocomplete="off">
+
+  <label for="inv-sold">Units sold (for sell-through rate, optional)</label>
+  <input type="number" id="inv-sold" min="0" step="100" value="0" autocomplete="off">
+
+  <label for="inv-received">Units received (for sell-through rate, optional)</label>
+  <input type="number" id="inv-received" min="0" step="100" value="0" autocomplete="off">
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card" data-tooltip="COGS ÷ Average Inventory. Times you sold and replenished inventory in the year. Retail benchmark: 4–8×. Higher = less capital tied up; too high = stockout risk.">
+    <span class="stat-label">Inventory Turnover</span>
+    <span class="stat-value" id="inv-turnover">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="365 ÷ Inventory Turnover. Average days of inventory on hand. Equivalent to DIO in the cash conversion cycle. 45–60 days is typical for mid-market retail.">
+    <span class="stat-label">Days Sales of Inventory</span>
+    <span class="stat-value" id="inv-dsi">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="(Beginning inventory + Ending inventory) ÷ 2. The denominator used in turnover. More accurate than using period-end inventory alone for seasonal businesses.">
+    <span class="stat-label">Average Inventory</span>
+    <span class="stat-value" id="inv-avg">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Units Sold ÷ Units Received. Requires optional inputs. Percentage of received inventory that was sold in the period. Retailers target 70–80%.">
+    <span class="stat-label">Sell-Through Rate</span>
+    <span class="stat-value" id="inv-sellthru">--</span>
+  </div>
+</div>
+
+<div id="inv-insight" class="insight-box" aria-live="polite"></div>
+
+<div class="calc-actions">
+  <button id="inv-share" class="btn-secondary">Share</button>
+  <button id="inv-copy" class="btn-secondary">Copy results</button>
+</div>

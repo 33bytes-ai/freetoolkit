@@ -1,0 +1,28 @@
+<div class="tool-widget" role="main">
+  <div class="field-row">
+    <div class="field">
+      <label for="gpm-revenue">Revenue ($)</label>
+      <input id="gpm-revenue" type="number" min="0" step="1000" value="500000" placeholder="e.g. 500000">
+    </div>
+    <div class="field">
+      <label for="gpm-cogs">Cost of Goods Sold — COGS ($)</label>
+      <input id="gpm-cogs" type="number" min="0" step="1000" value="150000" placeholder="e.g. 150000">
+    </div>
+  </div>
+  <div class="output-grid">
+    <div class="output-box" data-tooltip="Revenue minus COGS. The dollars available to cover operating expenses (sales, marketing, R&D, G&A) and profit.">
+      <span class="label">Gross Profit</span>
+      <span class="value" id="gpm-out-gp">—</span>
+    </div>
+    <div class="output-box" data-tooltip="Gross Profit ÷ Revenue × 100. Higher is better. SaaS targets 70–85%; manufacturing typically 20–40%.">
+      <span class="label">Gross Margin %</span>
+      <span class="value" id="gpm-out-gm">—</span>
+    </div>
+    <div class="output-box" data-tooltip="Gross Profit ÷ COGS × 100. How much you earn on top of cost. A 50% markup ≠ 50% margin — it equals a 33% margin.">
+      <span class="label">Markup %</span>
+      <span class="value" id="gpm-out-mu">—</span>
+    </div>
+  </div>
+  <div id="gpm-insight" class="calc-insight" style="display:none"></div>
+</div>
+<script src="/static/js/tools/gross-profit-margin-calculator.js" defer></script>

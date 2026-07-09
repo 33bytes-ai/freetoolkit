@@ -1,0 +1,51 @@
+<table class="calc-table" id="inv-items">
+  <thead>
+    <tr><th>Description</th><th>Qty</th><th>Unit price ($)</th><th>Line total</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><input type="text" class="inv-desc" value="Design services" placeholder="Item description"></td>
+      <td><input type="number" autocomplete="off" class="inv-qty" value="1" min="0" step="0.5"></td>
+      <td><input type="number" autocomplete="off" class="inv-price" value="2500" min="0" step="1"></td>
+      <td class="inv-line-total plan-mrr"></td>
+    </tr>
+    <tr>
+      <td><input type="text" class="inv-desc" value="Development" placeholder="Item description"></td>
+      <td><input type="number" autocomplete="off" class="inv-qty" value="40" min="0" step="0.5"></td>
+      <td><input type="number" autocomplete="off" class="inv-price" value="125" min="0" step="1"></td>
+      <td class="inv-line-total plan-mrr"></td>
+    </tr>
+    <tr>
+      <td><input type="text" class="inv-desc" value="" placeholder="Optional line item"></td>
+      <td><input type="number" autocomplete="off" class="inv-qty" value="" min="0" step="0.5" placeholder="—"></td>
+      <td><input type="number" autocomplete="off" class="inv-price" value="" min="0" step="1" placeholder="—"></td>
+      <td class="inv-line-total plan-mrr"></td>
+    </tr>
+    <tr>
+      <td><input type="text" class="inv-desc" value="" placeholder="Optional line item"></td>
+      <td><input type="number" autocomplete="off" class="inv-qty" value="" min="0" step="0.5" placeholder="—"></td>
+      <td><input type="number" autocomplete="off" class="inv-price" value="" min="0" step="1" placeholder="—"></td>
+      <td class="inv-line-total plan-mrr"></td>
+    </tr>
+  </tbody>
+</table>
+<div class="field-row" style="margin-top:0.75rem; max-width:400px">
+  <div class="field">
+    <label for="inv-discount">Discount (%)</label>
+    <input type="number" autocomplete="off" id="inv-discount" value="0" min="0" max="100" step="1">
+  </div>
+  <div class="field">
+    <label for="inv-tax">Tax / VAT (%)</label>
+    <input type="number" autocomplete="off" id="inv-tax" value="0" min="0" max="100" step="0.1">
+  </div>
+</div>
+<div class="output-grid" style="margin-top:1rem">
+  <div class="output-box" data-tooltip="Sum of all line items (quantity × unit price) before any discount or tax."><span class="label">Subtotal</span><span class="value" id="inv-out-subtotal">$0.00</span></div>
+  <div class="output-box" data-tooltip="The discount amount in dollars (subtotal × discount %). Applied before tax."><span class="label">Discount</span><span class="value" id="inv-out-discount">—</span></div>
+  <div class="output-box" data-tooltip="Tax or VAT applied to the discounted subtotal (subtotal − discount) × tax rate."><span class="label">Tax</span><span class="value" id="inv-out-tax">—</span></div>
+  <div class="output-box" data-tooltip="The final amount to put on your invoice: discounted subtotal + tax."><span class="label"><strong>Total</strong></span><span class="value" id="inv-out-total" style="font-size:1.15rem; font-weight:700">$0.00</span></div>
+</div>
+<div class="btn-row" style="margin-top:1rem">
+  <button id="inv-copy" class="primary">Copy invoice summary</button>
+  <button id="inv-share" class="secondary">Share page</button>
+</div>

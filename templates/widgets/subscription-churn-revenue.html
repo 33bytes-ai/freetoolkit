@@ -1,0 +1,26 @@
+<div class="field-row">
+  <div class="field">
+    <label for="scr-mrr">Current MRR ($)</label>
+    <input type="number" autocomplete="off" id="scr-mrr" value="10000" min="0" step="100">
+  </div>
+  <div class="field">
+    <label for="scr-churn">Monthly churn rate (%)</label>
+    <input type="number" autocomplete="off" id="scr-churn" value="3" min="0" max="100" step="0.1">
+  </div>
+  <div class="field">
+    <label for="scr-growth">Target monthly growth (%)</label>
+    <input type="number" autocomplete="off" id="scr-growth" value="5" min="0" step="0.1">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="MRR × monthly churn rate. How much revenue you lose to cancellations each month."><span class="stat-label">Monthly revenue lost</span><span class="stat-value" id="scr-monthly-loss">—</span></div>
+  <div class="stat" data-tooltip="Monthly revenue lost × 12. The full-year cost of your current churn rate. Reducing churn by 1 point can recover significant ARR."><span class="stat-label">Annual revenue lost</span><span class="stat-value" id="scr-annual-loss">—</span></div>
+  <div class="stat" data-tooltip="New MRR needed each month just to stay flat. You must acquire this much new MRR to cover what churn takes away before growing."><span class="stat-label">New MRR to break even</span><span class="stat-value" id="scr-breakeven-mrr">—</span></div>
+  <div class="stat" data-tooltip="New MRR needed each month to achieve your growth target while also offsetting churn. Growth target + break-even MRR."><span class="stat-label">New MRR to hit growth target</span><span class="stat-value" id="scr-new-mrr-needed">—</span></div>
+  <div class="stat" data-tooltip="1 ÷ monthly churn rate. Average number of months a customer stays. E.g., 3% churn = 33-month average lifetime."><span class="stat-label">Avg customer lifetime</span><span class="stat-value" id="scr-avg-life">—</span></div>
+</div>
+<div id="scr-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="scr-copy" class="secondary">Copy results</button>
+  <button id="scr-share" class="secondary">Share results</button>
+</div>

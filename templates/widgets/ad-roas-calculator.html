@@ -1,0 +1,29 @@
+<div class="field-row">
+  <div class="field">
+    <label for="roas-spend">Ad spend ($)</label>
+    <input type="number" autocomplete="off" id="roas-spend" value="1000" min="0" step="100">
+  </div>
+  <div class="field">
+    <label for="roas-revenue">Revenue from ads ($)</label>
+    <input type="number" autocomplete="off" id="roas-revenue" value="4000" min="0" step="100">
+  </div>
+  <div class="field">
+    <label for="roas-margin">Gross margin % <span style="font-size:0.8em;color:var(--text-muted)">(for breakeven)</span></label>
+    <input type="number" autocomplete="off" id="roas-margin" value="50" min="1" max="99" step="1">
+  </div>
+  <div class="field">
+    <label for="roas-target-margin">Target profit margin % <span style="font-size:0.8em;color:var(--text-muted)">(optional)</span></label>
+    <input type="number" autocomplete="off" id="roas-target-margin" value="20" min="0" max="99" step="1">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="Revenue ÷ Ad Spend. A ROAS of 4× means you earned $4 for every $1 spent. Industry average: 2–4× for e-commerce. Does not account for COGS or operating expenses."><span class="stat-label">Your ROAS</span><span class="stat-value" id="roas-result">—</span></div>
+  <div class="stat" data-tooltip="1 ÷ Gross Margin. The minimum ROAS needed to cover your cost of goods. Below this, each dollar of ad-driven revenue loses money. E.g., 50% margin → 2× breakeven ROAS."><span class="stat-label">Breakeven ROAS</span><span class="stat-value" id="roas-breakeven">—</span></div>
+  <div class="stat" data-tooltip="1 ÷ (Gross Margin − Target Profit Margin). The ROAS required to achieve your desired net profit margin after COGS and ad spend."><span class="stat-label">Target ROAS</span><span class="stat-value" id="roas-target">—</span></div>
+  <div class="stat" data-tooltip="Revenue × Gross Margin − Ad Spend. Gross profit remaining after paying COGS and ad spend. Positive = profitable campaign."><span class="stat-label">Net Profit</span><span class="stat-value" id="roas-profit">—</span></div>
+</div>
+<div id="roas-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="roas-copy" class="secondary">Copy results</button>
+  <button id="roas-share" class="secondary">Share results</button>
+</div>

@@ -1,0 +1,21 @@
+<div class="field-row">
+  <div class="field">
+    <label for="mk-cost">Cost / COGS per unit ($)</label>
+    <input type="number" autocomplete="off" id="mk-cost" value="40" min="0" step="1">
+  </div>
+  <div class="field">
+    <label for="mk-price">Selling price per unit ($)</label>
+    <input type="number" autocomplete="off" id="mk-price" value="99" min="0" step="1">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="(Price − Cost) ÷ Cost × 100. Markup is calculated on cost. A 100% markup means you doubled your cost. Markup is always higher than the equivalent margin percentage."><span class="stat-label">Markup %</span><span class="stat-value" id="mk-markup">—</span></div>
+  <div class="stat" data-tooltip="(Price − Cost) ÷ Price × 100. Margin is calculated on selling price. A 50% margin ≠ 50% markup — margin on $99 at $40 cost is 59.6%, markup is 147.5%."><span class="stat-label">Gross Margin %</span><span class="stat-value" id="mk-margin">—</span></div>
+  <div class="stat" data-tooltip="Selling price minus cost per unit. The absolute dollar profit before overhead and operating expenses."><span class="stat-label">Gross Profit / Unit</span><span class="stat-value" id="mk-profit">—</span></div>
+  <div class="stat" data-tooltip="Selling price ÷ cost. How many times the selling price exceeds the unit cost. A 2.5× ratio = 150% markup = 60% margin."><span class="stat-label">Price / Cost Ratio</span><span class="stat-value" id="mk-ratio">—</span></div>
+</div>
+<div id="mk-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="mk-copy" class="secondary">Copy results</button>
+  <button id="mk-share" class="secondary">Share results</button>
+</div>

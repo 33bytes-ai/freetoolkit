@@ -1,0 +1,59 @@
+<div class="tool-widget" role="main">
+  <div class="field-row">
+    <div class="field">
+      <label for="burn-revenue">Monthly Revenue ($)</label>
+      <input id="burn-revenue" type="number" min="0" step="1000" value="50000" placeholder="e.g. 50000">
+    </div>
+    <div class="field">
+      <label for="burn-cash">Cash Balance ($)</label>
+      <input id="burn-cash" type="number" min="0" step="10000" value="2000000" placeholder="e.g. 2000000">
+    </div>
+  </div>
+  <table class="calc-table" style="margin:1rem 0 0.75rem">
+    <thead>
+      <tr>
+        <th>Department</th>
+        <th>Monthly Cost ($)</th>
+        <th style="text-align:right">% of Burn</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Engineering / Product</td>
+        <td><input id="burn-eng" type="number" min="0" step="1000" value="120000" style="width:100%"></td>
+        <td id="burn-share-eng" style="text-align:right;font-size:0.82rem;color:var(--text-muted)">—</td>
+      </tr>
+      <tr>
+        <td>Sales</td>
+        <td><input id="burn-sales" type="number" min="0" step="1000" value="60000" style="width:100%"></td>
+        <td id="burn-share-sales" style="text-align:right;font-size:0.82rem;color:var(--text-muted)">—</td>
+      </tr>
+      <tr>
+        <td>Marketing</td>
+        <td><input id="burn-mkt" type="number" min="0" step="1000" value="40000" style="width:100%"></td>
+        <td id="burn-share-mkt" style="text-align:right;font-size:0.82rem;color:var(--text-muted)">—</td>
+      </tr>
+      <tr>
+        <td>G&amp;A</td>
+        <td><input id="burn-ga" type="number" min="0" step="1000" value="30000" style="width:100%"></td>
+        <td id="burn-share-ga" style="text-align:right;font-size:0.82rem;color:var(--text-muted)">—</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="output-grid">
+    <div class="output-box" data-tooltip="Total monthly cash outflow across all departments before subtracting revenue.">
+      <span class="label">Gross Burn / mo</span>
+      <span class="value" id="burn-out-gross">—</span>
+    </div>
+    <div class="output-box" data-tooltip="Gross burn minus monthly revenue. This is the actual cash you consume each month. 'CF+' means you are cash flow positive.">
+      <span class="label">Net Burn / mo</span>
+      <span class="value" id="burn-out-net">—</span>
+    </div>
+    <div class="output-box" data-tooltip="Cash balance ÷ net burn. How many months until you run out of money at current spend. Raise when runway drops below 9 months.">
+      <span class="label">Runway</span>
+      <span class="value" id="burn-out-runway">—</span>
+    </div>
+  </div>
+  <div id="burn-insight" class="calc-insight" style="display:none"></div>
+</div>
+<script src="/static/js/tools/cash-burn-by-department.js" defer></script>

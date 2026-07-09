@@ -1,0 +1,29 @@
+<div class="tool-widget" role="main">
+  <p style="font-size:0.85rem;color:var(--text-muted);margin:0 0 0.75rem">Enter each cash flow by period. Year 0 is typically the initial investment (negative).</p>
+  <div id="mirr-cf-container"></div>
+  <div class="btn-row" style="margin-top:0.5rem">
+    <button type="button" id="mirr-add-row" class="btn">+ Add year</button>
+  </div>
+  <div class="field-row" style="margin-top:1rem">
+    <div class="field">
+      <label for="mirr-finance">Finance rate / cost of capital (%)</label>
+      <input id="mirr-finance" type="number" min="0" max="100" step="0.1" value="10" placeholder="e.g. 10">
+    </div>
+    <div class="field">
+      <label for="mirr-reinvest">Reinvestment rate (%)</label>
+      <input id="mirr-reinvest" type="number" min="0" max="100" step="0.1" value="8" placeholder="e.g. 8">
+    </div>
+    <div class="field">
+      <label for="mirr-hurdle">Hurdle rate (%) — optional</label>
+      <input id="mirr-hurdle" type="number" min="0" max="100" step="0.1" value="" placeholder="e.g. 15">
+    </div>
+  </div>
+  <div class="output-grid" style="margin-top:1rem">
+    <div class="output-box" data-tooltip="Modified Internal Rate of Return — like IRR but uses separate rates for financing negative cash flows and reinvesting positive ones. More realistic than IRR for most projects.">
+      <span class="label">MIRR</span>
+      <span class="value" id="mirr-out-mirr">—</span>
+    </div>
+  </div>
+  <div id="mirr-insight" class="calc-insight" style="display:none"></div>
+</div>
+<script src="/static/js/tools/mirr-calculator.js" defer></script>

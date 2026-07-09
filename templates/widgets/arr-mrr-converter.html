@@ -1,0 +1,23 @@
+<div class="field-row">
+  <div class="field">
+    <label for="amrr-input">Amount ($)</label>
+    <input type="number" autocomplete="off" id="amrr-input" value="10000" min="0" step="100">
+  </div>
+  <div class="field">
+    <label for="amrr-mode">I am entering</label>
+    <select id="amrr-mode">
+      <option value="mrr">MRR (monthly)</option>
+      <option value="arr">ARR (annual)</option>
+    </select>
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="Monthly Recurring Revenue = ARR ÷ 12. The monthly heartbeat of your SaaS business."><div class="num" id="amrr-out-mrr">$0</div><div class="label">MRR</div></div>
+  <div class="stat" data-tooltip="Annual Recurring Revenue = MRR × 12. The standard top-line metric used in SaaS fundraising and valuation."><div class="num" id="amrr-out-arr">$0</div><div class="label">ARR</div></div>
+  <div class="stat" data-tooltip="MRR ÷ (365/12 × 7 ≈ 4.33 weeks). A useful reference for revenue dashboards and daily finance checks."><div class="num" id="amrr-out-weekly">$0</div><div class="label">Weekly revenue</div></div>
+  <div class="stat" data-tooltip="ARR ÷ 365. How much recurring revenue you generate each calendar day on average."><div class="num" id="amrr-out-daily">$0</div><div class="label">Daily revenue</div></div>
+</div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="amrr-copy" class="secondary">Copy results</button>
+  <button id="amrr-share" class="secondary">Share results</button>
+</div>

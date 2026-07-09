@@ -1,0 +1,38 @@
+services:
+  web:
+    build:
+      context: ..
+      dockerfile: infra/Dockerfile
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    volumes:
+      # Persist nginx access logs for GoAccess analysis
+      - nginx_logs:/var/log/nginx
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  analytics:
+    image: allinurl/goaccess:latest
+    restart: unless-stopped
+    depends_on:
+      - web
+    volumes:
+      - nginx_logs:/var/log/nginx:ro
+      - analytics_output:/reports
+      - ./goaccess.conf:/etc/goaccess/goaccess.conf:ro
+    command: >
+      /var/log/nginx/access.log
+      --config-file /etc/goaccess/goaccess.conf
+      --output /reports/index.html
+      --real-time-html
+      --port 7890
+    ports:
+      - "127.0.0.1:7890:7890"
+
+volumes:
+  nginx_logs:
+  analytics_output:

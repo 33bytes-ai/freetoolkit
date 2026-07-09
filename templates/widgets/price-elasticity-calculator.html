@@ -1,0 +1,46 @@
+<div class="tool-widget" role="main">
+  <div class="field-row">
+    <div class="field">
+      <label for="ped-p1">Original price ($)</label>
+      <input id="ped-p1" type="number" min="0" step="1" value="100" placeholder="e.g. 100">
+      <span class="field__error-msg"></span>
+    </div>
+    <div class="field">
+      <label for="ped-q1">Quantity at original price</label>
+      <input id="ped-q1" type="number" min="0" step="1" value="1000" placeholder="e.g. 1000">
+      <span class="field__error-msg"></span>
+    </div>
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <label for="ped-p2">New price ($)</label>
+      <input id="ped-p2" type="number" min="0" step="1" value="120" placeholder="e.g. 120">
+      <span class="field__error-msg"></span>
+    </div>
+    <div class="field">
+      <label for="ped-q2">Expected quantity at new price</label>
+      <input id="ped-q2" type="number" min="0" step="1" value="900" placeholder="e.g. 900">
+      <span class="field__error-msg"></span>
+    </div>
+  </div>
+  <div class="output-grid">
+    <div class="output-box" data-tooltip="% change in quantity ÷ % change in price. Values between −1 and 0 = inelastic (price increase raises revenue). Values below −1 = elastic (price increase reduces revenue).">
+      <span class="label">Price Elasticity (PED)</span>
+      <span class="value" id="ped-out-ped">—</span>
+    </div>
+    <div class="output-box" data-tooltip="Revenue at original price (price × quantity).">
+      <span class="label">Original Revenue</span>
+      <span class="value" id="ped-out-rev1">—</span>
+    </div>
+    <div class="output-box" data-tooltip="Revenue at new price (new price × new quantity).">
+      <span class="label">New Revenue</span>
+      <span class="value" id="ped-out-rev2">—</span>
+    </div>
+    <div class="output-box" data-tooltip="The change in total revenue from this price change. Positive = price increase was worth it. Negative = you lost revenue.">
+      <span class="label">Revenue Change</span>
+      <span class="value" id="ped-out-revchange">—</span>
+    </div>
+  </div>
+  <div id="ped-insight" class="calc-insight" style="display:none"></div>
+</div>
+<script src="/static/js/tools/price-elasticity-calculator.js" defer></script>

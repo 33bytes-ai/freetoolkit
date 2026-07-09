@@ -1,0 +1,31 @@
+<div class="tool-widget" role="main">
+  <div class="field" style="max-width:320px">
+    <label for="pt-salary">Annual employee salary ($)</label>
+    <input id="pt-salary" type="number" min="0" step="1000" value="75000" placeholder="e.g. 75000">
+  </div>
+  <div class="output-grid">
+    <div class="output-box" data-tooltip="Employer portion of Social Security: 6.2% on wages up to the annual wage base ($168,600 in 2024). Matches the employee's contribution.">
+      <span class="label">Social Security (6.2%)</span>
+      <span class="value" id="pt-out-ss">—</span>
+    </div>
+    <div class="output-box" data-tooltip="Employer Medicare tax: 1.45% on all wages with no wage cap. An additional 0.9% applies to employee wages over $200K but is not an employer cost.">
+      <span class="label">Medicare (1.45%)</span>
+      <span class="value" id="pt-out-medicare">—</span>
+    </div>
+    <div class="output-box" data-tooltip="Federal Unemployment Tax (FUTA): 6% on the first $7,000 of wages, reduced to 0.6% effective rate after most employers receive the standard FUTA credit.">
+      <span class="label">FUTA (0.6%)</span>
+      <span class="value" id="pt-out-futa">—</span>
+    </div>
+    <div class="output-box" data-tooltip="Social Security + Medicare + FUTA combined. This is the federal employer payroll tax burden per employee per year.">
+      <span class="label">Total Payroll Taxes</span>
+      <span class="value" id="pt-out-total">—</span>
+    </div>
+    <div class="output-box" data-tooltip="Base salary + all employer payroll taxes. This is the true annual cost of this employee before benefits, equipment, or other overhead.">
+      <span class="label">Total Employment Cost</span>
+      <span class="value" id="pt-out-full">—</span>
+    </div>
+  </div>
+  <div id="pt-insight" class="calc-insight" style="display:none"></div>
+  <p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.75rem">Federal employer taxes only. State unemployment taxes (SUTA) not included. 2024 rates.</p>
+</div>
+<script src="/static/js/tools/payroll-tax-calculator.js" defer></script>

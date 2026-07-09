@@ -1,0 +1,31 @@
+<div class="field-row">
+  <div class="field">
+    <label for="cr-assets">Current assets ($)</label>
+    <input type="number" autocomplete="off" id="cr-assets" value="500000" min="0" step="10000">
+  </div>
+  <div class="field">
+    <label for="cr-liabilities">Current liabilities ($)</label>
+    <input type="number" autocomplete="off" id="cr-liabilities" value="250000" min="1" step="10000">
+  </div>
+</div>
+<div class="field-row">
+  <div class="field">
+    <label for="cr-inventory">Inventory ($) <span style="font-size:0.8em;color:var(--text-muted)">(for quick ratio)</span></label>
+    <input type="number" autocomplete="off" id="cr-inventory" value="80000" min="0" step="5000">
+  </div>
+  <div class="field">
+    <label for="cr-cash">Cash &amp; equivalents ($) <span style="font-size:0.8em;color:var(--text-muted)">(for cash ratio)</span></label>
+    <input type="number" autocomplete="off" id="cr-cash" value="120000" min="0" step="5000">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="Current Assets ÷ Current Liabilities. Measures ability to cover short-term obligations. Healthy range: 1.5–2.0×. Below 1.0 = liabilities exceed liquid assets."><span class="stat-label">Current Ratio</span><span class="stat-value" id="cr-result">—</span></div>
+  <div class="stat" data-tooltip="(Current Assets − Inventory) ÷ Current Liabilities. The 'acid test' — excludes inventory since it may not convert to cash quickly. Target: ≥1.0×."><span class="stat-label">Quick Ratio</span><span class="stat-value" id="cr-quick">—</span></div>
+  <div class="stat" data-tooltip="Cash &amp; Equivalents ÷ Current Liabilities. The most conservative liquidity measure — only counts cash on hand. Typical range: 0.1–0.5× for operating businesses."><span class="stat-label">Cash Ratio</span><span class="stat-value" id="cr-cash-r">—</span></div>
+  <div class="stat" data-tooltip="Current Assets − Current Liabilities. Dollar amount of short-term liquidity buffer. Positive = solvent; negative = technical short-term insolvency."><span class="stat-label">Net Working Capital</span><span class="stat-value" id="cr-nwc">—</span></div>
+</div>
+<div id="cr-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="cr-copy" class="secondary">Copy results</button>
+  <button id="cr-share" class="secondary">Share results</button>
+</div>

@@ -1,0 +1,29 @@
+<div class="field-row">
+  <div class="field">
+    <label for="pe-price">Current price ($)</label>
+    <input type="number" autocomplete="off" id="pe-price" value="99" min="0.01" step="1">
+  </div>
+  <div class="field">
+    <label for="pe-demand">Current monthly customers / units</label>
+    <input type="number" autocomplete="off" id="pe-demand" value="200" min="1" step="10">
+  </div>
+  <div class="field">
+    <label for="pe-new-price">New price ($)</label>
+    <input type="number" autocomplete="off" id="pe-new-price" value="129" min="0.01" step="1">
+  </div>
+  <div class="field">
+    <label for="pe-elasticity">Price elasticity <span style="font-size:0.8em;color:var(--text-muted)">(negative = demand falls when price rises)</span></label>
+    <input type="number" autocomplete="off" id="pe-elasticity" value="-1.2" step="0.1">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="(New Price − Current Price) ÷ Current Price. The % price change being modelled. Positive = price increase; negative = price cut."><span class="stat-label">Price Change</span><span class="stat-value" id="pe-pct-change">—</span></div>
+  <div class="stat" data-tooltip="Current Demand × (1 + Elasticity × Price Change %). Uses point elasticity approximation. E.g., elasticity of −1.2 and +30% price → ~36% demand drop."><span class="stat-label">Projected New Demand</span><span class="stat-value" id="pe-new-demand">—</span></div>
+  <div class="stat" data-tooltip="Current Price × Current Demand. Baseline monthly revenue before the price change."><span class="stat-label">Current Revenue</span><span class="stat-value" id="pe-current-rev">—</span></div>
+  <div class="stat" data-tooltip="New Revenue − Current Revenue. Change in monthly revenue after demand responds to the price change. Positive if demand is inelastic (|elasticity| < 1); negative if elastic."><span class="stat-label">Revenue Impact</span><span class="stat-value" id="pe-revenue-impact">—</span></div>
+</div>
+<div id="pe-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="pe-copy" class="secondary">Copy results</button>
+  <button id="pe-share" class="secondary">Share results</button>
+</div>

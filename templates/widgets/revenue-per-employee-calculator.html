@@ -1,0 +1,25 @@
+<div class="field-row">
+  <div class="field">
+    <label for="rpe-revenue">Annual revenue / ARR ($)</label>
+    <input type="number" autocomplete="off" id="rpe-revenue" value="5000000" min="0" step="100000">
+  </div>
+  <div class="field">
+    <label for="rpe-headcount">Total headcount (FTE)</label>
+    <input type="number" autocomplete="off" id="rpe-headcount" value="20" min="1" step="1">
+  </div>
+  <div class="field">
+    <label for="rpe-payroll">Annual payroll cost ($) <span style="font-size:0.8em;color:var(--text-muted)">(optional, for cost/employee)</span></label>
+    <input type="number" autocomplete="off" id="rpe-payroll" value="2400000" min="0" step="100000">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="Annual Revenue ÷ Headcount. Key workforce productivity metric. SaaS median: $200–300K. Top-quartile: $400K+. Apple and Nvidia: $1M+."><span class="stat-label">Revenue per Employee</span><span class="stat-value" id="rpe-result">—</span></div>
+  <div class="stat" data-tooltip="Annual payroll ÷ headcount. Total compensation cost per employee on average. Useful for capacity planning and salary band analysis."><span class="stat-label">Cost per Employee</span><span class="stat-value" id="rpe-cost">—</span></div>
+  <div class="stat" data-tooltip="Revenue ÷ Payroll. How much revenue you generate for every dollar of payroll. Best-in-class: 3–5×. Below 1.5× indicates labor-intensive cost structure."><span class="stat-label">Revenue / Payroll Multiple</span><span class="stat-value" id="rpe-multiple">—</span></div>
+  <div class="stat" data-tooltip="Comparison to the SaaS industry median of $250K revenue per employee. Green = above median; red = below. Adjust hiring and revenue targets accordingly."><span class="stat-label">vs SaaS Median ($250k)</span><span class="stat-value" id="rpe-benchmark">—</span></div>
+</div>
+<div id="rpe-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="rpe-copy" class="secondary">Copy results</button>
+  <button id="rpe-share" class="secondary">Share results</button>
+</div>

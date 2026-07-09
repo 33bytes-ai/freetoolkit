@@ -1,0 +1,29 @@
+<div class="field-row">
+  <div class="field">
+    <label for="rw-cash">Current cash balance ($)</label>
+    <input type="number" autocomplete="off" id="rw-cash" value="200000" min="0" step="1000">
+  </div>
+  <div class="field">
+    <label for="rw-expenses">Monthly expenses ($)</label>
+    <input type="number" autocomplete="off" id="rw-expenses" value="25000" min="0" step="500">
+  </div>
+  <div class="field">
+    <label for="rw-revenue">Monthly revenue ($)</label>
+    <input type="number" autocomplete="off" id="rw-revenue" value="8000" min="0" step="500">
+  </div>
+</div>
+<div class="field" style="max-width: 280px;">
+  <label for="rw-growth">Monthly revenue growth rate (%)</label>
+  <input type="number" autocomplete="off" id="rw-growth" value="10" min="0" step="1">
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="Monthly expenses minus monthly revenue. This is the cash you actually burn each month. Positive = burning cash; negative = cash flow positive."><div class="num" id="rw-burn">$0</div><div class="label">Monthly net burn</div></div>
+  <div class="stat" data-tooltip="Cash balance ÷ net burn. How many months before you run out of money. Standard VC expectation: raise when runway falls below 9 months."><div class="num" id="rw-runway">0 mo</div><div class="label">Runway</div></div>
+  <div class="stat" data-tooltip="The projected date your cash hits zero at current burn and growth rate."><div class="num" id="rw-end-date">—</div><div class="label">Cash-out date</div></div>
+  <div class="stat" data-tooltip="Months until monthly revenue equals monthly expenses (assuming your growth rate holds). 'N/A' if revenue already exceeds expenses."><div class="num" id="rw-breakeven">— mo</div><div class="label">Months to break-even</div></div>
+</div>
+<div id="rw-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="rw-copy" class="secondary">Copy results</button>
+  <button id="rw-share" class="secondary">Share results</button>
+</div>

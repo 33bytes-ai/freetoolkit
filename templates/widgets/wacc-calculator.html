@@ -1,0 +1,48 @@
+<div class="tool-widget" role="main">
+  <div class="field-row">
+    <div class="field">
+      <label for="wacc-equity">Market value of equity ($)</label>
+      <input id="wacc-equity" type="number" min="0" step="1000000" value="100000000" placeholder="e.g. 100000000">
+      <span class="field__error-msg"></span>
+    </div>
+    <div class="field">
+      <label for="wacc-debt">Market value of debt ($)</label>
+      <input id="wacc-debt" type="number" min="0" step="1000000" value="40000000" placeholder="e.g. 40000000">
+      <span class="field__error-msg"></span>
+    </div>
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <label for="wacc-cost-equity">Cost of equity (%)</label>
+      <input id="wacc-cost-equity" type="number" min="0" max="100" step="0.1" value="12" placeholder="e.g. 12">
+    </div>
+    <div class="field">
+      <label for="wacc-cost-debt">Pre-tax cost of debt (%)</label>
+      <input id="wacc-cost-debt" type="number" min="0" max="100" step="0.1" value="6" placeholder="e.g. 6">
+    </div>
+    <div class="field">
+      <label for="wacc-tax">Corporate tax rate (%)</label>
+      <input id="wacc-tax" type="number" min="0" max="60" step="0.1" value="21" placeholder="e.g. 21">
+    </div>
+  </div>
+  <div class="output-grid">
+    <div class="output-box" data-tooltip="The blended rate your business must earn on all assets to satisfy equity and debt holders. Used as the discount rate in DCF valuations.">
+      <span class="label">WACC</span>
+      <span class="value" id="wacc-out-wacc">—</span>
+    </div>
+    <div class="output-box" data-tooltip="The proportion of total capital funded by equity. E / (E + D).">
+      <span class="label">Equity Weight</span>
+      <span class="value" id="wacc-out-equity-wt">—</span>
+    </div>
+    <div class="output-box" data-tooltip="The proportion of total capital funded by debt. D / (E + D).">
+      <span class="label">Debt Weight</span>
+      <span class="value" id="wacc-out-debt-wt">—</span>
+    </div>
+    <div class="output-box" data-tooltip="Pre-tax cost of debt × (1 − tax rate). Interest is tax-deductible, so debt's effective cost is lower than its stated rate.">
+      <span class="label">After-tax Cost of Debt</span>
+      <span class="value" id="wacc-out-after-debt">—</span>
+    </div>
+  </div>
+  <div id="wacc-insight" class="calc-insight" style="display:none"></div>
+</div>
+<script src="/static/js/tools/wacc-calculator.js" defer></script>

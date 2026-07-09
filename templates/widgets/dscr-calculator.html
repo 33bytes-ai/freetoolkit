@@ -1,0 +1,35 @@
+<div class="field-row">
+  <div class="field">
+    <label for="dscr-noi">Annual Net Operating Income — NOI ($)</label>
+    <input type="number" autocomplete="off" id="dscr-noi" value="500000" min="0" step="10000">
+  </div>
+  <div class="field">
+    <label for="dscr-debt">Annual debt service ($) <span style="font-size:0.8em;color:var(--text-muted)">principal + interest</span></label>
+    <input type="number" autocomplete="off" id="dscr-debt" value="300000" min="1" step="10000">
+  </div>
+</div>
+<div class="field-row">
+  <div class="field">
+    <label for="dscr-min">Lender minimum DSCR</label>
+    <input type="number" autocomplete="off" id="dscr-min" value="1.25" min="1" max="5" step="0.05">
+  </div>
+  <div class="field">
+    <label for="dscr-rate">Loan interest rate (% APR)</label>
+    <input type="number" autocomplete="off" id="dscr-rate" value="7" min="0" max="30" step="0.1">
+  </div>
+  <div class="field">
+    <label for="dscr-term">Loan term (months)</label>
+    <input type="number" autocomplete="off" id="dscr-term" value="120" min="12" max="360" step="12">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="NOI ÷ Annual Debt Service. The primary metric lenders use to approve business loans. 1.25× is a common minimum; below 1.0 means cash flow cannot cover debt payments."><span class="stat-label">Your DSCR</span><span class="stat-value" id="dscr-result">—</span></div>
+  <div class="stat" data-tooltip="NOI ÷ Minimum DSCR. Maximum annual debt payments your NOI can support at the lender's required coverage ratio."><span class="stat-label">Max Supportable Debt Service</span><span class="stat-value" id="dscr-max-service">—</span></div>
+  <div class="stat" data-tooltip="Maximum loan amount implied by your NOI at the given rate and term, constrained by the minimum DSCR. This is the loan ceiling your cash flow supports."><span class="stat-label">Implied Max Loan</span><span class="stat-value" id="dscr-max-loan">—</span></div>
+  <div class="stat" data-tooltip="Qualitative rating based on DSCR: ≥1.5 = Strong, 1.25–1.5 = Acceptable, 1.0–1.25 = Marginal, <1.0 = Below Coverage."><span class="stat-label">Coverage Status</span><span class="stat-value" id="dscr-label">—</span></div>
+</div>
+<div id="dscr-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="dscr-copy" class="secondary">Copy results</button>
+  <button id="dscr-share" class="secondary">Share results</button>
+</div>

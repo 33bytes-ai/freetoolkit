@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{{ title }} — {{ site.name }}</title>
+  <meta name="description" content="{{ description }}">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="author" content="{{ site.name }}">
+  <meta name="web_author" content="{{ site.name }}">
+  <meta name="copyright" content="{{ site.name }}">
+  <meta name="application-name" content="{{ site.name }}">
+  <meta name="format-detection" content="telephone=no, address=no, email=no">
+  <meta name="color-scheme" content="light dark">
+  <meta name="rating" content="General">
+  <meta name="revisit-after" content="7 days">
+  <meta name="expires" content="never">
+  <meta name="language" content="English">
+  <meta http-equiv="x-content-type-options" content="nosniff">
+  <meta name="HandheldFriendly" content="true">
+  <meta name="abstract" content="{{ description }}">
+  <meta name="reply-to" content="{{ site.contact_email | default('contact@foundercalc.com') }}">
+  <meta name="geo.region" content="US">
+  <meta name="geo.placename" content="United States">
+  <meta name="category" content="Business Tools">
+  <meta http-equiv="x-frame-options" content="SAMEORIGIN">
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <meta name="theme-color" content="#4f7ef8">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1a1a2e">
+  <meta name="msapplication-TileColor" content="#4f7ef8">
+  <meta name="msapplication-config" content="none">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="canonical" href="{{ site.base_url }}{{ path }}">
+  <link rel="alternate" hreflang="en" href="{{ site.base_url }}{{ path }}">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232563eb'/%3E%3Cpath fill='%23fff' d='M16 8a8 8 0 1 0 8 8h-2a6 6 0 1 1-6-6V8z'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23fff'/%3E%3C/svg%3E" type="image/svg+xml">
+  <link rel="icon" href="/static/img/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.name }} — New Tools" href="{{ site.base_url }}/rss.xml">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+  <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net">
+  <link rel="preload" href="/static/css/style.css" as="style">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="preload" href="/static/js/lib/common.js" as="script">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="{{ site.name }}">
+  {% block og_type %}<meta property="og:type" content="website">{% endblock %}
+  <meta property="og:title" content="{{ title }} — {{ site.name }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:url" content="{{ site.base_url }}{{ path }}">
+  {% block og_image %}<meta property="og:image" content="{{ site.base_url }}/static/img/og.png"><meta property="og:image:alt" content="{{ title }} — {{ site.name }}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">{% endblock %}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ title }} — {{ site.name }}">
+  <meta name="twitter:description" content="{{ description }}">
+  {% block twitter_image %}<meta name="twitter:image" content="{{ site.base_url }}/static/img/og.png">{% endblock %}
+  {% block twitter_extra %}{% endblock %}
+  {% if site.ads_enabled %}
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.adsense_client_id }}" crossorigin="anonymous"></script>
+  {% endif %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "{{ site.name }}",
+    "url": "{{ site.base_url }}",
+    "description": "{{ description | replace('"', '\\"') }}",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "{{ site.base_url }}/tools/{search_term_string}/",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  [{% for tool in tools %}{"@context":"https://schema.org","@type":"SiteNavigationElement","name":"{{ tool.nav_title | replace('"', '\\"') }}","url":"{{ site.base_url }}/tools/{{ tool.slug }}/"}{% if not loop.last %},{% endif %}{% endfor %}]
+  </script>
+  <link rel="sitemap" type="application/xml" href="/sitemap_index.xml">
+  <link rel="alternate" type="application/json+oembed" href="{{ site.base_url }}/oembed.json?url={{ site.base_url }}{{ path }}" title="{{ title }}">
+  {% block head_extra %}{% endblock %}
+</head>
+<body>
+  <div id="reading-progress" style="position:fixed;top:0;left:0;height:3px;background:var(--accent);width:0%;z-index:10000;transition:width 0.1s linear;pointer-events:none" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="1" width="7" height="6" rx="1.5" fill="currentColor"/>
+            <rect x="10" y="1" width="7" height="2.5" rx="1.2" fill="currentColor"/>
+            <rect x="10" y="5" width="7" height="2.5" rx="1.2" fill="currentColor" opacity="0.7"/>
+            <rect x="1" y="9" width="3" height="3" rx="1" fill="currentColor" opacity="0.7"/>
+            <rect x="5.5" y="9" width="3" height="3" rx="1" fill="currentColor" opacity="0.7"/>
+            <rect x="10" y="9" width="3" height="3" rx="1" fill="currentColor" opacity="0.7"/>
+            <rect x="14.5" y="9" width="2.5" height="3" rx="1" fill="currentColor"/>
+            <rect x="1" y="14" width="3" height="3" rx="1" fill="currentColor" opacity="0.7"/>
+            <rect x="5.5" y="14" width="3" height="3" rx="1" fill="currentColor" opacity="0.7"/>
+            <rect x="10" y="14" width="7" height="3" rx="1" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="brand-name">{{ site.name }}</span>
+      </a>
+      <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close navigation">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        {% for category in categories %}
+        {% set cat_tools = tools_by_category.get(category, []) %}
+        <span class="nav-group">
+          <span class="nav-group-label" tabindex="0">{{ category }}</span>
+          <span class="nav-group-menu{% if cat_tools | length > 8 %} menu-wide{% endif %}">
+            {% for tool in cat_tools %}
+            <a href="/tools/{{ tool.slug }}/">{{ tool.nav_title or tool.title }}</a>
+            {% endfor %}
+          </span>
+        </span>
+        {% endfor %}
+        <a href="/tools/" class="mobile-nav-all">Browse all 73 tools →</a>
+      </nav>
+      <div class="mobile-nav-overlay" id="mobile-nav-overlay" aria-hidden="true"></div>
+      <button id="theme-toggle" role="switch" aria-checked="false" aria-label="Switch to dark mode" class="theme-toggle-btn" title="Toggle dark/light mode">
+        <span class="tgl-track">
+          <span class="tgl-sun" aria-hidden="true">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </span>
+          <span class="tgl-thumb"></span>
+          <span class="tgl-moon" aria-hidden="true">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    {% block content %}{% endblock %}
+  </main>
+
+  <button id="scroll-top" aria-label="Back to top" style="display:none;position:fixed;bottom:1.25rem;right:1.25rem;width:2.4rem;height:2.4rem;border-radius:50%;background:var(--accent);color:#fff;border:none;cursor:pointer;z-index:50;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,99,235,0.22);transition:opacity 0.2s,transform 0.2s"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="18 15 12 9 6 15"/></svg></button>
+  <script src="/static/js/lib/common.js" defer></script>
+  <script src="/static/js/lib/tracker.js" defer></script>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-cols">
+        <div>
+          <strong>{{ site.name }}</strong>
+          <p>{{ site.tagline }}</p>
+        </div>
+        <div>
+          <h4>Tools</h4>
+          <ul>
+            {% for tool in tools %}
+            <li><a href="/tools/{{ tool.slug }}/">{{ tool.nav_title }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div>
+          <h4>Site</h4>
+          <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/contact/">Contact</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Use</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="copyright">© {{ year }} {{ site.name }}. All tools run locally in your browser — nothing you type is uploaded. Updated {{ build_date }}.</p>
+    </div>
+  </footer>
+</body>
+</html>

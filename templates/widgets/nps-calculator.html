@@ -1,0 +1,27 @@
+<p class="tool-short" style="margin-bottom:0.5rem">Enter respondent counts from your NPS survey (scale 0–10).</p>
+<div class="field-row">
+  <div class="field">
+    <label for="nps-promoters">Promoters (score 9–10)</label>
+    <input type="number" autocomplete="off" id="nps-promoters" value="60" min="0" step="1">
+  </div>
+  <div class="field">
+    <label for="nps-passives">Passives (score 7–8)</label>
+    <input type="number" autocomplete="off" id="nps-passives" value="25" min="0" step="1">
+  </div>
+  <div class="field">
+    <label for="nps-detractors">Detractors (score 0–6)</label>
+    <input type="number" autocomplete="off" id="nps-detractors" value="15" min="0" step="1">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="% Promoters − % Detractors. Ranges from −100 to +100. Benchmark: 0+ is okay, 30+ is good, 50+ is excellent, 70+ is world-class."><div class="num" id="nps-out-score" style="font-size:2rem">+0</div><div class="label">NPS Score</div></div>
+  <div class="stat" data-tooltip="Respondents who gave you a 9 or 10. They actively recommend your product. The primary driver of organic growth through word-of-mouth."><div class="num" id="nps-out-prom-pct">0%</div><div class="label">Promoters</div></div>
+  <div class="stat" data-tooltip="Respondents who gave you a 7 or 8. Satisfied but not enthusiastic. They don't hurt your score but don't help it either. Target: convert them to Promoters."><div class="num" id="nps-out-pass-pct">0%</div><div class="label">Passives</div></div>
+  <div class="stat" data-tooltip="Respondents who gave you a 0–6. Unhappy customers who could damage your reputation. Must be addressed first — they drag down your NPS disproportionately."><div class="num" id="nps-out-detr-pct">0%</div><div class="label">Detractors</div></div>
+</div>
+<p id="nps-out-label" class="tool-short" style="margin-top:0.75rem"></p>
+<div id="nps-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="nps-copy" class="secondary">Copy results</button>
+  <button id="nps-share" class="secondary">Share results</button>
+</div>

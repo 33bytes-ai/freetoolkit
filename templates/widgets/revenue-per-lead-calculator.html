@@ -1,0 +1,39 @@
+<div class="calc-grid">
+  <label for="rpl-revenue">Total revenue from leads ($)</label>
+  <input type="number" id="rpl-revenue" min="0" step="10000" value="480000" autocomplete="off">
+
+  <label for="rpl-leads">Total leads (in the same period)</label>
+  <input type="number" id="rpl-leads" min="1" step="10" value="1200" autocomplete="off">
+
+  <label for="rpl-spend">Marketing spend ($, for CPL)</label>
+  <input type="number" id="rpl-spend" min="0" step="1000" value="60000" autocomplete="off">
+
+  <label for="rpl-target">Target revenue ($, for leads needed)</label>
+  <input type="number" id="rpl-target" min="0" step="10000" value="0" autocomplete="off">
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card" data-tooltip="Total Revenue ÷ Total Leads. Average revenue generated per lead regardless of conversion stage. Use this to set maximum CPL: RPL > CPL = profitable channel.">
+    <span class="stat-label">Revenue per Lead</span>
+    <span class="stat-value" id="rpl-result">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Marketing Spend ÷ Total Leads. What you paid to generate each lead. Must be below Revenue per Lead for the channel to be profitable at current close rates.">
+    <span class="stat-label">Cost per Lead</span>
+    <span class="stat-value" id="rpl-cpl">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="(Revenue − Marketing Spend) ÷ Marketing Spend × 100. Return on your marketing investment for this lead channel. Positive = profitable; higher is better.">
+    <span class="stat-label">Lead Channel ROI</span>
+    <span class="stat-value" id="rpl-roi">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Target Revenue ÷ Revenue per Lead. How many leads you need to generate at current close rates to hit your revenue target.">
+    <span class="stat-label">Leads Needed (target)</span>
+    <span class="stat-value" id="rpl-needed">--</span>
+  </div>
+</div>
+
+<div id="rpl-insight" class="insight-box" aria-live="polite"></div>
+
+<div class="calc-actions">
+  <button id="rpl-share" class="btn-secondary">Share</button>
+  <button id="rpl-copy" class="btn-secondary">Copy results</button>
+</div>

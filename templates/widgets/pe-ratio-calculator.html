@@ -1,0 +1,31 @@
+<div class="field-row">
+  <div class="field">
+    <label for="pe-price">Stock Price ($)</label>
+    <input type="number" autocomplete="off" id="pe-price" value="150" min="0.01" step="0.01">
+  </div>
+  <div class="field">
+    <label for="pe-eps">EPS — Trailing 12 months ($)</label>
+    <input type="number" autocomplete="off" id="pe-eps" value="7.50" min="0.01" step="0.01">
+  </div>
+</div>
+<div class="field-row">
+  <div class="field">
+    <label for="pe-feps">Forward EPS estimate ($) <span style="font-size:0.8em;color:var(--text-muted)">(optional)</span></label>
+    <input type="number" autocomplete="off" id="pe-feps" value="9.00" min="0" step="0.01">
+  </div>
+  <div class="field">
+    <label for="pe-growth">Expected EPS growth rate (%) <span style="font-size:0.8em;color:var(--text-muted)">(for PEG)</span></label>
+    <input type="number" autocomplete="off" id="pe-growth" value="15" min="0" step="1">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="Stock Price ÷ EPS (TTM). How much investors pay per dollar of trailing earnings. S&P 500 historical average: 15–17×. < 10 = value territory; > 35 = expensive or high-growth expectations."><span class="stat-label">Trailing P/E</span><span class="stat-value" id="pe-result">—</span></div>
+  <div class="stat" data-tooltip="Stock Price ÷ Forward EPS estimate. More relevant for growing companies. Reflects market expectations of future earnings. Forward P/E < trailing P/E = earnings growth expected."><span class="stat-label">Forward P/E</span><span class="stat-value" id="pe-forward">—</span></div>
+  <div class="stat" data-tooltip="1 ÷ P/E ratio × 100. The earnings return per dollar of market price, comparable to bond yields. Useful for comparing stocks to fixed income alternatives."><span class="stat-label">Earnings Yield</span><span class="stat-value" id="pe-ey">—</span></div>
+  <div class="stat" data-tooltip="P/E ÷ Expected EPS Growth Rate. Peter Lynch's PEG ratio: < 1 = potentially undervalued relative to growth; > 2 = expensive relative to growth rate. Best for growth stocks."><span class="stat-label">PEG Ratio</span><span class="stat-value" id="pe-peg">—</span></div>
+</div>
+<div id="pe-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="pe-copy" class="secondary">Copy results</button>
+  <button id="pe-share" class="secondary">Share results</button>
+</div>

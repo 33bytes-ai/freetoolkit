@@ -1,0 +1,62 @@
+<p style="font-size:0.85rem;color:var(--text-muted);margin:0 0 0.75rem">Enter revenue and COGS for up to 4 product lines or business segments.</p>
+
+<table class="data-table" style="width:100%;border-collapse:collapse;font-size:0.875rem">
+  <thead>
+    <tr style="border-bottom:2px solid var(--border)">
+      <th style="text-align:left;padding:0.5rem">Segment</th>
+      <th style="text-align:right;padding:0.5rem">Revenue ($)</th>
+      <th style="text-align:right;padding:0.5rem">COGS ($)</th>
+      <th style="text-align:right;padding:0.5rem">GM%</th>
+      <th style="text-align:right;padding:0.5rem">Gross Profit</th>
+      <th style="text-align:right;padding:0.5rem">Rev Share</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding:0.4rem"><input type="text" style="width:90px;font-size:0.85rem" value="SaaS" autocomplete="off"></td>
+      <td style="padding:0.4rem"><input type="number" id="sma-rev"  min="0" step="1000" value="800000" autocomplete="off" style="width:100px;text-align:right"></td>
+      <td style="padding:0.4rem"><input type="number" id="sma-cogs" min="0" step="1000" value="120000" autocomplete="off" style="width:100px;text-align:right"></td>
+      <td style="padding:0.4rem;text-align:right" id="sma-margin">--</td>
+      <td style="padding:0.4rem;text-align:right" id="sma-profit">--</td>
+      <td style="padding:0.4rem;text-align:right" id="sma-share">--</td>
+    </tr>
+    <tr>
+      <td style="padding:0.4rem"><input type="text" style="width:90px;font-size:0.85rem" value="Services" autocomplete="off"></td>
+      <td style="padding:0.4rem"><input type="number" id="smb-rev"  min="0" step="1000" value="200000" autocomplete="off" style="width:100px;text-align:right"></td>
+      <td style="padding:0.4rem"><input type="number" id="smb-cogs" min="0" step="1000" value="120000" autocomplete="off" style="width:100px;text-align:right"></td>
+      <td style="padding:0.4rem;text-align:right" id="smb-margin">--</td>
+      <td style="padding:0.4rem;text-align:right" id="smb-profit">--</td>
+      <td style="padding:0.4rem;text-align:right" id="smb-share">--</td>
+    </tr>
+    <tr>
+      <td style="padding:0.4rem"><input type="text" style="width:90px;font-size:0.85rem" value="Segment 3" autocomplete="off"></td>
+      <td style="padding:0.4rem"><input type="number" id="smc-rev"  min="0" step="1000" value="0" autocomplete="off" style="width:100px;text-align:right"></td>
+      <td style="padding:0.4rem"><input type="number" id="smc-cogs" min="0" step="1000" value="0" autocomplete="off" style="width:100px;text-align:right"></td>
+      <td style="padding:0.4rem;text-align:right" id="smc-margin">--</td>
+      <td style="padding:0.4rem;text-align:right" id="smc-profit">--</td>
+      <td style="padding:0.4rem;text-align:right" id="smc-share">--</td>
+    </tr>
+    <tr>
+      <td style="padding:0.4rem"><input type="text" style="width:90px;font-size:0.85rem" value="Segment 4" autocomplete="off"></td>
+      <td style="padding:0.4rem"><input type="number" id="smd-rev"  min="0" step="1000" value="0" autocomplete="off" style="width:100px;text-align:right"></td>
+      <td style="padding:0.4rem"><input type="number" id="smd-cogs" min="0" step="1000" value="0" autocomplete="off" style="width:100px;text-align:right"></td>
+      <td style="padding:0.4rem;text-align:right" id="smd-margin">--</td>
+      <td style="padding:0.4rem;text-align:right" id="smd-profit">--</td>
+      <td style="padding:0.4rem;text-align:right" id="smd-share">--</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="stat-grid" style="margin-top:1rem">
+  <div class="stat-card" data-tooltip="Total gross profit across all segments ÷ total revenue. A blended margin below 50% may signal over-reliance on low-margin services revenue dragging down a high-margin SaaS core.">
+    <span class="stat-label">Blended Gross Margin</span>
+    <span class="stat-value" id="sm-blended">--</span>
+  </div>
+</div>
+
+<div id="sm-insight" class="insight-box" aria-live="polite"></div>
+
+<div class="calc-actions">
+  <button id="sm-share-btn" class="btn-secondary">Share</button>
+  <button id="sm-copy" class="btn-secondary">Copy results</button>
+</div>

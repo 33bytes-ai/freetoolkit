@@ -1,0 +1,27 @@
+<div class="tool-widget" role="main">
+  <p style="font-size:0.85rem;color:var(--text-muted);margin:0 0 0.75rem">Enter each cash flow by period. Year 0 is typically the initial investment (negative).</p>
+  <div id="irr-cf-container"></div>
+  <div class="btn-row" style="margin-top:0.5rem">
+    <button type="button" id="irr-add-row" class="btn">+ Add year</button>
+  </div>
+  <div class="field" style="margin-top:1rem;max-width:240px">
+    <label for="irr-hurdle">Hurdle rate / WACC (%) — optional</label>
+    <input id="irr-hurdle" type="number" min="0" max="100" step="0.1" value="" placeholder="e.g. 12">
+  </div>
+  <div class="output-grid" style="margin-top:1rem">
+    <div class="output-box" data-tooltip="The discount rate that makes the NPV of all cash flows equal to zero. If IRR > hurdle rate, the investment creates value.">
+      <span class="label">IRR</span>
+      <span class="value" id="irr-out-irr">—</span>
+    </div>
+    <div class="output-box" data-tooltip="Net Present Value at your hurdle rate. Positive NPV means the investment returns more than your cost of capital.">
+      <span class="label">NPV at hurdle rate</span>
+      <span class="value" id="irr-out-npv">—</span>
+    </div>
+    <div class="output-box" data-tooltip="Accept if IRR exceeds hurdle rate and NPV > 0. Reject otherwise.">
+      <span class="label">Decision</span>
+      <span class="value" id="irr-out-decision">—</span>
+    </div>
+  </div>
+  <div id="irr-insight" class="calc-insight" style="display:none"></div>
+</div>
+<script src="/static/js/tools/irr-calculator.js" defer></script>

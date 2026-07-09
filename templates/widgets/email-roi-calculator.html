@@ -1,0 +1,40 @@
+<div class="field-row">
+  <div class="field">
+    <label for="er-list">List size (subscribers)</label>
+    <input type="number" autocomplete="off" id="er-list" value="5000" min="0" step="100">
+  </div>
+  <div class="field">
+    <label for="er-open-rate">Open rate (%)</label>
+    <input type="number" autocomplete="off" id="er-open-rate" value="22" min="0" max="100" step="0.1">
+  </div>
+  <div class="field">
+    <label for="er-click-rate">Click rate (% of opens)</label>
+    <input type="number" autocomplete="off" id="er-click-rate" value="8" min="0" max="100" step="0.1">
+  </div>
+</div>
+<div class="field-row">
+  <div class="field">
+    <label for="er-conv-rate">Conversion rate (% of clicks)</label>
+    <input type="number" autocomplete="off" id="er-conv-rate" value="5" min="0" max="100" step="0.1">
+  </div>
+  <div class="field">
+    <label for="er-aov">Average order / deal value ($)</label>
+    <input type="number" autocomplete="off" id="er-aov" value="199" min="0" step="1">
+  </div>
+  <div class="field">
+    <label for="er-cost">Campaign cost ($)</label>
+    <input type="number" autocomplete="off" id="er-cost" value="500" min="0" step="10">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="List size × open rate. Average B2B email open rate: 20–30%. B2C: 15–25%. Varies significantly by industry and send time."><div class="num" id="er-out-opens">0</div><div class="label">Opens</div></div>
+  <div class="stat" data-tooltip="Opens × click rate. Average click rate on opened emails: 5–15%. High-performing: 15%+. CTR from sends = open rate × click rate."><div class="num" id="er-out-clicks">0</div><div class="label">Clicks</div></div>
+  <div class="stat" data-tooltip="Clicks × conversion rate. The number of recipients who clicked and then completed the desired action (purchase, sign-up, booking)."><div class="num" id="er-out-conversions">0</div><div class="label">Conversions</div></div>
+  <div class="stat" data-tooltip="Conversions × average order value. Total revenue attributed to this email campaign."><div class="num" id="er-out-revenue">$0</div><div class="label">Revenue</div></div>
+  <div class="stat" data-tooltip="(Revenue − Campaign Cost) ÷ Campaign Cost × 100. Email consistently delivers 3600%+ ROI industry-wide, making it the highest ROI channel."><div class="num" id="er-out-roi">0%</div><div class="label">ROI</div></div>
+</div>
+<div id="er-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="er-copy" class="secondary">Copy results</button>
+  <button id="er-share" class="secondary">Share results</button>
+</div>

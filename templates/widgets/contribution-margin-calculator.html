@@ -1,0 +1,39 @@
+<div class="calc-grid">
+  <label for="cm-price">Selling price per unit ($)</label>
+  <input type="number" id="cm-price" min="0" step="0.01" value="99" autocomplete="off">
+
+  <label for="cm-variable">Variable cost per unit ($)</label>
+  <input type="number" id="cm-variable" min="0" step="0.01" value="35" autocomplete="off">
+
+  <label for="cm-fixed">Total fixed costs ($)</label>
+  <input type="number" id="cm-fixed" min="0" step="100" value="50000" autocomplete="off">
+
+  <label for="cm-target">Target profit ($, optional)</label>
+  <input type="number" id="cm-target" min="0" step="100" value="20000" autocomplete="off">
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card" data-tooltip="Price − Variable Cost per unit. The revenue remaining per unit after variable costs. This is what pays for fixed costs and profit.">
+    <span class="stat-label">Unit Contribution Margin</span>
+    <span class="stat-value" id="cm-result">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Unit Contribution Margin ÷ Price. The % of each revenue dollar that contributes to fixed costs and profit. Also equals 1 − (Variable Cost ÷ Price).">
+    <span class="stat-label">CM Ratio</span>
+    <span class="stat-value" id="cm-ratio">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Fixed Costs ÷ Unit Contribution Margin. The number of units you must sell to cover all fixed costs before earning a profit.">
+    <span class="stat-label">Break-even Units</span>
+    <span class="stat-value" id="cm-beu">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="(Fixed Costs + Target Profit) ÷ Unit Contribution Margin. Units needed to cover fixed costs AND hit your desired profit figure.">
+    <span class="stat-label">Units for Target Profit</span>
+    <span class="stat-value" id="cm-target-units">--</span>
+  </div>
+</div>
+
+<div id="cm-insight" class="insight-box" aria-live="polite"></div>
+
+<div class="calc-actions">
+  <button id="cm-share-btn" class="btn-secondary">Share</button>
+  <button id="cm-copy" class="btn-secondary">Copy results</button>
+</div>

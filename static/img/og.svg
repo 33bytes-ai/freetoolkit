@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="50%" style="stop-color:#1e1b4b"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Decorative circles -->
+  <circle cx="1050" cy="120" r="200" fill="#6366f1" opacity="0.08"/>
+  <circle cx="150" cy="520" r="160" fill="#8b5cf6" opacity="0.06"/>
+  <!-- Accent bar -->
+  <rect x="80" y="200" width="6" height="90" rx="3" fill="url(#accent)"/>
+  <!-- Brand name -->
+  <text x="108" y="257" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="700" fill="#f8fafc">FounderCalc</text>
+  <!-- Tagline -->
+  <text x="108" y="320" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="400" fill="#94a3b8">Free business calculators for founders,</text>
+  <text x="108" y="358" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="400" fill="#94a3b8">freelancers &amp; SaaS builders</text>
+  <!-- Stats row -->
+  <rect x="108" y="420" width="180" height="80" rx="12" fill="#1e293b"/>
+  <text x="198" y="453" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="700" fill="#6366f1" text-anchor="middle">22+</text>
+  <text x="198" y="481" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#64748b" text-anchor="middle">Free tools</text>
+
+  <rect x="308" y="420" width="180" height="80" rx="12" fill="#1e293b"/>
+  <text x="398" y="453" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="700" fill="#8b5cf6" text-anchor="middle">100%</text>
+  <text x="398" y="481" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#64748b" text-anchor="middle">Browser-based</text>
+
+  <rect x="508" y="420" width="180" height="80" rx="12" fill="#1e293b"/>
+  <text x="598" y="453" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="700" fill="#06b6d4" text-anchor="middle">$0</text>
+  <text x="598" y="481" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#64748b" text-anchor="middle">No signup needed</text>
+  <!-- URL -->
+  <text x="108" y="580" font-family="system-ui, -apple-system, sans-serif" font-size="20" fill="#475569">foundercalc.com</text>
+</svg>

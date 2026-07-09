@@ -1,0 +1,20 @@
+<div class="field-row">
+  <div class="field">
+    <label for="tie-ebit">EBIT — Earnings Before Interest &amp; Taxes ($)</label>
+    <input type="number" autocomplete="off" id="tie-ebit" value="500000" step="10000">
+  </div>
+  <div class="field">
+    <label for="tie-interest">Annual Interest Expense ($)</label>
+    <input type="number" autocomplete="off" id="tie-interest" value="100000" min="0" step="5000">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="EBIT ÷ Interest Expense. How many times over you can cover interest payments from operating profit. Lenders typically require ≥ 1.5×; investment grade: ≥ 3×."><span class="stat-label">Times Interest Earned</span><span class="stat-value" id="tie-result">—</span></div>
+  <div class="stat" data-tooltip="((TIE − 1) ÷ TIE) × 100. How much EBIT can decline before you can no longer cover interest. A TIE of 5× means EBIT can drop 80% and you still break even on interest."><span class="stat-label">Coverage Buffer</span><span class="stat-value" id="tie-buffer">—</span></div>
+  <div class="stat" data-tooltip="Your EBIT input — shown here as a reference point alongside the interest coverage calculation."><span class="stat-label">EBIT</span><span class="stat-value" id="tie-ebit-show">—</span></div>
+</div>
+<div id="tie-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="tie-copy" class="secondary">Copy results</button>
+  <button id="tie-share" class="secondary">Share results</button>
+</div>

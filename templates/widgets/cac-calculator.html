@@ -1,0 +1,42 @@
+<div class="field-row">
+  <div class="field">
+    <label for="cac-ad-spend">Monthly ad spend ($)</label>
+    <input type="number" autocomplete="off" id="cac-ad-spend" value="15000" min="0" step="500">
+    <span class="field__error-msg"></span>
+  </div>
+  <div class="field">
+    <label for="cac-sales">Sales & marketing payroll ($) <span style="font-size:0.8em;color:var(--text-muted)">/month</span></label>
+    <input type="number" autocomplete="off" id="cac-sales" value="20000" min="0" step="500">
+  </div>
+  <div class="field">
+    <label for="cac-tools">Tools & software ($) <span style="font-size:0.8em;color:var(--text-muted)">/month</span></label>
+    <input type="number" autocomplete="off" id="cac-tools" value="2000" min="0" step="100">
+  </div>
+  <div class="field">
+    <label for="cac-customers">New customers this month</label>
+    <input type="number" autocomplete="off" id="cac-customers" value="50" min="1" step="1">
+    <span class="field__error-msg"></span>
+  </div>
+</div>
+<div class="field-row">
+  <div class="field">
+    <label for="cac-arpu">Monthly ARPU ($) <span style="font-size:0.8em;color:var(--text-muted)">(for payback calc)</span></label>
+    <input type="number" autocomplete="off" id="cac-arpu" value="99" min="0" step="1">
+  </div>
+  <div class="field">
+    <label for="cac-margin">Gross margin % <span style="font-size:0.8em;color:var(--text-muted)">(for payback calc)</span></label>
+    <input type="number" autocomplete="off" id="cac-margin" value="75" min="1" max="100" step="1">
+    <span class="field__error-msg"></span>
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="Total sales & marketing spend ÷ new customers acquired. Industry benchmarks: SaaS SMB $200–$500, Mid-Market $2k–$8k, Enterprise $15k+."><span class="stat-label">Blended CAC</span><span class="stat-value" id="cac-result">—</span></div>
+  <div class="stat" data-tooltip="CAC ÷ (ARPU × gross margin %). How many months until each new customer pays back their acquisition cost."><span class="stat-label">CAC Payback Period</span><span class="stat-value" id="cac-payback">—</span></div>
+  <div class="stat" data-tooltip="Sum of all sales & marketing costs: ad spend + payroll + tools. The denominator for CAC."><span class="stat-label">Total S&M Cost</span><span class="stat-value" id="cac-total-cost">—</span></div>
+  <div class="stat" data-tooltip="Same as blended CAC — total S&M ÷ customers acquired this month."><span class="stat-label">Cost Per Acquired Customer</span><span class="stat-value" id="cac-cost-per-lead">—</span></div>
+</div>
+<div id="cac-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="cac-copy" class="secondary">Copy results</button>
+  <button id="cac-share" class="secondary">Share results</button>
+</div>

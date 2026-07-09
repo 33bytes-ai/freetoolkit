@@ -1,0 +1,31 @@
+<div class="field-row">
+  <div class="field">
+    <label for="ret-start">Customers at start of period</label>
+    <input type="number" autocomplete="off" id="ret-start" value="500" min="1" step="10">
+  </div>
+  <div class="field">
+    <label for="ret-end">Customers at end of period</label>
+    <input type="number" autocomplete="off" id="ret-end" value="490" min="0" step="10">
+  </div>
+</div>
+<div class="field-row">
+  <div class="field">
+    <label for="ret-new">New customers acquired in period</label>
+    <input type="number" autocomplete="off" id="ret-new" value="40" min="0" step="5">
+  </div>
+  <div class="field">
+    <label for="ret-arpu">ARPU / monthly revenue per customer ($) <span style="font-size:0.8em;color:var(--text-muted)">(for LTV)</span></label>
+    <input type="number" autocomplete="off" id="ret-arpu" value="99" min="0" step="1">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="(End − New) ÷ Start × 100. The % of starting customers still active at period end. B2B SaaS benchmark: 90–95% monthly; 80–90% annual."><span class="stat-label">Retention Rate</span><span class="stat-value" id="ret-rate">—</span></div>
+  <div class="stat" data-tooltip="100% − Retention Rate. The % of starting customers lost in the period. Monthly churn of 2% compounds to ~22% annual churn."><span class="stat-label">Churn Rate</span><span class="stat-value" id="ret-churn">—</span></div>
+  <div class="stat" data-tooltip="End customers − New customers. How many of the original starting cohort are still active. Lost customers = Start − Retained."><span class="stat-label">Customers Retained</span><span class="stat-value" id="ret-retained">—</span></div>
+  <div class="stat" data-tooltip="ARPU ÷ Churn Rate. Average lifetime value of a customer at this churn rate. Lower churn = dramatically higher LTV (the relationship is non-linear)."><span class="stat-label">Implied LTV</span><span class="stat-value" id="ret-ltv">—</span></div>
+</div>
+<div id="ret-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="ret-copy" class="secondary">Copy results</button>
+  <button id="ret-share" class="secondary">Share results</button>
+</div>

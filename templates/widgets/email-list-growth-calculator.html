@@ -1,0 +1,29 @@
+<div class="field-row">
+  <div class="field">
+    <label for="elg-list">Current list size (subscribers)</label>
+    <input type="number" autocomplete="off" id="elg-list" value="5000" min="0" step="100">
+  </div>
+  <div class="field">
+    <label for="elg-new">New subscribers per month</label>
+    <input type="number" autocomplete="off" id="elg-new" value="300" min="0" step="10">
+  </div>
+  <div class="field">
+    <label for="elg-churn">Monthly churn rate (%)</label>
+    <input type="number" autocomplete="off" id="elg-churn" value="2" min="0" max="100" step="0.1">
+  </div>
+  <div class="field">
+    <label for="elg-target">Target list size <span style="font-size:0.8em;color:var(--text-muted)">(optional)</span></label>
+    <input type="number" autocomplete="off" id="elg-target" value="10000" min="0" step="100">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="New subscribers − (List size × churn rate). Actual subscribers added per month after unsubscribes. Negative = list is shrinking."><span class="stat-label">Net Monthly Growth</span><span class="stat-value" id="elg-net-growth">—</span></div>
+  <div class="stat" data-tooltip="Net monthly growth ÷ current list size. Monthly growth rate as a percentage. Compound this to project forward list size."><span class="stat-label">Monthly Growth Rate</span><span class="stat-value" id="elg-rate">—</span></div>
+  <div class="stat" data-tooltip="(1 + monthly growth rate)^12 − 1. Annualised equivalent growth rate accounting for compounding. Useful for year-over-year planning."><span class="stat-label">Annualised Growth</span><span class="stat-value" id="elg-annual-rate">—</span></div>
+  <div class="stat" data-tooltip="Months to reach target list size at current net growth. Uses compound growth: ln(target/current) ÷ ln(1 + monthly growth rate)."><span class="stat-label">Months to Target</span><span class="stat-value" id="elg-months">—</span></div>
+</div>
+<div id="elg-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="elg-copy" class="secondary">Copy results</button>
+  <button id="elg-share" class="secondary">Share results</button>
+</div>

@@ -1,0 +1,25 @@
+<div class="field-row">
+  <div class="field">
+    <label for="pr-salary">Annual salary ($)</label>
+    <input type="number" autocomplete="off" id="pr-salary" value="120000" min="0" step="5000">
+  </div>
+  <div class="field">
+    <label for="pr-benefits">Annual benefits cost ($) <span style="font-size:0.8em;color:var(--text-muted)">(health, 401k, etc.)</span></label>
+    <input type="number" autocomplete="off" id="pr-benefits" value="18000" min="0" step="1000">
+  </div>
+  <div class="field">
+    <label for="pr-suta">State unemployment rate (SUTA %) <span style="font-size:0.8em;color:var(--text-muted)">(default 2.7%)</span></label>
+    <input type="number" autocomplete="off" id="pr-suta" value="2.7" min="0" max="20" step="0.1">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="Employer FICA (7.65%), FUTA (0.6% on first $7K), and SUTA (custom rate on first $7K). Excludes employee-side withholding — this is what the employer pays on top of salary."><span class="stat-label">Payroll Taxes</span><span class="stat-value" id="pr-taxes">—</span></div>
+  <div class="stat" data-tooltip="Salary + Benefits + Payroll Taxes. All-in annual employer cost for this employee. Useful for headcount budget planning."><span class="stat-label">Total Annual Cost</span><span class="stat-value" id="pr-total">—</span></div>
+  <div class="stat" data-tooltip="Total Annual Cost ÷ 12. Monthly cash outlay for this employee. Use this for monthly burn rate and cash flow modeling."><span class="stat-label">Monthly Cost</span><span class="stat-value" id="pr-monthly">—</span></div>
+  <div class="stat" data-tooltip="Total Annual Cost ÷ Salary. How much you spend per dollar of salary. Typical range: 1.15–1.35× (taxes only) up to 1.4–1.5× with full benefits."><span class="stat-label">Cost / Salary Ratio</span><span class="stat-value" id="pr-rate">—</span></div>
+</div>
+<div id="pr-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="pr-copy" class="secondary">Copy results</button>
+  <button id="pr-share" class="secondary">Share results</button>
+</div>

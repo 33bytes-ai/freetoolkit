@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block head_extra %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.base_url }}/" },
+    { "@type": "ListItem", "position": 2, "name": "All Calculators", "item": "{{ site.base_url }}/changelog/" }
+  ]
+}
+</script>
+{% endblock %}
+{% block content %}
+<section class="wrap content-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a> <span aria-hidden="true">/</span>
+    <span aria-current="page">All Calculators</span>
+  </nav>
+  <h1>All Free Calculators</h1>
+  <p style="color:var(--text-muted); margin-bottom:1.5rem">{{ tools | length }} tools across {{ categories | length }} categories — all free, all run in your browser.</p>
+
+  <section style="margin-bottom:2rem;padding:1rem 1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius)">
+    <h2 style="margin:0 0 1rem;font-size:1rem;letter-spacing:0.02em;text-transform:uppercase;color:var(--text-muted)">Recent additions</h2>
+    {% set dated_tools = tools | selectattr("date_added") | list | sort(attribute="date_added", reverse=True) %}
+    {% for date, date_group in dated_tools | groupby("date_added") %}
+    {% set date_list = date_group | list %}
+    {% if loop.index <= 5 %}
+    <div style="margin-bottom:0.75rem">
+      <p style="font-size:0.78rem;font-weight:600;color:var(--text-muted);margin:0 0 0.35rem">{{ date }} &mdash; {{ date_list | length }} tool{{ "s" if date_list | length > 1 else "" }} added</p>
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:0.35rem">
+        {% for tool in date_list %}
+        <li><a href="/tools/{{ tool.slug }}/" style="font-size:0.85rem;padding:0.2rem 0.5rem;border-radius:var(--radius);border:1px solid var(--border);background:var(--bg);text-decoration:none;display:inline-block">{{ tool.nav_title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </section>
+
+  <div class="cat-filter-bar" style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.5rem" role="tablist" aria-label="Filter by category">
+    <button class="cat-filter-btn active" data-cat="all" role="tab" aria-selected="true">All</button>
+    {% for category in categories %}
+    <button class="cat-filter-btn" data-cat="{{ category }}" role="tab" aria-selected="false">{{ category }}</button>
+    {% endfor %}
+  </div>
+
+  {% for category in categories %}
+  {% set cat_tools = tools_by_category.get(category, []) %}
+  {% if cat_tools %}
+  <div class="cl-section" data-category="{{ category }}">
+    <h2 style="margin-top:2rem; padding-bottom:0.4rem; border-bottom:1px solid var(--border)">{{ category }}</h2>
+    <ul style="list-style:none; padding:0; margin:0">
+      {% for tool in cat_tools %}
+      <li style="padding:0.75rem 0; border-bottom:1px solid var(--border); display:flex; align-items:flex-start; justify-content:space-between; gap:1rem">
+        <div>
+          <a href="/tools/{{ tool.slug }}/" style="font-weight:600; font-size:1.05rem">{{ tool.title }}</a>
+          <p style="margin:0.2rem 0 0; color:var(--text-muted); font-size:0.9rem">{{ tool.short }}</p>
+          {% if tool.date_added %}<p style="margin:0.15rem 0 0; color:var(--text-muted); font-size:0.8rem">Added {{ tool.date_added }}</p>{% endif %}
+        </div>
+        {% if tool.new %}<span style="flex-shrink:0;font-size:0.7rem;font-weight:700;letter-spacing:0.05em;color:#fff;background:#16a34a;border-radius:4px;padding:0.15rem 0.45rem;align-self:center">NEW</span>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  {% endfor %}
+</section>
+<script>
+(function () {
+  var btns = document.querySelectorAll(".cat-filter-btn");
+  var sections = document.querySelectorAll(".cl-section");
+  btns.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var cat = btn.dataset.cat;
+      btns.forEach(function (b) { b.classList.toggle("active", b === btn); b.setAttribute("aria-selected", b === btn ? "true" : "false"); });
+      sections.forEach(function (sec) { sec.style.display = (cat === "all" || sec.dataset.category === cat) ? "" : "none"; });
+    });
+  });
+})();
+</script>
+{% endblock %}

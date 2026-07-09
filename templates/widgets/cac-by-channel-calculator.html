@@ -1,0 +1,38 @@
+<p class="tool-short" style="margin-bottom:0.75rem">Enter monthly spend and new customers per acquisition channel.</p>
+<table class="calc-table" id="cac-channels">
+  <thead>
+    <tr><th>Channel</th><th>Monthly spend ($)</th><th>New customers</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><input type="text" class="ch-name" value="Paid Search" placeholder="Channel name"></td>
+      <td><input type="number" autocomplete="off" class="ch-spend" value="5000" min="0" step="100"></td>
+      <td><input type="number" autocomplete="off" class="ch-customers" value="20" min="0" step="1"></td>
+    </tr>
+    <tr>
+      <td><input type="text" class="ch-name" value="Content / SEO" placeholder="Channel name"></td>
+      <td><input type="number" autocomplete="off" class="ch-spend" value="2000" min="0" step="100"></td>
+      <td><input type="number" autocomplete="off" class="ch-customers" value="18" min="0" step="1"></td>
+    </tr>
+    <tr>
+      <td><input type="text" class="ch-name" value="Outbound SDR" placeholder="Channel name"></td>
+      <td><input type="number" autocomplete="off" class="ch-spend" value="8000" min="0" step="100"></td>
+      <td><input type="number" autocomplete="off" class="ch-customers" value="15" min="0" step="1"></td>
+    </tr>
+    <tr>
+      <td><input type="text" class="ch-name" value="Referrals" placeholder="Optional"></td>
+      <td><input type="number" autocomplete="off" class="ch-spend" value="" min="0" step="100" placeholder="0"></td>
+      <td><input type="number" autocomplete="off" class="ch-customers" value="" min="0" step="1" placeholder="0"></td>
+    </tr>
+  </tbody>
+</table>
+<div class="stats-grid" style="margin-top:1rem">
+  <div class="stat" data-tooltip="Sum of all monthly channel spends. Total marketing and sales investment across every acquisition channel."><div class="num" id="cac-out-total-spend">$0</div><div class="label">Total spend</div></div>
+  <div class="stat" data-tooltip="Sum of new customers across all channels. Total new customers acquired this month from all tracked sources."><div class="num" id="cac-out-customers">0</div><div class="label">Total customers</div></div>
+  <div class="stat" data-tooltip="Total spend ÷ Total customers. What you spend per customer across all channels combined. Individual channel CACs below may diverge significantly."><div class="num" id="cac-out-blended">$0</div><div class="label">Blended CAC</div></div>
+</div>
+<div id="cac-results"></div>
+<div id="cac-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="cac-share" class="secondary">Share page</button>
+</div>

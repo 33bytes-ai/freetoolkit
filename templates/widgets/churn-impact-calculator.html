@@ -1,0 +1,25 @@
+<div class="field-row">
+  <div class="field">
+    <label for="churn-mrr">Current MRR ($)</label>
+    <input type="number" autocomplete="off" id="churn-mrr" value="10000" min="0" step="100">
+  </div>
+  <div class="field">
+    <label for="churn-rate">Monthly churn rate (%)</label>
+    <input type="number" autocomplete="off" id="churn-rate" value="5" min="0" max="100" step="0.1">
+  </div>
+  <div class="field">
+    <label for="churn-new-mrr">Monthly new MRR ($)</label>
+    <input type="number" autocomplete="off" id="churn-new-mrr" value="1000" min="0" step="100">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="Your projected MRR after 3 months at current churn + growth."><div class="num" id="churn-out-3mo">$0</div><div class="label">MRR in 3 months</div></div>
+  <div class="stat" data-tooltip="Projected MRR after 6 months."><div class="num" id="churn-out-6mo">$0</div><div class="label">MRR in 6 months</div></div>
+  <div class="stat" data-tooltip="Projected MRR after 12 months."><div class="num" id="churn-out-12mo">$0</div><div class="label">MRR in 12 months</div></div>
+  <div class="stat" data-tooltip="The additional MRR you would have in 12 months if you reduced monthly churn by 1 percentage point from today."><div class="num" id="churn-out-saved">$0</div><div class="label">Worth of 1% less churn (12 mo)</div></div>
+</div>
+<div id="churn-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="churn-copy" class="secondary">Copy results</button>
+  <button id="churn-share" class="secondary">Share results</button>
+</div>

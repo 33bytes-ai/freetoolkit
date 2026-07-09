@@ -1,0 +1,39 @@
+<div class="calc-grid">
+  <label for="ps-revenue">Annual recurring revenue / revenue ($)</label>
+  <input type="number" id="ps-revenue" min="0" step="100000" value="10000000" autocomplete="off">
+
+  <label for="ps-mcap">Market cap or current valuation ($)</label>
+  <input type="number" id="ps-mcap" min="0" step="1000000" value="80000000" autocomplete="off">
+
+  <label for="ps-target-mult">Target P/S multiple for implied valuation (x)</label>
+  <input type="number" id="ps-target-mult" min="0" step="0.5" value="10" autocomplete="off">
+
+  <label for="ps-growth">Revenue growth rate (% YoY, for growth-adjusted P/S)</label>
+  <input type="number" id="ps-growth" min="0" step="5" value="40" autocomplete="off">
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card" data-tooltip="Market Cap ÷ Annual Revenue. How much investors pay per dollar of revenue. SaaS benchmarks: 5–15× for high-growth; 1–5× for mature or slow-growth businesses.">
+    <span class="stat-label">P/S Ratio</span>
+    <span class="stat-value" id="ps-ratio">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Revenue × Target P/S Multiple. What your company would be valued at if the market assigned your target multiple to current revenue.">
+    <span class="stat-label">Implied Valuation at Target</span>
+    <span class="stat-value" id="ps-implied">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Current Market Cap ÷ Target Multiple. Revenue you'd need to generate at your current valuation to justify the target P/S multiple. A growth milestone to work toward.">
+    <span class="stat-label">Revenue Needed at Target Multiple</span>
+    <span class="stat-value" id="ps-implied-rev">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="P/S Ratio ÷ Revenue Growth Rate. Normalises P/S for growth. Also called PEG for revenue. Values below 0.5 may indicate undervaluation; above 1.5 premium for expected growth.">
+    <span class="stat-label">Growth-Adjusted P/S (P/S ÷ growth)</span>
+    <span class="stat-value" id="ps-growth-adj">--</span>
+  </div>
+</div>
+
+<div id="ps-insight" class="insight-box" aria-live="polite"></div>
+
+<div class="calc-actions">
+  <button id="ps-share-btn" class="btn-secondary">Share</button>
+  <button id="ps-copy" class="btn-secondary">Copy results</button>
+</div>

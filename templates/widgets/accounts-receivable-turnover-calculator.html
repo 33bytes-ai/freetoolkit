@@ -1,0 +1,31 @@
+<div class="field-row">
+  <div class="field">
+    <label for="art-sales">Annual Net Credit Sales ($)</label>
+    <input type="number" autocomplete="off" id="art-sales" value="2400000" min="0" step="100000">
+  </div>
+  <div class="field">
+    <label for="art-begin-ar">Beginning A/R Balance ($)</label>
+    <input type="number" autocomplete="off" id="art-begin-ar" value="180000" min="0" step="10000">
+  </div>
+</div>
+<div class="field-row">
+  <div class="field">
+    <label for="art-end-ar">Ending A/R Balance ($)</label>
+    <input type="number" autocomplete="off" id="art-end-ar" value="220000" min="0" step="10000">
+  </div>
+  <div class="field">
+    <label for="art-target-dso">Target DSO (days)</label>
+    <input type="number" autocomplete="off" id="art-target-dso" value="30" min="1" max="365" step="1">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="(Beginning A/R + Ending A/R) ÷ 2. Average receivables balance used in the turnover calculation. More accurate than using a single period snapshot."><span class="stat-label">Avg A/R</span><span class="stat-value" id="art-avg-ar">—</span></div>
+  <div class="stat" data-tooltip="Net Credit Sales ÷ Average A/R. How many times per year you collect your average receivables balance. Higher = faster collections. 8–12x is typical for B2B businesses."><span class="stat-label">A/R Turnover</span><span class="stat-value" id="art-result">—</span></div>
+  <div class="stat" data-tooltip="(Avg A/R ÷ Net Credit Sales) × 365. Days Sales Outstanding — average days to collect after a sale. 30 days = collecting on net-30 terms; higher means slow collections."><span class="stat-label">DSO</span><span class="stat-value" id="art-dso">—</span></div>
+  <div class="stat" data-tooltip="Current Avg A/R minus the ideal A/R at your target DSO. Positive = cash tied up in receivables beyond your target. Reducing this frees up working capital."><span class="stat-label">Excess A/R vs Target</span><span class="stat-value" id="art-excess">—</span></div>
+</div>
+<div id="art-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="art-copy" class="secondary">Copy results</button>
+  <button id="art-share" class="secondary">Share results</button>
+</div>

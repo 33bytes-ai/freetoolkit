@@ -1,0 +1,29 @@
+<div class="field-row">
+  <div class="field">
+    <label for="bm-net-burn">Annual net burn ($) <span style="font-size:0.8em;color:var(--text-muted)">(cash spent minus revenue collected)</span></label>
+    <input type="number" autocomplete="off" id="bm-net-burn" value="3000000" min="0" step="100000">
+  </div>
+  <div class="field">
+    <label for="bm-new-arr">Net new ARR added ($) <span style="font-size:0.8em;color:var(--text-muted)">(new ARR minus churned ARR)</span></label>
+    <input type="number" autocomplete="off" id="bm-new-arr" value="2000000" min="1" step="100000">
+  </div>
+  <div class="field">
+    <label for="bm-cash">Cash on hand ($) <span style="font-size:0.8em;color:var(--text-muted)">(for runway calc)</span></label>
+    <input type="number" autocomplete="off" id="bm-cash" value="8000000" min="0" step="500000">
+  </div>
+  <div class="field">
+    <label for="bm-new-customers">New customers this year <span style="font-size:0.8em;color:var(--text-muted)">(for CAC estimate)</span></label>
+    <input type="number" autocomplete="off" id="bm-new-customers" value="100" min="0" step="1">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="Net burn ÷ net new ARR. <div class="stat"><span class="stat-label">Burn Multiple</span>lt;1× is exceptional; 1–1.5× good; 2–3× acceptable; <div class="stat"><span class="stat-label">Burn Multiple</span>gt;3× burning unsustainably."><span class="stat-label">Burn Multiple</span><span class="stat-value" id="bm-result">--</span></div>
+  <div class="stat" data-tooltip="Cash balance ÷ net burn. Months until you run out of money."><span class="stat-label">Runway</span><span class="stat-value" id="bm-runway">--</span></div>
+  <div class="stat" data-tooltip="Net burn per month of new ARR acquired — a proxy for how much you pay to acquire each dollar of new ARR."><span class="stat-label">Implied CAC (monthly)</span><span class="stat-value" id="bm-cac">--</span></div>
+  <div class="stat" data-tooltip="ARR ÷ annualised burn. How much ARR you have for every dollar of burn. Higher is better."><span class="stat-label">ARR / Burn Ratio</span><span class="stat-value" id="bm-arr-ratio">--</span></div>
+</div>
+<div id="bm-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="bm-copy" class="secondary">Copy results</button>
+  <button id="bm-share" class="secondary">Share results</button>
+</div>

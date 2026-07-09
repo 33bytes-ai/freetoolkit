@@ -1,0 +1,36 @@
+<div class="calc-grid">
+  <label for="arpu-mrr">Total MRR ($)</label>
+  <input type="number" id="arpu-mrr" min="0" step="1000" value="50000" autocomplete="off">
+
+  <label for="arpu-users">Active paying users</label>
+  <input type="number" id="arpu-users" min="1" step="10" value="500" autocomplete="off">
+
+  <label for="arpu-target-mrr">Target MRR (optional, $)</label>
+  <input type="number" id="arpu-target-mrr" min="0" step="10000" value="" autocomplete="off">
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card" data-tooltip="MRR ÷ active paying users. Average Revenue Per User monthly. Low ARPU (<$20) requires massive scale; high ARPU (>$200) enables enterprise-motion growth.">
+    <span class="stat-label">ARPU / month</span>
+    <span class="stat-value" id="arpu-result">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="ARPU × 12. The average annual revenue per customer. Use this for LTV:CAC calculations and comparing to CAC benchmarks.">
+    <span class="stat-label">ARPU / year</span>
+    <span class="stat-value" id="arpu-annual">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Target MRR ÷ current ARPU. How many users you need at your current average price to reach your MRR target.">
+    <span class="stat-label">Users to hit target</span>
+    <span class="stat-value" id="arpu-users-needed">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Current ARPU × (2 × current users). What MRR would be if you doubled your user count at the same average price.">
+    <span class="stat-label">MRR at 2× users</span>
+    <span class="stat-value" id="arpu-mrr-2x">--</span>
+  </div>
+</div>
+
+<div id="arpu-insight" class="insight-box" aria-live="polite"></div>
+
+<div class="calc-actions">
+  <button id="arpu-share" class="btn-secondary">Share</button>
+  <button id="arpu-copy" class="btn-secondary">Copy results</button>
+</div>

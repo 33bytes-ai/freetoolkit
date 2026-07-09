@@ -1,0 +1,43 @@
+<div class="tool-widget" role="main">
+  <div class="field-row">
+    <div class="field">
+      <label for="ol-revenue">Revenue ($)</label>
+      <input id="ol-revenue" type="number" min="0" step="10000" value="2000000" placeholder="e.g. 2000000">
+      <span class="field__error-msg"></span>
+    </div>
+    <div class="field">
+      <label for="ol-variable">Variable costs ($)</label>
+      <input id="ol-variable" type="number" min="0" step="10000" value="400000" placeholder="e.g. 400000">
+      <span class="field__error-msg"></span>
+    </div>
+    <div class="field">
+      <label for="ol-fixed">Fixed operating costs ($)</label>
+      <input id="ol-fixed" type="number" min="0" step="10000" value="1200000" placeholder="e.g. 1200000">
+      <span class="field__error-msg"></span>
+    </div>
+  </div>
+  <div class="output-grid">
+    <div class="output-box" data-tooltip="Revenue minus variable costs. The money available to cover fixed costs and generate operating income.">
+      <span class="label">Contribution Margin</span>
+      <span class="value" id="ol-out-cm">—</span>
+    </div>
+    <div class="output-box" data-tooltip="Contribution margin as a percentage of revenue. Every dollar of revenue contributes this % toward fixed costs and profit.">
+      <span class="label">CM Ratio</span>
+      <span class="value" id="ol-out-cmpct">—</span>
+    </div>
+    <div class="output-box" data-tooltip="Contribution margin minus fixed costs. The profit (or loss) from operations before interest and taxes.">
+      <span class="label">Operating Income (EBIT)</span>
+      <span class="value" id="ol-out-oi">—</span>
+    </div>
+    <div class="output-box" data-tooltip="Degree of Operating Leverage = Contribution Margin ÷ Operating Income. A DOL of 3× means a 10% revenue change produces a 30% operating income change.">
+      <span class="label">Degree of Operating Leverage</span>
+      <span class="value" id="ol-out-dol">—</span>
+    </div>
+    <div class="output-box" data-tooltip="The revenue level at which operating income = 0. Below this, you operate at a loss.">
+      <span class="label">Break-even Revenue</span>
+      <span class="value" id="ol-out-ber">—</span>
+    </div>
+  </div>
+  <div id="ol-insight" class="calc-insight" style="display:none"></div>
+</div>
+<script src="/static/js/tools/operating-leverage-calculator.js" defer></script>

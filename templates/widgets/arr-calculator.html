@@ -1,0 +1,25 @@
+<div class="field-row">
+  <div class="field">
+    <label for="arr-mrr">Current MRR ($)</label>
+    <input type="number" autocomplete="off" id="arr-mrr" value="83333" min="0" step="1000">
+  </div>
+  <div class="field">
+    <label for="arr-prev-arr">ARR 12 months ago ($) <span style="font-size:0.8em;color:var(--text-muted)">(for YoY growth)</span></label>
+    <input type="number" autocomplete="off" id="arr-prev-arr" value="600000" min="0" step="10000">
+  </div>
+  <div class="field">
+    <label for="arr-growth-rate">Monthly growth rate % <span style="font-size:0.8em;color:var(--text-muted)">(for 12/24-month projection)</span></label>
+    <input type="number" autocomplete="off" id="arr-growth-rate" value="8" min="-50" max="200" step="0.5">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="Annual Recurring Revenue = MRR × 12. The top-line number used for SaaS valuations, fundraising, and board reporting."><span class="stat-label">Current ARR</span><span class="stat-value" id="arr-result">--</span></div>
+  <div class="stat" data-tooltip="(Current ARR − ARR 12 months ago) ÷ ARR 12 months ago. Year-over-year ARR growth. T2D3 targets: triple twice, then double 3 times."><span class="stat-label">YoY Growth</span><span class="stat-value" id="arr-yoy">--</span></div>
+  <div class="stat" data-tooltip="ARR projected 12 months forward at your monthly growth rate using compound growth formula."><span class="stat-label">ARR in 12 months</span><span class="stat-value" id="arr-proj12">--</span></div>
+  <div class="stat" data-tooltip="ARR projected 24 months forward. Divide by 12 to see the implied MRR 2 years from now."><span class="stat-label">ARR in 24 months</span><span class="stat-value" id="arr-proj24">--</span></div>
+</div>
+<div id="arr-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="arr-copy" class="secondary">Copy results</button>
+  <button id="arr-share" class="secondary">Share results</button>
+</div>

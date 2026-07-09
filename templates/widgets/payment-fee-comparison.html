@@ -1,0 +1,16 @@
+<div class="field-row" style="margin-bottom:1.25rem">
+  <div class="field" style="max-width:220px">
+    <label for="pfc-amount">Sale amount ($)</label>
+    <input type="number" autocomplete="off" id="pfc-amount" value="100" min="0" step="1">
+  </div>
+  <div class="field" style="max-width:280px">
+    <label for="pfc-custom-rate">Custom rate (% + fixed $, e.g. 2.5+0.10)</label>
+    <input type="text" id="pfc-custom-rate" placeholder="2.5+0.10" style="max-width:200px">
+  </div>
+</div>
+<div id="pfc-table"></div>
+<div id="pfc-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="pfc-copy" class="secondary">Copy results</button>
+  <button id="pfc-share" class="secondary">Share results</button>
+</div>

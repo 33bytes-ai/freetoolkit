@@ -1,0 +1,39 @@
+<div class="calc-grid">
+  <label for="sqr-new-mrr">New MRR this month ($)</label>
+  <input type="number" id="sqr-new-mrr" min="0" step="100" value="50000" autocomplete="off">
+
+  <label for="sqr-expansion-mrr">Expansion MRR ($)</label>
+  <input type="number" id="sqr-expansion-mrr" min="0" step="100" value="15000" autocomplete="off">
+
+  <label for="sqr-contraction-mrr">Contraction MRR ($)</label>
+  <input type="number" id="sqr-contraction-mrr" min="0" step="100" value="5000" autocomplete="off">
+
+  <label for="sqr-churned-mrr">Churned MRR ($)</label>
+  <input type="number" id="sqr-churned-mrr" min="0" step="100" value="10000" autocomplete="off">
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card" data-tooltip="(New MRR + Expansion) ÷ (Contraction + Churn). Above 4 = exceptional growth efficiency. Between 2–4 = healthy. Below 1 = you're losing more than you're gaining.">
+    <span class="stat-label">SaaS Quick Ratio</span>
+    <span class="stat-value" id="sqr-result">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="New MRR + Expansion MRR. The total MRR added from new customers and upgrades this month.">
+    <span class="stat-label">Growth MRR</span>
+    <span class="stat-value" id="sqr-growth-mrr">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Contraction MRR + Churned MRR. The total MRR lost to downgrades and cancellations this month.">
+    <span class="stat-label">Lost MRR</span>
+    <span class="stat-value" id="sqr-lost-mrr">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Growth MRR − Lost MRR. The true change in MRR from existing customer movements this period (excludes net-new acquisition).">
+    <span class="stat-label">Net New MRR</span>
+    <span class="stat-value" id="sqr-net-new-mrr">--</span>
+  </div>
+</div>
+
+<div id="sqr-insight" class="insight-box" aria-live="polite"></div>
+
+<div class="calc-actions">
+  <button id="sqr-share" class="btn-secondary">Share</button>
+  <button id="sqr-copy" class="btn-secondary">Copy results</button>
+</div>

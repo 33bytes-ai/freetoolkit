@@ -1,0 +1,32 @@
+<p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1rem">Score each dimension 0–100 based on your customer's behaviour. Weights: Usage 30%, Engagement 25%, NPS 20%, Support 15%, Growth 10%.</p>
+<div class="field-row">
+  <div class="field">
+    <label for="chs-usage">Product usage score (0–100)</label>
+    <input type="number" autocomplete="off" id="chs-usage" value="70" min="0" max="100" step="1">
+  </div>
+  <div class="field">
+    <label for="chs-engagement">Engagement / logins (0–100)</label>
+    <input type="number" autocomplete="off" id="chs-engagement" value="65" min="0" max="100" step="1">
+  </div>
+  <div class="field">
+    <label for="chs-nps">NPS / satisfaction (0–100)</label>
+    <input type="number" autocomplete="off" id="chs-nps" value="60" min="0" max="100" step="1">
+  </div>
+  <div class="field">
+    <label for="chs-support">Support health (0–100)</label>
+    <input type="number" autocomplete="off" id="chs-support" value="80" min="0" max="100" step="1">
+  </div>
+  <div class="field">
+    <label for="chs-growth">Expansion / growth (0–100)</label>
+    <input type="number" autocomplete="off" id="chs-growth" value="50" min="0" max="100" step="1">
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="Usage×0.30 + Engagement×0.25 + NPS×0.20 + Support×0.15 + Growth×0.10. Weighted composite from 0–100. Scores above 75 are Healthy; 50–75 At Risk; below 50 are Churn Risk."><span class="stat-label">Health Score</span><span class="stat-value" id="chs-score" style="font-size:2.5rem">—</span></div>
+  <div class="stat" data-tooltip="Qualitative label derived from the health score. Healthy = 75+; At Risk = 50–74; Churn Risk = below 50. Use as a trigger for CSM intervention priority."><span class="stat-label">Status</span><span class="stat-value" id="chs-label">—</span></div>
+</div>
+<div id="chs-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="chs-copy" class="secondary">Copy results</button>
+  <button id="chs-share" class="secondary">Share results</button>
+</div>

@@ -1,0 +1,27 @@
+<div class="field-row">
+  <div class="field">
+    <label for="bv-actual">Actual Amount ($)</label>
+    <input type="number" autocomplete="off" id="bv-actual" value="52000" step="any">
+  </div>
+  <div class="field">
+    <label for="bv-budget">Budgeted Amount ($)</label>
+    <input type="number" autocomplete="off" id="bv-budget" value="50000" step="any">
+  </div>
+</div>
+<div class="field" style="max-width:240px">
+  <label for="bv-type">Line item type</label>
+  <select id="bv-type" autocomplete="off">
+    <option value="expense">Expense (higher actual = unfavorable)</option>
+    <option value="revenue">Revenue (higher actual = favorable)</option>
+  </select>
+</div>
+<div class="stats-grid">
+  <div class="stat" data-tooltip="Actual − Budget. Positive = actual exceeded budget; negative = came in under budget. Favorable/unfavorable direction depends on whether this is a cost or revenue line."><span class="stat-label">Variance ($)</span><span class="stat-value" id="bv-variance">—</span></div>
+  <div class="stat" data-tooltip="(Actual − Budget) ÷ |Budget| × 100. Percentage difference between actual and budget. Used to identify material variances — typically anything over 5–10% warrants investigation."><span class="stat-label">Variance (%)</span><span class="stat-value" id="bv-variance-pct">—</span></div>
+  <div class="stat" data-tooltip="For expenses: favorable if actual < budget (spent less than planned). For revenue: favorable if actual > budget (earned more than planned)."><span class="stat-label">Status</span><span class="stat-value" id="bv-status">—</span></div>
+</div>
+<div id="bv-insight" class="calc-insight" style="display:none"></div>
+<div class="btn-row" style="margin-top:0.75rem">
+  <button id="bv-copy" class="secondary">Copy results</button>
+  <button id="bv-share" class="secondary">Share results</button>
+</div>

@@ -1,0 +1,39 @@
+<div class="calc-grid">
+  <label for="fcf-ocf">Operating cash flow ($)</label>
+  <input type="number" id="fcf-ocf" step="10000" value="500000" autocomplete="off">
+
+  <label for="fcf-capex">Capital expenditures / CapEx ($)</label>
+  <input type="number" id="fcf-capex" min="0" step="10000" value="80000" autocomplete="off">
+
+  <label for="fcf-revenue">Annual revenue ($ — for FCF margin)</label>
+  <input type="number" id="fcf-revenue" min="0" step="50000" value="2000000" autocomplete="off">
+
+  <label for="fcf-market-cap">Market cap ($ — for FCF yield, optional)</label>
+  <input type="number" id="fcf-market-cap" min="0" step="100000" value="0" autocomplete="off">
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card" data-tooltip="Operating Cash Flow − CapEx. The cash the business generates after maintaining and growing its asset base. The 'real' profitability metric beyond accounting earnings.">
+    <span class="stat-label">Free Cash Flow</span>
+    <span class="stat-value" id="fcf-result">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="FCF ÷ Revenue. Profitable SaaS: 15–25%+ FCF margin. Rule of 40 companies typically achieve 20%+ FCF margin at scale.">
+    <span class="stat-label">FCF Margin</span>
+    <span class="stat-value" id="fcf-margin">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="FCF ÷ Market Cap. How much free cash flow the company generates relative to its market value. Higher = better value. Buffett prefers 10%+ FCF yield.">
+    <span class="stat-label">FCF Yield</span>
+    <span class="stat-value" id="fcf-yield">--</span>
+  </div>
+  <div class="stat-card" data-tooltip="Annual FCF ÷ 12. Useful for cash flow planning, working capital management, and comparing with monthly burn or loan payments.">
+    <span class="stat-label">Monthly FCF</span>
+    <span class="stat-value" id="fcf-monthly">--</span>
+  </div>
+</div>
+
+<div id="fcf-insight" class="insight-box" aria-live="polite"></div>
+
+<div class="calc-actions">
+  <button id="fcf-share" class="btn-secondary">Share</button>
+  <button id="fcf-copy" class="btn-secondary">Copy results</button>
+</div>

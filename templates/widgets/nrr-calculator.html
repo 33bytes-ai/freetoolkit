@@ -1,0 +1,46 @@
+<div class="tool-widget" role="main">
+  <div class="field-row">
+    <div class="field">
+      <label for="nrr-start">Starting MRR ($)</label>
+      <input id="nrr-start" type="number" min="0" step="1000" value="100000" placeholder="e.g. 100000">
+      <span class="field__error-msg"></span>
+    </div>
+    <div class="field">
+      <label for="nrr-expansion">Expansion MRR ($) <span style="font-size:0.8em;color:var(--text-muted)">upgrades, upsells</span></label>
+      <input id="nrr-expansion" type="number" min="0" step="500" value="15000" placeholder="e.g. 15000">
+      <span class="field__error-msg"></span>
+    </div>
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <label for="nrr-contraction">Contraction MRR ($) <span style="font-size:0.8em;color:var(--text-muted)">downgrades</span></label>
+      <input id="nrr-contraction" type="number" min="0" step="500" value="3000" placeholder="e.g. 3000">
+      <span class="field__error-msg"></span>
+    </div>
+    <div class="field">
+      <label for="nrr-churned">Churned MRR ($) <span style="font-size:0.8em;color:var(--text-muted)">cancelled accounts</span></label>
+      <input id="nrr-churned" type="number" min="0" step="500" value="5000" placeholder="e.g. 5000">
+      <span class="field__error-msg"></span>
+    </div>
+  </div>
+  <div class="output-grid">
+    <div class="output-box" data-tooltip="Net Revenue Retention = (Starting MRR + Expansion − Contraction − Churn) ÷ Starting MRR. Above 100% = expansion exceeds churn. World-class SaaS achieves 130%+.">
+      <span class="label">NRR</span>
+      <span class="value" id="nrr-out-nrr">—</span>
+    </div>
+    <div class="output-box" data-tooltip="Gross Revenue Retention = (Starting MRR − Contraction − Churn) ÷ Starting MRR. Like NRR but excludes expansion. Best-in-class GRR exceeds 90%. Always ≤100%.">
+      <span class="label">Gross Revenue Retention</span>
+      <span class="value" id="nrr-out-grr">—</span>
+    </div>
+    <div class="output-box" data-tooltip="Expansion MRR minus contraction MRR minus churned MRR. Positive = expansion exceeds losses; negative = revenue from existing customers is shrinking.">
+      <span class="label">Net New MRR (existing)</span>
+      <span class="value" id="nrr-out-netnew">—</span>
+    </div>
+    <div class="output-box" data-tooltip="Starting MRR adjusted for all revenue movements. Add new customer MRR separately to get your total ending MRR.">
+      <span class="label">Ending MRR (existing)</span>
+      <span class="value" id="nrr-out-ending">—</span>
+    </div>
+  </div>
+  <div id="nrr-insight" class="calc-insight" style="display:none"></div>
+</div>
+<script src="/static/js/tools/nrr-calculator.js" defer></script>

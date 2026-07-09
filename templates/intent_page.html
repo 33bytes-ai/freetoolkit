@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block og_type %}<meta property="og:type" content="article">{% if parent_tool and parent_tool.date_added %}<meta property="article:published_time" content="{{ parent_tool.date_added }}T00:00:00Z"><meta property="article:modified_time" content="{{ parent_tool.date_added }}T00:00:00Z">{% endif %}{% if parent_tool and parent_tool.keywords %}{% for kw in parent_tool.keywords[:3] %}<meta property="article:tag" content="{{ kw }}">{% endfor %}{% endif %}{% endblock %}
+{% if parent_tool %}
+{% block og_image %}<meta property="og:image" content="{{ site.base_url }}/static/img/og-{{ parent_tool.slug }}.png">{% endblock %}
+{% block twitter_image %}<meta name="twitter:image" content="{{ site.base_url }}/static/img/og-{{ parent_tool.slug }}.png">{% endblock %}
+{% endif %}
+{% block head_extra %}
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="author" content="{{ site.name }}">
+<meta name="geo.region" content="US">
+<meta name="coverage" content="Worldwide">
+<meta name="identifier-URL" content="{{ site.base_url }}/tools/{{ intent_page.parent_tool }}/{{ intent_page.slug }}/">
+<meta name="ICBM" content="37.7749,-122.4194">
+<meta name="DC.format" content="text/html">
+<meta name="DC.subject" content="{{ intent_page.title }}">
+{% if parent_tool %}<meta name="topic" content="{{ parent_tool.category }}">{% endif %}
+<meta name="summary" content="{{ intent_page.description }}">
+<meta name="distribution" content="global">
+{% if parent_tool and parent_tool.keywords %}<meta name="keywords" content="{{ parent_tool.keywords | join(', ') }}">
+<meta name="news_keywords" content="{{ parent_tool.keywords[:5] | join(', ') }}">{% endif %}
+{% if prev_intent_page %}<link rel="prev" href="/tools/{{ prev_intent_page.parent_tool }}/{{ prev_intent_page.slug }}/">{% endif %}
+{% if next_intent_page %}<link rel="next" href="/tools/{{ next_intent_page.parent_tool }}/{{ next_intent_page.slug }}/">{% endif %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.base_url }}/" },
+    {% if parent_tool %}
+    { "@type": "ListItem", "position": 2, "name": {{ parent_tool.title | tojson }}, "item": "{{ site.base_url }}/tools/{{ parent_tool.slug }}/" },
+    {% endif %}
+    { "@type": "ListItem", "position": {{ 3 if parent_tool else 2 }}, "name": {{ intent_page.title | tojson }}, "item": "{{ site.base_url }}/tools/{{ intent_page.parent_tool }}/{{ intent_page.slug }}/" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ intent_page.title | tojson }},
+  "description": {{ intent_page.description | tojson }},
+  "url": "{{ site.base_url }}/tools/{{ intent_page.parent_tool }}/{{ intent_page.slug }}/",
+  {% if parent_tool and parent_tool.date_added %}
+  "datePublished": "{{ parent_tool.date_added }}",
+  "dateModified": "{{ parent_tool.date_added }}",
+  {% endif %}
+  "author": {
+    "@type": "Organization",
+    "name": "{{ site.name }}",
+    "url": "{{ site.base_url }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ site.name }}",
+    "url": "{{ site.base_url }}"
+  }{% if parent_tool %},
+  "image": "{{ site.base_url }}/static/img/og-{{ parent_tool.slug }}.png"{% endif %}{% if intent_page.body %},
+  "wordCount": {{ intent_page.body | wordcount }}{% endif %}
+}
+</script>
+{% if intent_page.title.startswith("What Is") or intent_page.title.startswith("What is") %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DefinedTerm",
+  "name": {{ intent_page.title | replace("What Is ", "") | replace("What is ", "") | replace("?", "") | tojson }},
+  "description": {{ intent_page.description | tojson }},
+  "url": "{{ site.base_url }}/tools/{{ intent_page.parent_tool }}/{{ intent_page.slug }}/"{% if parent_tool %},
+  "inDefinedTermSet": {
+    "@type": "DefinedTermSet",
+    "name": "{{ site.name }} Financial Glossary",
+    "url": "{{ site.base_url }}"
+  }{% endif %}
+}
+</script>
+{% endif %}
+{% endblock %}
+{% block content %}
+<section class="wrap tool-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb navigation">
+    <a href="/">Home</a> <span aria-hidden="true">/</span>
+    {% if parent_tool %}
+    <a href="/tools/{{ parent_tool.slug }}/">{{ parent_tool.title }}</a> <span aria-hidden="true">/</span>
+    {% endif %}
+    <span aria-current="page">{{ intent_page.title }}</span>
+  </nav>
+
+  <h1>{{ intent_page.title }}</h1>
+  {% if intent_page.body %}
+  <p style="font-size:0.78rem;color:var(--text-muted);margin:0.25rem 0 1rem">~{{ ((intent_page.body | wordcount) / 200) | round | int }} min read</p>
+  {% endif %}
+
+  <article class="tool-body">
+    {{ intent_page.body_html | safe }}
+  </article>
+
+  {% if parent_tool %}
+  <div class="intent-cta">
+    <h2>Calculate it yourself — free</h2>
+    <p>Use our free {{ parent_tool.title }} to run the numbers for your own business.</p>
+    <a href="/tools/{{ parent_tool.slug }}/" class="btn-primary">Open {{ parent_tool.nav_title }} →</a>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

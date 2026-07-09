@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+{% block og_image %}<meta property="og:image" content="{{ site.base_url }}/static/img/og-{{ tool.slug }}.png"><meta property="og:image:secure_url" content="{{ site.base_url }}/static/img/og-{{ tool.slug }}.png"><meta property="og:image:alt" content="{{ tool.title }} — {{ site.name }}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png">{% endblock %}
+{% block twitter_image %}<meta name="twitter:image" content="{{ site.base_url }}/static/img/og-{{ tool.slug }}.png">{% endblock %}
+{% block twitter_extra %}<meta name="twitter:label1" content="Category"><meta name="twitter:data1" content="{{ tool.category }}"><meta name="twitter:label2" content="Free tool"><meta name="twitter:data2" content="Yes, no sign-up"><meta property="article:section" content="{{ tool.category }}"><meta property="og:locale:alternate" content="en_GB"><meta property="og:locale:alternate" content="en_AU">{% endblock %}
+{% block og_type %}<meta property="og:type" content="website">{% if tool.date_added %}<meta property="og:updated_time" content="{{ tool.date_added }}T00:00:00Z">{% endif %}{% endblock %}
+{% block head_extra %}
+<meta name="robots" content="index, follow">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+{% if tool.keywords %}<meta name="keywords" content="{{ tool.keywords | join(', ') }}">{% endif %}
+<meta name="classification" content="{{ tool.category }}">
+<meta name="thumbnail" content="{{ site.base_url }}/static/img/og-{{ tool.slug }}.png">
+{% if tool.date_added %}<meta name="dcterms.created" content="{{ tool.date_added }}"><meta name="dcterms.modified" content="{{ tool.date_added }}">{% endif %}
+<meta name="DC.title" content="{{ tool.title }}">
+<meta name="DC.description" content="{{ tool.short }}">
+<meta name="DC.language" content="en">
+<meta name="DC.subject" content="{{ tool.category }}">
+<meta name="DC.type" content="InteractiveResource">
+<meta name="DC.rights" content="Copyright {{ year }} {{ site.name }}">
+<meta name="subject" content="{{ tool.title }}">
+<meta name="coverage" content="Worldwide">
+<meta name="ICBM" content="37.7749,-122.4194">
+<meta name="geo.position" content="37.7749;-122.4194">
+<meta name="identifier-URL" content="{{ site.base_url }}/tools/{{ tool.slug }}/">
+<link rel="author" href="{{ site.base_url }}/about/">
+<link rel="preload" href="/static/js/tools/{{ tool.js }}" as="script">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.base_url }}/" },
+    { "@type": "ListItem", "position": 2, "name": {{ tool.category | tojson }}, "item": "{{ site.base_url }}/" },
+    { "@type": "ListItem", "position": 3, "name": {{ tool.title | tojson }}, "item": "{{ site.base_url }}/tools/{{ tool.slug }}/" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": {{ tool.title | tojson }},
+  "description": {{ tool.short | tojson }},
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "url": "{{ site.base_url }}/tools/{{ tool.slug }}/",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "{{ site.name }}", "url": "{{ site.base_url }}" }{% if tool.date_added %},
+  "datePublished": "{{ tool.date_added }}",
+  "dateModified": "{{ tool.date_added }}"{% endif %}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": {{ tool.title | tojson }},
+  "description": {{ tool.short | tojson }},
+  "url": "{{ site.base_url }}/tools/{{ tool.slug }}/",
+  "speakable": { "@type": "SpeakableSpecification", "cssSelector": [".tool-short", "h1"] }
+}
+</script>
+{% if tool.howto_steps %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": {{ ("How to use the " + tool.title) | tojson }},
+  "description": {{ tool.short | tojson }},
+  "step": [
+    {% for step in tool.howto_steps %}
+    { "@type": "HowToStep", "name": {{ step.name | tojson }}, "text": {{ step.text | tojson }} }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
+{% if tool_faqs %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for faq in tool_faqs %}
+    {
+      "@type": "Question",
+      "name": {{ faq.question | tojson }},
+      "acceptedAnswer": { "@type": "Answer", "text": {{ faq.answer | tojson }} }
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
+{% endblock %}
+{% block content %}
+<section class="wrap tool-page" role="main" itemscope itemtype="https://schema.org/WebPage">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a> <span aria-hidden="true">/</span>
+    <a href="/tools/#cat-{{ tool.category | lower | replace(' ', '-') }}">{{ tool.category }}</a> <span aria-hidden="true">/</span>
+    <span aria-current="page">{{ tool.title }}</span>
+  </nav>
+
+  <h1 itemprop="name">{{ tool.title }}</h1>
+  {% if tool.date_added %}<p style="font-size:0.78rem;color:var(--text-muted);margin:0 0 1rem">Added <time itemprop="datePublished" datetime="{{ tool.date_added }}">{{ tool.date_added | humandate }}</time></p>{% endif %}
+
+  <p id="tool-short-desc" class="tool-short">{{ tool.short }}</p>
+  <div id="calculator" class="tool-widget" data-tool="{{ tool.slug }}" aria-label="{{ tool.title }} calculator" aria-describedby="tool-short-desc">
+    {% include "widgets/" ~ tool.slug ~ ".html" %}
+    <noscript><p style="padding:1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius)">This calculator requires JavaScript. Please enable JavaScript in your browser to use it.</p></noscript>
+    <div id="ftk-a11y-results" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+  </div>
+
+  <div class="social-share" style="display:flex;gap:0.5rem;margin:0.75rem 0 0;flex-wrap:wrap">
+    <a href="https://twitter.com/intent/tweet?text={{ tool.title | urlencode }}&url={{ site.base_url }}/tools/{{ tool.slug }}/" target="_blank" rel="noopener" class="share-btn share-twitter" aria-label="Share on X (Twitter)" style="display:inline-flex;align-items:center;gap:0.35rem;font-size:0.8rem;padding:0.35rem 0.75rem;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);color:var(--text);text-decoration:none;white-space:nowrap">Share on X</a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.base_url }}/tools/{{ tool.slug }}/" target="_blank" rel="noopener" class="share-btn share-linkedin" aria-label="Share on LinkedIn" style="display:inline-flex;align-items:center;gap:0.35rem;font-size:0.8rem;padding:0.35rem 0.75rem;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);color:var(--text);text-decoration:none;white-space:nowrap">Share on LinkedIn</a>
+    <a href="mailto:?subject={{ tool.title | urlencode }}&amp;body=Free%20calculator%3A%20{{ (site.base_url + '/tools/' + tool.slug + '/') | urlencode }}" class="share-btn share-email" aria-label="Share via email" style="display:inline-flex;align-items:center;gap:0.35rem;font-size:0.8rem;padding:0.35rem 0.75rem;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);color:var(--text);text-decoration:none;white-space:nowrap">Share via email</a>
+    <button onclick="window.print()" class="share-btn" aria-label="Print this calculator" style="display:inline-flex;align-items:center;gap:0.35rem;font-size:0.8rem;padding:0.35rem 0.75rem;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;white-space:nowrap">Print</button>
+  </div>
+
+  {% include "ads_slot.html" %}
+
+  <article class="tool-body" itemscope itemtype="https://schema.org/Article" itemprop="articleBody">
+    <meta itemprop="author" content="{{ site.name }}">
+    {% if tool.body %}
+    <p style="font-size:0.78rem;color:var(--text-muted);margin:0 0 1.25rem">
+      ~{{ ((tool.body | wordcount) / 200) | round | int }} min read
+    </p>
+    {% endif %}
+    {{ tool.body_html | safe }}
+    {% if tool.body %}<p style="margin-top:1.5rem"><a href="#calculator" class="jump-to-calc">↑ Back to calculator</a></p>{% endif %}
+  </article>
+
+  {% set related = tools_by_category.get(tool.category, []) | rejectattr("slug", "eq", tool.slug) | list %}
+  {% if related %}
+  <section class="related-tools">
+    <h2>Related tools</h2>
+    <ul>
+      {% for other in related[:4] %}
+      <li><a href="/tools/{{ other.slug }}/">{{ other.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% if cross_tools %}
+  <section class="related-tools cross-tools">
+    <h2>You might also need</h2>
+    <ul>
+      {% for other in cross_tools %}
+      <li><a href="/tools/{{ other.slug }}/">{{ other.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% if intent_pages %}
+  <section class="intent-links">
+    <h2>Related guides</h2>
+    <ul>
+      {% for ip in intent_pages %}
+      <li><a href="/tools/{{ ip.parent_tool }}/{{ ip.slug }}/">{{ ip.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% if affiliate_links %}
+  <section class="affiliate-section">
+    <h2>Recommended tools</h2>
+    <p class="tool-short">Tools our audience uses alongside this calculator.</p>
+    <div class="affiliate-grid">
+      {% for aff in affiliate_links %}
+      <div class="affiliate-card">
+        <div class="affiliate-card-header">
+          <strong>{{ aff.name }}</strong>
+          <span class="affiliate-badge">{{ aff.category }}</span>
+          {% if aff.affiliate %}<span class="affiliate-disclosure">Affiliate link</span>{% endif %}
+        </div>
+        <p>{{ aff.description }}</p>
+        <a href="{{ aff.url }}" class="affiliate-cta" target="_blank" rel="noopener noreferrer{% if aff.affiliate %} sponsored{% endif %}">{{ aff.cta }}</a>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+</section>
+
+<script src="/static/js/tools/{{ tool.js }}" defer></script>
+{% endblock %}
