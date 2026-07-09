@@ -512,6 +512,12 @@ def build() -> Path:
     tools_by_category: dict[str, list[dict]] = {}
     for tool in tools:
         tools_by_category.setdefault(tool["category"], []).append(tool)
+    # Alphabetical by display name within each category, so a tool's position
+    # is predictable instead of depending on the order it was added to
+    # tools.yaml (nav dropdowns, homepage sections, footer, and the /tools/
+    # index "Default order" toggle all read from this dict).
+    for cat_tools in tools_by_category.values():
+        cat_tools.sort(key=lambda t: (t.get("nav_title") or t["title"]).lower())
 
     tools_by_slug: dict[str, dict] = {t["slug"]: t for t in tools}
 

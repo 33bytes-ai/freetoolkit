@@ -20,17 +20,19 @@
     "  vec2 uv = (gl_FragCoord.xy * 2.0 - resolution.xy) / min(resolution.x, resolution.y);",
     "  float t = time * 0.05;",
     "  float lw = 0.002;",
-    "  vec3 color = vec3(0.0);",
-    "  for (int j = 0; j < 3; j++) {",
-    "    for (int i = 0; i < 5; i++) {",
-    "      color[j] += lw * float(i * i) / abs(",
-    "        fract(t - 0.01 * float(j) + float(i) * 0.01) * 5.0",
-    "        - length(uv)",
-    "        + mod(uv.x + uv.y, 0.2)",
-    "      );",
-    "    }",
+    "  float intensity = 0.0;",
+    "  for (int i = 0; i < 5; i++) {",
+    "    intensity += lw * float(i * i) / abs(",
+    "      fract(t + float(i) * 0.01) * 5.0",
+    "      - length(uv)",
+    "      + mod(uv.x + uv.y, 0.2)",
+    "    );",
     "  }",
-    "  gl_FragColor = vec4(color[0], color[1], color[2], 1.0);",
+    // Tinted with the site's own accent blue (#2563eb) instead of independent
+    // RGB channels -- the old per-channel phase offset is what produced the
+    // rainbow effect that clashed with the rest of the (blue/neutral) page.
+    "  vec3 tint = vec3(0.145, 0.388, 0.922);",
+    "  gl_FragColor = vec4(intensity * tint, 1.0);",
     "}"
   ].join("\n");
 
@@ -75,7 +77,10 @@
   resize();
   window.addEventListener("resize", resize, { passive: true });
 
-  var t = 1.0;
+  // Random phase offset so the animation doesn't look identical on every
+  // page load/visit -- otherwise every visitor sees the exact same opening
+  // seconds of the pattern each time.
+  var t = 1.0 + Math.random() * 200;
   var raf;
   function render() {
     t += 0.05;

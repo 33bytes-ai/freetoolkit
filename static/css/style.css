@@ -667,6 +667,10 @@ button:hover {
 .footer-cols a:hover {
   color: var(--accent);
 }
+.footer-cat-count {
+  font-size: 0.82em;
+  opacity: 0.65;
+}
 .copyright {
   margin: 0;
   font-size: 0.8rem;
@@ -1286,7 +1290,7 @@ button:hover {
   inset: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.75;
+  opacity: 0.45;
   mix-blend-mode: screen;
   display: block;
   pointer-events: none;

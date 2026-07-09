@@ -1639,7 +1639,7 @@
     Calculate CAC payback period, LTV:CAC ratio, gross margin, and magic number to evaluate your SaaS business health.
 
 - slug: revenue-growth-calculator
-  title: "Revenue Growth Rate Calculator"
+  title: "SaaS Revenue Growth Calculator (MoM/QoQ/YoY)"
   nav_title: "Revenue Growth"
   short: "Calculate MoM, QoQ, and YoY revenue growth rates, CAGR, and time-to-double to benchmark your startup's trajectory."
   new: true
@@ -1846,7 +1846,7 @@
 
 - slug: customer-ltv-calculator
   title: "Customer LTV Calculator"
-  nav_title: "LTV Calculator"
+  nav_title: "LTV Calculator (Quick)"
   short: "Calculate Customer Lifetime Value (LTV), LTV:CAC ratio, and CAC payback period from your ARPU, gross margin, and monthly churn rate."
   new: true
   date_added: "2026-06-17"
@@ -2372,7 +2372,7 @@
 
 - slug: break-even-revenue-calculator
   title: "Break-Even Revenue Calculator"
-  nav_title: "Break-Even Calculator"
+  nav_title: "Break-Even Revenue"
   short: "Calculate the exact revenue needed to cover your fixed costs given your contribution margin — plus safety margin when you enter current revenue."
   new: true
   date_added: "2026-06-17"
@@ -5419,7 +5419,7 @@
 
 - slug: price-elasticity-calculator
   title: "Price Elasticity of Demand Calculator"
-  nav_title: "Price Elasticity"
+  nav_title: "Demand Elasticity"
   short: "Calculate price elasticity of demand — how sensitive your customers are to price changes, and model the revenue impact of a price increase or decrease."
   date_added: "2026-06-18"
   new: true
@@ -5474,62 +5474,6 @@
     - Easy-to-switch alternatives
 
     Most B2B SaaS with strong retention is inelastic in the 5–15% price increase range.
-
-- slug: nrr-calculator
-  title: "Net Revenue Retention (NRR) Calculator"
-  nav_title: "NRR Calculator"
-  short: "Calculate Net Revenue Retention — the SaaS metric that shows how well you retain and expand revenue from existing customers month over month."
-  date_added: "2026-06-18"
-  new: true
-  category: SaaS Metrics
-  js: nrr-calculator.js
-  keywords: ["nrr calculator", "net revenue retention calculator", "net dollar retention", "SaaS retention metric", "expansion MRR calculator"]
-  howto_steps:
-    - name: "Enter starting MRR"
-      text: "Input your MRR from existing customers at the beginning of the measurement period."
-    - name: "Enter expansion MRR"
-      text: "Add revenue from upgrades, upsells, and seat expansions during the period."
-    - name: "Enter contraction and churn"
-      text: "Input revenue lost to downgrades (contraction) and cancellations (churn) separately."
-    - name: "Read NRR and GRR"
-      text: "NRR above 100% means existing customers generate more revenue over time — a key indicator of product-market fit and scalability."
-  body: |
-    Net Revenue Retention (NRR), also called Net Dollar Retention (NDR), measures what
-    percentage of revenue you retain from existing customers including expansion.
-
-    ## NRR formula
-
-    **NRR = (Starting MRR + Expansion − Contraction − Churn) ÷ Starting MRR × 100**
-
-    ## NRR vs Gross Revenue Retention (GRR)
-
-    | Metric | Formula | Max | What it measures |
-    |--------|---------|-----|-----------------|
-    | NRR | (Start + Expansion − Contraction − Churn) / Start | Unlimited | Revenue momentum from existing base |
-    | GRR | (Start − Contraction − Churn) / Start | 100% | How well you prevent revenue loss |
-
-    ## NRR benchmarks
-
-    | NRR | Assessment |
-    |----|-----------|
-    | ≥ 130% | World-class (Snowflake, Twilio peak) |
-    | ≥ 110% | Strong — VCs love this range |
-    | ≥ 100% | Good — expansion covers churn |
-    | 90–100% | Needs work — more churn than expansion |
-    | < 90% | Concerning — revenue shrinks without new sales |
-
-    ## Why NRR matters more than churn rate
-
-    A company with 5% monthly churn but 120% NRR can still grow revenue 20% YoY
-    from existing customers. NRR tells you if the product delivers enough value
-    that customers spend more over time — the hallmark of a durable SaaS business.
-
-    ## How to improve NRR
-
-    - Build expansion paths (seats, usage tiers, add-ons)
-    - Track time-to-value and health scores
-    - Identify expansion triggers (usage thresholds)
-    - Reduce time to 'aha moment' for new customers
 
 - slug: rule-of-72-calculator
   title: "Rule of 72 Calculator"
@@ -5650,7 +5594,7 @@
   short: Model your full sales funnel — from leads to closed revenue — and find your weakest conversion stage.
   date_added: "2026-06-18"
   new: true
-  category: Sales & Marketing
+  category: Marketing
   js: sales-funnel-calculator.js
   keywords:
     - sales funnel calculator
@@ -5709,7 +5653,7 @@
   short: Calculate Debt Service Coverage Ratio and find the maximum loan your cash flow can support.
   date_added: "2026-06-18"
   new: true
-  category: Business Finance
+  category: Finance
   js: dscr-calculator.js
   keywords:
     - DSCR calculator
@@ -5821,7 +5765,7 @@
   short: Calculate current ratio, quick ratio, and cash ratio to measure your business's short-term liquidity.
   date_added: "2026-06-18"
   new: true
-  category: Business Finance
+  category: Finance
   js: current-ratio-calculator.js
   keywords:
     - current ratio calculator
@@ -5870,7 +5814,7 @@
   short: Calculate markup percentage, gross margin, and gross profit from cost and selling price — and understand the difference.
   date_added: "2026-06-18"
   new: true
-  category: Pricing
+  category: Business Math
   js: markup-calculator.js
   keywords:
     - markup calculator
@@ -5924,7 +5868,7 @@
   short: Calculate average order value (AOV), revenue per visitor, and the revenue impact of raising your AOV.
   date_added: "2026-06-18"
   new: true
-  category: Sales & Marketing
+  category: Marketing
   js: aov-calculator.js
   keywords:
     - average order value calculator
@@ -5987,7 +5931,7 @@
   short: Calculate sales commission earned, total compensation, and OTE attainment from revenue and commission rate.
   date_added: "2026-06-18"
   new: true
-  category: Sales & Marketing
+  category: Marketing
   js: commission-calculator.js
   keywords:
     - commission calculator
@@ -6041,7 +5985,7 @@
   short: Calculate Return on Assets (ROA) and decompose it into net margin and asset turnover using the DuPont framework.
   date_added: "2026-06-18"
   new: true
-  category: Business Finance
+  category: Finance
   js: roa-calculator.js
   keywords:
     - return on assets calculator
@@ -6095,7 +6039,7 @@
   short: Calculate debt-to-equity ratio, equity ratio, and financial leverage from your balance sheet figures.
   date_added: "2026-06-18"
   new: true
-  category: Business Finance
+  category: Finance
   js: debt-to-equity-calculator.js
   keywords:
     - debt to equity ratio calculator
@@ -6149,7 +6093,7 @@
   short: Calculate customer retention rate, churn rate, and implied LTV from your period start, end, and new customer counts.
   date_added: "2026-06-18"
   new: true
-  category: SaaS & Subscriptions
+  category: SaaS Metrics
   js: customer-retention-rate-calculator.js
   keywords:
     - customer retention rate calculator
@@ -6205,7 +6149,7 @@
   short: Calculate percentage change, absolute change, and CAGR between any two values.
   date_added: "2026-06-18"
   new: true
-  category: Everyday
+  category: Business Math
   js: percentage-change-calculator.js
   keywords:
     - percentage change calculator
@@ -6256,7 +6200,7 @@
   short: Calculate Cost of Goods Sold (COGS) from inventory and purchases, then compute gross profit and gross margin.
   date_added: "2026-06-18"
   new: true
-  category: Business Finance
+  category: Finance
   js: cogs-calculator.js
   keywords:
     - COGS calculator
@@ -6315,7 +6259,7 @@
   short: Calculate gross profit, operating income, and net profit with full margin breakdown from revenue through taxes.
   date_added: "2026-06-18"
   new: true
-  category: Business Finance
+  category: Finance
   js: net-profit-calculator.js
   keywords:
     - net profit calculator
@@ -6380,7 +6324,7 @@
   short: Calculate six key financial ratios in one dashboard — profitability, liquidity, leverage, and efficiency from a single balance sheet and income statement.
   date_added: "2026-06-18"
   new: true
-  category: Business Finance
+  category: Finance
   js: financial-ratios-calculator.js
   keywords:
     - financial ratios calculator
@@ -6444,7 +6388,7 @@
   short: Calculate the Times Interest Earned (TIE) ratio to measure how comfortably your EBIT covers annual interest payments.
   date_added: "2026-06-18"
   new: true
-  category: Business Finance
+  category: Finance
   js: times-interest-earned-calculator.js
   keywords:
     - times interest earned calculator
@@ -6489,74 +6433,13 @@
     - [What Is the Times Interest Earned Ratio?](/tools/times-interest-earned-calculator/what-is-times-interest-earned-ratio/)
     - [TIE Ratio vs DSCR: What's the Difference?](/tools/times-interest-earned-calculator/tie-ratio-vs-dscr/)
 
-- slug: working-capital-calculator
-  title: Working Capital Calculator
-  nav_title: Working Capital
-  short: Calculate net working capital and the current ratio from current assets and liabilities to assess short-term liquidity.
-  date_added: "2026-06-18"
-  new: true
-  category: Business Finance
-  js: working-capital-calculator.js
-  keywords:
-    - working capital calculator
-    - net working capital calculator
-    - current ratio calculator
-    - working capital formula
-    - business liquidity calculator
-  howto_steps:
-    - name: "Enter current assets"
-      text: "Type the total of all assets convertible to cash within 12 months: cash, accounts receivable, inventory, prepaid expenses."
-    - name: "Enter current liabilities"
-      text: "Add all obligations due within 12 months: accounts payable, short-term debt, accrued expenses, deferred revenue."
-    - name: "Read working capital and current ratio"
-      text: "Working capital is the dollar surplus (or deficit). The current ratio contextualizes it as a multiple."
-  body: |
-    ## Working Capital Formula
-
-    $$\text{Working Capital} = \text{Current Assets} - \text{Current Liabilities}$$
-
-    $$\text{Current Ratio} = \frac{\text{Current Assets}}{\text{Current Liabilities}}$$
-
-    ### What Counts as Current?
-
-    **Current Assets (due within 12 months):**
-    - Cash and cash equivalents
-    - Accounts receivable
-    - Inventory
-    - Short-term investments
-    - Prepaid expenses
-
-    **Current Liabilities (due within 12 months):**
-    - Accounts payable
-    - Short-term debt / current portion of long-term debt
-    - Accrued liabilities
-    - Deferred revenue
-
-    ### Current Ratio Benchmarks
-
-    | Ratio | Assessment |
-    |-------|-----------|
-    | ≥ 2.0 | Well-funded — strong short-term cushion |
-    | 1.5–2.0 | Healthy — standard for most businesses |
-    | 1.0–1.5 | Adequate — manageable with careful cash flow |
-    | < 1.0 | Underfunded — current liabilities exceed current assets |
-
-    ### Negative Working Capital
-
-    Some business models intentically run negative working capital (e.g., Amazon, large retailers) by collecting cash before paying suppliers. Without strong brand leverage to negotiate long payment terms, negative working capital is a liquidity risk signal.
-
-    ### Intent Pages
-
-    - [What Is Working Capital?](/tools/working-capital-calculator/what-is-working-capital/)
-    - [Working Capital vs Current Ratio: Key Differences](/tools/working-capital-calculator/working-capital-vs-current-ratio/)
-
 - slug: pe-ratio-calculator
   title: P/E Ratio Calculator
   nav_title: P/E Ratio
   short: Calculate trailing and forward P/E ratios, earnings yield, and PEG ratio to assess stock valuation relative to earnings.
   date_added: "2026-06-18"
   new: true
-  category: Investing
+  category: Valuation
   js: pe-ratio-calculator.js
   keywords:
     - PE ratio calculator
@@ -6616,7 +6499,7 @@
   short: Calculate year-over-year revenue growth rate, multi-year CAGR, and Rule of 40 score for SaaS and business performance tracking.
   date_added: "2026-06-18"
   new: true
-  category: Business Finance
+  category: Finance
   js: revenue-growth-rate-calculator.js
   keywords:
     - revenue growth rate calculator
@@ -6674,7 +6557,7 @@
   short: Calculate Enterprise Value (EV) and key acquisition multiples — EV/EBITDA and EV/Revenue — from market cap, debt, and cash.
   date_added: "2026-06-18"
   new: true
-  category: Investing
+  category: Valuation
   js: enterprise-value-calculator.js
   keywords:
     - enterprise value calculator
@@ -6732,8 +6615,8 @@
     - [EV/EBITDA Multiple: What It Means and Industry Benchmarks](/tools/enterprise-value-calculator/ev-ebitda-multiple-benchmarks/)
 
 - slug: customer-lifetime-revenue-calculator
-  title: Customer Lifetime Value Calculator
-  nav_title: LTV Calculator
+  title: Customer Lifetime Value Calculator (Detailed)
+  nav_title: LTV Calculator (Detailed)
   short: Calculate customer LTV, LTV:CAC ratio, average lifespan, and payback period from ARPU, churn rate, gross margin, and CAC.
   date_added: "2026-06-18"
   new: true
@@ -6803,7 +6686,7 @@
   short: Calculate early payment discount savings, net payment amount, and the annualized cost of passing on a 2/10 net 30 discount.
   date_added: "2026-06-18"
   new: true
-  category: Business Finance
+  category: Finance
   js: invoice-discount-calculator.js
   keywords:
     - invoice discount calculator
@@ -6855,7 +6738,7 @@
   short: Calculate A/R turnover ratio, Days Sales Outstanding (DSO), and excess receivables vs your collection target.
   date_added: "2026-06-18"
   new: true
-  category: Business Finance
+  category: Finance
   js: accounts-receivable-turnover-calculator.js
   keywords:
     - accounts receivable turnover calculator
@@ -7086,7 +6969,7 @@
   short: Calculate budget variance in dollars and percentage, and determine whether the variance is favorable or unfavorable for revenue or expense lines.
   date_added: "2026-06-18"
   new: true
-  category: Business Finance
+  category: Finance
   js: budget-variance-calculator.js
   keywords:
     - budget variance calculator

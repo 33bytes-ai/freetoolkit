@@ -152,11 +152,15 @@
           <p>{{ site.tagline }}</p>
         </div>
         <div>
-          <h4>Tools</h4>
+          <h4>Categories</h4>
           <ul>
-            {% for tool in tools %}
-            <li><a href="/tools/{{ tool.slug }}/">{{ tool.nav_title }}</a></li>
+            {% for category in categories %}
+            {% set cat_tools = tools_by_category.get(category, []) %}
+            {% if cat_tools %}
+            <li><a href="/tools/#cat-{{ category | lower | replace(' ', '-') }}">{{ category }} <span class="footer-cat-count">({{ cat_tools | length }})</span></a></li>
+            {% endif %}
             {% endfor %}
+            <li><a href="/tools/"><strong>Browse all {{ tools | length }} tools →</strong></a></li>
           </ul>
         </div>
         <div>
