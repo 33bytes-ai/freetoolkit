@@ -1380,6 +1380,19 @@ def test_tool_pages_have_web_application_schema():
     assert '"price": "0"' in html or '"price":"0"' in html, "Tool page missing free offer price"
 
 
+def test_all_tool_pages_have_complete_web_application_schema():
+    """Every tool page (not just a sample) should carry a full WebApplication schema."""
+    run_build()
+    for slug in TOOL_SLUGS:
+        html = (DIST / "tools" / slug / "index.html").read_text()
+        assert '"@type": "WebApplication"' in html, f"{slug} missing WebApplication schema"
+        assert "applicationCategory" in html, f"{slug} WebApplication schema missing applicationCategory"
+        assert "operatingSystem" in html, f"{slug} WebApplication schema missing operatingSystem"
+        assert "browserRequirements" in html, f"{slug} WebApplication schema missing browserRequirements"
+        assert '"@type": "Offer"' in html, f"{slug} WebApplication schema missing Offer"
+        assert '"publisher"' in html, f"{slug} WebApplication schema missing publisher"
+
+
 def test_intent_pages_have_news_keywords():
     """Intent pages should have news_keywords meta tag."""
     run_build()

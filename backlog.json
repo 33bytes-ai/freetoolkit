@@ -63,7 +63,8 @@
     "impact": 7,
     "effort": 3,
     "risk": 1,
-    "status": "pending"
+    "status": "done",
+    "note": "Found the WebApplication JSON-LD block already unconditionally present in templates/tool.html (name, description, applicationCategory=BusinessApplication, operatingSystem, browserRequirements, url, offers/price/priceCurrency, publisher, and conditional datePublished/dateModified) -- it predates this backlog entry, so the backlog status was simply stale. Existing tests only spot-checked 'WebApplication' substring presence on 1-2 hand-picked tool pages. Added tests/test_build.py::test_all_tool_pages_have_complete_web_application_schema, which loops over every slug in TOOL_SLUGS (55+ tools) and asserts the full schema shape (@type WebApplication, applicationCategory, operatingSystem, browserRequirements, Offer, publisher) so a future template regression on any single tool page would be caught, not just on the couple of pages other tests happen to read. NOT VERIFIED live: this sandboxed builder session's shell permission mode blocks python/pytest/make invocations ('This command requires approval'), same restriction hit by every prior task in this backlog needing a real build -- confirmed by re-attempting `.venv/bin/pytest tests/test_build.py -k web_application_schema -q`. A human or CI run of `make build && make test-py` is needed to confirm the new test passes."
   },
   {
     "title": "Dark mode CSS via prefers-color-scheme",
