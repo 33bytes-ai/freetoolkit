@@ -8,7 +8,7 @@
 | 36.00 | Tests dynamiques — lire tools.yaml au lieu de listes hard-codées | 8 | 2 | 1 | done |
 | 36.00 | Remplacer document.execCommand fallback dans common.js | 4 | 1 | 1 | done |
 | 36.00 | Corriger _rejectattr pour supporter d'autres opérateurs | 4 | 1 | 1 | done |
-| 31.50 | Remplacer og:image SVG par PNG statique | 7 | 2 | 1 | pending |
+| 31.50 | Remplacer og:image SVG par PNG statique | 7 | 2 | 1 | done |
 | 24.00 | Remove fabricated testimonials with stock avatar photos | 8 | 3 | 1 | done |
 | 22.50 | Sitemap avec lastmod dynamique | 5 | 2 | 1 | pending |
 | 21.00 | Header Content-Security-Policy dans nginx.conf | 7 | 3 | 3 | pending |

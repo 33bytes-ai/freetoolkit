@@ -246,32 +246,32 @@ def write_sitemap(
     intent_pages: list[dict],
 ) -> None:
     base = config["site"]["base_url"].rstrip("/")
-    urls = (
-        ["/", "/tools/", "/changelog/"]
-        + [f"/tools/{t['slug']}/" for t in tools]
-        + [f"/{p['slug']}/" for p in pages]
-        + [f"/tools/{ip['parent_tool']}/{ip['slug']}/" for ip in intent_pages]
-    )
     today = datetime.date.today().isoformat()
+    tool_lastmod = {t["slug"]: t.get("updated") or t.get("date_added") or today for t in tools}
+    entries = (
+        [("/", "1.0", "weekly", today), ("/tools/", "0.9", "weekly", today), ("/changelog/", "0.5", "monthly", today)]
+        + [
+            (f"/tools/{t['slug']}/", "0.9", "monthly", tool_lastmod[t["slug"]])
+            for t in tools
+        ]
+        + [(f"/{p['slug']}/", "0.5", "monthly", today) for p in pages]
+        + [
+            (
+                f"/tools/{ip['parent_tool']}/{ip['slug']}/",
+                "0.7",
+                "monthly",
+                tool_lastmod.get(ip["parent_tool"], today),
+            )
+            for ip in intent_pages
+        ]
+    )
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
     ]
-    tool_slugs = {t["slug"] for t in tools}
-    for url in urls:
-        if url == "/":
-            priority, freq = "1.0", "weekly"
-        elif url == "/tools/":
-            priority, freq = "0.9", "weekly"
-        elif url.startswith("/tools/") and url.count("/") == 3:
-            slug = url.strip("/").split("/")[-1]
-            priority, freq = ("0.9", "monthly") if slug in tool_slugs else ("0.7", "monthly")
-        elif url.startswith("/tools/"):
-            priority, freq = "0.7", "monthly"
-        else:
-            priority, freq = "0.5", "monthly"
+    for url, priority, freq, lastmod in entries:
         lines.append(
-            f"  <url><loc>{base}{url}</loc><lastmod>{today}</lastmod>"
+            f"  <url><loc>{base}{url}</loc><lastmod>{lastmod}</lastmod>"
             f"<changefreq>{freq}</changefreq><priority>{priority}</priority></url>"
         )
     lines.append("</urlset>")

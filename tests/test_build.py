@@ -569,6 +569,36 @@ def test_sitemap_tools_has_date_added_lastmod():
         assert tool["date_added"] in tools_xml, f"sitemap_tools.xml missing date_added for {tool['slug']}"
 
 
+def test_sitemap_has_per_tool_date_added_lastmod():
+    """sitemap.xml tool URLs should use each tool's date_added as lastmod, not a blanket today."""
+    run_build()
+    tools = yaml.safe_load((ROOT / "content" / "tools.yaml").read_text())
+    tools_with_date = [t for t in tools if t.get("date_added")]
+    sitemap = (DIST / "sitemap.xml").read_text()
+    for tool in tools_with_date[:5]:
+        assert (
+            f"/tools/{tool['slug']}/</loc><lastmod>{tool['date_added']}</lastmod>" in sitemap
+        ), f"sitemap.xml missing date_added lastmod for {tool['slug']}"
+
+
+def test_sitemap_respects_updated_field_override():
+    """sitemap.xml should prefer a tool's optional 'updated' field over date_added."""
+    run_build()
+    from freetoolkit import build as ftk_build
+
+    config = ftk_build.load_config()
+    tools = ftk_build.load_tools()
+    pages = ftk_build.load_pages(config)
+    intent_pages = ftk_build.load_intent_pages()
+    tools[0]["updated"] = "2099-01-01"
+    ftk_build.write_sitemap(config, tools, pages, intent_pages)
+
+    sitemap = (DIST / "sitemap.xml").read_text()
+    assert (
+        f"/tools/{tools[0]['slug']}/</loc><lastmod>2099-01-01</lastmod>" in sitemap
+    ), "sitemap.xml did not use the tool's 'updated' field for lastmod"
+
+
 def test_intent_pages_have_article_published_time():
     """Intent pages should have article:published_time meta tag."""
     run_build()

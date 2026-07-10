@@ -1,5 +1,11 @@
 # Tool catalog. Each entry drives one generated page at /tools/<slug>/
 # Every tool maps to a real, specific search query with genuine business intent.
+#
+# date_added (required): when the tool first shipped, used as the sitemap
+#   lastmod fallback and for RSS/news publication dates.
+# updated (optional): set this to today's date when a tool's content or
+#   widget changes meaningfully; sitemap.xml prefers it over date_added so
+#   Google recrawls it sooner.
 
 - slug: payment-fee-comparison
   title: "Payment Processor Fee Comparison"
