@@ -381,18 +381,22 @@ def write_robots(config: dict) -> None:
     )
 
 
+BUNDLED_FONT = STATIC_DIR / "fonts" / "Aileron-Regular.ttf"
+
+
 def _load_fonts():
     try:
         from PIL import ImageFont
     except ImportError:
         return None, None
     for fp in [
+        BUNDLED_FONT,
         "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
         "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
         "/usr/share/fonts/truetype/freefont/FreeSansBold.ttf",
     ]:
         try:
-            return ImageFont.truetype(fp, 90), ImageFont.truetype(fp, 42)
+            return ImageFont.truetype(str(fp), 90), ImageFont.truetype(str(fp), 42)
         except (OSError, IOError):
             continue
     return ImageFont.load_default(), ImageFont.load_default()
@@ -655,7 +659,7 @@ def build() -> Path:
             **common,
         )
 
-    shutil.copytree(STATIC_DIR, DIST_DIR / "static")
+    shutil.copytree(STATIC_DIR, DIST_DIR / "static", ignore=shutil.ignore_patterns("fonts"))
 
     write_sitemap(config, tools, pages, intent_pages)
     write_sitemap_tools(config, tools)

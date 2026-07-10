@@ -43,6 +43,12 @@ def run_build():
     return subprocess.run([str(PYTHON), str(BUILD)], capture_output=True, text=True, env=env)
 
 
+def run_build_with_og_images():
+    env = dict(__import__("os").environ)
+    env.pop("FTK_SKIP_OG_IMAGE", None)
+    return subprocess.run([str(PYTHON), str(BUILD)], capture_output=True, text=True, env=env)
+
+
 def test_build_succeeds():
     result = run_build()
     assert result.returncode == 0, f"Build failed:\n{result.stderr}"
@@ -974,6 +980,21 @@ def test_pages_have_og_image_alt():
     run_build()
     html = (DIST / "index.html").read_text()
     assert 'property="og:image:alt"' in html, "Page missing og:image:alt meta"
+
+
+def test_og_images_are_actually_generated():
+    """A real (non-skipped) build should render og.png and per-tool og-*.png
+    files using the bundled fallback font, regardless of what fonts (if any)
+    are installed on the build machine."""
+    result = run_build_with_og_images()
+    assert result.returncode == 0, f"Build failed:\n{result.stderr}"
+    og_main = DIST / "static" / "img" / "og.png"
+    assert og_main.exists(), "dist/static/img/og.png was not generated"
+    assert og_main.stat().st_size > 1000, "og.png is suspiciously small"
+    og_tool_images = list((DIST / "static" / "img").glob("og-*.png"))
+    assert len(og_tool_images) == len(TOOL_SLUGS), (
+        f"Expected {len(TOOL_SLUGS)} og-*.png files, found {len(og_tool_images)}"
+    )
 
 
 def test_pages_have_sitemap_link():
