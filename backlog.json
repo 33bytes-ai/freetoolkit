@@ -99,7 +99,7 @@
     "impact": 8,
     "effort": 4,
     "risk": 2,
-    "status": "pending"
+    "status": "done"
   },
   {
     "title": "Sitemap avec lastmod dynamique",
