@@ -158,5 +158,53 @@
     "effort": 4,
     "risk": 2,
     "status": "pending"
+  },
+  {
+    "title": "Remove fabricated testimonials with stock avatar photos",
+    "description": "templates/index.html has a 'Testimonials' section with 15 invented quotes attributed to fake people using stock photos from i.pravatar.cc (verified: grep -c pravatar.cc dist/index.html = 15). This is fabricated social proof -- a real credibility and policy risk (Google AdSense reviews sites for deceptive content). Remove the testimonials section entirely (or replace with a genuine, verifiable trust signal such as expanding the existing 'Why FounderCalc' section, a stat about number of tools/no-signup/open-source, or removing until real testimonials exist). Do not invent replacement quotes.",
+    "impact": 8,
+    "effort": 3,
+    "risk": 1,
+    "status": "pending"
+  },
+  {
+    "title": "Derive contact email from site config instead of hardcoding it",
+    "description": "content/pages/contact.md hardcodes 'hello@foundercalc.example.com' as a literal mailto link -- this is the placeholder example.com domain, not a real address, and it's disconnected from content/config.yaml's site.base_url. Make the contact email templated from config (e.g. hello@<domain-extracted-from-base_url>) so that once a human sets the real base_url, the contact email updates automatically instead of needing a second manual edit that's easy to forget (this is exactly what happened: base_url is still the placeholder and so is the email). Verify with `make build` that the generated contact page reflects it correctly.",
+    "impact": 6,
+    "effort": 3,
+    "risk": 1,
+    "status": "pending"
+  },
+  {
+    "title": "Bundle a font so OG image generation doesn't silently fail",
+    "description": "src/freetoolkit/build.py's write_og_image() calls _load_fonts() which looks for system .ttf fonts; if none are found it returns None and OG image generation silently no-ops (verified: current dist/static/img/ has zero .png files despite og:image meta tags referencing them on every page -- social shares would show a broken image). Bundle a permissively-licensed font (e.g. a Google Font like Inter or Roboto, OFL-licensed) inside the repo (e.g. static/fonts/) and point _load_fonts() at it as a guaranteed fallback, so OG image generation works regardless of what's installed on the build machine. Verify by running a real `make build` (not FTK_SKIP_OG_IMAGE=1) and confirming dist/static/img/og-*.png files are actually created.",
+    "impact": 7,
+    "effort": 4,
+    "risk": 1,
+    "status": "pending"
+  },
+  {
+    "title": "Fix working-capital-calculator and current-ratio-calculator test/widget mismatch",
+    "description": "tests/test_build.py::test_working_capital_tool_page_builds expects 'wc-current-ratio' in the rendered page but the actual widget (templates/widgets/working-capital-calculator.html) uses id='wc-ratio'. Similarly test_current_ratio_calculator_page_exists expects 'liq-current' but the actual current-ratio-calculator widget uses different ids. Investigate templates/widgets/working-capital-calculator.html and current-ratio-calculator.html against their respective tests, determine whether the test assertion is stale or the widget is missing an intended output, and fix whichever side is wrong so `make test-py` passes cleanly (currently 240/242, these are the 2 known failures).",
+    "impact": 5,
+    "effort": 3,
+    "risk": 1,
+    "status": "pending"
+  },
+  {
+    "title": "Run real Lighthouse CI and fix what it finds",
+    "description": ".lighthouserc.json already sets thresholds (performance >=0.85, accessibility >=0.90, best-practices >=0.85, seo >=0.90) but this has apparently never been run against the actual built site (no CI has executed yet, repo was only git-init'd today). Run `npx -y @lhci/cli@0.13 autorun` (or the closest equivalent available) against a locally served `dist/` (e.g. `python3 -m http.server 8080 --directory dist` in the background), capture the real scores, and fix concrete issues found (missing alt text, color contrast, unused CSS/JS, missing meta tags, etc.) rather than guessing. Record the before/after scores in PROJECT_STATE.md or similar.",
+    "impact": 7,
+    "effort": 5,
+    "risk": 2,
+    "status": "pending"
+  },
+  {
+    "title": "Audit remaining pages/templates for other placeholder or hardcoded content",
+    "description": "base_url and the contact email were both found to still be placeholder/hardcoded example.com values despite the site otherwise being content-complete. Grep the whole content/ and templates/ tree for other instances of 'example.com', 'YOUR_USERNAME', 'TODO', 'lorem ipsum', or similar placeholders that would embarrass the site once real traffic arrives, and fix or clearly flag each one found.",
+    "impact": 5,
+    "effort": 3,
+    "risk": 1,
+    "status": "pending"
   }
 ]

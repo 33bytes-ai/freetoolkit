@@ -21,12 +21,6 @@
     setInterval(cycle, 3000);
   })();
 
-  // Duplicate testimonial column cards for seamless infinite scroll
-  document.querySelectorAll(".tst-col-inner").forEach(function (col) {
-    var cards = col.querySelectorAll(".tst-card");
-    cards.forEach(function (card) { col.appendChild(card.cloneNode(true)); });
-  });
-
   // Scroll-triggered reveal for .reveal elements
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
