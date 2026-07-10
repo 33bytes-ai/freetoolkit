@@ -954,6 +954,16 @@ def test_pages_have_dark_mode_theme_color():
     assert 'prefers-color-scheme: dark' in html, "Page missing dark mode theme-color meta"
 
 
+def test_stylesheet_has_dark_mode_palette():
+    """style.css should define an alternate palette under prefers-color-scheme: dark."""
+    run_build()
+    css = (DIST / "static" / "css" / "style.css").read_text()
+    assert "@media (prefers-color-scheme: dark)" in css, "style.css missing dark mode media query"
+    dark_block = css.split("@media (prefers-color-scheme: dark)", 1)[1]
+    for var in ("--bg", "--surface", "--text", "--border", "--accent"):
+        assert var in dark_block, f"Dark mode media query missing override for {var}"
+
+
 def test_rss_has_docs():
     """RSS feed should have <docs> channel element."""
     run_build()

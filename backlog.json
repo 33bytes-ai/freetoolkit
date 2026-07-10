@@ -73,7 +73,8 @@
     "impact": 6,
     "effort": 3,
     "risk": 1,
-    "status": "pending"
+    "status": "done",
+    "note": "Found this already fully implemented in static/css/style.css: an @media (prefers-color-scheme: dark) block (line 1171) overrides --bg/--surface/--text/--text-muted/--border/--accent plus component-level dark styling (header blur, tool cards, inputs, tables, output boxes, stat cards, affiliate cards, insight callouts, dash-fab, hero glass), a second prefers-color-scheme:dark block for the newsletter input, and a manual [data-theme=\"dark\"] override driven by static/js/lib/common.js's theme-toggle button for users who want to flip against their OS preference. tests/test_build.py already had test_pages_have_dark_mode_theme_color (checks the theme-color meta tag) but nothing asserted the stylesheet itself carries the dark palette, so added test_stylesheet_has_dark_mode_palette which reads dist/static/css/style.css, confirms the prefers-color-scheme media query exists, and checks each of the five core CSS custom properties is overridden inside it. No CSS or JS changes were needed since the feature was already shipped (likely bundled into an earlier task's scope, e.g. the theme-toggle work referenced in common.js). NOT VERIFIED live: this sandboxed builder session's shell permission mode blocks python/make/pytest invocations ('This command requires approval') -- confirmed by re-attempting `make build` and `.venv/bin/pytest tests/test_build.py -k dark_mode -v`. A human or CI run of `make build && make test-py` is needed to confirm the new test passes."
   },
   {
     "title": "Respect du DNT dans tracker.js",

@@ -1,71 +1,60 @@
 STATUS: PASS
 
 ## Résumé
-Le Builder remplace le mécanisme FAQPage JSON-LD basé sur `content/faqs.yaml`
-(curation manuelle, désynchronisée du contenu réel — seulement 72/106 tools,
-clés dupliquées, questions ne correspondant pas au texte visible) par une
-extraction automatique : `extract_faqs_from_body()` dans `src/freetoolkit/build.py`
-parse la section `## Frequently asked questions` du markdown `body` de chaque
-outil (déjà présent dans `content/tools.yaml` pour 67/106 tools) et en déduit
-les paires question/réponse via un motif "ligne **en gras** = question, suivie
-d'un paragraphe = réponse". Le template `templates/tool.html` n'a pas changé
-(toujours `{% if tool_faqs %}` / `tojson`), donc l'échappement JSON et le
-`nonce` CSP restent corrects.
+Tâche : "Dark mode CSS via prefers-color-scheme". Le Builder a constaté que la
+fonctionnalité existait déjà intégralement dans `static/css/style.css`
+(`@media (prefers-color-scheme: dark)` aux lignes 1171 et 1535, avec override
+de `--bg`, `--surface`, `--text`, `--text-muted`, `--border`, `--accent`, etc.,
+plus un override manuel `[data-theme="dark"]` piloté par `common.js`). Vérifié
+manuellement : les deux media queries et les variables citées sont bien
+présentes dans le fichier CSS actuel. Aucune modification de code applicatif —
+seulement `backlog.json` (statut + note) et `tests/test_build.py` (nouveau
+test de garde-fou).
 
 ## Vérifications effectuées
-- Relecture complète du diff (`content/tools.yaml`, `scripts/new_tool.py`,
-  `src/freetoolkit/build.py`, `tests/test_build.py`, suppression de
-  `content/faqs.yaml`).
-- Recherche de références résiduelles à `faqs.yaml` / `load_faqs` dans tout le
-  repo (hors `dist/`) : aucune, à part la note explicative dans `backlog.json`.
-- Analyse statique de la regex d'extraction (`FAQ_HEADER_RE`, `NEXT_HEADER_RE`,
-  `BOLD_LINE_RE`) contre les 67 sections `## Frequently asked questions`
-  réellement présentes dans `content/tools.yaml` (grep sur toutes les lignes
-  intégralement en gras du fichier) : les ~92 lignes en gras qui ne sont pas
-  des questions (formules, glossaires type `**ARR = MRR × 12**`,
-  `**Use MRR when:**`) se trouvent toutes dans des sections *avant* le header
-  FAQ de leur outil respectif — aucune ne tombe dans une section FAQ, donc pas
-  de faux positif actuel.
-- Vérification manuelle que le texte cité par le nouveau test
-  `test_faq_schema_matches_visible_faq_text` ("rate change based on volume",
-  "Can I use this for Stripe Connect?") existe bien dans le body de
-  `stripe-fee-calculator` (lignes 127 et 137 de `content/tools.yaml`).
-- Vérification que `from freetoolkit.build import extract_faqs_from_body`
-  (nouvel import local dans le test) est résoluble : le package est bien
-  installé en editable dans `.venv` (`_editable_impl_freetoolkit.pth`).
-- Tentative d'exécution réelle de `make build` / `pytest` / `python3 -c ...` :
-  bloquée par le mode de permission du sandbox Reviewer (« This command
-  requires approval »), même restriction que celle documentée par le Builder
-  dans `backlog.json`. Impossible de faire tourner la suite de tests dans cette
-  session — l'analyse ci-dessus est donc statique, pas une exécution vérifiée.
-
-## Conformité CLAUDE.md
-- Pas de handler inline, pas de nouveau script inline nonce-less — le seul
-  bloc `<script type="application/ld+json">` concerné (`templates/tool.html`)
-  a déjà `nonce="{{ csp_nonce }}"` et n'a pas été modifié.
-- Commentaires ajoutés (docstring de `extract_faqs_from_body`, docstring du
-  test `test_faq_schema_matches_visible_faq_text`) expliquent un WHY non
-  évident (éviter la dérive schema/contenu visible) — conforme à la règle
-  "no comments unless the WHY is non-obvious".
-- Pas d'abstraction inutile ni de shim de rétrocompatibilité ; `load_faqs()`
-  et `content/faqs.yaml` sont supprimés proprement plutôt que dépréciés.
+- Diff `git diff` relu intégralement (2 fichiers modifiés :
+  `backlog.json`, `tests/test_build.py`).
+- Contenu réel de `static/css/style.css` inspecté (lignes 1170-1219) pour
+  confirmer que les affirmations de la note backlog sont exactes — elles le
+  sont : les deux blocs `@media (prefers-color-scheme: dark)` existent et
+  contiennent bien les overrides cités.
+- `src/freetoolkit/build.py` inspecté : `static/` est copié verbatim vers
+  `dist/static/` via `shutil.copytree` (aucune minification/transformation),
+  donc le nouveau test qui lit `dist/static/css/style.css` teste bien
+  fidèlement le fichier source.
+- Convention `note` sur les entrées `status: "done"` du backlog : 10/18
+  entrées `done` ont déjà un champ `note` similaire — cohérent avec
+  l'existant, pas une déviation.
+- Style du nouveau test (docstring one-liner) cohérent avec les tests
+  existants du fichier (`test_pages_have_dark_mode_theme_color` juste
+  au-dessus suit le même patron).
+- Logique du nouveau test relue en détail : `test_stylesheet_has_dark_mode_palette`
+  appelle `run_build()`, lit `dist/static/css/style.css`, vérifie la présence
+  de `@media (prefers-color-scheme: dark)`, puis dans le texte situé après la
+  première occurrence vérifie la présence de `--bg`, `--surface`, `--text`,
+  `--border`, `--accent`. Ces variables apparaissent bien dans le bloc
+  `:root:not([data-theme="light"])` juste après le split — le test passera
+  contre l'état actuel du fichier.
+- Tentative d'exécution réelle (`make build`, `.venv/bin/pytest
+  tests/test_build.py -k dark_mode -v`, y compris avec sandbox désactivé) :
+  bloquée par le mode de permission de cette session Reviewer (« This command
+  requires approval »), identique au blocage documenté par le Builder dans
+  `backlog.json`. La validation ci-dessus est donc statique (lecture de code),
+  pas un run de test exécuté.
 
 ## Problèmes trouvés
-Aucun bloquant. Deux points mineurs, non bloquants :
+Aucun bloquant.
 
-1. **Robustesse silencieuse de la regex** (`src/freetoolkit/build.py`,
-   `extract_faqs_from_body`) — le parseur suppose implicitement que la section
-   FAQ est toujours la dernière section `##` du body et qu'aucune ligne
-   entièrement en gras n'y apparaît sauf les questions. C'est vrai pour les 67
-   sections FAQ actuelles, mais rien ne le garantit structurellement : un futur
-   éditeur de contenu qui ajouterait une section après la FAQ, ou une ligne de
-   type `**Note:**` à l'intérieur d'une FAQ, casserait silencieusement le
-   pairage question/réponse (pas d'erreur, juste un mauvais couple Q/R dans le
-   JSON-LD). Pas d'action requise maintenant, mais à garder en tête si un futur
-   tool ajoute du contenu après sa FAQ.
-2. **Tests non exécutés dans cette session** — je n'ai pas pu lancer
-   `make build && make test-py` (permissions sandbox), donc la validation
-   repose sur une relecture statique du diff et des données, pas sur un run
-   réel. Le Builder a le même problème documenté dans `backlog.json`. Un
-   `make build && make test-py` humain/CI reste nécessaire avant merge pour
-   confirmer que `dist/tools/*/index.html` contient bien le FAQPage attendu.
+## Remarque non bloquante
+`test_stylesheet_has_dark_mode_palette` vérifie que les variables CSS
+apparaissent *après* le début du bloc `@media (prefers-color-scheme: dark)`
+plutôt que strictement à l'intérieur de ses accolades. Dans l'état actuel du
+fichier ça fonctionne car les overrides suivent immédiatement le split, mais
+le test resterait vert même si une variable citée n'apparaissait que plus loin
+dans le fichier, hors du bloc dark. Amélioration possible (isoler le contenu
+entre l'accolade ouvrante et sa fermante correspondante) mais ne justifie pas
+un FAIL — la garde de régression reste utile en l'état.
+
+Un `make build && make test-py` humain/CI reste nécessaire avant merge pour
+confirmer une exécution réelle du nouveau test, aucune exécution n'ayant été
+possible ni côté Builder ni côté Reviewer dans ces sessions sandboxées.
