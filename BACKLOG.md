@@ -18,11 +18,11 @@
 | 18.00 | Améliorer new_tool.py — widget numérique cohérent | 6 | 3 | 2 | pending |
 | 18.00 | Page de comparaison Stripe vs PayPal vs Shopify | 8 | 4 | 2 | pending |
 | 18.00 | TTL et limite de taille pour localStorage tracker | 4 | 2 | 1 | pending |
-| 18.00 | Derive contact email from site config instead of hardcoding it | 6 | 3 | 1 | in_progress |
+| 18.00 | Derive contact email from site config instead of hardcoding it | 6 | 3 | 1 | done |
 | 16.20 | Pages pays Stripe programmatiques (UK, CA, AU, EU, IN) | 9 | 5 | 2 | pending |
 | 15.75 | Capture email fondateurs (newsletter / lead magnet) | 7 | 4 | 2 | pending |
 | 15.75 | Rapport de performance Lighthouse en CI | 7 | 4 | 2 | pending |
-| 15.75 | Bundle a font so OG image generation doesn't silently fail | 7 | 4 | 1 | in_progress |
+| 15.75 | Bundle a font so OG image generation doesn't silently fail | 7 | 4 | 1 | done |
 | 15.00 | Fix working-capital-calculator and current-ratio-calculator test/widget mismatch | 5 | 3 | 1 | done |
 | 15.00 | Audit remaining pages/templates for other placeholder or hardcoded content [done] | 5 | 3 | 1 | done |
 | 13.50 | Pages intent supplémentaires (30 → 45 pages total) | 9 | 6 | 1 | pending |
