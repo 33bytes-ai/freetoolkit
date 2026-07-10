@@ -163,7 +163,7 @@
 - slug: ltv-cac-calculator
   title: "LTV / CAC Calculator"
   nav_title: "LTV & CAC"
-  short: "Calculate Customer Lifetime Value, Customer Acquisition Cost and the LTV:CAC ratio to evaluate your unit economics."
+  short: "The fastest way to get your LTV:CAC ratio — enter ARPU, margin, churn, and spend once and get both LTV and CAC together, without filling in two separate calculators."
   date_added: "2026-05-04"
   category: SaaS Metrics
   js: ltv-cac-calculator.js
@@ -1579,7 +1579,7 @@
 - slug: unit-economics-calculator
   title: "Unit Economics Calculator"
   nav_title: "Unit Economics"
-  short: "Calculate CAC payback period, LTV:CAC ratio, gross margin, and magic number to evaluate your SaaS business health."
+  short: "The complete SaaS unit economics dashboard: CAC payback, LTV:CAC ratio, gross margin, and magic number in one place, for a full efficiency review."
   date_added: "2026-06-16"
   new: true
   category: SaaS Metrics
@@ -1846,7 +1846,7 @@
 
 - slug: customer-ltv-calculator
   title: "Customer LTV Calculator"
-  nav_title: "LTV Calculator (Quick)"
+  nav_title: "LTV Calculator"
   short: "Calculate Customer Lifetime Value (LTV), LTV:CAC ratio, and CAC payback period from your ARPU, gross margin, and monthly churn rate."
   new: true
   date_added: "2026-06-17"
@@ -2470,7 +2470,7 @@
 - slug: cac-calculator
   title: "CAC Calculator"
   nav_title: "CAC Calculator"
-  short: "Calculate blended Customer Acquisition Cost from ad spend, sales payroll, and tools — plus CAC payback period based on ARPU and gross margin."
+  short: "Calculate blended Customer Acquisition Cost from ad spend, sales payroll, and tools — plus CAC payback period, and your LTV:CAC ratio if you already know your LTV."
   new: true
   date_added: "2026-06-17"
   category: SaaS Metrics
@@ -4908,58 +4908,6 @@
     - **Capital structure decisions**: optimise the mix of equity and debt to minimise WACC
     - **Performance measurement**: ROIC > WACC means the company creates economic value
 
-- slug: cost-per-lead-calculator
-  title: "Cost Per Lead Calculator"
-  nav_title: "Cost Per Lead"
-  short: "Calculate Cost Per Lead (CPL), lead-to-customer conversion, revenue per lead, and marketing ROI to understand which channels justify their spend."
-  date_added: "2026-06-18"
-  new: true
-  category: Marketing
-  js: cost-per-lead-calculator.js
-  keywords: ["cost per lead calculator", "CPL calculator", "lead generation cost", "marketing roi calculator", "revenue per lead"]
-  howto_steps:
-    - name: "Enter your marketing spend"
-      text: "Input the total spend for the channel or campaign you want to evaluate — including ad budget, agency fees, and tool costs."
-    - name: "Enter the number of leads generated"
-      text: "Enter the number of leads (MQLs or SQLs) that came from this spend during the same period."
-    - name: "Add conversion and deal value"
-      text: "Enter your lead-to-customer conversion rate (%) and average contract value. This unlocks revenue-per-lead and marketing ROI."
-    - name: "Interpret the results"
-      text: "Compare CPL against your maximum allowable CPL (= ACV × conversion rate × gross margin). A CPL above this threshold is unprofitable."
-  body: |
-    Cost Per Lead (CPL) tells you how much you're paying to acquire a single lead from a
-    given marketing channel or campaign. Combined with conversion rate and deal size, it
-    determines whether a channel is profitable.
-
-    ## CPL formula
-
-    **CPL = Total Marketing Spend / Number of Leads**
-
-    ## From leads to revenue
-
-    | Metric | Formula |
-    |--------|---------|
-    | Lead-to-customer rate | Customers / Leads × 100 |
-    | Revenue per lead | Avg deal value × conversion rate |
-    | Marketing ROI | (Revenue attributable − Spend) / Spend × 100 |
-    | Max allowable CPL | ACV × conversion rate × gross margin |
-
-    ## Typical CPL benchmarks by channel
-
-    | Channel | B2B CPL range |
-    |---------|--------------|
-    | Organic search (SEO) | $10–$80 |
-    | Content / email | $20–$100 |
-    | LinkedIn Ads | $80–$200 |
-    | Google Ads (search) | $30–$150 |
-    | Events / webinars | $50–$300 |
-
-    ## Why CPL alone is misleading
-
-    A low CPL from a channel with poor lead quality costs more than a high CPL from a
-    channel with high-intent buyers. Always track lead-to-opportunity and close rates
-    by channel to get the full picture.
-
 - slug: employee-turnover-cost-calculator
   title: "Employee Turnover Cost Calculator"
   nav_title: "Turnover Cost"
@@ -5416,64 +5364,6 @@
     Operating leverage amplifies operating income changes via fixed costs.
     Financial leverage amplifies net income changes via debt interest.
     Combined (total leverage) = DOL × DFL.
-
-- slug: price-elasticity-calculator
-  title: "Price Elasticity of Demand Calculator"
-  nav_title: "Demand Elasticity"
-  short: "Calculate price elasticity of demand — how sensitive your customers are to price changes, and model the revenue impact of a price increase or decrease."
-  date_added: "2026-06-18"
-  new: true
-  category: Marketing
-  js: price-elasticity-calculator.js
-  keywords: ["price elasticity calculator", "price elasticity of demand", "price sensitivity calculator", "elastic vs inelastic demand", "price change revenue impact"]
-  howto_steps:
-    - name: "Enter original price and quantity"
-      text: "Input your current price per unit and the quantity sold at that price."
-    - name: "Enter new price and quantity"
-      text: "Input the new price you want to test and the expected quantity at that price."
-    - name: "Read price elasticity"
-      text: "Elasticity = % change in quantity ÷ % change in price. Values below -1 = elastic (price-sensitive). Values between -1 and 0 = inelastic."
-    - name: "See revenue impact"
-      text: "The calculator shows whether the price change increases or decreases total revenue based on your elasticity."
-  body: |
-    Price elasticity of demand measures how much quantity demanded changes in response
-    to a price change. It is the most important metric for pricing decisions.
-
-    ## Price elasticity formula
-
-    **PED = % Change in Quantity Demanded / % Change in Price**
-    **PED = (Q2 − Q1) / Q1 × P1 / (P2 − P1)**
-
-    ## Interpreting elasticity values
-
-    | PED value | Interpretation |
-    |-----------|---------------|
-    | 0 | Perfectly inelastic — quantity doesn't change at all |
-    | −0.1 to −0.5 | Inelastic — price increase raises revenue |
-    | −0.5 to −1.0 | Mildly elastic — revenue changes slightly |
-    | −1.0 | Unit elastic — revenue unchanged by price changes |
-    | −1.0 to −2.0 | Elastic — price increase reduces revenue |
-    | < −2.0 | Highly elastic — small price change, large demand change |
-
-    ## Revenue rules by elasticity
-
-    - **|PED| < 1 (inelastic)**: raising price increases revenue
-    - **|PED| = 1 (unit elastic)**: revenue unchanged
-    - **|PED| > 1 (elastic)**: raising price decreases revenue
-
-    ## What drives elasticity in B2B SaaS
-
-    Inelastic factors (low price sensitivity):
-    - Deep workflow integration (switching cost)
-    - Clear ROI quantification ($10 cost saves $100)
-    - Few substitutes
-
-    Elastic factors (high price sensitivity):
-    - Commodity functionality (spreadsheet competitors)
-    - Budget-conscious buyers (SMB, early-stage)
-    - Easy-to-switch alternatives
-
-    Most B2B SaaS with strong retention is inelastic in the 5–15% price increase range.
 
 - slug: rule-of-72-calculator
   title: "Rule of 72 Calculator"
@@ -6614,72 +6504,6 @@
     - [What Is Enterprise Value?](/tools/enterprise-value-calculator/what-is-enterprise-value/)
     - [EV/EBITDA Multiple: What It Means and Industry Benchmarks](/tools/enterprise-value-calculator/ev-ebitda-multiple-benchmarks/)
 
-- slug: customer-lifetime-revenue-calculator
-  title: Customer Lifetime Value Calculator (Detailed)
-  nav_title: LTV Calculator (Detailed)
-  short: Calculate customer LTV, LTV:CAC ratio, average lifespan, and payback period from ARPU, churn rate, gross margin, and CAC.
-  date_added: "2026-06-18"
-  new: true
-  category: SaaS Metrics
-  js: customer-lifetime-revenue-calculator.js
-  keywords:
-    - customer lifetime value calculator
-    - LTV calculator
-    - LTV CAC ratio calculator
-    - customer LTV formula
-    - SaaS lifetime value calculator
-    - CLV calculator
-  howto_steps:
-    - name: "Enter monthly ARPU"
-      text: "Type Average Revenue Per User per month — total MRR divided by number of customers."
-    - name: "Enter gross margin"
-      text: "Add your gross margin percentage (revenue minus direct costs). This converts LTV from revenue to profit terms."
-    - name: "Enter monthly churn rate"
-      text: "Type the percentage of customers who cancel each month. Lower churn means higher LTV."
-    - name: "Add CAC for ratio analysis"
-      text: "Enter Customer Acquisition Cost to see the LTV:CAC ratio and payback period."
-  body: |
-    ## Customer Lifetime Value Formula
-
-    $$\text{LTV} = \frac{\text{ARPU}}{\text{Monthly Churn Rate}}$$
-
-    With gross margin adjustment:
-
-    $$\text{LTV (margin)} = \frac{\text{ARPU} \times \text{Gross Margin}}{\text{Monthly Churn Rate}}$$
-
-    ### LTV:CAC — The Core SaaS Unit Economics Ratio
-
-    $$\text{LTV:CAC} = \frac{\text{LTV (with margin)}}{\text{CAC}}$$
-
-    | Ratio | Assessment |
-    |-------|-----------|
-    | 5×+ | Excellent — underinvesting in growth |
-    | 3–5× | Healthy SaaS benchmark |
-    | 1–3× | Marginal — monitor closely |
-    | < 1× | Losing money on each customer |
-
-    ### Payback Period
-
-    $$\text{Payback} = \frac{\text{CAC}}{\text{ARPU} \times \text{Gross Margin \%}}$$
-
-    Payback under 12 months is excellent for SaaS. Under 18 months is acceptable. Over 24 months means you're financing growth heavily with capital.
-
-    ### Churn Rate and LTV
-
-    Small changes in churn have a large impact on LTV:
-
-    | Monthly Churn | Avg Lifespan | LTV ($99 ARPU) |
-    |--------------|-------------|----------------|
-    | 1% | 100 months | $9,900 |
-    | 2% | 50 months | $4,950 |
-    | 5% | 20 months | $1,980 |
-    | 10% | 10 months | $990 |
-
-    ### Intent Pages
-
-    - [How to Calculate Customer Lifetime Value (LTV)](/tools/customer-lifetime-revenue-calculator/how-to-calculate-customer-lifetime-value/)
-    - [LTV to CAC Ratio: SaaS Benchmarks and How to Improve It](/tools/customer-lifetime-revenue-calculator/ltv-cac-ratio-benchmarks/)
-
 - slug: invoice-discount-calculator
   title: Invoice Early Payment Discount Calculator
   nav_title: Invoice Discount
@@ -6731,66 +6555,6 @@
 
     - [What Is a 2/10 Net 30 Payment Term?](/tools/invoice-discount-calculator/what-is-2-10-net-30/)
     - [When Should You Take an Early Payment Discount?](/tools/invoice-discount-calculator/when-to-take-early-payment-discount/)
-
-- slug: accounts-receivable-turnover-calculator
-  title: Accounts Receivable Turnover Calculator
-  nav_title: A/R Turnover
-  short: Calculate A/R turnover ratio, Days Sales Outstanding (DSO), and excess receivables vs your collection target.
-  date_added: "2026-06-18"
-  new: true
-  category: Finance
-  js: accounts-receivable-turnover-calculator.js
-  keywords:
-    - accounts receivable turnover calculator
-    - AR turnover ratio calculator
-    - days sales outstanding calculator
-    - DSO calculator
-    - receivables turnover formula
-  howto_steps:
-    - name: "Enter annual net credit sales"
-      text: "Type total credit sales for the period (exclude cash sales). Use annual figures for a full-year analysis."
-    - name: "Enter beginning and ending A/R balances"
-      text: "Add the accounts receivable balance at the start and end of the period. The calculator averages them."
-    - name: "Set your target DSO"
-      text: "Enter your target collection days. The tool shows how much receivables are above or below target."
-  body: |
-    ## A/R Turnover and DSO Formulas
-
-    $$\text{A/R Turnover} = \frac{\text{Net Credit Sales}}{\text{Average A/R}}$$
-
-    $$\text{DSO} = \frac{\text{Average A/R}}{\text{Net Credit Sales}} \times 365$$
-
-    ### A/R Turnover Benchmarks
-
-    | Ratio | Assessment |
-    |-------|-----------|
-    | 12× or higher | Excellent — collecting every ~30 days |
-    | 8–12× | Good |
-    | 4–8× | Adequate |
-    | Below 4× | Slow — review credit and collection policies |
-
-    ### DSO Benchmarks
-
-    Good DSO depends on your payment terms. If you offer net-30 terms, a DSO of 35–40 days is reasonable. DSO significantly above your stated terms indicates collection problems.
-
-    | Net Terms | Target DSO |
-    |-----------|-----------|
-    | Net 15 | 18–22 days |
-    | Net 30 | 32–40 days |
-    | Net 45 | 48–55 days |
-    | Net 60 | 65–75 days |
-
-    ### Improving A/R Turnover
-
-    - Send invoices immediately upon delivery
-    - Offer early payment discounts (see [Invoice Discount Calculator](/tools/invoice-discount-calculator/))
-    - Follow up on overdue invoices at 30, 45, 60 days
-    - Require deposits or shorter terms for new customers
-
-    ### Intent Pages
-
-    - [What Is Accounts Receivable Turnover?](/tools/accounts-receivable-turnover-calculator/what-is-accounts-receivable-turnover/)
-    - [How to Reduce DSO and Speed Up Cash Collection](/tools/accounts-receivable-turnover-calculator/how-to-reduce-dso/)
 
 - slug: price-per-unit-calculator
   title: Price Per Unit Calculator

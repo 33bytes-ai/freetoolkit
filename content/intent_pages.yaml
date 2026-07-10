@@ -9711,7 +9711,7 @@
 # ---- Cost Per Lead calculator intent pages ----
 
 - slug: reduce-cost-per-lead-b2b
-  parent_tool: cost-per-lead-calculator
+  parent_tool: revenue-per-lead-calculator
   title: "How to Reduce Cost Per Lead in B2B Marketing"
   description: "Proven tactics to lower CPL in B2B — from content and SEO to improving lead quality scoring so fewer high-CPL leads enter the funnel."
   keywords: ["reduce cost per lead b2b", "lower cpl marketing", "improve lead generation cost", "b2b cpl optimization"]
@@ -9742,7 +9742,7 @@
     channel. A $200 lead that closes at 20% is worth far more than a $30 lead that
     closes at 1%.
 
-    Calculate your true channel economics with the [cost per lead calculator](/tools/cost-per-lead-calculator/).
+    Calculate your true channel economics with the [cost per lead calculator](/tools/revenue-per-lead-calculator/).
 
 # ---- Freelance project estimate intent pages ----
 
@@ -10632,7 +10632,7 @@
     specific break-even churn rate at any price increase level.
 
 - slug: cost-per-lead-vs-cost-per-acquisition
-  parent_tool: cost-per-lead-calculator
+  parent_tool: revenue-per-lead-calculator
   title: "Cost Per Lead vs Cost Per Acquisition: What's the Difference?"
   description: "CPL vs CPA explained — how to calculate each, when each matters, and why conflating them is one of the most common marketing measurement mistakes."
   keywords: ["cost per lead vs cost per acquisition", "cpl vs cpa", "cost per acquisition", "difference cpl cpa", "marketing metrics cpl cpa"]
@@ -10674,7 +10674,7 @@
     channel with a high CPL and strong intent signals. Always segment by lead quality
     (e.g. ICP score, job title, company size) before drawing CPL conclusions.
 
-    Use the [cost per lead calculator](/tools/cost-per-lead-calculator/) to compute
+    Use the [cost per lead calculator](/tools/revenue-per-lead-calculator/) to compute
     CPL and max allowable CPL from your marketing spend and LTV.
 
 - slug: freelance-hourly-rate-calculator-guide
@@ -11239,7 +11239,7 @@
 # ---- Price Elasticity Calculator intent pages ----
 
 - slug: price-elasticity-saas-pricing
-  parent_tool: price-elasticity-calculator
+  parent_tool: pricing-elasticity-calculator
   title: "Price Elasticity in SaaS: How to Test Before You Raise Prices"
   description: "How to estimate price elasticity for your SaaS product before raising prices — A/B testing methods, cohort analysis, and interpreting the results."
   keywords: ["price elasticity saas", "how to test price increase", "saas price sensitivity", "price elasticity testing", "price increase ab test saas"]
@@ -11281,11 +11281,11 @@
     If any three apply, you likely have inelastic demand and can raise prices by 15–25%
     with minimal churn impact.
 
-    Use the [price elasticity calculator](/tools/price-elasticity-calculator/) to
+    Use the [price elasticity calculator](/tools/pricing-elasticity-calculator/) to
     model the revenue impact of a price change at any elasticity value.
 
 - slug: elastic-vs-inelastic-demand-examples
-  parent_tool: price-elasticity-calculator
+  parent_tool: pricing-elasticity-calculator
   title: "Elastic vs Inelastic Demand: Real-World Business Examples"
   description: "Practical examples of elastic and inelastic demand across B2B SaaS, e-commerce, and consumer products — and what they mean for pricing strategy."
   keywords: ["elastic vs inelastic demand", "inelastic demand examples", "elastic demand examples business", "price elasticity examples", "demand elasticity real world"]
@@ -11324,7 +11324,7 @@
     The higher your switching cost (data lock-in, integrations, training), the
     more inelastic your demand.
 
-    Use the [price elasticity calculator](/tools/price-elasticity-calculator/)
+    Use the [price elasticity calculator](/tools/pricing-elasticity-calculator/)
     to model the revenue impact of a price change at any elasticity.
 
 - slug: what-is-net-revenue-retention
@@ -12850,7 +12850,7 @@
     Use the [Enterprise Value Calculator](/tools/enterprise-value-calculator/) to compute EV/EBITDA and EV/Revenue multiples.
 
 - slug: how-to-calculate-customer-lifetime-value
-  parent_tool: customer-lifetime-revenue-calculator
+  parent_tool: customer-ltv-calculator
   title: "How to Calculate Customer Lifetime Value (LTV)"
   description: "Step-by-step guide to calculating LTV with formula, gross margin adjustment, and how to use LTV for business decisions."
   body: |
@@ -12883,10 +12883,10 @@
     | Increase ARPU by 10% | Proportional increase |
     | Improve gross margin | Direct multiplier effect |
 
-    Use the [LTV Calculator](/tools/customer-lifetime-revenue-calculator/) to compute LTV, LTV:CAC, and payback period together.
+    Use the [LTV Calculator](/tools/customer-ltv-calculator/) to compute LTV, LTV:CAC, and payback period together.
 
 - slug: ltv-cac-ratio-benchmarks
-  parent_tool: customer-lifetime-revenue-calculator
+  parent_tool: customer-ltv-calculator
   title: "LTV to CAC Ratio: SaaS Benchmarks and How to Improve It"
   description: "What a good LTV:CAC ratio looks like for SaaS companies, how to interpret your number, and tactical ways to improve it."
   body: |
@@ -12924,7 +12924,7 @@
     - Shorten sales cycle
     - Improve trial-to-paid conversion rate
 
-    Use the [LTV Calculator](/tools/customer-lifetime-revenue-calculator/) to model how changes in churn, ARPU, margin, and CAC affect your ratio.
+    Use the [LTV Calculator](/tools/customer-ltv-calculator/) to model how changes in churn, ARPU, margin, and CAC affect your ratio.
 
 - slug: what-is-2-10-net-30
   parent_tool: invoice-discount-calculator
@@ -12984,7 +12984,7 @@
     The [Invoice Discount Calculator](/tools/invoice-discount-calculator/) handles both buyer and seller perspectives.
 
 - slug: what-is-accounts-receivable-turnover
-  parent_tool: accounts-receivable-turnover-calculator
+  parent_tool: dso-calculator
   title: "What Is Accounts Receivable Turnover?"
   description: "Definition, formula, and benchmarks for the Accounts Receivable Turnover ratio and Days Sales Outstanding (DSO)."
   body: |
@@ -13010,10 +13010,10 @@
 
     Monitoring A/R turnover over time reveals collection trends before they become cash flow crises.
 
-    Use the [A/R Turnover Calculator](/tools/accounts-receivable-turnover-calculator/) to compute your ratio and DSO.
+    Use the [A/R Turnover Calculator](/tools/dso-calculator/) to compute your ratio and DSO.
 
 - slug: how-to-reduce-dso
-  parent_tool: accounts-receivable-turnover-calculator
+  parent_tool: dso-calculator
   title: "How to Reduce DSO and Speed Up Cash Collection"
   description: "Practical tactics for reducing Days Sales Outstanding, from invoicing improvements to credit policy changes and payment incentives."
   body: |
@@ -13052,7 +13052,7 @@
     - **Enterprise B2B**: 45–75 days
     - **Government contracts**: 60–120 days
 
-    Track your DSO monthly with the [A/R Turnover Calculator](/tools/accounts-receivable-turnover-calculator/).
+    Track your DSO monthly with the [A/R Turnover Calculator](/tools/dso-calculator/).
 
 - slug: how-to-calculate-price-per-unit
   parent_tool: price-per-unit-calculator

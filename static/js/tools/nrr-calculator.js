@@ -10,20 +10,6 @@ function calcGrossRevRetention(startingMRR, contractionMRR, churnedMRR) {
   return (Math.min(retained, startingMRR) / startingMRR) * 100;
 }
 
-function calcGRR(startingMRR, contractionMRR, churnedMRR) {
-  return calcGrossRevRetention(startingMRR, contractionMRR, churnedMRR);
-}
-
-function calcExpansionRate(startingMRR, expansionMRR) {
-  if (startingMRR <= 0) return null;
-  return (expansionMRR / startingMRR) * 100;
-}
-
-function calcChurnRate(startingMRR, churnedMRR) {
-  if (startingMRR <= 0) return null;
-  return (churnedMRR / startingMRR) * 100;
-}
-
 function calcNetNewMRR(expansionMRR, contractionMRR, churnedMRR) {
   return expansionMRR - contractionMRR - churnedMRR;
 }
@@ -74,4 +60,4 @@ if (typeof document !== "undefined") {
   });
 }
 
-if (typeof module !== "undefined") module.exports = { calcNRR, calcGrossRevRetention, calcGRR, calcExpansionRate, calcChurnRate, calcNetNewMRR, nrrLabel };
+if (typeof module !== "undefined") module.exports = { calcNRR, calcGrossRevRetention, calcNetNewMRR, nrrLabel };

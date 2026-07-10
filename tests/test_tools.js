@@ -918,17 +918,6 @@ test("nrr: calcNRR above 100 with high expansion", () => {
   assert.equal(result, 120);
 });
 
-test("nrr: calcGRR caps at 100", () => {
-  // GRR never exceeds 100
-  const result = nrr.calcGRR(100000, 0, 0);
-  assert.equal(result, 100);
-});
-
-test("nrr: calcGRR with churn (93%)", () => {
-  // (100000 - 3000 - 4000) / 100000 * 100 = 93
-  const result = nrr.calcGRR(100000, 3000, 4000);
-  assert.equal(result, 93);
-});
 
 test("nrr: returns null on zero starting MRR", () => {
   assert.equal(nrr.calcNRR(0, 5000, 0, 0), null);
@@ -1251,15 +1240,6 @@ test("be: calcBreakEvenRevenue returns null on zero margin", () => {
   assert.equal(ber.calcBreakEvenRevenue(25000, 0), null);
 });
 
-test("be: calcBreakEvenUnits 10000 fixed / ($50 price - $20 variable) = 333.33", () => {
-  const result = ber.calcBreakEvenUnits(10000, 50, 20);
-  assert.ok(Math.abs(result - (10000 / 30)) < 0.01, `Expected ~333.33, got ${result}`);
-});
-
-test("be: calcContributionMargin ($50 price, $15 variable) = 70%", () => {
-  const result = ber.calcContributionMargin(50, 15);
-  assert.ok(Math.abs(result - 70) < 0.01, `Expected 70, got ${result}`);
-});
 
 test("be: calcSafetyMargin ($50k revenue, $35714 breakeven) ≈ 28.57%", () => {
   const result = ber.calcSafetyMargin(50000, 25000 / 0.70);
@@ -1327,15 +1307,6 @@ test("nrr: calcNRR returns null on zero starting MRR", () => {
   assert.equal(nrr.calcNRR(0, 10000, 0, 0), null);
 });
 
-test("nrr: calcExpansionRate 15k expansion on 100k = 15%", () => {
-  const result = nrr.calcExpansionRate(100000, 15000);
-  assert.ok(Math.abs(result - 15) < 0.01, `Expected 15, got ${result}`);
-});
-
-test("nrr: calcChurnRate 5k churn on 100k = 5%", () => {
-  const result = nrr.calcChurnRate(100000, 5000);
-  assert.ok(Math.abs(result - 5) < 0.01, `Expected 5, got ${result}`);
-});
 
 // arr-calculator
 const arrc = require("../static/js/tools/arr-calculator.js");
@@ -1507,17 +1478,6 @@ test("wc: calcCurrentRatio returns null when liabilities = 0", () => {
   assert.equal(wc.calcCurrentRatio(500000, 0), null);
 });
 
-test("wc: calcQuickRatioFinancial (500k - 80k) / 200k = 2.1x", () => {
-  // (500k - 80k) / 200k = 420k / 200k = 2.1
-  const result = wc.calcQuickRatioFinancial(500000, 80000, 200000);
-  assert.ok(Math.abs(result - 2.1) < 0.001, `Expected 2.1, got ${result}`);
-});
-
-test("wc: calcDaysWorkingCapital 300k WC / 1M revenue = 109.5 days", () => {
-  // 300k / 1M * 365 = 109.5
-  const result = wc.calcDaysWorkingCapital(300000, 1000000);
-  assert.ok(Math.abs(result - 109.5) < 0.01, `Expected 109.5, got ${result}`);
-});
 
 // roi-calculator
 const roi = require("../static/js/tools/roi-calculator.js");
@@ -2072,25 +2032,6 @@ test("wacc: waccLabel returns warning for high wacc", () => {
   assert.equal(label.type, "danger");
 });
 
-// ── Cost Per Lead Calculator ─────────────────────────────────────────────────
-const cpl = require("../static/js/tools/cost-per-lead-calculator.js");
-
-test("cpl: $5000 spend / 100 leads = $50 CPL", () => {
-  assert.ok(Math.abs(cpl.calcCPL(5000, 100) - 50) < 0.01);
-});
-
-test("cpl: $2000 ACV × 5% conv = $100 revenue per lead", () => {
-  assert.ok(Math.abs(cpl.calcRevenuePerLead(2000, 5) - 100) < 0.01);
-});
-
-test("cpl: max allowable CPL $2000 × 5% conv × 70% margin = $70", () => {
-  assert.ok(Math.abs(cpl.calcMaxAllowableCPL(2000, 5, 70) - 70) < 0.01);
-});
-
-test("cpl: marketing ROI ($10000 revenue - $5000 spend) / $5000 = 100%", () => {
-  assert.ok(Math.abs(cpl.calcMarketingROI(10000, 5000) - 100) < 0.01);
-});
-
 // ── Employee Turnover Cost Calculator ───────────────────────────────────────
 const etc = require("../static/js/tools/employee-turnover-cost-calculator.js");
 
@@ -2301,47 +2242,7 @@ test("ol: dolLabel returns warning for DOL >= 4", () => {
   assert.strictEqual(ol.dolLabel(4).type, "warning");
 });
 
-// ── Price Elasticity Calculator ──────────────────────────────────────────────
-const ped = require("../static/js/tools/price-elasticity-calculator.js");
-
-test("ped: elasticity = (pctQ) / (pctP)", () => {
-  const e = ped.calcPED(100, 1000, 120, 900);
-  const expected = ((900-1000)/1000) / ((120-100)/100);
-  assert.ok(Math.abs(e - expected) < 0.001);
-});
-
-test("ped: revenue calculation = price × quantity", () => {
-  assert.strictEqual(ped.calcRevenue(100, 1000), 100000);
-});
-
-test("ped: revenue change = new - old revenue", () => {
-  const rc = ped.calcRevenueChange(100, 1000, 120, 900);
-  assert.strictEqual(rc, 120*900 - 100*1000);
-});
-
-test("ped: pedLabel success for inelastic demand", () => {
-  assert.strictEqual(ped.pedLabel(-0.3, 1000).type, "success");
-});
-
-test("ped: pedLabel danger for highly elastic demand", () => {
-  assert.strictEqual(ped.pedLabel(-3, -5000).type, "danger");
-});
-
 // ── NRR Calculator (additional) ──────────────────────────────────────────────
-test("nrr: calcGRR alias works correctly", () => {
-  const result = nrr.calcGRR(100000, 0, 0);
-  assert.ok(Math.abs(result - 100) < 0.001);
-});
-
-test("nrr: calcExpansionRate 15k expansion on 100k = 15%", () => {
-  const result = nrr.calcExpansionRate(100000, 15000);
-  assert.ok(Math.abs(result - 15) < 0.001);
-});
-
-test("nrr: calcChurnRate 5k churn on 100k = 5%", () => {
-  const result = nrr.calcChurnRate(100000, 5000);
-  assert.ok(Math.abs(result - 5) < 0.001);
-});
 
 test("nrr: nrrLabel exceptional for 130%+", () => {
   assert.strictEqual(nrr.nrrLabel(135).type, "success");
@@ -3012,37 +2913,6 @@ test("evCalc: evLabel market range", () => {
   assert.strictEqual(evCalc.evLabel(12), "Market range");
 });
 
-// ── Customer Lifetime Revenue Calculator ────────────────────────────────────
-const clr = require("../static/js/tools/customer-lifetime-revenue-calculator.js");
-
-test("clr: calcLTV basic", () => {
-  assert.ok(Math.abs(clr.calcLTV(99, 2) - 4950) < 0.01);
-});
-
-test("clr: calcLTV returns null for zero churn", () => {
-  assert.strictEqual(clr.calcLTV(99, 0), null);
-});
-
-test("clr: calcLTVWithMargin basic", () => {
-  assert.ok(Math.abs(clr.calcLTVWithMargin(99, 70, 2) - 3465) < 0.01);
-});
-
-test("clr: calcLTVCACRatio basic", () => {
-  assert.ok(Math.abs(clr.calcLTVCACRatio(3465, 500) - 6.93) < 0.01);
-});
-
-test("clr: calcAverageCustomerLifespan basic", () => {
-  assert.ok(Math.abs(clr.calcAverageCustomerLifespan(2) - 50) < 0.001);
-});
-
-test("clr: ltvCACLabel excellent", () => {
-  assert.strictEqual(clr.ltvCACLabel(6), "Excellent unit economics");
-});
-
-test("clr: ltvCACLabel unprofitable", () => {
-  assert.strictEqual(clr.ltvCACLabel(0.5), "Unprofitable customer acquisition");
-});
-
 // ── Invoice Discount Calculator ──────────────────────────────────────────────
 const idc = require("../static/js/tools/invoice-discount-calculator.js");
 
@@ -3068,33 +2938,6 @@ test("idc: discountCostLabel cheap", () => {
 
 test("idc: discountCostLabel very expensive", () => {
   assert.strictEqual(idc.discountCostLabel(40), "Very expensive — equivalent to high-interest debt");
-});
-
-// ── Accounts Receivable Turnover Calculator ──────────────────────────────────
-const art = require("../static/js/tools/accounts-receivable-turnover-calculator.js");
-
-test("art: calcARTurnover basic", () => {
-  assert.ok(Math.abs(art.calcARTurnover(2400000, 200000) - 12) < 0.001);
-});
-
-test("art: calcARTurnover returns null for zero AR", () => {
-  assert.strictEqual(art.calcARTurnover(1000, 0), null);
-});
-
-test("art: calcDSO basic", () => {
-  assert.ok(Math.abs(art.calcDSO(200000, 2400000) - 30.42) < 0.1);
-});
-
-test("art: calcAvgAR basic", () => {
-  assert.strictEqual(art.calcAvgAR(180000, 220000), 200000);
-});
-
-test("art: arTurnoverLabel excellent", () => {
-  assert.strictEqual(art.arTurnoverLabel(11), "Excellent collection");
-});
-
-test("art: arTurnoverLabel slow", () => {
-  assert.strictEqual(art.arTurnoverLabel(3), "Slow collections — review credit terms");
 });
 
 // ── Price Per Unit Calculator ────────────────────────────────────────────────

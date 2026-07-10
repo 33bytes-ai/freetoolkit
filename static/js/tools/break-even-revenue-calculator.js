@@ -6,18 +6,6 @@
     return fixedCosts / (variableMarginPct / 100);
   }
 
-  function calcBreakEvenUnits(fixedCosts, pricePerUnit, variableCostPerUnit) {
-    if (!fixedCosts || fixedCosts <= 0 || !pricePerUnit || pricePerUnit <= 0 || variableCostPerUnit == null) return null;
-    var contribution = pricePerUnit - variableCostPerUnit;
-    if (contribution <= 0) return null;
-    return fixedCosts / contribution;
-  }
-
-  function calcContributionMargin(pricePerUnit, variableCostPerUnit) {
-    if (!pricePerUnit || pricePerUnit <= 0 || variableCostPerUnit == null) return null;
-    return ((pricePerUnit - variableCostPerUnit) / pricePerUnit) * 100;
-  }
-
   function calcSafetyMargin(actualRevenue, breakEvenRevenue) {
     if (!actualRevenue || !breakEvenRevenue || breakEvenRevenue <= 0) return null;
     return ((actualRevenue - breakEvenRevenue) / actualRevenue) * 100;
@@ -102,6 +90,6 @@
     document.addEventListener("DOMContentLoaded", init);
   }
   if (typeof module !== "undefined" && module.exports) {
-    module.exports = { calcBreakEvenRevenue, calcBreakEvenUnits, calcContributionMargin, calcSafetyMargin };
+    module.exports = { calcBreakEvenRevenue, calcSafetyMargin };
   }
 })();

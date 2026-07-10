@@ -10,39 +10,6 @@
     return currentAssets / currentLiabilities;
   }
 
-  function calcWorkingCapitalRatio(currentAssets, currentLiabilities) {
-    return calcCurrentRatio(currentAssets, currentLiabilities);
-  }
-
-  function calcQuickRatioFinancial(currentAssets, inventory, currentLiabilities) {
-    if (currentLiabilities <= 0) return null;
-    return (currentAssets - inventory) / currentLiabilities;
-  }
-
-  function calcDaysWorkingCapital(workingCapital, annualRevenue) {
-    if (annualRevenue <= 0) return null;
-    return (workingCapital / annualRevenue) * 365;
-  }
-
-  function calcCashConversionCycle(dso, dio, dpo) {
-    return dso + dio - dpo;
-  }
-
-  function calcDSO(accountsReceivable, dailyRevenue) {
-    if (dailyRevenue <= 0) return null;
-    return accountsReceivable / dailyRevenue;
-  }
-
-  function calcDPO(accountsPayable, dailyCOGS) {
-    if (dailyCOGS <= 0) return null;
-    return accountsPayable / dailyCOGS;
-  }
-
-  function calcDIO(inventory, dailyCOGS) {
-    if (dailyCOGS <= 0) return null;
-    return inventory / dailyCOGS;
-  }
-
   function workingCapitalLabel(wc, ratio) {
     if (ratio === null) return "";
     if (ratio >= 2)    return "Well-funded";
@@ -126,13 +93,6 @@
     module.exports = {
       calcWorkingCapital: calcWorkingCapital,
       calcCurrentRatio: calcCurrentRatio,
-      calcWorkingCapitalRatio: calcWorkingCapitalRatio,
-      calcQuickRatioFinancial: calcQuickRatioFinancial,
-      calcDaysWorkingCapital: calcDaysWorkingCapital,
-      calcCashConversionCycle: calcCashConversionCycle,
-      calcDSO: calcDSO,
-      calcDPO: calcDPO,
-      calcDIO: calcDIO,
       workingCapitalLabel: workingCapitalLabel
     };
   }
