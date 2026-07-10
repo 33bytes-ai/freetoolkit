@@ -191,7 +191,8 @@
     "impact": 5,
     "effort": 3,
     "risk": 1,
-    "status": "pending"
+    "status": "done",
+    "note": "Already fixed by commit c533767 (a prior, unrelated task in the same session) which corrected the stale test assertions to match the real widget IDs: wc-result/wc-ratio in templates/widgets/working-capital-calculator.html, cr-result in templates/widgets/current-ratio-calculator.html. The widgets themselves were never wrong -- the tests had drifted. Verified statically: build.py loads each widget's HTML verbatim by slug (src/freetoolkit/build.py:550) with no further templating, so the widget IDs land unmodified in dist/tools/<slug>/index.html, matching tests/test_build.py:1022-1027 and :1909-1915 exactly. Could not execute make test-py/pytest to confirm live (python/make require an approval this sandboxed session never receives, same restriction hit by the font-bundling task above), so this is confirmed by static inspection rather than a live pytest run."
   },
   {
     "title": "Run real Lighthouse CI and fix what it finds",
