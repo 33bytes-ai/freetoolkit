@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block head_extra %}
-<script type="application/ld+json">
+<script type="application/ld+json" nonce="{{ csp_nonce }}">
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -66,7 +66,7 @@
   {% endif %}
   {% endfor %}
 </section>
-<script>
+<script nonce="{{ csp_nonce }}">
 (function () {
   var btns = document.querySelectorAll(".cat-filter-btn");
   var sections = document.querySelectorAll(".cl-section");

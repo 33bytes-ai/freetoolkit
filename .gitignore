@@ -1,5 +1,6 @@
 .venv/
 dist/
+csp_nonce.txt
 __pycache__/
 *.pyc
 *.egg-info/

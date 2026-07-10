@@ -621,6 +621,87 @@ def test_break_even_tool_page_builds():
     assert "Contribution margin" in html
 
 
+def test_build_writes_csp_nonce_file():
+    """build.py should stamp a build-wide nonce for infra/Dockerfile to bake into nginx's CSP header."""
+    run_build()
+    nonce_file = ROOT / "csp_nonce.txt"
+    assert nonce_file.exists()
+    nonce = nonce_file.read_text().strip()
+    assert len(nonce) >= 16
+
+
+def test_inline_scripts_all_carry_the_same_build_nonce():
+    """Every inline <script> across page types must carry the nonce written to csp_nonce.txt,
+    since nginx's CSP (script-src 'nonce-...') has no 'unsafe-inline' fallback."""
+    import re
+
+    run_build()
+    nonce = (ROOT / "csp_nonce.txt").read_text().strip()
+
+    pages = [
+        DIST / "index.html",
+        DIST / "tools" / "index.html",
+        DIST / "tools" / TOOL_SLUGS[0] / "index.html",
+        DIST / "changelog" / "index.html",
+        DIST / "dashboard" / "index.html",
+        DIST / "about" / "index.html",
+    ]
+    if INTENT_PAGES:
+        parent, slug = INTENT_PAGES[0]
+        pages.append(DIST / "tools" / parent / slug / "index.html")
+
+    for page in pages:
+        html = page.read_text()
+        inline_scripts = re.findall(r"<script(?![^>]*\ssrc=)([^>]*)>", html)
+        assert inline_scripts, f"{page} has no inline <script> tags to check"
+        for attrs in inline_scripts:
+            assert f'nonce="{nonce}"' in attrs, (
+                f"{page} has an inline <script {attrs.strip()}> without the build nonce"
+            )
+
+
+def test_no_inline_event_handler_attributes():
+    """Inline onclick=/onload=-style attributes bypass nonce-based CSP entirely and must not be used."""
+    run_build()
+    pattern = __import__("re").compile(r'\son[a-z]+\s*=\s*"', __import__("re").IGNORECASE)
+    for page in [DIST / "index.html", DIST / "tools" / TOOL_SLUGS[0] / "index.html", DIST / "dashboard" / "index.html"]:
+        html = page.read_text()
+        assert not pattern.search(html), f"{page} contains an inline event-handler attribute"
+
+
+def test_nginx_conf_csp_has_no_unsafe_inline_scripts():
+    """nginx.conf's script-src must rely on the nonce placeholder, not 'unsafe-inline'."""
+    conf = (ROOT / "infra" / "nginx.conf").read_text()
+    assert "Content-Security-Policy" in conf
+    script_src = conf.split("script-src", 1)[1].split(";", 1)[0]
+    assert "unsafe-inline" not in script_src
+    assert "'nonce-__CSP_NONCE__'" in script_src
+    assert "https://pagead2.googlesyndication.com" in script_src
+
+
+def test_dockerfile_substitutes_csp_nonce_placeholder():
+    """infra/Dockerfile must replace nginx.conf's nonce placeholder with the value build.py stamped."""
+    dockerfile = (ROOT / "infra" / "Dockerfile").read_text()
+    assert "csp_nonce.txt" in dockerfile
+    assert "__CSP_NONCE__" in dockerfile
+
+
+def test_no_inline_event_handlers_in_source():
+    """Inline on*= attributes (static or built via innerHTML) bypass nonce-based CSP and must not
+    exist anywhere in templates or JS source, since nginx's script-src has no 'unsafe-inline' fallback."""
+    import re
+
+    pattern = re.compile(r'\son[a-z]+\s*=\s*["\']', re.IGNORECASE)
+    offenders = []
+    for base in [ROOT / "templates", ROOT / "static" / "js"]:
+        for path in base.rglob("*"):
+            if path.is_file() and path.suffix in (".html", ".js"):
+                for lineno, line in enumerate(path.read_text().splitlines(), 1):
+                    if pattern.search(line):
+                        offenders.append(f"{path.relative_to(ROOT)}:{lineno}")
+    assert not offenders, f"Inline event-handler attributes found: {offenders}"
+
+
 def test_discount_calculator_builds_with_margin_insight():
     """Discount calculator page should build and contain margin result element."""
     run_build()

@@ -67,8 +67,12 @@ if (typeof document !== "undefined") {
     row.innerHTML = '<td><input type="number" step="any" class="wa-value" value="' + (val !== undefined ? val : "") + '" placeholder="e.g. 8.5" style="width:100%" aria-label="Value"></td>'
       + '<td><input type="number" step="any" min="0" class="wa-weight" value="' + (wt !== undefined ? wt : "") + '" placeholder="e.g. 30" style="width:100%" aria-label="Weight"></td>'
       + '<td class="wa-contrib" style="text-align:right;font-size:0.82rem;color:var(--text-muted)"></td>'
-      + '<td><button type="button" aria-label="Remove row" onclick="this.closest(\'tr\').remove();window._waRun&&window._waRun()" style="background:none;border:1px solid var(--border);border-radius:4px;padding:0.1rem 0.4rem;cursor:pointer;color:var(--text-muted)">✕</button></td>';
+      + '<td><button type="button" aria-label="Remove row" style="background:none;border:1px solid var(--border);border-radius:4px;padding:0.1rem 0.4rem;cursor:pointer;color:var(--text-muted)">✕</button></td>';
     row.querySelectorAll("input").forEach(function (el) { el.addEventListener("input", run); });
+    row.querySelector("button").addEventListener("click", function () {
+      row.remove();
+      run();
+    });
     container.appendChild(row);
     run();
   }
@@ -76,7 +80,6 @@ if (typeof document !== "undefined") {
   document.addEventListener("DOMContentLoaded", function () {
     var addBtn = document.getElementById("wa-add-row");
     if (addBtn) addBtn.addEventListener("click", function () { addRow(); });
-    window._waRun = run;
     var defaults = [[85, 30], [72, 25], [91, 20], [68, 25]];
     defaults.forEach(function (d) { addRow(d[0], d[1]); });
   });

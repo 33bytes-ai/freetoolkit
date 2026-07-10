@@ -10,8 +10,8 @@
 | 36.00 | Corriger _rejectattr pour supporter d'autres opérateurs | 4 | 1 | 1 | done |
 | 31.50 | Remplacer og:image SVG par PNG statique | 7 | 2 | 1 | done |
 | 24.00 | Remove fabricated testimonials with stock avatar photos | 8 | 3 | 1 | done |
-| 22.50 | Sitemap avec lastmod dynamique | 5 | 2 | 1 | pending |
-| 21.00 | Header Content-Security-Policy dans nginx.conf | 7 | 3 | 3 | pending |
+| 22.50 | Sitemap avec lastmod dynamique | 5 | 2 | 1 | done |
+| 21.00 | Header Content-Security-Policy dans nginx.conf | 7 | 3 | 3 | done |
 | 21.00 | WebApplication schema JSON-LD par page outil | 7 | 3 | 1 | pending |
 | 20.25 | FAQ schema JSON-LD sur les pages outils | 9 | 4 | 2 | pending |
 | 18.00 | Dark mode CSS via prefers-color-scheme | 6 | 3 | 1 | pending |

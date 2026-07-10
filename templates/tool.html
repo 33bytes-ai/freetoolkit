@@ -23,7 +23,7 @@
 <meta name="identifier-URL" content="{{ site.base_url }}/tools/{{ tool.slug }}/">
 <link rel="author" href="{{ site.base_url }}/about/">
 <link rel="preload" href="/static/js/tools/{{ tool.js }}" as="script">
-<script type="application/ld+json">
+<script type="application/ld+json" nonce="{{ csp_nonce }}">
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -34,7 +34,7 @@
   ]
 }
 </script>
-<script type="application/ld+json">
+<script type="application/ld+json" nonce="{{ csp_nonce }}">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
@@ -50,7 +50,7 @@
   "dateModified": "{{ tool.date_added }}"{% endif %}
 }
 </script>
-<script type="application/ld+json">
+<script type="application/ld+json" nonce="{{ csp_nonce }}">
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
@@ -61,7 +61,7 @@
 }
 </script>
 {% if tool.howto_steps %}
-<script type="application/ld+json">
+<script type="application/ld+json" nonce="{{ csp_nonce }}">
 {
   "@context": "https://schema.org",
   "@type": "HowTo",
@@ -76,7 +76,7 @@
 </script>
 {% endif %}
 {% if tool_faqs %}
-<script type="application/ld+json">
+<script type="application/ld+json" nonce="{{ csp_nonce }}">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -115,7 +115,7 @@
     <a href="https://twitter.com/intent/tweet?text={{ tool.title | urlencode }}&url={{ site.base_url }}/tools/{{ tool.slug }}/" target="_blank" rel="noopener" class="share-btn share-twitter" aria-label="Share on X (Twitter)" style="display:inline-flex;align-items:center;gap:0.35rem;font-size:0.8rem;padding:0.35rem 0.75rem;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);color:var(--text);text-decoration:none;white-space:nowrap">Share on X</a>
     <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.base_url }}/tools/{{ tool.slug }}/" target="_blank" rel="noopener" class="share-btn share-linkedin" aria-label="Share on LinkedIn" style="display:inline-flex;align-items:center;gap:0.35rem;font-size:0.8rem;padding:0.35rem 0.75rem;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);color:var(--text);text-decoration:none;white-space:nowrap">Share on LinkedIn</a>
     <a href="mailto:?subject={{ tool.title | urlencode }}&amp;body=Free%20calculator%3A%20{{ (site.base_url + '/tools/' + tool.slug + '/') | urlencode }}" class="share-btn share-email" aria-label="Share via email" style="display:inline-flex;align-items:center;gap:0.35rem;font-size:0.8rem;padding:0.35rem 0.75rem;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);color:var(--text);text-decoration:none;white-space:nowrap">Share via email</a>
-    <button onclick="window.print()" class="share-btn" aria-label="Print this calculator" style="display:inline-flex;align-items:center;gap:0.35rem;font-size:0.8rem;padding:0.35rem 0.75rem;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;white-space:nowrap">Print</button>
+    <button id="tool-print-btn" class="share-btn" aria-label="Print this calculator" style="display:inline-flex;align-items:center;gap:0.35rem;font-size:0.8rem;padding:0.35rem 0.75rem;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;white-space:nowrap">Print</button>
   </div>
 
   {% include "ads_slot.html" %}

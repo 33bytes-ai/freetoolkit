@@ -136,6 +136,15 @@ window.FTK = (function () {
       });
     })();
 
+    // Print button on tool pages
+    (function () {
+      var btn = document.getElementById("tool-print-btn");
+      if (!btn) return;
+      btn.addEventListener("click", function () {
+        window.print();
+      });
+    })();
+
     document.addEventListener("DOMContentLoaded", function () {
       // Mobile nav
       var navToggle  = document.getElementById("mobile-nav-toggle");

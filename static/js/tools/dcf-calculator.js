@@ -79,8 +79,12 @@ if (typeof document !== "undefined") {
     var inputId = "dcf-cf-input-" + (dcfRowSeq++);
     row.innerHTML = '<label for="' + inputId + '" style="min-width:60px;font-size:0.82rem;color:var(--text-muted)">Year ' + (count + 1) + '</label>'
       + '<input type="number" step="any" id="' + inputId + '" class="dcf-cf-input" value="' + (val !== undefined ? val : "") + '" placeholder="e.g. 500000" style="flex:1">'
-      + '<button type="button" aria-label="Remove row" onclick="this.closest(\'.dcf-cf-row\').remove();window._dcfRun&&window._dcfRun()" style="background:none;border:1px solid var(--border);border-radius:4px;padding:0.1rem 0.4rem;cursor:pointer;color:var(--text-muted)">✕</button>';
+      + '<button type="button" aria-label="Remove row" style="background:none;border:1px solid var(--border);border-radius:4px;padding:0.1rem 0.4rem;cursor:pointer;color:var(--text-muted)">✕</button>';
     row.querySelector(".dcf-cf-input").addEventListener("input", run);
+    row.querySelector("button").addEventListener("click", function () {
+      row.remove();
+      run();
+    });
     container.appendChild(row);
     run();
   }
@@ -88,7 +92,6 @@ if (typeof document !== "undefined") {
   document.addEventListener("DOMContentLoaded", function () {
     var addBtn = document.getElementById("dcf-add-year");
     if (addBtn) addBtn.addEventListener("click", function () { addRow(); });
-    window._dcfRun = run;
     ["dcf-rate", "dcf-tgrowth"].forEach(function (id) {
       var el = document.getElementById(id);
       if (el) el.addEventListener("input", run);

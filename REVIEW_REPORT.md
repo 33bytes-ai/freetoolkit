@@ -1,62 +1,78 @@
 STATUS: PASS
 
-## Scope
-Reviewed the diff for task "Sitemap avec lastmod dynamique" (backlog #22.50):
-- `src/freetoolkit/build.py` — `write_sitemap()` rewritten to assign per-URL
-  `lastmod` instead of a blanket `today` for every entry
-- `content/tools.yaml` — added a comment block documenting `date_added` / `updated`
-- `tests/test_build.py` — two new tests
-- `BACKLOG.md` / `backlog.json` — status updates (this task, plus an unrelated
-  task #31.50 flipped from `pending` to `done`)
+## Scope reviewed
+Task: "Header Content-Security-Policy dans nginx.conf" (backlog #21.00).
+`infra/nginx.conf`, `infra/Dockerfile`, `src/freetoolkit/build.py`, all `templates/*.html`,
+`static/js/lib/common.js`, `static/js/tools/{dcf,mirr,weighted-average}-calculator.js`,
+`tests/test_build.py`, `.gitignore`, `CLAUDE.md` docs.
 
 ## Findings
+
 None blocking.
 
 ## Notes (non-blocking)
-1. **Not verified by test execution.** This reviewer session hit the same sandbox
-   permission restriction the builder's note in `backlog.json` describes: `pytest`
-   / `make test-py` require an approval that never arrives autonomously. I traced
-   the new logic manually instead:
-   - Priority/changefreq values for every URL class (`/`, `/tools/`, `/changelog/`,
-     tool pages, static pages, intent pages) are unchanged from the pre-diff
-     branching logic — confirmed tuple-by-tuple against the removed code.
-   - `tool_lastmod = t.get("updated") or t.get("date_added") or today` falls back
-     in the right order; no tool in `content/tools.yaml` currently sets `updated`,
-     so today's sitemap output is identical in shape to before except tool/intent
-     URLs now carry `date_added` instead of `today`.
-   - The two new tests (`test_sitemap_has_per_tool_date_added_lastmod`,
-     `test_sitemap_respects_updated_field_override`) target the right behavior,
-     reuse the established `run_build()` + `DIST` fixtures, and
-     `from freetoolkit import build as ftk_build` resolves correctly via the
-     project's editable install (`.venv/lib/python*/site-packages/_editable_impl_freetoolkit.pth`).
-   - Checked all other sitemap-related tests in the file for assumptions that
-     would conflict with the new per-tool lastmod (e.g. an assertion that every
-     URL shares one `today` lastmod) — none found.
-   - This is manual static verification, not a green test run — a human or CI
-     should still run `make test-py` before treating this as fully confirmed.
-2. **Code duplication, not a regression.** `write_sitemap()` still hand-builds
-   XML instead of reusing the `_sitemap_urlset()` helper (used by
-   `write_sitemap_pages`), which already supports an optional 4th `lastmod`
-   tuple element. This duplication pre-dates this diff (the old `write_sitemap`
-   also didn't use the helper), so it's not introduced by this change, but now
-   that `write_sitemap` needs the same optional-lastmod behavior the helper
-   already provides, it would have been a good opportunity to consolidate.
-   Worth a follow-up cleanup ticket, not a blocker.
-3. **Tuple field order is inconsistent across the file.** `write_sitemap()` uses
-   `(url, priority, freq, lastmod)` while `_sitemap_urlset()` uses
-   `(url, freq, priority, lastmod)`. Both are internally consistent with their
-   own unpacking, so there's no bug, but a future edit that copy-pastes a tuple
-   between the two could silently swap priority/changefreq.
-4. **`backlog.json` diff also flips task #31.50 ("Remplacer og:image SVG par PNG
-   statique") to `done`.** That task's code isn't in this diff — it was already
-   committed (`git log` shows commit `0e314b9` for it) — so this looks like a
-   stale-status cleanup riding along with this change rather than scope creep.
-5. `content/tools.yaml` comment addition documents a non-obvious contract (how
-   the sitemap consumes `date_added`/`updated`), consistent with CLAUDE.md's
-   "only comment the WHY" guidance.
+
+- Could not execute `make test-py` / `pytest` / `make test-js` in this sandbox — shell
+  commands required interactive approval that never arrived. Reviewed the new/changed
+  tests statically instead (see "Verification performed"); they look correct and target
+  the actual risk. Recommend running `make test` before merge/deploy as a final gate.
+- `templates/dashboard.html` (untouched by this diff) still carries its own
+  `<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'nonce-{{ csp_nonce }}'">`
+  tag. It now shares the same build-wide nonce as the response header (good — previously it
+  minted its own independent `secrets.token_urlsafe(16)` in `build.py`, which this diff
+  correctly removed in favor of the shared `common` nonce). Flagging for awareness only:
+  browsers enforce meta-tag CSP and header CSP together (most-restrictive-wins per
+  directive), so this meta tag's narrower `script-src` (no `pagead2.googlesyndication.com`)
+  would block AdSense's external script specifically on `/dashboard/` if ads were ever
+  enabled there. This is pre-existing behavior, not introduced by this change, and the
+  dashboard is `noindex`/internal-only, so likely intentional. Not a defect of this task.
+- Minor style nit: the new tests in `tests/test_build.py` import `re` two different ways
+  (`import re` in one test, `__import__("re")` inline in two others). Cosmetic only.
+
+## Verification performed
+
+- Read the full diff for every file touched by this task.
+- Confirmed `nginx.conf`'s CSP `script-src` dropped `'unsafe-inline'` and now uses
+  `'nonce-__CSP_NONCE__'` alongside the existing AdSense origins — matches the task
+  description ("bloquer inline scripts non-nonce").
+- Confirmed `build.py` generates one `csp_nonce` per build, threads it through the shared
+  `common` template-context dict (previously only the dashboard page minted its own
+  independent nonce — now unified, which is required for the single nginx header to match
+  markup across *every* page), and writes it to `csp_nonce.txt` at repo root (correctly
+  added to `.gitignore`).
+- Confirmed `infra/Dockerfile` copies `csp_nonce.txt` from the builder stage and `sed`-
+  substitutes it into the nginx placeholder at image build time. `secrets.token_urlsafe`'s
+  URL-safe alphabet (`A-Za-z0-9-_`) contains no `/`, so the `sed s/.../.../ ` substitution
+  is safe from delimiter collisions.
+- Grepped all of `templates/` for `<script>` tags: every inline script (including
+  `type="application/ld+json"`) now carries `nonce="{{ csp_nonce }}"`; external-`src`
+  scripts (AdSense loader, `dashboard.js`) correctly do not need one.
+- Grepped `templates/` and `static/js/` for `onclick=`/`onload=`/`onerror=`: none remain.
+  The two elements that used inline `onclick` (`dashboard.html`'s unlock button,
+  `tool.html`'s print button) were converted to `id` + `addEventListener`, wired in
+  `dashboard.html`'s own inline script and `static/js/lib/common.js` respectively —
+  matching the pattern CLAUDE.md already documents for this codebase.
+- Checked the three calculator JS files (`dcf`, `mirr`, `weighted-average-calculator`):
+  each `addRow()`-built remove button dropped its
+  `onclick="...closest(...)...window._xRun..."` string and now binds via
+  `row.querySelector("button").addEventListener("click", ...)`, and the now-unnecessary
+  `window._xRun` globals were removed. Consistent with the pre-existing `addRow()` pattern.
+- Reviewed the new tests in `tests/test_build.py`: nonce file is written, every inline
+  script across representative page types (home, tools index, a tool page, changelog,
+  dashboard, about, an intent page) carries that exact nonce, no inline event-handler
+  attributes exist anywhere in built HTML or in template/JS source, `nginx.conf`'s
+  `script-src` has no `unsafe-inline` and does have the placeholder + AdSense origin, and
+  the Dockerfile performs the substitution. These tests are relevant and cover the real
+  risk (header/markup nonce mismatch would silently break every inline script site-wide).
+- `BACKLOG.md` / `backlog.json` / `CLAUDE.md` updates are orchestrator bookkeeping and
+  documentation, consistent with the shipped change.
 
 ## Conventions check (CLAUDE.md)
-- No comments explaining "what" the code does — respected.
-- No backwards-compat shims / dead code — respected.
-- Small, focused change — respected (touches only sitemap logic + docs + tests +
-  backlog bookkeeping).
+- Inline scripts all carry `nonce="{{ csp_nonce }}"` — respected (project rule).
+- No inline event-handler attributes anywhere — respected (project rule).
+- No comments explaining "what" the code does; the few comments added explain non-obvious
+  build/deploy wiring (nonce must match between build.py and Dockerfile) — respected.
+- No backwards-compat shims / dead code — respected (removed the now-unused
+  `window._xRun` globals rather than leaving them).
+- Small, focused change — respected (touches only CSP/nonce plumbing + the handful of
+  inline-handler call sites it required, plus tests/docs).

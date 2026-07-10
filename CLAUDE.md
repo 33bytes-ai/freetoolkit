@@ -74,3 +74,21 @@ copy to `content/tools.yaml`, write tests in `tests/test_tools.js`, and run
 ## Updating the live domain
 Change `base_url` in `content/config.yaml` to your real domain before
 deploying. This affects sitemap URLs and canonical tags.
+
+## Content-Security-Policy / inline scripts
+`infra/nginx.conf` sends a strict CSP with no `'unsafe-inline'` in
+`script-src`. `build.py` generates one random nonce per build, passes it to
+every template as `csp_nonce`, and writes it to `csp_nonce.txt` at the repo
+root (gitignored); `infra/Dockerfile` substitutes that value into nginx.conf's
+`__CSP_NONCE__` placeholder when it builds the image, so the header always
+matches the markup it's serving.
+- Any inline `<script>` (including `type="application/ld+json"`) needs
+  `nonce="{{ csp_nonce }}"` — the CSP applies to inline scripts regardless of
+  their `type`.
+- Never use inline event-handler attributes (`onclick="..."`, including ones
+  built dynamically via `innerHTML`) — nonces don't cover them. Wire events
+  with `addEventListener` instead (see `static/js/lib/common.js` or any
+  `addRow()` in `static/js/tools/` for the pattern).
+- `tests/test_build.py` has CSP tests (nonce presence/consistency, no inline
+  handlers anywhere in `templates/` or `static/js/`) — run them after
+  touching any template or tool JS.

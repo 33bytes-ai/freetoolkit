@@ -20,7 +20,7 @@
 <meta name="news_keywords" content="{{ parent_tool.keywords[:5] | join(', ') }}">{% endif %}
 {% if prev_intent_page %}<link rel="prev" href="/tools/{{ prev_intent_page.parent_tool }}/{{ prev_intent_page.slug }}/">{% endif %}
 {% if next_intent_page %}<link rel="next" href="/tools/{{ next_intent_page.parent_tool }}/{{ next_intent_page.slug }}/">{% endif %}
-<script type="application/ld+json">
+<script type="application/ld+json" nonce="{{ csp_nonce }}">
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -33,7 +33,7 @@
   ]
 }
 </script>
-<script type="application/ld+json">
+<script type="application/ld+json" nonce="{{ csp_nonce }}">
 {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -59,7 +59,7 @@
 }
 </script>
 {% if intent_page.title.startswith("What Is") or intent_page.title.startswith("What is") %}
-<script type="application/ld+json">
+<script type="application/ld+json" nonce="{{ csp_nonce }}">
 {
   "@context": "https://schema.org",
   "@type": "DefinedTerm",

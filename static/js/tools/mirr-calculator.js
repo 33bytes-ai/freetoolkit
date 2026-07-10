@@ -77,8 +77,12 @@ if (typeof document !== "undefined") {
     var inputId = "mirr-cf-input-" + (mirrRowSeq++);
     row.innerHTML = '<label for="' + inputId + '" style="min-width:60px;font-size:0.82rem;color:var(--text-muted)">Year ' + count + '</label>'
       + '<input type="number" step="any" id="' + inputId + '" class="mirr-cf-input" value="' + (val !== undefined ? val : "") + '" placeholder="e.g. -50000" style="flex:1">'
-      + '<button type="button" aria-label="Remove row" onclick="this.closest(\'.mirr-cf-row\').remove();window._mirrRun&&window._mirrRun()" style="background:none;border:1px solid var(--border);border-radius:4px;padding:0.1rem 0.4rem;cursor:pointer;color:var(--text-muted)">✕</button>';
+      + '<button type="button" aria-label="Remove row" style="background:none;border:1px solid var(--border);border-radius:4px;padding:0.1rem 0.4rem;cursor:pointer;color:var(--text-muted)">✕</button>';
     row.querySelector(".mirr-cf-input").addEventListener("input", run);
+    row.querySelector("button").addEventListener("click", function () {
+      row.remove();
+      run();
+    });
     container.appendChild(row);
     run();
   }
@@ -86,7 +90,6 @@ if (typeof document !== "undefined") {
   document.addEventListener("DOMContentLoaded", function () {
     var addBtn = document.getElementById("mirr-add-row");
     if (addBtn) addBtn.addEventListener("click", function () { addRow(); });
-    window._mirrRun = run;
     ["mirr-finance", "mirr-reinvest", "mirr-hurdle"].forEach(function (id) {
       var el = document.getElementById(id);
       if (el) el.addEventListener("input", run);

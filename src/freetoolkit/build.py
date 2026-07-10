@@ -554,6 +554,8 @@ def build() -> Path:
         cat = _tool_cat.get(ip["parent_tool"], "")
         intent_count_by_category[cat] = intent_count_by_category.get(cat, 0) + 1
 
+    csp_nonce = secrets.token_urlsafe(16)
+
     common = dict(
         site=config["site"],
         categories=config["categories"],
@@ -563,6 +565,7 @@ def build() -> Path:
         intent_count_by_category=intent_count_by_category,
         year=datetime.date.today().year,
         build_date=datetime.date.today().isoformat(),
+        csp_nonce=csp_nonce,
     )
 
     for tool in tools:
@@ -639,7 +642,6 @@ def build() -> Path:
         path="/dashboard/",
         title="Analytics Dashboard",
         description="Traffic and revenue analytics for FounderCalc",
-        csp_nonce=secrets.token_urlsafe(16),
         **common,
     )
 
@@ -692,6 +694,11 @@ def build() -> Path:
     write_rss(config, tools)
     write_og_image(config, tools)
     _gzip_dist()
+
+    # Consumed by infra/Dockerfile to bake the matching CSP nonce into the
+    # nginx response header — inline <script> tags across dist/ carry this
+    # same value, so the header and markup must agree at deploy time.
+    (ROOT / "csp_nonce.txt").write_text(csp_nonce, encoding="utf-8")
 
     return DIST_DIR
 

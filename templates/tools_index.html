@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block head_extra %}
 <meta name="keywords" content="{% for tool in tools[:10] %}{{ tool.nav_title }}{% if not loop.last %}, {% endif %}{% endfor %}, free business calculators">
-<script type="application/ld+json">
+<script type="application/ld+json" nonce="{{ csp_nonce }}">
 {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
@@ -57,7 +57,7 @@
   <p id="tools-count" style="font-size:0.82rem;color:var(--text-muted);margin:0 0 0.5rem">Showing all {{ tools | length }} calculators</p>
   <p id="tools-no-match" style="display:none;color:var(--text-muted);padding:2rem 0">No calculators match your search.</p>
 </section>
-<script>
+<script nonce="{{ csp_nonce }}">
 (function () {
   var input = document.getElementById("tool-search");
   if (!input) return;
