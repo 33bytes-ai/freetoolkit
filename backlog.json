@@ -29,7 +29,8 @@
     "impact": 7,
     "effort": 2,
     "risk": 1,
-    "status": "pending"
+    "status": "done",
+    "note": "Found that the two prerequisites were already delivered by earlier backlog items: templates/base.html:52 already emits og:image pointing at /static/img/og.png plus og:image:width=1200/og:image:height=630 meta tags, and src/freetoolkit/build.py's write_og_image() (added by the 'Bundle a font' task) already renders a real 1200x630 PNG per page at build time via Pillow -- confirmed by the existing tests/test_build.py::test_og_images_are_actually_generated. What was actually still wrong: static/img/og.svg was a dead, unreferenced leftover from before the PNG generator existed (grepped templates/static/tests/content -- zero references) and was being needlessly copied into dist/ by build.py's static copytree; deleted it via `git rm`. Also added tests/test_build.py::test_pages_have_og_image_dimensions asserting the og:image URL is the static PNG path and that og:image:width/height are present, since no test previously covered those two meta tags directly. NOT VERIFIED live: this sandboxed builder session's shell permission mode blocks all python/make/pytest invocations ('This command requires approval', same restriction hit by every prior task in this backlog needing a real build) -- confirmed by re-attempting `python -m freetoolkit.build` and `make build` here. A human or CI run of `make build && make test-py` is needed to confirm the new test passes and dist/static/img/og.svg is gone from the output."
   },
   {
     "title": "Header Content-Security-Policy dans nginx.conf",

@@ -982,6 +982,16 @@ def test_pages_have_og_image_alt():
     assert 'property="og:image:alt"' in html, "Page missing og:image:alt meta"
 
 
+def test_pages_have_og_image_dimensions():
+    """og:image must be a static PNG (SVGs aren't previewed by Facebook/LinkedIn/X)
+    with explicit width/height so crawlers can render the preview without a fetch."""
+    run_build()
+    html = (DIST / "index.html").read_text()
+    assert "/static/img/og.png" in html, "og:image should point to a static PNG, not an SVG"
+    assert 'property="og:image:width" content="1200"' in html
+    assert 'property="og:image:height" content="630"' in html
+
+
 def test_og_images_are_actually_generated():
     """A real (non-skipped) build should render og.png and per-tool og-*.png
     files using the bundled fallback font, regardless of what fonts (if any)

@@ -1,57 +1,44 @@
 STATUS: PASS
 
 ## Summary
-Task: "Audit remaining pages/templates for other placeholder or hardcoded content."
-The Builder found and fixed two real issues:
-1. `content/affiliates.yaml`: 17 entries marked `affiliate: true` had unfilled
-   `?via=YOURID` / `?ref=YOURID` / `?lmref=YOURID` tracking params. Changed to
-   `affiliate: false` and stripped the placeholder query param (plus 2 already
-   `affiliate: false` entries with the same leftover param, also cleaned up).
-2. `content/pages/{terms,privacy,contact}.md`: still branded "FreeToolKit" and
-   described a stale tool lineup (word counter, JSON formatter, Base64 encoder,
-   password generator, etc.) that doesn't match this site. Rewritten to say
-   "FounderCalc" and describe the real calculator category.
+The task ("Remplacer og:image SVG par PNG statique") turned out to be already
+implemented by earlier backlog work: `templates/base.html:52` already emits
+`og:image` pointing at `/static/img/og.png` plus `og:image:width="1200"` /
+`og:image:height="630"`, and `src/freetoolkit/build.py`'s `write_og_image()`
+already renders a real 1200x630 PNG per page via Pillow at build time. The
+Builder correctly identified this instead of duplicating work, and scoped
+this change down to what was actually still wrong:
+
+1. Deleted `static/img/og.svg` — a dead, unreferenced leftover from before
+   the PNG generator existed. Confirmed via grep across templates/, static/,
+   tests/, content/, and backlog.json: zero remaining references except the
+   backlog note itself. It was being needlessly copied into `dist/` by
+   `build.py`'s `shutil.copytree(STATIC_DIR, ...)` call.
+2. Added `tests/test_build.py::test_pages_have_og_image_dimensions`, which
+   was previously missing — no test asserted the og:image PNG path or the
+   width/height meta tags directly (only `og:image:alt` was covered before).
 
 ## Verification performed
-- Confirmed via `content/config.yaml`, `content/pages/about.md`,
-  `content/pages/comparisons.md`, and `templates/index.html` that "FounderCalc"
-  is the actual site brand everywhere else — the three legal pages were the
-  only outliers still saying "FreeToolKit". The fix aligns them with the rest
-  of the site rather than introducing a new inconsistency.
-- `grep -rl "FreeToolKit" content/ templates/ static/` now returns nothing —
-  no stale brand references remain anywhere in the tree.
-- `grep "YOURID"` and `grep "affiliate: true"` in `content/affiliates.yaml`
-  confirm zero remaining placeholder IDs and zero remaining `affiliate: true`
-  data lines (the one match is in the file's own instructional header
-  comment, not an actual entry).
-- Checked `templates/tool.html:168-181` and `src/freetoolkit/build.py` to
-  confirm `affiliate` only gates the FTC disclosure badge and `rel=sponsored`
-  — flipping these 17 entries to `false` is safe and matches the pattern
-  already used by other non-affiliate entries in the same file (e.g. the
-  QuickBooks entries).
-- Confirmed `test_legal_pages_use_site_brand_not_stale_tool_list` reads from
-  `DIST/{page}/index.html`, which matches `EXPECTED_FILES` earlier in the
-  same test file (`privacy/index.html`, `terms/index.html`,
-  `contact/index.html` are already expected build outputs) — no path
-  mismatch.
-- Confirmed `test_affiliate_links_have_no_placeholder_ids` follows the same
-  direct-YAML-read pattern already used elsewhere in the test file, with no
-  unneeded `run_build()` call since it only inspects source content.
-- Correctly left `content/config.yaml`'s
-  `base_url: https://foundercalc.example.com` untouched, since the repo's own
-  CLAUDE.md documents that as an intentional deploy-time placeholder, not a
-  bug, and it was already the subject of a separate prior task.
-- `BACKLOG.md` / `backlog.json` updated consistently to `done` with a
-  detailed, accurate note.
+- Confirmed via grep that no code, template, or config references `og.svg`
+  anymore.
+- Confirmed the new test follows existing conventions in the file: uses the
+  shared `run_build()` helper (which sets `FTK_SKIP_OG_IMAGE=1`, so it only
+  exercises template output, not actual Pillow rendering — correctly scoped
+  and consistent with sibling tests like `test_pages_have_og_image_alt`).
+- Confirmed `test_og_images_are_actually_generated` (pre-existing,
+  unmodified) already covers the actual PNG rendering path via
+  `run_build_with_og_images()`, so the new test doesn't duplicate that
+  coverage.
+- Confirmed the `backlog.json` note is accurate and matches the actual diff.
 
 ## Limitations
-- Could not execute `make test` / `pytest` in this review session — Python
-  invocations require interactive approval not available here (same
-  restriction the Builder hit and disclosed). Verification above relied on
-  static reads/greps tracing YAML data, template consumption, and test
-  assertions by hand; no ambiguity was found. Recommend running `make test`
-  once in an unrestricted shell before merge, as the Builder also
-  recommended.
+- Could NOT execute `make test-py` / `pytest` / `python -m freetoolkit.build`
+  in this reviewer session — the sandbox's shell permission mode blocks all
+  python/make invocations here too, same restriction the Builder hit and
+  disclosed. This is an environment limitation, not a defect in the diff.
+  A human or CI run of `make build && make test-py` is still needed for a
+  live green run, but the change is small, low-risk, template/test-only, and
+  consistent with existing patterns in the file, so this doesn't block PASS.
 
 ## Issues found
 None.
