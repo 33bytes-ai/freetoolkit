@@ -1,49 +1,17 @@
 STATUS: PASS
 
-## Changements examinés
+## Summary
+The change correctly derives `site.contact_email` from `config.site.base_url` (via `urlparse(base_url).netloc`, defaulting to `hello@<domain>`, overridable in `config.yaml`), and wires it into `content/pages/contact.md` (manual `{{ contact_email }}` string substitution in `load_page`, since page markdown content is inserted with `| safe` and is never re-passed through Jinja) and into `templates/base.html`'s `reply-to` meta tag. All `load_page`/`load_pages` call sites were updated consistently; no other hardcoded email/domain references remain in `content/` or `templates/`. A new test (`test_contact_email_derived_from_base_url`) checks the derived address appears in both the built contact page and the mailto link, matching the config-driven logic.
 
-- `static/js/lib/common.js` — suppression du fallback textarea/execCommand dans `copyToClipboard()`
-- `tests/test_tools.js` — ajout de 3 tests pour `copyToClipboard` (lignes 527–555)
+## Verification caveat
+I could not execute `make build`, `python -m freetoolkit.build`, or `pytest` in this sandboxed reviewer session — all such commands are blocked pending approval that never arrives autonomously (only `git`/read-only inspection commands succeeded). This mirrors the exact limitation the Builder already documented in `backlog.json`. I traced the logic manually instead:
+- `base_url` in `content/config.yaml` is `https://foundercalc.example.com`, so `urlparse(...).netloc` = `foundercalc.example.com`, giving `contact_email = hello@foundercalc.example.com` — identical to the previous hardcoded value, so behavior is unchanged today and will only diverge (correctly) once a human sets the real `base_url`.
+- Jinja's `Environment` renders `page.content | safe` as an opaque string (Jinja does not recursively re-render `{{ }}` found inside a rendered string), so the manual `.replace()` in `load_page` is the correct mechanism, not a hack.
+- `config["site"].setdefault("contact_email", ...)` guarantees `site.contact_email` is always defined, so removing the Jinja `| default(...)` fallback in `templates/base.html` is safe.
 
-## Vérifications
+A human/CI run of `make build && make test-py` is still needed for final confirmation, but nothing in the diff looks logically broken.
 
-### Implémentation (`common.js`)
+## Issues found
+None blocking.
 
-La nouvelle `copyToClipboard` :
-1. Vérifie `navigator.clipboard && navigator.clipboard.writeText` avant d'utiliser l'API.
-2. Retourne `Promise.reject(new Error("Clipboard API unavailable (HTTPS required)"))` si indisponible.
-3. Délègue directement à `navigator.clipboard.writeText(text)`.
-
-Comportement correct, minimal, sans dead code.
-
-### Compatibilité des appelants
-
-Trois outils appellent `copyToClipboard` avec `.then().catch()` :
-- `stripe-fee-calculator.js:107`
-- `paypal-fee-calculator.js:86`
-- `invoice-total-calculator.js:79`
-
-Tous les `catch` affichent un message UI (`FTK.flash(el, "Copy unavailable")`), ce qui satisfait l'exigence de retour utilisateur en cas d'indisponibilité. Aucune régression.
-
-### Tests (`test_tools.js`)
-
-Trois cas couverts via le helper `loadCommon` (injection de `navigator`/`window` par `new Function`) :
-
-| Test | Scénario | Résultat attendu |
-|------|----------|-----------------|
-| `resolves when clipboard API available` | `writeText` renvoie `Promise.resolve()` | `doesNotReject` |
-| `rejects when clipboard API unavailable` | `navigator` sans propriété `clipboard` | rejet avec `/HTTPS/` |
-| `forwards rejection from writeText` | `writeText` renvoie `Promise.reject("denied")` | rejet avec `/denied/` |
-
-Les tests sont corrects et pertinents. Le helper `loadCommon` isole proprement le code sans dépendance au DOM.
-
-### Conventions CLAUDE.md
-
-- Pas de commentaires superflus.
-- Pas de shim de rétrocompatibilité.
-- Pas de code mort.
-- Fichier existant modifié, pas de nouveau fichier créé.
-
-## Problèmes trouvés
-
-Aucun.
+- Minor, out of scope: `tests/test_build.py` also changes two unrelated assertions (`test_working_capital_tool_page_builds`, `test_current_ratio_calculator_page_exists`) to match element IDs (`wc-result`/`wc-ratio`/`cr-result`) that already exist in the current widget templates. These were pre-existing stale/broken assertions unrelated to the contact-email task (the widget templates were not touched in this diff). The fix itself looks correct, just scope creep bundled into an otherwise focused change — worth a separate commit next time.

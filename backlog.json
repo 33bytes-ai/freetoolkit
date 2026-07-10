@@ -173,7 +173,8 @@
     "impact": 6,
     "effort": 3,
     "risk": 1,
-    "status": "pending"
+    "status": "in_progress",
+    "note": "Implemented: load_config() derives site.contact_email as hello@<netloc of base_url> (overridable via config.yaml), content/pages/contact.md and templates/base.html's reply-to meta now use {{ contact_email }} / site.contact_email instead of the hardcoded address, and a new test_contact_email_derived_from_base_url test was added to tests/test_build.py. NOT YET VERIFIED: this sandboxed builder session's permission mode blocks all command execution (`make build`, `make test-py`, even `python3 -c ...`) pending approval that never arrives autonomously -- only file read/edit/list ops succeeded. A human or CI run of `make build && make test-py` is needed to confirm the generated contact page and test pass before flipping this to done."
   },
   {
     "title": "Bundle a font so OG image generation doesn't silently fail",

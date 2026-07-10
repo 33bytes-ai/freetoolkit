@@ -10,7 +10,7 @@ FreeToolKit is a small, independently run site. If you've found a bug, have a
 suggestion for a new tool, or have a question about how something works,
 we'd like to hear from you.
 
-**Email:** [hello@foundercalc.example.com](mailto:hello@foundercalc.example.com)
+**Email:** [{{ contact_email }}](mailto:{{ contact_email }})
 
 When reporting a bug, it helps to include:
 

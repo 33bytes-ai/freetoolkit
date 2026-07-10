@@ -121,6 +121,20 @@ def test_sitemap_contains_intent_page_urls():
         assert url in sitemap, f"Intent page {url} missing from sitemap"
 
 
+def test_contact_email_derived_from_base_url():
+    run_build()
+    config = yaml.safe_load((ROOT / "content" / "config.yaml").read_text())
+    domain = config["site"]["base_url"].split("://", 1)[1]
+    expected_email = f"hello@{domain}"
+
+    contact = (DIST / "contact" / "index.html").read_text()
+    assert expected_email in contact
+    assert f"mailto:{expected_email}" in contact
+
+    index = (DIST / "index.html").read_text()
+    assert expected_email in index
+
+
 def test_intent_pages_link_to_parent_tool():
     run_build()
     for parent, slug in INTENT_PAGES[:3]:
@@ -985,11 +999,11 @@ def test_base_has_no_duplicate_manifest():
 
 
 def test_working_capital_tool_page_builds():
-    """working-capital-calculator page should build with current-ratio output."""
+    """working-capital-calculator page should build with working-capital and current-ratio output."""
     run_build()
     html = (DIST / "tools" / "working-capital-calculator" / "index.html").read_text()
-    assert "wc-current-ratio" in html, "Working Capital page missing current-ratio output"
-    assert "wc-quick-ratio" in html, "Working Capital page missing quick-ratio output"
+    assert "wc-result" in html, "Working Capital page missing working-capital output"
+    assert "wc-ratio" in html, "Working Capital page missing current-ratio output"
 
 
 def test_pages_have_color_scheme_meta():
@@ -1877,7 +1891,7 @@ def test_current_ratio_calculator_page_exists():
     page = DIST / "tools" / "current-ratio-calculator" / "index.html"
     assert page.exists()
     content = page.read_text()
-    assert "liq-current" in content
+    assert "cr-result" in content
 
 
 def test_markup_calculator_page_exists():

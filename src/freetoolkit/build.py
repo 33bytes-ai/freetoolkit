@@ -12,6 +12,7 @@ import os
 import secrets
 import shutil
 from pathlib import Path
+from urllib.parse import urlparse
 
 import markdown
 import yaml
@@ -38,12 +39,13 @@ def load_yaml(path: Path):
         return yaml.safe_load(f)
 
 
-def load_page(path: Path) -> dict:
+def load_page(path: Path, config: dict) -> dict:
     text = path.read_text(encoding="utf-8")
     if not text.startswith("---"):
         raise ValueError(f"{path} is missing YAML frontmatter")
     _, frontmatter, body = text.split("---", 2)
     meta = yaml.safe_load(frontmatter) or {}
+    body = body.replace("{{ contact_email }}", config["site"]["contact_email"])
     meta["content"] = markdown.markdown(body.strip(), extensions=MD_EXTENSIONS)
     return meta
 
@@ -54,6 +56,8 @@ def load_config() -> dict:
     if client_id:
         config["site"]["adsense_client_id"] = client_id
     config["site"].setdefault("adsense_client_id", "")
+    domain = urlparse(config["site"]["base_url"]).netloc
+    config["site"].setdefault("contact_email", f"hello@{domain}")
     return config
 
 
@@ -79,8 +83,8 @@ def load_intent_pages() -> list[dict]:
     return pages
 
 
-def load_pages() -> list[dict]:
-    return [load_page(p) for p in sorted((CONTENT_DIR / "pages").glob("*.md"))]
+def load_pages(config: dict) -> list[dict]:
+    return [load_page(p, config) for p in sorted((CONTENT_DIR / "pages").glob("*.md"))]
 
 
 def cross_category_tools(tool: dict, tools_by_category: dict[str, list[dict]]) -> list[dict]:
@@ -490,7 +494,7 @@ def write_og_image(config: dict, tools: list[dict] | None = None) -> None:
 def build() -> Path:
     config = load_config()
     tools = load_tools()
-    pages = load_pages()
+    pages = load_pages(config)
     affiliates = load_affiliates()
     faqs = load_faqs()
     intent_pages = load_intent_pages()
