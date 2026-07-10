@@ -186,8 +186,10 @@ Next steps:
   1. Implement the pure function in static/js/tools/{js}
   2. Update widget inputs/outputs in templates/widgets/{slug}.html
   3. Replace SEO body copy and howto_steps in content/tools.yaml
+     (add a "## Frequently asked questions" section with **bold** questions
+     followed by their answers — it's auto-converted into FAQPage JSON-LD)
   4. Update/replace the test stub in tests/test_tools.js
-  5. Optionally add to content/faqs.yaml and content/intent_pages.yaml
+  5. Optionally add to content/intent_pages.yaml
   6. Run: make build && make test
 """)
 

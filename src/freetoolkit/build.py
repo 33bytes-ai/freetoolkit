@@ -10,6 +10,7 @@ import datetime
 import gzip
 import json
 import os
+import re
 import secrets
 import shutil
 from pathlib import Path
@@ -33,6 +34,36 @@ STATIC_DIR = ROOT / "static"
 DIST_DIR = ROOT / "dist"
 
 MD_EXTENSIONS = ["fenced_code", "tables"]
+
+FAQ_HEADER_RE = re.compile(r"^##\s*frequently asked questions\s*$", re.IGNORECASE | re.MULTILINE)
+NEXT_HEADER_RE = re.compile(r"^##\s", re.MULTILINE)
+BOLD_LINE_RE = re.compile(r"^\*\*(.+?)\*\*\s*$")
+
+
+def extract_faqs_from_body(body: str) -> list[dict]:
+    """Pull Q&A pairs out of a tool's '## Frequently asked questions' markdown
+    section, so the FAQPage JSON-LD always matches what's visibly on the page
+    instead of drifting from a hand-maintained duplicate."""
+    header_match = FAQ_HEADER_RE.search(body)
+    if not header_match:
+        return []
+    section = body[header_match.end():]
+    next_header = NEXT_HEADER_RE.search(section)
+    if next_header:
+        section = section[: next_header.start()]
+
+    faqs = []
+    for block in re.split(r"\n\s*\n", section):
+        lines = block.strip().splitlines()
+        if not lines:
+            continue
+        bold_match = BOLD_LINE_RE.match(lines[0])
+        if not bold_match:
+            continue
+        answer = " ".join(line.strip() for line in lines[1:] if line.strip())
+        if answer:
+            faqs.append({"question": bold_match.group(1).strip(), "answer": answer})
+    return faqs
 
 
 def load_yaml(path: Path):
@@ -66,15 +97,12 @@ def load_tools() -> list[dict]:
     tools = load_yaml(CONTENT_DIR / "tools.yaml")
     for tool in tools:
         tool["body_html"] = markdown.markdown(tool["body"], extensions=MD_EXTENSIONS)
+        tool["faqs"] = extract_faqs_from_body(tool["body"])
     return tools
 
 
 def load_affiliates() -> dict[str, list[dict]]:
     return load_yaml(CONTENT_DIR / "affiliates.yaml") or {}
-
-
-def load_faqs() -> dict[str, list[dict]]:
-    return load_yaml(CONTENT_DIR / "faqs.yaml") or {}
 
 
 def load_intent_pages() -> list[dict]:
@@ -519,7 +547,6 @@ def build() -> Path:
     tools = load_tools()
     pages = load_pages(config)
     affiliates = load_affiliates()
-    faqs = load_faqs()
     intent_pages = load_intent_pages()
     env = build_env()
 
@@ -607,7 +634,7 @@ def build() -> Path:
             description=tool["short"],
             tool=tool,
             affiliate_links=affiliates.get(tool["slug"], []),
-            tool_faqs=faqs.get(tool["slug"], []),
+            tool_faqs=tool["faqs"],
             intent_pages=[ip for ip in intent_pages if ip["parent_tool"] == tool["slug"]],
             cross_tools=cross_category_tools(tool, tools_by_category),
             **common,

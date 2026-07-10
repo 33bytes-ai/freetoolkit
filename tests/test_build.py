@@ -148,7 +148,7 @@ def test_intent_pages_link_to_parent_tool():
         assert f"/tools/{parent}/" in html, f"Intent page {slug} missing link to parent {parent}"
 
 
-def test_faq_schema_on_tools_with_faqs():
+def test_faq_schema_on_tools_with_faq_section():
     run_build()
     for slug in ("stripe-fee-calculator", "paypal-fee-calculator", "mrr-calculator"):
         html = (DIST / "tools" / slug / "index.html").read_text()
@@ -156,10 +156,22 @@ def test_faq_schema_on_tools_with_faqs():
         assert "acceptedAnswer" in html, f"{slug} FAQPage missing acceptedAnswer"
 
 
-def test_tools_without_faqs_have_no_faq_schema():
+def test_faq_schema_matches_visible_faq_text():
+    """The FAQPage JSON-LD must be generated from the body's own FAQ section,
+    so the question text on the page and in the schema never drift apart."""
     run_build()
-    faqs = yaml.safe_load((ROOT / "content" / "faqs.yaml").read_text()) or {}
-    slugs_without_faqs = [s for s in TOOL_SLUGS if s not in faqs]
+    html = (DIST / "tools" / "stripe-fee-calculator" / "index.html").read_text()
+    assert "rate change based on volume" in html
+    assert "Can I use this for Stripe Connect?" in html
+
+
+def test_tools_without_faq_section_have_no_faq_schema():
+    run_build()
+    from freetoolkit.build import extract_faqs_from_body
+
+    tools = yaml.safe_load((ROOT / "content" / "tools.yaml").read_text())
+    slugs_without_faqs = [t["slug"] for t in tools if not extract_faqs_from_body(t["body"])]
+    assert slugs_without_faqs, "expected at least one tool without a FAQ section"
     for slug in slugs_without_faqs:
         html = (DIST / "tools" / slug / "index.html").read_text()
         assert "FAQPage" not in html, f"{slug} unexpectedly has FAQPage schema"
