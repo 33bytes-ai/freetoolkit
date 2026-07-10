@@ -42,6 +42,8 @@ function irrLabel(irr, hurdle) {
 }
 
 if (typeof document !== "undefined") {
+  var irrRowSeq = 0;
+
   function getFlows() {
     var flows = [];
     var rows = document.querySelectorAll(".irr-cf-row");
@@ -80,11 +82,14 @@ if (typeof document !== "undefined") {
     var row = document.createElement("div");
     row.className = "irr-cf-row field-row";
     row.style.marginBottom = "0.5rem";
+    var inputId = "irr-cf-input-" + (irrRowSeq++);
     var label = document.createElement("label");
     label.textContent = "Year " + count;
+    label.htmlFor = inputId;
     label.style.cssText = "font-size:0.82rem;color:var(--text-muted);flex:0 0 50px";
     var input = document.createElement("input");
     input.type = "number";
+    input.id = inputId;
     input.step = "1000";
     input.value = value !== undefined ? value : "";
     input.placeholder = count === 0 ? "e.g. -100000 (investment)" : "e.g. 30000";
@@ -94,6 +99,7 @@ if (typeof document !== "undefined") {
     var btn = document.createElement("button");
     btn.type = "button";
     btn.textContent = "✕";
+    btn.setAttribute("aria-label", "Remove row");
     btn.style.cssText = "flex:0 0 2rem;padding:0.2rem;font-size:0.8rem;background:none;border:1px solid var(--border);border-radius:4px;cursor:pointer;color:var(--text-muted)";
     btn.addEventListener("click", function () { container.removeChild(row); run(); });
     row.appendChild(label);

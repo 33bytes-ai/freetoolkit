@@ -39,6 +39,8 @@ function mirrLabel(mirr, hurdleRate) {
 }
 
 if (typeof document !== "undefined") {
+  var mirrRowSeq = 0;
+
   function getCFs() {
     var flows = [];
     document.querySelectorAll(".mirr-cf-input").forEach(function (el) {
@@ -72,9 +74,10 @@ if (typeof document !== "undefined") {
     var row = document.createElement("div");
     row.className = "mirr-cf-row field" ;
     row.style.cssText = "display:flex;gap:0.5rem;align-items:center;margin-bottom:0.4rem";
-    row.innerHTML = '<label style="min-width:60px;font-size:0.82rem;color:var(--text-muted)">Year ' + count + '</label>'
-      + '<input type="number" step="any" class="mirr-cf-input" value="' + (val !== undefined ? val : "") + '" placeholder="e.g. -50000" style="flex:1">'
-      + '<button type="button" onclick="this.closest(\'.mirr-cf-row\').remove();window._mirrRun&&window._mirrRun()" style="background:none;border:1px solid var(--border);border-radius:4px;padding:0.1rem 0.4rem;cursor:pointer;color:var(--text-muted)">✕</button>';
+    var inputId = "mirr-cf-input-" + (mirrRowSeq++);
+    row.innerHTML = '<label for="' + inputId + '" style="min-width:60px;font-size:0.82rem;color:var(--text-muted)">Year ' + count + '</label>'
+      + '<input type="number" step="any" id="' + inputId + '" class="mirr-cf-input" value="' + (val !== undefined ? val : "") + '" placeholder="e.g. -50000" style="flex:1">'
+      + '<button type="button" aria-label="Remove row" onclick="this.closest(\'.mirr-cf-row\').remove();window._mirrRun&&window._mirrRun()" style="background:none;border:1px solid var(--border);border-radius:4px;padding:0.1rem 0.4rem;cursor:pointer;color:var(--text-muted)">✕</button>';
     row.querySelector(".mirr-cf-input").addEventListener("input", run);
     container.appendChild(row);
     run();

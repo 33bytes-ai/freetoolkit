@@ -33,6 +33,8 @@ function dcfLabel(ev, pvTV, totalPV) {
 }
 
 if (typeof document !== "undefined") {
+  var dcfRowSeq = 0;
+
   function getCFs() {
     var flows = [];
     document.querySelectorAll(".dcf-cf-input").forEach(function (el) {
@@ -74,9 +76,10 @@ if (typeof document !== "undefined") {
     var row = document.createElement("div");
     row.className = "dcf-cf-row field";
     row.style.cssText = "display:flex;gap:0.5rem;align-items:center;margin-bottom:0.4rem";
-    row.innerHTML = '<label style="min-width:60px;font-size:0.82rem;color:var(--text-muted)">Year ' + (count + 1) + '</label>'
-      + '<input type="number" step="any" class="dcf-cf-input" value="' + (val !== undefined ? val : "") + '" placeholder="e.g. 500000" style="flex:1">'
-      + '<button type="button" onclick="this.closest(\'.dcf-cf-row\').remove();window._dcfRun&&window._dcfRun()" style="background:none;border:1px solid var(--border);border-radius:4px;padding:0.1rem 0.4rem;cursor:pointer;color:var(--text-muted)">✕</button>';
+    var inputId = "dcf-cf-input-" + (dcfRowSeq++);
+    row.innerHTML = '<label for="' + inputId + '" style="min-width:60px;font-size:0.82rem;color:var(--text-muted)">Year ' + (count + 1) + '</label>'
+      + '<input type="number" step="any" id="' + inputId + '" class="dcf-cf-input" value="' + (val !== undefined ? val : "") + '" placeholder="e.g. 500000" style="flex:1">'
+      + '<button type="button" aria-label="Remove row" onclick="this.closest(\'.dcf-cf-row\').remove();window._dcfRun&&window._dcfRun()" style="background:none;border:1px solid var(--border);border-radius:4px;padding:0.1rem 0.4rem;cursor:pointer;color:var(--text-muted)">✕</button>';
     row.querySelector(".dcf-cf-input").addEventListener("input", run);
     container.appendChild(row);
     run();

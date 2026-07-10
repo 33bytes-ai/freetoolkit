@@ -159,3 +159,65 @@ FREETOOLKIT_HOST=root@ip ./scripts/deploy.sh   # Déploiement VPS
 | 5 000 visiteurs/j | $15 | ~$3 375 |
 
 RPM business/SaaS = 5–8× supérieur aux outils génériques.
+
+---
+
+## Lighthouse CI audit (2026-07-10)
+
+**Attempted:** run `python3 -m http.server 8080 --directory dist` +
+`npx -y @lhci/cli@0.13 autorun` against `.lighthouserc.json`'s thresholds
+(performance ≥0.85, accessibility ≥0.90, best-practices ≥0.85, seo ≥0.90) to
+get real scores and fix concrete findings.
+
+**Blocked:** this Builder session's shell sandbox requires human-in-the-loop
+approval for any command that executes code (`python3`, `node -e`, `make`,
+`npx`) or uses shell pipes/loops/redirection — approval that never arrives in
+an unattended orchestrator run. Same restriction the Builder and reviewer hit
+on the two preceding tasks (see `REVIEW_REPORT.md`). No live Lighthouse scores
+exist yet — before/after numbers below are a placeholder until someone runs
+this in a shell that allows execution.
+
+**What was done instead — static accessibility audit + fixes** (the same
+class of issue Lighthouse's `accessibility` category flags via axe-core's
+`label`/`button-name` rules), verified by reading rendered `dist/` HTML and
+grepping every widget template for `<input>` tags with no `aria-label` and no
+`id` matched by a `<label for>`:
+
+- Found 5 widgets with completely unlabeled table-style inputs (only a
+  `placeholder`, which axe/Lighthouse does not accept as a substitute for an
+  accessible name): `cac-by-channel-calculator.html`,
+  `segment-margin-calculator.html`, `mrr-calculator.html`,
+  `invoice-total-calculator.html`, `pricing-tier-comparison.html`. Fixed by
+  adding `aria-label` matching each column's `<th>` text.
+- Found 3 tools whose "add row" JS injects new `<input>`s with no accessible
+  name at all: `weighted-average-calculator.js`, `dcf-calculator.js`,
+  `mirr-calculator.js`, plus `irr-calculator.js` (DOM-API row builder). Fixed
+  by giving each generated input either `aria-label` or a proper
+  `<label for="...">`/`id` pair, and gave the icon-only "✕ remove row"
+  buttons `aria-label="Remove row"`.
+- While fixing `dcf`/`mirr`/`irr`, found the generated input `id`s were
+  derived from the current row count, which would silently collide (produce
+  duplicate `id`s) if a row is removed and a new one added afterward. Fixed
+  by switching to a monotonically increasing per-tool counter instead.
+- Added `tests/test_build.py::test_tool_widget_inputs_have_accessible_names`,
+  which builds `dist/` and asserts every `<input>` on every tool page has
+  either an `aria-label`/`aria-labelledby` or a matching `<label for>` — this
+  regression-tests the server-rendered widgets (the JS-injected rows above
+  aren't covered since there's no headless-browser test harness in this repo;
+  they were checked by hand instead).
+- Verified `--text/--background` CSS custom-property pairs in
+  `static/css/style.css` (light: `#1f2430`/`#fafafa`, muted:
+  `#5b6472`/`#fafafa`, accent button `#2563eb`/white, dark-mode equivalents)
+  all clear WCAG AA 4.5:1 contrast by manual calculation — no contrast fix
+  needed.
+- No `<img>` tags exist in the site (icons are inline `<svg aria-hidden>`),
+  so there's no missing-alt-text issue. Meta tags, canonical, viewport,
+  structured data, and heading order in `templates/base.html` /
+  `templates/tool.html` already look complete — nothing else stood out as a
+  Lighthouse-flaggable SEO/best-practices gap on static inspection.
+
+**Remaining work (blocking real numbers):** someone with an unrestricted
+shell needs to `make build`, serve `dist/`, run
+`npx -y @lhci/cli@0.13 autorun`, and record the actual before/after category
+scores here. The fixes above should only move the accessibility score
+(if anything was actually failing it), not performance/best-practices/SEO.

@@ -64,10 +64,10 @@ if (typeof document !== "undefined") {
     if (container.querySelectorAll(".wa-row").length >= 8) return;
     var row = document.createElement("tr");
     row.className = "wa-row";
-    row.innerHTML = '<td><input type="number" step="any" class="wa-value" value="' + (val !== undefined ? val : "") + '" placeholder="e.g. 8.5" style="width:100%"></td>'
-      + '<td><input type="number" step="any" min="0" class="wa-weight" value="' + (wt !== undefined ? wt : "") + '" placeholder="e.g. 30" style="width:100%"></td>'
+    row.innerHTML = '<td><input type="number" step="any" class="wa-value" value="' + (val !== undefined ? val : "") + '" placeholder="e.g. 8.5" style="width:100%" aria-label="Value"></td>'
+      + '<td><input type="number" step="any" min="0" class="wa-weight" value="' + (wt !== undefined ? wt : "") + '" placeholder="e.g. 30" style="width:100%" aria-label="Weight"></td>'
       + '<td class="wa-contrib" style="text-align:right;font-size:0.82rem;color:var(--text-muted)"></td>'
-      + '<td><button type="button" onclick="this.closest(\'tr\').remove();window._waRun&&window._waRun()" style="background:none;border:1px solid var(--border);border-radius:4px;padding:0.1rem 0.4rem;cursor:pointer;color:var(--text-muted)">✕</button></td>';
+      + '<td><button type="button" aria-label="Remove row" onclick="this.closest(\'tr\').remove();window._waRun&&window._waRun()" style="background:none;border:1px solid var(--border);border-radius:4px;padding:0.1rem 0.4rem;cursor:pointer;color:var(--text-muted)">✕</button></td>';
     row.querySelectorAll("input").forEach(function (el) { el.addEventListener("input", run); });
     container.appendChild(row);
     run();

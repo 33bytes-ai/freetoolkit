@@ -2033,3 +2033,32 @@ def test_legal_pages_use_site_brand_not_stale_tool_list():
         html = (DIST / page / "index.html").read_text()
         assert "FreeToolKit" not in html
         assert "word counter" not in html.lower()
+
+
+def test_tool_widget_inputs_have_accessible_names():
+    """Every <input> in a tool's calculator widget must have an accessible name
+    (aria-label/aria-labelledby, a <label for="..."> pointing at its id, or
+    being wrapped inside a <label>...</label>) — a plain placeholder does not
+    count and is the #1 axe-core/Lighthouse accessibility failure ("label")
+    for form controls."""
+    import re
+
+    run_build()
+    input_re = re.compile(r"<input\b[^>]*>")
+    id_re = re.compile(r'\bid="([^"]+)"')
+    label_block_re = re.compile(r"<label\b[^>]*>.*?</label>", re.DOTALL)
+    for slug in TOOL_SLUGS:
+        html = (DIST / "tools" / slug / "index.html").read_text()
+        label_blocks = label_block_re.findall(html)
+        for tag in input_re.findall(html):
+            if 'aria-label="' in tag or "aria-labelledby=" in tag:
+                continue
+            if any(tag in block for block in label_blocks):
+                continue
+            match = id_re.search(tag)
+            assert match, f"{slug}: <input> has no id and no aria-label: {tag}"
+            input_id = match.group(1)
+            assert f'for="{input_id}"' in html, (
+                f"{slug}: <input id=\"{input_id}\"> has no associated "
+                "<label for> and no aria-label"
+            )
