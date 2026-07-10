@@ -19,14 +19,14 @@
 
 stripe-fee-calculator:
   - name: "Paddle"
-    url: "https://www.paddle.com/?via=YOURID"
-    affiliate: true
+    url: "https://www.paddle.com"
+    affiliate: false
     category: "Stripe alternative"
     description: "Merchant of record: Paddle handles VAT, global tax compliance, and payment processing. No separate Stripe account needed — and no surprise tax bills."
     cta: "Try Paddle free →"
   - name: "Lemon Squeezy"
-    url: "https://www.lemonsqueezy.com/?ref=YOURID"
-    affiliate: true
+    url: "https://www.lemonsqueezy.com"
+    affiliate: false
     category: "Stripe alternative for SaaS"
     description: "Payments + licensing + affiliate management for SaaS. Built for indie developers: simple flat-rate pricing, no setup fees."
     cta: "Try Lemon Squeezy free →"
@@ -39,8 +39,8 @@ stripe-fee-calculator:
 
 mrr-calculator:
   - name: "Baremetrics"
-    url: "https://baremetrics.com/?via=YOURID"
-    affiliate: true
+    url: "https://baremetrics.com"
+    affiliate: false
     category: "MRR dashboard"
     description: "Real-time MRR, churn, LTV and 26 other SaaS metrics pulled directly from Stripe, Paddle or Braintree. Replaces manual spreadsheets."
     cta: "Start free Baremetrics trial →"
@@ -53,8 +53,8 @@ mrr-calculator:
 
 ltv-cac-calculator:
   - name: "Baremetrics"
-    url: "https://baremetrics.com/?via=YOURID"
-    affiliate: true
+    url: "https://baremetrics.com"
+    affiliate: false
     category: "LTV & CAC tracking"
     description: "Tracks LTV, CAC, and payback period automatically from your Stripe data. See how your unit economics change over time."
     cta: "Start free Baremetrics trial →"
@@ -101,8 +101,8 @@ churn-impact-calculator:
 
 freelance-rate-calculator:
   - name: "Bonsai"
-    url: "https://www.hellobonsai.com/?ref=YOURID"
-    affiliate: true
+    url: "https://www.hellobonsai.com"
+    affiliate: false
     category: "Freelance management"
     description: "Contracts, invoices, time-tracking, and proposals in one tool built for freelancers. Automatically calculates taxes and sends payment reminders."
     cta: "Try Bonsai free →"
@@ -121,8 +121,8 @@ freelance-rate-calculator:
 
 salary-to-hourly-calculator:
   - name: "Bonsai"
-    url: "https://www.hellobonsai.com/?ref=YOURID"
-    affiliate: true
+    url: "https://www.hellobonsai.com"
+    affiliate: false
     category: "Freelance contracts"
     description: "Turn your hourly rate into client contracts, invoices, and recurring billing. The first step after figuring out what to charge."
     cta: "Create your first contract →"
@@ -141,8 +141,8 @@ profit-margin-calculator:
     description: "Automatically tracks revenue, COGS, and operating expenses — so you see real-time gross and net margin without building a spreadsheet."
     cta: "Try QuickBooks →"
   - name: "FreshBooks"
-    url: "https://www.freshbooks.com/?ref=YOURID"
-    affiliate: true
+    url: "https://www.freshbooks.com"
+    affiliate: false
     category: "Invoicing + P&L"
     description: "Simple invoicing and P&L reporting built for small businesses and freelancers. Connects to Stripe so revenue is tracked automatically."
     cta: "Try FreshBooks free →"
@@ -163,8 +163,8 @@ break-even-calculator:
 
 vat-calculator:
   - name: "Paddle"
-    url: "https://www.paddle.com/?via=YOURID"
-    affiliate: true
+    url: "https://www.paddle.com"
+    affiliate: false
     category: "Tax compliance"
     description: "As merchant of record, Paddle collects and remits VAT/GST on your behalf in 200+ countries. Eliminates the need to register for VAT yourself."
     cta: "Let Paddle handle your taxes →"
@@ -263,14 +263,14 @@ email-roi-calculator:
 
 invoice-total-calculator:
   - name: "Bonsai"
-    url: "https://www.hellobonsai.com/?ref=YOURID"
-    affiliate: true
+    url: "https://www.hellobonsai.com"
+    affiliate: false
     category: "Freelance invoicing"
     description: "Create professional invoices in 60 seconds, collect payments online, and automate payment reminders. Built for freelancers and agencies."
     cta: "Try Bonsai free →"
   - name: "FreshBooks"
-    url: "https://www.freshbooks.com/?ref=YOURID"
-    affiliate: true
+    url: "https://www.freshbooks.com"
+    affiliate: false
     category: "Small business invoicing"
     description: "Invoice, track time, and collect payments — with automatic late-payment reminders and a client portal for self-serve payment."
     cta: "Try FreshBooks free →"
@@ -303,8 +303,8 @@ paypal-fee-calculator:
 
 arr-mrr-converter:
   - name: "Baremetrics"
-    url: "https://baremetrics.com/?via=YOURID"
-    affiliate: true
+    url: "https://baremetrics.com"
+    affiliate: false
     category: "ARR/MRR tracking"
     description: "Live ARR and MRR pulled from Stripe — no manual conversion needed. Tracks expansions, contractions, and churn in real time."
     cta: "Start free Baremetrics trial →"
@@ -343,8 +343,8 @@ nps-calculator:
 
 rule-of-40-calculator:
   - name: "Baremetrics"
-    url: "https://baremetrics.com/?via=YOURID"
-    affiliate: true
+    url: "https://baremetrics.com"
+    affiliate: false
     category: "SaaS metrics"
     description: "Tracks the growth component of Rule of 40 (MRR growth rate) live from Stripe. Pair with your P&L to monitor your Rule of 40 score continuously."
     cta: "Start free Baremetrics trial →"
@@ -369,8 +369,8 @@ price-impact-calculator:
     description: "Tracks how price changes actually affect retention and expansion MRR in your Stripe data — so you can validate (or invalidate) the assumptions this calculator makes."
     cta: "Explore ProfitWell →"
   - name: "Paddle"
-    url: "https://www.paddle.com/?via=YOURID"
-    affiliate: true
+    url: "https://www.paddle.com"
+    affiliate: false
     category: "Pricing infrastructure"
     description: "Merchant of record with built-in A/B pricing experiments. Change price for a subset of users and measure real retention impact — no engineering work required."
     cta: "Try Paddle →"
@@ -403,8 +403,8 @@ shopify-fee-calculator:
 
 freelance-project-estimate:
   - name: "Bonsai"
-    url: "https://www.hellobonsai.com/?ref=YOURID"
-    affiliate: true
+    url: "https://www.hellobonsai.com"
+    affiliate: false
     category: "Freelance proposals"
     description: "Turn your project estimate into a professional proposal and contract in one click. Clients sign online and pay the deposit automatically."
     cta: "Try Bonsai free →"
@@ -423,14 +423,14 @@ freelance-project-estimate:
 
 payment-fee-comparison:
   - name: "Paddle"
-    url: "https://www.paddle.com/?via=YOURID"
-    affiliate: true
+    url: "https://www.paddle.com"
+    affiliate: false
     category: "Stripe/PayPal alternative"
     description: "Merchant of record: Paddle handles all payment processing, global VAT/tax compliance, and customer disputes. One fee, no surprises — ideal for SaaS and digital products."
     cta: "Try Paddle free →"
   - name: "Lemon Squeezy"
-    url: "https://www.lemonsqueezy.com/?ref=YOURID"
-    affiliate: true
+    url: "https://www.lemonsqueezy.com"
+    affiliate: false
     category: "Payments for SaaS"
     description: "All-in-one payments for software: subscriptions, one-time payments, licensing, and affiliate management. No PayPal/Stripe account required."
     cta: "Start selling with Lemon Squeezy →"
@@ -489,8 +489,8 @@ saas-pricing-calculator:
     description: "Subscription billing management: A/B test pricing plans, manage multiple tiers, handle proration and upgrades. Free up to $250k ARR."
     cta: "Start free with Chargebee →"
   - name: "Lemon Squeezy"
-    url: "https://www.lemonsqueezy.com/?ref=YOURID"
-    affiliate: true
+    url: "https://www.lemonsqueezy.com"
+    affiliate: false
     category: "Payments for SaaS"
     description: "All-in-one payments for software products with built-in licensing, affiliate management, and subscription support. Simpler setup than Stripe for indie founders."
     cta: "Start selling with Lemon Squeezy →"
@@ -573,13 +573,13 @@ burn-multiple-calculator:
 
 email-list-growth-calculator:
   - name: "ConvertKit"
-    url: "https://convertkit.com?lmref=YOURID"
+    url: "https://convertkit.com"
     affiliate: false
     category: "Email marketing"
     description: "Email platform built for creators and indie founders. Excellent automation, segmentation, and landing page builder. Free up to 1,000 subscribers."
     cta: "Start building your list with ConvertKit →"
   - name: "MailerLite"
-    url: "https://www.mailerlite.com/?via=YOURID"
+    url: "https://www.mailerlite.com"
     affiliate: false
     category: "Email marketing"
     description: "Simple, affordable email marketing with automation and landing pages. Free up to 1,000 subscribers, 12,000 emails/month. Great for bootstrapped businesses."

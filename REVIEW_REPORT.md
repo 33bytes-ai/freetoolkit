@@ -1,41 +1,57 @@
 STATUS: PASS
 
 ## Summary
-Task: "Fix working-capital-calculator and current-ratio-calculator test/widget mismatch."
-The Builder's diff touches only `backlog.json` (marks the task `done` with an
-explanatory note) — no source/test files were changed in this session.
+Task: "Audit remaining pages/templates for other placeholder or hardcoded content."
+The Builder found and fixed two real issues:
+1. `content/affiliates.yaml`: 17 entries marked `affiliate: true` had unfilled
+   `?via=YOURID` / `?ref=YOURID` / `?lmref=YOURID` tracking params. Changed to
+   `affiliate: false` and stripped the placeholder query param (plus 2 already
+   `affiliate: false` entries with the same leftover param, also cleaned up).
+2. `content/pages/{terms,privacy,contact}.md`: still branded "FreeToolKit" and
+   described a stale tool lineup (word counter, JSON formatter, Base64 encoder,
+   password generator, etc.) that doesn't match this site. Rewritten to say
+   "FounderCalc" and describe the real calculator category.
 
 ## Verification performed
-1. `git diff` confirms the working tree only modifies `backlog.json`.
-2. Grepped `templates/widgets/working-capital-calculator.html` and
-   `templates/widgets/current-ratio-calculator.html`: the live widget IDs are
-   `wc-result`, `wc-ratio` (working-capital) and `cr-result` (current-ratio).
-3. Read `tests/test_build.py:1022-1027` (`test_working_capital_tool_page_builds`)
-   and `tests/test_build.py:1908-1915` (`test_current_ratio_calculator_page_exists`):
-   both now assert exactly those IDs (`wc-result`/`wc-ratio`, `cr-result`).
-4. `git show c533767 -- tests/test_build.py` proves these assertions were already
-   corrected in an earlier commit this session (`c5337674`, "Derive contact email
-   from site config instead of hardcoding it") — an unrelated commit that
-   incidentally also fixed the stale `wc-current-ratio`/`wc-quick-ratio`/
-   `liq-current` assertions to match the real widget markup. Confirmed via diff:
-   old assertions `"wc-current-ratio"`, `"wc-quick-ratio"`, `"liq-current"` →
-   new assertions `"wc-result"`, `"wc-ratio"`, `"cr-result"`.
-5. `grep -rn "wc-current-ratio|liq-current|wc-quick-ratio"` across `tests/`,
-   `templates/`, `src/` returns no hits — no stale references remain anywhere.
-6. Traced `templates/tool.html:109` (`{% include "widgets/" ~ tool.slug ~ ".html" %}`)
-   and `src/freetoolkit/build.py:549-556`: the widget template is included
-   verbatim into the rendered tool page with no ID rewriting, so the widget's
-   literal `id` attributes land unchanged in `dist/tools/<slug>/index.html`,
-   matching what the tests assert.
-7. Could not execute `make test-py` / `.venv/bin/python -m pytest` directly —
-   both were blocked pending approval in this sandboxed review session (same
-   restriction the Builder hit). Verification above is static/textual but
-   traces the full path from widget markup → Jinja include → build output →
-   test assertion, leaving no ambiguity about the outcome.
+- Confirmed via `content/config.yaml`, `content/pages/about.md`,
+  `content/pages/comparisons.md`, and `templates/index.html` that "FounderCalc"
+  is the actual site brand everywhere else — the three legal pages were the
+  only outliers still saying "FreeToolKit". The fix aligns them with the rest
+  of the site rather than introducing a new inconsistency.
+- `grep -rl "FreeToolKit" content/ templates/ static/` now returns nothing —
+  no stale brand references remain anywhere in the tree.
+- `grep "YOURID"` and `grep "affiliate: true"` in `content/affiliates.yaml`
+  confirm zero remaining placeholder IDs and zero remaining `affiliate: true`
+  data lines (the one match is in the file's own instructional header
+  comment, not an actual entry).
+- Checked `templates/tool.html:168-181` and `src/freetoolkit/build.py` to
+  confirm `affiliate` only gates the FTC disclosure badge and `rel=sponsored`
+  — flipping these 17 entries to `false` is safe and matches the pattern
+  already used by other non-affiliate entries in the same file (e.g. the
+  QuickBooks entries).
+- Confirmed `test_legal_pages_use_site_brand_not_stale_tool_list` reads from
+  `DIST/{page}/index.html`, which matches `EXPECTED_FILES` earlier in the
+  same test file (`privacy/index.html`, `terms/index.html`,
+  `contact/index.html` are already expected build outputs) — no path
+  mismatch.
+- Confirmed `test_affiliate_links_have_no_placeholder_ids` follows the same
+  direct-YAML-read pattern already used elsewhere in the test file, with no
+  unneeded `run_build()` call since it only inspects source content.
+- Correctly left `content/config.yaml`'s
+  `base_url: https://foundercalc.example.com` untouched, since the repo's own
+  CLAUDE.md documents that as an intentional deploy-time placeholder, not a
+  bug, and it was already the subject of a separate prior task.
+- `BACKLOG.md` / `backlog.json` updated consistently to `done` with a
+  detailed, accurate note.
 
-## Findings
-None. The backlog note is factually accurate: the two previously-failing tests
-were already fixed by a prior, unrelated commit in this session, and no widget
-or test changes were required for this specific task. The Builder correctly
-avoided making a redundant or speculative change and honestly disclosed the
-inability to run pytest live rather than fabricating a passing run.
+## Limitations
+- Could not execute `make test` / `pytest` in this review session — Python
+  invocations require interactive approval not available here (same
+  restriction the Builder hit and disclosed). Verification above relied on
+  static reads/greps tracing YAML data, template consumption, and test
+  assertions by hand; no ambiguity was found. Recommend running `make test`
+  once in an unrestricted shell before merge, as the Builder also
+  recommended.
+
+## Issues found
+None.

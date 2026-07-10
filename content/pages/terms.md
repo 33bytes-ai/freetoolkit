@@ -1,27 +1,27 @@
 ---
 title: Terms of Use
 slug: terms
-description: "Terms of use for FreeToolKit's free online tools."
+description: "Terms of use for FounderCalc's free business calculators."
 ---
 
 _Last updated: 2026-06-16_
 
 ## Use of the site
 
-FreeToolKit provides free online tools "as is", without warranty of any kind.
+FounderCalc provides free calculators "as is", without warranty of any kind.
 You're welcome to use the tools for personal, educational, or commercial
 purposes, free of charge and without creating an account.
 
 ## No guarantees
 
-While we aim for accuracy (for example, in unit conversions or JSON
-validation), FreeToolKit is provided without any guarantee of correctness,
-availability, or fitness for a particular purpose. Do not rely on this site
-for safety-critical, legal, financial, or medical calculations.
+While we aim for accuracy, FounderCalc is provided without any guarantee of
+correctness, availability, or fitness for a particular purpose. Do not rely
+on this site for safety-critical, legal, financial, or medical decisions —
+always confirm important calculations with a qualified professional.
 
 ## Acceptable use
 
-You agree not to use FreeToolKit to:
+You agree not to use FounderCalc to:
 
 - Attempt to disrupt, overload, or gain unauthorized access to the site or
   its infrastructure.
@@ -31,9 +31,9 @@ You agree not to use FreeToolKit to:
 
 ## Intellectual property
 
-The site design, text content, and code are owned by FreeToolKit unless
-otherwise noted. Output you generate using the tools (such as converted text,
-generated passwords, or placeholder text) is yours to use freely.
+The site design, text content, and code are owned by FounderCalc unless
+otherwise noted. Output you generate using the calculators (such as computed
+figures or exported results) is yours to use freely.
 
 ## Advertising
 

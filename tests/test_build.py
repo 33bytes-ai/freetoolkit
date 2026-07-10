@@ -2012,3 +2012,24 @@ def test_tool_count_at_least_100():
     run_build()
     tool_dirs = [d for d in (DIST / "tools").iterdir() if d.is_dir() and d.name != "index"]
     assert len(tool_dirs) >= 100, f"Expected 100+ tool dirs, found {len(tool_dirs)}"
+
+
+def test_affiliate_links_have_no_placeholder_ids():
+    """affiliate: true renders an FTC 'Affiliate link' disclosure + rel=sponsored,
+    so a link marked affiliate must not carry an unfilled tracking placeholder."""
+    affiliates = yaml.safe_load((ROOT / "content" / "affiliates.yaml").read_text())
+    for slug, links in affiliates.items():
+        for link in links:
+            if link.get("affiliate"):
+                assert "YOURID" not in link["url"], (
+                    f"{slug}/{link['name']} is marked affiliate: true but url still "
+                    "has a placeholder tracking ID"
+                )
+
+
+def test_legal_pages_use_site_brand_not_stale_tool_list():
+    run_build()
+    for page in ("privacy", "terms", "contact"):
+        html = (DIST / page / "index.html").read_text()
+        assert "FreeToolKit" not in html
+        assert "word counter" not in html.lower()

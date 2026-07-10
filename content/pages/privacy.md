@@ -1,17 +1,17 @@
 ---
 title: Privacy Policy
 slug: privacy
-description: "FreeToolKit's privacy policy: what data we collect, how the tools process your input, and how advertising cookies work if enabled."
+description: "FounderCalc's privacy policy: what data we collect, how the calculators process your input, and how advertising cookies work if enabled."
 ---
 
 _Last updated: 2026-06-16_
 
 ## Summary
 
-FreeToolKit's tools (word counter, converters, generators, formatters, etc.)
-run **entirely in your browser**. Text or data you enter into a tool is
-processed locally using JavaScript and is **never transmitted to, or stored
-on, our servers**.
+FounderCalc's calculators (Stripe fees, MRR, LTV/CAC, runway, profit margin,
+freelance rates, and more) run **entirely in your browser**. Numbers or data
+you enter into a calculator are processed locally using JavaScript and are
+**never transmitted to, or stored on, our servers**.
 
 This page explains what limited information our web server and any
 advertising partners may collect when you visit the site.
@@ -45,16 +45,13 @@ shown before any non-essential cookies are set.
 
 ## Data you enter into tools
 
-Every tool on FreeToolKit (the word counter, JSON formatter, Base64 encoder,
-password generator, color converter, unit converter, timestamp converter, and
-others) processes your input **locally in your browser**. Nothing you type or
-paste into a tool is sent to FreeToolKit's servers, stored, or shared with any
-third party, including for the password generator — generated passwords are
-never transmitted anywhere.
+Every calculator on FounderCalc processes your input **locally in your
+browser**. Nothing you type into a calculator is sent to FounderCalc's
+servers, stored, or shared with any third party.
 
 ## Third-party links
 
-Some pages may link to external resources for further reading. FreeToolKit is
+Some pages may link to external resources for further reading. FounderCalc is
 not responsible for the privacy practices of external sites.
 
 ## Changes to this policy

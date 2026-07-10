@@ -1,12 +1,12 @@
 ---
 title: Contact
 slug: contact
-description: "Get in touch with FreeToolKit with feedback, bug reports, or tool suggestions."
+description: "Get in touch with FounderCalc with feedback, bug reports, or tool suggestions."
 ---
 
 ## Get in touch
 
-FreeToolKit is a small, independently run site. If you've found a bug, have a
+FounderCalc is a small, independently run site. If you've found a bug, have a
 suggestion for a new tool, or have a question about how something works,
 we'd like to hear from you.
 
