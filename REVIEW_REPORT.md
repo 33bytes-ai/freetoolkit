@@ -1,60 +1,25 @@
 STATUS: PASS
 
-## Résumé
-Tâche : "Dark mode CSS via prefers-color-scheme". Le Builder a constaté que la
-fonctionnalité existait déjà intégralement dans `static/css/style.css`
-(`@media (prefers-color-scheme: dark)` aux lignes 1171 et 1535, avec override
-de `--bg`, `--surface`, `--text`, `--text-muted`, `--border`, `--accent`, etc.,
-plus un override manuel `[data-theme="dark"]` piloté par `common.js`). Vérifié
-manuellement : les deux media queries et les variables citées sont bien
-présentes dans le fichier CSS actuel. Aucune modification de code applicatif —
-seulement `backlog.json` (statut + note) et `tests/test_build.py` (nouveau
-test de garde-fou).
-
-## Vérifications effectuées
-- Diff `git diff` relu intégralement (2 fichiers modifiés :
-  `backlog.json`, `tests/test_build.py`).
-- Contenu réel de `static/css/style.css` inspecté (lignes 1170-1219) pour
-  confirmer que les affirmations de la note backlog sont exactes — elles le
-  sont : les deux blocs `@media (prefers-color-scheme: dark)` existent et
-  contiennent bien les overrides cités.
-- `src/freetoolkit/build.py` inspecté : `static/` est copié verbatim vers
-  `dist/static/` via `shutil.copytree` (aucune minification/transformation),
-  donc le nouveau test qui lit `dist/static/css/style.css` teste bien
-  fidèlement le fichier source.
-- Convention `note` sur les entrées `status: "done"` du backlog : 10/18
-  entrées `done` ont déjà un champ `note` similaire — cohérent avec
-  l'existant, pas une déviation.
-- Style du nouveau test (docstring one-liner) cohérent avec les tests
-  existants du fichier (`test_pages_have_dark_mode_theme_color` juste
-  au-dessus suit le même patron).
-- Logique du nouveau test relue en détail : `test_stylesheet_has_dark_mode_palette`
-  appelle `run_build()`, lit `dist/static/css/style.css`, vérifie la présence
-  de `@media (prefers-color-scheme: dark)`, puis dans le texte situé après la
-  première occurrence vérifie la présence de `--bg`, `--surface`, `--text`,
-  `--border`, `--accent`. Ces variables apparaissent bien dans le bloc
-  `:root:not([data-theme="light"])` juste après le split — le test passera
-  contre l'état actuel du fichier.
-- Tentative d'exécution réelle (`make build`, `.venv/bin/pytest
-  tests/test_build.py -k dark_mode -v`, y compris avec sandbox désactivé) :
-  bloquée par le mode de permission de cette session Reviewer (« This command
-  requires approval »), identique au blocage documenté par le Builder dans
-  `backlog.json`. La validation ci-dessus est donc statique (lecture de code),
-  pas un run de test exécuté.
+## Contexte
+Ce cycle de review porte sur le diff actuel de `scripts/new_tool.py` (+ `BACKLOG.md`/`backlog.json` synchronisés en `done`). D'après la note dans `backlog.json`, il s'agit d'un correctif de suivi après un premier passage FAIL (voir historique de `REVIEW_REPORT.md` avant écrasement) qui avait bloqué sur deux points : classes CSS non stylées et espacement incohérent dans le stub de test. Les deux ont été revérifiés indépendamment ci-dessous.
 
 ## Problèmes trouvés
-Aucun bloquant.
+Aucun problème bloquant. Un point mineur, non bloquant :
 
-## Remarque non bloquante
-`test_stylesheet_has_dark_mode_palette` vérifie que les variables CSS
-apparaissent *après* le début du bloc `@media (prefers-color-scheme: dark)`
-plutôt que strictement à l'intérieur de ses accolades. Dans l'état actuel du
-fichier ça fonctionne car les overrides suivent immédiatement le split, mais
-le test resterait vert même si une variable citée n'apparaissait que plus loin
-dans le fichier, hors du bloc dark. Amélioration possible (isoler le contenu
-entre l'accolade ouvrante et sa fermante correspondante) mais ne justifie pas
-un FAIL — la garde de régression reste utile en l'état.
+### 1. [Mineur] Commentaire trompeur sur la « majorité » du motif `stats-grid`
+Le commentaire en tête du template widget (`scripts/new_tool.py` ~L82-85) dit que le scaffold « matches ... the pattern used by the majority of templates/widgets/*.html ». C'est vrai pour `field-row`/`calc-insight`/`btn-row`, mais pas pour le choix des classes internes du bloc `stats-grid` : le scaffold émet `<span class="num">`/`<span class="label">`, alors que la majorité réelle des widgets existants (70/105, contre 16/105 pour `num`/`label`) utilise `stat-label`/`stat-value`. C'est un choix délibéré et correct (`stat-label`/`stat-value` n'ont aucune règle CSS pour l'écran — seulement un bloc `@media print`, lignes ~1407-1408 de `static/css/style.css` — donc les 70 widgets qui les utilisent affichent en réalité un résultat non stylé ; `num`/`label` sont la seule variante stylée à l'écran, lignes 507-514), mais le commentaire ne le dit pas et pourrait induire un futur contributeur en erreur en lui laissant croire que copier le motif `stat-label`/`stat-value` observé sur la plupart des widgets serait cohérent. Aucun changement de code requis, juste un commentaire à clarifier à l'occasion.
 
-Un `make build && make test-py` humain/CI reste nécessaire avant merge pour
-confirmer une exécution réelle du nouveau test, aucune exécution n'ayant été
-possible ni côté Builder ni côté Reviewer dans ces sessions sandboxées.
+## Points vérifiés
+- **Bug réel corrigé** : l'ancien scaffold enveloppait le widget dans son propre `<div class="tool-widget">` et ajoutait son propre `<script src=...>`. `templates/tool.html` (L108-109, L189) fait déjà les deux (wrap dans `#calculator.tool-widget`, script en fin de page) — la duplication touchait 13/105 widgets legacy scaffoldés avec l'ancienne version. Le nouveau template n'émet plus ni le wrapper ni le `<script>`.
+- **Classes CSS** : `field-row`, `field`, `stats-grid`, `.stat`, `.num`, `.label`, `calc-insight`, `btn-row`, `data-tooltip` existent toutes dans `static/css/style.css` et sont stylées pour l'écran (pas seulement print). Vérifié aussi que `autocomplete="off"` sur les inputs et l'absence de `type="button"` sur les boutons Copy/Share correspondent exactement à la convention des widgets réels (ex. `templates/widgets/ad-roas-calculator.html`).
+- **Helpers JS** : `FTK.hashGet/hashSet/shareURL/copyToClipboard/flash/showInsight` sont tous définis et exportés dans `static/js/lib/common.js` — les signatures d'appel dans le JS généré correspondent.
+- **Génération f-string** : comptage manuel des accolades du bloc JS généré (IIFE, `calculate{Prefix}`, `{prefix}Label`, `fmt`, `init`, `update`, `restoreHash`, handlers copy/share, `module.exports`) — toutes les paires `{{`/`}}` sont équilibrées, tous les `{expr}` correspondent à des variables Python valides (`calc_fn`, `prefix`, `title`, `slug`). Le JS produit est syntaxiquement valide.
+- **IIFE + guards Node** : `(function(){ ... })()` avec garde `typeof document !== "undefined"` et `typeof module !== "undefined" && module.exports` correspond exactement au motif réel utilisé par 90/105 fichiers `static/js/tools/*.js` (ex. `ad-roas-calculator.js`), et permet un `require()` sûr depuis les tests Node.
+- **Stub `tests/test_tools.js`** : renommage `calculate{Prefix}` → `{calc_fn}` cohérent avec le nouvel export ; les clés testées (`{prefix}.{calc_fn}`, `{prefix}.{prefix}Label`) correspondent bien aux clés de `module.exports`.
+- **Stub `tests/test_build.py`** : compilable (fonction top-level correctement indentée après `textwrap.dedent`), utilise `run_build()`/`DIST` déjà définis dans le fichier, structurellement identique aux ~40 fonctions `test_X_tool_page_builds` existantes. Le fichier se termine par un seul `\n` sans ligne vide finale ; le stub commence bien par deux lignes vides (`f'''` suivi d'une ligne vide avant `def`), ce qui reproduit exactement la convention de deux lignes vides entre fonctions déjà en vigueur dans le fichier (vérifié à la frontière `test_tool_widget_inputs_have_accessible_names`, L2183-2187).
+- **`content/tools.yaml`** (non modifié par ce diff) : `howto_steps` est bien renseigné par défaut à l'ajout d'un outil, donc l'assertion `"HowTo" in html` du stub `test_build.py` est valide (le bloc JSON-LD `HowTo` de `templates/tool.html` est conditionné à `tool.howto_steps`).
+- **Cohérence `BACKLOG.md`/`backlog.json`** : statuts `done` synchronisés pour les deux tâches concernées ; `backlog.json` reste un JSON valide après ajout du champ `note` (déjà utilisé ailleurs dans ce fichier).
+- **CSP / conventions CLAUDE.md** : aucun gestionnaire d'événement inline (`onclick=...`) introduit, tout passe par `addEventListener` — conforme aux règles CSP du projet. Aucune balise `<script>` inline ajoutée dans le widget généré.
+
+## Remarque sur la vérification
+Exécution shell (`python3`, `make build`, `make test`) bloquée dans ce mode de permission Reviewer — vérification faite exclusivement par lecture statique croisée du diff, grep de `static/css/style.css`/`static/js/lib/common.js`/`templates/tool.html`/`templates/widgets/*.html`, et traçage manuel du dédentage et du comptage d'accolades des f-strings générées. Recommandé : lancer `make build && make test` sur un outil scaffoldé de test avant la prochaine utilisation réelle du script, comme déjà noté dans `backlog.json`.

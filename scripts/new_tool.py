@@ -79,83 +79,128 @@ def scaffold(slug: str, title: str, short: str, category: str) -> None:
     print(f"✓ Appended tool entry to {tools_yaml}")
 
     # ── Widget template ───────────────────────────────────────────────────────
+    # Matches the field-row/stats-grid/calc-insight/btn-row pattern used by the
+    # majority of templates/widgets/*.html. tool.html already wraps the include
+    # in #calculator.tool-widget and appends the <script> tag itself, so the
+    # widget partial must not duplicate either.
     widget_path = ROOT / "templates" / "widgets" / f"{slug}.html"
     if widget_path.exists():
         print(f"⚠ Widget already exists: {widget_path} — skipping")
     else:
         widget_path.write_text(
             textwrap.dedent(f"""\
-            <div class="tool-widget" role="main">
-              <div class="field-row">
-                <div class="field">
-                  <label for="{prefix}-input-a">Input A</label>
-                  <input type="number" id="{prefix}-input-a" value="0" min="0" step="1">
-                  <span class="field__error-msg"></span>
-                </div>
-                <div class="field">
-                  <label for="{prefix}-input-b">Input B</label>
-                  <input type="number" id="{prefix}-input-b" value="0" min="0" step="1">
-                  <span class="field__error-msg"></span>
-                </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="{prefix}-input-a">Input A</label>
+                <input type="number" autocomplete="off" id="{prefix}-input-a" value="0" min="0" step="1">
               </div>
-              <div class="output-grid">
-                <div class="output-box" data-tooltip="TODO: add tooltip description">
-                  <span class="label">Result</span>
-                  <span class="value" id="{prefix}-out-result">—</span>
-                </div>
+              <div class="field">
+                <label for="{prefix}-input-b">Input B</label>
+                <input type="number" autocomplete="off" id="{prefix}-input-b" value="0" min="0" step="1">
               </div>
-              <div id="{prefix}-insight" class="calc-insight" style="display:none"></div>
             </div>
-            <script src="/static/js/tools/{js}" defer></script>
+            <div class="stats-grid">
+              <div class="stat" data-tooltip="TODO: add tooltip description">
+                <span class="num" id="{prefix}-result">—</span>
+                <span class="label">Result</span>
+              </div>
+            </div>
+            <div id="{prefix}-insight" class="calc-insight" style="display:none"></div>
+            <div class="btn-row" style="margin-top:0.75rem">
+              <button id="{prefix}-copy" class="secondary">Copy results</button>
+              <button id="{prefix}-share" class="secondary">Share results</button>
+            </div>
             """),
             encoding="utf-8",
         )
         print(f"✓ Created widget at {widget_path}")
 
     # ── JS module ─────────────────────────────────────────────────────────────
+    # IIFE + hash-state + copy/share wiring matches the pattern used by the
+    # majority of static/js/tools/*.js files (see FTK.hashGet/hashSet/shareURL
+    # in static/js/lib/common.js).
+    calc_fn = f"calculate{prefix.capitalize()}"
     js_path = ROOT / "static" / "js" / "tools" / js
     if js_path.exists():
         print(f"⚠ JS file already exists: {js_path} — skipping")
     else:
         js_path.write_text(
             textwrap.dedent(f"""\
-            /* {title} */
-            function calculate{prefix.capitalize()}(a, b) {{
-              if (isNaN(a) || isNaN(b)) return null;
-              // TODO: implement {title} logic
-              return a + b;
-            }}
+            (function () {{
+              "use strict";
 
-            function {prefix}Label(result) {{
-              if (result === null) return {{ text: "Enter values to see results.", type: "info" }};
-              return {{ text: "Result: " + result, type: "success" }};
-            }}
-
-            if (typeof document !== "undefined") {{
-              function run() {{
-                var a = parseFloat(document.getElementById("{prefix}-input-a").value) || 0;
-                var b = parseFloat(document.getElementById("{prefix}-input-b").value) || 0;
-                var result = calculate{prefix.capitalize()}(a, b);
-
-                var e1 = document.getElementById("{prefix}-out-result");
-                if (e1) e1.textContent = result !== null ? result : "—";
-
-                if (window.FTK) {{
-                  var lbl = {prefix}Label(result);
-                  window.FTK.showInsight(document.getElementById("{prefix}-insight"), lbl.text, lbl.type);
-                }}
+              function {calc_fn}(a, b) {{
+                if (isNaN(a) || isNaN(b)) return null;
+                // TODO: implement {title} logic
+                return a + b;
               }}
 
-              document.addEventListener("DOMContentLoaded", function () {{
-                ["{prefix}-input-a", "{prefix}-input-b"].forEach(function (id) {{
-                  var el = document.getElementById(id);
-                  if (el) el.addEventListener("input", run);
-                }});
-                run();
-              }});
-            }}
+              function {prefix}Label(result) {{
+                if (result === null) return {{ text: "Enter values to see results.", type: "info" }};
+                return {{ text: "Result: " + result, type: "success" }};
+              }}
 
-            if (typeof module !== "undefined") module.exports = {{ calculate{prefix.capitalize()}: calculate{prefix.capitalize()}, {prefix}Label: {prefix}Label }};
+              function fmt(n) {{
+                if (n === null || n === undefined || isNaN(n)) return "--";
+                return String(n);
+              }}
+
+              function init() {{
+                var aEl = document.getElementById("{prefix}-input-a");
+                var bEl = document.getElementById("{prefix}-input-b");
+                var resultEl = document.getElementById("{prefix}-result");
+                var insEl = document.getElementById("{prefix}-insight");
+                var copyBtn = document.getElementById("{prefix}-copy");
+                var shareBtn = document.getElementById("{prefix}-share");
+
+                function update() {{
+                  var a = parseFloat(aEl.value) || 0;
+                  var b = parseFloat(bEl.value) || 0;
+                  var result = {calc_fn}(a, b);
+
+                  resultEl.textContent = fmt(result);
+
+                  window.FTK.hashSet({{ a: a, b: b }});
+
+                  var label = {prefix}Label(result);
+                  window.FTK.showInsight(insEl, label.text, label.type);
+                }}
+
+                function restoreHash() {{
+                  var h = window.FTK.hashGet();
+                  if (!h) return;
+                  if (h.a !== undefined) aEl.value = h.a;
+                  if (h.b !== undefined) bEl.value = h.b;
+                }}
+
+                if (shareBtn) shareBtn.addEventListener("click", function () {{ window.FTK.shareURL(shareBtn); }});
+                if (copyBtn) {{
+                  copyBtn.addEventListener("click", function () {{
+                    var a = parseFloat(aEl.value) || 0;
+                    var b = parseFloat(bEl.value) || 0;
+                    var result = {calc_fn}(a, b);
+                    var lines = [
+                      "{title}",
+                      "Input A: " + fmt(a),
+                      "Input B: " + fmt(b),
+                      "Result: " + fmt(result)
+                    ];
+                    window.FTK.copyToClipboard(lines.join("\\n")).then(function () {{ window.FTK.flash(copyBtn, "Copied!", 1500); }});
+                  }});
+                }}
+
+                [aEl, bEl].forEach(function (el) {{
+                  if (el) el.addEventListener("input", update);
+                }});
+                restoreHash();
+                update();
+              }}
+
+              if (typeof document !== "undefined") {{ document.addEventListener("DOMContentLoaded", init); }}
+              if (typeof module !== "undefined" && module.exports) {{
+                module.exports = {{ {calc_fn}: {calc_fn}, {prefix}Label: {prefix}Label }};
+              }}
+            }})();
             """),
             encoding="utf-8",
         )
@@ -167,7 +212,7 @@ def scaffold(slug: str, title: str, short: str, category: str) -> None:
     const {prefix} = require("../static/js/tools/{js}");
 
     test("{prefix}: basic calculation returns a number", () => {{
-      const result = {prefix}.calculate{prefix.capitalize()}(10, 5);
+      const result = {prefix}.{calc_fn}(10, 5);
       assert.ok(typeof result === "number");
     }});
 
@@ -181,6 +226,23 @@ def scaffold(slug: str, title: str, short: str, category: str) -> None:
         f.write(test_stub)
     print(f"✓ Appended test stub to {test_file}")
 
+    # ── test_build.py stub ───────────────────────────────────────────────────
+    build_test_name = f"test_{slug.replace('-', '_')}_tool_page_builds"
+    build_test_stub = textwrap.dedent(f'''
+
+    def {build_test_name}():
+        """{title} page should build with required elements."""
+        run_build()
+        html = (DIST / "tools" / "{slug}" / "index.html").read_text()
+        assert "WebApplication" in html
+        assert "HowTo" in html
+        assert "{prefix}-result" in html
+    ''')
+    build_test_file = ROOT / "tests" / "test_build.py"
+    with build_test_file.open("a", encoding="utf-8") as f:
+        f.write(build_test_stub)
+    print(f"✓ Appended {build_test_name} to {build_test_file}")
+
     print(f"""
 Next steps:
   1. Implement the pure function in static/js/tools/{js}
@@ -188,7 +250,7 @@ Next steps:
   3. Replace SEO body copy and howto_steps in content/tools.yaml
      (add a "## Frequently asked questions" section with **bold** questions
      followed by their answers — it's auto-converted into FAQPage JSON-LD)
-  4. Update/replace the test stub in tests/test_tools.js
+  4. Update/replace the test stubs in tests/test_tools.js and tests/test_build.py
   5. Optionally add to content/intent_pages.yaml
   6. Run: make build && make test
 """)
