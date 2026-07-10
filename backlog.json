@@ -165,7 +165,7 @@
     "impact": 8,
     "effort": 3,
     "risk": 1,
-    "status": "pending"
+    "status": "done"
   },
   {
     "title": "Derive contact email from site config instead of hardcoding it",
