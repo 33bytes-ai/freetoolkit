@@ -45,7 +45,7 @@
     <div class="tool-grid">
       {% for tool in cat_tools %}
       <a class="tool-card" href="/tools/{{ tool.slug }}/" aria-label="{{ tool.nav_title }} — {{ tool.short[:80] }}" data-title="{{ tool.nav_title | lower }}" data-short="{{ tool.short | lower }}" data-idx="{{ loop.index }}">
-        <h3>{{ tool.nav_title }}{% if tool.new %} <span style="font-size:0.65rem;font-weight:600;color:#fff;background:#4f7ef8;border-radius:99px;padding:0.1rem 0.5rem;vertical-align:middle;margin-left:0.4rem;letter-spacing:0.02em">NEW</span>{% endif %}</h3>
+        <h3>{{ tool.nav_title }}{% if tool.new %} <span style="font-size:0.65rem;font-weight:600;color:var(--accent-contrast);background:var(--accent);border-radius:99px;padding:0.1rem 0.5rem;vertical-align:middle;margin-left:0.4rem;letter-spacing:0.02em">NEW</span>{% endif %}</h3>
         <p>{{ tool.short }}</p>
       </a>
       {% endfor %}

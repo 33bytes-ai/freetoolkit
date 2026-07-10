@@ -221,3 +221,107 @@ shell needs to `make build`, serve `dist/`, run
 `npx -y @lhci/cli@0.13 autorun`, and record the actual before/after category
 scores here. The fixes above should only move the accessibility score
 (if anything was actually failing it), not performance/best-practices/SEO.
+
+---
+
+## Lighthouse CI audit — real run (2026-07-10, follow-up)
+
+Ran for real from an unrestricted shell: `make build`, served `dist/` with
+`python3 -m http.server`, installed a standalone headless Chrome via
+`npx @puppeteer/browsers install chrome@stable` (plus its missing shared libs
+— `libnspr4`/`libnss3`/etc — via `apt`, none of which were present on this
+box), then `npx @lhci/cli@0.13 autorun` against 3 URLs: `/`, `/tools/`,
+`/tools/dcf-calculator/`.
+
+**Before** (first real run, before any fixes):
+
+| Page | Performance | Accessibility | Best Practices | SEO | PWA |
+|---|---|---|---|---|---|
+| `/` | 0.68 | 0.88 | 0.96 | 1.00 | 0.38 |
+| `/tools/` | 0.97 | 0.91 | 0.96 | 0.98 | 0.38 |
+| `/tools/dcf-calculator/` | 0.92 | 0.90 | 0.96 | 0.97 | 0.38 |
+
+`.lighthouserc.json` requires performance/best-practices ≥0.85 (warn) and
+accessibility/seo ≥0.90 (error) — the homepage's accessibility (0.88) and its
+performance (0.68) both missed target.
+
+**Root causes found and fixed:**
+
+1. **`/manifest.json` 404 on every page** (`link rel="manifest"` in
+   `base.html` pointed at a file the build never generated) — caused a
+   console error on every single page load (Lighthouse's `errors-in-console`
+   audit) and tanked the PWA category. Added `write_manifest()` to
+   `build.py`, generating a real manifest from `site.name`/`tagline` and the
+   existing `favicon.svg` as icon.
+2. **No-op `<meta http-equiv="x-frame-options">`** in `base.html` — this
+   header can only be set via a real HTTP header, never via `<meta>`; Chrome
+   logs a console warning for it every load. Removed it (framing protection
+   needs to be set at the real HTTP server/CDN, not here).
+3. **`.footer-cat-count` contrast failure** — `opacity: 0.65` was applied on
+   top of an already-muted text color, dropping effective contrast below
+   4.5:1. Removed the opacity (font-size already differentiates it visually).
+4. **"NEW" badge on `/tools/` had hardcoded `color:#fff;background:#4f7ef8`**
+   — `#4f7ef8` is the site's *dark-mode* accent color, seemingly pasted into
+   a light-mode context by mistake; white-on-#4f7ef8 is only ~3.7:1 (fails
+   4.5:1 for non-large bold text). Swapped to `var(--accent)` /
+   `var(--accent-contrast)`, the tokens the rest of the site already uses for
+   this exact purpose (light mode's `--accent` is `#2563eb`, ~5.2:1 with
+   white — passes).
+5. **Logo link has zero accessible name on mobile** — `.brand-name`
+   (the only visible text in the `<a class="brand">` link) is
+   `display: none` below 640px, leaving only an `aria-hidden` SVG icon, so
+   the link has no accessible name at Lighthouse's default mobile viewport.
+   Added `aria-label="{{ site.name }}"` directly on the link.
+6. **Footer headings (`<h4>Categories</h4>` / `<h4>Site</h4>`) skip a
+   heading level** on every page whose last in-content heading is `h2` (home,
+   about, tool detail pages, etc.) — `h2 → h4` is an invalid jump per
+   axe-core's `heading-order` rule. Changed both to `<h3>` (verified safe
+   across page templates: content sections always end on `h2` or `h3` before
+   the footer, so `h3` never causes a *new* skip).
+7. **Homepage performance collapse (0.68) traced to `hero-shader.js`** — its
+   `bootup-time` entry alone was ~9s of attributed main-thread time under
+   Lighthouse's throttled CPU (confirmed via the `mainthread-work-breakdown`
+   and `bootup-time` audit details: no other script came close). It's a
+   full-canvas-resolution WebGL fragment shader with a 5-iteration loop
+   evaluated per pixel, running every animation frame from page load. Fixed
+   by: rendering at a much lower internal resolution (canvas backing store
+   capped to `min(20% of hero size, 360px)`, CSS still stretches it to
+   100% — the shader still fills the hero visually, just computes far fewer
+   pixels), throttling the draw rate to 24fps instead of uncapped rAF, and
+   deferring the first frame to `requestIdleCallback` (falls back to the
+   `load` event) so it doesn't compete with initial page render.
+
+**After** (same 3 URLs, after the fixes above):
+
+| Page | Performance | Accessibility | Best Practices | SEO | PWA |
+|---|---|---|---|---|---|
+| `/` | **0.98** | **1.00** | **1.00** | 1.00 | **0.88** |
+| `/tools/` | **0.98** | **1.00** | **1.00** | 0.98 | **0.88** |
+| `/tools/dcf-calculator/` | **0.94** | **1.00** | **1.00** | 0.97 | **0.88** |
+
+`lhci autorun` now exits 0 — every configured assertion (error and warn)
+passes on all 3 pages.
+
+**Verified after the fixes:** `node --test tests/test_tools.js` (526/526),
+`python3 -m pytest tests/test_build.py` (247/247, includes the earlier
+accessibility regression test).
+
+**Known remaining minor items (non-blocking, not fixed — logged for later):**
+- `unminified-css` / `unminified-javascript` / `unused-css-rules`: the build
+  ships unminified static assets. Real optimization work, but no category
+  threshold is at risk from it currently.
+- `uses-text-compression` / `uses-long-cache-ttl`: `python3 -m http.server`
+  doesn't gzip or set cache headers — this is a hosting/CDN concern (nginx,
+  Cloudflare, Netlify, etc. handle both by default) that can't be fixed in
+  the static build itself, only in the eventual deploy config.
+- `tap-targets` on `/tools/` and the tool detail pages (0.79 / 0.64): the
+  footer's category links are packed tightly enough on mobile viewports that
+  adjacent tap targets slightly overlap. Cosmetic, low severity.
+- `label-content-name-mismatch` on `/tools/`: the `tool-card` anchor's
+  `aria-label` doesn't include the "NEW" badge's visible text. Minor.
+- `cumulative-layout-shift` / `layout-shift-elements` on
+  `dcf-calculator` (0.8): a small layout shift from the dynamic cash-flow row
+  builder. Minor, page still passes its performance threshold overall.
+- `splash-screen` (PWA): needs a set of properly-sized PNG icons in the
+  manifest, not just the single SVG — a nice-to-have for an installable PWA,
+  which isn't this site's actual use case.

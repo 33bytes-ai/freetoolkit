@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import datetime
 import gzip
+import json
 import os
 import secrets
 import shutil
@@ -370,6 +371,24 @@ def write_ads_txt(config: dict) -> None:
     (DIST_DIR / "ads.txt").write_text(content, encoding="utf-8")
 
 
+def write_manifest(config: dict) -> None:
+    site = config["site"]
+    manifest = {
+        "name": site["name"],
+        "short_name": site["name"],
+        "description": site.get("tagline", ""),
+        "start_url": "/",
+        "display": "standalone",
+        "background_color": "#fafafa",
+        "theme_color": "#4f7ef8",
+        "icons": [
+            {"src": "/static/img/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"},
+            {"src": "/static/img/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable"},
+        ],
+    }
+    (DIST_DIR / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+
+
 def write_robots(config: dict) -> None:
     base = config["site"]["base_url"].rstrip("/")
     (DIST_DIR / "robots.txt").write_text(
@@ -668,6 +687,7 @@ def build() -> Path:
     write_sitemap_news(config, tools)
     write_sitemap_index(config)
     write_robots(config)
+    write_manifest(config)
     write_ads_txt(config)
     write_rss(config, tools)
     write_og_image(config, tools)

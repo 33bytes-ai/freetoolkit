@@ -67,10 +67,19 @@
   gl.enableVertexAttribArray(posLoc);
   gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
 
+  // Render at a fraction of the on-screen size (canvas is CSS-scaled back up
+  // to 100%) -- this is a per-pixel fragment shader, so the full-resolution
+  // canvas was measured burning ~9s of main-thread time under Lighthouse's
+  // throttled CPU, tanking the homepage performance score. Cutting the pixel
+  // count this way is much cheaper than optimizing the shader math itself.
+  var RENDER_SCALE = 0.2;
+  var MAX_DIM = 360;
   function resize() {
     var hero = canvas.parentElement;
-    canvas.width = hero ? hero.offsetWidth : window.innerWidth;
-    canvas.height = hero ? hero.offsetHeight : window.innerHeight;
+    var w = hero ? hero.offsetWidth : window.innerWidth;
+    var h = hero ? hero.offsetHeight : window.innerHeight;
+    canvas.width = Math.min(MAX_DIM, Math.max(1, Math.round(w * RENDER_SCALE)));
+    canvas.height = Math.min(MAX_DIM, Math.max(1, Math.round(h * RENDER_SCALE)));
     gl.viewport(0, 0, canvas.width, canvas.height);
   }
 
@@ -82,21 +91,35 @@
   // seconds of the pattern each time.
   var t = 1.0 + Math.random() * 200;
   var raf;
-  function render() {
+  var FRAME_INTERVAL = 1000 / 24; // this is a slow, ambient background -- 24fps is plenty
+  var lastFrameTime = 0;
+  function render(now) {
+    raf = requestAnimationFrame(render);
+    if (now - lastFrameTime < FRAME_INTERVAL) return;
+    lastFrameTime = now;
     t += 0.05;
     gl.uniform1f(timeLoc, t);
     gl.uniform2f(resLoc, canvas.width, canvas.height);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-    raf = requestAnimationFrame(render);
   }
 
-  // Pause when not visible to save CPU
-  var observer = new IntersectionObserver(function (entries) {
-    if (entries[0].isIntersecting) {
-      render();
-    } else {
-      cancelAnimationFrame(raf);
-    }
-  }, { threshold: 0 });
-  observer.observe(canvas);
+  function start() {
+    // Pause when not visible to save CPU
+    var observer = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) {
+        render();
+      } else {
+        cancelAnimationFrame(raf);
+      }
+    }, { threshold: 0 });
+    observer.observe(canvas);
+  }
+
+  // Defer the first frame until the page has settled so this decorative
+  // background doesn't compete with the initial render/TTI.
+  if ("requestIdleCallback" in window) {
+    requestIdleCallback(start, { timeout: 2000 });
+  } else {
+    window.addEventListener("load", start);
+  }
 })();

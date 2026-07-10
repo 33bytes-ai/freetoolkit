@@ -23,7 +23,6 @@
   <meta name="geo.region" content="US">
   <meta name="geo.placename" content="United States">
   <meta name="category" content="Business Tools">
-  <meta http-equiv="x-frame-options" content="SAMEORIGIN">
   <meta http-equiv="x-dns-prefetch-control" content="on">
   <meta name="theme-color" content="#4f7ef8">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1a1a2e">
@@ -85,7 +84,7 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="/">
+      <a class="brand" href="/" aria-label="{{ site.name }}">
         <span class="brand-mark" aria-hidden="true">
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="1" y="1" width="7" height="6" rx="1.5" fill="currentColor"/>
@@ -152,7 +151,7 @@
           <p>{{ site.tagline }}</p>
         </div>
         <div>
-          <h4>Categories</h4>
+          <h3>Categories</h3>
           <ul>
             {% for category in categories %}
             {% set cat_tools = tools_by_category.get(category, []) %}
@@ -164,7 +163,7 @@
           </ul>
         </div>
         <div>
-          <h4>Site</h4>
+          <h3>Site</h3>
           <ul>
             <li><a href="/about/">About</a></li>
             <li><a href="/contact/">Contact</a></li>

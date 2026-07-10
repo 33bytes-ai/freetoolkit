@@ -1327,13 +1327,6 @@ def test_tool_pages_have_subject_meta():
     assert 'name="coverage"' in html, "Tool page missing coverage meta"
 
 
-def test_pages_have_x_frame_options():
-    """Pages should have x-frame-options meta."""
-    run_build()
-    html = (DIST / "index.html").read_text()
-    assert "x-frame-options" in html, "Page missing x-frame-options meta"
-
-
 def test_intent_pages_have_author_meta():
     """Intent pages should have author meta tag."""
     run_build()
