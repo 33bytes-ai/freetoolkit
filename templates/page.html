@@ -24,12 +24,25 @@
 }
 </script>
 {% endif %}
+{% if page.widget %}
+<link rel="preload" href="/static/js/tools/{{ page.widget_js }}" as="script">
+{% endif %}
 {% endblock %}
 {% block content %}
 <section class="wrap content-page">
   <h1>{{ page.title }}</h1>
+  {% if page.widget %}
+  <div id="calculator" class="tool-widget" data-tool="{{ page.widget }}" aria-label="{{ page.title }} calculator">
+    {% include "widgets/" ~ page.widget ~ ".html" %}
+    <noscript><p style="padding:1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius)">This calculator requires JavaScript. Please enable JavaScript in your browser to use it.</p></noscript>
+  </div>
+  {% include "ads_slot.html" %}
+  {% endif %}
   <article>
     {{ page.content | safe }}
   </article>
 </section>
+{% if page.widget_js %}
+<script src="/static/js/tools/{{ page.widget_js }}" defer></script>
+{% endif %}
 {% endblock %}

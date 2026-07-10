@@ -76,7 +76,10 @@ the three most common choices for online businesses: **Stripe**, **PayPal**, and
 
 ## Calculating your actual savings
 
-Use our free calculators to see the exact difference for your transaction sizes:
+Prefer an interactive table? Use the [Stripe vs PayPal fee comparison calculator](/compare/stripe-vs-paypal/)
+to enter a sale amount and see the fee and net payout for all three processors at once.
+
+Or use our free per-processor calculators to see the exact difference for your transaction sizes:
 
 - [Stripe Fee Calculator](/tools/stripe-fee-calculator/) — custom rate fields let you enter any processor's rate
 - [PayPal Fee Calculator](/tools/paypal-fee-calculator/) — domestic and international rates

@@ -3,6 +3,8 @@ slug: comparisons
 title: "Tool & Platform Comparisons for Founders"
 description: "Side-by-side comparisons of payment processors, SaaS analytics tools, and freelance software — to help founders pick the right tool without the bias of vendor marketing."
 schema_itemlist:
+  - name: "Stripe vs PayPal Fees — Interactive Comparison Calculator"
+    url: "/compare/stripe-vs-paypal/"
   - name: "Stripe vs PayPal vs Shopify Payments"
     url: "/payment-processor-comparison/"
   - name: "Baremetrics vs ChartMogul vs ProfitWell"
@@ -19,6 +21,11 @@ to help you make the right choice for your business, with transparent disclosure
 any affiliate links.
 
 ## Payment processing
+
+### [Stripe vs PayPal Fees — Interactive Comparison Calculator](/compare/stripe-vs-paypal/)
+
+Enter a sale amount and instantly see the fee and net payout for Stripe, PayPal
+Standard, PayPal Checkout, and Shopify Payments, ranked from most to least you keep.
 
 ### [Stripe vs PayPal vs Shopify Payments — Fee Comparison](/payment-processor-comparison/)
 
