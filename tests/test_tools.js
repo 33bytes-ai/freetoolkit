@@ -670,8 +670,8 @@ test("tracker: DNT=1 load returns null", () => {
   assert.equal(win.FTK.analytics.load(), null);
 });
 
-test("tracker: TTL expired — stale data is cleared and fresh data returned", () => {
-  const staleSeen = Date.now() - (31 * 24 * 60 * 60 * 1000);
+test("tracker: TTL expired — stale data (>90 days) is cleared and fresh data returned", () => {
+  const staleSeen = Date.now() - (91 * 24 * 60 * 60 * 1000);
   const { win, ls } = loadTracker(null, {
     pageviews: { "/old/": 99 },
     calc_uses: {},
@@ -684,8 +684,8 @@ test("tracker: TTL expired — stale data is cleared and fresh data returned", (
   assert.ok(data.first_seen > staleSeen);
 });
 
-test("tracker: TTL not expired — existing data is preserved", () => {
-  const recentSeen = Date.now() - (10 * 24 * 60 * 60 * 1000);
+test("tracker: TTL not expired — data under 90 days is preserved", () => {
+  const recentSeen = Date.now() - (60 * 24 * 60 * 60 * 1000);
   const { win } = loadTracker(null, {
     pageviews: { "/kept/": 5 },
     calc_uses: { "stripe": 3 },
@@ -696,13 +696,13 @@ test("tracker: TTL not expired — existing data is preserved", () => {
   assert.equal(data.calc_uses["stripe"], 3);
 });
 
-test("tracker: size limit — pageviews cleared when data exceeds 50 KB", () => {
+test("tracker: size limit — oldest pageviews purged (not wiped) when data exceeds 500 KB", () => {
   const bigPageviews = {};
-  for (let i = 0; i < 2000; i++) {
+  for (let i = 0; i < 10000; i++) {
     bigPageviews["/tools/very-long-page-slug-" + i + "/section/detail/"] = i + 1;
   }
   const rawSize = JSON.stringify({ pageviews: bigPageviews, calc_uses: {}, affiliate_clicks: {}, first_seen: Date.now() }).length;
-  assert.ok(rawSize > 50 * 1024, "test setup: initial data must be > 50 KB");
+  assert.ok(rawSize > 500 * 1024, "test setup: initial data must be > 500 KB");
 
   const { ls } = loadTracker(null, {
     pageviews: bigPageviews,
@@ -712,7 +712,9 @@ test("tracker: size limit — pageviews cleared when data exceeds 50 KB", () => 
   });
 
   const stored = JSON.parse(ls.data["ftk_analytics"]);
-  assert.deepEqual(stored.pageviews, {});
+  assert.ok(JSON.stringify(stored).length <= 500 * 1024);
+  assert.ok(!("/tools/very-long-page-slug-0/section/detail/" in stored.pageviews), "oldest entry should be purged");
+  assert.ok("/test/" in stored.pageviews, "this session's own pageview (newest) should be kept");
 });
 
 // ---- payment-fee-comparison ----
@@ -2961,4 +2963,68 @@ test("ppu: calcSavingsPct basic", () => {
 
 test("ppu: calcUnitsNeeded basic", () => {
   assert.strictEqual(ppu.calcUnitsNeeded(100, 3.5), 28);
+});
+
+// ── Analytics Tracker (localStorage TTL / size limit) ────────────────────────
+const tracker = require("../static/js/lib/tracker.js");
+
+test("tracker: fresh() starts with empty categories and a first_seen timestamp", () => {
+  const data = tracker.fresh();
+  assert.deepStrictEqual(data.pageviews, {});
+  assert.deepStrictEqual(data.calc_uses, {});
+  assert.deepStrictEqual(data.affiliate_clicks, {});
+  assert.ok(data.first_seen > 0);
+});
+
+test("tracker: isExpired is false just under the 90-day TTL", () => {
+  const now = Date.now();
+  const data = { first_seen: now - (tracker.TTL_MS - 1000) };
+  assert.strictEqual(tracker.isExpired(data, now), false);
+});
+
+test("tracker: isExpired is true past the 90-day TTL", () => {
+  const now = Date.now();
+  const data = { first_seen: now - (tracker.TTL_MS + 1000) };
+  assert.strictEqual(tracker.isExpired(data, now), true);
+});
+
+test("tracker: purgeOldestEntry removes the first-inserted pageview key", () => {
+  const data = tracker.fresh();
+  data.pageviews["/a"] = 1;
+  data.pageviews["/b"] = 2;
+  const removed = tracker.purgeOldestEntry(data);
+  assert.strictEqual(removed, true);
+  assert.deepStrictEqual(data.pageviews, { "/b": 2 });
+});
+
+test("tracker: purgeOldestEntry falls through to calc_uses then affiliate_clicks once pageviews is empty", () => {
+  const data = tracker.fresh();
+  data.calc_uses["mrr-calculator"] = 3;
+  data.affiliate_clicks["stripe|Stripe"] = 1;
+  tracker.purgeOldestEntry(data);
+  assert.deepStrictEqual(data.calc_uses, {});
+  assert.deepStrictEqual(data.affiliate_clicks, { "stripe|Stripe": 1 });
+});
+
+test("tracker: purgeOldestEntry returns false once every category is empty", () => {
+  const data = tracker.fresh();
+  assert.strictEqual(tracker.purgeOldestEntry(data), false);
+});
+
+test("tracker: enforceSizeLimit purges oldest entries until under the 500KB limit", () => {
+  const data = tracker.fresh();
+  const filler = "x".repeat(2000);
+  for (let i = 0; i < 500; i++) data.pageviews["/page-" + i] = filler;
+  assert.ok(JSON.stringify(data).length > tracker.SIZE_LIMIT, "test fixture must start over the limit");
+  const str = tracker.enforceSizeLimit(data);
+  assert.ok(str.length <= tracker.SIZE_LIMIT);
+  assert.ok(!("/page-0" in data.pageviews));
+  assert.ok("/page-499" in data.pageviews);
+});
+
+test("tracker: enforceSizeLimit leaves small data untouched", () => {
+  const data = tracker.fresh();
+  data.pageviews["/"] = 5;
+  const str = tracker.enforceSizeLimit(data);
+  assert.strictEqual(JSON.parse(str).pageviews["/"], 5);
 });

@@ -1,25 +1,20 @@
 STATUS: PASS
 
-## Contexte
-Ce cycle de review porte sur le diff actuel de `scripts/new_tool.py` (+ `BACKLOG.md`/`backlog.json` synchronisés en `done`). D'après la note dans `backlog.json`, il s'agit d'un correctif de suivi après un premier passage FAIL (voir historique de `REVIEW_REPORT.md` avant écrasement) qui avait bloqué sur deux points : classes CSS non stylées et espacement incohérent dans le stub de test. Les deux ont été revérifiés indépendamment ci-dessous.
+## Scope
+Reviewed unstaged changes to `static/js/lib/tracker.js` and `tests/test_tools.js` implementing:
+- TTL raised from 30 to 90 days (`TTL_MS`)
+- localStorage size limit raised from 50KB to 500KB (`SIZE_LIMIT`)
+- Oldest-entry purge (across `pageviews` → `calc_uses` → `affiliate_clicks`, in insertion order) instead of wiping all pageviews on overflow
 
-## Problèmes trouvés
-Aucun problème bloquant. Un point mineur, non bloquant :
+## Findings
+None blocking.
 
-### 1. [Mineur] Commentaire trompeur sur la « majorité » du motif `stats-grid`
-Le commentaire en tête du template widget (`scripts/new_tool.py` ~L82-85) dit que le scaffold « matches ... the pattern used by the majority of templates/widgets/*.html ». C'est vrai pour `field-row`/`calc-insight`/`btn-row`, mais pas pour le choix des classes internes du bloc `stats-grid` : le scaffold émet `<span class="num">`/`<span class="label">`, alors que la majorité réelle des widgets existants (70/105, contre 16/105 pour `num`/`label`) utilise `stat-label`/`stat-value`. C'est un choix délibéré et correct (`stat-label`/`stat-value` n'ont aucune règle CSS pour l'écran — seulement un bloc `@media print`, lignes ~1407-1408 de `static/css/style.css` — donc les 70 widgets qui les utilisent affichent en réalité un résultat non stylé ; `num`/`label` sont la seule variante stylée à l'écran, lignes 507-514), mais le commentaire ne le dit pas et pourrait induire un futur contributeur en erreur en lui laissant croire que copier le motif `stat-label`/`stat-value` observé sur la plupart des widgets serait cohérent. Aucun changement de code requis, juste un commentaire à clarifier à l'occasion.
+- Correctness: `purgeOldestEntry` relies on `Object.keys()` insertion order for string keys, which holds here since all keys (page paths, tool slugs, `slug|partner` pairs) are non-numeric strings — no risk of V8's integer-key reordering silently breaking the "oldest first" assumption.
+- `enforceSizeLimit`'s average-entry-size estimate for `toPurge` is an approximation (not exact byte accounting), but the surrounding `while` loop re-measures `JSON.stringify` length each pass and always purges at least one entry, so it correctly converges under `SIZE_LIMIT` regardless of estimate accuracy.
+- The new early return `if (typeof window === "undefined") return;` (tracker.js:67) is placed after `module.exports` is populated (tracker.js:56-65), so `require()`-based unit tests still get `fresh/isExpired/purgeOldestEntry/enforceSizeLimit/TTL_MS/SIZE_LIMIT`, while the existing `new Function(...)`-based DNT/TTL/size-limit tests still exercise the full browser path since they inject a non-undefined `window` object. Both test styles in `test_tools.js` are compatible with this change.
+- `dashboard.js` reads `pageviews`/`calc_uses`/`affiliate_clicks`/`first_seen` off the stored object; the data shape is unchanged by this diff, so no regression there.
+- No stale references to the old 30-day/50KB values remain elsewhere in the repo.
+- Tests were updated consistently with the new constants (90 days / 500KB), and new unit tests were added for `fresh`, `isExpired`, `purgeOldestEntry`, and `enforceSizeLimit` directly (via `require`), in addition to updating the existing integration-style tracker tests.
 
-## Points vérifiés
-- **Bug réel corrigé** : l'ancien scaffold enveloppait le widget dans son propre `<div class="tool-widget">` et ajoutait son propre `<script src=...>`. `templates/tool.html` (L108-109, L189) fait déjà les deux (wrap dans `#calculator.tool-widget`, script en fin de page) — la duplication touchait 13/105 widgets legacy scaffoldés avec l'ancienne version. Le nouveau template n'émet plus ni le wrapper ni le `<script>`.
-- **Classes CSS** : `field-row`, `field`, `stats-grid`, `.stat`, `.num`, `.label`, `calc-insight`, `btn-row`, `data-tooltip` existent toutes dans `static/css/style.css` et sont stylées pour l'écran (pas seulement print). Vérifié aussi que `autocomplete="off"` sur les inputs et l'absence de `type="button"` sur les boutons Copy/Share correspondent exactement à la convention des widgets réels (ex. `templates/widgets/ad-roas-calculator.html`).
-- **Helpers JS** : `FTK.hashGet/hashSet/shareURL/copyToClipboard/flash/showInsight` sont tous définis et exportés dans `static/js/lib/common.js` — les signatures d'appel dans le JS généré correspondent.
-- **Génération f-string** : comptage manuel des accolades du bloc JS généré (IIFE, `calculate{Prefix}`, `{prefix}Label`, `fmt`, `init`, `update`, `restoreHash`, handlers copy/share, `module.exports`) — toutes les paires `{{`/`}}` sont équilibrées, tous les `{expr}` correspondent à des variables Python valides (`calc_fn`, `prefix`, `title`, `slug`). Le JS produit est syntaxiquement valide.
-- **IIFE + guards Node** : `(function(){ ... })()` avec garde `typeof document !== "undefined"` et `typeof module !== "undefined" && module.exports` correspond exactement au motif réel utilisé par 90/105 fichiers `static/js/tools/*.js` (ex. `ad-roas-calculator.js`), et permet un `require()` sûr depuis les tests Node.
-- **Stub `tests/test_tools.js`** : renommage `calculate{Prefix}` → `{calc_fn}` cohérent avec le nouvel export ; les clés testées (`{prefix}.{calc_fn}`, `{prefix}.{prefix}Label`) correspondent bien aux clés de `module.exports`.
-- **Stub `tests/test_build.py`** : compilable (fonction top-level correctement indentée après `textwrap.dedent`), utilise `run_build()`/`DIST` déjà définis dans le fichier, structurellement identique aux ~40 fonctions `test_X_tool_page_builds` existantes. Le fichier se termine par un seul `\n` sans ligne vide finale ; le stub commence bien par deux lignes vides (`f'''` suivi d'une ligne vide avant `def`), ce qui reproduit exactement la convention de deux lignes vides entre fonctions déjà en vigueur dans le fichier (vérifié à la frontière `test_tool_widget_inputs_have_accessible_names`, L2183-2187).
-- **`content/tools.yaml`** (non modifié par ce diff) : `howto_steps` est bien renseigné par défaut à l'ajout d'un outil, donc l'assertion `"HowTo" in html` du stub `test_build.py` est valide (le bloc JSON-LD `HowTo` de `templates/tool.html` est conditionné à `tool.howto_steps`).
-- **Cohérence `BACKLOG.md`/`backlog.json`** : statuts `done` synchronisés pour les deux tâches concernées ; `backlog.json` reste un JSON valide après ajout du champ `note` (déjà utilisé ailleurs dans ce fichier).
-- **CSP / conventions CLAUDE.md** : aucun gestionnaire d'événement inline (`onclick=...`) introduit, tout passe par `addEventListener` — conforme aux règles CSP du projet. Aucune balise `<script>` inline ajoutée dans le widget généré.
-
-## Remarque sur la vérification
-Exécution shell (`python3`, `make build`, `make test`) bloquée dans ce mode de permission Reviewer — vérification faite exclusivement par lecture statique croisée du diff, grep de `static/css/style.css`/`static/js/lib/common.js`/`templates/tool.html`/`templates/widgets/*.html`, et traçage manuel du dédentage et du comptage d'accolades des f-strings générées. Recommandé : lancer `make build && make test` sur un outil scaffoldé de test avant la prochaine utilisation réelle du script, comme déjà noté dans `backlog.json`.
+## Note
+Could not execute `make test-js` / `node --test tests/test_tools.js` in this session — command execution was blocked before returning a result in this Reviewer permission mode. Review is based on static reading of the diff and hand-tracing of the test assertions against the implementation; the test additions look correct and internally consistent, but an actual test run is recommended before merge to confirm.

@@ -17,7 +17,7 @@
 | 18.00 | Dark mode CSS via prefers-color-scheme | 6 | 3 | 1 | done |
 | 18.00 | Améliorer new_tool.py — widget numérique cohérent | 6 | 3 | 2 | done |
 | 18.00 | Page de comparaison Stripe vs PayPal vs Shopify | 8 | 4 | 2 | done |
-| 18.00 | TTL et limite de taille pour localStorage tracker | 4 | 2 | 1 | pending |
+| 18.00 | TTL et limite de taille pour localStorage tracker | 4 | 2 | 1 | done |
 | 18.00 | Derive contact email from site config instead of hardcoding it | 6 | 3 | 1 | done |
 | 16.20 | Pages pays Stripe programmatiques (UK, CA, AU, EU, IN) | 9 | 5 | 2 | pending |
 | 15.75 | Capture email fondateurs (newsletter / lead magnet) | 7 | 4 | 2 | pending |
