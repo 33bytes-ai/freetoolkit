@@ -1284,19 +1284,7 @@ button:hover {
 [data-theme="dark"] .field--error textarea { border-color: #f97066; box-shadow: 0 0 0 3px rgba(249,112,102,0.18); }
 [data-theme="dark"] .field__error-msg { color: #f97066; }
 
-/* ── Shader canvas (hero background) ─────────────────────────────────── */
-.hero-shader-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.45;
-  mix-blend-mode: screen;
-  display: block;
-  pointer-events: none;
-  z-index: 0;
-}
-/* Grid pattern overlay stays above canvas but below glass card */
+/* Grid pattern overlay stays below glass card */
 .home-hero::before {
   z-index: 1;
 }
