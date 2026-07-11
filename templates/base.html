@@ -171,6 +171,18 @@
             <li><a href="/terms/">Terms of Use</a></li>
           </ul>
         </div>
+        {% if site.formspree_id %}
+        <div class="footer-newsletter">
+          <h3>New tools by email</h3>
+          <p>One short email when a new calculator ships. No spam.</p>
+          <form action="https://formspree.io/f/{{ site.formspree_id }}" method="POST" class="footer-newsletter-form">
+            <input type="hidden" name="_subject" value="Newsletter — FounderCalc (footer)">
+            <label for="footer-nl-email" class="sr-only">Your email address</label>
+            <input id="footer-nl-email" type="email" name="email" placeholder="you@company.com" required autocomplete="email">
+            <button type="submit" class="btn-primary">Subscribe</button>
+          </form>
+        </div>
+        {% endif %}
       </div>
       <p class="copyright">© {{ year }} {{ site.name }}. All tools run locally in your browser — nothing you type is uploaded. Updated {{ build_date }}.</p>
     </div>

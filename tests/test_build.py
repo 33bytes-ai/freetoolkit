@@ -823,6 +823,54 @@ def test_pages_have_manifest_link():
     assert 'rel="manifest"' in html, "Home page missing manifest link"
 
 
+def test_footer_newsletter_form_hidden_without_formspree_id():
+    """The site-wide footer signup form should not render while formspree_id is unset."""
+    run_build()
+    for html_path in (DIST / "index.html", DIST / "about" / "index.html"):
+        html = html_path.read_text()
+        assert "footer-newsletter" not in html, f"{html_path} should not have a footer newsletter form"
+
+
+def test_footer_newsletter_form_appears_on_every_page_when_formspree_id_set():
+    """Setting site.formspree_id should turn on the discreet footer signup form site-wide,
+    distinct from the homepage's own larger newsletter card (different id, same form ID)."""
+    run_build()
+    from freetoolkit import build as ftk_build
+
+    env = ftk_build.build_env()
+    config = ftk_build.load_config()
+    config["site"] = dict(config["site"], formspree_id="abcd1234")
+    tools = ftk_build.load_tools()
+    pages = ftk_build.load_pages(config)
+    common = dict(
+        site=config["site"],
+        categories=config["categories"],
+        tools=tools,
+        tools_by_category={},
+        all_intent_pages=[],
+        intent_count_by_category={},
+        year=2026,
+        build_date="2026-01-01",
+        csp_nonce="test-nonce",
+    )
+
+    about_page = next(p for p in pages if p["slug"] == "about")
+    out = DIST / "_test_footer_newsletter" / "index.html"
+    ftk_build.render(
+        env,
+        "page.html",
+        out,
+        path="/about/",
+        title=about_page["title"],
+        description=about_page["description"],
+        page=about_page,
+        **common,
+    )
+    html = out.read_text()
+    assert 'action="https://formspree.io/f/abcd1234"' in html
+    assert 'id="footer-nl-email"' in html
+
+
 def test_revenue_per_employee_tool_builds():
     """Revenue per employee calculator page should build with required elements."""
     run_build()

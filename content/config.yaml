@@ -13,8 +13,11 @@ site:
   # Business/SaaS calculator audience commands RPM of $8–20 vs $1–3 for general tools.
   ads_enabled: false
 
-  # Set to your Formspree form ID to enable the newsletter signup form on the homepage.
+  # Set to your Formspree form ID to enable the newsletter signup forms: the
+  # homepage card and the discreet one in the footer on every page.
   # Get a free form at https://formspree.io — use the 8-character ID from your form URL.
+  # Formspree submissions can be forwarded to ConvertKit/Beehiiv via their
+  # Zapier integration (both are free-tier) once a list is set up there.
   formspree_id: ""
 
 # Navigation categories, in display order.

@@ -1539,6 +1539,35 @@ button:hover {
   }
 }
 
+/* Footer newsletter — discreet, site-wide variant of .newsletter-form */
+.footer-newsletter p {
+  margin: 0 0 0.6rem;
+  font-size: 0.85rem;
+}
+.footer-newsletter-form {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+.footer-newsletter-form input[type="email"] {
+  flex: 1 1 140px;
+  min-width: 0;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.85rem;
+}
+.footer-newsletter-form input[type="email"]:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+.footer-newsletter-form .btn-primary {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.85rem;
+}
+
 /* Stats-grid count-up animation on first render */
 @keyframes stat-pop {
   from { opacity: 0; transform: scale(0.85) translateY(6px); }

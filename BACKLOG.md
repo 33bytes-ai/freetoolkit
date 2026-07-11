@@ -19,8 +19,8 @@
 | 18.00 | Page de comparaison Stripe vs PayPal vs Shopify | 8 | 4 | 2 | done |
 | 18.00 | TTL et limite de taille pour localStorage tracker | 4 | 2 | 1 | done |
 | 18.00 | Derive contact email from site config instead of hardcoding it | 6 | 3 | 1 | done |
-| 16.20 | Pages pays Stripe programmatiques (UK, CA, AU, EU, IN) | 9 | 5 | 2 | pending |
-| 15.75 | Capture email fondateurs (newsletter / lead magnet) | 7 | 4 | 2 | pending |
+| 16.20 | Pages pays Stripe programmatiques (UK, CA, AU, EU, IN) | 9 | 5 | 2 | done |
+| 15.75 | Capture email fondateurs (newsletter / lead magnet) | 7 | 4 | 2 | in_progress |
 | 15.75 | Rapport de performance Lighthouse en CI | 7 | 4 | 2 | pending |
 | 15.75 | Bundle a font so OG image generation doesn't silently fail | 7 | 4 | 1 | done |
 | 15.00 | Fix working-capital-calculator and current-ratio-calculator test/widget mismatch | 5 | 3 | 1 | done |

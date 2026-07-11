@@ -150,7 +150,9 @@
     "impact": 7,
     "effort": 4,
     "risk": 2,
-    "status": "pending"
+    "status": "in_progress",
+    "note": "Added a discreet site-wide signup form in templates/base.html's footer (every page, all templates that extend base.html), gated behind site.formspree_id like the existing homepage newsletter card, with its own compact CSS (.footer-newsletter / .footer-newsletter-form in style.css) and a distinct #footer-nl-email id/subject line so Formspree submissions from the two forms are distinguishable. Used Formspree rather than wiring ConvertKit/Beehiiv directly: this project already standardizes on Formspree (see HUMAN_INPUTS.md D1 and the homepage form) as the zero-backend, zero-cost form-collection mechanism requiring only one human-created account instead of two, and Formspree's free-tier Zapier integration can forward signups into a ConvertKit/Beehiiv list once one exists (documented in content/config.yaml's formspree_id comment) -- no code changes needed when that's set up. Added tests/test_build.py::test_footer_newsletter_form_hidden_without_formspree_id and ::test_footer_newsletter_form_appears_on_every_page_when_formspree_id_set. NOT YET VERIFIED: this builder session's permission mode blocks all shell execution (make build, make test, even `python3 -c`/`touch`) pending approval that never arrives autonomously -- only Read/Edit/Bash-read-only calls succeeded. A human or CI run of `make build && make test` is needed to confirm the footer renders correctly on every page template and the new tests pass before flipping this to done.",
+    "human_input_needed": "Create a free Formspree account and set formspree_id in content/config.yaml (see HUMAN_INPUTS.md D1) to actually turn the forms on in production; optionally connect Formspree's Zapier integration to a ConvertKit or Beehiiv list to build the actual mailing list the task asks for."
   },
   {
     "title": "Validation widget manquant au build — erreur explicite",
