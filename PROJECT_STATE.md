@@ -92,14 +92,17 @@ dist/            Sortie du build (gitignorée)
 | **Freelance** | Freelance Rate · Salary to Hourly · Freelance Project Estimate · Invoice Total |
 | **Business Math** | Profit Margin · Break-Even · VAT/Sales Tax · Price Impact · Pricing Tier Comparison · Sales Quota · Email ROI |
 
-### Pages intent existantes (14)
+### Pages intent existantes (320, sur ~105 outils)
 
-- Stripe : subscriptions, vs PayPal, UK, India, $10, $1000
-- MRR : benchmarks croissance SaaS
-- LTV/CAC : benchmarks SaaS / e-commerce / agency
-- Runway : quand lever des fonds
-- Freelance Rate : par expérience
-- Rule of 40 : par tier ARR
+Note (2026-07-11) : ce compteur et le reste de cette section (catalogue
+"22 calculateurs") datent d'avant plusieurs vagues d'ajout d'outils et de
+pages intent par des sessions builder ultérieures — content/tools.yaml et
+content/intent_pages.yaml sont la source de vérité à jour, pas cette liste.
+La tâche "Pages intent supplémentaires" a comblé les 3 seuls outils sans
+aucune page intent (budget-variance-calculator, employee-turnover-calculator,
+gross-revenue-retention-calculator — qui avaient en fait des liens morts
+depuis leur propre body tools.yaml) et a ajouté une 3e page à 25 outils qui
+n'en avaient que 2, pour 31 nouvelles pages au total (289 → 320).
 
 ---
 

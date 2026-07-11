@@ -1319,10 +1319,47 @@ def test_pages_have_robots_max_snippet():
 
 
 def test_tool_intent_pages_build_count():
-    """Should have at least 136 intent pages built."""
+    """Should have at least 320 intent pages built."""
     run_build()
     intent_pages = list(DIST.glob("tools/*/*/index.html"))
-    assert len(intent_pages) >= 136, f"Expected 136+ intent pages, found {len(intent_pages)}"
+    assert len(intent_pages) >= 320, f"Expected 320+ intent pages, found {len(intent_pages)}"
+
+
+def test_previously_broken_intent_links_now_build():
+    """budget-variance-calculator, employee-turnover-calculator, and
+    gross-revenue-retention-calculator each reference two intent pages from
+    their own tools.yaml body's '### Intent Pages' section. Those six pages
+    didn't exist in content/intent_pages.yaml (dead links on live tool pages)
+    until this task added them."""
+    run_build()
+    expected = [
+        ("budget-variance-calculator", "what-is-budget-variance-analysis"),
+        ("budget-variance-calculator", "favorable-vs-unfavorable-variance"),
+        ("employee-turnover-calculator", "how-to-calculate-employee-turnover-rate"),
+        ("employee-turnover-calculator", "true-cost-of-employee-turnover"),
+        ("gross-revenue-retention-calculator", "grr-vs-nrr-difference"),
+        ("gross-revenue-retention-calculator", "what-is-good-gross-revenue-retention"),
+    ]
+    missing = [
+        f"{parent}/{slug}"
+        for parent, slug in expected
+        if not (DIST / "tools" / parent / slug / "index.html").exists()
+    ]
+    assert not missing, f"Missing intent pages: {missing}"
+
+
+def test_tools_yaml_intent_page_links_all_resolve():
+    """Every /tools/<parent>/<slug>/ link inside a tools.yaml tool body must
+    match an actual content/intent_pages.yaml entry. Regression test for the
+    six dead links this task fixed (tool bodies referenced intent pages that
+    were never added to intent_pages.yaml)."""
+    tools_text = (ROOT / "content" / "tools.yaml").read_text()
+    referenced = set(re.findall(r"/tools/([a-z0-9-]+)/([a-z0-9-]+)/", tools_text))
+    existing = {(p["parent_tool"], p["slug"]) for p in yaml.safe_load(
+        (ROOT / "content" / "intent_pages.yaml").read_text()
+    )}
+    missing = sorted(referenced - existing)
+    assert not missing, f"tools.yaml links to intent pages that don't exist: {missing}"
 
 
 def test_arpu_tool_page_builds():

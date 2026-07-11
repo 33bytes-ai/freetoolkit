@@ -1,47 +1,66 @@
 STATUS: PASS
 
 ## Scope reviewed
-Uncommitted diff for "Rapport de performance Lighthouse en CI":
-- `.github/workflows/ci.yml` — Lighthouse step now uses `staticDistDir: "./dist"`
-  (real local server) with 3 relative URLs instead of a single `file://` URL.
-- `.lighthouserc.json` — `categories:performance` tightened from `warn @0.85`
-  to `error @0.90`; `categories:seo` tightened from `error @0.90` to
-  `error @0.95`.
-- `tests/test_build.py` — two new tests guarding the thresholds and the
-  workflow's use of `staticDistDir`/absence of `file://`.
-- `BACKLOG.md` / `backlog.json` / `PROJECT_STATE.md` — status flipped to
-  `done` with a traceability note.
+Uncommitted diff for "Pages intent supplémentaires (30 → 45 pages total)":
+- `content/intent_pages.yaml` — +31 entries (289 → 320): 6 entries close dead links
+  that already existed in `tools.yaml` tool bodies (budget-variance-calculator,
+  employee-turnover-calculator, gross-revenue-retention-calculator each had 2 links
+  to intent pages that never existed), the other 25 add a 3rd intent page to tools
+  that only had 2.
+- `tests/test_build.py` — 2 new tests + bumped `test_tool_intent_pages_build_count`
+  floor from 136 to 320.
+- `PROJECT_STATE.md`, `backlog.json` — narrative/status updates.
 
-## Verified, no issues
-- The 3 URLs referenced in `ci.yml` (`/`, `/tools/`, `/tools/dcf-calculator/`)
-  all correspond to pages `build.py` actually generates (`DIST_DIR/tools/index.html`
-  for `/tools/`; `dcf-calculator` confirmed as a real slug in `content/tools.yaml`).
-- `.lighthouserc.json` stays valid JSON; only the two targeted values
-  changed. `["error", {"minScore": X}]` correctly fails CI when a category
-  scores below `X`, matching the task's "fail if Performance < 90 or SEO < 95".
-- The new thresholds were checked against the real Lighthouse scores already
-  recorded in `PROJECT_STATE.md`'s "real run (2026-07-10, follow-up)" section
-  (performance 0.98/0.98/0.94, SEO 1.00/0.98/0.97 across the same 3 pages) —
-  the tightened gate would not have failed that known-good build, and this
-  matches what `backlog.json`'s note claims.
-- Both new tests are syntactically correct, sit at module level between two
-  existing tests without disturbing them, and reuse fixtures/imports already
-  present in the file (`ROOT`, `json`).
-- No templates or inline scripts were touched — CSP/nonce conventions are
-  not implicated by this diff.
-- `BACKLOG.md` / `backlog.json` / `PROJECT_STATE.md` updates are internally
-  consistent with each other and with the diff.
+## Verification performed
+`python3`/`make`/`pytest` invocations all return "This command requires approval"
+with no interactive approver in this reviewer session — same sandbox limitation the
+Builder hit and disclosed in `backlog.json`. Verified via `git diff`/`grep`/manual
+reads instead of a live build:
 
-## Caveat (non-blocking)
-As already disclosed by the builder in `backlog.json`, this sandbox's
-permission mode blocks direct shell execution (`make build`, `make test-py`,
-`python3 -m pytest ...`) — confirmed again during this review by re-attempting
-`python3 -m pytest tests/test_build.py -k lighthouse -q`, which requires an
-approval that doesn't arrive autonomously. Review was done via static
-tracing (build.py output paths, tools.yaml slugs, JSON/YAML re-reading) and
-cross-checking against previously recorded real scores, not a live test run.
-A real CI run on the next push will be the first live confirmation that the
-job passes end-to-end.
+- All 320 `parent_tool` values in `intent_pages.yaml` resolve to a real slug in
+  `content/tools.yaml` (105/105 tools referenced, none dangling).
+- All 320 slugs are well-formed (`^[a-z0-9-]+$`), no tabs, no `<script>`/`onclick`
+  introduced (CSP / no-inline-handler conventions from CLAUDE.md respected).
+- All `/tools/<slug>/` cross-links inside the new page bodies point to real tools.
+- The two new tests reuse existing `ROOT`/`DIST` fixtures and already-imported
+  `re`/`yaml` — no missing imports. Logic checked by hand: 46 `/tools/<a>/<b>/`
+  links exist in `tools.yaml`, 6 of them were dead before this diff and are now
+  covered by the new entries.
+- `PROJECT_STATE.md`/`backlog.json` narrative (289→320, +31, 3 tools with dead
+  links fixed, 25 tools given a 3rd page) matches what the diff actually contains.
+- The new `>= 320` threshold in `test_tool_intent_pages_build_count` is consistent
+  with 320 intent-page entries + 5 country pages ≥ 320 built paths.
 
-## Findings
-Aucun.
+## Issues found
+
+1. **Pre-existing duplicate `(parent_tool, slug)` pairs already in the file — not
+   introduced by this diff, but sitting in the exact file this task modified and
+   not caught by the Builder's dedup pass.** `git show HEAD:content/intent_pages.yaml`
+   already contained both copies of each pair before this session started:
+   - `burn-multiple-calculator` / `what-is-burn-multiple-saas` (lines 2706 and 5345,
+     different title/description/body).
+   - `nrr-calculator` / `what-is-net-revenue-retention` (lines 4721 and 11205,
+     different title/description/body).
+   Both entries in each pair render to the same `dist/tools/<parent>/<slug>/index.html`
+   path, so one silently overwrites the other's content at build time, and the
+   sitemap ends up with a duplicate `<loc>`. `backlog.json`'s note says the Builder
+   "cross-checked all 31 new slugs against the full existing 289 for exact
+   duplicates (none)" — true for the new entries themselves, but this older
+   collision was in scope to catch while already scanning the file for coverage.
+   Non-blocking for this PR since it didn't originate here; worth a follow-up task.
+
+2. **17 untracked scratch files left in the repo root**: `all_tools_tmp.txt`,
+   `covered_counts_tmp.txt`, `covered_tools_tmp.txt`, `covered_unique_tmp.txt`,
+   `existing_urls_raw_tmp.txt`, `existing_urls_sorted_tmp.txt`, `existing_urls_tmp.txt`,
+   `pairs_raw_tmp.txt`, `pairs_tmp.txt`, `parents_only_tmp.txt`, `parents_vals_tmp.txt`,
+   `referenced_clean_sorted_tmp.txt`, `referenced_clean_tmp.txt`, `referenced_links_tmp.txt`,
+   `slugs_only_tmp.txt`, `slugs_vals_tmp.txt`. These match exactly the coverage/dedup
+   analysis this task required and were not cleaned up before the Builder finished.
+   They're untracked so won't be committed accidentally, but should be deleted.
+
+3. **No live build/test run performed anywhere in this diff's history.** Neither the
+   Builder nor this review could run `make build && make test-py` — sandbox blocks
+   `python3`/`make`. The YAML is large (14.8k lines, hand-written multi-line block
+   scalars) and hasn't been round-tripped through the real Jinja/YAML pipeline by
+   anyone yet. Static checks above give good confidence but are not a substitute for
+   an actual `make build && make test-py` run before merge/deploy.
