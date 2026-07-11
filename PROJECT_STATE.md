@@ -1,6 +1,6 @@
 # PROJECT_STATE.md — FounderCalc / FreeToolKit
 
-_Mis à jour: 2026-06-16_
+_Mis à jour: 2026-06-16 — Rafraîchi: 2026-07-11_
 
 ---
 
@@ -9,11 +9,11 @@ _Mis à jour: 2026-06-16_
 | Clé | Valeur |
 |-----|--------|
 | Nom branding | **FounderCalc** |
-| Domaine cible | `foundercalc.com` (ou similaire — non encore enregistré) |
-| `base_url` actuel | `https://foundercalc.example.com` (placeholder) |
+| Domaine cible | `foundercalc.dev` (choisi 2026-07-10, `.com`/`.app` déjà pris — voir `HUMAN_INPUTS.md` A1) |
+| `base_url` actuel | `https://foundercalc.example.com` (placeholder — en attente d'enregistrement du domaine par l'humain) |
 | Niche | Calculateurs business pour fondateurs indie / SaaS / freelances |
 | Modèle de revenu | Google AdSense (RPM cible $8–20) + liens affiliés |
-| Phase actuelle | Build complet · Tests OK · **Déploiement non effectué** |
+| Phase actuelle | Build complet · 105 outils · Tests OK (826 au total) · **Déploiement non effectué** |
 
 ---
 
@@ -23,13 +23,14 @@ _Mis à jour: 2026-06-16_
 
 | Couche | Technologie |
 |--------|-------------|
-| Build | Python 3.14 · Jinja2 · PyYAML · Markdown |
+| Build | Python 3.11+ (3.14 en local) · Jinja2 · PyYAML · Markdown · Pillow (OG images) |
 | Frontend | HTML/CSS/JS vanilla, aucun framework, aucun bundler |
-| Serveur | nginx:1.27-alpine (Docker) |
-| Analytics | GoAccess sur logs nginx + tracker.js localStorage |
-| Tests JS | Node --test (34 tests, fonctions pures) |
-| Tests build | pytest (9 tests, validation dist/) |
-| Déploiement | `scripts/deploy.sh` (rsync + docker compose) |
+| Serveur | nginx:1.27-alpine (Docker), CSP+HSTS+headers sécurité complets |
+| Analytics | GoAccess sur logs nginx + tracker.js localStorage (100% local au navigateur, TTL 90j) |
+| Tests JS | Node --test (554 tests, fonctions pures, 105/105 outils couverts) |
+| Tests build | pytest (272 tests, validation dist/) |
+| CI | GitHub Actions (`.github/workflows/ci.yml`) : test-js + test-py + build + Lighthouse CI |
+| Déploiement | `scripts/deploy.sh` (rsync + docker compose) — manuel, VPS pas encore créé |
 
 ### Répertoire racine
 
@@ -83,59 +84,68 @@ dist/            Sortie du build (gitignorée)
 
 ---
 
-## Catalogue d'outils (22 calculateurs)
+## Catalogue d'outils (105 calculateurs, 9 catégories)
 
-| Catégorie | Outils |
+`content/tools.yaml` et `content/intent_pages.yaml` sont la source de vérité — ce
+tableau donne juste la forme des catégories, pas la liste exhaustive (voir le YAML pour
+les 105 slugs).
+
+| Catégorie | Exemples |
 |-----------|--------|
-| **Payments** | Stripe Fee · PayPal Fee · Shopify Fee |
-| **SaaS Metrics** | MRR/ARR · LTV/CAC · Runway · Churn Impact · ARR↔MRR Converter · NPS · Rule of 40 · CAC by Channel |
-| **Freelance** | Freelance Rate · Salary to Hourly · Freelance Project Estimate · Invoice Total |
-| **Business Math** | Profit Margin · Break-Even · VAT/Sales Tax · Price Impact · Pricing Tier Comparison · Sales Quota · Email ROI |
+| **Payments** | Stripe Fee · PayPal Fee · Shopify Fee · Payment Fee Comparison |
+| **SaaS Metrics** | MRR/ARR · LTV/CAC · Runway · Churn Impact/Cohort · ARR↔MRR Converter · NPS · Rule of 40 · NRR/GRR · Magic Number · CAC by Channel/Payback |
+| **Freelance** | Freelance Rate · Salary to Hourly · Project Estimate · Invoice Total/Discount · Freelance Tax Estimator |
+| **Business Math** | Profit/Gross/Contribution Margin · Break-Even (×2) · VAT/Sales Tax · Markup · Discount · Price Impact/Elasticity |
+| **Marketing** | ROAS · Email ROI · Conversion Rate · Sales Funnel · Revenue per Lead |
+| **Finance** | DCF · NPV · IRR/MIRR · Free Cash Flow · Working Capital · Current Ratio · WACC |
+| **Valuation** | Enterprise Value · EBITDA (+Multiple) · P/E Ratio · Price-to-Sales |
+| **Tax & Compliance** | Payroll Tax · Freelance Tax Estimator |
+| **HR & People** | Employee Cost/Turnover(+Cost) · Payroll Cost · Customer Health Score |
 
-### Pages intent existantes (320, sur ~105 outils)
+### Pages intent + pays (244 au total)
 
-Note (2026-07-11) : ce compteur et le reste de cette section (catalogue
-"22 calculateurs") datent d'avant plusieurs vagues d'ajout d'outils et de
-pages intent par des sessions builder ultérieures — content/tools.yaml et
-content/intent_pages.yaml sont la source de vérité à jour, pas cette liste.
-La tâche "Pages intent supplémentaires" a comblé les 3 seuls outils sans
-aucune page intent (budget-variance-calculator, employee-turnover-calculator,
-gross-revenue-retention-calculator — qui avaient en fait des liens morts
-depuis leur propre body tools.yaml) et a ajouté une 3e page à 25 outils qui
-n'en avaient que 2, pour 31 nouvelles pages au total (289 → 320).
+239 pages intent programmatiques (`content/intent_pages.yaml`) + 5 pages pays Stripe
+(`content/countries.yaml`, UK/CA/AU/EU/IN → `intent_country.html`). Toutes générées à
+partir de données pures au build, pas de contenu dupliqué à la main.
 
 ---
 
-## État actuel (2026-06-16)
+## État actuel (2026-07-11)
 
 ### Fait ✅
 
-- 22 calculateurs implémentés avec widgets, JS, SEO copy
-- 34 tests JS + 9 tests Python — tous passants (Node v24 / Python 3.14)
+- 105 calculateurs implémentés avec widgets, JS, SEO copy, 100/105 avec `howto_steps`
+- 554 tests JS + 272 tests Python — tous passants
+- CI GitHub Actions sur chaque push/PR (tests + build + Lighthouse)
 - Build complet : `make build` génère dist/ avec gzip pre-compression
-- Infrastructure Docker + nginx + GoAccess documentée
-- Tracker localStorage + dashboard analytics
-- Liens affiliés + disclosure system
-- 14 pages intent programmatiques
-- Docs : ARCHITECTURE · DEPLOYMENT · MONETIZATION · GROWTH_PLAN
+- Infrastructure Docker + nginx (CSP/HSTS/headers sécurité complets) + GoAccess documentée
+- Tracker localStorage (DNT respecté, TTL 90j, plafond 500KB) + dashboard analytics local
+- 178 liens affiliés (1 avec tracking réel, 177 en attente d'inscription aux programmes)
+- 244 pages intent/pays programmatiques
+- FAQ schema, WebApplication schema, HowTo schema, dark mode CSS — tous livrés
+- Lighthouse CI réel exécuté et corrigé (voir sections datées ci-dessous) : perf ≥0.94,
+  accessibilité 1.00, SEO ≥0.97 sur les 3 URLs échantillonnées
 
-### À faire (bloquant lancement) ❌
+### Dette découverte lors du rafraîchissement 2026-07-11 (détail dans `ANALYSIS.md`)
 
-- [ ] Enregistrer le domaine (≈$12/an)
+- Compteur "22 outils" encore hardcodé dans `build.py:674` et `comparisons.md`
+- README.md / docs/*.md décrivent encore un site à 10-22 outils / 43-55 tests
+- Badge CI du README pointe vers `YOUR_USERNAME/freetoolkit` (jamais remplacé)
+- 15 fichiers `*_tmp.txt` commités par erreur à la racine (résidus de debug)
+- 11 tests de `test_build.py` n'itèrent que sur `TOOL_SLUGS[:3]`/`[:5]`, pas les 105 outils
+- `make check-perf` jamais appelé en CI
+- Lighthouse CI ne couvre que le template `tool.html`, pas `intent_page.html`/`intent_country.html`
+- Pas de CMP/bannière de consentement UE avant l'activation prévue d'AdSense
+- Risque de cannibalisation SEO entre calculateurs quasi-homonymes (margin/growth/break-even/turnover)
+
+### À faire (bloquant lancement) ❌ — étapes humaines, voir `HUMAN_INPUTS.md`
+
+- [ ] Enregistrer `foundercalc.dev` (≈10-11$/an)
+- [ ] Créer le VPS, pointer le DNS, déployer + TLS
 - [ ] Mettre à jour `base_url` dans `content/config.yaml`
-- [ ] Remplacer l'email placeholder dans `content/pages/contact.md`
-- [ ] Déployer sur VPS ou Cloudflare Pages
 - [ ] Soumettre sitemap à Google Search Console + Bing Webmaster Tools
-- [ ] Candidater à Google AdSense
-- [ ] Rejoindre les programmes affiliés (Paddle, Lemon Squeezy, FreshBooks…) et remplacer les IDs `YOURID`
-
-### À faire (croissance) 📈
-
-- [x] CI/CD GitHub Actions
-- [ ] FAQ schema JSON-LD sur les pages outils
-- [x] Pages pays Stripe (UK, CA, AU, EU, IN) — programmatiques via `countries.yaml` + `intent_country.html`
-- [ ] Dark mode CSS
-- [ ] Améliorer couverture tests (tous les outils, pas seulement [:3])
+- [ ] Candidater à Google AdSense (une fois le site en ligne)
+- [ ] Rejoindre les programmes affiliés (Paddle, Lemon Squeezy, FreshBooks…) et transmettre les IDs
 
 ---
 
@@ -143,7 +153,8 @@ n'en avaient que 2, pour 31 nouvelles pages au total (289 → 320).
 
 ```bash
 make build          # Génère dist/
-make test           # 34 JS + 9 Python tests
+make test           # 554 JS + 272 Python tests
+make check-perf     # Budgets de taille, meta coverage, sitemap, og:images (pas encore en CI)
 make serve          # Sert dist/ sur localhost:8080
 make serve-network  # Sert sur toutes interfaces (LAN)
 

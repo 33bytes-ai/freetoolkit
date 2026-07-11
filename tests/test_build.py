@@ -869,6 +869,21 @@ def test_footer_newsletter_form_appears_on_every_page_when_formspree_id_set():
     html = out.read_text()
     assert 'action="https://formspree.io/f/abcd1234"' in html
     assert 'id="footer-nl-email"' in html
+    assert 'name="_gotcha"' in html
+
+    index_out = DIST / "_test_footer_newsletter" / "home" / "index.html"
+    ftk_build.render(
+        env,
+        "index.html",
+        index_out,
+        path="/",
+        title=config["site"]["name"],
+        description=config["site"]["description"],
+        **common,
+    )
+    index_html = index_out.read_text()
+    assert 'id="nl-email"' in index_html
+    assert 'name="_gotcha"' in index_html
 
 
 def test_revenue_per_employee_tool_builds():

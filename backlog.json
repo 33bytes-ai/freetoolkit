@@ -224,5 +224,127 @@
     "risk": 1,
     "status": "done",
     "note": "Grepped content/ and templates/ for example.com, YOUR_USERNAME, TODO, lorem ipsum, placeholder, YOURID, xxx, TBD, etc. Found and fixed two real issues (all other 'placeholder=' hits were legitimate HTML input placeholder attributes, and scripts/new_tool.py's TODOs are intentional scaffold stubs for future tools -- left alone): (1) content/affiliates.yaml had 17 links marked `affiliate: true` (rendering the FTC 'Affiliate link' disclosure badge + rel=sponsored in templates/tool.html) whose URLs still contained the literal unfilled tracking placeholder '?via=YOURID' / '?ref=YOURID' / '?lmref=YOURID' -- this falsely disclosed a paid affiliate relationship that doesn't exist yet and would have shown a broken-looking tracking param in the link href. Fixed by setting affiliate: false and stripping the placeholder query param on all 17 (plus 2 more affiliate:false entries that had the same leftover param) until real IDs are obtained, per the file's own 'HOW TO ADD REAL AFFILIATE LINKS' instructions. (2) content/pages/terms.md, privacy.md and contact.md still said 'FreeToolKit' and described a stale prior tool lineup (word counter, JSON formatter, Base64 encoder, password generator, color/unit/timestamp converters) that doesn't exist in this site's actual tools.yaml -- the site was rebranded to FounderCalc (business calculators) but the legal pages were never updated. Rewrote all three to say FounderCalc and describe the real calculator category. Left content/config.yaml's base_url (https://foundercalc.example.com) untouched -- that one is intentionally a placeholder per this repo's own CLAUDE.md ('Updating the live domain: change base_url... before deploying'), i.e. a documented deploy-time step rather than a bug, and was already the subject of the prior contact-email task. Added tests/test_build.py::test_affiliate_links_have_no_placeholder_ids and ::test_legal_pages_use_site_brand_not_stale_tool_list to prevent regression. Could not execute make build/test-py to confirm live -- python/make/pytest invocations all require an interactive approval this sandboxed session never receives (same restriction hit by prior orchestrator tasks in this repo). Verified instead by: full Read of every edited file, and grep-based structural sanity checks on affiliates.yaml (178 name/url/affiliate:false entries all matching 1:1, zero YOURID or affiliate:true remaining) and on the three legal pages (zero 'FreeToolKit' or 'word counter' occurrences remaining, no duplicated lines from editing). Recommend running `make test` once in an unrestricted shell before merge to confirm the two new tests pass."
+  },
+  {
+    "title": "Corriger le compteur d'outils hardcodé (22 → réel) et ajouter un garde-fou",
+    "description": "src/freetoolkit/build.py:674 rend la meta-description de /tools/ avec le texte figé \"Browse all 22 free business calculators...\" alors que content/tools.yaml en compte 105 aujourd'hui — cette description est indexée par Google sur la page catalogue. content/pages/comparisons.md:55 a le même problème (\"browse all 22 tools →\"). Interpoler len(tools) dynamiquement aux deux endroits, et ajouter un test dans tests/test_build.py qui échoue si un texte affiché contient un nombre d'outils qui diverge de len(tools.yaml), pour empêcher la récidive lors de la prochaine vague d'ajout d'outils.",
+    "impact": 6,
+    "effort": 2,
+    "risk": 1,
+    "status": "pending"
+  },
+  {
+    "title": "Rafraîchir README.md et docs/*.md avec les chiffres réels du catalogue",
+    "description": "README.md décrit encore 10 calculateurs et 43 tests, avec un badge CI cassé pointant vers YOUR_USERNAME/freetoolkit. docs/ARCHITECTURE.md montre un diagramme dist/ avec (×10) outils. docs/GROWTH_PLAN.md Phase 1 dit \"Verify all 10 calculator pages\". docs/DEPLOYMENT.md dit \"55 tests\". Le repo compte réellement 105 outils, 244 pages intent/pays, et 826 tests (554 JS + 272 Python). Mettre à jour ces cinq documents avec les chiffres réels et remplacer le placeholder du badge CI par le vrai remote GitHub du repo.",
+    "impact": 5,
+    "effort": 3,
+    "risk": 1,
+    "status": "pending"
+  },
+  {
+    "title": "Nettoyer les 15 fichiers *_tmp.txt commités par erreur à la racine",
+    "description": "git ls-files confirme que covered_counts_tmp.txt, covered_tools_tmp.txt, covered_unique_tmp.txt, existing_urls_raw_tmp.txt, existing_urls_sorted_tmp.txt, existing_urls_tmp.txt, pairs_raw_tmp.txt, pairs_tmp.txt, parents_only_tmp.txt, parents_vals_tmp.txt, referenced_clean_sorted_tmp.txt, referenced_clean_tmp.txt, referenced_links_tmp.txt, slugs_only_tmp.txt et slugs_vals_tmp.txt sont trackés par git — sorties de commandes shell intermédiaires (grep/sort/comm) laissées par une session builder antérieure, sans valeur pour le repo. git rm ces 15 fichiers et ajouter *_tmp.txt à .gitignore pour empêcher la récidive.",
+    "impact": 3,
+    "effort": 1,
+    "risk": 1,
+    "status": "pending"
+  },
+  {
+    "title": "Étendre les assertions de contenu de test_build.py à tous les 105 outils",
+    "description": "La tâche backlog 'Tests dynamiques' a rendu dynamique EXPECTED_FILES (vérification d'existence de fichiers) mais pas les assertions de contenu : 11 tests (test_tool_pages_reference_correct_js, test_tool_pages_have_canonical_url, test_index_page_has_all_tools_linked, un test sitemap_news, test_tool_pages_have_twitter_meta, test_tool_pages_have_calculator_anchor, test_tool_pages_have_robots_meta, test_rss_has_enclosure_per_item, test_tool_pages_have_social_share, test_tool_pages_have_author_meta, test_sub_sitemaps_exist_and_index_references_them) itèrent encore sur TOOL_SLUGS[:3] ou [:5] au lieu de la liste complète. Étendre ces boucles à TOOL_SLUGS entier pour détecter une régression sur un outil avec des données inhabituelles (catégorie rare, howto_steps absent, etc.) qui casserait un filtre Jinja spécifique.",
+    "impact": 6,
+    "effort": 3,
+    "risk": 1,
+    "status": "pending"
+  },
+  {
+    "title": "Intégrer make check-perf dans le pipeline CI",
+    "description": "scripts/check_perf.py (budgets de taille de fichier, couverture des balises meta, présence sitemap, présence og:image) existe et fonctionne via `make check-perf` mais .github/workflows/ci.yml ne l'appelle jamais — seuls test-js, test-py, build et Lighthouse CI tournent en CI. Ajouter une étape dédiée dans ci.yml pour empêcher qu'une régression de budget de perf/poids de page passe un merge sans être détectée.",
+    "impact": 6,
+    "effort": 2,
+    "risk": 1,
+    "status": "pending"
+  },
+  {
+    "title": "Élargir l'échantillon Lighthouse CI aux templates intent_page et intent_country",
+    "description": ".lighthouserc.json et le job CI n'auditent que /, /tools/ et /tools/dcf-calculator/ — uniquement les templates index.html, tools_index.html et tool.html. Les 239 pages intent (intent_page.html) et les 5 pages pays (intent_country.html) n'ont jamais été passées dans Lighthouse alors qu'elles partagent une partie mais pas la totalité du head/layout de tool.html. Ajouter au moins une URL de chaque template (ex: une page intent existante + /tools/stripe-fee-calculator/stripe-fees-uk/) à la liste `urls` du job Lighthouse CI.",
+    "impact": 5,
+    "effort": 2,
+    "risk": 1,
+    "status": "pending"
+  },
+  {
+    "title": "Auditer les calculateurs quasi-dupliqués pour risque de cannibalisation SEO",
+    "description": "Le catalogue contient des paires/triplets de titres très proches : gross-margin-calculator / gross-profit-margin-calculator / profit-margin-calculator, revenue-growth-calculator / revenue-growth-rate-calculator, break-even-calculator / break-even-revenue-calculator, employee-turnover-calculator / employee-turnover-cost-calculator. Vérifier dans content/tools.yaml que le body SEO et les keywords[] de chaque paire ciblent une intention de recherche réellement distincte plutôt qu'un quasi-doublon — Google peut sinon n'indexer qu'une des deux pages ou diluer le classement des deux. Différencier clairement le contenu (formule, cas d'usage, exemples) si un chevauchement est confirmé.",
+    "impact": 7,
+    "effort": 4,
+    "risk": 2,
+    "status": "pending"
+  },
+  {
+    "title": "Ajouter un champ honeypot anti-spam au formulaire newsletter Formspree",
+    "description": "templates/base.html rend un formulaire Formspree (footer, sur chaque page une fois formspree_id renseigné) sans aucun champ honeypot ni autre garde-fou anti-bot. Formspree free tier a un quota mensuel de soumissions ; un bot qui trouve le formulaire pourrait l'épuiser avant que de vrais visiteurs ne s'inscrivent. Ajouter un champ caché standard (_gotcha, convention Formspree) qui piège les bots sans friction pour les humains.",
+    "impact": 4,
+    "effort": 1,
+    "risk": 1,
+    "status": "in_progress",
+    "note": "Added the standard Formspree honeypot input (<input type=\"text\" name=\"_gotcha\" style=\"display:none\" tabindex=\"-1\" autocomplete=\"off\">) to both Formspree forms: templates/base.html's footer newsletter form (line ~179) and templates/index.html's homepage newsletter card (line ~124), since both share the same formspree_id and quota. Extended tests/test_build.py::test_footer_newsletter_form_appears_on_every_page_when_formspree_id_set to assert `name=\"_gotcha\"` is present in the rendered footer form, and added a second render() call in that test for index.html asserting the same for the homepage form. NOT YET VERIFIED: this builder session's permission mode blocked all shell execution (make build, make test, python3 -c) pending approval that never arrived autonomously, so the new/updated tests were not actually run. A human or CI run of `make build && make test` is needed to confirm both forms render correctly and the tests pass before flipping this to done.",
+    "human_input_needed": "Run `make build && make test` to confirm the honeypot field renders on both forms and the updated test_build.py assertions pass."
+  },
+  {
+    "title": "Préparer une bannière de consentement (CMP) pour l'activation d'AdSense en UE",
+    "description": "Le site cible explicitement une audience internationale (pages pays UK/EU dans content/countries.yaml) et prévoit d'activer Google AdSense (ads_enabled dans content/config.yaml). Depuis la politique de consentement UE de Google, une bannière de consentement certifiée IAB TCF est obligatoire avant l'affichage d'annonces personnalisées aux visiteurs EEA/UK — rien n'est en place dans templates/base.html aujourd'hui. Intégrer un CMP gratuit compatible IAB TCF (ex: Google Funding Choices / Consent Management for Publishers) prêt à activer en même temps que ads_enabled: true, pour éviter une suspension de compte AdSense dès les premières impressions EU.",
+    "impact": 8,
+    "effort": 5,
+    "risk": 3,
+    "status": "pending"
+  },
+  {
+    "title": "Préparer un monitoring d'uptime externe prêt à activer au déploiement",
+    "description": "Aucun monitoring externe n'est prévu au-delà de GoAccess (analyse passive des logs locaux, après coup). Documenter/scripter un healthcheck externe gratuit (UptimeRobot, Better Uptime free tier, ou un cron curl + webhook) prêt à pointer vers le domaine dès que le VPS et le DNS seront actifs (HUMAN_INPUTS.md A1/A2), pour être alerté si nginx tombe avant que le trafic organique ne s'installe.",
+    "impact": 5,
+    "effort": 2,
+    "risk": 1,
+    "status": "pending"
+  },
+  {
+    "title": "Mesurer et documenter le temps de build à l'échelle actuelle",
+    "description": "build.py régénère intégralement dist/ à chaque run : ~349 pages HTML (105 outils + 244 intent/pays + pages statiques) plus une image OG PIL par outil (write_og_image, appelée pour chaque tool + chaque page pays). Mesurer le temps de build réel en CI (déjà exécuté via `make build` dans ci.yml — juste chronométrer l'étape) et documenter un budget de temps de build acceptable ; si la génération PIL des OG images domine, envisager de ne régénérer que celles dont le tool a changé plutôt que toutes à chaque build.",
+    "impact": 4,
+    "effort": 3,
+    "risk": 1,
+    "status": "pending"
+  },
+  {
+    "title": "Corriger flash() dans common.js pour réinitialiser originalText à chaque appel",
+    "description": "static/js/lib/common.js:flash() stocke el.dataset.originalText au premier appel mais ne le réinitialise pas si le texte du bouton change dynamiquement entre deux appels — un bouton dont le label change par ailleurs peut revenir à un texte obsolète après le flash. Réinitialiser dataset.originalText à chaque appel de flash() à partir du textContent courant avant modification.",
+    "impact": 3,
+    "effort": 1,
+    "risk": 1,
+    "status": "pending"
+  },
+  {
+    "title": "Rendre load_page() robuste à un '---' dans une valeur de frontmatter",
+    "description": "src/freetoolkit/build.py:load_page() utilise text.split('---', 2) pour séparer le frontmatter YAML du corps markdown — si une valeur de frontmatter contient elle-même la séquence '---' (ex: dans une description multi-ligne), split lève une ValueError peu claire ou coupe le contenu au mauvais endroit. Remplacer par une regex ancrée en début de fichier (^---\\n...\\n---\\n) qui ne matche que les délimiteurs de frontmatter en tête de fichier.",
+    "impact": 3,
+    "effort": 2,
+    "risk": 1,
+    "status": "pending"
+  },
+  {
+    "title": "Dédupliquer les pageviews locales de tracker.js par session",
+    "description": "static/js/lib/tracker.js:trackPageview() incrémente le compteur à chaque chargement de page sans déduplication de session — un visiteur qui rafraîchit ou navigue en avant/arrière gonfle artificiellement les pageviews affichées sur /dashboard/. Faible enjeu business (le dashboard est explicitement documenté comme 'local browser analytics only', pas une source de vérité), mais fausse la lecture de son propre usage pendant les tests manuels. Utiliser sessionStorage pour ne compter qu'une fois par path et par session d'onglet.",
+    "impact": 3,
+    "effort": 2,
+    "risk": 1,
+    "status": "pending"
+  },
+  {
+    "title": "Vérifier l'absence de meta descriptions dupliquées entre les 244 pages intent/pays",
+    "description": "content/intent_pages.yaml (239 entrées) et content/countries.yaml (5 entrées, gabarit commun dans load_countries()) génèrent chacune une description via un patron textuel répété avec variables interpolées. Écrire un test qui construit dist/ et vérifie qu'aucune paire de pages intent n'a une balise <meta name=\"description\"> strictement identique après interpolation (risque de contenu quasi-dupliqué / thin content aux yeux de Google si le patron ne varie pas assez d'une page à l'autre malgré le volume).",
+    "impact": 5,
+    "effort": 3,
+    "risk": 1,
+    "status": "pending"
   }
 ]

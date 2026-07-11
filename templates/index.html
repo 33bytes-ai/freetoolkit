@@ -121,6 +121,7 @@
     <p>No spam. One short email per new tool, max once a month.</p>
     <form action="https://formspree.io/f/{{ site.formspree_id }}" method="POST" class="newsletter-form">
       <input type="hidden" name="_subject" value="Newsletter — FounderCalc">
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
       <label for="nl-email" class="sr-only">Your email address</label>
       <input id="nl-email" type="email" name="email" placeholder="you@company.com" required autocomplete="email">
       <button type="submit" class="btn-primary">Subscribe</button>

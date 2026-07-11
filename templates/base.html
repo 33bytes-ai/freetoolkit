@@ -177,6 +177,7 @@
           <p>One short email when a new calculator ships. No spam.</p>
           <form action="https://formspree.io/f/{{ site.formspree_id }}" method="POST" class="footer-newsletter-form">
             <input type="hidden" name="_subject" value="Newsletter — FounderCalc (footer)">
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
             <label for="footer-nl-email" class="sr-only">Your email address</label>
             <input id="footer-nl-email" type="email" name="email" placeholder="you@company.com" required autocomplete="email">
             <button type="submit" class="btn-primary">Subscribe</button>
