@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% block og_type %}<meta property="og:type" content="article">{% if parent_tool and parent_tool.date_added %}<meta property="article:published_time" content="{{ parent_tool.date_added }}T00:00:00Z"><meta property="article:modified_time" content="{{ parent_tool.date_added }}T00:00:00Z">{% endif %}{% if intent_page.keywords %}{% for kw in intent_page.keywords[:3] %}<meta property="article:tag" content="{{ kw }}">{% endfor %}{% endif %}{% endblock %}
+{% if parent_tool %}
+{% block og_image %}<meta property="og:image" content="{{ site.base_url }}/static/img/og-{{ parent_tool.slug }}.png">{% endblock %}
+{% block twitter_image %}<meta name="twitter:image" content="{{ site.base_url }}/static/img/og-{{ parent_tool.slug }}.png">{% endblock %}
+{% endif %}
+{% block head_extra %}
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="author" content="{{ site.name }}">
+<meta name="geo.region" content="US">
+<meta name="coverage" content="Worldwide">
+<meta name="identifier-URL" content="{{ site.base_url }}/tools/{{ intent_page.parent_tool }}/{{ intent_page.slug }}/">
+<meta name="ICBM" content="37.7749,-122.4194">
+<meta name="DC.format" content="text/html">
+<meta name="DC.subject" content="{{ intent_page.title }}">
+{% if parent_tool %}<meta name="topic" content="{{ parent_tool.category }}">{% endif %}
+<meta name="summary" content="{{ intent_page.description }}">
+<meta name="distribution" content="global">
+{% if intent_page.keywords %}<meta name="keywords" content="{{ intent_page.keywords | join(', ') }}">
+<meta name="news_keywords" content="{{ intent_page.keywords | join(', ') }}">{% endif %}
+{% if prev_intent_page %}<link rel="prev" href="/tools/{{ prev_intent_page.parent_tool }}/{{ prev_intent_page.slug }}/">{% endif %}
+{% if next_intent_page %}<link rel="next" href="/tools/{{ next_intent_page.parent_tool }}/{{ next_intent_page.slug }}/">{% endif %}
+<script type="application/ld+json" nonce="{{ csp_nonce }}">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.base_url }}/" },
+    {% if parent_tool %}
+    { "@type": "ListItem", "position": 2, "name": {{ parent_tool.title | tojson }}, "item": "{{ site.base_url }}/tools/{{ parent_tool.slug }}/" },
+    {% endif %}
+    { "@type": "ListItem", "position": {{ 3 if parent_tool else 2 }}, "name": {{ intent_page.title | tojson }}, "item": "{{ site.base_url }}/tools/{{ intent_page.parent_tool }}/{{ intent_page.slug }}/" }
+  ]
+}
+</script>
+<script type="application/ld+json" nonce="{{ csp_nonce }}">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ intent_page.title | tojson }},
+  "description": {{ intent_page.description | tojson }},
+  "url": "{{ site.base_url }}/tools/{{ intent_page.parent_tool }}/{{ intent_page.slug }}/",
+  {% if parent_tool and parent_tool.date_added %}
+  "datePublished": "{{ parent_tool.date_added }}",
+  "dateModified": "{{ parent_tool.date_added }}",
+  {% endif %}
+  "author": { "@type": "Organization", "name": "{{ site.name }}", "url": "{{ site.base_url }}" },
+  "publisher": { "@type": "Organization", "name": "{{ site.name }}", "url": "{{ site.base_url }}" }{% if parent_tool %},
+  "image": "{{ site.base_url }}/static/img/og-{{ parent_tool.slug }}.png"{% endif %}
+}
+</script>
+{% endblock %}
+{% block content %}
+<section class="wrap tool-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb navigation">
+    <a href="/">Home</a> <span aria-hidden="true">/</span>
+    {% if parent_tool %}
+    <a href="/tools/{{ parent_tool.slug }}/">{{ parent_tool.title }}</a> <span aria-hidden="true">/</span>
+    {% endif %}
+    <span aria-current="page">{{ intent_page.title }}</span>
+  </nav>
+
+  <h1>{{ intent_page.title }}</h1>
+
+  <article class="tool-body">
+    <p>
+      Stripe charges businesses in {{ country.name }} <strong>{{ country.domestic_rate }}% + {{ country.currency_symbol }}{{ "%.2f"|format(country.domestic_fixed) }}</strong>
+      per successful transaction for {{ country.domestic_label }}, and
+      <strong>{{ country.intl_rate }}% + {{ country.currency_symbol }}{{ "%.2f"|format(country.intl_fixed) }}</strong> for {{ country.intl_label }}.
+      {% if country.amex_label %}American Express is charged at <strong>{{ country.amex_rate }}% + {{ country.currency_symbol }}{{ "%.2f"|format(country.amex_fixed) }}</strong>.{% endif %}
+      All amounts below are computed directly from these rates, so they stay in sync if Stripe changes its pricing.
+    </p>
+
+    <h2>Stripe fee examples in {{ country.currency_code }}</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Charge</th>
+          <th>{{ country.domestic_label }}</th>
+          {% if country.amex_label %}<th>{{ country.amex_label }}</th>{% endif %}
+          <th>{{ country.intl_label }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for amount in country.example_amounts %}
+        {% set dom = stripe_fee(amount, country.domestic_rate, country.domestic_fixed) %}
+        {% set intl = stripe_fee(amount, country.intl_rate, country.intl_fixed) %}
+        <tr>
+          <td>{{ country.currency_symbol }}{{ amount }}</td>
+          <td>{{ country.currency_symbol }}{{ "%.2f"|format(dom.fee) }} ({{ "%.1f"|format(dom.fee / amount * 100) }}%)</td>
+          {% if country.amex_label %}
+          {% set amex = stripe_fee(amount, country.amex_rate, country.amex_fixed) %}
+          <td>{{ country.currency_symbol }}{{ "%.2f"|format(amex.fee) }} ({{ "%.1f"|format(amex.fee / amount * 100) }}%)</td>
+          {% endif %}
+          <td>{{ country.currency_symbol }}{{ "%.2f"|format(intl.fee) }} ({{ "%.1f"|format(intl.fee / amount * 100) }}%)</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    {% if country.tax_name %}
+    <h2>{{ country.tax_name }} on Stripe fees</h2>
+    <p>{{ country.tax_note }}</p>
+    {% endif %}
+
+    {% if country.alt_processor %}
+    <h2>Stripe vs {{ country.alt_processor }} in {{ country.short_name }}</h2>
+    <p>{{ country.alt_processor_note }}</p>
+    {% endif %}
+
+    <p>
+      Rates shown are Stripe's published standard-plan pricing and can change — verify
+      current figures at
+      <a href="https://stripe.com/pricing" rel="noopener noreferrer" target="_blank">stripe.com/pricing</a>
+      before relying on them for financial decisions.
+    </p>
+  </article>
+
+  {% if parent_tool %}
+  <div class="intent-cta">
+    <h2>Calculate your {{ country.short_name }} payout — free</h2>
+    <p>Open the calculator pre-filled with {{ country.short_name }}'s {{ country.domestic_label }} rate.</p>
+    <a href="{{ country.deep_link }}" class="btn-primary">Open {{ parent_tool.nav_title }} for {{ country.short_name }} →</a>
+  </div>
+  {% endif %}
+
+  {% if other_countries %}
+  <section class="related-tools">
+    <h2>Stripe fees in other countries</h2>
+    <ul>
+      {% for cp in other_countries %}
+      <li><a href="/tools/{{ cp.parent_tool }}/{{ cp.slug }}/">{{ cp.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+</section>
+{% endblock %}

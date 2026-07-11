@@ -1,6 +1,9 @@
 """Tests for the static site build."""
+import json
+import re
 import subprocess
 from pathlib import Path
+from urllib.parse import unquote
 
 import yaml
 
@@ -19,6 +22,9 @@ INTENT_PAGES = [
     for p in yaml.safe_load((ROOT / "content" / "intent_pages.yaml").read_text())
 ]
 
+COUNTRIES = yaml.safe_load((ROOT / "content" / "countries.yaml").read_text())
+COUNTRY_PAGE_SLUGS = [f"stripe-fees-{c['slug']}" for c in COUNTRIES]
+
 EXPECTED_FILES = (
     [
         "index.html",
@@ -35,6 +41,7 @@ EXPECTED_FILES = (
     + [f"tools/{slug}/index.html" for slug in TOOL_SLUGS]
     + [f"static/js/tools/{slug}.js" for slug in TOOL_SLUGS]
     + [f"tools/{parent}/{slug}/index.html" for parent, slug in INTENT_PAGES]
+    + [f"tools/stripe-fee-calculator/{slug}/index.html" for slug in COUNTRY_PAGE_SLUGS]
 )
 
 
@@ -2211,3 +2218,90 @@ def test_tool_widget_inputs_have_accessible_names():
                 f"{slug}: <input id=\"{input_id}\"> has no associated "
                 "<label for> and no aria-label"
             )
+
+
+def test_stripe_fee_breakdown_computes_fee_and_net():
+    """stripe_fee_breakdown is the Jinja global intent_country.html uses to
+    compute worked examples — verify the math directly."""
+    from freetoolkit.build import stripe_fee_breakdown
+
+    result = stripe_fee_breakdown(100, 2.9, 0.30)
+    assert round(result["fee"], 2) == 3.20
+    assert round(result["net"], 2) == 96.80
+
+
+def test_load_countries_shapes_pages_like_intent_pages():
+    """load_countries() must produce entries with the fields the shared
+    sitemap/tool-page-linking code expects (slug, parent_tool, title)."""
+    from freetoolkit.build import load_countries
+
+    pages = load_countries()
+    assert len(pages) == len(COUNTRIES)
+    for page in pages:
+        assert page["parent_tool"] == "stripe-fee-calculator"
+        assert page["slug"].startswith("stripe-fees-")
+        assert page["is_country_page"] is True
+        assert page["country"]["deep_link"].startswith("/tools/stripe-fee-calculator/#")
+
+
+def test_country_pages_build_at_expected_urls():
+    """Each content/countries.yaml entry should build to
+    /tools/stripe-fee-calculator/stripe-fees-<slug>/."""
+    run_build()
+    for slug in COUNTRY_PAGE_SLUGS:
+        out = DIST / "tools" / "stripe-fee-calculator" / slug / "index.html"
+        assert out.exists(), f"Missing country page: {out}"
+
+
+def test_country_pages_use_intent_country_template():
+    """Country pages should render distinct per-country rate content, not the
+    generic intent_page.html body."""
+    run_build()
+    for country in COUNTRIES:
+        html = (DIST / "tools" / "stripe-fee-calculator" / f"stripe-fees-{country['slug']}" / "index.html").read_text()
+        assert country["name"] in html
+        assert f"{country['domestic_rate']}%" in html
+        assert "stripe.com/pricing" in html
+
+
+def test_country_pages_link_to_prefilled_calculator():
+    """The CTA on each country page should deep-link into the Stripe fee
+    calculator with the domestic rate and fixed fee pre-filled via the URL
+    hash, decoded to the exact values from countries.yaml (including
+    countries like India where domestic_fixed is 0)."""
+    run_build()
+    for country in COUNTRIES:
+        html = (DIST / "tools" / "stripe-fee-calculator" / f"stripe-fees-{country['slug']}" / "index.html").read_text()
+        match = re.search(r'/tools/stripe-fee-calculator/#([^"\'\s]+)', html)
+        assert match, f"stripe-fees-{country['slug']} is missing a deep-link into the calculator"
+        params = json.loads(unquote(match.group(1)))
+        assert params["cp"] == country["domestic_rate"]
+        assert params["cf"] == country["domestic_fixed"]
+
+
+def test_country_pages_cross_link_each_other():
+    """Each country page should link to the other country pages for
+    internal-linking SEO value."""
+    run_build()
+    for country in COUNTRIES:
+        html = (DIST / "tools" / "stripe-fee-calculator" / f"stripe-fees-{country['slug']}" / "index.html").read_text()
+        other_slugs = [c["slug"] for c in COUNTRIES if c["slug"] != country["slug"]]
+        found = sum(1 for s in other_slugs if f"/tools/stripe-fee-calculator/stripe-fees-{s}/" in html)
+        assert found == len(other_slugs), f"stripe-fees-{country['slug']} is missing links to sibling country pages"
+
+
+def test_country_pages_appear_on_parent_tool_page():
+    """The stripe-fee-calculator tool page should list the country pages
+    under its 'Related guides' section."""
+    run_build()
+    html = (DIST / "tools" / "stripe-fee-calculator" / "index.html").read_text()
+    for slug in COUNTRY_PAGE_SLUGS:
+        assert f"/tools/stripe-fee-calculator/{slug}/" in html
+
+
+def test_country_pages_in_sitemap():
+    """Country pages should be included in sitemap.xml like other intent pages."""
+    run_build()
+    sitemap = (DIST / "sitemap.xml").read_text()
+    for slug in COUNTRY_PAGE_SLUGS:
+        assert f"/tools/stripe-fee-calculator/{slug}/" in sitemap

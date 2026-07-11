@@ -1,0 +1,99 @@
+# Programmatic Stripe fee pages by country.
+#
+# Unlike content/intent_pages.yaml (hand-written prose per page), each entry
+# here is pure data: templates/intent_country.html renders it into
+# /tools/stripe-fee-calculator/stripe-fees-<slug>/, computing every worked
+# fee example at build time from domestic_rate/domestic_fixed so the numbers
+# can never drift out of sync with the stated rate.
+#
+# Rates are Stripe's published standard-plan pricing and change occasionally
+# — the template links to stripe.com/pricing so readers can confirm current
+# figures.
+
+- slug: uk
+  name: "the United Kingdom"
+  short_name: "UK"
+  currency_code: GBP
+  currency_symbol: "£"
+  domestic_label: "UK and EEA-issued cards"
+  domestic_rate: 1.5
+  domestic_fixed: 0.20
+  intl_label: "non-EEA cards"
+  intl_rate: 2.5
+  intl_fixed: 0.20
+  tax_name: "VAT"
+  tax_note: "Stripe adds 20% UK VAT on top of its processing fee. This is recoverable if your business is VAT-registered — Stripe issues a monthly VAT invoice."
+  alt_processor: "PayPal"
+  alt_processor_note: "PayPal charges 2.99% + 30p for UK domestic payments — higher on both the percentage and the fixed fee, so Stripe is cheaper for most UK merchants."
+  example_amounts: [10, 50, 100, 500]
+
+- slug: canada
+  name: "Canada"
+  short_name: "Canada"
+  currency_code: CAD
+  currency_symbol: "C$"
+  domestic_label: "domestic Visa/Mastercard"
+  domestic_rate: 2.9
+  domestic_fixed: 0.30
+  amex_label: "American Express"
+  amex_rate: 3.5
+  amex_fixed: 0.30
+  intl_label: "international cards"
+  intl_rate: 4.4
+  intl_fixed: 0.30
+  tax_name: "GST/HST"
+  tax_note: "Stripe applies GST or HST to processing fees based on your business's province of registration. This is generally recoverable as an input tax credit for GST/HST-registered businesses."
+  alt_processor: "Square"
+  alt_processor_note: "Square charges 2.9% + 30¢ for online payments — identical to Stripe. Stripe's API and developer ecosystem make it the better choice for software-first businesses; Square is often more practical for in-person retail."
+  example_amounts: [50, 100, 500]
+
+- slug: australia
+  name: "Australia"
+  short_name: "Australia"
+  currency_code: AUD
+  currency_symbol: "A$"
+  domestic_label: "domestic Visa/Mastercard"
+  domestic_rate: 1.75
+  domestic_fixed: 0.30
+  intl_label: "international cards"
+  intl_rate: 3.25
+  intl_fixed: 0.30
+  tax_name: "GST"
+  tax_note: "Stripe charges 10% GST on processing fees for Australian businesses. GST-registered businesses can claim this back as an input tax credit via their BAS."
+  alt_processor: "Braintree"
+  alt_processor_note: "Braintree (PayPal's developer-focused gateway) charges 1.75% + A$0.30 — identical to Stripe's domestic rate. The choice comes down to documentation and integrations, where Stripe generally wins."
+  example_amounts: [25, 100, 500]
+
+- slug: eu
+  name: "the European Union"
+  short_name: "the EU"
+  currency_code: EUR
+  currency_symbol: "€"
+  domestic_label: "EEA-issued cards"
+  domestic_rate: 1.5
+  domestic_fixed: 0.25
+  intl_label: "non-EEA cards"
+  intl_rate: 2.5
+  intl_fixed: 0.25
+  tax_name: "VAT"
+  tax_note: "Stripe adds local VAT to its fees, at the rate of the merchant's EU country of registration (17–27% depending on member state). VAT-registered businesses can generally recover this as input tax."
+  alt_processor: "SEPA Direct Debit"
+  alt_processor_note: "For EU customers, SEPA Direct Debit costs only 0.8% capped at €5 per transaction — far cheaper than cards for large B2B invoices and recurring enterprise billing."
+  example_amounts: [25, 100, 500]
+
+- slug: india
+  name: "India"
+  short_name: "India"
+  currency_code: INR
+  currency_symbol: "₹"
+  domestic_label: "domestic Indian cards"
+  domestic_rate: 2
+  domestic_fixed: 0
+  intl_label: "international cards"
+  intl_rate: 3
+  intl_fixed: 0
+  tax_name: null
+  tax_note: null
+  alt_processor: "Razorpay"
+  alt_processor_note: "Razorpay charges the same 2% for domestic cards but supports more India-specific payment methods (UPI, NetBanking, wallets). Stripe remains preferable for products with significant international card volume."
+  example_amounts: [500, 2000, 10000]

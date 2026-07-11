@@ -135,8 +135,8 @@
         cardTypeEl.value = s.t;
         customRow.style.display = s.t === "custom" ? "flex" : "none";
       }
-      if (s.cp) customPct.value = s.cp;
-      if (s.cf) customFixed.value = s.cf;
+      if (s.cp !== undefined) customPct.value = s.cp;
+      if (s.cf !== undefined) customFixed.value = s.cf;
       if (s.pt) passthrough.checked = !!s.pt;
     }
 

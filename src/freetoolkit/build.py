@@ -14,7 +14,7 @@ import re
 import secrets
 import shutil
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import quote, urlparse
 
 import markdown
 import yaml
@@ -112,6 +112,56 @@ def load_intent_pages() -> list[dict]:
     return pages
 
 
+def stripe_fee_breakdown(amount: float, rate_pct: float, fixed: float) -> dict:
+    fee = amount * rate_pct / 100 + fixed
+    return {"fee": fee, "net": amount - fee}
+
+
+def load_countries() -> list[dict]:
+    """Programmatic Stripe fee pages, one per content/countries.yaml entry.
+
+    Shaped like an intent_pages.yaml entry (slug/parent_tool/title/description/
+    keywords) so it can share sitemap, robots, and tool-page linking code with
+    the hand-written intent pages; is_country_page + country tell the render
+    loop to use intent_country.html instead.
+    """
+    countries = load_yaml(CONTENT_DIR / "countries.yaml") or []
+    pages = []
+    for country in countries:
+        default_amount = country["example_amounts"][0]
+        hash_params = {
+            "a": default_amount,
+            "t": "custom",
+            "cp": country["domestic_rate"],
+            "cf": country["domestic_fixed"],
+        }
+        country["deep_link"] = (
+            "/tools/stripe-fee-calculator/#"
+            + quote(json.dumps(hash_params, separators=(",", ":")))
+        )
+        slug = f"stripe-fees-{country['slug']}"
+        pages.append(
+            {
+                "slug": slug,
+                "parent_tool": "stripe-fee-calculator",
+                "title": f"Stripe Fees in {country['name']} — Rates, Examples & Net Payout",
+                "description": (
+                    f"Exact Stripe processing fees for businesses in {country['name']} — "
+                    f"{country['domestic_rate']}% + {country['currency_symbol']}{country['domestic_fixed']} "
+                    f"for {country['domestic_label']}, with worked examples."
+                ),
+                "keywords": [
+                    f"stripe fees {country['slug']}",
+                    f"stripe {country['slug']} pricing",
+                    f"stripe fee calculator {country['slug']}",
+                ],
+                "is_country_page": True,
+                "country": country,
+            }
+        )
+    return pages
+
+
 def load_pages(config: dict) -> list[dict]:
     return [load_page(p, config) for p in sorted((CONTENT_DIR / "pages").glob("*.md"))]
 
@@ -134,6 +184,7 @@ def build_env() -> Environment:
     )
     env.filters["rejectattr"] = _rejectattr
     env.filters["humandate"] = _humandate
+    env.globals["stripe_fee"] = stripe_fee_breakdown
     return env
 
 
@@ -547,7 +598,7 @@ def build() -> Path:
     tools = load_tools()
     pages = load_pages(config)
     affiliates = load_affiliates()
-    intent_pages = load_intent_pages()
+    intent_pages = load_intent_pages() + load_countries()
     env = build_env()
 
     if DIST_DIR.exists():
@@ -686,6 +737,8 @@ def build() -> Path:
     for ip in intent_pages:
         _ip_by_parent.setdefault(ip["parent_tool"], []).append(ip)
 
+    country_pages = [ip for ip in intent_pages if ip.get("is_country_page")]
+
     for ip in intent_pages:
         parent = tools_by_slug.get(ip["parent_tool"])
         siblings = _ip_by_parent.get(ip["parent_tool"], [])
@@ -693,9 +746,10 @@ def build() -> Path:
         prev_ip = siblings[idx - 1] if idx is not None and idx > 0 else None
         next_ip = siblings[idx + 1] if idx is not None and idx < len(siblings) - 1 else None
         out = DIST_DIR / "tools" / ip["parent_tool"] / ip["slug"] / "index.html"
+        template_name = "intent_country.html" if ip.get("is_country_page") else "intent_page.html"
         render(
             env,
-            "intent_page.html",
+            template_name,
             out,
             path=f"/tools/{ip['parent_tool']}/{ip['slug']}/",
             title=ip["title"],
@@ -704,6 +758,8 @@ def build() -> Path:
             parent_tool=parent,
             prev_intent_page=prev_ip,
             next_intent_page=next_ip,
+            country=ip.get("country"),
+            other_countries=[cp for cp in country_pages if cp["slug"] != ip["slug"]] if ip.get("is_country_page") else None,
             **common,
         )
 

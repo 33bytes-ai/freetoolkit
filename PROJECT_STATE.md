@@ -35,7 +35,7 @@ _Mis à jour: 2026-06-16_
 
 ```
 content/         YAML + Markdown (données site)
-templates/       Jinja2 (base, index, tool, page, 404, dashboard, intent_page)
+templates/       Jinja2 (base, index, tool, page, 404, dashboard, intent_page, intent_country)
 templates/widgets/  Un HTML par outil (formulaire spécifique)
 static/css/      style.css (design system CSS custom properties)
 static/js/lib/   common.js (FTK namespace) · tracker.js (analytics)
@@ -77,6 +77,8 @@ dist/            Sortie du build (gitignorée)
 
 - Chaque outil a : `title`, `short` (meta description), `keywords[]`, `body` (300+ mots markdown)
 - Pages intent programmatiques : `parent_tool` + `slug` + `body` ciblant une requête longue traîne
+- Pages pays Stripe : `content/countries.yaml` (données pures, taux/exemples calculés au build) +
+  `templates/intent_country.html`, générées vers les mêmes URLs `/tools/stripe-fee-calculator/stripe-fees-<pays>/`
 - Liens affiliés par outil dans `affiliates.yaml` (disclosure `[Affiliate link]` auto-rendue)
 
 ---
@@ -128,7 +130,7 @@ dist/            Sortie du build (gitignorée)
 
 - [ ] CI/CD GitHub Actions
 - [ ] FAQ schema JSON-LD sur les pages outils
-- [ ] Pages pays Stripe (UK, CA, AU, EU, IN) — programmatiques via `countries.yaml`
+- [x] Pages pays Stripe (UK, CA, AU, EU, IN) — programmatiques via `countries.yaml` + `intent_country.html`
 - [ ] Dark mode CSS
 - [ ] Améliorer couverture tests (tous les outils, pas seulement [:3])
 
