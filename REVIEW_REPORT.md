@@ -1,27 +1,47 @@
 STATUS: PASS
 
 ## Scope reviewed
-Uncommitted diff for "Capture email fondateurs (newsletter / lead magnet)":
-- `templates/base.html` — new site-wide footer signup form, gated behind `site.formspree_id`
-- `static/css/style.css` — `.footer-newsletter` / `.footer-newsletter-form` styles
-- `content/config.yaml` — updated comment documenting the two forms + Zapier→ConvertKit/Beehiiv path
-- `tests/test_build.py` — two new tests
-- `BACKLOG.md` / `backlog.json` — status tracking (task correctly left as `in_progress`, not `done`, pending human verification)
-
-## Findings
-
-1. **Minor / non-blocking — duplicate signup UI on the homepage.** `templates/index.html` already renders its own prominent `.newsletter-card` section ("Get notified when new calculators ship") when `site.formspree_id` is set. Because `base.html`'s footer is rendered on every page including the homepage, once `formspree_id` is configured the homepage will show *two* email-capture forms with near-identical copy: the mid-page card and the new footer form. Each has a distinct `id`/`_subject` so submissions won't collide, and the task did ask for a "discreet, site-wide" form (which is exactly right for every other page), but on the homepage specifically this reads as redundant rather than discreet. Not a functional bug — worth a follow-up decision (e.g. suppress the footer variant on `/` via `{% if path != '/' %}`, or accept the double chance-to-convert as intentional) but doesn't block this task.
+Uncommitted diff for "Rapport de performance Lighthouse en CI":
+- `.github/workflows/ci.yml` — Lighthouse step now uses `staticDistDir: "./dist"`
+  (real local server) with 3 relative URLs instead of a single `file://` URL.
+- `.lighthouserc.json` — `categories:performance` tightened from `warn @0.85`
+  to `error @0.90`; `categories:seo` tightened from `error @0.90` to
+  `error @0.95`.
+- `tests/test_build.py` — two new tests guarding the thresholds and the
+  workflow's use of `staticDistDir`/absence of `file://`.
+- `BACKLOG.md` / `backlog.json` / `PROJECT_STATE.md` — status flipped to
+  `done` with a traceability note.
 
 ## Verified, no issues
-- `{% if site.formspree_id %}...{% endif %}` in `base.html` is balanced and correctly gates the form off by default (matches the existing homepage pattern).
-- Accessibility: `sr-only` label wired to `for="footer-nl-email"`, `autocomplete="email"`, `required`, matches the existing `.newsletter-form` conventions.
-- No inline scripts/event-handler attributes were added — no CSP nonce needed here, and none is missing.
-- CSS additions are syntactically valid, reuse existing custom properties (`--border`, `--radius`, `--bg`, `--text`, `--accent`), and `.footer-cols`'s `grid-template-columns: repeat(auto-fit, minmax(160px, 1fr))` already accommodates a 4th column without changes.
-- Dark mode: the footer input's `background: var(--bg)` against the footer's `background: var(--surface)` still produces valid contrast in the dark palette (`#0f1117` vs `#1a1d27`), so the lack of an explicit `@media (prefers-color-scheme: dark)` override (unlike `.newsletter-form`) is not a visual bug.
-- `tests/test_build.py`'s two new tests were checked by hand against `src/freetoolkit/build.py`: `test_footer_newsletter_form_appears_on_every_page_when_formspree_id_set` calls `ftk_build.build_env()/load_config()/load_tools()/load_pages()/render()` and assembles a `common` dict that exactly mirrors the real `common` dict built in `build()` (same keys), which matches the existing precedent at `test_sitemap_respects_updated_field_override`. `test_footer_newsletter_form_hidden_without_formspree_id` correctly relies on the real `run_build()` (config's `formspree_id` is `""` by default).
-- The stray `DIST/_test_footer_newsletter/` directory the second test writes does not leak into other tests: every subsequent test calls `run_build()`, which does `shutil.rmtree(DIST_DIR)` before re-populating it, and no other test does a broad `DIST.rglob`/`DIST.glob("**/*.html")` scan that would pick it up.
-- `backlog.json`'s new `note`/`human_input_needed` fields match the schema already used by every other entry in the file (not a new convention).
-- `BACKLOG.md`'s unrelated line change (Stripe country pages `pending` → `done`) is catching the markdown mirror up to `backlog.json`'s state from a prior, already-committed task (`3e167a9`) — not something this diff introduces incorrectly.
+- The 3 URLs referenced in `ci.yml` (`/`, `/tools/`, `/tools/dcf-calculator/`)
+  all correspond to pages `build.py` actually generates (`DIST_DIR/tools/index.html`
+  for `/tools/`; `dcf-calculator` confirmed as a real slug in `content/tools.yaml`).
+- `.lighthouserc.json` stays valid JSON; only the two targeted values
+  changed. `["error", {"minScore": X}]` correctly fails CI when a category
+  scores below `X`, matching the task's "fail if Performance < 90 or SEO < 95".
+- The new thresholds were checked against the real Lighthouse scores already
+  recorded in `PROJECT_STATE.md`'s "real run (2026-07-10, follow-up)" section
+  (performance 0.98/0.98/0.94, SEO 1.00/0.98/0.97 across the same 3 pages) —
+  the tightened gate would not have failed that known-good build, and this
+  matches what `backlog.json`'s note claims.
+- Both new tests are syntactically correct, sit at module level between two
+  existing tests without disturbing them, and reuse fixtures/imports already
+  present in the file (`ROOT`, `json`).
+- No templates or inline scripts were touched — CSP/nonce conventions are
+  not implicated by this diff.
+- `BACKLOG.md` / `backlog.json` / `PROJECT_STATE.md` updates are internally
+  consistent with each other and with the diff.
 
-## Caveat
-Neither the builder nor this review session could execute `make build` / `make test-py` — the sandbox's permission mode blocks all shell execution (`This command requires approval`). All of the above was verified by static/manual tracing of the Jinja templates, CSS, and Python build functions instead of an actual build run. A human or CI run of `make build && make test` is still needed before flipping this backlog entry to `done`.
+## Caveat (non-blocking)
+As already disclosed by the builder in `backlog.json`, this sandbox's
+permission mode blocks direct shell execution (`make build`, `make test-py`,
+`python3 -m pytest ...`) — confirmed again during this review by re-attempting
+`python3 -m pytest tests/test_build.py -k lighthouse -q`, which requires an
+approval that doesn't arrive autonomously. Review was done via static
+tracing (build.py output paths, tools.yaml slugs, JSON/YAML re-reading) and
+cross-checking against previously recorded real scores, not a live test run.
+A real CI run on the next push will be the first live confirmation that the
+job passes end-to-end.
+
+## Findings
+Aucun.

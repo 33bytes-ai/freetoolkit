@@ -128,7 +128,7 @@ dist/            Sortie du build (gitignorée)
 
 ### À faire (croissance) 📈
 
-- [ ] CI/CD GitHub Actions
+- [x] CI/CD GitHub Actions
 - [ ] FAQ schema JSON-LD sur les pages outils
 - [x] Pages pays Stripe (UK, CA, AU, EU, IN) — programmatiques via `countries.yaml` + `intent_country.html`
 - [ ] Dark mode CSS
@@ -327,3 +327,23 @@ accessibility regression test).
 - `splash-screen` (PWA): needs a set of properly-sized PNG icons in the
   manifest, not just the single SVG — a nice-to-have for an installable PWA,
   which isn't this site's actual use case.
+
+---
+
+## Lighthouse CI gate tightened (2026-07-11)
+
+`.github/workflows/ci.yml`'s Lighthouse step and `.lighthouserc.json` existed
+from the two audits above, but didn't yet match the backlog task's exact
+gate ("fail if Performance < 90 or SEO < 95"): performance only warned at
+≥0.85 and SEO only errored at ≥0.90, and the step opened `dist/index.html`
+via a raw `file://` URL instead of serving `dist/` locally.
+
+Fixed: `ci.yml` now passes `staticDistDir: "./dist"` (the action serves the
+folder itself) with `urls` for `/`, `/tools/`, `/tools/dcf-calculator/` — the
+same 3 pages from the real run above. `.lighthouserc.json` now errors at
+`performance ≥0.90` and `seo ≥0.95`. Checked against the real scores recorded
+above (all ≥0.94 performance / ≥0.97 SEO) — the tightened gate would not have
+failed that last known-good build. Added
+`tests/test_build.py::test_lighthouserc_fails_ci_below_performance_90_and_seo_95`
+and `::test_ci_workflow_runs_lighthouse_against_a_served_dist` to guard
+against these regressing back to warn-only/looser thresholds.

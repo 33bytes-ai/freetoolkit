@@ -2347,6 +2347,31 @@ def test_country_pages_appear_on_parent_tool_page():
         assert f"/tools/stripe-fee-calculator/{slug}/" in html
 
 
+def test_lighthouserc_fails_ci_below_performance_90_and_seo_95():
+    """CI must fail (not just warn) on Performance < 90 or SEO < 95, per the
+    'Rapport de performance Lighthouse en CI' backlog task."""
+    config = json.loads((ROOT / ".lighthouserc.json").read_text())
+    assertions = config["ci"]["assert"]["assertions"]
+
+    perf_level, perf_opts = assertions["categories:performance"]
+    assert perf_level == "error"
+    assert perf_opts["minScore"] >= 0.90
+
+    seo_level, seo_opts = assertions["categories:seo"]
+    assert seo_level == "error"
+    assert seo_opts["minScore"] >= 0.95
+
+
+def test_ci_workflow_runs_lighthouse_against_a_served_dist():
+    """The CI Lighthouse step should serve dist/ locally (staticDistDir)
+    rather than open file:// pages, matching real Lighthouse runs."""
+    workflow = (ROOT / ".github" / "workflows" / "ci.yml").read_text()
+    assert "treosh/lighthouse-ci-action" in workflow
+    assert "staticDistDir" in workflow
+    assert "file://" not in workflow
+    assert ".lighthouserc.json" in workflow
+
+
 def test_country_pages_in_sitemap():
     """Country pages should be included in sitemap.xml like other intent pages."""
     run_build()
