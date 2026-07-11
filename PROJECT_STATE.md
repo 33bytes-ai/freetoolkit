@@ -350,3 +350,21 @@ failed that last known-good build. Added
 `tests/test_build.py::test_lighthouserc_fails_ci_below_performance_90_and_seo_95`
 and `::test_ci_workflow_runs_lighthouse_against_a_served_dist` to guard
 against these regressing back to warn-only/looser thresholds.
+
+---
+
+## JS test coverage — closed the last gap (2026-07-11)
+
+The backlog task "Étendre la couverture tests JS à tous les outils" dated
+from when the site had 22 calculators; `content/tools.yaml` and
+`static/js/tools/` now hold 105. Audited every tool slug against
+`tests/test_tools.js`'s `require()` calls: 102/105 already had tests (added
+incrementally by prior sessions, untracked to any single backlog entry).
+Only 3 had none — the newest tools, `gross-revenue-retention-calculator`,
+`employee-turnover-calculator`, `budget-variance-calculator` (the same 3
+flagged as having dead intent-page links until "Pages intent
+supplémentaires"). Added 20 tests across those 3 (nominal case + invalid-input
+guard for each pure function). `tests/test_tools.js` now has 554 tests
+covering all 105 tools. Not run mechanically — this session's sandbox blocks
+`node --test`/`make test-js` the same way prior sessions document above;
+verified by hand against each function's source instead.

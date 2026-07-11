@@ -25,6 +25,6 @@
 | 15.75 | Bundle a font so OG image generation doesn't silently fail | 7 | 4 | 1 | done |
 | 15.00 | Fix working-capital-calculator and current-ratio-calculator test/widget mismatch | 5 | 3 | 1 | done |
 | 15.00 | Audit remaining pages/templates for other placeholder or hardcoded content [done] | 5 | 3 | 1 | done |
-| 13.50 | Pages intent supplémentaires (30 → 45 pages total) | 9 | 6 | 1 | pending |
+| 13.50 | Pages intent supplémentaires (30 → 45 pages total) | 9 | 6 | 1 | done |
 | 12.60 | Run real Lighthouse CI and fix what it finds | 7 | 5 | 2 | done |
 | 12.00 | Étendre la couverture tests JS à tous les outils (22) | 8 | 6 | 1 | pending |

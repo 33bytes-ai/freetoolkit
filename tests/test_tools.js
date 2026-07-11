@@ -2965,6 +2965,110 @@ test("ppu: calcUnitsNeeded basic", () => {
   assert.strictEqual(ppu.calcUnitsNeeded(100, 3.5), 28);
 });
 
+// ── Gross Revenue Retention Calculator ───────────────────────────────────────
+const grr = require("../static/js/tools/gross-revenue-retention-calculator.js");
+
+test("grr: calcGRR basic (95%)", () => {
+  // (100000 - 3000 - 2000) / 100000 * 100 = 95
+  const result = grr.calcGRR(100000, 3000, 2000);
+  assert.equal(result, 95);
+});
+
+test("grr: calcGRR returns null for zero starting MRR", () => {
+  assert.strictEqual(grr.calcGRR(0, 100, 0), null);
+});
+
+test("grr: calcAnnualGRR compounds monthly GRR over 12 months", () => {
+  // 0.98^12 * 100 ≈ 78.53
+  const result = grr.calcAnnualGRR(98);
+  assert.ok(Math.abs(result - 78.53) < 0.1);
+});
+
+test("grr: calcLogoChurnRate returns null for zero total customers", () => {
+  assert.strictEqual(grr.calcLogoChurnRate(5, 0), null);
+});
+
+test("grr: calcImpliedARPULost basic", () => {
+  assert.equal(grr.calcImpliedARPULost(1000, 5), 200);
+});
+
+test("grr: grrLabel bands", () => {
+  assert.match(grr.grrLabel(97), /best-in-class/i);
+  assert.match(grr.grrLabel(91), /strong/i);
+  assert.match(grr.grrLabel(70), /retention problem/i);
+});
+
+// ── Employee Turnover Calculator ─────────────────────────────────────────────
+const et = require("../static/js/tools/employee-turnover-calculator.js");
+
+test("et: calcTurnoverRate basic", () => {
+  // 10 / 100 * 100 = 10
+  const result = et.calcTurnoverRate(10, 100);
+  assert.equal(result, 10);
+});
+
+test("et: calcTurnoverRate returns null for zero avg headcount", () => {
+  assert.strictEqual(et.calcTurnoverRate(5, 0), null);
+});
+
+test("et: calcAvgHeadcount averages start and end", () => {
+  assert.equal(et.calcAvgHeadcount(80, 120), 100);
+});
+
+test("et: calcAnnualTurnoverCost basic", () => {
+  // 10 employees * (60000 * 0.33) = 198000
+  const result = et.calcAnnualTurnoverCost(10, 60000, 33);
+  assert.ok(Math.abs(result - 198000) < 0.01);
+});
+
+test("et: calcRetentionRate is the complement of turnover", () => {
+  assert.equal(et.calcRetentionRate(10), 90);
+});
+
+test("et: turnoverLabel bands", () => {
+  assert.match(et.turnoverLabel(3), /strong retention/i);
+  assert.match(et.turnoverLabel(30), /critical/i);
+});
+
+// ── Budget Variance Calculator ───────────────────────────────────────────────
+const bv = require("../static/js/tools/budget-variance-calculator.js");
+
+test("bv: calcVariance basic overspend", () => {
+  assert.equal(bv.calcVariance(12000, 10000), 2000);
+});
+
+test("bv: calcVariancePct returns null for zero budget", () => {
+  assert.strictEqual(bv.calcVariancePct(100, 0), null);
+});
+
+test("bv: calcVariancePct basic (20%)", () => {
+  assert.equal(bv.calcVariancePct(12000, 10000), 20);
+});
+
+test("bv: calcFavorableVariance — overspend on an expense is unfavorable", () => {
+  assert.strictEqual(bv.calcFavorableVariance(2000, true), false);
+  assert.strictEqual(bv.calcFavorableVariance(-2000, true), true);
+});
+
+test("bv: calcFavorableVariance — beating revenue budget is favorable", () => {
+  assert.strictEqual(bv.calcFavorableVariance(2000, false), true);
+  assert.strictEqual(bv.calcFavorableVariance(-2000, false), false);
+});
+
+test("bv: calcCumulativeVariance returns null on mismatched array lengths", () => {
+  assert.strictEqual(bv.calcCumulativeVariance([1, 2], [1]), null);
+});
+
+test("bv: calcCumulativeVariance sums variance across periods", () => {
+  const result = bv.calcCumulativeVariance([1100, 900], [1000, 1000]);
+  assert.equal(result, 0);
+});
+
+test("bv: varianceLabel bands for expenses", () => {
+  assert.match(bv.varianceLabel(15, true), /unfavorable/i);
+  assert.match(bv.varianceLabel(-2, true), /on budget/i);
+});
+
 // ── Analytics Tracker (localStorage TTL / size limit) ────────────────────────
 const tracker = require("../static/js/lib/tracker.js");
 
