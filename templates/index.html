@@ -34,7 +34,7 @@
 
       <div class="hero-categories">
         {% for category in categories %}
-        <a href="#cat-{{ category | lower | replace(' ', '-') }}" class="hero-cat-badge">{{ category }}</a>
+        <a href="/categories/{{ category | category_slug }}/" class="hero-cat-badge">{{ category }}</a>
         {% endfor %}
       </div>
     </div>
@@ -67,7 +67,8 @@
   <div class="tool-grid">
     {% for tool in new_tools[:3] %}
     <a class="tool-card" href="/tools/{{ tool.slug }}/">
-      <h3>{{ tool.nav_title }} <span style="font-size:0.65rem;font-weight:600;color:var(--accent-contrast);background:var(--accent);border-radius:99px;padding:0.1rem 0.5rem;vertical-align:middle;margin-left:0.4rem">NEW</span></h3>
+      <span class="tool-card-icon" aria-hidden="true">{{ category_meta[tool.category].icon | safe }}</span>
+      <h3>{{ tool.nav_title }} <span class="tool-card-new">NEW</span></h3>
       <p>{{ tool.short }}</p>
       {% if tool.date_added %}<span style="font-size:0.75rem;color:var(--text-muted)">{{ tool.date_added }}</span>{% endif %}
     </a>
@@ -76,26 +77,28 @@
 </section>
 {% endif %}
 
-<!-- Tool sections -->
-{% for category in categories %}
-{% set cat_tools = tools_by_category.get(category, []) %}
-{% if cat_tools %}
-<section class="wrap home-section" id="cat-{{ category | lower | replace(' ', '-') }}">
+<!-- Browse by category -->
+<section class="wrap home-section" id="categories">
   <div class="home-section-header reveal">
-    <h2>{{ category }}</h2>
-    <span class="tool-count">{{ cat_tools | length }} tools</span>
+    <h2>Browse by category</h2>
+    <a href="/tools/" style="font-size:0.88rem;color:var(--accent)">Or see all {{ tools | length }} tools →</a>
   </div>
-  <div class="tool-grid reveal-group">
-    {% for tool in cat_tools %}
-    <a class="tool-card reveal-child" href="/tools/{{ tool.slug }}/">
-      <h3>{{ tool.nav_title or tool.title }}</h3>
-      <p>{{ tool.short }}</p>
+  <div class="category-card-grid reveal-group">
+    {% for category in categories %}
+    {% set cat_tools = tools_by_category.get(category, []) %}
+    {% if cat_tools %}
+    <a class="category-card reveal-child" href="/categories/{{ category | category_slug }}/">
+      <span class="category-card-icon" aria-hidden="true">{{ category_meta[category].icon | safe }}</span>
+      <div>
+        <h3>{{ category }}</h3>
+        <p>{{ category_meta[category].tagline }}</p>
+        <span class="category-card-count">{{ cat_tools | length }} tool{{ "s" if cat_tools | length != 1 else "" }} →</span>
+      </div>
     </a>
+    {% endif %}
     {% endfor %}
   </div>
 </section>
-{% endif %}
-{% endfor %}
 
 <!-- About section -->
 <section class="wrap intro-text reveal" style="padding-top:2.5rem; border-top:1px solid var(--border); margin-top:2rem;">

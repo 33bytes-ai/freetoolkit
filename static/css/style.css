@@ -19,6 +19,12 @@
   box-sizing: border-box;
 }
 
+/* Native controls (range sliders, checkboxes, radios) otherwise default to
+   the browser's system blue regardless of the site's own accent color. */
+html {
+  accent-color: var(--accent);
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -120,6 +126,7 @@ h1, h2 {
   padding: 0.35rem 0.5rem;
   border-radius: 6px;
   white-space: nowrap;
+  text-decoration: none;
   transition: color 0.12s, background 0.12s;
   user-select: none;
 }
@@ -294,6 +301,147 @@ h1, h2 {
   margin: 0;
   font-size: 0.9rem;
   color: var(--text-muted);
+}
+.tool-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--accent) 12%, var(--bg));
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+.tool-card-icon svg {
+  width: 18px;
+  height: 18px;
+}
+.tool-card-new {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--accent-contrast);
+  background: var(--accent);
+  border-radius: 99px;
+  padding: 0.1rem 0.5rem;
+  vertical-align: middle;
+  margin-left: 0.4rem;
+  letter-spacing: 0.02em;
+}
+
+/* ── Category pages ───────────────────────────────────────────────────── */
+.category-hero {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.1rem;
+  margin-bottom: 2rem;
+}
+.category-hero-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--accent) 12%, var(--bg));
+  flex-shrink: 0;
+}
+.category-hero-icon svg {
+  width: 28px;
+  height: 28px;
+}
+.category-hero h1 {
+  margin: 0.15rem 0 0.4rem;
+}
+.category-switcher {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.category-switcher h2 {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin: 0 0 0.75rem;
+}
+.category-switcher-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.category-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: border-color 0.15s, color 0.15s;
+}
+.category-chip svg {
+  width: 15px;
+  height: 15px;
+  color: var(--accent);
+}
+.category-chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ── Homepage category cards ─────────────────────────────────────────── */
+.category-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.category-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.25rem;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+}
+.category-card:hover,
+.category-card:focus {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(14, 107, 69, 0.12);
+}
+.category-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--accent) 12%, var(--bg));
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.category-card-icon svg {
+  width: 22px;
+  height: 22px;
+}
+.category-card h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.02rem;
+}
+.category-card p {
+  margin: 0 0 0.35rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.category-card .category-card-count {
+  font-size: 0.78rem;
+  color: var(--accent);
+  font-weight: 600;
 }
 
 .intro-text {
@@ -1347,11 +1495,6 @@ button:hover {
 .home-section-header h2 {
   font-size: 1.15rem;
   margin: 0;
-}
-
-.home-section-header .tool-count {
-  font-size: 0.8rem;
-  color: var(--text-muted);
 }
 
 /* Floating action button to dashboard */

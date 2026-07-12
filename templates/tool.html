@@ -97,7 +97,7 @@
 <section class="wrap tool-page" role="main" itemscope itemtype="https://schema.org/WebPage">
   <nav class="breadcrumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span aria-hidden="true">/</span>
-    <a href="/tools/#cat-{{ tool.category | lower | replace(' ', '-') }}">{{ tool.category }}</a> <span aria-hidden="true">/</span>
+    <a href="/categories/{{ tool.category | category_slug }}/">{{ tool.category }}</a> <span aria-hidden="true">/</span>
     <span aria-current="page">{{ tool.title }}</span>
   </nav>
 

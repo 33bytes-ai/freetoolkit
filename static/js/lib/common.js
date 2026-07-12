@@ -170,13 +170,18 @@ window.FTK = (function () {
       if (navClose)  navClose.addEventListener("click", closeNav);
       if (overlay)   overlay.addEventListener("click", closeNav);
 
-      // Accordion expand for mobile nav groups
+      // Mobile nav groups: first tap expands the tool list in place (the
+      // label is also a real link to the category page -- a second tap
+      // follows it, since at that point the user has seen what's there).
       document.querySelectorAll(".nav-group-label").forEach(function (label) {
-        label.addEventListener("click", function () {
+        label.addEventListener("click", function (e) {
           if (window.innerWidth > 640) return;
           var group = label.closest(".nav-group");
           if (!group) return;
-          group.classList.toggle("open");
+          if (!group.classList.contains("open")) {
+            e.preventDefault();
+            group.classList.add("open");
+          }
         });
       });
 

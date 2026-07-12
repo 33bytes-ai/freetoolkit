@@ -28,6 +28,53 @@ CATEGORY_AFFINITY: dict[str, list[str]] = {
     "Freelance": ["Payments", "Business Math", "SaaS Metrics"],
     "Business Math": ["SaaS Metrics", "Freelance", "Payments"],
 }
+
+# One simple line-icon (24x24, stroke=currentColor, matches the site's
+# existing minimal icon style) and a one-line tagline per category — used
+# on category pages, the homepage category cards, and tool-card badges.
+_ICON_ATTRS = 'width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"'
+CATEGORY_META: dict[str, dict[str, str]] = {
+    "Payments": {
+        "icon": f'<svg {_ICON_ATTRS}><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="6" y1="15" x2="10" y2="15"/></svg>',
+        "tagline": "Stripe, PayPal, Shopify fees and payout math",
+    },
+    "SaaS Metrics": {
+        "icon": f'<svg {_ICON_ATTRS}><polyline points="3 17 9 11 13 15 21 6"/><polyline points="15 6 21 6 21 12"/></svg>',
+        "tagline": "MRR, LTV/CAC, churn, retention and growth math",
+    },
+    "Freelance": {
+        "icon": f'<svg {_ICON_ATTRS}><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="2" y1="13" x2="22" y2="13"/></svg>',
+        "tagline": "Rates, estimates and taxes for independent work",
+    },
+    "Business Math": {
+        "icon": f'<svg {_ICON_ATTRS}><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="8.01" y2="11"/><line x1="12" y1="11" x2="12.01" y2="11"/><line x1="16" y1="11" x2="16.01" y2="11"/><line x1="8" y1="15" x2="8.01" y2="15"/><line x1="12" y1="15" x2="12.01" y2="15"/><line x1="16" y1="15" x2="16.01" y2="15"/><line x1="8" y1="19" x2="16" y2="19"/></svg>',
+        "tagline": "Margins, break-even, pricing and core arithmetic",
+    },
+    "Marketing": {
+        "icon": f'<svg {_ICON_ATTRS}><path d="M3 11v2a1 1 0 0 0 1 1h2l4 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M15 8a4 4 0 0 1 0 8"/><path d="M18 5a8 8 0 0 1 0 14"/></svg>',
+        "tagline": "ROAS, conversion, funnels and campaign ROI",
+    },
+    "Finance": {
+        "icon": f'<svg {_ICON_ATTRS}><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/><line x1="6" y1="10" x2="6" y2="10.01"/><line x1="18" y1="14" x2="18" y2="14.01"/></svg>',
+        "tagline": "Cash flow, ratios and core financial statements",
+    },
+    "Valuation": {
+        "icon": f'<svg {_ICON_ATTRS}><line x1="12" y1="3" x2="12" y2="21"/><path d="M4 7h6l-3 7a3.2 3.2 0 0 1-6 0z"/><path d="M14 7h6l-3 7a3.2 3.2 0 0 1-6 0z"/><line x1="6" y1="3" x2="18" y2="3"/></svg>',
+        "tagline": "DCF, multiples and enterprise value math",
+    },
+    "Tax & Compliance": {
+        "icon": f'<svg {_ICON_ATTRS}><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 12.5"/></svg>',
+        "tagline": "Payroll tax, self-employment tax and filings",
+    },
+    "HR & People": {
+        "icon": f'<svg {_ICON_ATTRS}><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+        "tagline": "Headcount cost, turnover and compensation",
+    },
+}
+
+
+def category_slug(category: str) -> str:
+    return category.lower().replace(" & ", "-").replace(" ", "-")
 CONTENT_DIR = ROOT / "content"
 TEMPLATES_DIR = ROOT / "templates"
 STATIC_DIR = ROOT / "static"
@@ -188,7 +235,9 @@ def build_env() -> Environment:
     )
     env.filters["rejectattr"] = _rejectattr
     env.filters["humandate"] = _humandate
+    env.filters["category_slug"] = category_slug
     env.globals["stripe_fee"] = stripe_fee_breakdown
+    env.globals["category_meta"] = CATEGORY_META
     return env
 
 
@@ -327,12 +376,19 @@ def write_sitemap(
     tools: list[dict],
     pages: list[dict],
     intent_pages: list[dict],
+    tools_by_category: dict[str, list[dict]] | None = None,
 ) -> None:
     base = config["site"]["base_url"].rstrip("/")
     today = datetime.date.today().isoformat()
     tool_lastmod = {t["slug"]: t.get("updated") or t.get("date_added") or today for t in tools}
+    tools_by_category = tools_by_category or {}
     entries = (
         [("/", "1.0", "weekly", today), ("/tools/", "0.9", "weekly", today), ("/changelog/", "0.5", "monthly", today)]
+        + [
+            (f"/categories/{category_slug(c)}/", "0.8", "weekly", today)
+            for c in config["categories"]
+            if tools_by_category.get(c)
+        ]
         + [
             (f"/tools/{t['slug']}/", "0.9", "monthly", tool_lastmod[t["slug"]])
             for t in tools
@@ -679,6 +735,25 @@ def build() -> Path:
         **common,
     )
 
+    for category in config["categories"]:
+        cat_tools = tools_by_category.get(category, [])
+        if not cat_tools:
+            continue
+        meta = CATEGORY_META.get(category, {"icon": "", "tagline": ""})
+        render(
+            env,
+            "category.html",
+            DIST_DIR / "categories" / category_slug(category) / "index.html",
+            path=f"/categories/{category_slug(category)}/",
+            title=f"{category} Calculators",
+            description=f"{len(cat_tools)} free {category.lower()} calculators for founders, freelancers, and SaaS builders — {meta['tagline'].lower()}.",
+            category=category,
+            cat_tools=cat_tools,
+            meta=meta,
+            other_categories=[c for c in config["categories"] if c != category and tools_by_category.get(c)],
+            **common,
+        )
+
     for tool in tools:
         render(
             env,
@@ -769,7 +844,7 @@ def build() -> Path:
 
     shutil.copytree(STATIC_DIR, DIST_DIR / "static", ignore=shutil.ignore_patterns("fonts"))
 
-    write_sitemap(config, tools, pages, intent_pages)
+    write_sitemap(config, tools, pages, intent_pages, tools_by_category)
     write_sitemap_tools(config, tools)
     write_sitemap_pages(config, pages)
     write_sitemap_intent(config, intent_pages, tools)

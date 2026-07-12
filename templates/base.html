@@ -111,7 +111,7 @@
         {% for category in categories %}
         {% set cat_tools = tools_by_category.get(category, []) %}
         <span class="nav-group">
-          <span class="nav-group-label" tabindex="0">{{ category }}</span>
+          <a class="nav-group-label" href="/categories/{{ category | category_slug }}/">{{ category }}</a>
           <span class="nav-group-menu{% if cat_tools | length > 8 %} menu-wide{% endif %}">
             {% for tool in cat_tools %}
             <a href="/tools/{{ tool.slug }}/">{{ tool.nav_title or tool.title }}</a>
@@ -156,7 +156,7 @@
             {% for category in categories %}
             {% set cat_tools = tools_by_category.get(category, []) %}
             {% if cat_tools %}
-            <li><a href="/tools/#cat-{{ category | lower | replace(' ', '-') }}">{{ category }} <span class="footer-cat-count">({{ cat_tools | length }})</span></a></li>
+            <li><a href="/categories/{{ category | category_slug }}/">{{ category }} <span class="footer-cat-count">({{ cat_tools | length }})</span></a></li>
             {% endif %}
             {% endfor %}
             <li><a href="/tools/"><strong>Browse all {{ tools | length }} tools →</strong></a></li>

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block head_extra %}
+<script type="application/ld+json" nonce="{{ csp_nonce }}">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "{{ category }} Calculators",
+  "url": "{{ site.base_url }}{{ path }}",
+  "description": "{{ description }}",
+  "hasPart": [
+    {% for tool in cat_tools %}
+    { "@type": "WebApplication", "name": {{ tool.title | tojson }}, "url": "{{ site.base_url }}/tools/{{ tool.slug }}/" }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endblock %}
+{% block content %}
+<section class="wrap content-page category-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a> <span aria-hidden="true">/</span>
+    <span aria-current="page">{{ category }}</span>
+  </nav>
+
+  <div class="category-hero">
+    <span class="category-hero-icon" style="color:var(--accent)" aria-hidden="true">{{ meta.icon | safe }}</span>
+    <div>
+      <h1>{{ category }}</h1>
+      <p class="tool-short">{{ meta.tagline }} — {{ cat_tools | length }} free calculator{{ "s" if cat_tools | length != 1 else "" }}, all run in your browser.</p>
+    </div>
+  </div>
+
+  <div class="tool-grid reveal-group">
+    {% for tool in cat_tools %}
+    <a class="tool-card reveal-child" href="/tools/{{ tool.slug }}/" aria-label="{{ tool.nav_title }} — {{ tool.short[:80] }}">
+      <span class="tool-card-icon" aria-hidden="true">{{ meta.icon | safe }}</span>
+      <h3>{{ tool.nav_title or tool.title }}{% if tool.new %} <span class="tool-card-new">NEW</span>{% endif %}</h3>
+      <p>{{ tool.short }}</p>
+    </a>
+    {% endfor %}
+  </div>
+
+  {% if other_categories %}
+  <div class="category-switcher">
+    <h2>Other categories</h2>
+    <div class="category-switcher-grid">
+      {% for other in other_categories %}
+      <a href="/categories/{{ other | category_slug }}/" class="category-chip">
+        <span aria-hidden="true">{{ category_meta[other].icon | safe }}</span>
+        {{ other }}
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}
