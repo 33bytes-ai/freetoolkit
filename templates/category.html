@@ -30,9 +30,9 @@
     </div>
   </div>
 
-  <div class="tool-grid reveal-group">
+  <div class="tool-grid">
     {% for tool in cat_tools %}
-    <a class="tool-card reveal-child" href="/tools/{{ tool.slug }}/" aria-label="{{ tool.nav_title }} — {{ tool.short[:80] }}">
+    <a class="tool-card" href="/tools/{{ tool.slug }}/" aria-label="{{ tool.nav_title }} — {{ tool.short[:80] }}">
       <span class="tool-card-icon" aria-hidden="true">{{ meta.icon | safe }}</span>
       <h3>{{ tool.nav_title or tool.title }}{% if tool.new %} <span class="tool-card-new">NEW</span>{% endif %}</h3>
       <p>{{ tool.short }}</p>
