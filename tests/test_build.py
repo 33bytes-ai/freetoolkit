@@ -258,8 +258,8 @@ def test_nav_has_site_navigation_element_schema():
 def test_pwa_manifest_linked():
     run_build()
     html = (DIST / "index.html").read_text()
-    assert 'rel="manifest"' in html, "Home page missing web app manifest link"
-    assert (DIST / "static" / "manifest.json").exists(), "manifest.json not copied to dist"
+    assert 'rel="manifest" href="/manifest.json"' in html, "Home page missing web app manifest link"
+    assert (DIST / "manifest.json").exists(), "manifest.json not generated at dist root"
 
 
 def test_intent_pages_have_article_schema():

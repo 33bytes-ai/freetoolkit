@@ -1,13 +1,17 @@
 :root {
-  --bg: #fafafa;
+  /* Ledger palette — grounded in accounting green-bar paper and forest-green
+     "profit" ink, instead of the generic SaaS blue this used to be. */
+  --bg: #f6f8f5;
   --surface: #ffffff;
-  --text: #1f2430;
-  --text-muted: #5b6472;
-  --border: #e3e6eb;
-  --accent: #2563eb;
+  --text: #1a2420;
+  --text-muted: #667169;
+  --border: #dde4dd;
+  --accent: #0e6b45;
   --accent-contrast: #ffffff;
-  --radius: 10px;
+  --radius: 8px;
   --max-width: 1100px;
+  --font-display: Georgia, "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052, ui-serif, serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 16px;
 }
 
@@ -21,10 +25,16 @@ html, body {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--font-body);
   color: var(--text);
   background: var(--bg);
   line-height: 1.6;
+}
+
+h1, h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-wrap: balance;
 }
 
 .wrap {
@@ -191,8 +201,8 @@ body {
   overflow: hidden;
 }
 .theme-toggle-btn[aria-checked="true"] {
-  background: #1a1d27;
-  border-color: #3a3d50;
+  background: #17201b;
+  border-color: #33413a;
 }
 .tgl-track {
   display: flex;
@@ -226,7 +236,7 @@ body {
 }
 .theme-toggle-btn[aria-checked="true"] .tgl-thumb {
   left: calc(100% - 1.3rem - 0.2rem);
-  background: #4f7ef8;
+  background: #34c98a;
 }
 
 /* Hero */
@@ -345,7 +355,7 @@ body {
 .tool-widget textarea:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(79,126,248,0.18);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
 }
 .field--error input,
 .field--error select,
@@ -944,16 +954,19 @@ button:hover {
 }
 
 /* ========================================================================
-   Home page — glassmorphism hero & modern cards
+   Home page — ledger hero & modern cards
    ======================================================================== */
 
 .home-hero {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 55%, #0f172a 100%);
+  background: linear-gradient(135deg, #0a120d 0%, #123f2c 55%, #0a120d 100%);
   background-size: 200% 200%;
   animation: heroGradient 10s ease infinite;
   padding: 3.5rem 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-hero { animation: none; }
 }
 
 @keyframes heroGradient {
@@ -991,9 +1004,11 @@ button:hover {
 
 .hero-glass h1 {
   color: #fff;
-  font-size: clamp(1.55rem, 3.5vw, 2.25rem);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
   margin: 0 0 0.75rem;
-  line-height: 1.25;
+  line-height: 1.2;
   text-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
@@ -1021,7 +1036,8 @@ button:hover {
 .hero-stat-item .stat-num {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #93c5fd;
+  font-variant-numeric: tabular-nums;
+  color: #86e0b3;
   line-height: 1;
 }
 
@@ -1093,8 +1109,8 @@ button:hover {
 .tool-card:focus {
   border-color: var(--accent);
   transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.12);
-  background: rgba(37, 99, 235, 0.02);
+  box-shadow: 0 12px 32px rgba(14, 107, 69, 0.12);
+  background: rgba(14, 107, 69, 0.03);
 }
 
 /* Scroll-reveal animations */
@@ -1164,23 +1180,23 @@ button:hover {
 .dash-fab:hover {
   border-color: var(--accent);
   color: var(--accent);
-  box-shadow: 0 6px 20px rgba(37,99,235,0.12);
+  box-shadow: 0 6px 20px rgba(14,107,69,0.12);
 }
 
 /* ---- Dark mode ---- */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0f1117;
-    --surface: #1a1d27;
-    --text: #e8eaf0;
-    --text-muted: #8890a4;
-    --border: #2a2d3a;
-    --accent: #4f7ef8;
-    --accent-contrast: #ffffff;
+    --bg: #0f1512;
+    --surface: #17201b;
+    --text: #e6ede7;
+    --text-muted: #8a9690;
+    --border: #263029;
+    --accent: #34c98a;
+    --accent-contrast: #06140d;
   }
 
   :root:not([data-theme="light"]) .site-header {
-    background: rgba(26, 29, 39, 0.95);
+    background: rgba(23, 32, 27, 0.95);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
   }
@@ -1194,7 +1210,7 @@ button:hover {
   input[type="email"],
   select,
   textarea {
-    background: #0f1117;
+    background: #0f1512;
     color: var(--text);
     border-color: var(--border);
   }
@@ -1204,7 +1220,7 @@ button:hover {
   }
 
   .calc-table th {
-    background: #1a1d27;
+    background: #17201b;
     color: var(--text-muted);
   }
 
@@ -1213,12 +1229,12 @@ button:hover {
   }
 
   .output-box {
-    background: #1a1d27;
+    background: #17201b;
     border-color: var(--border);
   }
 
   .stat {
-    background: #1a1d27;
+    background: #17201b;
     border-color: var(--border);
   }
 
@@ -1228,7 +1244,7 @@ button:hover {
   }
 
   .tool-body table th {
-    background: #1a1d27;
+    background: #17201b;
   }
 
   .tool-body table td {
@@ -1244,7 +1260,7 @@ button:hover {
   .hero-glass {
     background: rgba(255,255,255,0.03);
   }
-  .calc-insight--info    { background: rgba(79,126,248,0.1);  border-color: rgba(79,126,248,0.25);  color: #93c5fd; }
+  .calc-insight--info    { background: rgba(56,189,248,0.1);  border-color: rgba(56,189,248,0.25);  color: #7dd3fc; }
   .calc-insight--warning { background: rgba(217,119,6,0.1);   border-color: rgba(217,119,6,0.25);   color: #fcd34d; }
   .calc-insight--danger  { background: rgba(220,38,38,0.1);   border-color: rgba(220,38,38,0.25);   color: #fca5a5; }
   .calc-insight--success { background: rgba(22,163,74,0.1);   border-color: rgba(22,163,74,0.25);   color: #86efac; }
@@ -1252,16 +1268,16 @@ button:hover {
 
 /* Manual dark mode override (data-theme="dark" on <html>) */
 [data-theme="dark"] {
-  --bg: #0f1117;
-  --surface: #1a1d27;
-  --text: #e8eaf0;
-  --text-muted: #8890a4;
-  --border: #2a2d3a;
-  --accent: #4f7ef8;
-  --accent-contrast: #ffffff;
+  --bg: #0f1512;
+  --surface: #17201b;
+  --text: #e6ede7;
+  --text-muted: #8a9690;
+  --border: #263029;
+  --accent: #34c98a;
+  --accent-contrast: #06140d;
 }
 [data-theme="dark"] .site-header {
-  background: rgba(26, 29, 39, 0.95);
+  background: rgba(23, 32, 27, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
@@ -1269,13 +1285,13 @@ button:hover {
 [data-theme="dark"] input[type="text"],
 [data-theme="dark"] input[type="email"],
 [data-theme="dark"] select,
-[data-theme="dark"] textarea { background: #0f1117; color: var(--text); border-color: var(--border); }
+[data-theme="dark"] textarea { background: #0f1512; color: var(--text); border-color: var(--border); }
 [data-theme="dark"] .calc-table { background: var(--surface); }
-[data-theme="dark"] .calc-table th { background: #1a1d27; color: var(--text-muted); }
+[data-theme="dark"] .calc-table th { background: #17201b; color: var(--text-muted); }
 [data-theme="dark"] .calc-table td { border-color: var(--border); }
-[data-theme="dark"] .output-box, [data-theme="dark"] .stat { background: #1a1d27; border-color: var(--border); }
+[data-theme="dark"] .output-box, [data-theme="dark"] .stat { background: #17201b; border-color: var(--border); }
 [data-theme="dark"] .hero-glass { background: rgba(255,255,255,0.03); }
-[data-theme="dark"] .calc-insight--info    { background: rgba(79,126,248,0.1);  border-color: rgba(79,126,248,0.25);  color: #93c5fd; }
+[data-theme="dark"] .calc-insight--info    { background: rgba(56,189,248,0.1);  border-color: rgba(56,189,248,0.25);  color: #7dd3fc; }
 [data-theme="dark"] .calc-insight--warning { background: rgba(217,119,6,0.1);   border-color: rgba(217,119,6,0.25);   color: #fcd34d; }
 [data-theme="dark"] .calc-insight--danger  { background: rgba(220,38,38,0.1);   border-color: rgba(220,38,38,0.25);   color: #fca5a5; }
 [data-theme="dark"] .calc-insight--success { background: rgba(22,163,74,0.1);   border-color: rgba(22,163,74,0.25);   color: #86efac; }
@@ -1296,7 +1312,7 @@ button:hover {
 }
 .htc-word {
   display: inline-block;
-  color: #93c5fd;
+  color: #86e0b3;
   transition: opacity 0.3s, transform 0.3s;
   opacity: 1;
   transform: translateY(0);

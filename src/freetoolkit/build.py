@@ -458,8 +458,8 @@ def write_manifest(config: dict) -> None:
         "description": site.get("tagline", ""),
         "start_url": "/",
         "display": "standalone",
-        "background_color": "#fafafa",
-        "theme_color": "#4f7ef8",
+        "background_color": "#f6f8f5",
+        "theme_color": "#0e6b45",
         "icons": [
             {"src": "/static/img/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"},
             {"src": "/static/img/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable"},
@@ -524,23 +524,23 @@ def _render_og_image(title: str, subtitle: str, font_large, font_medium) -> "Ima
     img = Image.new("RGB", (W, H))
     draw = ImageDraw.Draw(img)
 
-    # Background: dark navy gradient top-to-bottom
+    # Background: dark forest-green gradient top-to-bottom (ledger palette)
     for y in range(H):
         t = y / H
-        r = int(10 + t * 8)
-        g = int(12 + t * 6)
-        b = int(40 + t * 18)
+        r = int(10 + t * 14)
+        g = int(18 + t * 30)
+        b = int(14 + t * 20)
         draw.line([(0, y), (W, y)], fill=(r, g, b))
 
     # Accent bar on left
-    draw.rectangle([(60, 140), (72, 490)], fill=(79, 126, 248))
+    draw.rectangle([(60, 140), (72, 490)], fill=(52, 201, 138))
 
     # Decorative dots grid (top-right corner)
     for gx in range(8):
         for gy in range(5):
             cx = W - 120 + gx * 16
             cy = 60 + gy * 16
-            draw.ellipse([(cx - 2, cy - 2), (cx + 2, cy + 2)], fill=(79, 126, 248, 80))
+            draw.ellipse([(cx - 2, cy - 2), (cx + 2, cy + 2)], fill=(52, 201, 138, 80))
 
     # Title (wrapped at ~900px)
     title_lines = _wrap_text(title, font_large, 900, draw)
@@ -551,11 +551,11 @@ def _render_og_image(title: str, subtitle: str, font_large, font_medium) -> "Ima
         ty += (bbox[3] - bbox[1]) + 16
 
     # Subtitle
-    draw.text((100, max(ty + 20, 370)), subtitle, fill=(160, 185, 220), font=font_medium)
+    draw.text((100, max(ty + 20, 370)), subtitle, fill=(170, 210, 190), font=font_medium)
 
     # Bottom brand strip
-    draw.rectangle([(0, H - 68), (W, H)], fill=(20, 22, 55))
-    draw.text((100, H - 50), "freetoolkit.dev — Free calculators for founders", fill=(100, 130, 200), font=font_medium)
+    draw.rectangle([(0, H - 68), (W, H)], fill=(12, 22, 17))
+    draw.text((100, H - 50), "freetoolkit.dev — Free calculators for founders", fill=(90, 160, 130), font=font_medium)
 
     return img
 

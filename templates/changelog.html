@@ -58,7 +58,7 @@
           <p style="margin:0.2rem 0 0; color:var(--text-muted); font-size:0.9rem">{{ tool.short }}</p>
           {% if tool.date_added %}<p style="margin:0.15rem 0 0; color:var(--text-muted); font-size:0.8rem">Added {{ tool.date_added }}</p>{% endif %}
         </div>
-        {% if tool.new %}<span style="flex-shrink:0;font-size:0.7rem;font-weight:700;letter-spacing:0.05em;color:#fff;background:#16a34a;border-radius:4px;padding:0.15rem 0.45rem;align-self:center">NEW</span>{% endif %}
+        {% if tool.new %}<span style="flex-shrink:0;font-size:0.7rem;font-weight:700;letter-spacing:0.05em;color:var(--accent-contrast);background:var(--accent);border-radius:4px;padding:0.15rem 0.45rem;align-self:center">NEW</span>{% endif %}
       </li>
       {% endfor %}
     </ul>

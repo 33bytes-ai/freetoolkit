@@ -67,7 +67,7 @@
   <div class="tool-grid">
     {% for tool in new_tools[:3] %}
     <a class="tool-card" href="/tools/{{ tool.slug }}/">
-      <h3>{{ tool.nav_title }} <span style="font-size:0.65rem;font-weight:600;color:#fff;background:#16a34a;border-radius:99px;padding:0.1rem 0.5rem;vertical-align:middle;margin-left:0.4rem">NEW</span></h3>
+      <h3>{{ tool.nav_title }} <span style="font-size:0.65rem;font-weight:600;color:var(--accent-contrast);background:var(--accent);border-radius:99px;padding:0.1rem 0.5rem;vertical-align:middle;margin-left:0.4rem">NEW</span></h3>
       <p>{{ tool.short }}</p>
       {% if tool.date_added %}<span style="font-size:0.75rem;color:var(--text-muted)">{{ tool.date_added }}</span>{% endif %}
     </a>
