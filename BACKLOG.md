@@ -8,9 +8,9 @@
 | 36.00 | Tests dynamiques — lire tools.yaml au lieu de listes hard-codées | 8 | 2 | 1 | done |
 | 36.00 | Remplacer document.execCommand fallback dans common.js | 4 | 1 | 1 | done |
 | 36.00 | Corriger _rejectattr pour supporter d'autres opérateurs | 4 | 1 | 1 | done |
-| 36.00 | Ajouter un champ honeypot anti-spam au formulaire newsletter Formspree | 4 | 1 | 1 | pending |
+| 36.00 | Ajouter un champ honeypot anti-spam au formulaire newsletter Formspree | 4 | 1 | 1 | in_progress |
 | 31.50 | Remplacer og:image SVG par PNG statique | 7 | 2 | 1 | done |
-| 27.00 | Corriger le compteur d'outils hardcodé (22 → réel) et ajouter un garde-fou | 6 | 2 | 1 | pending |
+| 27.00 | Corriger le compteur d'outils hardcodé (22 → réel) et ajouter un garde-fou [done] | 6 | 2 | 1 | done |
 | 27.00 | Nettoyer les 15 fichiers *_tmp.txt commités par erreur à la racine | 3 | 1 | 1 | pending |
 | 27.00 | Intégrer make check-perf dans le pipeline CI | 6 | 2 | 1 | pending |
 | 27.00 | Corriger flash() dans common.js pour réinitialiser originalText à chaque appel | 3 | 1 | 1 | pending |
