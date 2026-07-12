@@ -71,13 +71,14 @@ def load_yaml(path: Path):
         return yaml.safe_load(f)
 
 
-def load_page(path: Path, config: dict) -> dict:
+def load_page(path: Path, config: dict, tool_count: int) -> dict:
     text = path.read_text(encoding="utf-8")
     if not text.startswith("---"):
         raise ValueError(f"{path} is missing YAML frontmatter")
     _, frontmatter, body = text.split("---", 2)
     meta = yaml.safe_load(frontmatter) or {}
     body = body.replace("{{ contact_email }}", config["site"]["contact_email"])
+    body = body.replace("{{ tool_count }}", str(tool_count))
     meta["content"] = markdown.markdown(body.strip(), extensions=MD_EXTENSIONS)
     return meta
 
@@ -162,8 +163,11 @@ def load_countries() -> list[dict]:
     return pages
 
 
-def load_pages(config: dict) -> list[dict]:
-    return [load_page(p, config) for p in sorted((CONTENT_DIR / "pages").glob("*.md"))]
+def load_pages(config: dict, tool_count: int) -> list[dict]:
+    return [
+        load_page(p, config, tool_count)
+        for p in sorted((CONTENT_DIR / "pages").glob("*.md"))
+    ]
 
 
 def cross_category_tools(tool: dict, tools_by_category: dict[str, list[dict]]) -> list[dict]:
@@ -596,7 +600,7 @@ def write_og_image(config: dict, tools: list[dict] | None = None) -> None:
 def build() -> Path:
     config = load_config()
     tools = load_tools()
-    pages = load_pages(config)
+    pages = load_pages(config, len(tools))
     affiliates = load_affiliates()
     intent_pages = load_intent_pages() + load_countries()
     env = build_env()
@@ -671,7 +675,7 @@ def build() -> Path:
         DIST_DIR / "tools" / "index.html",
         path="/tools/",
         title="All Free Business Calculators",
-        description="Browse all 22 free business calculators for founders, freelancers, and SaaS builders — organized by category with instant filtering.",
+        description=f"Browse all {len(tools)} free business calculators for founders, freelancers, and SaaS builders — organized by category with instant filtering.",
         **common,
     )
 

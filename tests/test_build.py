@@ -607,7 +607,7 @@ def test_sitemap_respects_updated_field_override():
 
     config = ftk_build.load_config()
     tools = ftk_build.load_tools()
-    pages = ftk_build.load_pages(config)
+    pages = ftk_build.load_pages(config, len(tools))
     intent_pages = ftk_build.load_intent_pages()
     tools[0]["updated"] = "2099-01-01"
     ftk_build.write_sitemap(config, tools, pages, intent_pages)
@@ -841,7 +841,7 @@ def test_footer_newsletter_form_appears_on_every_page_when_formspree_id_set():
     config = ftk_build.load_config()
     config["site"] = dict(config["site"], formspree_id="abcd1234")
     tools = ftk_build.load_tools()
-    pages = ftk_build.load_pages(config)
+    pages = ftk_build.load_pages(config, len(tools))
     common = dict(
         site=config["site"],
         categories=config["categories"],
@@ -2430,3 +2430,22 @@ def test_country_pages_in_sitemap():
     sitemap = (DIST / "sitemap.xml").read_text()
     for slug in COUNTRY_PAGE_SLUGS:
         assert f"/tools/stripe-fee-calculator/{slug}/" in sitemap
+
+
+def test_total_tool_count_mentions_match_tools_yaml():
+    """Any 'all N tools/calculators' claim in the built site must match the
+    real tool count, so a stale hardcoded number (e.g. left over from a
+    previous batch of tool additions) fails the build instead of shipping
+    to Google's index."""
+    run_build()
+    expected = len(TOOL_SLUGS)
+    pattern = re.compile(r"all (\d+) [a-z ]*(?:tools|calculators)", re.IGNORECASE)
+    stale = set()
+    for html_file in DIST.rglob("*.html"):
+        for match in pattern.finditer(html_file.read_text(encoding="utf-8")):
+            count = int(match.group(1))
+            if count != expected:
+                stale.add((str(html_file.relative_to(DIST)), match.group(0)))
+    assert not stale, (
+        f"Found tool-count text that doesn't match len(tools.yaml)={expected}: {stale}"
+    )

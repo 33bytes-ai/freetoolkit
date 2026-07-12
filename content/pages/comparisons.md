@@ -52,4 +52,4 @@ for accounting, Invoice Ninja for budget-conscious solos.
 ---
 
 All calculators on FounderCalc are free and run entirely in your browser —
-[browse all 22 tools →](/)
+[browse all {{ tool_count }} tools →](/)
