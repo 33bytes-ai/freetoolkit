@@ -449,6 +449,40 @@ button:hover {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   word-break: break-all;
 }
+
+/* ── Hero result — the one number a visitor actually came for ───────────
+   Added to a single .output-box/.stat-card per tool (the primary metric,
+   not necessarily the first in DOM order) to give it the outsized
+   treatment every competitor calculator uses and this site was missing
+   entirely -- .output-box .value had no font-size at all before this. */
+.output-grid .result-hero,
+.stat-grid .result-hero,
+.stats-grid .result-hero {
+  grid-column: 1 / -1;
+  order: -1;
+  text-align: center;
+  padding: 1.1rem 1.25rem;
+  background: color-mix(in srgb, var(--accent) 6%, var(--bg));
+  border: 1px solid var(--accent);
+}
+.result-hero .label,
+.result-hero .stat-label {
+  font-size: 0.8rem;
+  margin-bottom: 0.35rem;
+}
+.result-hero .value,
+.result-hero .stat-value,
+.result-hero .num {
+  display: block;
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(2rem, 6vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--accent);
+  word-break: break-word;
+}
+
 .output-box[data-tooltip]::after {
   content: attr(data-tooltip);
   position: absolute;
@@ -514,14 +548,20 @@ button:hover {
   padding: 0.75rem;
   background: var(--bg);
 }
-.stats-grid .stat .num {
+.stats-grid .stat .num,
+.stats-grid .stat .stat-value {
   font-size: 1.5rem;
   font-weight: 700;
+  font-variant-numeric: tabular-nums;
   color: var(--accent);
+  display: block;
 }
-.stats-grid .stat .label {
+.stats-grid .stat .label,
+.stats-grid .stat .stat-label {
   font-size: 0.8rem;
   color: var(--text-muted);
+  display: block;
+  margin-bottom: 0.15rem;
 }
 .error-message {
   color: #b42318;
