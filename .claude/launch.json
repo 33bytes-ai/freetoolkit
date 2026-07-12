@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "freetoolkit-dist",
+      "runtimeExecutable": "wsl",
+      "runtimeArgs": ["-u", "guillaume", "bash", "-c", "cd /home/guillaume/workspace/projets/business/freetoolkit && python3 -m http.server 8090 --directory dist"],
+      "port": 8090
+    }
+  ]
+}

@@ -572,12 +572,13 @@ button:hover {
   filter: brightness(0.97);
 }
 .output-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.75rem;
   margin-top: 1rem;
 }
 .output-box {
+  flex: 1 1 220px;
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 0.6rem 0.8rem;
@@ -606,7 +607,7 @@ button:hover {
 .output-grid .result-hero,
 .stat-grid .result-hero,
 .stats-grid .result-hero {
-  grid-column: 1 / -1;
+  flex: 1 1 100%;
   order: -1;
   text-align: center;
   padding: 1.1rem 1.25rem;
@@ -684,13 +685,14 @@ button:hover {
 .stats-grid .stat[data-tooltip]:hover::after,
 .stat-grid .stat-card[data-tooltip]:hover::after { opacity: 1; }
 .stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.75rem;
   margin-top: 1rem;
   text-align: center;
 }
 .stats-grid .stat {
+  flex: 1 1 140px;
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 0.75rem;
@@ -751,6 +753,25 @@ button:hover {
   padding: 0.1rem 0.3rem;
   border-radius: 4px;
   font-size: 0.9em;
+}
+.tool-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.25rem 0;
+  font-size: 0.9rem;
+}
+.tool-body table th,
+.tool-body table td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+.tool-body table th {
+  background: var(--surface);
+  font-weight: 600;
+}
+.tool-body table tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--surface) 50%, var(--bg));
 }
 
 .related-tools {
@@ -897,12 +918,13 @@ button:hover {
 }
 
 .stat-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.75rem;
   margin-top: 1rem;
 }
 .stat-card {
+  flex: 1 1 160px;
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 0.6rem 0.8rem;
@@ -1070,8 +1092,8 @@ button:hover {
   margin-top: 1rem;
 }
 .affiliate-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--accent) 4%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border));
   border-radius: var(--radius);
   padding: 1rem 1.1rem;
   display: flex;
@@ -1109,14 +1131,21 @@ button:hover {
   flex: 1;
 }
 .affiliate-cta {
-  display: inline-block;
-  font-size: 0.88rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  align-self: flex-start;
+  margin-top: 0.15rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  background: var(--accent);
+  font-size: 0.85rem;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent-contrast);
   text-decoration: none;
 }
 .affiliate-cta:hover {
-  text-decoration: underline;
+  filter: brightness(0.95);
 }
 
 /* Intent page links on tool pages */
@@ -1351,6 +1380,7 @@ button:hover {
   font-size: clamp(1.7rem, 4vw, 2.5rem);
   margin: 0 0 0.75rem;
   line-height: 1.2;
+  min-height: 2.4em;
   text-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
@@ -1601,6 +1631,10 @@ button:hover {
   .calc-insight--warning { background: rgba(217,119,6,0.1);   border-color: rgba(217,119,6,0.25);   color: #fcd34d; }
   .calc-insight--danger  { background: rgba(220,38,38,0.1);   border-color: rgba(220,38,38,0.25);   color: #fca5a5; }
   .calc-insight--success { background: rgba(22,163,74,0.1);   border-color: rgba(22,163,74,0.25);   color: #86efac; }
+  .field--error input,
+  .field--error select,
+  .field--error textarea { border-color: #f97066; box-shadow: 0 0 0 3px rgba(249,112,102,0.18); }
+  .field__error-msg { color: #f97066; }
 }
 
 /* Manual dark mode override (data-theme="dark" on <html>) */
