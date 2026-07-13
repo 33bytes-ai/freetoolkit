@@ -3,7 +3,8 @@ priority: 9
 language: python
 enabled: true
 description: >
-  Static SEO tools website — 10 browser-based utilities (word counter,
-  JSON formatter, password generator, unit/color converters, etc.)
-  monetized via Google AdSense. Zero ongoing operational cost.
+  FounderCalc — static site of 105 free business calculators (Stripe/PayPal/
+  Shopify fees, MRR/ARR, LTV/CAC, valuation, payroll tax, etc.) for founders,
+  freelancers, and SaaS builders, plus a 9-entry glossary and ~340 intent/
+  country pages. Monetized via Google AdSense. Zero ongoing operational cost.
 stack: Python/Jinja2 build + vanilla JS + nginx + Docker

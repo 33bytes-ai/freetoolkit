@@ -347,5 +347,29 @@
     "effort": 3,
     "risk": 1,
     "status": "pending"
+  },
+  {
+    "title": "Habiller visuellement les pages /glossary/ (icônes, hero)",
+    "description": "Les 9 pages content/glossary.yaml (ARR, LTV, ACV, COGS, Rule of 40, ICP, EBITDA, cap table, NRR) et l'index /glossary/ viennent d'être créées (templates/glossary.html, templates/glossary_index.html) mais restent en texte brut sans aucune distinction visuelle, alors que les pages catégorie (templates/category.html) ont chacune une icône SVG 24x24 et un hero coloré (.category-hero, category_meta dans build.py). Ajouter une icône par terme (réutiliser le style d'icône existant, stroke=currentColor 1.75) et un traitement visuel de type .category-hero pour la page glossary.html, plus une petite icône sur chaque ligne de glossary_index.html — cohérent avec le design system 'ledger' déjà en place.",
+    "impact": 6,
+    "effort": 3,
+    "risk": 1,
+    "status": "pending"
+  },
+  {
+    "title": "Vérifier/mettre à jour la palette des images OG générées",
+    "description": "Le site a migré cette session vers une palette verte 'ledger' (theme_color #0e6b45, voir write_manifest()/_render_og_image() dans src/freetoolkit/build.py) mais les og-*.png générées par write_og_image() n'ont pas été revérifiées visuellement depuis ce changement. Vérifier que le gradient/accent-bar/dots/texte des images de partage social (Twitter/LinkedIn) utilisent bien la nouvelle identité verte et pas un reliquat de l'ancien bleu. Générer 2-3 échantillons et les inspecter (dimensions, lisibilité du texte, contraste).",
+    "impact": 5,
+    "effort": 2,
+    "risk": 1,
+    "status": "pending"
+  },
+  {
+    "title": "Ajouter une visualisation simple sur 2-3 calculateurs à fort trafic",
+    "description": "Tous les résultats de calculateurs sont actuellement purement numériques (stat cards / result-hero). Ajouter un petit visuel (barre de comparaison SVG/CSS, jauge) sur 2-3 outils à fort potentiel de partage — candidats : rule-of-40-calculator (barre growth vs margin empilée pour visualiser le score de 40), ltv-cac-calculator (barre de ratio LTV:CAC avec seuils colorés 1x/3x/5x), pe-ratio-calculator (position sur une échelle par rapport aux benchmarks S&P 500 déjà listés dans le body). Rester léger : CSS/SVG inline généré par le JS du widget existant, pas de librairie de charting externe (cohérent avec l'absence de dépendance JS lourde sur le reste du site).",
+    "impact": 6,
+    "effort": 4,
+    "risk": 2,
+    "status": "pending"
   }
 ]
