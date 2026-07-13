@@ -9,14 +9,15 @@ window.FTK = (function () {
 
   function flash(el, message, duration) {
     if (!el) return;
-    var original = el.dataset.originalText;
-    if (original === undefined) {
-      original = el.textContent;
-      el.dataset.originalText = original;
+    if (el._ftkFlashTimer) {
+      window.clearTimeout(el._ftkFlashTimer);
+    } else {
+      el.dataset.originalText = el.textContent;
     }
     el.textContent = message || "Copied!";
-    window.setTimeout(function () {
+    el._ftkFlashTimer = window.setTimeout(function () {
       el.textContent = el.dataset.originalText;
+      el._ftkFlashTimer = null;
     }, duration || 1500);
   }
 

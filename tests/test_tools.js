@@ -617,6 +617,59 @@ test("copyToClipboard: forwards rejection from writeText", async () => {
   await assert.rejects(ftk.copyToClipboard("hello"), /denied/);
 });
 
+// ---- common.js — flash ----
+function loadCommonForFlash() {
+  const timers = [];
+  const win = {
+    setTimeout: function (fn) { timers.push(fn); return timers.length; },
+    clearTimeout: function (id) { if (id) timers[id - 1] = function () {}; },
+  };
+  const fn = new Function(
+    "navigator", "window",
+    require("fs").readFileSync(
+      require("path").resolve(__dirname, "..", "static", "js", "lib", "common.js"),
+      "utf8"
+    )
+  );
+  fn({}, win);
+  return { ftk: win.FTK, timers: timers };
+}
+
+test("flash: reverts to the button's own text", () => {
+  const { ftk, timers } = loadCommonForFlash();
+  const el = { dataset: {}, textContent: "Copy" };
+  ftk.flash(el, "Copied!", 1000);
+  assert.equal(el.textContent, "Copied!");
+  timers[0]();
+  assert.equal(el.textContent, "Copy");
+});
+
+test("flash: re-captures originalText on each call, so a label changed between flashes isn't lost", () => {
+  const { ftk, timers } = loadCommonForFlash();
+  const el = { dataset: {}, textContent: "Copy" };
+  ftk.flash(el, "Copied!", 1000);
+  timers[0](); // first flash reverts back to "Copy"
+
+  // Something else in the app updates the button's label before the next flash.
+  el.textContent = "Copy (3 items)";
+  ftk.flash(el, "Copied!", 1000);
+  assert.equal(el.dataset.originalText, "Copy (3 items)");
+  timers[1]();
+  assert.equal(el.textContent, "Copy (3 items)");
+});
+
+test("flash: a second call before the first timer fires doesn't lose the real original text", () => {
+  const { ftk, timers } = loadCommonForFlash();
+  const el = { dataset: {}, textContent: "Copy" };
+  ftk.flash(el, "Copied!", 1500); // e.g. user double-clicks the button
+  ftk.flash(el, "Copied!", 1500);
+  assert.equal(el.dataset.originalText, "Copy");
+  timers[0](); // superseded by the second call's timer, must be a no-op
+  assert.equal(el.textContent, "Copied!");
+  timers[1]();
+  assert.equal(el.textContent, "Copy");
+});
+
 // ---- tracker DNT ----
 // Simulate the tracker IIFE in Node by shimming browser globals.
 function loadTracker(dntValue, initialData) {
