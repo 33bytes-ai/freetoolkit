@@ -111,11 +111,23 @@
     <div id="ftk-a11y-results" aria-live="polite" aria-atomic="true" class="sr-only"></div>
   </div>
 
-  <div class="social-share" style="display:flex;gap:0.5rem;margin:0.75rem 0 0;flex-wrap:wrap">
-    <a href="https://twitter.com/intent/tweet?text={{ tool.title | urlencode }}&url={{ site.base_url }}/tools/{{ tool.slug }}/" target="_blank" rel="noopener" class="share-btn share-twitter" aria-label="Share on X (Twitter)" style="display:inline-flex;align-items:center;gap:0.35rem;font-size:0.8rem;padding:0.35rem 0.75rem;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);color:var(--text);text-decoration:none;white-space:nowrap">Share on X</a>
-    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.base_url }}/tools/{{ tool.slug }}/" target="_blank" rel="noopener" class="share-btn share-linkedin" aria-label="Share on LinkedIn" style="display:inline-flex;align-items:center;gap:0.35rem;font-size:0.8rem;padding:0.35rem 0.75rem;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);color:var(--text);text-decoration:none;white-space:nowrap">Share on LinkedIn</a>
-    <a href="mailto:?subject={{ tool.title | urlencode }}&amp;body=Free%20calculator%3A%20{{ (site.base_url + '/tools/' + tool.slug + '/') | urlencode }}" class="share-btn share-email" aria-label="Share via email" style="display:inline-flex;align-items:center;gap:0.35rem;font-size:0.8rem;padding:0.35rem 0.75rem;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);color:var(--text);text-decoration:none;white-space:nowrap">Share via email</a>
-    <button id="tool-print-btn" class="share-btn" aria-label="Print this calculator" style="display:inline-flex;align-items:center;gap:0.35rem;font-size:0.8rem;padding:0.35rem 0.75rem;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;white-space:nowrap">Print</button>
+  <div class="social-share">
+    <a href="https://twitter.com/intent/tweet?text={{ tool.title | urlencode }}&url={{ site.base_url }}/tools/{{ tool.slug }}/" target="_blank" rel="noopener" class="share-btn share-twitter" aria-label="Share on X (Twitter)">
+      <svg class="share-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      <span>Share on X</span>
+    </a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.base_url }}/tools/{{ tool.slug }}/" target="_blank" rel="noopener" class="share-btn share-linkedin" aria-label="Share on LinkedIn">
+      <svg class="share-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.119 20.452H3.554V9h3.565v11.452z"/></svg>
+      <span>Share on LinkedIn</span>
+    </a>
+    <a href="mailto:?subject={{ tool.title | urlencode }}&amp;body=Free%20calculator%3A%20{{ (site.base_url + '/tools/' + tool.slug + '/') | urlencode }}" class="share-btn share-email" aria-label="Share via email">
+      <svg class="share-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+      <span>Share via email</span>
+    </a>
+    <button id="tool-print-btn" class="share-btn share-print" aria-label="Print this calculator">
+      <svg class="share-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      <span>Print</span>
+    </button>
   </div>
 
   {% include "ads_slot.html" %}
