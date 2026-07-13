@@ -18,6 +18,7 @@
 | 22.50 | Sitemap avec lastmod dynamique | 5 | 2 | 1 | done |
 | 22.50 | Élargir l'échantillon Lighthouse CI aux templates intent_page et intent_country | 5 | 2 | 1 | pending |
 | 22.50 | Préparer un monitoring d'uptime externe prêt à activer au déploiement | 5 | 2 | 1 | pending |
+| 22.50 | Vérifier/mettre à jour la palette des images OG générées | 5 | 2 | 1 | pending |
 | 21.00 | Header Content-Security-Policy dans nginx.conf | 7 | 3 | 3 | done |
 | 21.00 | WebApplication schema JSON-LD par page outil | 7 | 3 | 1 | done |
 | 20.25 | FAQ schema JSON-LD sur les pages outils | 9 | 4 | 2 | done |
@@ -27,6 +28,7 @@
 | 18.00 | TTL et limite de taille pour localStorage tracker | 4 | 2 | 1 | done |
 | 18.00 | Derive contact email from site config instead of hardcoding it | 6 | 3 | 1 | done |
 | 18.00 | Étendre les assertions de contenu de test_build.py à tous les 105 outils | 6 | 3 | 1 | pending |
+| 18.00 | Habiller visuellement les pages /glossary/ (icônes, hero) | 6 | 3 | 1 | pending |
 | 16.20 | Pages pays Stripe programmatiques (UK, CA, AU, EU, IN) | 9 | 5 | 2 | done |
 | 15.75 | Capture email fondateurs (newsletter / lead magnet) | 7 | 4 | 2 | in_progress |
 | 15.75 | Rapport de performance Lighthouse en CI | 7 | 4 | 2 | done |
@@ -40,6 +42,7 @@
 | 13.50 | Pages intent supplémentaires (30 → 45 pages total) | 9 | 6 | 1 | done |
 | 13.50 | Rendre load_page() robuste à un '---' dans une valeur de frontmatter | 3 | 2 | 1 | pending |
 | 13.50 | Dédupliquer les pageviews locales de tracker.js par session | 3 | 2 | 1 | pending |
+| 13.50 | Ajouter une visualisation simple sur 2-3 calculateurs à fort trafic | 6 | 4 | 2 | pending |
 | 12.60 | Run real Lighthouse CI and fix what it finds | 7 | 5 | 2 | done |
 | 12.00 | Étendre la couverture tests JS à tous les outils (22) | 8 | 6 | 1 | done |
 | 12.00 | Mesurer et documenter le temps de build à l'échelle actuelle | 4 | 3 | 1 | pending |
