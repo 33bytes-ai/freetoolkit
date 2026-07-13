@@ -26,6 +26,17 @@ Mis à jour : 2026-07-10. Domaine retenu après vérification RDAP :
 1. [Google Search Console](https://search.google.com/search-console) → ajouter la propriété `foundercalc.dev` → soumettre `sitemap_index.xml`
 2. [Bing Webmaster Tools](https://www.bing.com/webmasters) → même démarche
 
+### A4. Monitoring d'uptime (optionnel, ~10 min, gratuit)
+Un healthcheck externe tourne déjà automatiquement dès que A1 est fait (voir
+`docs/DEPLOYMENT.md` § Uptime monitoring) : `.github/workflows/uptime.yml`
+ping le domaine toutes les 15 min et une alerte GitHub par email part si le
+site tombe — rien à faire pour ça. Optionnel, seulement si tu veux plus que
+des emails (SMS, appel, checks multi-régions) :
+1. Créer un compte [UptimeRobot](https://uptimerobot.com) (ou [Better Uptime](https://betteruptime.com)), plan gratuit
+2. Ajouter un moniteur HTTP(S) pointant vers `foundercalc.dev`
+3. Configurer les contacts d'alerte (email/SMS/Slack selon le plan)
+4. *Optionnel* : pour aussi router les alertes du workflow GitHub Actions vers Slack/Discord, créer un webhook entrant et me transmettre l'URL — je l'ajoute comme secret `UPTIME_WEBHOOK_URL` du repo
+
 ---
 
 ## Catégorie B — Monétisation : AdSense
@@ -105,6 +116,7 @@ Me transmettre les IDs de tracking — je remplace tous les placeholders `YOURID
 - Rotation des logs via `logrotate`
 - Renouvellement TLS automatique via le timer systemd de Certbot
 - Ajout de nouveaux outils via `scripts/new_tool.py` + un redeploy
+- Monitoring d'uptime (`.github/workflows/uptime.yml`) — s'active tout seul dès que `base_url` pointe vers le vrai domaine (voir A4)
 
 ---
 
@@ -118,3 +130,4 @@ Me transmettre les IDs de tracking — je remplace tous les placeholders `YOURID
 | IDs affiliés | Remplacement des placeholders `YOURID`, rebuild |
 | ID Formspree | `formspree_id`, rebuild |
 | Handle Twitter | Ajout dans `config.yaml`, rebuild |
+| URL webhook Slack/Discord (optionnel, A4) | Ajout du secret repo `UPTIME_WEBHOOK_URL` |

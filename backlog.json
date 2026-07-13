@@ -308,7 +308,8 @@
     "impact": 5,
     "effort": 2,
     "risk": 1,
-    "status": "pending"
+    "status": "done",
+    "note": "Ajouté scripts/uptime_check.sh (curl + webhook Slack/Discord, dedup down/up via fichier d'etat, exit code non-zero en cas de panne) et .github/workflows/uptime.yml (cron toutes les 15 min, self-active des que content/config.yaml base_url quitte le placeholder example.com apres A1, alerte email GitHub native + webhook optionnel via secret UPTIME_WEBHOOK_URL). Documente dans docs/DEPLOYMENT.md (section Uptime monitoring) et HUMAN_INPUTS.md (A4, optionnel : compte UptimeRobot/Better Uptime pour SMS/multi-region). 5 tests ajoutes dans tests/test_build.py (syntaxe + comportement fonctionnel up/down/recovery + garde-fou du workflow), 280/280 tests Python et 557/557 tests JS passent."
   },
   {
     "title": "Mesurer et documenter le temps de build à l'échelle actuelle",

@@ -1,5 +1,6 @@
 """Tests for the static site build."""
 import json
+import os
 import re
 import subprocess
 from pathlib import Path
@@ -2482,3 +2483,83 @@ def test_total_tool_count_mentions_match_tools_yaml():
     assert not stale, (
         f"Found tool-count text that doesn't match len(tools.yaml)={expected}: {stale}"
     )
+
+
+def test_uptime_check_script_is_executable():
+    script = ROOT / "scripts" / "uptime_check.sh"
+    assert script.exists()
+    assert os.access(script, os.X_OK)
+    result = subprocess.run(["bash", "-n", str(script)], capture_output=True, text=True)
+    assert result.returncode == 0, result.stderr
+
+
+def test_uptime_check_script_detects_up_and_down(tmp_path):
+    """Functional check: the script must exit 0 against a live URL and
+    exit non-zero (without raising) against an unreachable one, since CI/cron
+    callers rely on the exit code to know whether to alert."""
+    script = ROOT / "scripts" / "uptime_check.sh"
+    state_file = tmp_path / "state"
+
+    server = subprocess.Popen(
+        ["python3", "-u", "-m", "http.server", "0", "--directory", str(tmp_path)],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+    )
+    try:
+        port_line = server.stdout.readline()
+        port = int(re.search(r"port (\d+)", port_line).group(1))
+
+        up = subprocess.run(
+            [str(script)],
+            capture_output=True,
+            text=True,
+            env={
+                **os.environ,
+                "UPTIME_URL": f"http://127.0.0.1:{port}/",
+                "UPTIME_STATE_FILE": str(state_file),
+                "UPTIME_TIMEOUT": "5",
+            },
+        )
+        assert up.returncode == 0, up.stdout + up.stderr
+        assert state_file.read_text().strip() == "up"
+    finally:
+        server.terminate()
+        server.wait()
+
+    down = subprocess.run(
+        [str(script)],
+        capture_output=True,
+        text=True,
+        env={
+            **os.environ,
+            "UPTIME_URL": f"http://127.0.0.1:{port}/",
+            "UPTIME_STATE_FILE": str(state_file),
+            "UPTIME_TIMEOUT": "2",
+        },
+    )
+    assert down.returncode == 1
+    assert state_file.read_text().strip() == "down"
+
+
+def test_uptime_check_requires_url():
+    script = ROOT / "scripts" / "uptime_check.sh"
+    result = subprocess.run([str(script)], capture_output=True, text=True, env=os.environ)
+    assert result.returncode != 0
+
+
+def test_uptime_workflow_self_activates_on_real_domain():
+    """The scheduled uptime workflow must skip while base_url is still the
+    example.com placeholder (nothing deployed yet) and run the check
+    automatically once A1 in HUMAN_INPUTS.md swaps in the real domain —
+    no manual workflow edit should be required to turn it on."""
+    workflow = (ROOT / ".github" / "workflows" / "uptime.yml").read_text()
+    assert "schedule:" in workflow
+    assert "scripts/uptime_check.sh" in workflow
+    assert "example.com" in workflow
+    assert "UPTIME_WEBHOOK_URL" in workflow
+
+
+def test_human_inputs_documents_uptime_webhook_secret():
+    human_inputs = (ROOT / "HUMAN_INPUTS.md").read_text()
+    assert "UPTIME_WEBHOOK_URL" in human_inputs

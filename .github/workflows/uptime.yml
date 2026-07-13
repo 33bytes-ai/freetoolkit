@@ -1,0 +1,30 @@
+name: Uptime check
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch: {}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read base_url from content/config.yaml
+        id: site
+        run: |
+          BASE_URL="$(python3 -c "import yaml; print(yaml.safe_load(open('content/config.yaml'))['site']['base_url'])")"
+          echo "base_url=$BASE_URL" >> "$GITHUB_OUTPUT"
+
+      - name: Skip until the real domain is deployed
+        if: contains(steps.site.outputs.base_url, 'example.com')
+        run: |
+          echo "base_url is still the placeholder (${{ steps.site.outputs.base_url }}) — nothing deployed yet, skipping."
+
+      - name: Check site is up
+        if: ${{ !contains(steps.site.outputs.base_url, 'example.com') }}
+        env:
+          UPTIME_URL: ${{ steps.site.outputs.base_url }}
+          UPTIME_WEBHOOK_URL: ${{ secrets.UPTIME_WEBHOOK_URL }}
+        run: ./scripts/uptime_check.sh
