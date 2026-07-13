@@ -248,7 +248,7 @@
     "impact": 3,
     "effort": 1,
     "risk": 1,
-    "status": "pending"
+    "status": "done"
   },
   {
     "title": "Étendre les assertions de contenu de test_build.py à tous les 105 outils",
