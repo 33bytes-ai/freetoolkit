@@ -146,6 +146,36 @@ window.FTK = (function () {
       });
     })();
 
+    // Sticky share bar: appears once the user scrolls past the calculator
+    // (i.e. after they've likely seen a result), hides again near the top,
+    // and stays dismissed for the rest of the tab session once closed.
+    (function () {
+      var bar = document.getElementById("sticky-share-bar");
+      var calculator = document.getElementById("calculator");
+      var dismissBtn = document.getElementById("sticky-share-dismiss");
+      if (!bar || !calculator || !dismissBtn) return;
+
+      var DISMISS_KEY = "ftk_share_bar_dismissed";
+      var dismissed = false;
+      try { dismissed = sessionStorage.getItem(DISMISS_KEY) === "1"; } catch (e) {}
+      if (dismissed) return;
+
+      var observer = new IntersectionObserver(function (entries) {
+        var entry = entries[0];
+        // Only show once the calculator has been scrolled above the
+        // viewport (boundingClientRect.top < 0), not before it's been seen.
+        var pastCalculator = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+        bar.classList.toggle("visible", pastCalculator);
+      }, { threshold: 0 });
+      observer.observe(calculator);
+
+      dismissBtn.addEventListener("click", function () {
+        bar.classList.remove("visible");
+        observer.disconnect();
+        try { sessionStorage.setItem(DISMISS_KEY, "1"); } catch (e) {}
+      });
+    })();
+
     document.addEventListener("DOMContentLoaded", initNumberFormatting);
     document.addEventListener("DOMContentLoaded", initResultTweening);
 

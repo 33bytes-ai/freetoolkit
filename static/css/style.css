@@ -384,7 +384,7 @@ h1, h2 {
   color: var(--text);
   text-decoration: none;
   font-size: 0.85rem;
-  transition: border-color 0.15s, color 0.15s;
+  transition: border-color 0.15s, color 0.15s, transform 0.15s, box-shadow 0.15s;
 }
 .category-chip svg {
   width: 15px;
@@ -394,6 +394,8 @@ h1, h2 {
 .category-chip:hover {
   border-color: var(--accent);
   color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(14, 107, 69, 0.12);
 }
 
 /* ── Homepage category cards ─────────────────────────────────────────── */
@@ -1327,6 +1329,78 @@ button:hover {
   border-color: #f2f2f2;
   color: #0f1512;
 }
+
+.sticky-share-bar {
+  position: fixed;
+  left: 50%;
+  bottom: 1.25rem;
+  transform: translateX(-50%) translateY(16px);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.6rem 0.5rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.14);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 40;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.sticky-share-bar.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.sticky-share-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+  padding-right: 0.15rem;
+}
+.share-btn-mini {
+  padding: 0.45rem;
+  border-radius: 50%;
+}
+.share-btn-mini .share-icon {
+  width: 14px;
+  height: 14px;
+}
+.sticky-share-dismiss {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  margin-left: 0.15rem;
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.15s, color 0.15s;
+}
+.sticky-share-dismiss:hover {
+  background: var(--bg);
+  color: var(--text);
+}
+.sticky-share-dismiss svg {
+  width: 13px;
+  height: 13px;
+}
+@media (max-width: 560px) {
+  .sticky-share-label {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sticky-share-bar {
+    transition: opacity 0.25s ease;
+  }
+}
 .affiliate-disclosure {
   font-size: 0.7rem;
   color: var(--text-muted);
@@ -1674,11 +1748,13 @@ button:hover {
   font-size: 0.78rem;
   font-weight: 500;
   text-decoration: none;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.2s, border-color 0.2s;
 }
 
 .hero-cat-badge:hover {
   background: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.4);
+  transform: translateY(-2px);
   color: #fff;
 }
 
@@ -1935,6 +2011,7 @@ button:hover {
   .home-section,
   .intro-text,
   .tools-filter-bar,
+  .sticky-share-bar,
   [data-noprint],
   script,
   noscript {
