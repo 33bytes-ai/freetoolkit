@@ -2424,6 +2424,27 @@ def test_ci_workflow_runs_lighthouse_against_a_served_dist():
     assert ".lighthouserc.json" in workflow
 
 
+def test_ci_workflow_lighthouse_samples_intent_and_country_templates():
+    """The Lighthouse CI step must sample at least one intent_page.html and one
+    intent_country.html URL, not just index.html/tools_index.html/tool.html —
+    those two templates share only part of tool.html's head/layout and were
+    never actually audited (see 'Elargir l'echantillon Lighthouse CI aux
+    templates intent_page et intent_country' backlog task)."""
+    workflow = (ROOT / ".github" / "workflows" / "ci.yml").read_text()
+    urls_block = workflow[workflow.index("urls:") : workflow.index("configPath:")]
+
+    intent_parent, intent_slug = INTENT_PAGES[0]
+    intent_url = f"/tools/{intent_parent}/{intent_slug}/"
+    assert intent_url in urls_block
+
+    country_url = f"/tools/stripe-fee-calculator/{COUNTRY_PAGE_SLUGS[0]}/"
+    assert country_url in urls_block
+
+    run_build()
+    assert (DIST / intent_url.strip("/") / "index.html").exists()
+    assert (DIST / country_url.strip("/") / "index.html").exists()
+
+
 def test_ci_workflow_runs_check_perf():
     """CI must run `make check-perf` so a perf/weight budget regression
     (file size budgets, meta coverage, sitemap, og:image) fails the build

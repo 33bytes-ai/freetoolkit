@@ -49,6 +49,8 @@ jobs:
             /
             /tools/
             /tools/dcf-calculator/
+            /tools/stripe-fee-calculator/stripe-fees-for-subscriptions/
+            /tools/stripe-fee-calculator/stripe-fees-uk/
           configPath: "./.lighthouserc.json"
           uploadArtifacts: false
           temporaryPublicStorage: false

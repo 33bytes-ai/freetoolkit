@@ -124,7 +124,8 @@ partir de données pures au build, pas de contenu dupliqué à la main.
 - 244 pages intent/pays programmatiques
 - FAQ schema, WebApplication schema, HowTo schema, dark mode CSS — tous livrés
 - Lighthouse CI réel exécuté et corrigé (voir sections datées ci-dessous) : perf ≥0.94,
-  accessibilité 1.00, SEO ≥0.97 sur les 3 URLs échantillonnées
+  accessibilité 1.00, SEO ≥0.97 sur les 3 URLs échantillonnées ; échantillon élargi à 5
+  URLs (2026-07-13) pour couvrir aussi `intent_page.html`/`intent_country.html`
 
 ### Dette découverte lors du rafraîchissement 2026-07-11 (détail dans `ANALYSIS.md`)
 
@@ -133,7 +134,6 @@ partir de données pures au build, pas de contenu dupliqué à la main.
 - Badge CI du README pointe vers `YOUR_USERNAME/freetoolkit` (jamais remplacé)
 - 15 fichiers `*_tmp.txt` commités par erreur à la racine (résidus de debug)
 - 11 tests de `test_build.py` n'itèrent que sur `TOOL_SLUGS[:3]`/`[:5]`, pas les 105 outils
-- Lighthouse CI ne couvre que le template `tool.html`, pas `intent_page.html`/`intent_country.html`
 - Pas de CMP/bannière de consentement UE avant l'activation prévue d'AdSense
 - Risque de cannibalisation SEO entre calculateurs quasi-homonymes (margin/growth/break-even/turnover)
 
@@ -378,3 +378,27 @@ guard for each pure function). `tests/test_tools.js` now has 554 tests
 covering all 105 tools. Not run mechanically — this session's sandbox blocks
 `node --test`/`make test-js` the same way prior sessions document above;
 verified by hand against each function's source instead.
+
+---
+
+## Lighthouse CI sample widened to intent_page/intent_country (2026-07-13)
+
+Closed the debt flagged at "Lighthouse CI ne couvre que le template
+`tool.html`, pas `intent_page.html`/`intent_country.html`": the 3 sampled
+URLs (`/`, `/tools/`, `/tools/dcf-calculator/`) only ever exercised
+`index.html`, `tools_index.html` and `tool.html` — the 239 intent pages and
+5 country pages, which share only part of `tool.html`'s head/layout, had
+never been audited by Lighthouse.
+
+Added `/tools/stripe-fee-calculator/stripe-fees-for-subscriptions/`
+(`intent_page.html`) and `/tools/stripe-fee-calculator/stripe-fees-uk/`
+(`intent_country.html`) to `ci.yml`'s Lighthouse `urls` list — now 5 URLs
+covering all 3 templates. Added
+`tests/test_build.py::test_ci_workflow_lighthouse_samples_intent_and_country_templates`,
+which asserts both URLs are present in the workflow's `urls` block and that
+they actually exist in the build output (guards against the sampled slugs
+being renamed/removed and silently no-oping the Lighthouse check). Ran
+`.venv/bin/python -m pytest tests/test_build.py -k lighthouse -v` — all 3
+Lighthouse-related tests pass. No live Lighthouse run performed (needs the
+actual GitHub Actions runner); scores for these two templates are unverified
+until the next CI run.

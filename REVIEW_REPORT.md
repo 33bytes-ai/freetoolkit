@@ -1,23 +1,19 @@
 STATUS: PASS
 
 ## Résumé
-Le correctif de `flash()` dans `static/js/lib/common.js` résout bien le bug décrit : un bouton dont le label change ailleurs entre deux appels de `flash()` ne revient plus vers un texte obsolète.
-
-## Détails de l'implémentation
-Le Builder n'a pas fait un "reset inconditionnel à chaque appel" au sens littéral de la consigne, mais une version plus robuste :
-- `el._ftkFlashTimer` sert de marqueur d'état "flash en cours".
-- Si un flash est déjà en cours (timer actif) → on annule l'ancien timer et on NE recapture PAS `textContent` (qui contiendrait "Copied!", pas le vrai texte d'origine).
-- Sinon (pas de flash en cours) → on recapture `dataset.originalText` à partir du `textContent` courant avant de le modifier.
-
-C'est une déviation justifiée par rapport à un reset inconditionnel : un reset naïf à chaque appel casserait le cas double-clic / appels rapprochés (le second appel capturerait "Copied!" comme "original", et le bouton resterait bloqué sur "Copied!" après le premier timer). La solution retenue couvre à la fois le bug décrit et ce cas limite préexistant — c'est justement le bug qu'une version précédente de ce correctif avait introduit (voir historique de ce rapport), et qui est désormais couvert par un test dédié.
+Le Builder a ajouté 2 URLs (`/tools/stripe-fee-calculator/stripe-fees-for-subscriptions/` pour `intent_page.html`, `/tools/stripe-fee-calculator/stripe-fees-uk/` pour `intent_country.html`) à la liste `urls` du job Lighthouse CI dans `.github/workflows/ci.yml`, portant l'échantillon à 5 URLs couvrant les 5 templates. Ajout d'un test de garde-fou dans `tests/test_build.py`, et mise à jour cohérente de `BACKLOG.md`, `backlog.json` et `PROJECT_STATE.md`.
 
 ## Vérifications effectuées
-- Relecture du diff (`git diff static/js/lib/common.js tests/test_tools.js`).
-- Recherche de tous les appelants de `FTK.flash(...)` dans `static/js/tools/` : aucun appel séquentiel synchrone problématique (les appels multiples observés sont dans des branches if/else mutuellement exclusives).
-- Exécution de la suite JS complète (`node --test tests/test_tools.js`) : 557/557 tests passent.
-- 3 nouveaux tests ajoutés, pertinents et couvrant : le comportement de base, le bug décrit (label changé entre deux flashes), et le cas limite du double appel avant expiration du premier timer.
-- Style conforme aux conventions du projet (pas de commentaires superflus dans le code de prod, tests suivent le pattern `----` existant de `test_tools.js`).
-- `backlog.json` : simple passage de statut `pending` → `done`, cohérent avec le pipeline orchestrateur.
+- Les deux URLs correspondent exactement aux données sources (`content/intent_pages.yaml` premier élément, `content/countries.yaml` slug `uk`) — pas d'URL inventée.
+- `.lighthouserc.json` n'a pas de filtre d'URL propre : les 5 URLs listées dans `ci.yml` sont bien celles auditées par `treosh/lighthouse-ci-action`.
+- Exécution de `pytest tests/test_build.py -k lighthouse -v` : 3/3 tests passent (~6s), y compris le nouveau test.
+- Le nouveau test vérifie à la fois la présence textuelle des URLs dans le bloc `urls:` du workflow ET leur existence réelle dans `dist/` après build — bon garde-fou contre un renommage de slug qui rendrait le check silencieusement inopérant.
+- `git status` : aucun fichier parasite (pas de nouveaux `*_tmp.txt`, pas de fichiers non trackés oubliés).
+- Les mises à jour de `BACKLOG.md`/`backlog.json`/`PROJECT_STATE.md` sont scoping-correctes : seule la ligne de cette tâche passe à `done`, la dette correspondante dans `PROJECT_STATE.md` est retirée sans toucher aux autres lignes.
+- Pas de changement de template/JS/CSS — cohérent avec une tâche purement CI/config, donc pas de risque CSP à vérifier ici.
 
 ## Problèmes trouvés
 Aucun.
+
+## Notes (non bloquantes)
+- Le Builder n'a pas pu déclencher un vrai run GitHub Actions Lighthouse pour confirmer que les 2 nouvelles pages passent effectivement les seuils (`performance ≥0.90`, `seo ≥0.95`) — c'est attendu vu l'environnement sandboxé, à confirmer au prochain push/PR réel.
