@@ -1,6 +1,6 @@
 # FounderCalc
 
-[![CI](https://github.com/YOUR_USERNAME/freetoolkit/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR_USERNAME/freetoolkit/actions/workflows/ci.yml)
+[![CI](https://github.com/33bytes-ai/freetoolkit/actions/workflows/ci.yml/badge.svg)](https://github.com/33bytes-ai/freetoolkit/actions/workflows/ci.yml)
 
 Free business calculators for indie founders, freelancers, and SaaS builders.
 
