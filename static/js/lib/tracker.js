@@ -98,8 +98,26 @@
     } catch (e) {}
   }
 
+  // Counts a path once per tab session (sessionStorage, cleared when the
+  // tab closes) instead of once per page load -- a refresh or back/forward
+  // navigation on the same path no longer inflates the dashboard's
+  // pageview count. The dashboard is explicitly "local browser analytics
+  // only", not a source of truth, but this keeps a solo user's own usage
+  // reading honest during manual testing.
+  function alreadyCountedThisSession(path) {
+    try {
+      var key = "ftk_pv_seen_" + path;
+      if (sessionStorage.getItem(key)) return true;
+      sessionStorage.setItem(key, "1");
+      return false;
+    } catch (e) {
+      return false;
+    }
+  }
+
   function trackPageview() {
     var path = window.location.pathname;
+    if (alreadyCountedThisSession(path)) return;
     var data = load();
     if (!data.pageviews[path]) data.pageviews[path] = 0;
     data.pageviews[path]++;

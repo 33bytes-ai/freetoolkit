@@ -21,7 +21,7 @@ targeting "json formatter" (500k/month, dominated by DA 50–80 incumbents) cann
       (see `HUMAN_INPUTS.md` for registrar options)
 - [ ] Update `base_url` in `content/config.yaml` to real domain, rebuild, deploy
 - [ ] Update placeholder email in `content/pages/contact.md`
-- [ ] Verify all 10 calculator pages load and compute correctly
+- [ ] Verify all 105 calculator pages load and compute correctly
 - [ ] Submit sitemap to Google Search Console + Bing Webmaster Tools
 - [ ] Apply for Google AdSense
 

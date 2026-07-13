@@ -402,3 +402,24 @@ being renamed/removed and silently no-oping the Lighthouse check). Ran
 Lighthouse-related tests pass. No live Lighthouse run performed (needs the
 actual GitHub Actions runner); scores for these two templates are unverified
 until the next CI run.
+
+## Build time at current scale (2026-07-13)
+
+`make build` (`.venv/bin/python src/freetoolkit/build.py`) takes **~12.5s**
+at the current catalog size (105 tools, 349 total pages, 1265 output files,
+33MB `dist/`), measured across 3 consecutive runs (12.34s / 12.55s / 12.82s).
+
+**OG image generation (Pillow) dominates the build**: re-running with
+`FTK_SKIP_OG_IMAGE=1` drops the time to 3.57s — meaning `write_og_image()`
+(one 1200×630 PNG per tool via PIL, 105 images total) accounts for roughly
+**9 of the 12.5 seconds (~70%)**. Everything else (Jinja rendering for all
+349 pages, sitemaps, manifest, static copy) is comparatively fast.
+
+At this scale (~12.5s) the build is not yet a real bottleneck for local
+iteration or CI. If the catalog keeps growing and this becomes painful, the
+first and highest-leverage optimization is exactly what the OG-image
+profiling above points at: only regenerate `og-<slug>.png` for tools whose
+content actually changed since the last build (e.g. hash the title+category
+string used to render each image and skip the PIL call if the output file
+already exists with a matching hash), rather than parallelizing Jinja
+rendering or other lower-impact changes.

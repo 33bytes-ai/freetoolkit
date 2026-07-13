@@ -17,7 +17,7 @@
 | 24.00 | Remove fabricated testimonials with stock avatar photos | 8 | 3 | 1 | done |
 | 22.50 | Sitemap avec lastmod dynamique | 5 | 2 | 1 | done |
 | 22.50 | Élargir l'échantillon Lighthouse CI aux templates intent_page et intent_country | 5 | 2 | 1 | done |
-| 22.50 | Préparer un monitoring d'uptime externe prêt à activer au déploiement | 5 | 2 | 1 | pending |
+| 22.50 | Préparer un monitoring d'uptime externe prêt à activer au déploiement | 5 | 2 | 1 | done |
 | 22.50 | Vérifier/mettre à jour la palette des images OG générées | 5 | 2 | 1 | pending |
 | 21.00 | Header Content-Security-Policy dans nginx.conf | 7 | 3 | 3 | done |
 | 21.00 | WebApplication schema JSON-LD par page outil | 7 | 3 | 1 | done |

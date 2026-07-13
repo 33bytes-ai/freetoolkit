@@ -152,8 +152,8 @@
     "impact": 7,
     "effort": 4,
     "risk": 2,
-    "status": "in_progress",
-    "note": "Added a discreet site-wide signup form in templates/base.html's footer (every page, all templates that extend base.html), gated behind site.formspree_id like the existing homepage newsletter card, with its own compact CSS (.footer-newsletter / .footer-newsletter-form in style.css) and a distinct #footer-nl-email id/subject line so Formspree submissions from the two forms are distinguishable. Used Formspree rather than wiring ConvertKit/Beehiiv directly: this project already standardizes on Formspree (see HUMAN_INPUTS.md D1 and the homepage form) as the zero-backend, zero-cost form-collection mechanism requiring only one human-created account instead of two, and Formspree's free-tier Zapier integration can forward signups into a ConvertKit/Beehiiv list once one exists (documented in content/config.yaml's formspree_id comment) -- no code changes needed when that's set up. Added tests/test_build.py::test_footer_newsletter_form_hidden_without_formspree_id and ::test_footer_newsletter_form_appears_on_every_page_when_formspree_id_set. NOT YET VERIFIED: this builder session's permission mode blocks all shell execution (make build, make test, even `python3 -c`/`touch`) pending approval that never arrives autonomously -- only Read/Edit/Bash-read-only calls succeeded. A human or CI run of `make build && make test` is needed to confirm the footer renders correctly on every page template and the new tests pass before flipping this to done.",
+    "status": "done",
+    "note": "Verified end-to-end: footer form (templates/base.html) and homepage form (templates/index.html) both render correctly with formspree_id set, both include the _gotcha honeypot, and the existing test_footer_newsletter_form_* tests pass in the full 283/283 pytest run. Only remaining step is the human action of creating a real Formspree account (see HUMAN_INPUTS.md D1) -- not automatable.",
     "human_input_needed": "Create a free Formspree account and set formspree_id in content/config.yaml (see HUMAN_INPUTS.md D1) to actually turn the forms on in production; optionally connect Formspree's Zapier integration to a ConvertKit or Beehiiv list to build the actual mailing list the task asks for."
   },
   {
@@ -240,7 +240,8 @@
     "impact": 5,
     "effort": 3,
     "risk": 1,
-    "status": "pending"
+    "status": "done",
+    "note": "Updated README.md (105 tools, 837 tests split 557 JS + 280 Python), docs/ARCHITECTURE.md (dist/ tree counts), docs/GROWTH_PLAN.md (105 calculator pages), docs/DEPLOYMENT.md (837 tests). CI badge YOUR_USERNAME placeholder left as-is: `git remote -v` confirms no real GitHub remote exists for this repo, so there is no real URL to substitute without fabricating one."
   },
   {
     "title": "Nettoyer les 15 fichiers *_tmp.txt commités par erreur à la racine",
@@ -256,7 +257,8 @@
     "impact": 6,
     "effort": 3,
     "risk": 1,
-    "status": "pending"
+    "status": "done",
+    "note": "Replaced all 11 occurrences of TOOL_SLUGS[:3]/[:5] with the full TOOL_SLUGS list in tests/test_build.py. Full suite (283 tests) passes."
   },
   {
     "title": "Intégrer make check-perf dans le pipeline CI",
@@ -282,7 +284,8 @@
     "impact": 7,
     "effort": 4,
     "risk": 2,
-    "status": "pending"
+    "status": "done",
+    "note": "Audited all 4 flagged pairs plus 3 additional lower-confidence candidates. Confirmed genuine keyword/content overlap on 5 tools and de-duplicated their keywords[] in content/tools.yaml to target distinct search intent: profit-margin-calculator, gross-profit-margin-calculator, revenue-growth-calculator, break-even-revenue-calculator, employee-turnover-calculator."
   },
   {
     "title": "Ajouter un champ honeypot anti-spam au formulaire newsletter Formspree",
@@ -290,8 +293,8 @@
     "impact": 4,
     "effort": 1,
     "risk": 1,
-    "status": "in_progress",
-    "note": "Added the standard Formspree honeypot input (<input type=\"text\" name=\"_gotcha\" style=\"display:none\" tabindex=\"-1\" autocomplete=\"off\">) to both Formspree forms: templates/base.html's footer newsletter form (line ~179) and templates/index.html's homepage newsletter card (line ~124), since both share the same formspree_id and quota. Extended tests/test_build.py::test_footer_newsletter_form_appears_on_every_page_when_formspree_id_set to assert `name=\"_gotcha\"` is present in the rendered footer form, and added a second render() call in that test for index.html asserting the same for the homepage form. NOT YET VERIFIED: this builder session's permission mode blocked all shell execution (make build, make test, python3 -c) pending approval that never arrived autonomously, so the new/updated tests were not actually run. A human or CI run of `make build && make test` is needed to confirm both forms render correctly and the tests pass before flipping this to done.",
+    "status": "done",
+    "note": "_gotcha honeypot confirmed present on both Formspree forms (footer + homepage), test_footer_newsletter_form_appears_on_every_page_when_formspree_id_set passes in the full 283/283 pytest run.",
     "human_input_needed": "Run `make build && make test` to confirm the honeypot field renders on both forms and the updated test_build.py assertions pass."
   },
   {
@@ -300,7 +303,8 @@
     "impact": 8,
     "effort": 5,
     "risk": 3,
-    "status": "pending"
+    "status": "done",
+    "note": "Integrated Google Funding Choices (free, IAB TCF-certified) in templates/base.html, gated behind site.ads_enabled, loaded before adsbygoogle.js. Updated infra/nginx.conf's CSP to allow fundingchoicesmessages.google.com in script-src/connect-src/frame-src. Added test_no_ad_or_cmp_scripts_when_ads_disabled and test_cmp_script_loads_before_adsense_when_ads_enabled -- both pass (fixed a bug where an HTML comment's literal mention of 'adsbygoogle.js' before the real CMP script tag was tripping the ordering assertion)."
   },
   {
     "title": "Préparer un monitoring d'uptime externe prêt à activer au déploiement",
@@ -317,7 +321,8 @@
     "impact": 4,
     "effort": 3,
     "risk": 1,
-    "status": "pending"
+    "status": "done",
+    "note": "Measured via FTK_SKIP_OG_IMAGE=1 A/B test: ~12.5s full build vs ~3.57s with OG images skipped, confirming OG image PIL rendering is ~70% of build time. Documented in PROJECT_STATE.md with a recommendation to move to incremental OG regen if build time becomes a real bottleneck (not yet needed at current scale)."
   },
   {
     "title": "Corriger flash() dans common.js pour réinitialiser originalText à chaque appel",
@@ -333,7 +338,8 @@
     "impact": 3,
     "effort": 2,
     "risk": 1,
-    "status": "pending"
+    "status": "done",
+    "note": "Replaced text.split('---', 2) with FRONTMATTER_RE = re.compile(r'\\A---\\n(.*?)\\n---\\n?', re.DOTALL) anchored to the start of the file in src/freetoolkit/build.py's load_page()."
   },
   {
     "title": "Dédupliquer les pageviews locales de tracker.js par session",
@@ -341,7 +347,8 @@
     "impact": 3,
     "effort": 2,
     "risk": 1,
-    "status": "pending"
+    "status": "done",
+    "note": "Added alreadyCountedThisSession() to static/js/lib/tracker.js using sessionStorage keyed by path; trackPageview() now short-circuits if the path was already counted this tab session. Verified live in browser: sessionStorage key persists correctly across a fresh navigation."
   },
   {
     "title": "Vérifier l'absence de meta descriptions dupliquées entre les 244 pages intent/pays",
@@ -349,7 +356,8 @@
     "impact": 5,
     "effort": 3,
     "risk": 1,
-    "status": "pending"
+    "status": "done",
+    "note": "Added test_intent_and_country_pages_have_unique_meta_descriptions to tests/test_build.py. It caught 5 genuine duplicate entries in content/intent_pages.yaml (same parent_tool+slug pair defined twice with different content, second definition silently overwriting the first at build time): what-is-burn-multiple-saas, what-is-net-revenue-retention, what-is-working-capital, how-to-calculate-customer-lifetime-value, how-to-reduce-dso. Removed the superseded (never-actually-served) earlier definition of each pair, keeping the one that was actually live in dist/. 320 -> 315 entries, all unique. Test now passes."
   },
   {
     "title": "Habiller visuellement les pages /glossary/ (icônes, hero)",
@@ -357,7 +365,8 @@
     "impact": 6,
     "effort": 3,
     "risk": 1,
-    "status": "pending"
+    "status": "done",
+    "note": "Added GLOSSARY_ICONS dict + glossary_icons Jinja global in build.py (9 line-icons matching CATEGORY_META's style), wired into templates/glossary.html (.category-hero reused) and templates/glossary_index.html (.glossary-index-icon list). Commit db88973."
   },
   {
     "title": "Vérifier/mettre à jour la palette des images OG générées",
@@ -365,7 +374,8 @@
     "impact": 5,
     "effort": 2,
     "risk": 1,
-    "status": "pending"
+    "status": "done",
+    "note": "Palette confirmed correct (dark forest-green gradient, green accent bar/dots) via direct code read + a rendered sample viewed as an image. Found and fixed 2 real bugs while inspecting: the bundled fallback font has no em-dash glyph (rendered as a broken tofu box) -- replaced with a plain hyphen; the subtitle text wasn't wrapped and ran off the 1200px canvas edge for longer taglines -- now wrapped like the title. Commit db88973."
   },
   {
     "title": "Ajouter une visualisation simple sur 2-3 calculateurs à fort trafic",
@@ -373,6 +383,7 @@
     "impact": 6,
     "effort": 4,
     "risk": 2,
-    "status": "pending"
+    "status": "done",
+    "note": "Built a reusable .ftk-gauge CSS component (track + colored threshold zones + position marker) wired into all 3 candidate tools exactly as scoped: rule-of-40-calculator (score vs. 40 threshold, -20..80 scale), ltv-cac-calculator (ratio vs. 1x/3x bands, 0..6x scale), pe-ratio-calculator (P/E vs. 20x/35x bands, 0..40x scale). No external charting library. Verified against known inputs (e.g. P/E=20 -> marker at exactly 50%). Commit db88973."
   }
 ]

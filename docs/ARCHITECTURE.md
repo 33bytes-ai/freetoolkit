@@ -37,7 +37,10 @@ static/                ──┘         │
                                    ▼
                                dist/
                           ├── index.html
-                          ├── tools/<slug>/index.html (×10)
+                          ├── tools/<slug>/index.html (×105)
+                          ├── tools/<parent>/<slug>/index.html (×325, intent + country)
+                          ├── categories/<slug>/index.html (×9)
+                          ├── glossary/<slug>/index.html (×9)
                           ├── <page>/index.html (×4)
                           ├── 404.html
                           ├── sitemap.xml
@@ -46,7 +49,7 @@ static/                ──┘         │
                               ├── css/style.css
                               └── js/
                                   ├── lib/common.js
-                                  └── tools/<slug>.js (×10)
+                                  └── tools/<slug>.js (×105)
 ```
 
 ## JavaScript architecture

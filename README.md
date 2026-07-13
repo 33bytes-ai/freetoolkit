@@ -4,8 +4,12 @@
 
 Free business calculators for indie founders, freelancers, and SaaS builders.
 
-**10 calculators:** Stripe fees · MRR & ARR · LTV/CAC · Runway · Churn impact ·
-Freelance rate · Salary to hourly · Profit margin · Break-even · VAT/Sales tax
+**105 calculators** across 9 categories (Payments, SaaS Metrics, Freelance,
+Business Math, Marketing, Finance, Valuation, Tax & Compliance, HR & People) —
+Stripe/PayPal/Shopify fees · MRR & ARR · LTV/CAC · Runway · Churn impact ·
+Freelance rate · Profit margin · Break-even · VAT/Sales tax · payroll tax ·
+DCF/valuation, and more — plus a 9-entry glossary and 325 SEO intent/country
+pages.
 
 All math runs client-side — no backend, no database, no user data collected.
 Monetized via Google AdSense (RPM target: $8–20 for this business audience).
@@ -15,7 +19,7 @@ Monetized via Google AdSense (RPM target: $8–20 for this business audience).
 ```bash
 make build   # generate static site → dist/
 make serve   # serve at http://localhost:8080
-make test    # run all 43 tests
+make test    # run all 837 tests
 ```
 
 Requires Python 3.11+ and Node 18+.
@@ -36,7 +40,7 @@ content/        Calculator definitions, config, page copy (YAML + Markdown)
 templates/      Jinja2 HTML templates + per-calculator widget HTML
 static/         CSS, shared JS helpers, per-calculator JS modules
 src/            Python static site generator (build.py)
-tests/          43 tests: 34 JS unit tests + 9 Python build tests
+tests/          837 tests: 557 JS unit tests + 280 Python build tests
 infra/          Docker, nginx, docker-compose, GoAccess config
 scripts/        deploy.sh, new_tool.py, analytics_report.sh
 docs/           DEPLOYMENT.md, MONETIZATION.md, GROWTH_PLAN.md, ARCHITECTURE.md
@@ -66,11 +70,11 @@ python scripts/new_tool.py \
 ## Tests
 
 ```
-34 JS unit tests   node --test tests/test_tools.js
- 9 Python tests    pytest tests/test_build.py
+557 JS unit tests   node --test tests/test_tools.js
+280 Python tests    pytest tests/test_build.py
 ```
 
-All 43 tests pass with zero failures on Node 20 / Python 3.11.
+All 837 tests pass with zero failures on Node 20 / Python 3.11.
 
 ## Revenue model
 

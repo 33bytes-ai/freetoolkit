@@ -9,7 +9,7 @@ make .venv          # create virtualenv and install deps
 # Every time
 make build          # regenerate dist/
 make serve          # serve at http://localhost:8080
-make test           # run all 55 tests
+make test           # run all 837 tests
 ```
 
 ---

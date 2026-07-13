@@ -56,6 +56,29 @@
   {% block twitter_image %}<meta name="twitter:image" content="{{ site.base_url }}/static/img/og.png">{% endblock %}
   {% block twitter_extra %}{% endblock %}
   {% if site.ads_enabled %}
+  <!-- Google Funding Choices: free, IAB TCF-certified consent management
+       platform. Required before showing personalized ads to EEA/UK
+       visitors (Google's EU User Consent Policy) -- loaded before the
+       ad script below so consent is gathered before any ad request. -->
+  <script async src="https://fundingchoicesmessages.google.com/i/{{ site.adsense_client_id }}?ers=1" nonce="{{ csp_nonce }}"></script>
+  <script nonce="{{ csp_nonce }}">
+    (function() {
+      function signalGooglefcPresent() {
+        if (!window.frames['googlefcPresent']) {
+          if (document.body) {
+            var iframe = document.createElement('iframe');
+            iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;';
+            iframe.style.display = 'none';
+            iframe.name = 'googlefcPresent';
+            document.body.appendChild(iframe);
+          } else {
+            setTimeout(signalGooglefcPresent, 0);
+          }
+        }
+      }
+      signalGooglefcPresent();
+    })();
+  </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.adsense_client_id }}" crossorigin="anonymous"></script>
   {% endif %}
   <script type="application/ld+json" nonce="{{ csp_nonce }}">

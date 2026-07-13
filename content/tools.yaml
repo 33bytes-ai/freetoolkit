@@ -486,7 +486,7 @@
   date_added: "2026-05-09"
   category: Business Math
   js: profit-margin-calculator.js
-  keywords: ["profit margin calculator", "gross margin calculator", "net profit margin formula", "gross margin percentage"]
+  keywords: ["profit margin calculator", "net profit margin calculator", "net profit margin formula", "operating margin calculator"]
   howto_steps:
     - name: "Enter your total revenue"
       text: "Input gross revenue for the period (quarterly or annual is most common)."
@@ -1675,7 +1675,7 @@
   date_added: "2026-06-17"
   category: SaaS Metrics
   js: revenue-growth-calculator.js
-  keywords: ["revenue growth rate calculator", "saas revenue growth calculator", "cagr calculator", "month over month growth calculator", "yoy growth rate"]
+  keywords: ["mom qoq yoy revenue calculator", "saas revenue growth calculator", "cagr calculator", "month over month growth calculator", "time to double revenue"]
   howto_steps:
     - name: "Enter current period revenue"
       text: "Enter your most recent month's MRR or ARR. Use consistent units — don't mix MRR with ARR."
@@ -2407,7 +2407,7 @@
   date_added: "2026-06-17"
   category: Business Math
   js: break-even-revenue-calculator.js
-  keywords: ["break even calculator", "break even revenue", "break even point calculator", "contribution margin calculator", "fixed costs calculator", "margin of safety calculator"]
+  keywords: ["margin of safety calculator", "break even revenue", "contribution margin break even", "fixed costs calculator", "break even without unit sales"]
   howto_steps:
     - name: "Enter your monthly fixed costs"
       text: "Include rent, salaries, software subscriptions — all costs that don't change with revenue."
@@ -5138,7 +5138,7 @@
   new: true
   category: Finance
   js: gross-profit-margin-calculator.js
-  keywords: ["gross profit margin calculator", "gross margin calculator", "gross profit calculator", "profit margin formula", "COGS calculator"]
+  keywords: ["gross profit margin calculator", "gross margin for investors", "gross profit calculator", "profit margin formula", "COGS calculator"]
   howto_steps:
     - name: "Enter revenue"
       text: "Enter total revenue (net sales) for the period you want to analyze."
@@ -6728,7 +6728,7 @@
     - employee turnover rate calculator
     - employee turnover calculator
     - staff turnover calculator
-    - cost of employee turnover calculator
+    - annual turnover rate formula
     - retention rate calculator
   howto_steps:
     - name: "Enter employees separated"

@@ -84,14 +84,14 @@ def test_robots_contains_sitemap_reference():
 
 def test_tool_pages_reference_correct_js():
     run_build()
-    for slug in TOOL_SLUGS[:3]:
+    for slug in TOOL_SLUGS:
         html = (DIST / "tools" / slug / "index.html").read_text()
         assert f"{slug}.js" in html, f"{slug} page missing its JS reference"
 
 
 def test_tool_pages_have_canonical_url():
     run_build()
-    for slug in TOOL_SLUGS[:3]:
+    for slug in TOOL_SLUGS:
         html = (DIST / "tools" / slug / "index.html").read_text()
         assert 'rel="canonical"' in html
         assert f"/tools/{slug}/" in html
@@ -217,7 +217,7 @@ def test_rss_feed_exists_with_tool_entries():
     rss = (DIST / "rss.xml").read_text()
     assert "<rss" in rss
     assert "<item>" in rss
-    for slug in TOOL_SLUGS[:3]:
+    for slug in TOOL_SLUGS:
         assert f"/tools/{slug}/" in rss, f"RSS missing entry for {slug}"
 
 
@@ -248,6 +248,41 @@ def test_intent_pages_have_body_html():
         html = (DIST / "tools" / parent / slug / "index.html").read_text()
         assert len(html) > 2000, f"Intent page {slug} looks suspiciously short"
         assert "<p>" in html or "<h" in html, f"Intent page {slug} missing body HTML content"
+
+
+def test_intent_and_country_pages_have_unique_meta_descriptions():
+    """No two of the 244 intent/country pages should share an identical
+    <meta name="description"> after template interpolation -- duplicate
+    descriptions read as thin/near-duplicate content to Google, and with
+    this many programmatically-templated pages it's easy for two entries
+    to accidentally collide."""
+    run_build()
+    desc_re = re.compile(r'<meta name="description" content="([^"]*)">')
+    seen: dict[str, str] = {}
+    duplicates = []
+    for parent, slug in INTENT_PAGES:
+        html = (DIST / "tools" / parent / slug / "index.html").read_text()
+        match = desc_re.search(html)
+        assert match, f"Intent page {parent}/{slug} missing meta description"
+        desc = match.group(1)
+        page_id = f"{parent}/{slug}"
+        if desc in seen:
+            duplicates.append((seen[desc], page_id, desc))
+        else:
+            seen[desc] = page_id
+    for slug in COUNTRY_PAGE_SLUGS:
+        html = (DIST / "tools" / "stripe-fee-calculator" / slug / "index.html").read_text()
+        match = desc_re.search(html)
+        assert match, f"Country page {slug} missing meta description"
+        desc = match.group(1)
+        page_id = f"stripe-fee-calculator/{slug}"
+        if desc in seen:
+            duplicates.append((seen[desc], page_id, desc))
+        else:
+            seen[desc] = page_id
+    assert not duplicates, "Duplicate meta descriptions found:\n" + "\n".join(
+        f"  {a} == {b}: {desc!r}" for a, b, desc in duplicates
+    )
 
 
 def test_nav_has_site_navigation_element_schema():
@@ -281,7 +316,7 @@ def test_sitemap_news_exists_with_tool_entries():
     run_build()
     xml = (DIST / "sitemap_news.xml").read_text()
     assert "<news:news>" in xml
-    for slug in TOOL_SLUGS[:3]:
+    for slug in TOOL_SLUGS:
         assert f"/tools/{slug}/" in xml, f"News sitemap missing {slug}"
 
 
@@ -301,7 +336,7 @@ def test_howto_schema_on_tools_with_steps():
 
 def test_tool_pages_have_twitter_meta():
     run_build()
-    for slug in TOOL_SLUGS[:3]:
+    for slug in TOOL_SLUGS:
         html = (DIST / "tools" / slug / "index.html").read_text()
         assert 'twitter:title' in html, f"{slug} missing twitter:title"
         assert 'twitter:description' in html, f"{slug} missing twitter:description"
@@ -327,7 +362,7 @@ def test_sub_sitemaps_exist_and_index_references_them():
     assert "sitemap_pages.xml" in index
     assert "sitemap_intent.xml" in index
     tools_xml = (DIST / "sitemap_tools.xml").read_text()
-    for slug in TOOL_SLUGS[:3]:
+    for slug in TOOL_SLUGS:
         assert f"/tools/{slug}/" in tools_xml, f"sitemap_tools.xml missing {slug}"
     intent_xml = (DIST / "sitemap_intent.xml").read_text()
     parent, slug = INTENT_PAGES[0]
@@ -448,7 +483,7 @@ def test_sitemap_news_has_date_added():
 def test_tool_pages_have_calculator_anchor():
     """Tool pages should have id='calculator' on the widget div."""
     run_build()
-    for slug in TOOL_SLUGS[:5]:
+    for slug in TOOL_SLUGS:
         html = (DIST / "tools" / slug / "index.html").read_text()
         assert 'id="calculator"' in html, f"{slug} missing id='calculator' anchor on widget"
 
@@ -456,7 +491,7 @@ def test_tool_pages_have_calculator_anchor():
 def test_tool_pages_have_robots_meta():
     """Tool pages should have max-snippet robots meta tag."""
     run_build()
-    for slug in TOOL_SLUGS[:3]:
+    for slug in TOOL_SLUGS:
         html = (DIST / "tools" / slug / "index.html").read_text()
         assert "max-snippet" in html, f"{slug} missing max-snippet robots meta"
         assert "max-image-preview" in html, f"{slug} missing max-image-preview robots meta"
@@ -493,7 +528,7 @@ def test_webapplication_schema_has_date_modified():
 def test_pages_have_hreflang():
     """All tool pages should have hreflang='en' link tag."""
     run_build()
-    for slug in TOOL_SLUGS[:5]:
+    for slug in TOOL_SLUGS:
         html = (DIST / "tools" / slug / "index.html").read_text()
         assert 'hreflang="en"' in html, f"{slug} missing hreflang=en"
 
@@ -501,7 +536,7 @@ def test_pages_have_hreflang():
 def test_tool_pages_have_social_share():
     """Tool pages should have social share links."""
     run_build()
-    for slug in TOOL_SLUGS[:3]:
+    for slug in TOOL_SLUGS:
         html = (DIST / "tools" / slug / "index.html").read_text()
         assert "twitter.com/intent/tweet" in html, f"{slug} missing Twitter share link"
         assert "linkedin.com/sharing" in html, f"{slug} missing LinkedIn share link"
@@ -518,7 +553,7 @@ def test_tools_index_has_category_jump_bar():
 def test_tool_pages_have_author_meta():
     """Tool pages should have meta author tag."""
     run_build()
-    for slug in TOOL_SLUGS[:3]:
+    for slug in TOOL_SLUGS:
         html = (DIST / "tools" / slug / "index.html").read_text()
         assert 'name="author"' in html, f"{slug} missing meta author"
 
@@ -885,6 +920,52 @@ def test_footer_newsletter_form_appears_on_every_page_when_formspree_id_set():
     index_html = index_out.read_text()
     assert 'id="nl-email"' in index_html
     assert 'name="_gotcha"' in index_html
+
+
+def test_no_ad_or_cmp_scripts_when_ads_disabled():
+    """With ads_enabled: false (the current default), neither the AdSense
+    script nor the Funding Choices consent-management script should render
+    anywhere -- there's nothing to gather consent for if no ads ever load."""
+    run_build()
+    html = (DIST / "index.html").read_text()
+    assert "adsbygoogle.js" not in html
+    assert "fundingchoicesmessages.google.com" not in html
+
+
+def test_cmp_script_loads_before_adsense_when_ads_enabled():
+    """Setting ads_enabled: true should render Google's Funding Choices CMP
+    script (required before showing personalized ads to EEA/UK visitors)
+    and it must appear before adsbygoogle.js in the document so consent is
+    gathered before any ad request fires."""
+    from freetoolkit import build as ftk_build
+
+    env = ftk_build.build_env()
+    config = ftk_build.load_config()
+    config["site"] = dict(config["site"], ads_enabled=True, adsense_client_id="ca-pub-1234567890")
+    out = DIST / "_test_cmp" / "index.html"
+    ftk_build.render(
+        env,
+        "index.html",
+        out,
+        path="/",
+        title=config["site"]["name"],
+        description=config["site"]["description"],
+        site=config["site"],
+        categories=config["categories"],
+        tools=[],
+        tools_by_category={},
+        all_intent_pages=[],
+        intent_count_by_category={},
+        year=2026,
+        build_date="2026-01-01",
+        csp_nonce="test-nonce",
+    )
+    html = out.read_text()
+    assert "fundingchoicesmessages.google.com/i/ca-pub-1234567890" in html
+    assert "adsbygoogle.js?client=ca-pub-1234567890" in html
+    cmp_pos = html.index("fundingchoicesmessages.google.com")
+    ad_pos = html.index("adsbygoogle.js")
+    assert cmp_pos < ad_pos, "CMP script must load before adsbygoogle.js"
 
 
 def test_revenue_per_employee_tool_builds():

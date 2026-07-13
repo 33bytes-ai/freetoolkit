@@ -2703,39 +2703,6 @@
     Use the [NRR Calculator](/tools/nrr-calculator/) to model how increasing expansion
     MRR by 5–10% affects your overall retention number.
 
-- slug: what-is-burn-multiple-saas
-  parent_tool: burn-multiple-calculator
-  title: "What Is Burn Multiple and Why It Matters for SaaS Startups"
-  description: "Burn Multiple measures how efficiently a startup converts cash into ARR growth. Learn the formula, benchmarks, and how to improve yours before your next fundraise."
-  keywords: ["burn multiple saas", "what is burn multiple", "burn multiple explained", "saas efficiency metric david sacks"]
-  body: |
-    Burn Multiple = net burn / net new ARR. Simple formula, powerful insight.
-
-    A company burning $300k/month and generating $600k net new ARR has a 0.5x Burn Multiple.
-    A company burning $300k/month and generating $100k net new ARR has a 3.0x Burn Multiple.
-    Both companies burn the same amount — but the first is building value 6x more efficiently.
-
-    ## Why investors track Burn Multiple
-
-    During the 2021 zero-interest-rate era, investors tolerated high burn multiples because
-    cheap capital made efficiency irrelevant. Post-2022, efficiency became the primary
-    lens for evaluating growth-stage SaaS. Burn Multiple is the most direct measure.
-
-    A company raising a Series A should target below 1.5x. A Series B candidate should
-    be under 1.0x. If you're above 2.0x, expect hard questions from any growth investor.
-
-    ## The improvement playbook
-
-    To reduce Burn Multiple, you have two levers:
-    1. Reduce net burn (cut spending in areas with low ARR contribution)
-    2. Increase net new ARR (fix GTM conversion, improve expansion, reduce churn)
-
-    The fastest path is usually improving conversion rates — it grows the denominator
-    without touching the numerator.
-
-    Use the [Burn Multiple Calculator](/tools/burn-multiple-calculator/) to calculate
-    your current multiple and model improvement scenarios.
-
 - slug: burn-rate-vs-burn-multiple
   parent_tool: burn-multiple-calculator
   title: "Burn Rate vs Burn Multiple: What's the Difference?"
@@ -3119,62 +3086,6 @@
 
     Use the [Ad ROAS Calculator](/tools/ad-roas-calculator/) to compute your breakeven ROAS
     and see whether your current campaigns are profitable at your gross margin.
-
-- parent_tool: customer-ltv-calculator
-  slug: how-to-calculate-customer-lifetime-value
-  title: "How to Calculate Customer Lifetime Value (LTV) for SaaS"
-  description: "Step-by-step guide to calculating LTV for subscription businesses — including the formula, gross margin adjustments, and the LTV:CAC benchmark."
-  body: |
-    Customer Lifetime Value (LTV) answers a simple question: how much total gross profit
-    does the average customer generate over their entire relationship with your business?
-
-    Getting LTV right matters because it sets the ceiling for how much you can spend to
-    acquire a customer (CAC) while remaining profitable.
-
-    ## The standard LTV formula for SaaS
-
-    **LTV = ARPU × Gross Margin % × Average Customer Lifetime**
-
-    Where **Average Customer Lifetime = 1 ÷ Monthly Churn Rate**
-
-    **Example:**
-    - Monthly ARPU: $149
-    - Gross margin: 72%
-    - Monthly churn: 2.5%
-    - Average lifetime: 1 / 0.025 = 40 months
-    - LTV = $149 × 0.72 × 40 = **$4,291.20**
-
-    ## Why you must use gross margin, not revenue
-
-    A common mistake: using revenue instead of gross profit in the LTV formula. Revenue
-    doesn't account for your cost of delivering the service (hosting, support, infrastructure).
-    If you use raw revenue:
-    - Your LTV looks inflated by your cost structure
-    - You'll overpay for customer acquisition
-    - Your unit economics will look better than they are
-
-    Always use gross margin % to get gross LTV. Some companies use net revenue retention
-    for expansion-adjusted LTV, but for acquisition decisions, gross margin LTV is standard.
-
-    ## The 3× LTV:CAC rule
-
-    The venture capital benchmark: **LTV ÷ CAC ≥ 3×**
-
-    This means for every dollar you spend acquiring a customer, you should earn at least
-    $3 in lifetime gross profit. The 3× multiple accounts for:
-    - The time value of that money (it arrives over months/years)
-    - Uncertainty in the lifetime estimate
-    - Operating costs not captured in gross margin
-
-    ## LTV improvements ranked by leverage
-
-    1. **Reduce churn** — halving churn doubles LTV (most leverage)
-    2. **Increase ARPU** — through pricing increases or expansion revenue
-    3. **Improve gross margin** — reduce COGS, automate support, improve infrastructure efficiency
-    4. **All three compound** — each 10% improvement multiplies with the others
-
-    Use the [Customer LTV Calculator](/tools/customer-ltv-calculator/) to model any of
-    these improvements and see their impact on LTV and LTV:CAC instantly.
 
 - parent_tool: customer-ltv-calculator
   slug: ltv-cac-ratio-explained
@@ -4718,57 +4629,6 @@
     Use the [Revenue per Employee Calculator](/tools/revenue-per-employee-calculator/)
     before every hiring decision. It takes 60 seconds and makes the trade-off visible.
 
-- slug: what-is-net-revenue-retention
-  parent_tool: nrr-calculator
-  title: "What Is Net Revenue Retention (NRR)? A SaaS Founder's Guide"
-  description: "Net Revenue Retention measures how much revenue you retain and grow from existing customers. This guide explains the NRR formula, benchmarks, and how to improve it."
-  body: |
-    Net Revenue Retention (NRR) — sometimes called Net Dollar Retention (NDR) — is
-    the most powerful single metric for understanding SaaS revenue quality.
-
-    It answers: *if we acquired zero new customers this period, how much would our
-    revenue have changed?*
-
-    **NRR = (Starting MRR + Expansion − Contraction − Churn) ÷ Starting MRR × 100**
-
-    ## Why NRR matters more than churn rate
-
-    Churn rate only measures cancellations. NRR captures the full picture of your
-    existing customer base: expansion (upsells), contraction (downgrades), and churn.
-
-    A company with 8% monthly churn and 15% monthly expansion has **positive** NRR —
-    it's actually growing revenue from the existing base despite losing customers.
-    Pure churn rate would signal a problem; NRR reveals the truth.
-
-    ## NRR above 100%: what it means in practice
-
-    At 115% annual NRR, your revenue cohort from 12 months ago is now 15% larger —
-    without any new customer acquisition. Compound that over 5 years:
-
-    | Year | $1M ARR cohort at 115% NRR |
-    |---|---|
-    | Year 1 | $1.15M |
-    | Year 2 | $1.32M |
-    | Year 3 | $1.52M |
-    | Year 5 | $2.01M |
-
-    The original cohort has doubled in five years purely through expansion.
-
-    ## Common NRR misunderstandings
-
-    **"NRR includes new customers"**: No. NRR only measures what happens to the
-    cohort of customers that existed at the start of the period. New customers
-    acquired during the period are excluded.
-
-    **"GRR and NRR are the same thing"**: No. GRR excludes expansion and is always
-    ≤ 100%. NRR includes expansion and can exceed 100%.
-
-    **"High NRR means you don't need to acquire customers"**: While high NRR reduces
-    the pressure to acquire, most businesses need new customer acquisition to offset
-    the natural limits of expansion from existing customers.
-
-    Use the [NRR Calculator](/tools/nrr-calculator/) to calculate yours.
-
 - slug: how-to-improve-nrr-saas
   parent_tool: nrr-calculator
   title: "How to Improve Net Revenue Retention in SaaS"
@@ -5699,43 +5559,6 @@
     adding quota-carrying headcount.
 
     Calculate your baseline at the [Magic Number Calculator](/tools/magic-number-calculator/).
-
-- parent_tool: working-capital-calculator
-  slug: what-is-working-capital
-  title: "What Is Working Capital? Definition, Formula, and Examples"
-  description: "Working capital = current assets − current liabilities. Learn the formula, what a good current ratio looks like, and how to manage liquidity for your business."
-  body: |
-    Working capital is the operational liquidity buffer of a business. It answers
-    the question: if you had to pay every short-term obligation tomorrow, how much
-    cash would you have left?
-
-    **Formula: Working Capital = Current Assets − Current Liabilities**
-
-    ## What counts as current assets?
-
-    - Cash and cash equivalents
-    - Accounts receivable (money owed to you, collectible within 12 months)
-    - Inventory
-    - Short-term investments (marketable securities)
-    - Prepaid expenses
-
-    ## What counts as current liabilities?
-
-    - Accounts payable (money you owe suppliers)
-    - Short-term debt and credit lines due within 12 months
-    - Accrued expenses (wages, taxes owed)
-    - Deferred revenue (paid-up-front subscriptions not yet delivered)
-
-    ## Current Ratio benchmark
-
-    | Ratio | Assessment |
-    |---|---|
-    | > 2.0x | Strong — ample cushion |
-    | 1.5–2.0x | Healthy |
-    | 1.0–1.5x | Tight but functional |
-    | < 1.0x | Liquidity risk |
-
-    Calculate yours at the [Working Capital Calculator](/tools/working-capital-calculator/).
 
 - parent_tool: working-capital-calculator
   slug: working-capital-vs-cash-flow
@@ -9005,64 +8828,6 @@
 
     Model your target mix at the
     [Segment Gross Margin Calculator](/tools/segment-margin-calculator/).
-
-- parent_tool: dso-calculator
-  slug: how-to-reduce-dso
-  title: "How to Reduce Days Sales Outstanding: 7 Proven Strategies"
-  description: "Actionable strategies to reduce DSO, free up working capital, and improve your accounts receivable collections process."
-  body: |
-    ## Why Reducing DSO Matters
-
-    Every day of DSO represents cash tied up in unpaid invoices. For a company
-    with $5M annual revenue, one day of DSO equals approximately $13,700 in
-    locked-up working capital. Cutting DSO from 60 to 30 days frees up ~$411,000
-    in cash — without raising a single new dollar of revenue.
-
-    ## 7 Strategies to Reduce DSO
-
-    ### 1. Shorten Payment Terms
-
-    Switch from Net 60 to Net 30 for new customers. Existing customers can be
-    migrated when contracts renew. Even a partial shift cuts your average DSO.
-
-    ### 2. Invoice Immediately
-
-    Don't wait until end of month to batch invoices. Invoice within 24 hours
-    of delivery or monthly billing date. Later invoices = later payment.
-
-    ### 3. Offer Early Payment Discounts
-
-    Standard terms: "2/10 Net 30" (2% discount if paid within 10 days).
-    The annualized return of 36% for the payer makes this attractive. Even
-    30% of customers taking the discount can cut DSO by 5–10 days.
-
-    ### 4. Automate Payment Reminders
-
-    Sequence:
-    - Invoice sent: day 0
-    - Friendly reminder: day 25 (5 days before due)
-    - Past-due notice: day 31 (1 day after due)
-    - Escalation: day 45
-    - Final notice: day 60
-
-    ### 5. Accept Multiple Payment Methods
-
-    ACH, credit card, and wire transfers each appeal to different customers.
-    Friction in the payment process delays payment. Adding card payments
-    typically reduces payment time by 3–5 days.
-
-    ### 6. Require Deposits for Large Projects
-
-    For services engagements or large orders, collect 25–50% upfront.
-    This reduces the AR balance on your books and signals creditworthiness.
-
-    ### 7. Review Customer Credit Before Extending Terms
-
-    Run basic credit checks on new B2B customers before extending Net 30/60.
-    One slow-paying large customer can dramatically skew your DSO.
-
-    Calculate your current DSO at the
-    [Days Sales Outstanding Calculator](/tools/dso-calculator/).
 
 - parent_tool: dso-calculator
   slug: accounts-receivable-turnover-ratio
