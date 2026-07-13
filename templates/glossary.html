@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block head_extra %}
+<script type="application/ld+json" nonce="{{ csp_nonce }}">
+{
+  "@context": "https://schema.org",
+  "@type": "DefinedTerm",
+  "name": {{ entry.term | tojson }},
+  "description": {{ entry.short | tojson }},
+  "url": "{{ site.base_url }}{{ path }}",
+  "inDefinedTermSet": "{{ site.base_url }}/glossary/"
+}
+</script>
+{% endblock %}
+{% block content %}
+<section class="wrap content-page glossary-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a> <span aria-hidden="true">/</span>
+    <a href="/glossary/">Glossary</a> <span aria-hidden="true">/</span>
+    <span aria-current="page">{{ entry.term }}</span>
+  </nav>
+  <h1>{{ entry.term }}</h1>
+  <p class="tool-short">{{ entry.short }}</p>
+  <article class="tool-body">
+    {{ entry.body_html | safe }}
+  </article>
+  {% if related %}
+  <div class="related-tools">
+    <h2>Used in these calculators</h2>
+    <ul>
+      {% for tool in related %}
+      <li><a href="/tools/{{ tool.slug }}/">{{ tool.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

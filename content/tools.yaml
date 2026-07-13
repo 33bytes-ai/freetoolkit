@@ -104,7 +104,7 @@
     starting point.
 
     International cards (issued outside the US) incur an additional **1.5% cross-border
-    fee**, bringing the total to **4.4% + $0.30**. If you're using Stripe Connect to
+    fee**, bringing the total to **4.4% + $0.30**. If you're using Stripe Connect (Stripe's platform for routing payments between a marketplace and its sellers) to
     process payments on behalf of connected accounts, fees and revenue sharing get more
     complex. This calculator handles all the common scenarios.
 
@@ -868,7 +868,7 @@
 
     **Which profit margin metric should I use?**
     Free cash flow margin is the most common choice, as it accounts for capex and working
-    capital. Some investors use EBITDA margin. Net income margin is least common because it
+    capital. Some investors use [EBITDA](/glossary/ebitda/) margin. Net income margin is least common because it
     includes non-cash charges (stock compensation, depreciation) that distort the picture.
 
     **Can I game the Rule of 40 by cutting investment?**
@@ -1107,7 +1107,7 @@
     ## Frequently asked questions
 
     **What's a good CAC by channel?**
-    CAC benchmarks vary enormously by ACV. Divide your CAC by your expected LTV — if the
+    CAC benchmarks vary enormously by [ACV](/glossary/acv/). Divide your CAC by your expected LTV — if the
     ratio is above 3:1, the channel is viable. If below 1:1, it's destroying value.
 
     **How do I handle referral/word-of-mouth?**
@@ -1189,7 +1189,7 @@
 
     ## What this tells you about hiring
 
-    A single SDR typically generates 40–80 qualified leads per month depending on segment
+    A single SDR (Sales Development Representative) typically generates 40–80 qualified leads per month depending on segment
     and outbound quality. If your math requires 200+ leads/month, you need 3–5 SDRs or
     a mature inbound engine. Use these numbers to model headcount requirements before
     committing to a revenue plan.
@@ -1231,7 +1231,7 @@
       text: "See total revenue, profit, ROI percentage, and cost per conversion — useful for budget justification and channel comparison."
   body: |
     Email marketing consistently delivers the highest ROI of any digital marketing channel.
-    The DMA reports an average return of **$36–42 per $1 spent** — but that average hides
+    The DMA (Data & Marketing Association) reports an average return of **$36–42 per $1 spent** — but that average hides
     enormous variance. The difference between a top-performing email program and a mediocre
     one is almost entirely in open rate, click rate, and list quality.
 
@@ -1577,9 +1577,9 @@
 
     | Dimension | Weight | What to measure |
     |-----------|--------|----------------|
-    | Product usage | 30% | DAU, feature adoption, breadth of use |
+    | Product usage | 30% | DAU (Daily Active Users), feature adoption, breadth of use |
     | Engagement | 25% | Login frequency, team adoption, email engagement |
-    | NPS / satisfaction | 20% | Last NPS survey score or CSAT |
+    | NPS / satisfaction | 20% | Last NPS survey score or CSAT (Customer Satisfaction Score) |
     | Support health | 15% | Open tickets, time-to-resolution, severity |
     | Growth / expansion | 10% | Seat growth, usage vs limit, upsell signals |
 
@@ -1589,7 +1589,7 @@
     |-------|--------|--------|
     | 80–100 | Healthy | Expansion candidate — offer upgrade or case study |
     | 60–79 | Neutral | Monitor monthly — address any engagement gaps |
-    | 40–59 | At Risk | Assign CSM — schedule check-in call this week |
+    | 40–59 | At Risk | Assign CSM (Customer Success Manager) — schedule check-in call this week |
     | 0–39 | Critical | Escalate — high churn probability in 30 days |
 
     ## How to use this calculator
@@ -1644,7 +1644,7 @@
     is 3:1 or higher. Below 1:1 means you're destroying value with every new customer.
 
     **Magic Number** — measures the efficiency of your go-to-market spend. Calculated as net
-    new ARR divided by prior quarter S&M spend. Above 0.75 is good; above 1.0 is great.
+    new ARR divided by prior quarter S&M (Sales & Marketing) spend. Above 0.75 is good; above 1.0 is great.
 
     ## Unit economics benchmarks
 
@@ -1997,7 +1997,7 @@
     often 10× cheaper per dollar of revenue gained.
 
     The math only breaks down when your traffic volume is too low to run statistically
-    significant A/B tests. Below ~1,000 visitors/month per variant, CRO is guesswork.
+    significant A/B tests. Below ~1,000 visitors/month per variant, CRO (conversion rate optimization) is guesswork.
     Above 5,000/month, it becomes highly reliable.
 
     ## Conversion rate benchmarks
@@ -2107,7 +2107,7 @@
 
     **What is a good gross margin for SaaS?**
     70–80% is the benchmark for most SaaS businesses. Below 60%, you may have a managed
-    service or implementation cost issue. Above 85% is possible for pure-software PLG
+    service or implementation cost issue. Above 85% is possible for pure-software PLG (product-led growth)
     companies with low support costs. Public SaaS companies at IPO typically show 70–80%.
 
     **What does this calculator do?**
@@ -2378,7 +2378,7 @@
     ## Why discounts hurt margins disproportionately
 
     A 20% discount on a product with 40% gross margin:
-    - Original: $99 price, $59.40 COGS, $39.60 gross profit (40% margin)
+    - Original: $99 price, $59.40 [COGS](/glossary/cogs/), $39.60 gross profit (40% margin)
     - Discounted: $79.20 price, $59.40 COGS, $19.80 gross profit (25% margin)
 
     20% off the price = 50% reduction in gross profit. This asymmetry is why deep
@@ -2547,7 +2547,7 @@
 
     **CAC Payback = CAC ÷ (Monthly ARPU × Gross Margin %)**
 
-    At $740 CAC, $99 ARPU, 75% gross margin:
+    At $740 CAC, $99 ARPU (Average Revenue Per User), 75% gross margin:
     - Monthly gross profit per customer = $99 × 0.75 = $74.25
     - Payback = $740 ÷ $74.25 = **9.97 months**
 
@@ -2956,7 +2956,7 @@
     **CCC = DIO + DSO − DPO**
 
     Where:
-    - **DIO** (Days Inventory Outstanding) = Average Inventory ÷ COGS × 365
+    - **DIO** (Days Inventory Outstanding) = Average Inventory ÷ [COGS](/glossary/cogs/) × 365
     - **DSO** (Days Sales Outstanding) = Average AR ÷ Revenue × 365
     - **DPO** (Days Payable Outstanding) = Average AP ÷ COGS × 365
 
@@ -3085,7 +3085,7 @@
 
     1. **Reduce CAC** — more ARR from the same S&M spend
     2. **Reduce churn** — net new ARR improves when churned ARR falls
-    3. **Increase ACV** — same headcount, higher ARR per deal
+    3. **Increase [ACV](/glossary/acv/)** — same headcount, higher ARR per deal
     4. **Expand existing customers** — expansion ARR requires near-zero additional burn
     5. **Automate operational work** — reduce gross burn without cutting growth investment
 
@@ -3147,7 +3147,7 @@
 
     ## Quick Ratio vs NRR vs Burn Multiple
 
-    - **NRR (Net Revenue Retention)**: % of last year's ARR you still have + expansion. Excludes new logos.
+    - **NRR (Net Revenue Retention)**: % of last year's ARR you still have + expansion. Excludes new logos (SaaS shorthand for new customer accounts).
     - **Quick Ratio**: Growth MRR / lost MRR. Includes new logos. Measures acquisition + retention together.
     - **Burn Multiple**: Net burn / net new ARR. Measures capital efficiency of all that growth.
 
@@ -3776,7 +3776,7 @@
     | Series A ($5–10M) | 20–30% | 45–55% |
     | Series B ($20–40M) | 15–25% | 35–45% |
 
-    Dilution at each round is on the post-round cap table, not the original. A founder
+    Dilution at each round is on the post-round [cap table](/glossary/cap-table/), not the original. A founder
     at 85% post-seed who raises a 20% Series A retains 85% × 80% = **68%**.
 
     ## Option pool shuffle
@@ -3908,6 +3908,11 @@
     Turnover = $1.2M / $200k = **6.0×**
     DSI = 365 / 6.0 = **60.8 days** of inventory on hand
 
+    Use the same inventory valuation method consistently when comparing periods — FIFO
+    (First In, First Out) values inventory using the cost of the oldest stock first, while
+    LIFO (Last In, First Out) uses the cost of the most recently purchased stock first.
+    Switching methods between periods distorts the turnover trend.
+
     ## Benchmarks by industry
 
     | Industry | Typical turnover | Typical DSI |
@@ -3939,7 +3944,7 @@
        to order closer to actual demand.
     2. **Tighter reorder points**: Set reorder triggers based on lead time + safety stock,
        not gut feel.
-    3. **ABC analysis**: Rank SKUs by revenue contribution. A-items (top 20% of SKUs,
+    3. **ABC analysis**: Rank SKUs (Stock Keeping Units) by revenue contribution. A-items (top 20% of SKUs,
        80% of revenue) need tight management; C-items can carry lighter stock.
     4. **Faster supplier lead times**: Shorter lead times allow lower safety stock.
     5. **Liquidate dead inventory**: Run promotions on slow movers before they become
@@ -4063,7 +4068,7 @@
       text: "Your revenue goal for this channel. The calculator divides target by RPL to show how many leads you'd need to hit the target, assuming current conversion rates hold."
   body: |
     Revenue per lead (RPL) is the most actionable metric for comparing marketing
-    channel profitability. Unlike CTR or CPL alone, RPL accounts for lead quality —
+    channel profitability. Unlike CTR (click-through rate) or CPL alone, RPL accounts for lead quality —
     a channel that generates cheap leads may still have terrible RPL if those leads
     don't convert or buy small.
 
@@ -4160,7 +4165,7 @@
 
     ## How to reduce concentration
 
-    1. **Diversify the pipeline**: Add ICP-qualified leads from segments different
+    1. **Diversify the pipeline**: Add [ICP](/glossary/icp/)-qualified leads from segments different
        from your largest customers.
     2. **Grow small customers faster**: Focus expansion revenue on mid-tier accounts.
     3. **Limit contract size cap**: Consider capping individual contracts at 15–20%
@@ -4213,9 +4218,9 @@
     **Top-down**: Industry reports estimate total market size, and you identify your
     percentage. Fast, but imprecise. "The CRM market is $50B, and we target 1%."
 
-    **Bottom-up**: Count actual customers and multiply by ACV. More credible.
+    **Bottom-up**: Count actual customers and multiply by [ACV](/glossary/acv/). More credible.
     "There are 500,000 mid-market companies in the US, 30% have this problem, we can
-    reach 15% of those with our current GTM, at $15k ACV = $337M SAM."
+    reach 15% of those with our current GTM (go-to-market), at $15k ACV = $337M SAM."
 
     Investors prefer bottom-up because it shows you understand the actual customer pool.
 
@@ -4238,7 +4243,7 @@
     specific product category.
 
     **Confusing TAM and SAM**: "Our SAM is the entire US market." SAM should
-    filter by who you can actually sell to today — your ICP, not the entire country.
+    filter by who you can actually sell to today — your [ICP](/glossary/icp/), not the entire country.
 
     **Unrealistic SOM**: "We'll capture 10% of the market in year 3." Without
     showing the GTM math (headcount, channels, CAC), this is unbelievable.
@@ -4437,7 +4442,7 @@
 
     **4. Bonus and equity**
     - Target bonus for knowledge workers: 10–20% of base
-    - Equity grants (RSUs): $5,000–$50,000/year depending on level
+    - Equity grants (RSUs (Restricted Stock Units)): $5,000–$50,000/year depending on level
 
     ## The 1.25x to 1.4x Rule of Thumb
 
@@ -4516,7 +4521,7 @@
 
     ## The Rule of 40 Connection
 
-    High P/S multiples are justified when the Rule of 40 score is strong. A company
+    High P/S multiples are justified when the [Rule of 40](/glossary/rule-of-40/) score is strong. A company
     growing 50% with −5% FCF margin (Rule of 40 = 45%) trades at higher multiples
     than one growing 20% with −15% margin (Rule of 40 = 5%).
 
@@ -4586,7 +4591,7 @@
 
     For a constant monthly churn rate:
 
-    **LTV** = Monthly Revenue per Customer ÷ Monthly Churn Rate
+    **[LTV](/glossary/ltv/)** = Monthly Revenue per Customer ÷ Monthly Churn Rate
 
     At $99/month and 2% monthly churn: LTV = $99 ÷ 0.02 = **$4,950**
 
@@ -4860,7 +4865,7 @@
     The sustainable growth rate is the maximum rate at which a company can grow
     without external equity financing:
 
-    **Sustainable Growth Rate = ROE × (1 − Dividend Payout Ratio)**
+    **Sustainable Growth Rate = ROE × (1 − Dividend Payout Ratio (the % of earnings paid out to shareholders instead of retained))**
 
     At 20% ROE with 0% payout (all earnings retained): 20% sustainable growth.
     At 20% ROE with 50% payout: 10% sustainable growth.
@@ -4915,6 +4920,11 @@
     - **Rᵈ** = Pre-tax cost of debt (%)
     - **Tᶜ** = Corporate tax rate (%)
 
+    Cost of equity is usually estimated with CAPM: risk-free rate + beta × equity risk
+    premium. Beta measures how volatile a stock is relative to the overall market — a
+    beta of 1.5 means the stock tends to move 50% more than the market in either
+    direction, which investors demand a higher return for holding.
+
     ## Why does the tax rate matter?
 
     Debt interest is tax-deductible, which creates a "tax shield." The after-tax cost of
@@ -4957,7 +4967,7 @@
       text: "See cost per departure and annualised cost across your workforce. Compare against the SHRM benchmark of 6–9 months salary per exit."
   body: |
     Employee turnover is one of the most underestimated costs in business. Studies by
-    SHRM and Gallup consistently put the true replacement cost at **6–9 months of annual
+    SHRM (the Society for Human Resource Management) and Gallup consistently put the true replacement cost at **6–9 months of annual
     salary** for typical roles, rising to **200%** for senior or highly specialised positions.
 
     ## Turnover cost components
@@ -5110,7 +5120,7 @@
     |----------|-------|--------|
     | Portfolio return | Asset return % | Asset value $ |
     | Blended cost of capital | Cost % | Capital amount $ |
-    | Weighted NPS | NPS per cohort | Cohort size |
+    | Weighted NPS (Net Promoter Score) | NPS per cohort | Cohort size |
     | COGS by product | Unit cost | Units sold |
     | Market share-weighted price | Price $ | Market share % |
 
@@ -5167,7 +5177,7 @@
 
     Investors use gross margin to assess scalability. A SaaS business with 80% gross margin
     can fund sales and marketing from gross profit; a 50% gross margin business struggles
-    to reach Rule of 40 territory without tight cost discipline.
+    to reach [Rule of 40](/glossary/rule-of-40/) territory without tight cost discipline.
 
     ## Gross margin vs. net margin
 
@@ -5272,7 +5282,7 @@
 
     ## Burn multiples by stage
 
-    | Stage | Healthy burn multiple (net burn / net new ARR) |
+    | Stage | Healthy burn multiple (net burn / net new [ARR](/glossary/arr/)) |
     |-------|----------------------------------------------|
     | Pre-revenue | N/A |
     | $0–1M ARR | 2–4× |
@@ -5309,7 +5319,7 @@
 
     Where FCF_t = free cash flow in year t, r = discount rate (WACC), n = forecast years.
 
-    **Terminal Value (Gordon Growth) = FCF_n × (1 + g) / (r − g)**
+    **Terminal Value (Gordon Growth model (which assumes cash flows grow at a constant rate forever)) = FCF_n × (1 + g) / (r − g)**
 
     Where g = terminal growth rate (must be < r).
 
@@ -5392,7 +5402,7 @@
 
     Operating leverage amplifies operating income changes via fixed costs.
     Financial leverage amplifies net income changes via debt interest.
-    Combined (total leverage) = DOL × DFL.
+    Combined (total leverage) = DOL × DFL (Degree of Financial Leverage).
 
 - slug: rule-of-72-calculator
   title: "Rule of 72 Calculator"
@@ -5449,7 +5459,7 @@
     ## Exponential growth applications
 
     The Rule of 72 works for any exponential process:
-    - SaaS ARR growth rate → years to double revenue
+    - SaaS [ARR](/glossary/arr/) growth rate → years to double revenue
     - Population growth → doubling time
     - Debt at given interest rate → years to double what you owe
 
@@ -5491,7 +5501,7 @@
     | < 6 months | Exceptional — very capital-efficient |
     | 6–12 months | Strong — standard VC benchmark |
     | 12–18 months | Acceptable for enterprise SaaS |
-    | 18–24 months | Requires high LTV to justify |
+    | 18–24 months | Requires high [LTV](/glossary/ltv/) to justify |
     | > 24 months | High risk — needs high retention |
 
     ## CAC Payback vs LTV:CAC
@@ -5884,10 +5894,10 @@
 
     | Role | Typical Commission Rate | OTE Split |
     |------|------------------------|-----------|
-    | Account Executive | 8–12% of ARR | 50/50 base/variable |
-    | SDR / BDR | 4–8% on pipeline | 70/30 base/variable |
+    | Account Executive | 8–12% of [ARR](/glossary/arr/) | 50/50 base/variable |
+    | SDR/BDR (Sales/Business Development Representative) | 4–8% on pipeline | 70/30 base/variable |
     | Sales Manager | 2–4% on team | 60/40 base/variable |
-    | CSM / Account Manager | 5–10% on expansion | 70/30 base/variable |
+    | CSM (Customer Success Manager) / Account Manager | 5–10% on expansion | 70/30 base/variable |
 
     ### Accelerators
 
@@ -6043,6 +6053,13 @@
     $$\text{Churn Rate} = 100\% - \text{Retention Rate}$$
 
     A 90% monthly retention rate = 10% monthly churn rate. They are inverses.
+
+    ### Retention Rate and LTV
+
+    Add your average revenue per customer (ARPU) and this calculator also shows implied
+    customer [LTV](/glossary/ltv/) — the total revenue a customer generates before churning,
+    based on your current retention rate. Small improvements in retention compound into large
+    LTV gains, since customers stick around longer on average.
 
     ### Benchmarks
 
@@ -6210,7 +6227,7 @@
     | **Revenue** | Top-line sales |
     | **Gross Profit** | Revenue − COGS |
     | **Operating Income (EBIT)** | Gross Profit − Operating Expenses |
-    | **EBT** | Operating Income − Interest |
+    | **EBT (Earnings Before Tax)** | Operating Income − Interest |
     | **Net Profit** | EBT − Taxes |
 
     ### Net Profit Margin Benchmarks
@@ -6230,7 +6247,7 @@
     - **Operating margin** shows business model efficiency — can you run the company profitably?
     - **Net margin** shows final owner returns after financing and taxes.
 
-    All three margins compressing together signals a systemic problem. A declining net margin with stable gross margin often points to rising SG&A or interest costs.
+    All three margins compressing together signals a systemic problem. A declining net margin with stable gross margin often points to rising SG&A (Selling, General & Administrative expenses) or interest costs.
 
     ### Intent Pages
 
@@ -6627,7 +6644,7 @@
 
     **For sellers:**
     - Price bundles and multi-packs appropriately
-    - Calculate the unit economics of different SKUs
+    - Calculate the unit economics of different SKUs (Stock Keeping Units)
     - Ensure bulk pricing still maintains target margins
 
     ### Bulk Discounts and Carry Costs
@@ -6676,7 +6693,7 @@
     | Metric | Includes Expansion | Can Exceed 100% |
     |--------|--------------------|----------------|
     | **GRR** | No | No |
-    | **NRR** | Yes | Yes |
+    | **[NRR](/glossary/nrr/)** | Yes | Yes |
 
     GRR tells you about the health of your base retention. NRR tells you about total revenue momentum. A company with GRR of 85% but NRR of 110% is masking a significant churn problem with upsells.
 

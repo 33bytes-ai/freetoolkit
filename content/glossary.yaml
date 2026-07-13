@@ -1,0 +1,254 @@
+# Shared glossary/explainer pages at /glossary/<slug>/.
+# Each entry defines a term that recurs, undefined, across multiple
+# calculator tools (found via a full-site content audit) — instead of
+# repeating the same explanation in every tool body, tools link here.
+#
+# related_tools: slugs of calculators that use this term (for the
+# "Used in these calculators" list on the glossary page, and to help
+# readers find the right tool from the definition).
+
+- slug: arr
+  term: "ARR (Annual Recurring Revenue)"
+  short: "The yearly value of a subscription business's recurring revenue, normalized across billing periods."
+  related_tools: [mrr-calculator, arr-calculator, arr-mrr-converter, arr-growth-rate-calculator, cash-burn-by-department, commission-calculator, rule-of-72-calculator]
+  body: |
+    Annual Recurring Revenue (ARR) is the yearly value of a subscription business's
+    recurring revenue — the number you'd expect to collect over the next 12 months if no
+    customers churned and no new ones signed up. It's the standard way SaaS and
+    subscription businesses talk about scale, because it normalizes revenue across
+    different billing periods (monthly, annual, multi-year) into one comparable figure.
+
+    ## The formula
+
+    $$\text{ARR} = \text{MRR} \times 12$$
+
+    If a company collects $50,000 in Monthly Recurring Revenue (MRR), its ARR is $600,000.
+    For customers on annual contracts, ARR is simply the contract value itself — no need
+    to divide and multiply by 12.
+
+    ## Why ARR matters more than one-time revenue
+
+    Investors, especially at seed through Series B, look at ARR growth rate as the primary
+    health signal for a subscription business — because recurring revenue is predictable
+    revenue. A company with $1M in ARR growing 100% year-over-year is a fundamentally
+    different (and usually more valuable) business than one with $1M in one-time sales,
+    even if both collected the same cash last year.
+
+    ## ARR vs. revenue on a P&L
+
+    ARR is not the same as revenue recognized on an income statement under standard
+    accounting rules (which spreads a $12,000 annual contract across 12 months of
+    recognized revenue). ARR is a forward-looking operating metric, not a GAAP figure —
+    it's how the business talks to itself and to investors about run-rate scale.
+
+- slug: ltv
+  term: "LTV (Customer Lifetime Value)"
+  short: "The total revenue (or profit) a business expects to earn from a customer over the entire relationship."
+  related_tools: [customer-ltv-calculator, ltv-cac-calculator, cac-payback-calculator, customer-retention-rate-calculator, churn-cohort-calculator]
+  body: |
+    Customer Lifetime Value (LTV, sometimes CLV) is the total revenue — or, in a more
+    precise version, total gross profit — a business expects to earn from a single
+    customer over the entire time they stay a customer.
+
+    ## The simple formula
+
+    $$\text{LTV} = \frac{\text{Average Revenue Per User}}{\text{Monthly Churn Rate}}$$
+
+    A customer paying $100/month with a 5% monthly churn rate has an expected lifetime of
+    20 months (1 ÷ 5%), so their LTV is $2,000. The lower the churn rate, the longer
+    customers stick around and the higher their lifetime value.
+
+    ## Why LTV matters
+
+    LTV only means something in relation to what it costs to acquire that customer
+    (Customer Acquisition Cost, or CAC). A healthy subscription business typically targets
+    an LTV:CAC ratio of 3:1 or higher — meaning each customer is worth at least three times
+    what it cost to acquire them, leaving enough margin to cover overhead and still profit.
+
+    ## Revenue LTV vs. profit LTV
+
+    The formula above gives *revenue* LTV. A more accurate version multiplies by gross
+    margin to get *profit* LTV — the actual money left after delivering the product or
+    service, which is the number that should really be compared against CAC.
+
+- slug: acv
+  term: "ACV (Annual Contract Value)"
+  short: "The average yearly value of a single customer contract — how sales and SaaS businesses size individual deals."
+  related_tools: [arpu-calculator, sales-velocity-calculator, cac-by-channel-calculator, burn-multiple-calculator, tam-sam-som-calculator]
+  body: |
+    Annual Contract Value (ACV) is the average yearly value of a single customer
+    contract. It's the metric sales teams and SaaS businesses use to size an individual
+    deal, as opposed to ARR, which sums up *all* customers' recurring revenue across the
+    whole business.
+
+    ## The formula
+
+    $$\text{ACV} = \frac{\text{Total Contract Value}}{\text{Contract Length in Years}}$$
+
+    A 3-year contract worth $90,000 total has an ACV of $30,000 — the amount attributable
+    to a single year of the deal, regardless of how the contract is actually billed.
+
+    ## Why ACV matters
+
+    ACV determines a business's go-to-market motion. Low ACV (under ~$5,000/year) usually
+    means a self-serve or product-led sales motion, since the deal size can't support an
+    expensive sales process. High ACV (tens of thousands of dollars or more) can support a
+    dedicated sales team, longer sales cycles, and custom onboarding, because each closed
+    deal is worth the extra cost.
+
+- slug: cogs
+  term: "COGS (Cost of Goods Sold)"
+  short: "The direct costs of producing whatever a business sells — materials, direct labor, and production overhead."
+  related_tools: [ebitda-calculator, inventory-turnover-calculator, contribution-margin-calculator, discount-calculator, cash-conversion-cycle-calculator, gross-margin-calculator]
+  body: |
+    Cost of Goods Sold (COGS) is the direct cost of producing whatever a business sells —
+    raw materials, direct labor, and manufacturing or production overhead. It does **not**
+    include indirect costs like marketing, sales salaries, rent, or general administration
+    — those are operating expenses (OpEx), tracked separately.
+
+    ## The formula
+
+    $$\text{COGS} = \text{Beginning Inventory} + \text{Purchases} - \text{Ending Inventory}$$
+
+    For a service or software business without physical inventory, COGS is usually
+    approximated as the direct cost of delivering the service — e.g. hosting costs and
+    support staff for a SaaS product, or materials and direct labor for a freelancer's
+    project.
+
+    ## Why COGS matters
+
+    COGS is the input to gross margin — revenue minus COGS, divided by revenue — which is
+    the single most-watched profitability metric for any product or service business. A
+    software company with 80%+ gross margin (low COGS relative to revenue) can reinvest
+    heavily in growth; a business with 20% gross margin has much less room to spend on
+    anything beyond production.
+
+- slug: rule-of-40
+  term: "Rule of 40"
+  short: "A SaaS health check: growth rate + profit margin should add up to 40% or more."
+  related_tools: [rule-of-40-calculator, revenue-growth-rate-calculator, burn-multiple-calculator, price-to-sales-calculator, gross-profit-margin-calculator]
+  body: |
+    The Rule of 40 is a quick SaaS health check popularized by growth-equity investors: a
+    healthy subscription business's revenue growth rate and profit margin, added together,
+    should equal 40% or more.
+
+    ## The formula
+
+    $$\text{Rule of 40} = \text{Revenue Growth Rate \%} + \text{Profit Margin \%}$$
+
+    A company growing 60% year-over-year with a -20% margin (still burning cash to fund
+    growth) scores 40 — healthy. A company growing 10% with a 10% margin scores only 20 —
+    a warning sign, since it's neither growing fast nor particularly profitable.
+
+    ## Why it works as a single number
+
+    Early-stage SaaS companies are expected to burn cash while they grow fast; mature ones
+    are expected to be profitable even if growth has slowed. The Rule of 40 captures both
+    situations in one number, so investors can compare a fast-growing, unprofitable
+    startup against a slower-growing, profitable one on the same scale — instead of
+    penalizing every company for not being both.
+
+- slug: icp
+  term: "ICP (Ideal Customer Profile)"
+  short: "A description of the type of company or customer that gets the most value from a product — and is most likely to buy, renew, and expand."
+  related_tools: [tam-sam-som-calculator, customer-concentration-calculator]
+  body: |
+    Ideal Customer Profile (ICP) is a description of the type of company or customer that
+    gets the most value from a product — and is therefore most likely to buy, stay a
+    customer, and expand their spend over time. It's usually defined by firmographics
+    (company size, industry, revenue) and behavioral signals (existing tools they use, the
+    problem they're trying to solve).
+
+    ## Why ICP matters
+
+    A tightly-defined ICP focuses sales and marketing spend on the accounts most likely to
+    convert and succeed, instead of chasing every lead that shows interest. Deals that fall
+    outside a company's ICP tend to churn faster, need more support, and expand less —
+    even if they were easy to close in the first place.
+
+    ## ICP vs. TAM
+
+    ICP defines *who* to target; Total Addressable Market (TAM) estimates *how big* that
+    opportunity is. A narrow, well-fitting ICP inside a large market is usually a better
+    growth engine than a broad ICP that includes customers who churn quickly.
+
+- slug: ebitda
+  term: "EBITDA"
+  short: "Earnings Before Interest, Taxes, Depreciation, and Amortization — operating profitability with financing and accounting choices stripped out."
+  related_tools: [ebitda-calculator, ebitda-multiple-calculator, rule-of-40-calculator, enterprise-value-calculator]
+  body: |
+    EBITDA stands for Earnings Before Interest, Taxes, Depreciation, and Amortization. It
+    measures a company's core operating profitability — what it earns from actually
+    running the business — with the effects of financing decisions (interest), tax
+    jurisdiction, and non-cash accounting choices (depreciation and amortization) stripped
+    out.
+
+    ## The formula
+
+    $$\text{EBITDA} = \text{Net Income} + \text{Interest} + \text{Taxes} + \text{Depreciation} + \text{Amortization}$$
+
+    ## Why investors and buyers use it
+
+    Because EBITDA excludes financing and accounting choices that vary company to company
+    (one business might lease its equipment, another might buy and depreciate it — EBITDA
+    makes them comparable), it's the standard basis for company valuation multiples in
+    private equity and M&A. "This company trades at 8× EBITDA" is a common shorthand for
+    what a business is worth relative to its core operating profit.
+
+    ## EBITDA is not cash flow
+
+    A common mistake is treating EBITDA as if it were cash in the bank. It ignores capital
+    expenditure, changes in working capital, and debt payments — a company can have strong
+    EBITDA and still run out of cash if it's spending heavily on equipment or growth.
+
+- slug: cap-table
+  term: "Cap Table (Capitalization Table)"
+  short: "A ledger of who owns what percentage of a company — every shareholder, option holder, and investor, and how new funding rounds dilute them."
+  related_tools: [equity-dilution-calculator]
+  body: |
+    A capitalization table (cap table) is a ledger of who owns what percentage of a
+    company — founders, employees with equity grants, and every investor, across every
+    funding round. It tracks share counts, share classes (common vs. preferred), and
+    ownership percentages, and updates every time new shares are issued.
+
+    ## Why it matters
+
+    Every time a company raises money, it issues new shares to investors — which dilutes
+    (reduces the ownership percentage of) everyone who already held shares, even though
+    the number of shares they personally hold doesn't change. A founder who owns 40%
+    before a round that issues new shares equal to 20% of the company will own roughly
+    32% afterward (40% × (1 − 20%)), not 20% less in absolute terms.
+
+    ## Common cap table terms
+
+    - **Fully diluted shares**: total shares as if every option, warrant, and convertible
+      note were exercised or converted — used for calculating true ownership percentages.
+    - **Option pool**: shares set aside for future employee equity grants, usually created
+      or topped up right before a funding round (which dilutes existing holders to fund it).
+    - **Liquidation preference**: a term that determines who gets paid first, and how much,
+      if the company is sold — typically protects preferred (investor) shareholders.
+
+- slug: nrr
+  term: "NRR (Net Revenue Retention)"
+  short: "The percentage of recurring revenue kept from existing customers over a year, including upgrades and downgrades — can exceed 100%."
+  related_tools: [gross-revenue-retention-calculator, customer-retention-rate-calculator, nrr-calculator]
+  body: |
+    Net Revenue Retention (NRR) measures the percentage of recurring revenue a business
+    keeps from its existing customer base over a period (usually a year) — accounting for
+    churn, downgrades, *and* upgrades or expansion revenue from the same customers.
+
+    ## The formula
+
+    $$\text{NRR} = \frac{\text{Starting MRR} + \text{Expansion} - \text{Contraction} - \text{Churn}}{\text{Starting MRR}} \times 100$$
+
+    Unlike Gross Revenue Retention (GRR), which caps out at 100% because it only measures
+    what's lost, NRR can exceed 100% if expansion revenue (upsells, seat growth, plan
+    upgrades) from existing customers outpaces churn and downgrades.
+
+    ## Why NRR above 100% is the SaaS gold standard
+
+    A company with 110%+ NRR grows its revenue from existing customers alone, even before
+    counting any new customer acquisition — which means growth compounds on top of a base
+    that's already expanding, not just holding steady. Best-in-class SaaS companies target
+    120%+ NRR; anything below 100% means the existing customer base is shrinking in
+    revenue terms even if logo churn looks manageable.

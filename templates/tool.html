@@ -131,12 +131,11 @@
     {% if tool.body %}<p style="margin-top:1.5rem"><a href="#calculator" class="jump-to-calc">↑ Back to calculator</a></p>{% endif %}
   </article>
 
-  {% set related = tools_by_category.get(tool.category, []) | rejectattr("slug", "eq", tool.slug) | list %}
-  {% if related %}
+  {% if related_tools %}
   <section class="related-tools">
     <h2>Related tools</h2>
     <ul>
-      {% for other in related[:4] %}
+      {% for other in related_tools %}
       <li><a href="/tools/{{ other.slug }}/">{{ other.title }}</a></li>
       {% endfor %}
     </ul>

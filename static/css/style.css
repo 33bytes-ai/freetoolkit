@@ -770,6 +770,35 @@ button:hover {
   background: var(--surface);
   font-weight: 600;
 }
+.glossary-index-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.glossary-index-list li {
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-muted);
+}
+.glossary-index-list a {
+  font-weight: 600;
+  color: var(--text);
+}
+.ftk-formula {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  text-align: center;
+  background: color-mix(in srgb, var(--accent) 5%, var(--surface));
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  margin: 1.25rem 0;
+  overflow-x: auto;
+  white-space: nowrap;
+}
 .tool-body table tr:nth-child(even) td {
   background: color-mix(in srgb, var(--surface) 50%, var(--bg));
 }

@@ -9,6 +9,7 @@ from __future__ import annotations
 import datetime
 import gzip
 import json
+import math
 import os
 import re
 import secrets
@@ -21,13 +22,6 @@ import yaml
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 ROOT = Path(__file__).resolve().parents[2]
-
-CATEGORY_AFFINITY: dict[str, list[str]] = {
-    "Payments": ["SaaS Metrics", "Business Math", "Freelance"],
-    "SaaS Metrics": ["Payments", "Business Math", "Freelance"],
-    "Freelance": ["Payments", "Business Math", "SaaS Metrics"],
-    "Business Math": ["SaaS Metrics", "Freelance", "Payments"],
-}
 
 # One simple line-icon (24x24, stroke=currentColor, matches the site's
 # existing minimal icon style) and a one-line tagline per category — used
@@ -85,6 +79,41 @@ MD_EXTENSIONS = ["fenced_code", "tables"]
 FAQ_HEADER_RE = re.compile(r"^##\s*frequently asked questions\s*$", re.IGNORECASE | re.MULTILINE)
 NEXT_HEADER_RE = re.compile(r"^##\s", re.MULTILINE)
 BOLD_LINE_RE = re.compile(r"^\*\*(.+?)\*\*\s*$")
+MATH_BLOCK_RE = re.compile(r"\$\$(.+?)\$\$", re.DOTALL)
+MATH_FRAC_RE = re.compile(r"\\frac\{([^{}]*)\}\{([^{}]*)\}")
+MATH_TEXT_RE = re.compile(r"\\text\{([^{}]*)\}")
+MATH_EXPONENT_RE = re.compile(r"\^\{([^{}]*)\}")
+MATH_DOUBLE_PAREN_RE = re.compile(r"\(\(([^()]*)\)\)")
+
+
+def _render_math_expression(expr: str) -> str:
+    """Convert a simple LaTeX math expression (\\text, \\frac, \\times, ^{},
+    \\left/\\right — the small subset the content team writes formulas in)
+    into plain, readable text. There's no MathJax/KaTeX on this site, so raw
+    LaTeX source was rendering verbatim on every tool page with a formula."""
+    expr = expr.replace(r"\%", "%")
+    expr = MATH_TEXT_RE.sub(r"\1", expr)
+
+    def frac_repl(m: re.Match) -> str:
+        num, den = m.group(1).strip(), m.group(2).strip()
+        wrap = lambda s: f"({s})" if re.search(r"[+\-×]", s) else s
+        return f"{wrap(num)} / {wrap(den)}"
+
+    expr = MATH_FRAC_RE.sub(frac_repl, expr)
+    expr = expr.replace(r"\left(", "(").replace(r"\right)", ")")
+    expr = MATH_EXPONENT_RE.sub(r"^\1", expr)
+    expr = expr.replace(r"\times", "×")
+    expr = MATH_DOUBLE_PAREN_RE.sub(r"(\1)", expr)
+    return re.sub(r"\s+", " ", expr).strip()
+
+
+def render_math_blocks(body: str) -> str:
+    """Replace every $$...$$ block in a markdown body with a styled,
+    plain-text rendering of the formula (see _render_math_expression)."""
+    def block_repl(m: re.Match) -> str:
+        return f'\n\n<div class="ftk-formula">{_render_math_expression(m.group(1))}</div>\n\n'
+
+    return MATH_BLOCK_RE.sub(block_repl, body)
 
 
 def extract_faqs_from_body(body: str) -> list[dict]:
@@ -144,7 +173,7 @@ def load_config() -> dict:
 def load_tools() -> list[dict]:
     tools = load_yaml(CONTENT_DIR / "tools.yaml")
     for tool in tools:
-        tool["body_html"] = markdown.markdown(tool["body"], extensions=MD_EXTENSIONS)
+        tool["body_html"] = markdown.markdown(render_math_blocks(tool["body"]), extensions=MD_EXTENSIONS)
         tool["faqs"] = extract_faqs_from_body(tool["body"])
     return tools
 
@@ -156,8 +185,15 @@ def load_affiliates() -> dict[str, list[dict]]:
 def load_intent_pages() -> list[dict]:
     pages = load_yaml(CONTENT_DIR / "intent_pages.yaml") or []
     for page in pages:
-        page["body_html"] = markdown.markdown(page["body"], extensions=MD_EXTENSIONS)
+        page["body_html"] = markdown.markdown(render_math_blocks(page["body"]), extensions=MD_EXTENSIONS)
     return pages
+
+
+def load_glossary() -> list[dict]:
+    entries = load_yaml(CONTENT_DIR / "glossary.yaml") or []
+    for entry in entries:
+        entry["body_html"] = markdown.markdown(render_math_blocks(entry["body"]), extensions=MD_EXTENSIONS)
+    return entries
 
 
 def stripe_fee_breakdown(amount: float, rate_pct: float, fixed: float) -> dict:
@@ -217,13 +253,80 @@ def load_pages(config: dict, tool_count: int) -> list[dict]:
     ]
 
 
-def cross_category_tools(tool: dict, tools_by_category: dict[str, list[dict]]) -> list[dict]:
-    picks = []
-    for cat in CATEGORY_AFFINITY.get(tool["category"], []):
-        for other in tools_by_category.get(cat, []):
-            picks.append(other)
-            break
-    return picks[:3]
+_RELATED_STOPWORDS = {
+    "calculator", "calc", "free", "business", "saas", "for", "and", "the", "a", "of",
+    "your", "how", "to", "what", "is", "with", "vs", "or", "in", "on", "per", "rate",
+    "estimate", "tool", "online", "converter", "comparison", "impact", "growth",
+    "revenue", "cost", "value", "based", "worth", "you", "does", "much",
+    "calculate", "formula", "from", "price", "sales", "net",
+}
+
+
+def _keyword_tokens(tool: dict) -> set[str]:
+    tokens: set[str] = set()
+    for kw in tool.get("keywords", []):
+        for word in re.findall(r"[a-z0-9]+", kw.lower()):
+            if word not in _RELATED_STOPWORDS and len(word) > 2:
+                tokens.add(word)
+    return tokens
+
+
+def _build_keyword_index(tools: list[dict]) -> tuple[dict[str, set[str]], dict[str, float]]:
+    """Tokenize every tool's keywords once, then compute an IDF weight per
+    token so common connector words (shared by many tools, e.g. "margin")
+    count for less than genuinely distinctive ones (e.g. "vat", "mrr")."""
+    tool_tokens = {t["slug"]: _keyword_tokens(t) for t in tools}
+    doc_freq: dict[str, int] = {}
+    for tokens in tool_tokens.values():
+        for word in tokens:
+            doc_freq[word] = doc_freq.get(word, 0) + 1
+    n = len(tools)
+    idf = {word: math.log(n / freq) for word, freq in doc_freq.items()}
+    return tool_tokens, idf
+
+
+def related_and_cross_tools(
+    tool: dict,
+    tools: list[dict],
+    tools_by_category: dict[str, list[dict]],
+    tool_tokens: dict[str, set[str]],
+    idf: dict[str, float],
+) -> tuple[list[dict], list[dict]]:
+    """Rank other tools by IDF-weighted shared-keyword overlap with this
+    tool's authored `keywords:` list, then split into on-topic "related
+    tools" (top picks) and secondary "you might also need" picks. Falls
+    back to same-category tools if keyword overlap doesn't produce enough.
+    """
+    base_tokens = tool_tokens[tool["slug"]]
+    scored = []
+    for other in tools:
+        if other["slug"] == tool["slug"]:
+            continue
+        overlap = base_tokens & tool_tokens[other["slug"]]
+        if overlap:
+            score = sum(idf[word] for word in overlap)
+            scored.append((score, other))
+    scored.sort(key=lambda pair: -pair[0])
+    ranked = [other for _, other in scored]
+
+    related = ranked[:4]
+    cross = ranked[4:7]
+
+    if len(related) < 4 or len(cross) < 3:
+        used_slugs = {tool["slug"]} | {t["slug"] for t in related} | {t["slug"] for t in cross}
+        fallback = [t for t in tools_by_category.get(tool["category"], []) if t["slug"] not in used_slugs]
+        fallback += [t for t in tools if t["slug"] not in used_slugs and t["slug"] not in {f["slug"] for f in fallback}]
+        for other in fallback:
+            if len(related) < 4:
+                related.append(other)
+                used_slugs.add(other["slug"])
+            elif len(cross) < 3:
+                cross.append(other)
+                used_slugs.add(other["slug"])
+            else:
+                break
+
+    return related, cross
 
 
 def build_env() -> Environment:
@@ -377,13 +480,20 @@ def write_sitemap(
     pages: list[dict],
     intent_pages: list[dict],
     tools_by_category: dict[str, list[dict]] | None = None,
+    glossary: list[dict] | None = None,
 ) -> None:
     base = config["site"]["base_url"].rstrip("/")
     today = datetime.date.today().isoformat()
     tool_lastmod = {t["slug"]: t.get("updated") or t.get("date_added") or today for t in tools}
     tools_by_category = tools_by_category or {}
+    glossary = glossary or []
     entries = (
-        [("/", "1.0", "weekly", today), ("/tools/", "0.9", "weekly", today), ("/changelog/", "0.5", "monthly", today)]
+        [
+            ("/", "1.0", "weekly", today),
+            ("/tools/", "0.9", "weekly", today),
+            ("/changelog/", "0.5", "monthly", today),
+            ("/glossary/", "0.5", "monthly", today),
+        ]
         + [
             (f"/categories/{category_slug(c)}/", "0.8", "weekly", today)
             for c in config["categories"]
@@ -403,6 +513,7 @@ def write_sitemap(
             )
             for ip in intent_pages
         ]
+        + [(f"/glossary/{g['slug']}/", "0.6", "monthly", today) for g in glossary]
     )
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
@@ -659,6 +770,7 @@ def build() -> Path:
     pages = load_pages(config, len(tools))
     affiliates = load_affiliates()
     intent_pages = load_intent_pages() + load_countries()
+    glossary = load_glossary()
     env = build_env()
 
     if DIST_DIR.exists():
@@ -754,7 +866,9 @@ def build() -> Path:
             **common,
         )
 
+    tool_tokens, tool_idf = _build_keyword_index(tools)
     for tool in tools:
+        related, cross = related_and_cross_tools(tool, tools, tools_by_category, tool_tokens, tool_idf)
         render(
             env,
             "tool.html",
@@ -766,7 +880,8 @@ def build() -> Path:
             affiliate_links=affiliates.get(tool["slug"], []),
             tool_faqs=tool["faqs"],
             intent_pages=[ip for ip in intent_pages if ip["parent_tool"] == tool["slug"]],
-            cross_tools=cross_category_tools(tool, tools_by_category),
+            related_tools=related,
+            cross_tools=cross,
             **common,
         )
 
@@ -779,6 +894,31 @@ def build() -> Path:
             title=page["title"],
             description=page["description"],
             page=page,
+            **common,
+        )
+
+    render(
+        env,
+        "glossary_index.html",
+        DIST_DIR / "glossary" / "index.html",
+        path="/glossary/",
+        title="Glossary — FounderCalc",
+        description="Plain-language definitions for the finance and SaaS terms used across FounderCalc's calculators.",
+        glossary=glossary,
+        **common,
+    )
+
+    for entry in glossary:
+        related = [tools_by_slug[slug] for slug in entry.get("related_tools", []) if slug in tools_by_slug]
+        render(
+            env,
+            "glossary.html",
+            DIST_DIR / "glossary" / entry["slug"] / "index.html",
+            path=f"/glossary/{entry['slug']}/",
+            title=f"{entry['term']} — Glossary — FounderCalc",
+            description=entry["short"],
+            entry=entry,
+            related=related,
             **common,
         )
 
@@ -844,7 +984,7 @@ def build() -> Path:
 
     shutil.copytree(STATIC_DIR, DIST_DIR / "static", ignore=shutil.ignore_patterns("fonts"))
 
-    write_sitemap(config, tools, pages, intent_pages, tools_by_category)
+    write_sitemap(config, tools, pages, intent_pages, tools_by_category, glossary)
     write_sitemap_tools(config, tools)
     write_sitemap_pages(config, pages)
     write_sitemap_intent(config, intent_pages, tools)
