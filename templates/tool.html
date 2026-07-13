@@ -172,6 +172,7 @@
       {% for aff in affiliate_links %}
       <div class="affiliate-card">
         <div class="affiliate-card-header">
+          <img class="affiliate-favicon" src="https://www.google.com/s2/favicons?domain={{ aff.domain }}&amp;sz=32" width="16" height="16" alt="" loading="lazy">
           <strong>{{ aff.name }}</strong>
           <span class="affiliate-badge">{{ aff.category }}</span>
           {% if aff.affiliate %}<span class="affiliate-disclosure">Affiliate link</span>{% endif %}

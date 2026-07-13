@@ -18,8 +18,13 @@
     <a href="/glossary/">Glossary</a> <span aria-hidden="true">/</span>
     <span aria-current="page">{{ entry.term }}</span>
   </nav>
-  <h1>{{ entry.term }}</h1>
-  <p class="tool-short">{{ entry.short }}</p>
+  <div class="category-hero">
+    <span class="category-hero-icon" style="color:var(--accent)" aria-hidden="true">{{ glossary_icons[entry.slug] | safe }}</span>
+    <div>
+      <h1>{{ entry.term }}</h1>
+      <p class="tool-short">{{ entry.short }}</p>
+    </div>
+  </div>
   <article class="tool-body">
     {{ entry.body_html | safe }}
   </article>

@@ -146,6 +146,9 @@ window.FTK = (function () {
       });
     })();
 
+    document.addEventListener("DOMContentLoaded", initNumberFormatting);
+    document.addEventListener("DOMContentLoaded", initResultTweening);
+
     document.addEventListener("DOMContentLoaded", function () {
       // Mobile nav
       var navToggle  = document.getElementById("mobile-nav-toggle");
@@ -252,6 +255,164 @@ window.FTK = (function () {
     });
   }
 
+  // Comma-formats large dollar-amount inputs for readability (e.g. "2000000"
+  // -> "2,000,000" as you type) without touching any calculator's own JS.
+  // Redefines the input's `value` property so every existing
+  // `parseFloat(el.value)` call site everywhere (typing, Ctrl+Enter's
+  // synthetic "input" dispatch, hashGet/restoreHash setting el.value
+  // directly) transparently reads/writes the clean, comma-free number --
+  // only the on-screen text ever has commas in it.
+  function formatWithCommas(raw) {
+    if (raw === "" || raw === "-") return raw;
+    var neg = raw.charAt(0) === "-" ? "-" : "";
+    var body = neg ? raw.slice(1) : raw;
+    var parts = body.split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return neg + parts.join(".");
+  }
+
+  function enableCommaFormatting(input) {
+    if (input._ftkCommaFormatted) return;
+    input._ftkCommaFormatted = true;
+
+    var nativeDesc = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value");
+    var raw = input.value || "";
+
+    function render() {
+      nativeDesc.set.call(input, formatWithCommas(raw));
+    }
+
+    Object.defineProperty(input, "value", {
+      get: function () { return raw; },
+      set: function (v) {
+        raw = v === null || v === undefined ? "" : String(v);
+        render();
+      },
+      configurable: true,
+    });
+
+    input.type = "text";
+    input.setAttribute("inputmode", "decimal");
+
+    // Capture phase (not bubble): guarantees this listener runs and syncs
+    // `raw` from the just-typed keystroke BEFORE any bubble-phase listener
+    // on this same element -- including each calculator's own "input"
+    // listener that reads el.value to recompute results. Registration
+    // order can't be relied on here since every widget's own <script> tag
+    // loads (and attaches its listener) before common.js does; without
+    // capture, the calculator would always read one keystroke behind.
+    input.addEventListener("input", function () {
+      var displayed = nativeDesc.get.call(input);
+      var cleaned = displayed.replace(/,/g, "").replace(/[^\d.\-]/g, "");
+      cleaned = cleaned.charAt(0) + cleaned.slice(1).replace(/-/g, "");
+      var dotIdx = cleaned.indexOf(".");
+      if (dotIdx !== -1) {
+        cleaned = cleaned.slice(0, dotIdx + 1) + cleaned.slice(dotIdx + 1).replace(/\./g, "");
+      }
+      var caretFromEnd = displayed.length - input.selectionStart;
+      raw = cleaned;
+      render();
+      var newLen = nativeDesc.get.call(input).length;
+      var newPos = Math.max(0, newLen - caretFromEnd);
+      input.setSelectionRange(newPos, newPos);
+    }, true);
+
+    render();
+  }
+
+  function initNumberFormatting() {
+    document.querySelectorAll('.tool-widget input[type="number"]').forEach(function (input) {
+      var label = document.querySelector('label[for="' + input.id + '"]');
+      if (!label || label.textContent.indexOf("$") === -1) return;
+      enableCommaFormatting(input);
+    });
+  }
+
+  // Animates a calculator result span's numeric portion when it changes
+  // (e.g. "$500.0M" -> "$550.0M" counts up instead of snapping) without
+  // touching any calculator's own JS. Redefines textContent on the element
+  // so every existing `el.textContent = fmt(value)` call site transparently
+  // triggers the tween -- only the number substring is animated, any
+  // prefix/suffix ($, %, ×, M/B/k) stays put. Falls back to an instant
+  // snap for non-numeric text ("--", "∞") or the element's first paint.
+  var FTK_NUM_RE = /-?[\d,]+\.?\d*/;
+
+  function enableResultTween(el) {
+    if (el._ftkTweenEnabled) return;
+    el._ftkTweenEnabled = true;
+
+    var nativeDesc = Object.getOwnPropertyDescriptor(Node.prototype, "textContent");
+    var rafId = null;
+    var timeoutId = null;
+
+    Object.defineProperty(el, "textContent", {
+      get: function () { return nativeDesc.get.call(el); },
+      set: function (newText) {
+        newText = newText === null || newText === undefined ? "" : String(newText);
+        var oldText = nativeDesc.get.call(el);
+        if (newText === oldText) return;
+        if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+        if (timeoutId) { clearTimeout(timeoutId); timeoutId = null; }
+
+        var oldMatch = oldText.match(FTK_NUM_RE);
+        var newMatch = newText.match(FTK_NUM_RE);
+        if (!oldMatch || !newMatch) { nativeDesc.set.call(el, newText); return; }
+        var oldNum = parseFloat(oldMatch[0].replace(/,/g, ""));
+        var newNum = parseFloat(newMatch[0].replace(/,/g, ""));
+        if (isNaN(oldNum) || isNaN(newNum)) { nativeDesc.set.call(el, newText); return; }
+
+        var prefix = newText.slice(0, newMatch.index);
+        var suffix = newText.slice(newMatch.index + newMatch[0].length);
+        var decimals = (newMatch[0].split(".")[1] || "").length;
+        var duration = 350;
+        var startTime = null;
+
+        function step(ts) {
+          if (!startTime) startTime = ts;
+          var progress = Math.min(1, (ts - startTime) / duration);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          var value = oldNum + (newNum - oldNum) * eased;
+          nativeDesc.set.call(el, prefix + value.toLocaleString("en-US", {
+            minimumFractionDigits: decimals, maximumFractionDigits: decimals
+          }) + suffix);
+          if (progress < 1) {
+            rafId = requestAnimationFrame(step);
+          } else {
+            nativeDesc.set.call(el, newText);
+            rafId = null;
+            if (timeoutId) { clearTimeout(timeoutId); timeoutId = null; }
+          }
+        }
+        rafId = requestAnimationFrame(step);
+        // Safety net: some browsers pause requestAnimationFrame for
+        // backgrounded/hidden tabs, which would otherwise leave the
+        // display stuck mid-tween indefinitely. Guarantee the exact final
+        // value lands regardless.
+        timeoutId = window.setTimeout(function () {
+          if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
+          nativeDesc.set.call(el, newText);
+          timeoutId = null;
+        }, duration + 150);
+      },
+      configurable: true,
+    });
+  }
+
+  function initResultTweening() {
+    document.querySelectorAll(".tool-widget .num, .tool-widget .value, .tool-widget .stat-value")
+      .forEach(enableResultTween);
+  }
+
+  // Small "settle" bounce on a .ftk-gauge-marker each time its position is
+  // updated -- restarts the CSS animation on repeat calls by removing and
+  // re-adding the class after a forced reflow.
+  function pulseGauge(el) {
+    if (!el) return;
+    el.classList.remove("ftk-gauge-marker--pulse");
+    void el.offsetWidth;
+    el.classList.add("ftk-gauge-marker--pulse");
+  }
+
   function setFieldError(inputEl, message) {
     if (!inputEl) return;
     var field = inputEl.closest(".field");
@@ -281,5 +442,6 @@ window.FTK = (function () {
     shareURL: shareURL,
     setFieldError: setFieldError,
     clearFieldError: clearFieldError,
+    pulseGauge: pulseGauge,
   };
 })();

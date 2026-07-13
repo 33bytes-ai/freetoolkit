@@ -17,6 +17,8 @@
     var scoreEl   = document.getElementById("r40-out-score");
     var labelEl   = document.getElementById("r40-out-label");
     var insightEl = document.getElementById("r40-insight");
+    var gaugeMarkerEl = document.getElementById("r40-gauge-marker");
+    var gaugeLabelEl  = document.getElementById("r40-gauge-marker-label");
 
     function update() {
       var growth = parseFloat(growthEl.value) || 0;
@@ -25,6 +27,14 @@
 
       scoreEl.textContent = (score > 0 ? "+" : "") + score.toFixed(1);
       labelEl.textContent = rule40Label(score);
+
+      if (gaugeMarkerEl && gaugeLabelEl) {
+        var gaugeMin = -20, gaugeMax = 80;
+        var pct = Math.max(0, Math.min(100, ((score - gaugeMin) / (gaugeMax - gaugeMin)) * 100));
+        gaugeMarkerEl.style.left = pct + "%";
+        gaugeLabelEl.textContent = (score > 0 ? "+" : "") + score.toFixed(0);
+        window.FTK.pulseGauge(gaugeMarkerEl);
+      }
 
       if (score >= 40) {
         window.FTK.showInsight(insightEl, null);

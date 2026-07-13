@@ -37,6 +37,8 @@
     var paybackEl = document.getElementById("ltv-out-payback");
     var healthEl = document.getElementById("ltv-health");
     var insightEl = document.getElementById("ltv-insight");
+    var gaugeMarkerEl = document.getElementById("ltv-gauge-marker");
+    var gaugeLabelEl  = document.getElementById("ltv-gauge-marker-label");
 
     function fmt(value) {
       if (!isFinite(value)) return "∞";
@@ -60,6 +62,15 @@
       ratioEl.textContent = ratio !== null && isFinite(ratio) ? ratio.toFixed(1) + ":1" : "—";
       paybackEl.textContent = payback !== null ? Math.ceil(payback) + " mo" : "—";
       healthEl.textContent = healthLabel(ratio);
+
+      if (gaugeMarkerEl && gaugeLabelEl) {
+        var gaugeMax = 6;
+        var displayRatio = ratio !== null && isFinite(ratio) ? ratio : 0;
+        var pct = Math.max(0, Math.min(100, (displayRatio / gaugeMax) * 100));
+        gaugeMarkerEl.style.left = pct + "%";
+        gaugeLabelEl.textContent = ratio !== null && isFinite(ratio) ? ratio.toFixed(1) + "×" : "—";
+        window.FTK.pulseGauge(gaugeMarkerEl);
+      }
 
       if (ratio !== null && isFinite(ratio)) {
         if (ratio < 1) {

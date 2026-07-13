@@ -28,6 +28,19 @@
   <div class="stat result-hero" data-tooltip="LTV ÷ CAC. Industry benchmark: ≥3× is healthy. Below 1× = you're losing money on every customer. Above 5× = may be under-investing in growth."><div class="num" id="ltv-out-ratio">0</div><div class="label">LTV : CAC ratio</div></div>
   <div class="stat" data-tooltip="CAC ÷ (ARPU × gross margin). Months until a customer's gross profit equals what you spent acquiring them."><div class="num" id="ltv-out-payback">0 mo</div><div class="label">Payback period</div></div>
 </div>
+<div class="ftk-gauge" id="ltv-gauge">
+  <div class="ftk-gauge-track">
+    <div class="ftk-gauge-zone ftk-gauge-zone--danger" style="width:16.67%"></div>
+    <div class="ftk-gauge-zone ftk-gauge-zone--warn" style="width:33.33%"></div>
+    <div class="ftk-gauge-zone ftk-gauge-zone--good" style="width:50%"></div>
+  </div>
+  <div class="ftk-gauge-threshold" style="left:16.67%"><span>1×</span></div>
+  <div class="ftk-gauge-threshold" style="left:50%"><span>3×</span></div>
+  <div class="ftk-gauge-marker" id="ltv-gauge-marker" style="left:0%">
+    <span class="ftk-gauge-marker-label" id="ltv-gauge-marker-label">0×</span>
+  </div>
+  <div class="ftk-gauge-bounds"><span>0×</span><span>6×+</span></div>
+</div>
 <p id="ltv-health" class="tool-short" style="margin-top:0.75rem"></p>
 <div id="ltv-insight" class="calc-insight" style="display:none"></div>
 <div class="btn-row" style="margin-top:0.75rem">

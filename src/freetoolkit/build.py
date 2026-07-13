@@ -67,6 +67,22 @@ CATEGORY_META: dict[str, dict[str, str]] = {
 }
 
 
+# One line-icon per glossary term (same 24x24 stroke style as CATEGORY_META),
+# shown on the glossary index, each term's page hero, and inline where a tool
+# links out to a definition.
+GLOSSARY_ICONS: dict[str, str] = {
+    "arr": f'<svg {_ICON_ATTRS}><path d="M17 2.1l4 4-4 4"/><path d="M3 12.2v-2a4 4 0 0 1 4-4h14"/><path d="M7 21.9l-4-4 4-4"/><path d="M21 11.8v2a4 4 0 0 1-4 4H3"/></svg>',
+    "ltv": f'<svg {_ICON_ATTRS}><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
+    "acv": f'<svg {_ICON_ATTRS}><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg>',
+    "cogs": f'<svg {_ICON_ATTRS}><path d="M21 8V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2"/><path d="M3 8l9 5 9-5"/><path d="M3 8v10a2 2 0 0 0 2 2h4"/><path d="M21 8v5"/><circle cx="18" cy="18" r="3"/><path d="M18 16v2l1 1"/></svg>',
+    "rule-of-40": f'<svg {_ICON_ATTRS}><path d="M12 21a9 9 0 1 1 9-9"/><path d="M12 12l5-3"/><circle cx="12" cy="12" r="1"/></svg>',
+    "icp": f'<svg {_ICON_ATTRS}><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>',
+    "ebitda": f'<svg {_ICON_ATTRS}><line x1="4" y1="21" x2="20" y2="21"/><rect x="6" y="14" width="3" height="7"/><rect x="11" y="9" width="3" height="12"/><rect x="16" y="4" width="3" height="17"/></svg>',
+    "cap-table": f'<svg {_ICON_ATTRS}><path d="M12 2a10 10 0 1 0 10 10H12z"/><path d="M12 2a10 10 0 0 1 10 10"/></svg>',
+    "nrr": f'<svg {_ICON_ATTRS}><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg>',
+}
+
+
 def category_slug(category: str) -> str:
     return category.lower().replace(" & ", "-").replace(" ", "-")
 CONTENT_DIR = ROOT / "content"
@@ -147,11 +163,16 @@ def load_yaml(path: Path):
         return yaml.safe_load(f)
 
 
+FRONTMATTER_RE = re.compile(r"\A---\n(.*?)\n---\n?", re.DOTALL)
+
+
 def load_page(path: Path, config: dict, tool_count: int) -> dict:
     text = path.read_text(encoding="utf-8")
-    if not text.startswith("---"):
+    match = FRONTMATTER_RE.match(text)
+    if not match:
         raise ValueError(f"{path} is missing YAML frontmatter")
-    _, frontmatter, body = text.split("---", 2)
+    frontmatter = match.group(1)
+    body = text[match.end():]
     meta = yaml.safe_load(frontmatter) or {}
     body = body.replace("{{ contact_email }}", config["site"]["contact_email"])
     body = body.replace("{{ tool_count }}", str(tool_count))
@@ -179,7 +200,11 @@ def load_tools() -> list[dict]:
 
 
 def load_affiliates() -> dict[str, list[dict]]:
-    return load_yaml(CONTENT_DIR / "affiliates.yaml") or {}
+    affiliates = load_yaml(CONTENT_DIR / "affiliates.yaml") or {}
+    for entries in affiliates.values():
+        for aff in entries:
+            aff["domain"] = urlparse(aff["url"]).netloc.removeprefix("www.")
+    return affiliates
 
 
 def load_intent_pages() -> list[dict]:
@@ -341,6 +366,7 @@ def build_env() -> Environment:
     env.filters["category_slug"] = category_slug
     env.globals["stripe_fee"] = stripe_fee_breakdown
     env.globals["category_meta"] = CATEGORY_META
+    env.globals["glossary_icons"] = GLOSSARY_ICONS
     return env
 
 
@@ -721,12 +747,18 @@ def _render_og_image(title: str, subtitle: str, font_large, font_medium) -> "Ima
         bbox = draw.textbbox((0, 0), line, font=font_large)
         ty += (bbox[3] - bbox[1]) + 16
 
-    # Subtitle
-    draw.text((100, max(ty + 20, 370)), subtitle, fill=(170, 210, 190), font=font_medium)
+    # Subtitle (wrapped so long taglines/categories don't run off the canvas)
+    subtitle_lines = _wrap_text(subtitle, font_medium, W - 200, draw)
+    sy = max(ty + 20, 370)
+    for line in subtitle_lines[:2]:
+        draw.text((100, sy), line, fill=(170, 210, 190), font=font_medium)
+        bbox = draw.textbbox((0, 0), line, font=font_medium)
+        sy += (bbox[3] - bbox[1]) + 10
 
-    # Bottom brand strip
+    # Bottom brand strip (plain hyphen: the bundled fallback font has no
+    # em-dash glyph and renders it as a broken tofu box)
     draw.rectangle([(0, H - 68), (W, H)], fill=(12, 22, 17))
-    draw.text((100, H - 50), "freetoolkit.dev — Free calculators for founders", fill=(90, 160, 130), font=font_medium)
+    draw.text((100, H - 50), "freetoolkit.dev - Free calculators for founders", fill=(90, 160, 130), font=font_medium)
 
     return img
 
@@ -758,7 +790,7 @@ def write_og_image(config: dict, tools: list[dict] | None = None) -> None:
         for tool in tools:
             _render_og_image(
                 tool["title"],
-                tool["category"] + " — " + name,
+                tool["category"] + " - " + name,
                 font_large,
                 font_medium,
             ).save(out_dir / f"og-{tool['slug']}.png", "PNG", optimize=True)
@@ -902,7 +934,7 @@ def build() -> Path:
         "glossary_index.html",
         DIST_DIR / "glossary" / "index.html",
         path="/glossary/",
-        title="Glossary — FounderCalc",
+        title="Glossary",
         description="Plain-language definitions for the finance and SaaS terms used across FounderCalc's calculators.",
         glossary=glossary,
         **common,
@@ -915,7 +947,7 @@ def build() -> Path:
             "glossary.html",
             DIST_DIR / "glossary" / entry["slug"] / "index.html",
             path=f"/glossary/{entry['slug']}/",
-            title=f"{entry['term']} — Glossary — FounderCalc",
+            title=f"{entry['term']} — Glossary",
             description=entry["short"],
             entry=entry,
             related=related,

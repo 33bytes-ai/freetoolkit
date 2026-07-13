@@ -24,6 +24,19 @@
   <div class="stat" data-tooltip="1 ÷ P/E ratio × 100. The earnings return per dollar of market price, comparable to bond yields. Useful for comparing stocks to fixed income alternatives."><span class="stat-label">Earnings Yield</span><span class="stat-value" id="pe-ey">—</span></div>
   <div class="stat" data-tooltip="P/E ÷ Expected EPS Growth Rate. Peter Lynch's PEG ratio: < 1 = potentially undervalued relative to growth; > 2 = expensive relative to growth rate. Best for growth stocks."><span class="stat-label">PEG Ratio</span><span class="stat-value" id="pe-peg">—</span></div>
 </div>
+<div class="ftk-gauge" id="pe-gauge">
+  <div class="ftk-gauge-track">
+    <div class="ftk-gauge-zone ftk-gauge-zone--good" style="width:50%"></div>
+    <div class="ftk-gauge-zone ftk-gauge-zone--warn" style="width:37.5%"></div>
+    <div class="ftk-gauge-zone ftk-gauge-zone--danger" style="width:12.5%"></div>
+  </div>
+  <div class="ftk-gauge-threshold" style="left:50%"><span>20×</span></div>
+  <div class="ftk-gauge-threshold" style="left:87.5%"><span>35×</span></div>
+  <div class="ftk-gauge-marker" id="pe-gauge-marker" style="left:0%">
+    <span class="ftk-gauge-marker-label" id="pe-gauge-marker-label">0×</span>
+  </div>
+  <div class="ftk-gauge-bounds"><span>0×</span><span>40×+</span></div>
+</div>
 <div id="pe-insight" class="calc-insight" style="display:none"></div>
 <div class="btn-row" style="margin-top:0.75rem">
   <button id="pe-copy" class="secondary">Copy results</button>

@@ -42,6 +42,8 @@
     var insEl     = document.getElementById("pe-insight");
     var copyBtn   = document.getElementById("pe-copy");
     var shareBtn  = document.getElementById("pe-share");
+    var gaugeMarkerEl = document.getElementById("pe-gauge-marker");
+    var gaugeLabelEl  = document.getElementById("pe-gauge-marker-label");
 
     function update() {
       var price  = parseFloat(priceEl.value)  || 0;
@@ -60,6 +62,15 @@
       document.getElementById("pe-peg").textContent        = peg    !== null ? peg.toFixed(2) + "×" : "--";
 
       window.FTK.hashSet({ p: price, e: eps, f: feps, g: growth });
+
+      if (gaugeMarkerEl && gaugeLabelEl) {
+        var gaugeMax = 40;
+        var displayPE = pe !== null && pe > 0 ? pe : 0;
+        var pct = Math.max(0, Math.min(100, (displayPE / gaugeMax) * 100));
+        gaugeMarkerEl.style.left = pct + "%";
+        gaugeLabelEl.textContent = pe !== null ? pe.toFixed(1) + "×" : "—";
+        window.FTK.pulseGauge(gaugeMarkerEl);
+      }
 
       if (pe !== null) {
         var label = peLabel(pe);

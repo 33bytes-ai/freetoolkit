@@ -5,7 +5,10 @@
   <p class="tool-short">Plain-language definitions for the finance and SaaS terms used across FounderCalc's calculators.</p>
   <ul class="glossary-index-list">
     {% for entry in glossary %}
-    <li><a href="/glossary/{{ entry.slug }}/">{{ entry.term }}</a> — {{ entry.short }}</li>
+    <li>
+      <span class="glossary-index-icon" aria-hidden="true">{{ glossary_icons[entry.slug] | safe }}</span>
+      <span><a href="/glossary/{{ entry.slug }}/">{{ entry.term }}</a> — {{ entry.short }}</span>
+    </li>
     {% endfor %}
   </ul>
 </section>
