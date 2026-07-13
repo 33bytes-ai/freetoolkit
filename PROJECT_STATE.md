@@ -29,7 +29,7 @@ _Mis à jour: 2026-06-16 — Rafraîchi: 2026-07-11_
 | Analytics | GoAccess sur logs nginx + tracker.js localStorage (100% local au navigateur, TTL 90j) |
 | Tests JS | Node --test (554 tests, fonctions pures, 105/105 outils couverts) |
 | Tests build | pytest (272 tests, validation dist/) |
-| CI | GitHub Actions (`.github/workflows/ci.yml`) : test-js + test-py + build + Lighthouse CI |
+| CI | GitHub Actions (`.github/workflows/ci.yml`) : test-js + test-py + build + check-perf + Lighthouse CI |
 | Déploiement | `scripts/deploy.sh` (rsync + docker compose) — manuel, VPS pas encore créé |
 
 ### Répertoire racine
@@ -133,7 +133,6 @@ partir de données pures au build, pas de contenu dupliqué à la main.
 - Badge CI du README pointe vers `YOUR_USERNAME/freetoolkit` (jamais remplacé)
 - 15 fichiers `*_tmp.txt` commités par erreur à la racine (résidus de debug)
 - 11 tests de `test_build.py` n'itèrent que sur `TOOL_SLUGS[:3]`/`[:5]`, pas les 105 outils
-- `make check-perf` jamais appelé en CI
 - Lighthouse CI ne couvre que le template `tool.html`, pas `intent_page.html`/`intent_country.html`
 - Pas de CMP/bannière de consentement UE avant l'activation prévue d'AdSense
 - Risque de cannibalisation SEO entre calculateurs quasi-homonymes (margin/growth/break-even/turnover)
@@ -154,7 +153,7 @@ partir de données pures au build, pas de contenu dupliqué à la main.
 ```bash
 make build          # Génère dist/
 make test           # 554 JS + 272 Python tests
-make check-perf     # Budgets de taille, meta coverage, sitemap, og:images (pas encore en CI)
+make check-perf     # Budgets de taille, meta coverage, sitemap, og:images (aussi exécuté en CI)
 make serve          # Sert dist/ sur localhost:8080
 make serve-network  # Sert sur toutes interfaces (LAN)
 

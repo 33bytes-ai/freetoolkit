@@ -38,6 +38,9 @@ jobs:
       - name: Run Python build
         run: make build
 
+      - name: Check performance budgets
+        run: make check-perf
+
       - name: Lighthouse CI
         uses: treosh/lighthouse-ci-action@v12
         with:

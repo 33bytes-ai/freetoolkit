@@ -2424,6 +2424,18 @@ def test_ci_workflow_runs_lighthouse_against_a_served_dist():
     assert ".lighthouserc.json" in workflow
 
 
+def test_ci_workflow_runs_check_perf():
+    """CI must run `make check-perf` so a perf/weight budget regression
+    (file size budgets, meta coverage, sitemap, og:image) fails the build
+    instead of merging undetected."""
+    workflow = (ROOT / ".github" / "workflows" / "ci.yml").read_text()
+    assert "make check-perf" in workflow
+    build_pos = workflow.index("make build")
+    check_perf_pos = workflow.index("make check-perf")
+    lighthouse_pos = workflow.index("lighthouse-ci-action")
+    assert build_pos < check_perf_pos < lighthouse_pos
+
+
 def test_country_pages_in_sitemap():
     """Country pages should be included in sitemap.xml like other intent pages."""
     run_build()

@@ -264,7 +264,8 @@
     "impact": 6,
     "effort": 2,
     "risk": 1,
-    "status": "pending"
+    "status": "done",
+    "note": "Implemented: added a 'Check performance budgets' step to .github/workflows/ci.yml running `make check-perf` right after `make build` (before Lighthouse CI). check-perf's own Makefile prerequisite on `build` is a no-op rebuild since dist/ is already current. Verified locally with `make check-perf` — all budget/meta/sitemap/og-image checks pass (exit 0), confirming the step will gate merges on perf/weight regressions in CI."
   },
   {
     "title": "Élargir l'échantillon Lighthouse CI aux templates intent_page et intent_country",
