@@ -32,11 +32,7 @@
         </div>
       </div>
 
-      <div class="hero-categories">
-        {% for category in categories %}
-        <a href="/categories/{{ category | category_slug }}/" class="hero-cat-badge">{{ category }}</a>
-        {% endfor %}
-      </div>
+      <a href="#categories" class="hero-browse-link">Browse by category ↓</a>
     </div>
   </div>
 </div>
@@ -47,7 +43,6 @@
 <div class="trust-bar reveal">
   <div class="wrap">
     <ul class="trust-items">
-      <li><strong>{{ tools | length }}</strong> free calculators</li>
       <li><strong>{{ categories | length }}</strong> categories</li>
       <li><strong>{{ all_intent_pages | length }}+</strong> related guides</li>
       <li>No sign-up &amp; no data uploaded</li>
@@ -55,27 +50,6 @@
     </ul>
   </div>
 </div>
-
-<!-- Featured: newest tools -->
-{% set new_tools = tools | selectattr("new") | list %}
-{% if new_tools %}
-<section class="wrap home-section reveal" style="padding-top:1.5rem">
-  <div class="home-section-header">
-    <h2>Recently added</h2>
-    <a href="/tools/" style="font-size:0.88rem;color:var(--accent)">View all →</a>
-  </div>
-  <div class="tool-grid">
-    {% for tool in new_tools[:3] %}
-    <a class="tool-card" href="/tools/{{ tool.slug }}/">
-      <span class="tool-card-icon" aria-hidden="true">{{ category_meta[tool.category].icon | safe }}</span>
-      <h3>{{ tool.nav_title }} <span class="tool-card-new">NEW</span></h3>
-      <p>{{ tool.short }}</p>
-      {% if tool.date_added %}<span style="font-size:0.75rem;color:var(--text-muted)">{{ tool.date_added }}</span>{% endif %}
-    </a>
-    {% endfor %}
-  </div>
-</section>
-{% endif %}
 
 <!-- Browse by category -->
 <section class="wrap home-section" id="categories">
@@ -99,6 +73,27 @@
     {% endfor %}
   </div>
 </section>
+
+<!-- Featured: newest tools -->
+{% set new_tools = tools | selectattr("new") | list %}
+{% if new_tools %}
+<section class="wrap home-section reveal" style="padding-top:1.5rem">
+  <div class="home-section-header">
+    <h2>Recently added</h2>
+    <a href="/tools/" style="font-size:0.88rem;color:var(--accent)">View all →</a>
+  </div>
+  <div class="tool-grid">
+    {% for tool in new_tools[:3] %}
+    <a class="tool-card" href="/tools/{{ tool.slug }}/">
+      <span class="tool-card-icon" aria-hidden="true">{{ category_meta[tool.category].icon | safe }}</span>
+      <h3>{{ tool.nav_title }} <span class="tool-card-new">NEW</span></h3>
+      <p>{{ tool.short }}</p>
+      {% if tool.date_added %}<span style="font-size:0.75rem;color:var(--text-muted)">{{ tool.date_added }}</span>{% endif %}
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
 
 <!-- About section -->
 <section class="wrap intro-text reveal" style="padding-top:2.5rem; border-top:1px solid var(--border); margin-top:2rem;">

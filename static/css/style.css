@@ -249,7 +249,7 @@ h1, h2 {
 }
 .theme-toggle-btn[aria-checked="true"] .tgl-thumb {
   left: calc(100% - 1.3rem - 0.2rem);
-  background: #34c98a;
+  background: #3a9c73;
 }
 
 /* Hero */
@@ -1187,9 +1187,9 @@ button:hover {
   line-height: 1.5;
 }
 .calc-insight--info {
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
-  color: #1e40af;
+  background: #f5f3ff;
+  border: 1px solid #ddd6fe;
+  color: #5b21b6;
 }
 .calc-insight--warning {
   background: #fffbeb;
@@ -1205,6 +1205,18 @@ button:hover {
   background: #f0fdf4;
   border: 1px solid #86efac;
   color: #166534;
+}
+
+/* In-article prose links (e.g. "↑ Back to calculator", the contact link
+   on the homepage, glossary/legal page body copy) -- otherwise fall back
+   to the browser default blue, which clashes with this site's green
+   accent. */
+.tool-body a,
+.intro-text a,
+.content-page a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 /* Affiliate section */
@@ -1664,7 +1676,7 @@ button:hover {
   font-size: clamp(1.7rem, 4vw, 2.5rem);
   margin: 0 0 0.75rem;
   line-height: 1.2;
-  min-height: 2.4em;
+  min-height: 1.45em;
   text-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
@@ -1730,32 +1742,24 @@ button:hover {
   pointer-events: none;
 }
 
-/* Category badge pills in hero */
-.hero-categories {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
+/* Single link pointing at the "Browse by category" section below --
+   replaces a full repeat of every category badge (already in the header
+   nav and in the "Browse by category" section itself). */
+.hero-browse-link {
+  display: inline-block;
   margin-top: 1.5rem;
-}
-
-.hero-cat-badge {
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.18);
-  color: rgba(255,255,255,0.8);
-  border-radius: 999px;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.78rem;
+  color: rgba(255,255,255,0.75);
+  font-size: 0.85rem;
   font-weight: 500;
   text-decoration: none;
-  transition: background 0.2s, transform 0.2s, border-color 0.2s;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: 0.15rem;
+  transition: color 0.2s, border-color 0.2s;
 }
 
-.hero-cat-badge:hover {
-  background: rgba(255,255,255,0.2);
-  border-color: rgba(255,255,255,0.4);
-  transform: translateY(-2px);
+.hero-browse-link:hover {
   color: #fff;
+  border-color: rgba(255,255,255,0.6);
 }
 
 /* Enhanced tool cards with glass hover effect */
@@ -1844,7 +1848,7 @@ button:hover {
     --text: #e6ede7;
     --text-muted: #8a9690;
     --border: #263029;
-    --accent: #34c98a;
+    --accent: #3a9c73;
     --accent-contrast: #06140d;
   }
 
@@ -1913,7 +1917,7 @@ button:hover {
   .hero-glass {
     background: rgba(255,255,255,0.03);
   }
-  .calc-insight--info    { background: rgba(56,189,248,0.1);  border-color: rgba(56,189,248,0.25);  color: #7dd3fc; }
+  .calc-insight--info    { background: rgba(167,139,250,0.1); border-color: rgba(167,139,250,0.25); color: #c4b5fd; }
   .calc-insight--warning { background: rgba(217,119,6,0.1);   border-color: rgba(217,119,6,0.25);   color: #fcd34d; }
   .calc-insight--danger  { background: rgba(220,38,38,0.1);   border-color: rgba(220,38,38,0.25);   color: #fca5a5; }
   .calc-insight--success { background: rgba(22,163,74,0.1);   border-color: rgba(22,163,74,0.25);   color: #86efac; }
@@ -1930,7 +1934,7 @@ button:hover {
   --text: #e6ede7;
   --text-muted: #8a9690;
   --border: #263029;
-  --accent: #34c98a;
+  --accent: #3a9c73;
   --accent-contrast: #06140d;
 }
 [data-theme="dark"] .site-header {
@@ -1948,7 +1952,7 @@ button:hover {
 [data-theme="dark"] .calc-table td { border-color: var(--border); }
 [data-theme="dark"] .output-box, [data-theme="dark"] .stat { background: #17201b; border-color: var(--border); }
 [data-theme="dark"] .hero-glass { background: rgba(255,255,255,0.03); }
-[data-theme="dark"] .calc-insight--info    { background: rgba(56,189,248,0.1);  border-color: rgba(56,189,248,0.25);  color: #7dd3fc; }
+[data-theme="dark"] .calc-insight--info    { background: rgba(167,139,250,0.1); border-color: rgba(167,139,250,0.25); color: #c4b5fd; }
 [data-theme="dark"] .calc-insight--warning { background: rgba(217,119,6,0.1);   border-color: rgba(217,119,6,0.25);   color: #fcd34d; }
 [data-theme="dark"] .calc-insight--danger  { background: rgba(220,38,38,0.1);   border-color: rgba(220,38,38,0.25);   color: #fca5a5; }
 [data-theme="dark"] .calc-insight--success { background: rgba(22,163,74,0.1);   border-color: rgba(22,163,74,0.25);   color: #86efac; }
