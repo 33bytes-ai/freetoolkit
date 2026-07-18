@@ -144,7 +144,7 @@
   nav_title: "MRR Calculator"
   short: "Calculate monthly recurring revenue, annual recurring revenue and MRR growth rate from your subscriber plan mix."
   date_added: "2026-05-03"
-  category: SaaS Metrics
+  category: SaaS Growth Metrics
   js: mrr-calculator.js
   keywords: ["mrr calculator", "monthly recurring revenue calculator", "arr calculator", "saas mrr growth rate"]
   body: |
@@ -194,7 +194,7 @@
   nav_title: "LTV & CAC"
   short: "The fastest way to get your LTV:CAC ratio — enter ARPU, margin, churn, and spend once and get both LTV and CAC together, without filling in two separate calculators."
   date_added: "2026-05-04"
-  category: SaaS Metrics
+  category: SaaS Retention Metrics
   js: ltv-cac-calculator.js
   keywords: ["ltv cac calculator", "customer lifetime value calculator", "cac payback period", "ltv cac ratio saas"]
   howto_steps:
@@ -259,7 +259,7 @@
   nav_title: "Runway Calculator"
   short: "Calculate how many months of runway you have left, your burn rate, and when you need to raise or break even."
   date_added: "2026-05-05"
-  category: SaaS Metrics
+  category: SaaS Growth Metrics
   js: runway-calculator.js
   keywords: ["startup runway calculator", "burn rate calculator", "how long will my money last startup", "monthly burn rate"]
   howto_steps:
@@ -313,7 +313,7 @@
   nav_title: "Churn Impact"
   short: "See exactly how monthly churn erodes your MRR over 12 months and what reducing churn by 1% is worth."
   date_added: "2026-05-06"
-  category: SaaS Metrics
+  category: SaaS Retention Metrics
   js: churn-impact-calculator.js
   keywords: ["churn rate calculator", "subscription churn impact", "saas churn mrr calculator", "monthly churn mrr projection"]
   howto_steps:
@@ -484,7 +484,7 @@
   nav_title: "Profit Margin"
   short: "Calculate gross profit, gross margin %, net profit and net margin % from revenue and cost inputs."
   date_added: "2026-05-09"
-  category: Business Math
+  category: "Pricing & Margins"
   js: profit-margin-calculator.js
   keywords: ["profit margin calculator", "net profit margin calculator", "net profit margin formula", "operating margin calculator"]
   howto_steps:
@@ -545,7 +545,7 @@
   nav_title: "Break-Even"
   short: "Find how many units or customers you need to cover fixed costs, and calculate your break-even revenue."
   date_added: "2026-05-10"
-  category: Business Math
+  category: "Pricing & Margins"
   js: break-even-calculator.js
   keywords: ["break even calculator", "break even point formula", "break even analysis", "how many sales to break even"]
   howto_steps:
@@ -703,7 +703,7 @@
   nav_title: "ARR ↔ MRR"
   short: "Instantly convert between Monthly Recurring Revenue and Annual Recurring Revenue, plus daily and weekly breakdowns."
   date_added: "2026-05-14"
-  category: SaaS Metrics
+  category: SaaS Growth Metrics
   js: arr-mrr-converter.js
   keywords: ["arr mrr converter", "arr to mrr calculator", "mrr to arr", "annual recurring revenue calculator"]
   howto_steps:
@@ -759,7 +759,7 @@
   nav_title: "NPS Score"
   short: "Calculate your Net Promoter Score from promoter, passive, and detractor counts — with benchmark context."
   date_added: "2026-05-15"
-  category: SaaS Metrics
+  category: SaaS Retention Metrics
   js: nps-calculator.js
   keywords: ["nps calculator", "net promoter score calculator", "nps formula", "how to calculate nps"]
   howto_steps:
@@ -819,7 +819,7 @@
   nav_title: "Rule of 40"
   short: "Calculate your SaaS Rule of 40 score — the sum of revenue growth rate and profit margin that investors use to benchmark health."
   date_added: "2026-05-17"
-  category: SaaS Metrics
+  category: SaaS Growth Metrics
   js: rule-of-40-calculator.js
   keywords: ["rule of 40 calculator", "saas rule of 40", "rule of 40 saas benchmark", "growth plus margin saas"]
   howto_steps:
@@ -880,7 +880,7 @@
   nav_title: "Price Impact"
   short: "See how a price increase affects your MRR and calculate the minimum retention rate needed to break even on a pricing change."
   date_added: "2026-05-18"
-  category: Business Math
+  category: "Pricing & Margins"
   js: price-impact-calculator.js
   keywords: ["price increase calculator", "pricing impact calculator", "how much can i raise prices", "price elasticity saas"]
   howto_steps:
@@ -1057,7 +1057,7 @@
   nav_title: "CAC by Channel"
   short: "Break down Customer Acquisition Cost by marketing channel to find which channels are most efficient and where to shift budget."
   date_added: "2026-05-22"
-  category: SaaS Metrics
+  category: SaaS Retention Metrics
   js: cac-by-channel-calculator.js
   keywords: ["cac by channel", "customer acquisition cost by channel", "marketing channel efficiency", "cac channel breakdown"]
   howto_steps:
@@ -1120,7 +1120,7 @@
   nav_title: "Tier Comparison"
   short: "Compare 2–3 SaaS pricing tiers and find which tier maximizes revenue at different conversion rates — before you commit to a pricing page."
   date_added: "2026-05-24"
-  category: Business Math
+  category: "Pricing & Margins"
   js: pricing-tier-comparison.js
   keywords: ["saas pricing tier comparison", "pricing page optimization", "which saas tier makes more revenue", "pricing tier calculator"]
   body: |
@@ -1165,7 +1165,7 @@
   nav_title: "Sales Quota"
   short: "Calculate how many deals, leads, and pipeline you need to hit your annual revenue target based on ACV and close rate."
   date_added: "2026-05-25"
-  category: Business Math
+  category: Marketing
   js: sales-quota-calculator.js
   keywords: ["sales quota calculator", "how many deals to hit quota", "sales pipeline calculator", "sales target calculator"]
   body: |
@@ -1347,7 +1347,7 @@
   short: "Forecast monthly and annual revenue lost to churn — and the MRR needed to break even."
   new: true
   date_added: "2026-06-10"
-  category: SaaS Metrics
+  category: SaaS Retention Metrics
   js: subscription-churn-revenue.js
   keywords: ["subscription churn revenue loss", "churn revenue calculator", "mrr churn calculator", "saas churn impact"]
   body: |
@@ -1402,7 +1402,7 @@
   short: "Calculate your Annual Recurring Revenue growth rate, T2D3 trajectory, and years to reach your ARR target."
   new: true
   date_added: "2026-06-11"
-  category: SaaS Metrics
+  category: SaaS Growth Metrics
   js: arr-growth-rate-calculator.js
   keywords: ["arr growth rate calculator", "annual recurring revenue growth", "saas arr growth rate", "t2d3 growth calculator"]
   howto_steps:
@@ -1472,7 +1472,7 @@
   short: "Calculate optimal SaaS pricing tiers based on your costs, target margin, and willingness-to-pay — with monthly and annual plan analysis."
   new: true
   date_added: "2026-06-12"
-  category: SaaS Metrics
+  category: SaaS Growth Metrics
   js: saas-pricing-calculator.js
   keywords: ["saas pricing calculator", "saas pricing strategy", "how to price saas product", "saas pricing tiers"]
   howto_steps:
@@ -1540,7 +1540,7 @@
   short: "Score your SaaS customers by usage, engagement, and NPS to predict churn risk and identify expansion opportunities."
   new: true
   date_added: "2026-06-15"
-  category: SaaS Metrics
+  category: SaaS Retention Metrics
   js: customer-health-score.js
   keywords: ["customer health score calculator", "saas customer health score", "customer success health score", "churn prediction score"]
   howto_steps:
@@ -1611,7 +1611,7 @@
   short: "The complete SaaS unit economics dashboard: CAC payback, LTV:CAC ratio, gross margin, and magic number in one place, for a full efficiency review."
   date_added: "2026-06-16"
   new: true
-  category: SaaS Metrics
+  category: SaaS Growth Metrics
   js: unit-economics-calculator.js
   keywords: ["unit economics calculator", "cac payback period calculator", "ltv cac ratio saas", "saas magic number calculator", "saas gross margin calculator"]
   howto_steps:
@@ -1673,7 +1673,7 @@
   short: "Calculate MoM, QoQ, and YoY revenue growth rates, CAGR, and time-to-double to benchmark your startup's trajectory."
   new: true
   date_added: "2026-06-17"
-  category: SaaS Metrics
+  category: SaaS Growth Metrics
   js: revenue-growth-calculator.js
   keywords: ["mom qoq yoy revenue calculator", "saas revenue growth calculator", "cagr calculator", "month over month growth calculator", "time to double revenue"]
   howto_steps:
@@ -1879,7 +1879,7 @@
   short: "Calculate Customer Lifetime Value (LTV), LTV:CAC ratio, and CAC payback period from your ARPU, gross margin, and monthly churn rate."
   new: true
   date_added: "2026-06-17"
-  category: SaaS Metrics
+  category: SaaS Retention Metrics
   js: customer-ltv-calculator.js
   keywords: ["customer lifetime value calculator", "ltv calculator saas", "ltv cac ratio calculator", "cac payback period calculator", "saas ltv formula"]
   howto_steps:
@@ -2036,7 +2036,7 @@
   short: "Calculate gross margin %, gross profit, and markup from revenue and COGS — plus the revenue needed to hit any target margin."
   new: true
   date_added: "2026-06-17"
-  category: Business Math
+  category: "Pricing & Margins"
   js: gross-margin-calculator.js
   keywords: ["gross margin calculator", "gross profit calculator", "markup vs margin calculator", "how to calculate gross margin", "gross margin formula"]
   howto_steps:
@@ -2190,7 +2190,7 @@
   short: "Calculate how a price change affects demand and revenue based on price elasticity — see whether raising your price will increase or decrease total revenue."
   new: true
   date_added: "2026-06-17"
-  category: Business Math
+  category: "Pricing & Margins"
   js: pricing-elasticity-calculator.js
   keywords: ["price elasticity calculator", "pricing elasticity of demand", "how does price change affect revenue", "price elasticity formula", "demand elasticity calculator"]
   howto_steps:
@@ -2341,7 +2341,7 @@
   short: "Calculate sale price, discount amount, or reverse-calculate the discount percentage from any original price — plus margin impact after discount."
   new: true
   date_added: "2026-06-17"
-  category: Business Math
+  category: "Pricing & Margins"
   js: discount-calculator.js
   keywords: ["discount calculator", "sale price calculator", "percentage discount calculator", "how much is 20 percent off", "discount percentage formula"]
   howto_steps:
@@ -2405,7 +2405,7 @@
   short: "Calculate the exact revenue needed to cover your fixed costs given your contribution margin — plus safety margin when you enter current revenue."
   new: true
   date_added: "2026-06-17"
-  category: Business Math
+  category: "Pricing & Margins"
   js: break-even-revenue-calculator.js
   keywords: ["margin of safety calculator", "break even revenue", "contribution margin break even", "fixed costs calculator", "break even without unit sales"]
   howto_steps:
@@ -2502,7 +2502,7 @@
   short: "Calculate blended Customer Acquisition Cost from ad spend, sales payroll, and tools — plus CAC payback period, and your LTV:CAC ratio if you already know your LTV."
   new: true
   date_added: "2026-06-17"
-  category: SaaS Metrics
+  category: SaaS Retention Metrics
   js: cac-calculator.js
   keywords: ["CAC calculator", "customer acquisition cost calculator", "CAC payback period", "blended CAC", "sales marketing efficiency", "cost per customer"]
   howto_steps:
@@ -2595,7 +2595,7 @@
   short: "Benchmark your ARR per FTE against SaaS industry quartiles — and calculate the revenue or headcount needed to hit a target efficiency ratio."
   new: true
   date_added: "2026-06-17"
-  category: SaaS Metrics
+  category: SaaS Growth Metrics
   js: revenue-per-employee-calculator.js
   keywords: ["revenue per employee", "ARR per employee", "revenue per headcount", "SaaS efficiency ratio", "employee productivity calculator", "revenue productivity benchmark"]
   howto_steps:
@@ -2675,7 +2675,7 @@
   short: "Calculate Net Revenue Retention and Gross Revenue Retention from starting MRR, expansion, contraction, and churn — the core SaaS retention health metric."
   new: true
   date_added: "2026-06-17"
-  category: SaaS Metrics
+  category: SaaS Retention Metrics
   js: nrr-calculator.js
   keywords: ["NRR calculator", "net revenue retention", "gross revenue retention", "GRR calculator", "SaaS retention metrics", "expansion MRR calculator", "churn MRR calculator"]
   howto_steps:
@@ -2757,7 +2757,7 @@
   short: "Convert MRR to Annual Recurring Revenue, calculate YoY growth against last year's ARR, and project ARR 12 and 24 months out at a given monthly growth rate."
   new: true
   date_added: "2026-06-17"
-  category: SaaS Metrics
+  category: SaaS Growth Metrics
   js: arr-calculator.js
   keywords: ["ARR calculator", "annual recurring revenue calculator", "MRR to ARR", "ARR growth calculator", "SaaS ARR", "ARR projection calculator"]
   howto_steps:
@@ -2840,7 +2840,7 @@
   short: "Calculate EBITDA from revenue, COGS, and operating expenses — plus EBITDA margin, EBIT after depreciation, and implied valuation at a given EBITDA multiple."
   new: true
   date_added: "2026-06-17"
-  category: Business Math
+  category: Finance
   js: ebitda-calculator.js
   keywords: ["EBITDA calculator", "EBITDA margin calculator", "EBIT calculator", "enterprise value calculator", "EBITDA multiple valuation", "operating profit calculator"]
   howto_steps:
@@ -3017,7 +3017,7 @@
   short: "Calculate your burn multiple — net cash burn divided by net new ARR — the capital efficiency metric VCs use to evaluate how efficiently you're converting spending into growth."
   new: true
   date_added: "2026-06-17"
-  category: SaaS Metrics
+  category: SaaS Growth Metrics
   js: burn-multiple-calculator.js
   keywords: ["burn multiple calculator", "SaaS burn multiple", "capital efficiency SaaS", "net burn ARR ratio", "SaaS efficiency metrics", "burn rate calculator"]
   howto_steps:
@@ -3101,7 +3101,7 @@
   short: "Calculate your SaaS Quick Ratio — growth MRR divided by lost MRR — to measure whether your business is growing efficiently or just replacing churn."
   new: true
   date_added: "2026-06-17"
-  category: SaaS Metrics
+  category: SaaS Growth Metrics
   js: saas-quick-ratio-calculator.js
   keywords: ["saas quick ratio calculator", "saas quick ratio", "mrr quick ratio", "saas growth quality metric", "quick ratio saas benchmark"]
   howto_steps:
@@ -3175,7 +3175,7 @@
   short: "Calculate your SaaS Magic Number — net new ARR divided by prior quarter S&M spend — to measure how efficiently your go-to-market converts sales investment into revenue."
   new: true
   date_added: "2026-06-17"
-  category: SaaS Metrics
+  category: SaaS Growth Metrics
   js: magic-number-calculator.js
   keywords: ["magic number calculator saas", "saas magic number", "magic number formula", "GTM efficiency calculator", "sales marketing efficiency SaaS"]
   howto_steps:
@@ -3317,7 +3317,7 @@
   short: "Calculate return on investment (ROI), annualized ROI, net profit, and break-even period for any business investment, marketing campaign, or capital allocation decision."
   new: true
   date_added: "2026-06-17"
-  category: Business Math
+  category: "Pricing & Margins"
   js: roi-calculator.js
   keywords: ["roi calculator", "return on investment calculator", "annualized roi calculator", "investment return calculator", "roi formula business"]
   howto_steps:
@@ -3450,7 +3450,7 @@
   short: "Calculate Average Revenue Per User (ARPU) from MRR and active users — the core SaaS pricing metric for benchmarking, forecasting, and identifying pricing opportunities."
   new: true
   date_added: "2026-06-17"
-  category: SaaS Metrics
+  category: SaaS Growth Metrics
   js: arpu-calculator.js
   keywords: ["arpu calculator", "average revenue per user calculator", "arpu saas", "arpu formula", "monthly arpu calculation"]
   howto_steps:
@@ -3517,7 +3517,7 @@
   short: "Calculate annual revenue run rate from any period's revenue — project ARR from Q1 earnings, monthly revenue, or partial-year figures with optional growth rate compounding."
   new: true
   date_added: "2026-06-17"
-  category: SaaS Metrics
+  category: SaaS Growth Metrics
   js: revenue-run-rate-calculator.js
   keywords: ["revenue run rate calculator", "annual run rate calculator", "arr run rate", "revenue run rate formula", "annualized revenue calculator"]
   howto_steps:
@@ -3581,7 +3581,7 @@
   short: "Calculate sales velocity — the revenue your pipeline generates per day — from opportunities, win rate, ACV, and sales cycle length."
   new: true
   date_added: "2026-06-17"
-  category: SaaS Metrics
+  category: SaaS Growth Metrics
   js: sales-velocity-calculator.js
   keywords: ["sales velocity calculator", "sales velocity formula", "pipeline velocity", "sales velocity metric", "revenue per day calculator"]
   howto_steps:
@@ -3721,7 +3721,7 @@
   short: "Model how a funding round dilutes founder and investor ownership — calculate post-money valuation, new shares issued, and your diluted ownership percentage."
   new: true
   date_added: "2026-06-17"
-  category: Business Math
+  category: Valuation
   js: equity-dilution-calculator.js
   keywords: ["equity dilution calculator", "dilution calculator startup", "pre money post money calculator", "founder dilution calculator", "funding round dilution"]
   howto_steps:
@@ -3801,7 +3801,7 @@
   short: "Calculate monthly payment, total interest, and total cost of a business loan — model SBA loans, term loans, and lines of credit with standard amortization."
   new: true
   date_added: "2026-06-17"
-  category: Business Math
+  category: Finance
   js: business-loan-calculator.js
   keywords: ["business loan calculator", "small business loan calculator", "sba loan calculator", "loan payment calculator", "business loan monthly payment"]
   howto_steps:
@@ -3882,7 +3882,7 @@
   short: "Calculate inventory turnover ratio (COGS ÷ average inventory), days sales of inventory (DSI), and sell-through rate — the core metrics for inventory health."
   new: true
   date_added: "2026-06-17"
-  category: Business Math
+  category: "Pricing & Margins"
   js: inventory-turnover-calculator.js
   keywords: ["inventory turnover calculator", "inventory turnover ratio", "days sales of inventory calculator", "sell-through rate calculator", "stock turnover calculator"]
   howto_steps:
@@ -4130,7 +4130,7 @@
   short: "Calculate customer concentration risk — % revenue from top customers, Herfindahl-Hirschman Index (HHI), and single-customer exposure — a key due diligence metric."
   new: true
   date_added: "2026-06-17"
-  category: SaaS Metrics
+  category: SaaS Retention Metrics
   js: customer-concentration-calculator.js
   keywords: ["customer concentration risk calculator", "revenue concentration calculator", "customer concentration hhi", "customer dependency calculator", "top customer revenue percentage"]
   howto_steps:
@@ -4185,7 +4185,7 @@
   short: "Calculate Total Addressable Market (TAM), Serviceable Addressable Market (SAM), and Serviceable Obtainable Market (SOM) for investor presentations and market sizing."
   new: true
   date_added: "2026-06-17"
-  category: Business Math
+  category: Valuation
   js: tam-sam-som-calculator.js
   keywords: ["tam sam som calculator", "total addressable market calculator", "market size calculator", "tam calculator", "serviceable addressable market calculator"]
   howto_steps:
@@ -4259,7 +4259,7 @@
   nav_title: "Contribution Margin"
   short: "Calculate unit contribution margin, CM ratio, and the exact number of units needed to break even or hit a profit target."
   date_added: "2026-06-17"
-  category: Business Math
+  category: "Pricing & Margins"
   js: contribution-margin-calculator.js
   keywords: ["contribution margin calculator", "contribution margin ratio", "break even units calculator", "unit economics calculator", "target profit calculator"]
   howto_steps:
@@ -4558,7 +4558,7 @@
   nav_title: "Cohort Churn"
   short: "Analyze cohort retention, calculate LTV from churn rate, and project how many customers remain after any number of months."
   date_added: "2026-06-17"
-  category: SaaS Metrics
+  category: SaaS Retention Metrics
   js: churn-cohort-calculator.js
   keywords: ["churn cohort analysis", "cohort retention calculator", "customer ltv from churn", "monthly churn rate calculator", "cohort analysis saas"]
   howto_steps:
@@ -4637,7 +4637,7 @@
   title: "Segment Gross Margin Calculator"
   nav_title: "Segment Margin"
   short: "Compare gross margin and gross profit across up to 4 product lines or business segments side by side."
-  category: "Business Math"
+  category: "Pricing & Margins"
   date_added: "2026-06-17"
   keywords:
     - segment gross margin
@@ -5093,7 +5093,7 @@
   short: "Calculate weighted averages for grades, prices, rates, or any metrics — see each component's contribution to the overall result instantly."
   date_added: "2026-06-18"
   new: true
-  category: Business Math
+  category: "Pricing & Margins"
   js: weighted-average-calculator.js
   keywords: ["weighted average calculator", "calculate weighted average", "weighted mean calculator", "weighted grade calculator", "portfolio weighted return"]
   howto_steps:
@@ -5240,7 +5240,7 @@
   short: "Break down monthly cash burn by department — engineering, sales, marketing, G&A — and see which teams are consuming the most runway."
   date_added: "2026-06-18"
   new: true
-  category: SaaS Metrics
+  category: SaaS Growth Metrics
   js: cash-burn-by-department.js
   keywords: ["cash burn by department", "startup burn rate calculator", "department budget calculator", "burn rate breakdown", "monthly burn by team"]
   howto_steps:
@@ -5469,7 +5469,7 @@
   short: "Calculate how many months it takes to recover your customer acquisition cost. One of the key unit economics metrics VCs check before investing."
   date_added: "2026-06-18"
   new: true
-  category: SaaS Metrics
+  category: SaaS Retention Metrics
   js: cac-payback-calculator.js
   keywords: ["cac payback period calculator", "customer acquisition cost payback", "payback period SaaS", "unit economics calculator", "how long to recover CAC"]
   howto_steps:
@@ -5743,7 +5743,7 @@
   short: Calculate markup percentage, gross margin, and gross profit from cost and selling price — and understand the difference.
   date_added: "2026-06-18"
   new: true
-  category: Business Math
+  category: "Pricing & Margins"
   js: markup-calculator.js
   keywords:
     - markup calculator
@@ -5860,7 +5860,7 @@
   short: Calculate sales commission earned, total compensation, and OTE attainment from revenue and commission rate.
   date_added: "2026-06-18"
   new: true
-  category: Marketing
+  category: "HR & People"
   js: commission-calculator.js
   keywords:
     - commission calculator
@@ -6022,7 +6022,7 @@
   short: Calculate customer retention rate, churn rate, and implied LTV from your period start, end, and new customer counts.
   date_added: "2026-06-18"
   new: true
-  category: SaaS Metrics
+  category: SaaS Retention Metrics
   js: customer-retention-rate-calculator.js
   keywords:
     - customer retention rate calculator
@@ -6085,7 +6085,7 @@
   short: Calculate percentage change, absolute change, and CAGR between any two values.
   date_added: "2026-06-18"
   new: true
-  category: Business Math
+  category: "Pricing & Margins"
   js: percentage-change-calculator.js
   keywords:
     - percentage change calculator
@@ -6608,7 +6608,7 @@
   short: Calculate and compare price per unit for different package sizes or supplier quotes to find the best value option.
   date_added: "2026-06-18"
   new: true
-  category: Business Math
+  category: "Pricing & Margins"
   js: price-per-unit-calculator.js
   keywords:
     - price per unit calculator
@@ -6666,7 +6666,7 @@
   short: Calculate Gross Revenue Retention (GRR) from starting MRR, churn, and contraction — excluding expansion to isolate pure retention.
   date_added: "2026-06-18"
   new: true
-  category: SaaS Metrics
+  category: SaaS Retention Metrics
   js: gross-revenue-retention-calculator.js
   keywords:
     - gross revenue retention calculator

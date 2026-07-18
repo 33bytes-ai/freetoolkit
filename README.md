@@ -4,8 +4,9 @@
 
 Free business calculators for indie founders, freelancers, and SaaS builders.
 
-**105 calculators** across 9 categories (Payments, SaaS Metrics, Freelance,
-Business Math, Marketing, Finance, Valuation, Tax & Compliance, HR & People) —
+**105 calculators** across 10 categories (Payments, SaaS Growth Metrics,
+SaaS Retention Metrics, Freelance, Pricing & Margins, Marketing, Finance,
+Valuation, Tax & Compliance, HR & People) —
 Stripe/PayPal/Shopify fees · MRR & ARR · LTV/CAC · Runway · Churn impact ·
 Freelance rate · Profit margin · Break-even · VAT/Sales tax · payroll tax ·
 DCF/valuation, and more — plus a 9-entry glossary and 325 SEO intent/country

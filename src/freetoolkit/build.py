@@ -32,21 +32,25 @@ CATEGORY_META: dict[str, dict[str, str]] = {
         "icon": f'<svg {_ICON_ATTRS}><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="6" y1="15" x2="10" y2="15"/></svg>',
         "tagline": "Stripe, PayPal, Shopify fees and payout math",
     },
-    "SaaS Metrics": {
+    "SaaS Growth Metrics": {
         "icon": f'<svg {_ICON_ATTRS}><polyline points="3 17 9 11 13 15 21 6"/><polyline points="15 6 21 6 21 12"/></svg>',
-        "tagline": "MRR, LTV/CAC, churn, retention and growth math",
+        "tagline": "MRR, ARR, growth rate, pricing and burn efficiency",
+    },
+    "SaaS Retention Metrics": {
+        "icon": f'<svg {_ICON_ATTRS}><path d="M3 12a9 9 0 0 1 9-9 9 9 0 0 1 6.36 2.64L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9 9 0 0 1-6.36-2.64L3 16"/><path d="M3 21v-5h5"/></svg>',
+        "tagline": "CAC, LTV, churn, retention and customer health",
     },
     "Freelance": {
         "icon": f'<svg {_ICON_ATTRS}><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="2" y1="13" x2="22" y2="13"/></svg>',
         "tagline": "Rates, estimates and taxes for independent work",
     },
-    "Business Math": {
+    "Pricing & Margins": {
         "icon": f'<svg {_ICON_ATTRS}><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="8.01" y2="11"/><line x1="12" y1="11" x2="12.01" y2="11"/><line x1="16" y1="11" x2="16.01" y2="11"/><line x1="8" y1="15" x2="8.01" y2="15"/><line x1="12" y1="15" x2="12.01" y2="15"/><line x1="16" y1="15" x2="16.01" y2="15"/><line x1="8" y1="19" x2="16" y2="19"/></svg>',
         "tagline": "Margins, break-even, pricing and core arithmetic",
     },
     "Marketing": {
         "icon": f'<svg {_ICON_ATTRS}><path d="M3 11v2a1 1 0 0 0 1 1h2l4 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M15 8a4 4 0 0 1 0 8"/><path d="M18 5a8 8 0 0 1 0 14"/></svg>',
-        "tagline": "ROAS, conversion, funnels and campaign ROI",
+        "tagline": "ROAS, conversion, funnels, quota and campaign ROI",
     },
     "Finance": {
         "icon": f'<svg {_ICON_ATTRS}><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/><line x1="6" y1="10" x2="6" y2="10.01"/><line x1="18" y1="14" x2="18" y2="14.01"/></svg>',
@@ -54,7 +58,7 @@ CATEGORY_META: dict[str, dict[str, str]] = {
     },
     "Valuation": {
         "icon": f'<svg {_ICON_ATTRS}><line x1="12" y1="3" x2="12" y2="21"/><path d="M4 7h6l-3 7a3.2 3.2 0 0 1-6 0z"/><path d="M14 7h6l-3 7a3.2 3.2 0 0 1-6 0z"/><line x1="6" y1="3" x2="18" y2="3"/></svg>',
-        "tagline": "DCF, multiples and enterprise value math",
+        "tagline": "DCF, multiples, enterprise value and fundraising math",
     },
     "Tax & Compliance": {
         "icon": f'<svg {_ICON_ATTRS}><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 12.5"/></svg>',

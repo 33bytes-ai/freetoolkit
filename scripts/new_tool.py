@@ -3,7 +3,7 @@
 
 Usage:
   python scripts/new_tool.py --slug my-tool --title "My Tool" \
-      --short "One-line description." --category "SaaS Metrics"
+      --short "One-line description." --category "SaaS Growth Metrics"
 """
 from __future__ import annotations
 
@@ -17,9 +17,10 @@ ROOT = Path(__file__).resolve().parent.parent
 
 CATEGORIES = [
     "Payments",
-    "SaaS Metrics",
+    "SaaS Growth Metrics",
+    "SaaS Retention Metrics",
     "Freelance",
-    "Business Math",
+    "Pricing & Margins",
     "Marketing",
     "Finance",
     "Valuation",
@@ -263,7 +264,7 @@ def main() -> None:
     parser.add_argument("--short", required=True, help="One-line description")
     parser.add_argument(
         "--category",
-        default="SaaS Metrics",
+        default="SaaS Growth Metrics",
         choices=CATEGORIES,
         help=f"Category: {', '.join(CATEGORIES)}",
     )

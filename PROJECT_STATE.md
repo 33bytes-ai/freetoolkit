@@ -92,15 +92,16 @@ les 105 slugs).
 
 | Catégorie | Exemples |
 |-----------|--------|
-| **Payments** | Stripe Fee · PayPal Fee · Shopify Fee · Payment Fee Comparison |
-| **SaaS Metrics** | MRR/ARR · LTV/CAC · Runway · Churn Impact/Cohort · ARR↔MRR Converter · NPS · Rule of 40 · NRR/GRR · Magic Number · CAC by Channel/Payback |
-| **Freelance** | Freelance Rate · Salary to Hourly · Project Estimate · Invoice Total/Discount · Freelance Tax Estimator |
-| **Business Math** | Profit/Gross/Contribution Margin · Break-Even (×2) · VAT/Sales Tax · Markup · Discount · Price Impact/Elasticity |
-| **Marketing** | ROAS · Email ROI · Conversion Rate · Sales Funnel · Revenue per Lead |
-| **Finance** | DCF · NPV · IRR/MIRR · Free Cash Flow · Working Capital · Current Ratio · WACC |
-| **Valuation** | Enterprise Value · EBITDA (+Multiple) · P/E Ratio · Price-to-Sales |
-| **Tax & Compliance** | Payroll Tax · Freelance Tax Estimator |
-| **HR & People** | Employee Cost/Turnover(+Cost) · Payroll Cost · Customer Health Score |
+| **Payments** (4) | Stripe Fee · PayPal Fee · Shopify Fee · Payment Fee Comparison |
+| **SaaS Growth Metrics** (17) | MRR/ARR · ARR↔MRR Converter · Revenue Growth/Run Rate · Runway · Burn Multiple · Rule of 40 · Magic Number · Unit Economics |
+| **SaaS Retention Metrics** (14) | LTV/CAC · Churn Impact/Cohort · NPS · NRR/GRR · CAC by Channel/Payback · Customer Health Score/Concentration |
+| **Freelance** (4) | Freelance Rate · Salary to Hourly · Project Estimate · Invoice Total |
+| **Pricing & Margins** (16) | Profit/Gross/Contribution/Segment Margin · Break-Even (×2) · Markup · Discount · Price Impact · Pricing Elasticity |
+| **Marketing** (8) | ROAS · Email ROI · Conversion Rate · Sales Funnel · Sales Quota · Revenue per Lead |
+| **Finance** (27) | NPV · IRR/MIRR · Free Cash Flow · Working Capital · Current Ratio · WACC · EBITDA · Business Loan |
+| **Valuation** (7) | DCF · Enterprise Value · EBITDA Multiple · P/E Ratio · Price-to-Sales · TAM/SAM/SOM · Equity Dilution |
+| **Tax & Compliance** (3) | Payroll Tax · Freelance Tax Estimator · VAT/Sales Tax |
+| **HR & People** (5) | Employee Cost/Turnover(+Cost) · Payroll Cost · Commission |
 
 ### Pages intent + pays (244 au total)
 
