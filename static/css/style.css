@@ -1742,26 +1742,6 @@ button:hover {
   pointer-events: none;
 }
 
-/* Single link pointing at the "Browse by category" section below --
-   replaces a full repeat of every category badge (already in the header
-   nav and in the "Browse by category" section itself). */
-.hero-browse-link {
-  display: inline-block;
-  margin-top: 1.5rem;
-  color: rgba(255,255,255,0.75);
-  font-size: 0.85rem;
-  font-weight: 500;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(255,255,255,0.3);
-  padding-bottom: 0.15rem;
-  transition: color 0.2s, border-color 0.2s;
-}
-
-.hero-browse-link:hover {
-  color: #fff;
-  border-color: rgba(255,255,255,0.6);
-}
-
 /* Enhanced tool cards with glass hover effect */
 .tool-card {
   transition: border-color 0.18s, transform 0.18s, box-shadow 0.18s, background 0.18s;
