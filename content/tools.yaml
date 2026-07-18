@@ -600,7 +600,7 @@
   nav_title: "VAT Calculator"
   short: "Add or remove VAT / sales tax at any rate. Switch between countries or enter a custom rate."
   date_added: "2026-05-12"
-  category: Business Math
+  category: Tax & Compliance
   js: vat-calculator.js
   keywords: ["vat calculator", "sales tax calculator", "add vat to price", "remove vat from price", "vat exclusive inclusive"]
   howto_steps:
@@ -1217,7 +1217,7 @@
   nav_title: "Email ROI"
   short: "Calculate the revenue, ROI, and cost per conversion for any email campaign — from list size through opens, clicks, and conversions."
   date_added: "2026-05-27"
-  category: Business Math
+  category: Marketing
   js: email-roi-calculator.js
   keywords: ["email marketing roi calculator", "email campaign roi", "email marketing revenue calculator", "email campaign roi formula"]
   howto_steps:
@@ -2119,7 +2119,7 @@
   short: "Calculate Operating Cash Flow (OCF) from net income, depreciation, and working capital — plus free cash flow and cash conversion ratio."
   new: true
   date_added: "2026-06-17"
-  category: Business Math
+  category: Finance
   js: operating-cash-flow-calculator.js
   keywords: ["operating cash flow calculator", "ocf calculator", "free cash flow calculator", "cash conversion ratio", "net income to cash flow"]
   howto_steps:
@@ -2268,7 +2268,7 @@
   short: "Calculate the true employer cost of hiring: salary plus payroll taxes (FICA, FUTA, SUTA) and benefits — so you know the real budget impact of each hire."
   new: true
   date_added: "2026-06-17"
-  category: Business Math
+  category: HR & People
   js: payroll-cost-calculator.js
   keywords: ["payroll cost calculator", "employer cost calculator", "true cost of an employee", "payroll tax calculator employer", "cost per employee calculator"]
   howto_steps:
@@ -2935,7 +2935,7 @@
   short: "Calculate Days Inventory Outstanding, Days Sales Outstanding, and Days Payable Outstanding — and combine them into the Cash Conversion Cycle to measure working capital efficiency."
   new: true
   date_added: "2026-06-17"
-  category: Business Math
+  category: Finance
   js: cash-conversion-cycle-calculator.js
   keywords: ["cash conversion cycle calculator", "CCC calculator", "days inventory outstanding", "days sales outstanding", "days payable outstanding", "working capital efficiency"]
   howto_steps:
@@ -3240,7 +3240,7 @@
   short: "Calculate working capital, current ratio, and quick ratio from your balance sheet — the core liquidity metrics for measuring a business's short-term financial health."
   new: true
   date_added: "2026-06-17"
-  category: Business Math
+  category: Finance
   js: working-capital-calculator.js
   keywords: ["working capital calculator", "current ratio calculator", "quick ratio calculator", "working capital formula", "liquidity ratio calculator"]
   howto_steps:
@@ -3383,7 +3383,7 @@
   short: "Calculate payback period in years and months — simple and discounted — to determine how long until an investment breaks even and starts generating net returns."
   new: true
   date_added: "2026-06-17"
-  category: Business Math
+  category: Finance
   js: payback-period-calculator.js
   keywords: ["payback period calculator", "investment payback period", "discounted payback period", "break even investment calculator", "payback period formula"]
   howto_steps:
@@ -3651,7 +3651,7 @@
   short: "Calculate free cash flow (operating cash flow minus capital expenditures), FCF margin, and FCF yield — the metric investors use to assess true cash generation."
   new: true
   date_added: "2026-06-17"
-  category: Business Math
+  category: Finance
   js: free-cash-flow-calculator.js
   keywords: ["free cash flow calculator", "fcf calculator", "free cash flow formula", "fcf margin calculator", "operating cash flow calculator"]
   howto_steps:
@@ -3969,7 +3969,7 @@
   short: "Calculate net present value from an initial investment and up to 5 years of cash flows — includes profitability index and simple payback period."
   new: true
   date_added: "2026-06-17"
-  category: Business Math
+  category: Finance
   js: npv-calculator.js
   keywords: ["npv calculator", "net present value calculator", "npv formula", "discounted cash flow calculator", "investment npv calculator"]
   howto_steps:
@@ -5043,7 +5043,7 @@
   short: "Estimate employer payroll taxes — FICA (Social Security + Medicare), FUTA, and total employment cost — for any employee salary in the US."
   date_added: "2026-06-18"
   new: true
-  category: HR & People
+  category: Tax & Compliance
   js: payroll-tax-calculator.js
   keywords: ["payroll tax calculator", "employer payroll tax", "fica calculator employer", "employment cost calculator", "social security medicare tax employer"]
   howto_steps:
