@@ -31,21 +31,28 @@
           <span class="stat-label">Cost forever</span>
         </div>
       </div>
+
+      <ul class="hero-facts">
+        <li><strong>{{ categories | length }}</strong> categories</li>
+        <li><strong>{{ all_intent_pages | length }}+</strong> related guides</li>
+        <li>No sign-up &amp; no data uploaded</li>
+        <li>Open-source on GitHub</li>
+      </ul>
     </div>
   </div>
 </div>
 
 {% include "ads_slot.html" %}
 
-<!-- Social proof trust bar -->
-<div class="trust-bar reveal">
-  <div class="wrap">
-    <ul class="trust-items">
-      <li><strong>{{ categories | length }}</strong> categories</li>
-      <li><strong>{{ all_intent_pages | length }}+</strong> related guides</li>
-      <li>No sign-up &amp; no data uploaded</li>
-      <li>Open-source on GitHub</li>
-    </ul>
+<!-- Scrolling ticker of the real tool catalog -->
+<div class="tool-ticker">
+  <div class="tool-ticker-track">
+    <span class="tool-ticker-set" aria-hidden="true">
+      {% for tool in tools %}<span class="tool-ticker-item">{{ tool.nav_title or tool.title }}</span>{% endfor %}
+    </span>
+    <span class="tool-ticker-set" aria-hidden="true">
+      {% for tool in tools %}<span class="tool-ticker-item">{{ tool.nav_title or tool.title }}</span>{% endfor %}
+    </span>
   </div>
 </div>
 
@@ -126,5 +133,5 @@
 </section>
 {% endif %}
 
-<script src="/static/js/home.js" defer></script>
+<script src="/static/js/home.js?v={{ asset_version }}" defer></script>
 {% endblock %}

@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import datetime
 import gzip
+import hashlib
 import json
 import math
 import os
@@ -800,6 +801,28 @@ def write_og_image(config: dict, tools: list[dict] | None = None) -> None:
             ).save(out_dir / f"og-{tool['slug']}.png", "PNG", optimize=True)
 
 
+# Site-wide assets referenced identically on every page. Fingerprinted with
+# a content hash (via ?v=) so a deploy invalidates exactly the files that
+# changed -- without this, nginx's `expires 1y; immutable` on /static/
+# means a returning visitor's browser silently keeps serving a pre-deploy
+# copy of the CSS/JS for up to a year.
+_ASSET_VERSION_FILES = (
+    "css/style.css",
+    "js/lib/common.js",
+    "js/lib/tracker.js",
+    "js/home.js",
+)
+
+
+def _compute_asset_version() -> str:
+    digest = hashlib.sha256()
+    for rel in _ASSET_VERSION_FILES:
+        path = STATIC_DIR / rel
+        if path.exists():
+            digest.update(path.read_bytes())
+    return digest.hexdigest()[:10]
+
+
 def build() -> Path:
     config = load_config()
     tools = load_tools()
@@ -841,6 +864,7 @@ def build() -> Path:
         intent_count_by_category[cat] = intent_count_by_category.get(cat, 0) + 1
 
     csp_nonce = secrets.token_urlsafe(16)
+    asset_version = _compute_asset_version()
 
     common = dict(
         site=config["site"],
@@ -852,6 +876,7 @@ def build() -> Path:
         year=datetime.date.today().year,
         build_date=datetime.date.today().isoformat(),
         csp_nonce=csp_nonce,
+        asset_version=asset_version,
     )
 
     for tool in tools:

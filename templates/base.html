@@ -36,9 +36,9 @@
   <link rel="manifest" href="/manifest.json">
   <link rel="preconnect" href="https://pagead2.googlesyndication.com">
   <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net">
-  <link rel="preload" href="/static/css/style.css" as="style">
-  <link rel="stylesheet" href="/static/css/style.css">
-  <link rel="preload" href="/static/js/lib/common.js" as="script">
+  <link rel="preload" href="/static/css/style.css?v={{ asset_version }}" as="style">
+  <link rel="stylesheet" href="/static/css/style.css?v={{ asset_version }}">
+  <link rel="preload" href="/static/js/lib/common.js?v={{ asset_version }}" as="script">
   <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="{{ site.name }}">
   <meta name="mobile-web-app-capable" content="yes">
@@ -206,8 +206,8 @@
   </main>
 
   <button id="scroll-top" aria-label="Back to top" style="display:none;position:fixed;bottom:1.25rem;right:1.25rem;width:2.4rem;height:2.4rem;border-radius:50%;background:var(--accent);color:#fff;border:none;cursor:pointer;z-index:50;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,99,235,0.22);transition:opacity 0.2s,transform 0.2s"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="18 15 12 9 6 15"/></svg></button>
-  <script src="/static/js/lib/common.js" defer></script>
-  <script src="/static/js/lib/tracker.js" defer></script>
+  <script src="/static/js/lib/common.js?v={{ asset_version }}" defer></script>
+  <script src="/static/js/lib/tracker.js?v={{ asset_version }}" defer></script>
   <footer class="site-footer">
     <div class="wrap">
       <div class="footer-cols">

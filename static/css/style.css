@@ -1757,30 +1757,67 @@ button:hover {
 }
 
 /* Trust bar */
-.trust-bar {
-  border-bottom: 1px solid var(--border);
-  padding: 0.65rem 0;
-  background: var(--surface);
-}
-.trust-items {
+/* Secondary trust facts inside the hero card, under the main stats */
+.hero-facts {
   list-style: none;
-  margin: 0;
+  margin: 1.25rem 0 0;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.4rem 1.5rem;
+  gap: 0.35rem 1.25rem;
   align-items: center;
-  font-size: 0.85rem;
-  color: var(--text-muted);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.55);
 }
-.trust-items li { display: flex; align-items: center; gap: 0.3rem; }
-.trust-items strong { color: var(--text); }
-.trust-items li + li::before {
+.hero-facts li { display: flex; align-items: center; gap: 0.3rem; }
+.hero-facts strong { color: rgba(255, 255, 255, 0.85); }
+.hero-facts li + li::before {
   content: "·";
-  margin-right: 1.1rem;
-  opacity: 0.4;
+  margin-right: 0.95rem;
+  opacity: 0.5;
   pointer-events: none;
+}
+
+/* Scrolling ticker of the tool catalog, replaces the old static trust bar */
+.tool-ticker {
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  padding: 0.7rem 0;
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.tool-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: tool-ticker-scroll 70s linear infinite;
+}
+.tool-ticker-set {
+  display: flex;
+  flex-shrink: 0;
+}
+.tool-ticker-item {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  padding: 0 1.25rem;
+  border-right: 1px solid var(--border);
+}
+@keyframes tool-ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.tool-ticker:hover .tool-ticker-track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tool-ticker-track {
+    animation: none;
+  }
+  .tool-ticker {
+    overflow-x: auto;
+  }
 }
 
 /* Enhanced tool cards with glass hover effect */
@@ -2029,10 +2066,9 @@ button:hover {
   .intent-links,
   .related-tools,
   .btn-row,
-  .hero-categories,
   .skip-link,
   .newsletter-section,
-  .trust-bar,
+  .tool-ticker,
   .home-section,
   .intro-text,
   .tools-filter-bar,
