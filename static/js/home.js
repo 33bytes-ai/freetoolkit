@@ -8,6 +8,24 @@
     if (!el) return;
     var words = ["founders", "freelancers", "SaaS builders", "bootstrappers", "indie hackers", "startups"];
     var idx = 0;
+
+    // Lock the heading to the tallest height any word in the rotation
+    // actually needs at the current viewport width, measured live rather
+    // than guessed -- prevents the hero card resizing every time a
+    // shorter/longer word swaps in (e.g. "founders" wrapping to 1 line
+    // while "SaaS builders" wraps to 2 at the same width).
+    var h1 = el.closest("h1");
+    if (h1) {
+      var original = el.textContent;
+      var maxHeight = 0;
+      words.forEach(function (w) {
+        el.textContent = w;
+        maxHeight = Math.max(maxHeight, h1.offsetHeight);
+      });
+      el.textContent = original;
+      h1.style.minHeight = maxHeight + "px";
+    }
+
     function cycle() {
       el.classList.add("htc-exit");
       setTimeout(function () {

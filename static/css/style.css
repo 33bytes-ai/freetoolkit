@@ -96,12 +96,46 @@ h1, h2 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.75rem;
-  height: 1.75rem;
-  border-radius: 8px;
-  background: var(--accent);
-  color: #fff;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--accent);
   flex-shrink: 0;
+}
+.brand-mark svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Logo-draw splash, shown briefly on page load then removed by JS. */
+#logo-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+#logo-splash.logo-splash-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+#logo-splash svg {
+  color: var(--accent);
+  overflow: visible;
+}
+#logo-splash path {
+  fill: none;
+  stroke: currentColor;
+}
+@media (prefers-reduced-motion: reduce) {
+  #logo-splash {
+    display: none;
+  }
 }
 
 /* ── Nav ──────────────────────────────────────────────────────────────── */
@@ -109,9 +143,15 @@ h1, h2 {
   display: flex;
   align-items: center;
   gap: 0.05rem;
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   flex: 1 1 0;
   min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.site-nav::-webkit-scrollbar {
+  display: none;
 }
 
 .nav-group {
@@ -123,7 +163,7 @@ h1, h2 {
   cursor: pointer;
   color: var(--text-muted);
   font-weight: 600;
-  padding: 0.35rem 0.5rem;
+  padding: 0.35rem 0.4rem;
   border-radius: 6px;
   white-space: nowrap;
   text-decoration: none;
@@ -1676,7 +1716,7 @@ button:hover {
   font-size: clamp(1.7rem, 4vw, 2.5rem);
   margin: 0 0 0.75rem;
   line-height: 1.2;
-  min-height: 1.45em;
+  min-height: 2.4em;
   text-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
@@ -1728,6 +1768,7 @@ button:hover {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.4rem 1.5rem;
   align-items: center;
   font-size: 0.85rem;

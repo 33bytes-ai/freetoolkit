@@ -110,6 +110,49 @@ window.FTK = (function () {
       if (saved) document.documentElement.setAttribute("data-theme", saved);
     })();
 
+    // Logo-draw splash: strokes each letterform path in on load, then
+    // fades the overlay out. Skipped entirely for prefers-reduced-motion
+    // (CSS also hides it as a belt-and-braces fallback).
+    (function () {
+      var splash = document.getElementById("logo-splash");
+      if (!splash) return;
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        splash.remove();
+        return;
+      }
+
+      var paths = splash.querySelectorAll("path");
+      var STAGGER = 90;
+      var DRAW_MS = 380;
+
+      Array.prototype.forEach.call(paths, function (p, i) {
+        var len = p.getTotalLength();
+        p.style.strokeWidth = "6";
+        p.style.strokeDasharray = len;
+        p.style.strokeDashoffset = len;
+        p.style.fill = "none";
+      });
+      // Force layout so the initial dasharray/dashoffset apply before we
+      // transition away from them (otherwise the browser may coalesce
+      // both style changes into one frame and skip the animation).
+      void splash.offsetWidth;
+
+      Array.prototype.forEach.call(paths, function (p, i) {
+        var delay = i * STAGGER;
+        p.style.transition =
+          "stroke-dashoffset " + DRAW_MS + "ms ease " + delay + "ms, " +
+          "fill " + DRAW_MS + "ms ease " + (delay + DRAW_MS * 0.6) + "ms";
+        p.style.strokeDashoffset = "0";
+        p.style.fill = "currentColor";
+      });
+
+      var totalTime = paths.length * STAGGER + DRAW_MS + 250;
+      window.setTimeout(function () {
+        splash.classList.add("logo-splash-hidden");
+        window.setTimeout(function () { splash.remove(); }, 450);
+      }, Math.max(totalTime, 650));
+    })();
+
     // Reading progress bar
     (function () {
       var bar = document.getElementById("reading-progress");
