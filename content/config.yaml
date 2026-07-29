@@ -6,19 +6,20 @@ site:
     FounderCalc is a collection of free, instant business calculators —
     Stripe fees, MRR, LTV/CAC, runway, profit margin, freelance rates and more.
     All math runs in your browser. No sign-up, no uploads, no tracking.
-  base_url: "https://foundercalc.example.com"
+  base_url: "https://foundercalc.dev"
   twitter: ""
 
   # Flip to true once AdSense application is approved (see docs/MONETIZATION.md).
   # Business/SaaS calculator audience commands RPM of $8–20 vs $1–3 for general tools.
   ads_enabled: false
+  adsense_client_id: "ca-pub-6294535713639434"
 
   # Set to your Formspree form ID to enable the newsletter signup forms: the
   # homepage card and the discreet one in the footer on every page.
   # Get a free form at https://formspree.io — use the 8-character ID from your form URL.
   # Formspree submissions can be forwarded to ConvertKit/Beehiiv via their
   # Zapier integration (both are free-tier) once a list is set up there.
-  formspree_id: ""
+  formspree_id: "xnjewraq"
 
 # Navigation categories, in display order.
 categories:
@@ -29,6 +30,8 @@ categories:
   - Pricing & Margins
   - Marketing
   - Finance
+  - Cash Flow
+  - Investment & Returns
   - Valuation
   - Tax & Compliance
   - HR & People

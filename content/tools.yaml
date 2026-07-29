@@ -1472,7 +1472,7 @@
   short: "Calculate optimal SaaS pricing tiers based on your costs, target margin, and willingness-to-pay — with monthly and annual plan analysis."
   new: true
   date_added: "2026-06-12"
-  category: SaaS Growth Metrics
+  category: Pricing & Margins
   js: saas-pricing-calculator.js
   keywords: ["saas pricing calculator", "saas pricing strategy", "how to price saas product", "saas pricing tiers"]
   howto_steps:
@@ -2119,7 +2119,7 @@
   short: "Calculate Operating Cash Flow (OCF) from net income, depreciation, and working capital — plus free cash flow and cash conversion ratio."
   new: true
   date_added: "2026-06-17"
-  category: Finance
+  category: "Cash Flow"
   js: operating-cash-flow-calculator.js
   keywords: ["operating cash flow calculator", "ocf calculator", "free cash flow calculator", "cash conversion ratio", "net income to cash flow"]
   howto_steps:
@@ -2935,7 +2935,7 @@
   short: "Calculate Days Inventory Outstanding, Days Sales Outstanding, and Days Payable Outstanding — and combine them into the Cash Conversion Cycle to measure working capital efficiency."
   new: true
   date_added: "2026-06-17"
-  category: Finance
+  category: "Cash Flow"
   js: cash-conversion-cycle-calculator.js
   keywords: ["cash conversion cycle calculator", "CCC calculator", "days inventory outstanding", "days sales outstanding", "days payable outstanding", "working capital efficiency"]
   howto_steps:
@@ -3240,7 +3240,7 @@
   short: "Calculate working capital, current ratio, and quick ratio from your balance sheet — the core liquidity metrics for measuring a business's short-term financial health."
   new: true
   date_added: "2026-06-17"
-  category: Finance
+  category: "Cash Flow"
   js: working-capital-calculator.js
   keywords: ["working capital calculator", "current ratio calculator", "quick ratio calculator", "working capital formula", "liquidity ratio calculator"]
   howto_steps:
@@ -3317,7 +3317,7 @@
   short: "Calculate return on investment (ROI), annualized ROI, net profit, and break-even period for any business investment, marketing campaign, or capital allocation decision."
   new: true
   date_added: "2026-06-17"
-  category: "Pricing & Margins"
+  category: "Investment & Returns"
   js: roi-calculator.js
   keywords: ["roi calculator", "return on investment calculator", "annualized roi calculator", "investment return calculator", "roi formula business"]
   howto_steps:
@@ -3383,7 +3383,7 @@
   short: "Calculate payback period in years and months — simple and discounted — to determine how long until an investment breaks even and starts generating net returns."
   new: true
   date_added: "2026-06-17"
-  category: Finance
+  category: "Investment & Returns"
   js: payback-period-calculator.js
   keywords: ["payback period calculator", "investment payback period", "discounted payback period", "break even investment calculator", "payback period formula"]
   howto_steps:
@@ -3581,7 +3581,7 @@
   short: "Calculate sales velocity — the revenue your pipeline generates per day — from opportunities, win rate, ACV, and sales cycle length."
   new: true
   date_added: "2026-06-17"
-  category: SaaS Growth Metrics
+  category: Marketing
   js: sales-velocity-calculator.js
   keywords: ["sales velocity calculator", "sales velocity formula", "pipeline velocity", "sales velocity metric", "revenue per day calculator"]
   howto_steps:
@@ -3651,7 +3651,7 @@
   short: "Calculate free cash flow (operating cash flow minus capital expenditures), FCF margin, and FCF yield — the metric investors use to assess true cash generation."
   new: true
   date_added: "2026-06-17"
-  category: Finance
+  category: "Cash Flow"
   js: free-cash-flow-calculator.js
   keywords: ["free cash flow calculator", "fcf calculator", "free cash flow formula", "fcf margin calculator", "operating cash flow calculator"]
   howto_steps:
@@ -3969,7 +3969,7 @@
   short: "Calculate net present value from an initial investment and up to 5 years of cash flows — includes profitability index and simple payback period."
   new: true
   date_added: "2026-06-17"
-  category: Finance
+  category: "Investment & Returns"
   js: npv-calculator.js
   keywords: ["npv calculator", "net present value calculator", "npv formula", "discounted cash flow calculator", "investment npv calculator"]
   howto_steps:
@@ -4719,7 +4719,7 @@
   title: "Days Sales Outstanding (DSO) Calculator"
   nav_title: "DSO Calculator"
   short: "Calculate Days Sales Outstanding to measure how quickly you collect accounts receivable and how much cash is tied up in unpaid invoices."
-  category: "Finance"
+  category: "Cash Flow"
   date_added: "2026-06-17"
   keywords:
     - days sales outstanding
@@ -4891,7 +4891,7 @@
   short: "Calculate Weighted Average Cost of Capital — the blended rate a company must earn on its assets to satisfy all capital providers, equity and debt."
   date_added: "2026-06-18"
   new: true
-  category: Finance
+  category: "Investment & Returns"
   js: wacc-calculator.js
   keywords: ["wacc calculator", "weighted average cost of capital", "wacc formula", "cost of equity cost of debt", "discount rate calculator"]
   howto_steps:
@@ -4998,7 +4998,7 @@
   short: "Calculate the Internal Rate of Return (IRR) for any series of cash flows — evaluates the profitability of investments, projects, and business decisions."
   date_added: "2026-06-18"
   new: true
-  category: Finance
+  category: "Investment & Returns"
   js: irr-calculator.js
   keywords: ["irr calculator", "internal rate of return calculator", "investment irr", "project irr calculation", "net present value irr"]
   howto_steps:
@@ -5137,6 +5137,11 @@
   date_added: "2026-06-18"
   new: true
   category: Finance
+  # Same metric, same inputs (revenue + COGS), same outputs as
+  # gross-margin-calculator. Rather than delete an indexed URL, point the
+  # canonical at the page it duplicates so Google consolidates ranking
+  # signals onto one without either page 404ing.
+  canonical_to: gross-margin-calculator
   js: gross-profit-margin-calculator.js
   keywords: ["gross profit margin calculator", "gross margin for investors", "gross profit calculator", "profit margin formula", "COGS calculator"]
   howto_steps:
@@ -5191,7 +5196,7 @@
   short: "Calculate Modified Internal Rate of Return — a more accurate investment return metric that corrects IRR's reinvestment rate assumption."
   date_added: "2026-06-18"
   new: true
-  category: Finance
+  category: "Investment & Returns"
   js: mirr-calculator.js
   keywords: ["mirr calculator", "modified irr calculator", "modified internal rate of return", "mirr vs irr", "investment return calculator"]
   howto_steps:
@@ -5410,7 +5415,7 @@
   short: "Use the Rule of 72 to estimate how long it takes to double your money at a given annual return rate — and find the rate needed to double by a target date."
   date_added: "2026-06-18"
   new: true
-  category: Finance
+  category: "Investment & Returns"
   js: rule-of-72-calculator.js
   keywords: ["rule of 72 calculator", "doubling time calculator", "compound interest doubling", "investment return calculator", "how long to double money"]
   howto_steps:
@@ -6556,7 +6561,7 @@
   short: Calculate early payment discount savings, net payment amount, and the annualized cost of passing on a 2/10 net 30 discount.
   date_added: "2026-06-18"
   new: true
-  category: Finance
+  category: "Cash Flow"
   js: invoice-discount-calculator.js
   keywords:
     - invoice discount calculator
@@ -6779,7 +6784,7 @@
   short: Calculate budget variance in dollars and percentage, and determine whether the variance is favorable or unfavorable for revenue or expense lines.
   date_added: "2026-06-18"
   new: true
-  category: Finance
+  category: "Cash Flow"
   js: budget-variance-calculator.js
   keywords:
     - budget variance calculator
