@@ -10,12 +10,19 @@
 #
 # PROGRAMS TO JOIN:
 # - Paddle:        paddle.com/partners
-# - Lemon Squeezy: lemonsqueezy.com/affiliate
+# - Chargebee:     chargebee.com/partners/solution-partner-program (referral commission on new customers)
 # - FreshBooks:    freshbooks.com/affiliates (ShareASale)
 # - QuickBooks:    quickbooksonline.com/affiliates
 # - Bonsai:        hellobonsai.com/affiliates
 # - Gusto:         gusto.com/refer
 # - Baremetrics:   baremetrics.com/affiliate (impact.com)
+#
+# NOT viable as a "join and earn on referred signups" program despite the
+# lemonsqueezy.com/affiliate URL: Lemon Squeezy's affiliate system (like
+# Gumroad's and FastSpring's) only pays commission per-merchant — you apply
+# to promote an individual seller's product, not the platform itself.
+# Confirmed by entering our own info there: it silently created a Lemon
+# Squeezy seller "store" account instead of an affiliate profile.
 
 stripe-fee-calculator:
   - name: "Paddle"
@@ -24,12 +31,12 @@ stripe-fee-calculator:
     category: "Stripe alternative"
     description: "Merchant of record: Paddle handles VAT, global tax compliance, and payment processing. No separate Stripe account needed — and no surprise tax bills."
     cta: "Try Paddle free →"
-  - name: "Lemon Squeezy"
-    url: "https://www.lemonsqueezy.com"
+  - name: "FastSpring"
+    url: "https://fastspring.com"
     affiliate: false
     category: "Stripe alternative for SaaS"
-    description: "Payments + licensing + affiliate management for SaaS. Built for indie developers: simple flat-rate pricing, no setup fees."
-    cta: "Try Lemon Squeezy free →"
+    description: "Merchant of record built for software and SaaS: handles global tax compliance, checkout localization, and subscription billing in one platform."
+    cta: "Try FastSpring free →"
   - name: "Stripe Tax"
     url: "https://stripe.com/tax"
     affiliate: false
@@ -428,12 +435,12 @@ payment-fee-comparison:
     category: "Stripe/PayPal alternative"
     description: "Merchant of record: Paddle handles all payment processing, global VAT/tax compliance, and customer disputes. One fee, no surprises — ideal for SaaS and digital products."
     cta: "Try Paddle free →"
-  - name: "Lemon Squeezy"
-    url: "https://www.lemonsqueezy.com"
+  - name: "FastSpring"
+    url: "https://fastspring.com"
     affiliate: false
     category: "Payments for SaaS"
-    description: "All-in-one payments for software: subscriptions, one-time payments, licensing, and affiliate management. No PayPal/Stripe account required."
-    cta: "Start selling with Lemon Squeezy →"
+    description: "Full-service merchant of record for digital goods and SaaS: handles checkout, global tax remittance, and subscription renewals so you never touch a Stripe account."
+    cta: "Start selling with FastSpring →"
   - name: "Chargebee"
     url: "https://www.chargebee.com"
     affiliate: false
@@ -488,12 +495,12 @@ saas-pricing-calculator:
     category: "Subscription billing"
     description: "Subscription billing management: A/B test pricing plans, manage multiple tiers, handle proration and upgrades. Free up to $250k ARR."
     cta: "Start free with Chargebee →"
-  - name: "Lemon Squeezy"
-    url: "https://www.lemonsqueezy.com"
+  - name: "FastSpring"
+    url: "https://fastspring.com"
     affiliate: false
     category: "Payments for SaaS"
-    description: "All-in-one payments for software products with built-in licensing, affiliate management, and subscription support. Simpler setup than Stripe for indie founders."
-    cta: "Start selling with Lemon Squeezy →"
+    description: "Merchant of record for software products with built-in subscription support and global tax handling. Simpler setup than raw Stripe for indie founders."
+    cta: "Start selling with FastSpring →"
 
 unit-economics-calculator:
   - name: "Baremetrics"

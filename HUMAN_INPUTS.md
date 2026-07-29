@@ -17,14 +17,41 @@ Mis à jour : 2026-07-10. Domaine retenu après vérification RDAP :
 2. Enregistrer `foundercalc.dev`
 3. Une fois fait, redonner la main pour que `base_url` soit mis à jour dans `content/config.yaml` et le site rebuild
 
-### A2. Créer et configurer le VPS (~20 min, ~4,50-6€/mois)
-1. Créer un VPS chez [Hetzner](https://hetzner.com) (CX22, ~4,50€/mois, EU) ou DigitalOcean (~4$/mois)
-2. Pointer le A record du domaine vers l'IP du VPS
-3. Une fois le VPS accessible en SSH, redonner la main — `scripts/deploy.sh` et `infra/nginx.conf` sont déjà prêts, le déploiement + TLS (Certbot) peuvent être faits ensemble
+### A2. Hébergement (Cloudflare Pages, gratuit)
+Migré le 2026-07-29 depuis un VPS Hetzner (CPX12, ~13,79€/mois) vers
+**Cloudflare Pages** — le VPS était justifié par GoAccess (analytics sur
+logs serveur bruts, zéro tracking JS), mais **Cloudflare Web Analytics**
+offre la même promesse "zéro cookie / zéro tracking" gratuitement, déjà
+disponible puisque le domaine est déjà chez Cloudflare — ce qui rend le VPS
+inutile. Serveur, firewall, clé SSH et IPs supprimés le 2026-07-29.
+
+1. Build : `pip install -e . && python src/freetoolkit/build.py` → dossier `dist/`
+2. Déploiement : `wrangler pages deploy dist --project-name=foundercalc`
+
+### A2bis. Clôture complète du compte Hetzner (⚠️ à partir du 2026-08-04)
+Ressources supprimées, mais le compte Hetzner n'est pas encore fermé — le
+crédit (25€, prépaiement lié à la vérification d'identité) reste bloqué
+tant que ce n'est pas fait. La facture finale n'est générée que le 4 de
+chaque mois (facturation Hetzner), donc rien à faire avant.
+1. [accounts.hetzner.com](https://accounts.hetzner.com) → **Invoices → Overview** — vérifier que la facture finale est apparue
+2. **Invoices → Transactions** — confirmer que le crédit l'a couverte automatiquement
+3. **Settings → Delete user account** — fermer le compte
+4. Écrire à **cda-review@hetzner.com** pour demander le remboursement du solde de crédit restant
+3. Domaine personnalisé attaché au projet Pages ; DNS = CNAME vers
+   `foundercalc.pages.dev`, proxy Cloudflare activé (SSL géré automatiquement)
+4. Stats : activer Cloudflare Web Analytics dans le dashboard (remplace GoAccess)
 
 ### A3. Soumettre le sitemap aux moteurs (~10 min, gratuit)
 1. [Google Search Console](https://search.google.com/search-console) → ajouter la propriété `foundercalc.dev` → soumettre `sitemap_index.xml`
 2. [Bing Webmaster Tools](https://www.bing.com/webmasters) → même démarche
+
+⚠️ **En attente (2026-07-28)** : GSC affiche « Impossible de récupérer le
+sitemap » après soumission. Vérifié côté serveur — XML valide, HTTP 200,
+`content-type` correct, répond même avec un user-agent Googlebot — rien
+d'anormal détecté depuis l'extérieur. Probablement juste le délai normal
+GSC avant premier crawl (jusqu'à 24-48h). À revérifier le 2026-07-29 ; si
+toujours en échec, regarder Cloudflare Dashboard → Security → Bot Fight
+Mode (le token API actuel n'a pas la permission de vérifier ce réglage).
 
 ### A4. Monitoring d'uptime (optionnel, ~10 min, gratuit)
 Un healthcheck externe tourne déjà automatiquement dès que A1 est fait (voir
@@ -64,7 +91,7 @@ des emails (SMS, appel, checks multi-régions) :
 ### C1. S'inscrire aux programmes affiliés (~15-30 min chacun)
 Comptes à créer toi-même (infos personnelles/IBAN requises, non déléguables) :
 1. [Paddle Partners](https://paddle.com) (ou équivalent selon les outils SaaS pertinents)
-2. [Lemon Squeezy Affiliates](https://lemonsqueezy.com)
+2. [Chargebee Solution Partner Program](https://www.chargebee.com/partners/solution-partner-program/) (commission sur les nouveaux clients référés — Lemon Squeezy retiré : son "affiliate" est par marchand individuel, pas une commission de parrainage plateforme)
 3. FreshBooks (programme affilié comptabilité, pertinent pour l'audience freelance)
 4. Tout autre programme pertinent identifié dans `content/affiliates.yaml`
 

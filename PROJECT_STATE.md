@@ -145,7 +145,7 @@ partir de données pures au build, pas de contenu dupliqué à la main.
 - [ ] Mettre à jour `base_url` dans `content/config.yaml`
 - [ ] Soumettre sitemap à Google Search Console + Bing Webmaster Tools
 - [ ] Candidater à Google AdSense (une fois le site en ligne)
-- [ ] Rejoindre les programmes affiliés (Paddle, Lemon Squeezy, FreshBooks…) et transmettre les IDs
+- [ ] Rejoindre les programmes affiliés (Paddle, Chargebee, FreshBooks…) et transmettre les IDs
 
 ---
 
