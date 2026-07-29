@@ -1,21 +1,21 @@
 <div>
   <table class="calc-table" id="mrr-plans">
     <thead>
-      <tr><th>Plan monthly price ($)</th><th>Subscribers</th><th>Plan MRR</th></tr>
+      <tr><th>Plan monthly price (<span class="cur-sym">$</span>)</th><th>Subscribers</th><th>Plan MRR</th></tr>
     </thead>
     <tbody>
       <tr>
-        <td><input type="number" autocomplete="off" class="plan-price" value="49" min="0" step="1" aria-label="Plan monthly price ($)"></td>
+        <td><input type="number" autocomplete="off" class="plan-price" value="49" min="0" step="1" aria-label="Plan monthly price ($)" data-cur-label="Plan monthly price ($)"></td>
         <td><input type="number" autocomplete="off" class="plan-subs" value="10" min="0" step="1" aria-label="Subscribers"></td>
-        <td class="plan-mrr">$490</td>
+        <td class="plan-mrr"><span class="cur-sym">$</span>490</td>
       </tr>
       <tr>
-        <td><input type="number" autocomplete="off" class="plan-price" value="99" min="0" step="1" aria-label="Plan monthly price ($)"></td>
+        <td><input type="number" autocomplete="off" class="plan-price" value="99" min="0" step="1" aria-label="Plan monthly price ($)" data-cur-label="Plan monthly price ($)"></td>
         <td><input type="number" autocomplete="off" class="plan-subs" value="5" min="0" step="1" aria-label="Subscribers"></td>
-        <td class="plan-mrr">$495</td>
+        <td class="plan-mrr"><span class="cur-sym">$</span>495</td>
       </tr>
       <tr>
-        <td><input type="number" autocomplete="off" class="plan-price" value="" min="0" step="1" placeholder="Optional" aria-label="Plan monthly price ($)"></td>
+        <td><input type="number" autocomplete="off" class="plan-price" value="" min="0" step="1" placeholder="Optional" aria-label="Plan monthly price ($)" data-cur-label="Plan monthly price ($)"></td>
         <td><input type="number" autocomplete="off" class="plan-subs" value="" min="0" step="1" placeholder="Optional" aria-label="Subscribers"></td>
         <td class="plan-mrr"></td>
       </tr>
@@ -27,8 +27,8 @@
   </div>
 </div>
 <div class="stats-grid">
-  <div class="stat result-hero" data-tooltip="Monthly Recurring Revenue — sum of all plan prices × subscriber counts. The heartbeat metric of every SaaS business."><div class="num" id="mrr-total">$0</div><div class="label">MRR</div></div>
-  <div class="stat" data-tooltip="Annual Recurring Revenue = MRR × 12. The primary top-line metric used for SaaS valuation and fundraising conversations."><div class="num" id="mrr-arr">$0</div><div class="label">ARR</div></div>
-  <div class="stat" data-tooltip="MRR projected forward 3 months at your monthly growth rate using compound growth. Assumes no churn or expansion beyond the growth rate."><div class="num" id="mrr-3mo">$0</div><div class="label">MRR in 3 months</div></div>
-  <div class="stat" data-tooltip="MRR projected forward 12 months at your monthly growth rate. Divide by 12 to see where your ARR will be in a year."><div class="num" id="mrr-12mo">$0</div><div class="label">MRR in 12 months</div></div>
+  <div class="stat result-hero" data-tooltip="Monthly Recurring Revenue — sum of all plan prices × subscriber counts. The heartbeat metric of every SaaS business."><div class="num" id="mrr-total"><span class="cur-sym">$</span>0</div><div class="label">MRR</div></div>
+  <div class="stat" data-tooltip="Annual Recurring Revenue = MRR × 12. The primary top-line metric used for SaaS valuation and fundraising conversations."><div class="num" id="mrr-arr"><span class="cur-sym">$</span>0</div><div class="label">ARR</div></div>
+  <div class="stat" data-tooltip="MRR projected forward 3 months at your monthly growth rate using compound growth. Assumes no churn or expansion beyond the growth rate."><div class="num" id="mrr-3mo"><span class="cur-sym">$</span>0</div><div class="label">MRR in 3 months</div></div>
+  <div class="stat" data-tooltip="MRR projected forward 12 months at your monthly growth rate. Divide by 12 to see where your ARR will be in a year."><div class="num" id="mrr-12mo"><span class="cur-sym">$</span>0</div><div class="label">MRR in 12 months</div></div>
 </div>

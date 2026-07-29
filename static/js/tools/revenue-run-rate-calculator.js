@@ -51,10 +51,10 @@
       var proj    = monthly ? calcProjectedRevenue(monthly, grow, fwd) : null;
       var fwdRR   = proj ? (proj / fwd) * 12 : null;
 
-      document.getElementById("rrr-result").textContent    = rr !== null ? "$" + (rr / 1000).toFixed(1) + "k" : "--";
-      document.getElementById("rrr-monthly").textContent   = monthly !== null ? "$" + monthly.toFixed(0) : "--";
-      document.getElementById("rrr-projected").textContent = proj !== null ? "$" + (proj / 1000).toFixed(1) + "k" : "--";
-      document.getElementById("rrr-fwd-rr").textContent    = fwdRR !== null ? "$" + (fwdRR / 1000).toFixed(1) + "k ARR" : "--";
+      document.getElementById("rrr-result").textContent    = rr !== null ? window.FTK.cur() + (rr / 1000).toFixed(1) + "k" : "--";
+      document.getElementById("rrr-monthly").textContent   = monthly !== null ? window.FTK.cur() + monthly.toFixed(0) : "--";
+      document.getElementById("rrr-projected").textContent = proj !== null ? window.FTK.cur() + (proj / 1000).toFixed(1) + "k" : "--";
+      document.getElementById("rrr-fwd-rr").textContent    = fwdRR !== null ? window.FTK.cur() + (fwdRR / 1000).toFixed(1) + "k ARR" : "--";
 
       window.FTK.hashSet({ r: revEl.value, m: moEl.value, g: growEl.value, f: fwdEl.value });
 
@@ -80,7 +80,7 @@
         var lines = [
           "Revenue: $" + rev.toLocaleString(),
           "Over " + mo + " months",
-          "Annual run rate: " + (rr !== null ? "$" + (rr / 1000).toFixed(1) + "k" : "--")
+          "Annual run rate: " + (rr !== null ? window.FTK.cur() + (rr / 1000).toFixed(1) + "k" : "--")
         ];
         window.FTK.copyToClipboard(lines.join("\n")).then(function () { window.FTK.flash(copyBtn, "Copied!", 1500); });
       });

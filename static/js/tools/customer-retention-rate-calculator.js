@@ -58,7 +58,7 @@
       document.getElementById("ret-rate").textContent     = retention !== null ? retention.toFixed(1) + "%" : "--";
       document.getElementById("ret-churn").textContent    = churn     !== null ? churn.toFixed(1) + "%"     : "--";
       document.getElementById("ret-retained").textContent = retained.toFixed(0);
-      document.getElementById("ret-ltv").textContent      = ltv !== null ? "$" + ltv.toFixed(0) : "--";
+      document.getElementById("ret-ltv").textContent      = ltv !== null ? window.FTK.cur() + ltv.toFixed(0) : "--";
 
       window.FTK.hashSet({ s: start, e: end, n: newC, a: arpu });
 

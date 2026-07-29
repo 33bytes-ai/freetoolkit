@@ -45,7 +45,7 @@
       return channels;
     }
 
-    function fmt(v) { return "$" + Math.round(v).toLocaleString(); }
+    function fmt(v) { return window.FTK.cur() + Math.round(v).toLocaleString(); }
 
     function update() {
       var stats = totalStats(getChannels());

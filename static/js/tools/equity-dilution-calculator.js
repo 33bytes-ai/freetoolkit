@@ -55,7 +55,7 @@
       var myOriginal = (shares) ? (myShares / shares) * 100 : null;
       var invPct     = (newShares !== null) ? calcInvestorOwnership(newShares, shares) : null;
 
-      document.getElementById("ed-post-money").textContent  = postMoney !== null ? "$" + (postMoney / 1000000).toFixed(2) + "M" : "--";
+      document.getElementById("ed-post-money").textContent  = postMoney !== null ? window.FTK.cur() + (postMoney / 1000000).toFixed(2) + "M" : "--";
       document.getElementById("ed-new-shares").textContent  = newShares !== null ? newShares.toLocaleString() : "--";
       document.getElementById("ed-my-pct").textContent      = myDiluted  !== null ? myDiluted.toFixed(2)  + "%" : "--";
       document.getElementById("ed-investor-pct").textContent = invPct !== null ? invPct.toFixed(2) + "%" : "--";

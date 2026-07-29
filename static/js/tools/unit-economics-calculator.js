@@ -30,9 +30,9 @@
 
   function fmtMoney(v) {
     if (v === null || isNaN(v)) return "—";
-    if (v >= 1000000) return "$" + (v / 1000000).toFixed(1) + "M";
-    if (v >= 1000) return "$" + (v / 1000).toFixed(1) + "k";
-    return "$" + v.toFixed(0);
+    if (v >= 1000000) return window.FTK.cur() + (v / 1000000).toFixed(1) + "M";
+    if (v >= 1000) return window.FTK.cur() + (v / 1000).toFixed(1) + "k";
+    return window.FTK.cur() + v.toFixed(0);
   }
 
   function paybackLabel(months) {

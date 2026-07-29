@@ -48,10 +48,10 @@
       var margin = (fcf !== null && rev)  ? calcFCFMargin(fcf, rev)   : null;
       var fyield = (fcf !== null && mcap) ? calcFCFYield(fcf, mcap)   : null;
 
-      document.getElementById("fcf-result").textContent  = fcf    !== null ? "$" + (fcf / 1000).toFixed(1)    + "k" : "--";
+      document.getElementById("fcf-result").textContent  = fcf    !== null ? window.FTK.cur() + (fcf / 1000).toFixed(1)    + "k" : "--";
       document.getElementById("fcf-margin").textContent  = margin !== null ? margin.toFixed(1) + "%"  : "--";
       document.getElementById("fcf-yield").textContent   = fyield !== null ? fyield.toFixed(2) + "%"  : "--";
-      document.getElementById("fcf-monthly").textContent = fcf    !== null ? "$" + (fcf / 12 / 1000).toFixed(1) + "k/mo" : "--";
+      document.getElementById("fcf-monthly").textContent = fcf    !== null ? window.FTK.cur() + (fcf / 12 / 1000).toFixed(1) + "k/mo" : "--";
 
       window.FTK.hashSet({ o: ocfEl.value, c: capexEl.value, r: revEl.value, m: mcapEl.value });
 
@@ -78,7 +78,7 @@
         var lines = [
           "Operating Cash Flow: $" + (ocf / 1000).toFixed(1) + "k",
           "Capital Expenditures: $" + (capex / 1000).toFixed(1) + "k",
-          "Free Cash Flow: " + (fcf !== null ? "$" + (fcf / 1000).toFixed(1) + "k" : "--"),
+          "Free Cash Flow: " + (fcf !== null ? window.FTK.cur() + (fcf / 1000).toFixed(1) + "k" : "--"),
           "FCF Margin: " + (rev && fcf !== null ? calcFCFMargin(fcf, rev).toFixed(1) + "%" : "--")
         ];
         window.FTK.copyToClipboard(lines.join("\n")).then(function () { window.FTK.flash(copyBtn, "Copied!", 1500); });

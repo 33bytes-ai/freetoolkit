@@ -15,9 +15,9 @@
   }
 
   function formatMRR(value) {
-    if (value >= 1000000) return "$" + (value / 1000000).toFixed(1) + "M";
-    if (value >= 1000) return "$" + (value / 1000).toFixed(1) + "k";
-    return "$" + Math.round(value).toLocaleString();
+    if (value >= 1000000) return window.FTK.cur() + (value / 1000000).toFixed(1) + "M";
+    if (value >= 1000) return window.FTK.cur() + (value / 1000).toFixed(1) + "k";
+    return window.FTK.cur() + Math.round(value).toLocaleString();
   }
 
   function init() {
@@ -42,7 +42,7 @@
         var price = parseFloat(row.querySelector(".plan-price").value) || 0;
         var subs = parseFloat(row.querySelector(".plan-subs").value) || 0;
         var cell = row.querySelector(".plan-mrr");
-        cell.textContent = (price && subs) ? "$" + (price * subs).toLocaleString() : "";
+        cell.textContent = (price && subs) ? window.FTK.cur() + (price * subs).toLocaleString() : "";
       });
 
       var mrr = calculateMRR(plans);

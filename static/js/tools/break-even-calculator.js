@@ -42,10 +42,10 @@
         return;
       }
       window.FTK.showError(errorEl, null);
-      document.getElementById("be-contribution").textContent = "$" + result.contributionMargin.toFixed(2);
+      document.getElementById("be-contribution").textContent = window.FTK.cur() + result.contributionMargin.toFixed(2);
       document.getElementById("be-cm-pct").textContent = result.contributionMarginPct.toFixed(1) + "%";
       document.getElementById("be-units").textContent = Math.ceil(result.breakEvenUnits).toLocaleString();
-      document.getElementById("be-revenue").textContent = "$" + Math.round(result.breakEvenRevenue).toLocaleString();
+      document.getElementById("be-revenue").textContent = window.FTK.cur() + Math.round(result.breakEvenRevenue).toLocaleString();
       window.FTK.hashSet({ f: fixedEl.value, p: priceEl.value, v: varEl.value });
     }
 

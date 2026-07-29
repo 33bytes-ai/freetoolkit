@@ -67,9 +67,9 @@
       var equity    = evEbitda !== null ? calcEquityValue(evEbitda, debt, cash) : null;
       var margin    = calcEBITDAMargin(ebitda, revenue);
 
-      document.getElementById("em-ev-ebitda").textContent  = evEbitda  !== null ? fmt(evEbitda, "$")  : "--";
-      document.getElementById("em-ev-revenue").textContent = evRevenue !== null ? fmt(evRevenue, "$") : "--";
-      document.getElementById("em-equity").textContent     = equity    !== null ? fmt(equity, "$")    : "--";
+      document.getElementById("em-ev-ebitda").textContent  = evEbitda  !== null ? fmt(evEbitda, window.FTK.cur())  : "--";
+      document.getElementById("em-ev-revenue").textContent = evRevenue !== null ? fmt(evRevenue, window.FTK.cur()) : "--";
+      document.getElementById("em-equity").textContent     = equity    !== null ? fmt(equity, window.FTK.cur())    : "--";
       document.getElementById("em-margin").textContent     = margin    !== null ? margin.toFixed(1) + "%" : "--";
 
       window.FTK.hashSet({ e: ebitda, m: multiple, r: revenue, rm: revMult, d: debt, c: cash });
@@ -79,8 +79,8 @@
         var type = multiple >= 6 ? "info" : "warning";
         window.FTK.showInsight(insEl,
           label + " at " + multiple + "×. " +
-          "EV (EBITDA basis): " + fmt(evEbitda, "$") + ". " +
-          (equity !== null ? "Equity value after " + fmt(debt, "$") + " debt and " + fmt(cash, "$") + " cash: " + fmt(equity, "$") + ". " : "") +
+          "EV (EBITDA basis): " + fmt(evEbitda, window.FTK.cur()) + ". " +
+          (equity !== null ? "Equity value after " + fmt(debt, window.FTK.cur()) + " debt and " + fmt(cash, window.FTK.cur()) + " cash: " + fmt(equity, window.FTK.cur()) + ". " : "") +
           (margin !== null ? "EBITDA margin: " + margin.toFixed(1) + "%." : ""), type);
       }
     }
@@ -111,11 +111,11 @@
         var mg   = calcEBITDAMargin(ebitda, revenue);
         var lines = [
           "EBITDA Multiple Calculator Results",
-          "EBITDA: " + fmt(ebitda, "$"),
+          "EBITDA: " + fmt(ebitda, window.FTK.cur()),
           "EV/EBITDA Multiple: " + multiple + "×",
-          "EV (EBITDA basis): " + (evE ? fmt(evE, "$") : "--"),
-          "EV (Revenue basis): " + (evR ? fmt(evR, "$") : "--"),
-          "Equity Value: " + (eq !== null ? fmt(eq, "$") : "--"),
+          "EV (EBITDA basis): " + (evE ? fmt(evE, window.FTK.cur()) : "--"),
+          "EV (Revenue basis): " + (evR ? fmt(evR, window.FTK.cur()) : "--"),
+          "Equity Value: " + (eq !== null ? fmt(eq, window.FTK.cur()) : "--"),
           "EBITDA Margin: " + (mg !== null ? mg.toFixed(1) + "%" : "--")
         ];
         window.FTK.copyToClipboard(lines.join("\n")).then(function () { window.FTK.flash(copyBtn, "Copied!", 1500); });

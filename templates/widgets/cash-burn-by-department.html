@@ -1,11 +1,11 @@
 <div class="tool-widget" role="main">
   <div class="field-row">
     <div class="field">
-      <label for="burn-revenue">Monthly Revenue ($)</label>
+      <label for="burn-revenue">Monthly Revenue (<span class="cur-sym">$</span>)</label>
       <input id="burn-revenue" type="number" min="0" step="1000" value="50000" placeholder="e.g. 50000">
     </div>
     <div class="field">
-      <label for="burn-cash">Cash Balance ($)</label>
+      <label for="burn-cash">Cash Balance (<span class="cur-sym">$</span>)</label>
       <input id="burn-cash" type="number" min="0" step="10000" value="2000000" placeholder="e.g. 2000000">
     </div>
   </div>
@@ -13,29 +13,29 @@
     <thead>
       <tr>
         <th>Department</th>
-        <th>Monthly Cost ($)</th>
+        <th>Monthly Cost (<span class="cur-sym">$</span>)</th>
         <th style="text-align:right">% of Burn</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>Engineering / Product</td>
-        <td><input id="burn-eng" type="number" min="0" step="1000" value="120000" style="width:100%" aria-label="Engineering / Product monthly cost ($)"></td>
+        <td><input id="burn-eng" type="number" min="0" step="1000" value="120000" style="width:100%" aria-label="Engineering / Product monthly cost ($)" data-cur-label="Engineering / Product monthly cost ($)"></td>
         <td id="burn-share-eng" style="text-align:right;font-size:0.82rem;color:var(--text-muted)">—</td>
       </tr>
       <tr>
         <td>Sales</td>
-        <td><input id="burn-sales" type="number" min="0" step="1000" value="60000" style="width:100%" aria-label="Sales monthly cost ($)"></td>
+        <td><input id="burn-sales" type="number" min="0" step="1000" value="60000" style="width:100%" aria-label="Sales monthly cost ($)" data-cur-label="Sales monthly cost ($)"></td>
         <td id="burn-share-sales" style="text-align:right;font-size:0.82rem;color:var(--text-muted)">—</td>
       </tr>
       <tr>
         <td>Marketing</td>
-        <td><input id="burn-mkt" type="number" min="0" step="1000" value="40000" style="width:100%" aria-label="Marketing monthly cost ($)"></td>
+        <td><input id="burn-mkt" type="number" min="0" step="1000" value="40000" style="width:100%" aria-label="Marketing monthly cost ($)" data-cur-label="Marketing monthly cost ($)"></td>
         <td id="burn-share-mkt" style="text-align:right;font-size:0.82rem;color:var(--text-muted)">—</td>
       </tr>
       <tr>
         <td>G&amp;A</td>
-        <td><input id="burn-ga" type="number" min="0" step="1000" value="30000" style="width:100%" aria-label="G&amp;A monthly cost ($)"></td>
+        <td><input id="burn-ga" type="number" min="0" step="1000" value="30000" style="width:100%" aria-label="G&amp;A monthly cost ($)" data-cur-label="G&amp;A monthly cost ($)"></td>
         <td id="burn-share-ga" style="text-align:right;font-size:0.82rem;color:var(--text-muted)">—</td>
       </tr>
     </tbody>

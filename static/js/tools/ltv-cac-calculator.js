@@ -42,7 +42,7 @@
 
     function fmt(value) {
       if (!isFinite(value)) return "∞";
-      return "$" + Math.round(value).toLocaleString();
+      return window.FTK.cur() + Math.round(value).toLocaleString();
     }
 
     function update() {

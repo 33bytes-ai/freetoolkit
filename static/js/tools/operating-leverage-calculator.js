@@ -41,7 +41,7 @@ if (typeof document !== "undefined") {
     var ber = calcBreakEvenRevenue(vc, rev, fc);
     var cmPct = rev > 0 ? (cm / rev * 100) : 0;
 
-    var fmt$ = function (v) { return "$" + Math.round(v).toLocaleString("en-US"); };
+    var fmt$ = function (v) { return window.FTK.cur() + Math.round(v).toLocaleString("en-US"); };
     var e1 = document.getElementById("ol-out-cm"); if (e1) e1.textContent = fmt$(cm);
     var e2 = document.getElementById("ol-out-cmpct"); if (e2) e2.textContent = cmPct.toFixed(1) + "%";
     var e3 = document.getElementById("ol-out-oi"); if (e3) e3.textContent = fmt$(oi);

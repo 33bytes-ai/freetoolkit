@@ -1,16 +1,16 @@
 <div class="calc-grid">
-  <label for="arpu-mrr">Total MRR ($)</label>
+  <label for="arpu-mrr">Total MRR (<span class="cur-sym">$</span>)</label>
   <input type="number" id="arpu-mrr" min="0" step="1000" value="50000" autocomplete="off">
 
   <label for="arpu-users">Active paying users</label>
   <input type="number" id="arpu-users" min="1" step="10" value="500" autocomplete="off">
 
-  <label for="arpu-target-mrr">Target MRR (optional, $)</label>
+  <label for="arpu-target-mrr">Target MRR (optional, <span class="cur-sym">$</span>)</label>
   <input type="number" id="arpu-target-mrr" min="0" step="10000" value="" autocomplete="off">
 </div>
 
 <div class="stat-grid">
-  <div class="stat-card result-hero" data-tooltip="MRR ÷ active paying users. Average Revenue Per User monthly. Low ARPU (<$20) requires massive scale; high ARPU (>$200) enables enterprise-motion growth.">
+  <div class="stat-card result-hero" data-tooltip="MRR ÷ active paying users. Average Revenue Per User monthly. Low ARPU (<$20) requires massive scale; high ARPU (><span class="cur-sym">$</span>200) enables enterprise-motion growth.">
     <span class="stat-label">ARPU / month</span>
     <span class="stat-value" id="arpu-result">--</span>
   </div>

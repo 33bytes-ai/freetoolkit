@@ -51,9 +51,9 @@
 
       function fmt(v) {
         if (v === null) return "--";
-        if (v >= 1000000000) return "$" + (v / 1000000000).toFixed(2) + "B";
-        if (v >= 1000000)    return "$" + (v / 1000000).toFixed(1) + "M";
-        return "$" + (v / 1000).toFixed(0) + "k";
+        if (v >= 1000000000) return window.FTK.cur() + (v / 1000000000).toFixed(2) + "B";
+        if (v >= 1000000)    return window.FTK.cur() + (v / 1000000).toFixed(1) + "M";
+        return window.FTK.cur() + (v / 1000).toFixed(0) + "k";
       }
 
       document.getElementById("tsm-tam").textContent = fmt(tam);
@@ -88,9 +88,9 @@
         var som   = sam ? calcSOM(sam, share) : null;
         function fmt(v) {
           if (v === null) return "--";
-          if (v >= 1000000000) return "$" + (v / 1000000000).toFixed(2) + "B";
-          if (v >= 1000000)    return "$" + (v / 1000000).toFixed(1) + "M";
-          return "$" + (v / 1000).toFixed(0) + "k";
+          if (v >= 1000000000) return window.FTK.cur() + (v / 1000000000).toFixed(2) + "B";
+          if (v >= 1000000)    return window.FTK.cur() + (v / 1000000).toFixed(1) + "M";
+          return window.FTK.cur() + (v / 1000).toFixed(0) + "k";
         }
         var lines = ["TAM: " + fmt(tam), "SAM: " + fmt(sam), "SOM: " + fmt(som)];
         window.FTK.copyToClipboard(lines.join("\n")).then(function () { window.FTK.flash(copyBtn, "Copied!", 1500); });

@@ -46,10 +46,10 @@
       var usersNeeded = (arpu && tgt) ? calcUsersNeededForMRR(tgt, arpu) : null;
       var mrrAt2x     = arpu ? calcMRRFromUsersAndARPU(usr * 2, arpu) : null;
 
-      document.getElementById("arpu-result").textContent      = arpu !== null ? "$" + arpu.toFixed(2) : "--";
-      document.getElementById("arpu-annual").textContent      = arpuAnn !== null ? "$" + arpuAnn.toFixed(0) : "--";
+      document.getElementById("arpu-result").textContent      = arpu !== null ? window.FTK.cur() + arpu.toFixed(2) : "--";
+      document.getElementById("arpu-annual").textContent      = arpuAnn !== null ? window.FTK.cur() + arpuAnn.toFixed(0) : "--";
       document.getElementById("arpu-users-needed").textContent = usersNeeded !== null ? Math.ceil(usersNeeded).toLocaleString() : "--";
-      document.getElementById("arpu-mrr-2x").textContent      = mrrAt2x !== null ? "$" + (mrrAt2x / 1000).toFixed(1) + "k" : "--";
+      document.getElementById("arpu-mrr-2x").textContent      = mrrAt2x !== null ? window.FTK.cur() + (mrrAt2x / 1000).toFixed(1) + "k" : "--";
 
       window.FTK.hashSet({ m: mrrEl.value, u: usrEl.value, t: tgtEl.value });
 
@@ -74,7 +74,7 @@
         var lines = [
           "Monthly MRR: $" + mrr.toLocaleString(),
           "Active users: " + usr.toLocaleString(),
-          "ARPU: " + (arpu !== null ? "$" + arpu.toFixed(2) + "/month" : "--")
+          "ARPU: " + (arpu !== null ? window.FTK.cur() + arpu.toFixed(2) + "/month" : "--")
         ];
         window.FTK.copyToClipboard(lines.join("\n")).then(function () { window.FTK.flash(copyBtn, "Copied!", 1500); });
       });

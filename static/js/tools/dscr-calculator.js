@@ -66,8 +66,8 @@
       var label    = ratio !== null ? dscrLabel(ratio) : "--";
 
       document.getElementById("dscr-result").textContent      = ratio !== null ? ratio.toFixed(2) + "×" : "--";
-      document.getElementById("dscr-max-service").textContent = maxSvc  ? fmt(maxSvc, "$")  : "--";
-      document.getElementById("dscr-max-loan").textContent    = maxLoan ? fmt(maxLoan, "$") : "--";
+      document.getElementById("dscr-max-service").textContent = maxSvc  ? fmt(maxSvc, window.FTK.cur())  : "--";
+      document.getElementById("dscr-max-loan").textContent    = maxLoan ? fmt(maxLoan, window.FTK.cur()) : "--";
       document.getElementById("dscr-label").textContent       = label;
 
       window.FTK.hashSet({ n: noi, d: debt, m: minDscr, r: rate, t: term });
@@ -104,12 +104,12 @@
         var maxLoan = maxSvc ? calcImpliedLoanAmount(maxSvc, parseFloat(rateEl.value) || 7, parseFloat(termEl.value) || 120) : null;
         var lines = [
           "DSCR Calculator Results",
-          "NOI: " + fmt(noi, "$"),
-          "Annual Debt Service: " + fmt(debt, "$"),
+          "NOI: " + fmt(noi, window.FTK.cur()),
+          "Annual Debt Service: " + fmt(debt, window.FTK.cur()),
           "DSCR: " + (ratio !== null ? ratio.toFixed(2) + "×" : "--"),
           "Coverage Status: " + (ratio !== null ? dscrLabel(ratio) : "--"),
-          "Max Supportable Debt Service: " + (maxSvc ? fmt(maxSvc, "$") : "--"),
-          "Implied Max Loan: " + (maxLoan ? fmt(maxLoan, "$") : "--")
+          "Max Supportable Debt Service: " + (maxSvc ? fmt(maxSvc, window.FTK.cur()) : "--"),
+          "Implied Max Loan: " + (maxLoan ? fmt(maxLoan, window.FTK.cur()) : "--")
         ];
         window.FTK.copyToClipboard(lines.join("\n")).then(function () { window.FTK.flash(copyBtn, "Copied!", 1500); });
       });

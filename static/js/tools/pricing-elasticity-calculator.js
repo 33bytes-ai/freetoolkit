@@ -32,7 +32,7 @@
   function fmtCurrency(v) {
     if (v === null || isNaN(v)) return "—";
     var sign = v < 0 ? "-" : "+";
-    return sign + "$" + Math.abs(v).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return sign + window.FTK.cur() + Math.abs(v).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
   function init() {
@@ -59,7 +59,7 @@
 
       document.getElementById("pe-pct-change").textContent = pctPriceChange !== 0 ? (pctPriceChange > 0 ? "+" : "") + pctPriceChange.toFixed(1) + "%" : "—";
       document.getElementById("pe-new-demand").textContent = newDemand !== null ? Math.max(0, newDemand).toFixed(0) : "—";
-      document.getElementById("pe-current-rev").textContent = "$" + currentRevenue.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      document.getElementById("pe-current-rev").textContent = window.FTK.cur() + currentRevenue.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       document.getElementById("pe-revenue-impact").textContent = revenueImpact !== null ? fmtCurrency(revenueImpact) : "—";
 
       window.FTK.hashSet({ p: priceEl.value, d: demandEl.value, n: newPriceEl.value, e: elasEl.value });

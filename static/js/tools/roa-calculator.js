@@ -54,7 +54,7 @@
       document.getElementById("roa-result").textContent   = roa      !== null ? roa.toFixed(2) + "%"      : "--";
       document.getElementById("roa-turnover").textContent = turnover !== null ? turnover.toFixed(2) + "×"  : "--";
       document.getElementById("roa-margin").textContent   = margin   !== null ? margin.toFixed(2) + "%"    : "--";
-      document.getElementById("roa-assets-d").textContent = "$" + (assets / 1000000 >= 1 ? (assets / 1000000).toFixed(2) + "M" : (assets / 1000).toFixed(1) + "k");
+      document.getElementById("roa-assets-d").textContent = window.FTK.cur() + (assets / 1000000 >= 1 ? (assets / 1000000).toFixed(2) + "M" : (assets / 1000).toFixed(1) + "k");
 
       window.FTK.hashSet({ i: income, a: assets, r: revenue });
 

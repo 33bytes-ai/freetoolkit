@@ -59,7 +59,7 @@
       document.getElementById("cr-result").textContent  = cr  !== null ? cr.toFixed(2)  : "--";
       document.getElementById("cr-quick").textContent   = qr  !== null ? qr.toFixed(2)  : "--";
       document.getElementById("cr-cash-r").textContent  = csr !== null ? csr.toFixed(2) : "--";
-      document.getElementById("cr-nwc").textContent     = fmt(nwc, "$");
+      document.getElementById("cr-nwc").textContent     = fmt(nwc, window.FTK.cur());
 
       window.FTK.hashSet({ a: assets, l: liab, i: inv, c: cash });
 
@@ -96,7 +96,7 @@
           "Current Ratio: " + (calcCurrentRatio(a, l) || "--"),
           "Quick Ratio: " + (calcQuickRatio(a, i, l) || "--"),
           "Cash Ratio: " + (calcCashRatio(c, l) || "--"),
-          "Net Working Capital: " + fmt(calcNetWorkingCapital(a, l), "$")
+          "Net Working Capital: " + fmt(calcNetWorkingCapital(a, l), window.FTK.cur())
         ];
         window.FTK.copyToClipboard(lines.join("\n")).then(function () { window.FTK.flash(copyBtn, "Copied!", 1500); });
       });

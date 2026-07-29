@@ -61,10 +61,10 @@
       var interest  = monthly ? calcTotalInterest(monthly, term, principal) : null;
       var midBal    = monthly ? calcRemainingBalance(principal, rate, term, Math.floor(term / 2)) : null;
 
-      document.getElementById("bl-result").textContent   = monthly  !== null ? "$" + monthly.toFixed(2)                  : "--";
-      document.getElementById("bl-total").textContent    = total    !== null ? "$" + (total / 1000).toFixed(1) + "k"      : "--";
-      document.getElementById("bl-interest").textContent = interest !== null ? "$" + (interest / 1000).toFixed(1) + "k"   : "--";
-      document.getElementById("bl-midbal").textContent   = midBal   !== null ? "$" + (midBal / 1000).toFixed(1) + "k"     : "--";
+      document.getElementById("bl-result").textContent   = monthly  !== null ? window.FTK.cur() + monthly.toFixed(2)                  : "--";
+      document.getElementById("bl-total").textContent    = total    !== null ? window.FTK.cur() + (total / 1000).toFixed(1) + "k"      : "--";
+      document.getElementById("bl-interest").textContent = interest !== null ? window.FTK.cur() + (interest / 1000).toFixed(1) + "k"   : "--";
+      document.getElementById("bl-midbal").textContent   = midBal   !== null ? window.FTK.cur() + (midBal / 1000).toFixed(1) + "k"     : "--";
 
       window.FTK.hashSet({ p: principalEl.value, r: rateEl.value, t: termEl.value, v: revEl.value });
 
@@ -94,8 +94,8 @@
           "Loan amount: $" + (principal / 1000).toFixed(1) + "k",
           "Rate: " + rate + "% APR",
           "Term: " + term + " months",
-          "Monthly payment: " + (monthly !== null ? "$" + monthly.toFixed(2) : "--"),
-          "Total interest: " + (interest !== null ? "$" + (interest / 1000).toFixed(1) + "k" : "--")
+          "Monthly payment: " + (monthly !== null ? window.FTK.cur() + monthly.toFixed(2) : "--"),
+          "Total interest: " + (interest !== null ? window.FTK.cur() + (interest / 1000).toFixed(1) + "k" : "--")
         ];
         window.FTK.copyToClipboard(lines.join("\n")).then(function () { window.FTK.flash(copyBtn, "Copied!", 1500); });
       });

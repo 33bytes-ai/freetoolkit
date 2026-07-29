@@ -53,7 +53,7 @@
       var half      = mchurn > 0 ? calcMonthsToChurn50(mchurn) : null;
 
       function fmtPct(v) { return v !== null ? v.toFixed(1) + "%" : "--"; }
-      function fmtCur(v) { return v !== null ? "$" + Math.round(v).toLocaleString() : "--"; }
+      function fmtCur(v) { return v !== null ? window.FTK.cur() + Math.round(v).toLocaleString() : "--"; }
       function fmtMo(v)  { return v !== null ? Math.round(v) + " mo" : "--"; }
 
       document.getElementById("cc-retention").textContent  = fmtPct(retention);
@@ -89,7 +89,7 @@
         var ltv = mrev > 0 && mchurn > 0 ? calcCohortLTV(mrev, mchurn) : null;
         var lines = [
           "Cohort retention: " + (retention !== null ? retention.toFixed(1) + "%" : "--"),
-          "LTV from churn: " + (ltv !== null ? "$" + Math.round(ltv).toLocaleString() : "--"),
+          "LTV from churn: " + (ltv !== null ? window.FTK.cur() + Math.round(ltv).toLocaleString() : "--"),
         ];
         window.FTK.copyToClipboard(lines.join("\n")).then(function () { window.FTK.flash(copyBtn, "Copied!", 1500); });
       });

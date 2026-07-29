@@ -54,7 +54,7 @@
       document.getElementById("roas-result").textContent   = roas !== null ? roas.toFixed(2) + "×" : "—";
       document.getElementById("roas-breakeven").textContent = breakevenROAS !== null ? breakevenROAS.toFixed(2) + "×" : "—";
       document.getElementById("roas-target").textContent   = targetROAS !== null ? targetROAS.toFixed(2) + "×" : "—";
-      document.getElementById("roas-profit").textContent   = netProfit !== null ? (netProfit >= 0 ? "+" : "") + "$" + Math.abs(netProfit).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (netProfit < 0 ? " loss" : "") : "—";
+      document.getElementById("roas-profit").textContent   = netProfit !== null ? (netProfit >= 0 ? "+" : "") + window.FTK.cur() + Math.abs(netProfit).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (netProfit < 0 ? " loss" : "") : "—";
 
       window.FTK.hashSet({ s: spendEl.value, r: revenueEl.value, m: marginEl.value, t: targetEl ? targetEl.value : "" });
 
@@ -88,7 +88,7 @@
           "ROAS: " + (roas !== null ? roas.toFixed(2) + "×" : "—"),
           "Breakeven ROAS: " + (breakevenROAS !== null ? breakevenROAS.toFixed(2) + "×" : "—"),
           "Target ROAS: " + (targetROAS !== null ? targetROAS.toFixed(2) + "×" : "—"),
-          "Net profit: " + (netProfit !== null ? "$" + netProfit.toFixed(0) : "—"),
+          "Net profit: " + (netProfit !== null ? window.FTK.cur() + netProfit.toFixed(0) : "—"),
         ];
         window.FTK.copyToClipboard(lines.join("\n")).then(function () { window.FTK.flash(copyBtn, "Copied!", 1500); });
       });

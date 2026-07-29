@@ -29,9 +29,9 @@
     function fmt(v) {
       var abs = Math.abs(v);
       var sign = v < 0 ? "-" : (v > 0 ? "+" : "");
-      if (abs >= 1000000) return sign + "$" + (abs / 1000000).toFixed(2) + "M";
-      if (abs >= 1000)    return sign + "$" + (abs / 1000).toFixed(1) + "k";
-      return sign + "$" + Math.round(abs).toLocaleString();
+      if (abs >= 1000000) return sign + window.FTK.cur() + (abs / 1000000).toFixed(2) + "M";
+      if (abs >= 1000)    return sign + window.FTK.cur() + (abs / 1000).toFixed(1) + "k";
+      return sign + window.FTK.cur() + Math.round(abs).toLocaleString();
     }
 
     function update() {
@@ -41,8 +41,8 @@
       var result = calculatePriceImpact(cp, cust, np);
       if (!result) return;
 
-      curRevEl.textContent = "$" + Math.round(result.currentRevenue).toLocaleString();
-      newRevEl.textContent = "$" + Math.round(result.fullRetentionRevenue).toLocaleString();
+      curRevEl.textContent = window.FTK.cur() + Math.round(result.currentRevenue).toLocaleString();
+      newRevEl.textContent = window.FTK.cur() + Math.round(result.fullRetentionRevenue).toLocaleString();
       deltaEl.textContent  = fmt(result.revenueDelta) + "/mo at full retention";
       beEl.textContent     = result.breakEvenRetention.toFixed(1) + "% customers retained";
 

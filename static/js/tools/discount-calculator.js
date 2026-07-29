@@ -35,7 +35,7 @@
 
   function fmtCurrency(v) {
     if (v === null || isNaN(v)) return "—";
-    return "$" + v.toFixed(2);
+    return window.FTK.cur() + v.toFixed(2);
   }
 
   function init() {

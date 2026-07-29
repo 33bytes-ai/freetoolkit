@@ -25,9 +25,9 @@
     var copyBtn   = document.getElementById("scr-copy");
 
     function fmt(v) {
-      if (v >= 1000000) return "$" + (v / 1000000).toFixed(2) + "M";
-      if (v >= 1000)    return "$" + (v / 1000).toFixed(1) + "k";
-      return "$" + v.toFixed(0);
+      if (v >= 1000000) return window.FTK.cur() + (v / 1000000).toFixed(2) + "M";
+      if (v >= 1000)    return window.FTK.cur() + (v / 1000).toFixed(1) + "k";
+      return window.FTK.cur() + v.toFixed(0);
     }
 
     function update() {

@@ -48,7 +48,7 @@
 
       document.getElementById("mk-markup").textContent  = markup !== null ? markup.toFixed(2) + "%" : "--";
       document.getElementById("mk-margin").textContent  = margin !== null ? margin.toFixed(2) + "%" : "--";
-      document.getElementById("mk-profit").textContent  = !isNaN(profit) ? "$" + profit.toFixed(2) : "--";
+      document.getElementById("mk-profit").textContent  = !isNaN(profit) ? window.FTK.cur() + profit.toFixed(2) : "--";
       document.getElementById("mk-ratio").textContent   = cost > 0 ? (price / cost).toFixed(2) + "×" : "--";
 
       window.FTK.hashSet({ c: cost, p: price });

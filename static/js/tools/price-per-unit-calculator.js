@@ -52,8 +52,8 @@
       var ppu1 = calcPricePerUnit(c1, q1);
       var ppu2 = q2 > 0 ? calcPricePerUnit(c2, q2) : null;
 
-      document.getElementById("ppu-result1").textContent = ppu1 !== null ? "$" + ppu1.toFixed(4) + "/unit" : "--";
-      document.getElementById("ppu-result2").textContent = ppu2 !== null ? "$" + ppu2.toFixed(4) + "/unit" : (q2 > 0 ? "--" : "N/A");
+      document.getElementById("ppu-result1").textContent = ppu1 !== null ? window.FTK.cur() + ppu1.toFixed(4) + "/unit" : "--";
+      document.getElementById("ppu-result2").textContent = ppu2 !== null ? window.FTK.cur() + ppu2.toFixed(4) + "/unit" : (q2 > 0 ? "--" : "N/A");
 
       var savings = null;
       var cheaperLabel = "";
@@ -99,7 +99,7 @@
         var ppu2 = q2 > 0 ? calcPricePerUnit(c2, q2) : null;
         var lines = [
           "Price Per Unit Calculator",
-          "Option 1: $" + c1 + " for " + q1 + " units = " + (ppu1 !== null ? "$" + ppu1.toFixed(4) + "/unit" : "--"),
+          "Option 1: $" + c1 + " for " + q1 + " units = " + (ppu1 !== null ? window.FTK.cur() + ppu1.toFixed(4) + "/unit" : "--"),
           ppu2 !== null ? "Option 2: $" + c2 + " for " + q2 + " units = $" + ppu2.toFixed(4) + "/unit" : null
         ].filter(Boolean);
         window.FTK.copyToClipboard(lines.join("\n")).then(function () { window.FTK.flash(copyBtn, "Copied!", 1500); });

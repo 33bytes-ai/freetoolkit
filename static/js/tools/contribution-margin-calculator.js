@@ -49,7 +49,7 @@
       var beu   = cm ? calcBreakEvenUnits(fixed, cm) : null;
       var tpu   = cm ? calcTargetProfitUnits(fixed, target, cm) : null;
 
-      document.getElementById("cm-result").textContent  = cm !== null ? "$" + cm.toFixed(2) : "--";
+      document.getElementById("cm-result").textContent  = cm !== null ? window.FTK.cur() + cm.toFixed(2) : "--";
       document.getElementById("cm-ratio").textContent   = cmr !== null ? cmr.toFixed(1) + "%" : "--";
       document.getElementById("cm-beu").textContent     = beu !== null ? beu.toLocaleString() + " units" : "--";
       document.getElementById("cm-target-units").textContent = tpu !== null ? tpu.toLocaleString() + " units" : "--";

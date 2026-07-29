@@ -51,8 +51,8 @@
       var roi  = (rpl && cpl) ? calcLeadROI(rpl, cpl) : null;
       var need = (rpl && target) ? calcLeadsNeededForRevenue(target, rpl) : null;
 
-      document.getElementById("rpl-result").textContent  = rpl  !== null ? "$" + rpl.toFixed(2)  : "--";
-      document.getElementById("rpl-cpl").textContent     = cpl  !== null ? "$" + cpl.toFixed(2)  : "--";
+      document.getElementById("rpl-result").textContent  = rpl  !== null ? window.FTK.cur() + rpl.toFixed(2)  : "--";
+      document.getElementById("rpl-cpl").textContent     = cpl  !== null ? window.FTK.cur() + cpl.toFixed(2)  : "--";
       document.getElementById("rpl-roi").textContent     = roi  !== null ? roi.toFixed(1) + "%"  : "--";
       document.getElementById("rpl-needed").textContent  = need !== null ? need.toLocaleString() + " leads" : "--";
 
@@ -82,8 +82,8 @@
         var lines = [
           "Revenue: $" + (rev / 1000).toFixed(1) + "k",
           "Leads: " + leads.toLocaleString(),
-          "Revenue per Lead: " + (rpl !== null ? "$" + rpl.toFixed(2) : "--"),
-          "Cost per Lead: " + (cpl !== null ? "$" + cpl.toFixed(2) : "--")
+          "Revenue per Lead: " + (rpl !== null ? window.FTK.cur() + rpl.toFixed(2) : "--"),
+          "Cost per Lead: " + (cpl !== null ? window.FTK.cur() + cpl.toFixed(2) : "--")
         ];
         window.FTK.copyToClipboard(lines.join("\n")).then(function () { window.FTK.flash(copyBtn, "Copied!", 1500); });
       });

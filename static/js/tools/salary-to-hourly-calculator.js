@@ -26,7 +26,7 @@
     var weeklyEl = document.getElementById("s2h-weekly");
     var afterTaxEl = document.getElementById("s2h-after-tax");
 
-    function fmtD(v) { return "$" + v.toFixed(2); }
+    function fmtD(v) { return window.FTK.cur() + v.toFixed(2); }
 
     function update() {
       var salary = parseFloat(salaryEl.value) || 0;
@@ -39,7 +39,7 @@
 
       hourlyEl.textContent = fmtD(result.hourly);
       dailyEl.textContent = fmtD(result.daily);
-      weeklyEl.textContent = "$" + Math.round(result.weekly).toLocaleString();
+      weeklyEl.textContent = window.FTK.cur() + Math.round(result.weekly).toLocaleString();
       afterTaxEl.textContent = fmtD(afterTaxHourly(result.hourly, tax));
       window.FTK.hashSet({ s: salaryEl.value, h: hoursEl.value, w: weeksEl.value, t: taxEl.value });
     }

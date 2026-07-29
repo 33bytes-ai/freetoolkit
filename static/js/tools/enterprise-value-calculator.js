@@ -34,10 +34,10 @@
 
   function fmt(n) {
     if (n === null || n === undefined || isNaN(n)) return "--";
-    if (Math.abs(n) >= 1000000000) return "$" + (n / 1000000000).toFixed(2) + "B";
-    if (Math.abs(n) >= 1000000)    return "$" + (n / 1000000).toFixed(2) + "M";
-    if (Math.abs(n) >= 1000)       return "$" + (n / 1000).toFixed(1) + "k";
-    return "$" + n.toFixed(0);
+    if (Math.abs(n) >= 1000000000) return window.FTK.cur() + (n / 1000000000).toFixed(2) + "B";
+    if (Math.abs(n) >= 1000000)    return window.FTK.cur() + (n / 1000000).toFixed(2) + "M";
+    if (Math.abs(n) >= 1000)       return window.FTK.cur() + (n / 1000).toFixed(1) + "k";
+    return window.FTK.cur() + n.toFixed(0);
   }
 
   function init() {

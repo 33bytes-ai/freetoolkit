@@ -67,7 +67,7 @@
         var share  = d.revenue > 0 && totalRevenue > 0 ? calcRevenueShare(d.revenue, totalRevenue) : null;
 
         var mEl = getEl(s.margin); if (mEl) mEl.textContent = margin !== null ? margin.toFixed(1) + "%" : "--";
-        var pEl = getEl(s.profit); if (pEl) pEl.textContent = profit !== null ? "$" + Math.round(profit).toLocaleString() : "--";
+        var pEl = getEl(s.profit); if (pEl) pEl.textContent = profit !== null ? window.FTK.cur() + Math.round(profit).toLocaleString() : "--";
         var xEl = getEl(s.share);  if (xEl) xEl.textContent = share  !== null ? share.toFixed(1) + "%" : "--";
       });
 

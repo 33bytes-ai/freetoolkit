@@ -53,7 +53,7 @@
 
       if (outDSO)  outDSO.textContent  = dso     !== null ? dso.toFixed(1) + " days" : "--";
       if (outTurn) outTurn.textContent = turnover !== null ? turnover.toFixed(2) + "×" : "--";
-      if (outTgtAR) outTgtAR.textContent = targetAR !== null ? "$" + Math.round(targetAR).toLocaleString() : "--";
+      if (outTgtAR) outTgtAR.textContent = targetAR !== null ? window.FTK.cur() + Math.round(targetAR).toLocaleString() : "--";
 
       window.FTK.hashSet({ ar: arEl ? arEl.value : "", s: salesEl ? salesEl.value : "", d: daysEl ? daysEl.value : "" });
 

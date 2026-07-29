@@ -37,7 +37,7 @@ if (typeof document !== "undefined") {
 
     var fmtMo = function(v) { return v !== null ? v.toFixed(1) + " mo" : "—"; };
     var fmtYr = function(v) { return v !== null ? v.toFixed(2) + " yrs" : "—"; };
-    var fmt$ = function(v) { return v !== null ? "$" + Math.round(v).toLocaleString("en-US") : "—"; };
+    var fmt$ = function(v) { return v !== null ? window.FTK.cur() + Math.round(v).toLocaleString("en-US") : "—"; };
 
     var e1 = document.getElementById("cpp-out-months"); if (e1) { e1.textContent = fmtMo(months); e1.style.color = months !== null && months <= 12 ? "var(--success,#16a34a)" : months !== null && months > 24 ? "#dc2626" : ""; }
     var e2 = document.getElementById("cpp-out-years"); if (e2) e2.textContent = fmtYr(years);

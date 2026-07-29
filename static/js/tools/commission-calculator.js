@@ -61,8 +61,8 @@
       var effRate     = calcEffectiveRate(revenue, commission || 0);
       var attainment  = (ote > 0 && commission !== null) ? calcOTEAttainment(commission + base, ote) : null;
 
-      document.getElementById("comm-result").textContent     = commission !== null ? "$" + commission.toFixed(2) : "--";
-      document.getElementById("comm-total").textContent      = totalComp  !== null ? "$" + totalComp.toFixed(2)  : "--";
+      document.getElementById("comm-result").textContent     = commission !== null ? window.FTK.cur() + commission.toFixed(2) : "--";
+      document.getElementById("comm-total").textContent      = totalComp  !== null ? window.FTK.cur() + totalComp.toFixed(2)  : "--";
       document.getElementById("comm-eff-rate").textContent   = effRate    !== null ? effRate.toFixed(2) + "%"     : "--";
       document.getElementById("comm-attainment").textContent = attainment !== null ? attainment.toFixed(1) + "%"  : "--";
 
@@ -98,9 +98,9 @@
           "Commission Calculator Results",
           "Revenue: $" + r.toLocaleString(),
           "Commission Rate: " + rt + "%",
-          "Commission Earned: " + (comm !== null ? "$" + comm.toFixed(2) : "--"),
+          "Commission Earned: " + (comm !== null ? window.FTK.cur() + comm.toFixed(2) : "--"),
           "Base Salary: $" + b.toLocaleString(),
-          "Total Compensation: " + (comm !== null ? "$" + (b + comm).toFixed(2) : "--")
+          "Total Compensation: " + (comm !== null ? window.FTK.cur() + (b + comm).toFixed(2) : "--")
         ];
         window.FTK.copyToClipboard(lines.join("\n")).then(function () { window.FTK.flash(copyBtn, "Copied!", 1500); });
       });

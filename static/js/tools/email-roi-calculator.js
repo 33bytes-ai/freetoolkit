@@ -34,7 +34,7 @@
     var roiEl    = document.getElementById("er-out-roi");
     var insightEl = document.getElementById("er-insight");
 
-    function fmt(v) { return "$" + Math.round(v).toLocaleString(); }
+    function fmt(v) { return window.FTK.cur() + Math.round(v).toLocaleString(); }
 
     function update() {
       var result = calculateEmailROI(

@@ -28,7 +28,7 @@
 
   function fmtCurrency(v) {
     if (v === null || isNaN(v)) return "—";
-    return (v >= 0 ? "+" : "") + "$" + Math.abs(v).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return (v >= 0 ? "+" : "") + window.FTK.cur() + Math.abs(v).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
   function init() {
@@ -52,8 +52,8 @@
       var impact     = (newCR > 0 && cr !== null) ? calcCROImpact(visitors, cr, newCR, arpu) : null;
 
       document.getElementById("cr-rate").textContent       = cr !== null ? cr.toFixed(2) + "%" : "—";
-      document.getElementById("cr-revenue").textContent    = revenue !== null ? "$" + revenue.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "—";
-      document.getElementById("cr-new-revenue").textContent = newRevenue !== null ? "$" + newRevenue.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "—";
+      document.getElementById("cr-revenue").textContent    = revenue !== null ? window.FTK.cur() + revenue.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "—";
+      document.getElementById("cr-new-revenue").textContent = newRevenue !== null ? window.FTK.cur() + newRevenue.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "—";
       document.getElementById("cr-impact").textContent     = impact !== null ? fmtCurrency(impact) + "/mo" : "—";
 
       window.FTK.hashSet({ v: visitorsEl.value, c: conveEl.value, a: arpuEl.value, n: newCREl.value });
@@ -85,7 +85,7 @@
           "Monthly visitors: " + visitors.toLocaleString(),
           "Conversions: " + conve.toLocaleString(),
           "Conversion rate: " + (cr !== null ? cr.toFixed(2) + "%" : "—"),
-          "Monthly revenue: " + (revenue !== null ? "$" + revenue.toFixed(0) : "—"),
+          "Monthly revenue: " + (revenue !== null ? window.FTK.cur() + revenue.toFixed(0) : "—"),
           "Target CR: " + (newCR ? newCR + "%" : "—"),
           "Revenue impact: " + (impact !== null ? fmtCurrency(impact) : "—"),
         ];

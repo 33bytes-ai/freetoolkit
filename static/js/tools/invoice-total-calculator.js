@@ -35,7 +35,7 @@
       return items;
     }
 
-    function fmt(v) { return "$" + v.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+    function fmt(v) { return window.FTK.cur() + v.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
 
     function update() {
       var items   = getItems();

@@ -68,7 +68,7 @@
       document.getElementById("sf-sqls").textContent       = r ? fmt(r.sqls) : "--";
       document.getElementById("sf-opps").textContent       = r ? fmt(r.opps) : "--";
       document.getElementById("sf-customers").textContent  = r ? fmt(r.customers) : "--";
-      document.getElementById("sf-mrr").textContent        = r ? fmt(r.mrr, "$") : "--";
+      document.getElementById("sf-mrr").textContent        = r ? fmt(r.mrr, window.FTK.cur()) : "--";
       document.getElementById("sf-conversion").textContent = r ? r.overallConversion.toFixed(2) + "%" : "--";
 
       if (r) {
@@ -76,7 +76,7 @@
         var label = funnelEfficiencyLabel(r.overallConversion);
         var type = r.overallConversion >= 2 ? "success" : r.overallConversion >= 0.5 ? "info" : "warning";
         window.FTK.showInsight(insEl,
-          label + " — " + fmt(r.customers, "") + " customers/month generating " + fmt(r.mrr, "$") + " MRR. " +
+          label + " — " + fmt(r.customers, "") + " customers/month generating " + fmt(r.mrr, window.FTK.cur()) + " MRR. " +
           "Overall lead-to-close: " + r.overallConversion.toFixed(2) + "%. " +
           "You need " + Math.ceil(calcLeadsRequired(1, mqlRate, sqlRate, oppRate, closeRate)) + " leads per customer won.", type);
       }
@@ -111,7 +111,7 @@
           "SQLs / month: " + (r ? fmt(r.sqls) : "--"),
           "Opportunities: " + (r ? fmt(r.opps) : "--"),
           "New Customers: " + (r ? fmt(r.customers) : "--"),
-          "MRR from Funnel: " + (r ? fmt(r.mrr, "$") : "--"),
+          "MRR from Funnel: " + (r ? fmt(r.mrr, window.FTK.cur()) : "--"),
           "Overall Conversion: " + (r ? r.overallConversion.toFixed(2) + "%" : "--")
         ];
         window.FTK.copyToClipboard(lines.join("\n")).then(function () { window.FTK.flash(copyBtn, "Copied!", 1500); });

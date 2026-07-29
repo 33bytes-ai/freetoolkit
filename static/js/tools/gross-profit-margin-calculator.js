@@ -31,7 +31,7 @@ if (typeof document !== "undefined") {
     var mu = calcMarkup(rev, cogs);
 
     var e1 = document.getElementById("gpm-out-gp");
-    if (e1) e1.textContent = rev > 0 ? "$" + gp.toLocaleString("en-US", { maximumFractionDigits: 0 }) : "—";
+    if (e1) e1.textContent = rev > 0 ? window.FTK.cur() + gp.toLocaleString("en-US", { maximumFractionDigits: 0 }) : "—";
     var e2 = document.getElementById("gpm-out-gm");
     if (e2) e2.textContent = gm !== null ? gm.toFixed(1) + "%" : "—";
     var e3 = document.getElementById("gpm-out-mu");

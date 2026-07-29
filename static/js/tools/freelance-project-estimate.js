@@ -25,7 +25,7 @@
     var daysEl        = document.getElementById("pe-out-days");
     var insightEl     = document.getElementById("pe-insight");
 
-    function fmt(v) { return "$" + Math.round(v).toLocaleString(); }
+    function fmt(v) { return window.FTK.cur() + Math.round(v).toLocaleString(); }
 
     function update() {
       var rate   = parseFloat(rateEl.value)        || 0;

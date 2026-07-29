@@ -40,7 +40,7 @@ if (typeof document !== "undefined") {
     var fv = rate > 0 ? calcFutureValue(principal, rate, doublingYears) : null;
 
     var fmtYrs = function(v) { return v !== null ? v.toFixed(1) + " yrs" : "—"; };
-    var fmt$ = function(v) { return v !== null ? "$" + Math.round(v).toLocaleString("en-US") : "—"; };
+    var fmt$ = function(v) { return v !== null ? window.FTK.cur() + Math.round(v).toLocaleString("en-US") : "—"; };
     var fmtPct = function(v) { return v !== null ? v.toFixed(2) + "%" : "—"; };
 
     var e1 = document.getElementById("r72-out-double"); if (e1) e1.textContent = fmtYrs(doublingYears);

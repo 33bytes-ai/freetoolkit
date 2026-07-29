@@ -58,7 +58,7 @@
       var ltvCac   = cac > 0 ? calcLTVCAC(ltv, cac) : null;
       var payback  = calcPaybackMonths(cac, arpu, margin);
 
-      document.getElementById("ltv-result").textContent   = fmt(ltv, "$", "", 0);
+      document.getElementById("ltv-result").textContent   = fmt(ltv, window.FTK.cur(), "", 0);
       document.getElementById("ltv-lifetime").textContent = lifetime !== null ? lifetime.toFixed(1) + " mo" : "—";
       document.getElementById("ltv-ltvCac").textContent   = ltvCac !== null ? ltvCac.toFixed(2) + "×" : "—";
       document.getElementById("ltv-payback").textContent  = payback !== null ? payback.toFixed(1) + " mo" : "—";
@@ -94,7 +94,7 @@
           "Gross margin: " + margin + "%",
           "Monthly churn: " + churn + "%",
           "Customer lifetime: " + (lifetime !== null ? lifetime.toFixed(1) + " months" : "—"),
-          "LTV: " + fmt(ltv, "$", "", 0),
+          "LTV: " + fmt(ltv, window.FTK.cur(), "", 0),
           "CAC: $" + cac.toLocaleString(),
           "LTV:CAC ratio: " + (ltvCac !== null ? ltvCac.toFixed(2) + "×" : "—"),
           "CAC payback: " + (payback !== null ? payback.toFixed(1) + " months" : "—"),

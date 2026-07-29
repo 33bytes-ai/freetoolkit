@@ -60,8 +60,8 @@
       var avgInv   = calcAvgInventory(begin, end);
       var turnover = avgInv > 0 ? calcInventoryTurnover(cogs, avgInv) : null;
 
-      document.getElementById("cogs-result").textContent   = fmt(cogs, "$");
-      document.getElementById("cogs-gp").textContent       = gp      !== null ? fmt(gp, "$")                  : "--";
+      document.getElementById("cogs-result").textContent   = fmt(cogs, window.FTK.cur());
+      document.getElementById("cogs-gp").textContent       = gp      !== null ? fmt(gp, window.FTK.cur())                  : "--";
       document.getElementById("cogs-margin").textContent   = margin  !== null ? margin.toFixed(1) + "%"        : "--";
       document.getElementById("cogs-turnover").textContent = turnover !== null ? turnover.toFixed(2) + "×"     : "--";
 
@@ -71,7 +71,7 @@
         var label = cogsLabel(margin);
         var type  = margin >= 30 ? "success" : margin >= 10 ? "info" : "warning";
         window.FTK.showInsight(insEl,
-          label + " — COGS of " + fmt(cogs, "$") + " on " + fmt(revenue, "$") + " revenue. " +
+          label + " — COGS of " + fmt(cogs, window.FTK.cur()) + " on " + fmt(revenue, window.FTK.cur()) + " revenue. " +
           "Gross margin: " + margin.toFixed(1) + "%. " +
           (turnover !== null ? "Inventory turns " + turnover.toFixed(1) + "× per year." : ""), type);
       }
@@ -96,11 +96,11 @@
         var c = calcCOGS(b, p, e);
         var lines = [
           "COGS Calculator Results",
-          "Beginning Inventory: " + fmt(b, "$"),
-          "Purchases: " + fmt(p, "$"),
-          "Ending Inventory: " + fmt(e, "$"),
-          "COGS: " + fmt(c, "$"),
-          "Gross Profit: " + (r > 0 ? fmt(r - c, "$") : "--"),
+          "Beginning Inventory: " + fmt(b, window.FTK.cur()),
+          "Purchases: " + fmt(p, window.FTK.cur()),
+          "Ending Inventory: " + fmt(e, window.FTK.cur()),
+          "COGS: " + fmt(c, window.FTK.cur()),
+          "Gross Profit: " + (r > 0 ? fmt(r - c, window.FTK.cur()) : "--"),
           "Gross Margin: " + (r > 0 ? calcGrossMarginPct(r, c).toFixed(1) + "%" : "--")
         ];
         window.FTK.copyToClipboard(lines.join("\n")).then(function () { window.FTK.flash(copyBtn, "Copied!", 1500); });

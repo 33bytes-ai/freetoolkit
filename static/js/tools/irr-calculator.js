@@ -63,7 +63,7 @@ if (typeof document !== "undefined") {
     var e1 = document.getElementById("irr-out-irr");
     if (e1) e1.textContent = irr !== null ? irr.toFixed(2) + "%" : "—";
     var e2 = document.getElementById("irr-out-npv");
-    if (e2) e2.textContent = npvAtHurdle !== null ? "$" + Math.round(npvAtHurdle).toLocaleString() : "—";
+    if (e2) e2.textContent = npvAtHurdle !== null ? window.FTK.cur() + Math.round(npvAtHurdle).toLocaleString() : "—";
     var e3 = document.getElementById("irr-out-decision");
     if (e3 && hurdle && irr !== null) e3.textContent = irr >= hurdle ? "Accept ✓" : "Reject ✗";
     else if (e3) e3.textContent = "—";

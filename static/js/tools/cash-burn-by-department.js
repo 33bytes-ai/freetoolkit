@@ -46,9 +46,9 @@ if (typeof document !== "undefined") {
     var shares = calcDeptShares(depts);
 
     var e1 = document.getElementById("burn-out-gross");
-    if (e1) e1.textContent = "$" + gross.toLocaleString("en-US", { maximumFractionDigits: 0 });
+    if (e1) e1.textContent = window.FTK.cur() + gross.toLocaleString("en-US", { maximumFractionDigits: 0 });
     var e2 = document.getElementById("burn-out-net");
-    if (e2) e2.textContent = net <= 0 ? "CF+" : "$" + net.toLocaleString("en-US", { maximumFractionDigits: 0 });
+    if (e2) e2.textContent = net <= 0 ? "CF+" : window.FTK.cur() + net.toLocaleString("en-US", { maximumFractionDigits: 0 });
     var e3 = document.getElementById("burn-out-runway");
     if (e3) e3.textContent = runway !== null ? runway.toFixed(1) + " mo" : (net <= 0 ? "∞" : "—");
 

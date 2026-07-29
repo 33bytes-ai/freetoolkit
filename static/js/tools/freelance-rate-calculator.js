@@ -51,10 +51,10 @@
       });
 
       if (!result) return;
-      grossEl.textContent = "$" + Math.round(result.requiredGross).toLocaleString();
+      grossEl.textContent = window.FTK.cur() + Math.round(result.requiredGross).toLocaleString();
       hoursEl.textContent = Math.round(result.billableHours) + " h";
-      hourlyEl.textContent = "$" + Math.round(result.hourlyRate) + "/hr";
-      dailyEl.textContent = "$" + Math.round(result.dayRate) + "/day";
+      hourlyEl.textContent = window.FTK.cur() + Math.round(result.hourlyRate) + "/hr";
+      dailyEl.textContent = window.FTK.cur() + Math.round(result.dayRate) + "/day";
       window.FTK.hashSet({ t: targetEl.value, tx: taxEl.value, e: expEl.value, w: weeksEl.value, p: pctEl.value });
     }
 

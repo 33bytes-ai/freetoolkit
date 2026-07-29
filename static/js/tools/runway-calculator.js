@@ -38,7 +38,7 @@
     var breakevenEl = document.getElementById("rw-breakeven");
     var insightEl = document.getElementById("rw-insight");
 
-    function fmtUSD(v) { return "$" + Math.abs(Math.round(v)).toLocaleString(); }
+    function fmtUSD(v) { return window.FTK.cur() + Math.abs(Math.round(v)).toLocaleString(); }
 
     function update() {
       var cash = parseFloat(cashEl.value) || 0;

@@ -1,10 +1,10 @@
 <div class="field-row">
   <div class="field">
-    <label for="sq-target">Annual revenue target ($)</label>
+    <label for="sq-target">Annual revenue target (<span class="cur-sym">$</span>)</label>
     <input type="number" autocomplete="off" id="sq-target" value="1000000" min="0" step="10000">
   </div>
   <div class="field">
-    <label for="sq-acv">Average contract value — ACV ($)</label>
+    <label for="sq-acv">Average contract value — ACV (<span class="cur-sym">$</span>)</label>
     <input type="number" autocomplete="off" id="sq-acv" value="12000" min="1" step="1000">
   </div>
 </div>
@@ -21,7 +21,7 @@
 <div class="stats-grid">
   <div class="stat result-hero" data-tooltip="Annual target ÷ ACV. How many deals must close in the year to hit quota. Sanity-check: most AEs carry a quota 3–5× their annual salary."><div class="num" id="sq-out-deals">0</div><div class="label">Deals to close (year)</div></div>
   <div class="stat" data-tooltip="Deals needed ÷ close rate. Total qualified leads required to generate enough won deals. Assumes every lead enters the same pipeline."><div class="num" id="sq-out-leads">0</div><div class="label">Qualified leads needed</div></div>
-  <div class="stat" data-tooltip="Leads needed × ACV. The total dollar value of pipeline required to hit quota. Target 3–5× quota in pipeline for comfortable coverage."><div class="num" id="sq-out-pipeline">$0</div><div class="label">Pipeline needed</div></div>
+  <div class="stat" data-tooltip="Leads needed × ACV. The total dollar value of pipeline required to hit quota. Target 3–5× quota in pipeline for comfortable coverage."><div class="num" id="sq-out-pipeline"><span class="cur-sym">$</span>0</div><div class="label">Pipeline needed</div></div>
   <div class="stat" data-tooltip="Deals needed ÷ 12. Monthly deal velocity required. Use this to set monthly pipeline review targets."><div class="num" id="sq-out-mo-deals">0</div><div class="label">Deals / month</div></div>
   <div class="stat" data-tooltip="Leads needed ÷ 12. Qualified leads required per month. If your SDR team can't generate this, quota attainment will lag."><div class="num" id="sq-out-mo-leads">0</div><div class="label">Leads / month</div></div>
 </div>

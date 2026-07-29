@@ -67,10 +67,10 @@
       var pi  = npv !== null ? calcProfitabilityIndex(npv, invest) : null;
       var pb  = calcSimplePayback(invest, totalCF / Math.max(cfs.length, 1));
 
-      document.getElementById("npv-result").textContent  = npv !== null ? "$" + (npv / 1000).toFixed(2) + "k" : "--";
+      document.getElementById("npv-result").textContent  = npv !== null ? window.FTK.cur() + (npv / 1000).toFixed(2) + "k" : "--";
       document.getElementById("npv-pi").textContent      = pi  !== null ? pi.toFixed(3)    : "--";
       document.getElementById("npv-payback").textContent = pb  !== null ? pb.toFixed(1) + " yrs" : "--";
-      document.getElementById("npv-total-cf").textContent = "$" + (totalCF / 1000).toFixed(1) + "k";
+      document.getElementById("npv-total-cf").textContent = window.FTK.cur() + (totalCF / 1000).toFixed(1) + "k";
 
       window.FTK.hashSet({ i: investEl.value, r: rateEl.value, c1: cf1El.value, c2: cf2El.value, c3: cf3El.value, c4: cf4El.value, c5: cf5El.value });
 
@@ -101,7 +101,7 @@
           "Initial investment: $" + (invest / 1000).toFixed(1) + "k",
           "Discount rate: " + rate + "%",
           "Cash flows: " + cfs.map(function (v, i) { return "Y" + (i + 1) + ": $" + (v / 1000).toFixed(1) + "k"; }).join(", "),
-          "NPV: " + (npv !== null ? "$" + (npv / 1000).toFixed(2) + "k" : "--")
+          "NPV: " + (npv !== null ? window.FTK.cur() + (npv / 1000).toFixed(2) + "k" : "--")
         ];
         window.FTK.copyToClipboard(lines.join("\n")).then(function () { window.FTK.flash(copyBtn, "Copied!", 1500); });
       });

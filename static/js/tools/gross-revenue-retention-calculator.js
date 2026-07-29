@@ -48,7 +48,7 @@
 
       document.getElementById("grr-result").textContent    = grr    !== null ? grr.toFixed(1) + "%" : "--";
       document.getElementById("grr-annual").textContent    = annGRR !== null ? annGRR.toFixed(1) + "%" : "--";
-      document.getElementById("grr-mrr-lost").textContent  = "$" + (churned + contracted).toLocaleString();
+      document.getElementById("grr-mrr-lost").textContent  = window.FTK.cur() + (churned + contracted).toLocaleString();
 
       window.FTK.hashSet({ s: start, ch: churned, cn: contracted });
 

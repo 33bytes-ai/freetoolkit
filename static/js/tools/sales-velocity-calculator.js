@@ -55,9 +55,9 @@
       var annual   = velocity !== null ? calcAnnualRevenue(velocity) : null;
       var pipeline = calcPipelineValue(opps, acv);
 
-      document.getElementById("sv-result").textContent   = velocity !== null ? "$" + velocity.toFixed(2) + "/day" : "--";
-      document.getElementById("sv-annual").textContent   = annual   !== null ? "$" + (annual / 1000).toFixed(1) + "k" : "--";
-      document.getElementById("sv-pipeline").textContent = pipeline !== null ? "$" + (pipeline / 1000).toFixed(1) + "k" : "--";
+      document.getElementById("sv-result").textContent   = velocity !== null ? window.FTK.cur() + velocity.toFixed(2) + "/day" : "--";
+      document.getElementById("sv-annual").textContent   = annual   !== null ? window.FTK.cur() + (annual / 1000).toFixed(1) + "k" : "--";
+      document.getElementById("sv-pipeline").textContent = pipeline !== null ? window.FTK.cur() + (pipeline / 1000).toFixed(1) + "k" : "--";
       document.getElementById("sv-won").textContent      = (opps && win) ? Math.round(opps * win / 100) + " deals" : "--";
 
       window.FTK.hashSet({ o: oppsEl.value, w: winEl.value, a: acvEl.value, c: cycleEl.value });
@@ -88,8 +88,8 @@
           "Win Rate: " + win + "%",
           "ACV: $" + acv.toLocaleString(),
           "Sales Cycle: " + cycle + " days",
-          "Sales Velocity: " + (v !== null ? "$" + v.toFixed(2) + "/day" : "--"),
-          "Annualized: " + (v !== null ? "$" + (v * 365 / 1000).toFixed(1) + "k" : "--")
+          "Sales Velocity: " + (v !== null ? window.FTK.cur() + v.toFixed(2) + "/day" : "--"),
+          "Annualized: " + (v !== null ? window.FTK.cur() + (v * 365 / 1000).toFixed(1) + "k" : "--")
         ];
         window.FTK.copyToClipboard(lines.join("\n")).then(function () { window.FTK.flash(copyBtn, "Copied!", 1500); });
       });

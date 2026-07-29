@@ -54,10 +54,10 @@
       var needed = (target > 0 && aov) ? calcOrdersNeeded(target, aov) : null;
       var impact = (target > 0 && aov && orders > 0) ? calcAOVImpact(aov, target, orders) : null;
 
-      document.getElementById("aov-result").textContent  = aov   !== null ? "$" + aov.toFixed(2)   : "--";
-      document.getElementById("aov-rpv").textContent     = rpv   !== null ? "$" + rpv.toFixed(2)   : "--";
+      document.getElementById("aov-result").textContent  = aov   !== null ? window.FTK.cur() + aov.toFixed(2)   : "--";
+      document.getElementById("aov-rpv").textContent     = rpv   !== null ? window.FTK.cur() + rpv.toFixed(2)   : "--";
       document.getElementById("aov-needed").textContent  = needed !== null ? Math.ceil(needed) + " orders" : "--";
-      document.getElementById("aov-impact").textContent  = impact !== null ? (impact >= 0 ? "+" : "") + "$" + impact.toFixed(0) + "/mo" : "--";
+      document.getElementById("aov-impact").textContent  = impact !== null ? (impact >= 0 ? "+" : "") + window.FTK.cur() + impact.toFixed(0) + "/mo" : "--";
 
       window.FTK.hashSet({ r: revenue, o: orders, v: visitors, t: target });
 
@@ -66,7 +66,7 @@
         var type  = aov >= 100 ? "info" : "warning";
         window.FTK.showInsight(insEl,
           label + " — $" + aov.toFixed(2) + " average order value. " +
-          "A 10% AOV increase generates " + "$" + (aov * 0.10 * orders).toFixed(0) + "/month in additional revenue at current order volume, with no extra acquisition cost.", type);
+          "A 10% AOV increase generates " + window.FTK.cur() + (aov * 0.10 * orders).toFixed(0) + "/month in additional revenue at current order volume, with no extra acquisition cost.", type);
       }
     }
 
@@ -89,7 +89,7 @@
           "AOV Calculator Results",
           "Total Revenue: $" + r.toLocaleString(),
           "Orders: " + o.toLocaleString(),
-          "Average Order Value: " + (aov !== null ? "$" + aov.toFixed(2) : "--"),
+          "Average Order Value: " + (aov !== null ? window.FTK.cur() + aov.toFixed(2) : "--"),
           "Revenue per Visitor: " + (document.getElementById("aov-rpv").textContent)
         ];
         window.FTK.copyToClipboard(lines.join("\n")).then(function () { window.FTK.flash(copyBtn, "Copied!", 1500); });

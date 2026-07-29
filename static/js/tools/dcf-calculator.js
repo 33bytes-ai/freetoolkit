@@ -56,7 +56,7 @@ if (typeof document !== "undefined") {
     var pvTV = calcPVTerminalValue(tv, dr, cfs.length);
     var ev = calcEnterpriseValue(pvCF, pvTV);
 
-    var fmt = function (v) { return v === null ? "—" : "$" + Math.round(v).toLocaleString("en-US"); };
+    var fmt = function (v) { return v === null ? "—" : window.FTK.cur() + Math.round(v).toLocaleString("en-US"); };
     var e1 = document.getElementById("dcf-out-pvcf"); if (e1) e1.textContent = fmt(pvCF);
     var e2 = document.getElementById("dcf-out-tv"); if (e2) e2.textContent = tv !== null ? fmt(tv) : "—";
     var e3 = document.getElementById("dcf-out-pvtv"); if (e3) e3.textContent = fmt(pvTV);

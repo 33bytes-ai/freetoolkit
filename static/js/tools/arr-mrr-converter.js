@@ -26,9 +26,9 @@
     var weeklyEl = document.getElementById("amrr-out-weekly");
 
     function fmt(v) {
-      if (v >= 1000000) return "$" + (v / 1000000).toFixed(2) + "M";
-      if (v >= 1000)    return "$" + (v / 1000).toFixed(1) + "k";
-      return "$" + Math.round(v).toLocaleString();
+      if (v >= 1000000) return window.FTK.cur() + (v / 1000000).toFixed(2) + "M";
+      if (v >= 1000)    return window.FTK.cur() + (v / 1000).toFixed(1) + "k";
+      return window.FTK.cur() + Math.round(v).toLocaleString();
     }
 
     function update() {
@@ -36,8 +36,8 @@
       if (!result) return;
       mrrEl.textContent    = fmt(result.mrr);
       arrEl.textContent    = fmt(result.arr);
-      dailyEl.textContent  = "$" + result.daily.toFixed(2);
-      weeklyEl.textContent = "$" + result.weekly.toFixed(0);
+      dailyEl.textContent  = window.FTK.cur() + result.daily.toFixed(2);
+      weeklyEl.textContent = window.FTK.cur() + result.weekly.toFixed(0);
       window.FTK.hashSet({ v: inputEl.value, m: modeEl.value });
     }
 

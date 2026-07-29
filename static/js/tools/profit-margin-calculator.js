@@ -28,7 +28,7 @@
     };
 
     function fmtD(v) {
-      return (v < 0 ? "-$" : "$") + Math.abs(Math.round(v)).toLocaleString();
+      return (v < 0 ? "-$" : window.FTK.cur()) + Math.abs(Math.round(v)).toLocaleString();
     }
 
     function update() {

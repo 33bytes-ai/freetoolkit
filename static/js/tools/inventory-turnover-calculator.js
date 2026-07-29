@@ -54,7 +54,7 @@
 
       document.getElementById("inv-turnover").textContent  = turnover !== null ? turnover.toFixed(2) + "×" : "--";
       document.getElementById("inv-dsi").textContent       = dsi      !== null ? dsi.toFixed(0) + " days"  : "--";
-      document.getElementById("inv-avg").textContent       = avgInv   !== null ? "$" + (avgInv / 1000).toFixed(1) + "k" : "--";
+      document.getElementById("inv-avg").textContent       = avgInv   !== null ? window.FTK.cur() + (avgInv / 1000).toFixed(1) + "k" : "--";
       document.getElementById("inv-sellthru").textContent  = sellThru !== null ? sellThru.toFixed(1) + "%" : "--";
 
       window.FTK.hashSet({ c: cogsEl.value, b: beginEl.value, e: endEl.value, s: soldEl.value, r: receivedEl.value });
@@ -84,7 +84,7 @@
         var dsi   = turns ? calcDSI(turns) : null;
         var lines = [
           "COGS: $" + (cogs / 1000).toFixed(1) + "k",
-          "Avg Inventory: " + (avg !== null ? "$" + (avg / 1000).toFixed(1) + "k" : "--"),
+          "Avg Inventory: " + (avg !== null ? window.FTK.cur() + (avg / 1000).toFixed(1) + "k" : "--"),
           "Inventory Turnover: " + (turns !== null ? turns.toFixed(2) + "×" : "--"),
           "Days Sales of Inventory: " + (dsi !== null ? dsi.toFixed(0) + " days" : "--")
         ];

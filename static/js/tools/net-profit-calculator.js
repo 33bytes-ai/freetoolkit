@@ -68,9 +68,9 @@
       var om   = calcOperatingMargin(oi, rev);
       var nm   = calcNetProfitMargin(np, rev);
 
-      document.getElementById("np-gross-profit").textContent  = fmt(gp, "$");
-      document.getElementById("np-operating").textContent     = fmt(oi, "$");
-      document.getElementById("np-result").textContent        = fmt(np, "$");
+      document.getElementById("np-gross-profit").textContent  = fmt(gp, window.FTK.cur());
+      document.getElementById("np-operating").textContent     = fmt(oi, window.FTK.cur());
+      document.getElementById("np-result").textContent        = fmt(np, window.FTK.cur());
       document.getElementById("np-net-margin").textContent    = nm !== null ? nm.toFixed(1) + "%" : "--";
 
       window.FTK.hashSet({ r: rev, c: cogs, o: opex, i: inte, t: tax });
@@ -82,7 +82,7 @@
           label + " — " + nm.toFixed(1) + "% net margin. " +
           "Gross margin: " + (gm !== null ? gm.toFixed(1) + "%" : "--") + ". " +
           "Operating margin: " + (om !== null ? om.toFixed(1) + "%" : "--") + ". " +
-          "Net profit: " + fmt(np, "$") + ".", type);
+          "Net profit: " + fmt(np, window.FTK.cur()) + ".", type);
       }
     }
 
@@ -109,10 +109,10 @@
         var np = calcNetProfit(oi, i, t);
         var lines = [
           "Net Profit Calculator Results",
-          "Revenue: " + fmt(r, "$"),
-          "Gross Profit: " + fmt(gp, "$") + " (" + (calcGrossMargin(gp, r) !== null ? calcGrossMargin(gp, r).toFixed(1) + "%" : "--") + ")",
-          "Operating Income: " + fmt(oi, "$") + " (" + (calcOperatingMargin(oi, r) !== null ? calcOperatingMargin(oi, r).toFixed(1) + "%" : "--") + ")",
-          "Net Profit: " + fmt(np, "$") + " (" + (calcNetProfitMargin(np, r) !== null ? calcNetProfitMargin(np, r).toFixed(1) + "%" : "--") + ")"
+          "Revenue: " + fmt(r, window.FTK.cur()),
+          "Gross Profit: " + fmt(gp, window.FTK.cur()) + " (" + (calcGrossMargin(gp, r) !== null ? calcGrossMargin(gp, r).toFixed(1) + "%" : "--") + ")",
+          "Operating Income: " + fmt(oi, window.FTK.cur()) + " (" + (calcOperatingMargin(oi, r) !== null ? calcOperatingMargin(oi, r).toFixed(1) + "%" : "--") + ")",
+          "Net Profit: " + fmt(np, window.FTK.cur()) + " (" + (calcNetProfitMargin(np, r) !== null ? calcNetProfitMargin(np, r).toFixed(1) + "%" : "--") + ")"
         ];
         window.FTK.copyToClipboard(lines.join("\n")).then(function () { window.FTK.flash(copyBtn, "Copied!", 1500); });
       });

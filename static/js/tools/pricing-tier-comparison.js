@@ -46,8 +46,8 @@
     }
 
     function fmt(v) {
-      if (v >= 1000) return "$" + (v / 1000).toFixed(1) + "k";
-      return "$" + Math.round(v).toLocaleString();
+      if (v >= 1000) return window.FTK.cur() + (v / 1000).toFixed(1) + "k";
+      return window.FTK.cur() + Math.round(v).toLocaleString();
     }
 
     function update() {

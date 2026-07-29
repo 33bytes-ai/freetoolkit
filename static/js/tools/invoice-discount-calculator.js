@@ -31,9 +31,9 @@
   function fmt(n, digits) {
     if (n === null || n === undefined || isNaN(n)) return "--";
     var d = digits !== undefined ? digits : 2;
-    if (Math.abs(n) >= 1000000) return "$" + (n / 1000000).toFixed(d) + "M";
-    if (Math.abs(n) >= 1000)    return "$" + (n / 1000).toFixed(d) + "k";
-    return "$" + n.toFixed(d);
+    if (Math.abs(n) >= 1000000) return window.FTK.cur() + (n / 1000000).toFixed(d) + "M";
+    if (Math.abs(n) >= 1000)    return window.FTK.cur() + (n / 1000).toFixed(d) + "k";
+    return window.FTK.cur() + n.toFixed(d);
   }
 
   function init() {

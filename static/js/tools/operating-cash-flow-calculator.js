@@ -27,7 +27,7 @@
   function fmtCurrency(v) {
     if (v === null || isNaN(v)) return "—";
     var sign = v < 0 ? "-" : "";
-    return sign + "$" + Math.abs(v).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return sign + window.FTK.cur() + Math.abs(v).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
   function init() {

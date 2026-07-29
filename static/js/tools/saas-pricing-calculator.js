@@ -24,9 +24,9 @@
     var copyBtn      = document.getElementById("spc-copy");
 
     function fmt(v) {
-      if (v >= 1000000) return "$" + (v / 1000000).toFixed(2) + "M";
-      if (v >= 1000)    return "$" + (v / 1000).toFixed(1) + "k";
-      return "$" + v.toFixed(0);
+      if (v >= 1000000) return window.FTK.cur() + (v / 1000000).toFixed(2) + "M";
+      if (v >= 1000)    return window.FTK.cur() + (v / 1000).toFixed(1) + "k";
+      return window.FTK.cur() + v.toFixed(0);
     }
 
     function update() {
@@ -56,15 +56,15 @@
 
       var actualMargin = ((starterPrice - cogs) / starterPrice) * 100;
 
-      document.getElementById("spc-min-price").textContent       = "$" + minPrice.toFixed(2);
-      document.getElementById("spc-starter-price").textContent   = "$" + starterPrice;
-      document.getElementById("spc-pro-price").textContent       = "$" + proPrice;
-      document.getElementById("spc-business-price").textContent  = "$" + businessPrice;
+      document.getElementById("spc-min-price").textContent       = window.FTK.cur() + minPrice.toFixed(2);
+      document.getElementById("spc-starter-price").textContent   = window.FTK.cur() + starterPrice;
+      document.getElementById("spc-pro-price").textContent       = window.FTK.cur() + proPrice;
+      document.getElementById("spc-business-price").textContent  = window.FTK.cur() + businessPrice;
       document.getElementById("spc-starter-mrr").textContent     = fmt(starterMRR);
       document.getElementById("spc-pro-mrr").textContent         = fmt(proMRR);
       document.getElementById("spc-gross-margin").textContent    = actualMargin.toFixed(1) + "%";
-      document.getElementById("spc-annual-starter").textContent  = "$" + starterAnnual.toFixed(0) + "/yr";
-      document.getElementById("spc-annual-pro").textContent      = "$" + proAnnual.toFixed(0) + "/yr";
+      document.getElementById("spc-annual-starter").textContent  = window.FTK.cur() + starterAnnual.toFixed(0) + "/yr";
+      document.getElementById("spc-annual-pro").textContent      = window.FTK.cur() + proAnnual.toFixed(0) + "/yr";
 
       window.FTK.hashSet({ g: cogsEl.value, m: marginEl.value, c: customersEl.value, cp: competitorEl.value });
 

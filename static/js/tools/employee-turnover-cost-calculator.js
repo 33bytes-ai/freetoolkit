@@ -43,7 +43,7 @@ if (typeof document !== "undefined") {
 
     var fmtK = function (v) {
       if (v === null || isNaN(v)) return "—";
-      return v >= 1000 ? "$" + (v / 1000).toFixed(1) + "k" : "$" + Math.round(v);
+      return v >= 1000 ? window.FTK.cur() + (v / 1000).toFixed(1) + "k" : window.FTK.cur() + Math.round(v);
     };
     var fmtPct = function (v) { return v === null ? "—" : v.toFixed(1) + "%"; };
 

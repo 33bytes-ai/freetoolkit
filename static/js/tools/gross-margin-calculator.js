@@ -32,7 +32,7 @@
 
   function fmtCurrency(v) {
     if (v === null || isNaN(v)) return "—";
-    return "$" + parseFloat(v.toFixed(2)).toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+    return window.FTK.cur() + parseFloat(v.toFixed(2)).toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
   }
 
   function init() {

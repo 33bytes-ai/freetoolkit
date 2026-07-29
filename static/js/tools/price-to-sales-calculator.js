@@ -53,8 +53,8 @@
       var impliedRev = mcap > 0 && mult > 0 ? calcImpliedRevenue(mcap, mult) : null;
 
       function fmtM(v) {
-        if (v >= 1000000000) return "$" + (v / 1000000000).toFixed(1) + "B";
-        return "$" + (v / 1000000).toFixed(0) + "M";
+        if (v >= 1000000000) return window.FTK.cur() + (v / 1000000000).toFixed(1) + "B";
+        return window.FTK.cur() + (v / 1000000).toFixed(0) + "M";
       }
 
       document.getElementById("ps-ratio").textContent       = ps    ? ps.toFixed(1) + "x" : "--";
@@ -86,8 +86,8 @@
         var ps      = revenue > 0 ? calcPSRatio(mcap, revenue) : null;
         var implied = revenue > 0 && mult > 0 ? calcImpliedValuation(revenue, mult) : null;
         function fmtM(v) {
-          if (v >= 1000000000) return "$" + (v / 1000000000).toFixed(1) + "B";
-          return "$" + (v / 1000000).toFixed(0) + "M";
+          if (v >= 1000000000) return window.FTK.cur() + (v / 1000000000).toFixed(1) + "B";
+          return window.FTK.cur() + (v / 1000000).toFixed(0) + "M";
         }
         var lines = ["P/S Ratio: " + (ps ? ps.toFixed(1) + "x" : "--"), "Implied Valuation: " + (implied ? fmtM(implied) : "--")];
         window.FTK.copyToClipboard(lines.join("\n")).then(function () { window.FTK.flash(copyBtn, "Copied!", 1500); });
