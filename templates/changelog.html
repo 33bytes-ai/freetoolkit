@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block head_extra %}
-<script type="application/ld+json" nonce="{{ csp_nonce }}">
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -66,17 +66,5 @@
   {% endif %}
   {% endfor %}
 </section>
-<script nonce="{{ csp_nonce }}">
-(function () {
-  var btns = document.querySelectorAll(".cat-filter-btn");
-  var sections = document.querySelectorAll(".cl-section");
-  btns.forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      var cat = btn.dataset.cat;
-      btns.forEach(function (b) { b.classList.toggle("active", b === btn); b.setAttribute("aria-selected", b === btn ? "true" : "false"); });
-      sections.forEach(function (sec) { sec.style.display = (cat === "all" || sec.dataset.category === cat) ? "" : "none"; });
-    });
-  });
-})();
-</script>
+<script src="/static/js/changelog.js?v={{ asset_version }}" defer></script>
 {% endblock %}

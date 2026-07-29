@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="google-site-verification" content="NgiaEKacgQ76wtuyS8UXJr0y_vU1kTwzsWa6ZaIDBrM" />
   <title>{{ title }} — {{ site.name }}</title>
   <meta name="description" content="{{ description }}">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
@@ -29,13 +30,15 @@
   <meta name="msapplication-TileColor" content="#0e6b45">
   <meta name="msapplication-config" content="none">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <link rel="canonical" href="{{ site.base_url }}{{ path }}">
+  <link rel="canonical" href="{{ site.base_url }}{{ canonical_path | default(path, true) }}">
   <link rel="alternate" hreflang="en" href="{{ site.base_url }}{{ path }}">
   <link rel="icon" href="/static/img/favicon.svg" type="image/svg+xml">
   <link rel="alternate" type="application/rss+xml" title="{{ site.name }} — New Tools" href="{{ site.base_url }}/rss.xml">
   <link rel="manifest" href="/manifest.json">
+  {% if site.ads_enabled %}
   <link rel="preconnect" href="https://pagead2.googlesyndication.com">
   <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net">
+  {% endif %}
   <link rel="preload" href="/static/css/style.css?v={{ asset_version }}" as="style">
   <link rel="stylesheet" href="/static/css/style.css?v={{ asset_version }}">
   <link rel="preload" href="/static/js/lib/common.js?v={{ asset_version }}" as="script">
@@ -54,33 +57,16 @@
   <meta name="twitter:description" content="{{ description }}">
   {% block twitter_image %}<meta name="twitter:image" content="{{ site.base_url }}/static/img/og.png">{% endblock %}
   {% block twitter_extra %}{% endblock %}
-  {% if site.ads_enabled %}
+  {% if site.ads_enabled and site.adsense_client_id %}
   <!-- Google Funding Choices: free, IAB TCF-certified consent management
        platform. Required before showing personalized ads to EEA/UK
        visitors (Google's EU User Consent Policy) -- loaded before the
        ad script below so consent is gathered before any ad request. -->
-  <script async src="https://fundingchoicesmessages.google.com/i/{{ site.adsense_client_id }}?ers=1" nonce="{{ csp_nonce }}"></script>
-  <script nonce="{{ csp_nonce }}">
-    (function() {
-      function signalGooglefcPresent() {
-        if (!window.frames['googlefcPresent']) {
-          if (document.body) {
-            var iframe = document.createElement('iframe');
-            iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;';
-            iframe.style.display = 'none';
-            iframe.name = 'googlefcPresent';
-            document.body.appendChild(iframe);
-          } else {
-            setTimeout(signalGooglefcPresent, 0);
-          }
-        }
-      }
-      signalGooglefcPresent();
-    })();
-  </script>
+  <script async src="https://fundingchoicesmessages.google.com/i/{{ site.adsense_client_id }}?ers=1"></script>
+  <script src="/static/js/ads.js?v={{ asset_version }}" defer></script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.adsense_client_id }}" crossorigin="anonymous"></script>
   {% endif %}
-  <script type="application/ld+json" nonce="{{ csp_nonce }}">
+  <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -94,14 +80,14 @@
     }
   }
   </script>
-  <script type="application/ld+json" nonce="{{ csp_nonce }}">
+  <script type="application/ld+json">
   [{% for tool in tools %}{"@context":"https://schema.org","@type":"SiteNavigationElement","name":"{{ tool.nav_title | replace('"', '\\"') }}","url":"{{ site.base_url }}/tools/{{ tool.slug }}/"}{% if not loop.last %},{% endif %}{% endfor %}]
   </script>
   <link rel="sitemap" type="application/xml" href="/sitemap_index.xml">
   <link rel="alternate" type="application/json+oembed" href="{{ site.base_url }}/oembed.json?url={{ site.base_url }}{{ path }}" title="{{ title }}">
   {% block head_extra %}{% endblock %}
 </head>
-<body>
+<body{% if site.ads_enabled %} data-ads="on"{% endif %}{% if tool is defined and tool.slug in currency_locked_tools %} data-currency-locked="true"{% endif %}>
   <div id="logo-splash" aria-hidden="true">
     <svg viewBox="0 0 496 496" width="120" height="120" xmlns="http://www.w3.org/2000/svg">
       <g transform="translate(0.000000,496.000000) scale(0.100000,-0.100000)">
@@ -173,20 +159,60 @@
         <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close navigation">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
-        {% for category in categories %}
-        {% set cat_tools = tools_by_category.get(category, []) %}
-        <span class="nav-group">
-          <a class="nav-group-label" href="/categories/{{ category | category_slug }}/">{{ category }}</a>
-          <span class="nav-group-menu{% if cat_tools | length > 8 %} menu-wide{% endif %}">
-            {% for tool in cat_tools %}
-            <a href="/tools/{{ tool.slug }}/">{{ tool.nav_title or tool.title }}</a>
-            {% endfor %}
-          </span>
-        </span>
-        {% endfor %}
+
+        {# One mega-menu instead of 10 inline category items: 10 items could never
+           fit the header (they overlapped), and the overflow-x:auto used to hide
+           that clipped the absolutely-positioned dropdowns so hover showed nothing. #}
+        <div class="nav-mega" id="nav-mega">
+          <button class="nav-mega-trigger" id="nav-mega-trigger" aria-expanded="false" aria-controls="nav-mega-panel">
+            <span data-i18n="nav_calculators">Calculators</span>
+            <svg class="nav-mega-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="nav-mega-panel" id="nav-mega-panel">
+            <div class="nav-mega-grid">
+              {% for category in categories %}
+              {% set cat_tools = tools_by_category.get(category, []) %}
+              {% if cat_tools %}
+              <div class="nav-mega-col">
+                <a class="nav-mega-cat" href="/categories/{{ category | category_slug }}/">
+                  <span class="nav-mega-cat-icon" aria-hidden="true">{{ category_meta[category].icon | safe }}</span>
+                  {{ category }}
+                  <span class="nav-mega-count">{{ cat_tools | length }}</span>
+                </a>
+                {% for tool in cat_tools[:5] %}
+                <a class="nav-mega-tool" href="/tools/{{ tool.slug }}/">{{ tool.nav_title or tool.title }}</a>
+                {% endfor %}
+                {% if cat_tools | length > 5 %}
+                <a class="nav-mega-more" href="/categories/{{ category | category_slug }}/">+{{ cat_tools | length - 5 }} more →</a>
+                {% endif %}
+              </div>
+              {% endif %}
+              {% endfor %}
+            </div>
+            <div class="nav-mega-footer">
+              <a href="/tools/">Browse all {{ tools | length }} calculators →</a>
+            </div>
+          </div>
+        </div>
+
+        <a class="nav-link" href="/tools/" data-i18n="nav_all_tools">All tools</a>
+        <a class="nav-link" href="/glossary/" data-i18n="nav_glossary">Glossary</a>
         <a href="/tools/" class="mobile-nav-all">Browse all {{ tools | length }} tools →</a>
       </nav>
       <div class="mobile-nav-overlay" id="mobile-nav-overlay" aria-hidden="true"></div>
+      {% if i18n %}
+      <div class="lang-switch" id="lang-switch">
+        <button class="lang-switch-btn" id="lang-switch-btn" aria-expanded="false" aria-controls="lang-switch-menu" aria-label="Change language" title="Change language">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span class="lang-switch-code" id="lang-switch-code">EN</span>
+        </button>
+        <div class="lang-switch-menu" id="lang-switch-menu" role="menu">
+          {% for code, strings in i18n.items() %}
+          <button type="button" role="menuitem" class="lang-switch-opt" data-lang="{{ code }}">{{ strings.label }}</button>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
       <button id="theme-toggle" role="switch" aria-checked="false" aria-label="Switch to dark mode" class="theme-toggle-btn" title="Toggle dark/light mode">
         <span class="tgl-track">
           <span class="tgl-sun" aria-hidden="true">
@@ -208,6 +234,10 @@
   <button id="scroll-top" aria-label="Back to top" style="display:none;position:fixed;bottom:1.25rem;right:1.25rem;width:2.4rem;height:2.4rem;border-radius:50%;background:var(--accent);color:#fff;border:none;cursor:pointer;z-index:50;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,99,235,0.22);transition:opacity 0.2s,transform 0.2s"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="18 15 12 9 6 15"/></svg></button>
   <script src="/static/js/lib/common.js?v={{ asset_version }}" defer></script>
   <script src="/static/js/lib/tracker.js?v={{ asset_version }}" defer></script>
+  {% if i18n %}
+  <script type="application/json" id="i18n-strings">{{ i18n | tojson }}</script>
+  <script src="/static/js/lib/i18n.js?v={{ asset_version }}" defer></script>
+  {% endif %}
   <footer class="site-footer">
     <div class="wrap">
       <div class="footer-cols">
@@ -216,7 +246,7 @@
           <p>{{ site.tagline }}</p>
         </div>
         <div>
-          <h3>Categories</h3>
+          <h3 data-i18n="footer_categories">Categories</h3>
           <ul>
             {% for category in categories %}
             {% set cat_tools = tools_by_category.get(category, []) %}
@@ -228,13 +258,13 @@
           </ul>
         </div>
         <div>
-          <h3>Site</h3>
+          <h3 data-i18n="footer_site">Site</h3>
           <ul>
             <li><a href="/glossary/">Glossary</a></li>
-            <li><a href="/about/">About</a></li>
-            <li><a href="/contact/">Contact</a></li>
-            <li><a href="/privacy/">Privacy Policy</a></li>
-            <li><a href="/terms/">Terms of Use</a></li>
+            <li><a href="/about/" data-i18n="footer_about">About</a></li>
+            <li><a href="/contact/" data-i18n="footer_contact">Contact</a></li>
+            <li><a href="/privacy/" data-i18n="footer_privacy">Privacy Policy</a></li>
+            <li><a href="/terms/" data-i18n="footer_terms">Terms of Use</a></li>
           </ul>
         </div>
         {% if site.formspree_id %}
@@ -243,7 +273,7 @@
           <p>One short email when a new calculator ships. No spam.</p>
           <form action="https://formspree.io/f/{{ site.formspree_id }}" method="POST" class="footer-newsletter-form">
             <input type="hidden" name="_subject" value="Newsletter — FounderCalc (footer)">
-            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
             <label for="footer-nl-email" class="sr-only">Your email address</label>
             <input id="footer-nl-email" type="email" name="email" placeholder="you@company.com" required autocomplete="email">
             <button type="submit" class="btn-primary">Subscribe</button>

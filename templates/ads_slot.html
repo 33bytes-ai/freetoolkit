@@ -1,11 +1,28 @@
-{% if site.ads_enabled %}
-<div class="ad-slot" aria-hidden="true">
+{#
+  Explicit ad slot.
+
+  Deliberately explicit rather than relying on AdSense Auto ads: auto-placement
+  injects units wherever it likes, including anchor/overlay ads docked to the
+  viewport bottom -- which land directly on top of .sticky-share-bar and
+  .dash-fab (both position:fixed; bottom:1.25rem). Auto ads should stay OFF in
+  the AdSense dashboard; these named slots are the only placements.
+
+  Reserving height matters for more than looks: an ad popping in and pushing
+  content down is layout shift, which Core Web Vitals measures and Google ranks
+  on -- self-defeating on a site whose whole plan is SEO traffic.
+
+  Usage:  {% with slot_name = "tool-mid", slot_id = "1234567890" %}
+            {% include "ads_slot.html" %}
+          {% endwith %}
+#}
+{% if site.ads_enabled and site.adsense_client_id %}
+<aside class="ad-slot ad-slot--{{ slot_name | default('default') }}" aria-label="Advertisement">
+  <span class="ad-slot-label">Advertisement</span>
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="{{ site.adsense_client_id }}"
        data-ad-slot="{{ slot_id | default('0000000000') }}"
        data-ad-format="auto"
        data-full-width-responsive="true"></ins>
-  <script nonce="{{ csp_nonce }}">(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
+</aside>
 {% endif %}
