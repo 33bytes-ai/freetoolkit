@@ -23,7 +23,7 @@
 <meta name="identifier-URL" content="{{ site.base_url }}/tools/{{ tool.slug }}/">
 <link rel="author" href="{{ site.base_url }}/about/">
 <link rel="preload" href="/static/js/tools/{{ tool.js }}" as="script">
-<script type="application/ld+json" nonce="{{ csp_nonce }}">
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -34,7 +34,7 @@
   ]
 }
 </script>
-<script type="application/ld+json" nonce="{{ csp_nonce }}">
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
@@ -50,7 +50,7 @@
   "dateModified": "{{ tool.date_added }}"{% endif %}
 }
 </script>
-<script type="application/ld+json" nonce="{{ csp_nonce }}">
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
@@ -61,7 +61,7 @@
 }
 </script>
 {% if tool.howto_steps %}
-<script type="application/ld+json" nonce="{{ csp_nonce }}">
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "HowTo",
@@ -76,7 +76,7 @@
 </script>
 {% endif %}
 {% if tool_faqs %}
-<script type="application/ld+json" nonce="{{ csp_nonce }}">
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
