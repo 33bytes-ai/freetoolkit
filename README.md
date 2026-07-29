@@ -94,6 +94,6 @@ Business/SaaS audience RPM is 5–8× higher than general utility tools.
 | Item | Cost |
 |------|------|
 | Domain | ~$12/year |
-| VPS (Hetzner CX11) | $5/month |
-| Cloudflare Pages (alternative) | $0 |
+| Cloudflare Pages (hosting) | $0 |
+| Cloudflare Web Analytics (stats) | $0 |
 | All dependencies | $0 |

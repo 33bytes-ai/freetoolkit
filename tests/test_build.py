@@ -342,15 +342,33 @@ def test_tool_pages_have_twitter_meta():
         assert 'twitter:description' in html, f"{slug} missing twitter:description"
 
 
-def test_dashboard_has_csp_nonce():
-    run_build()
-    html = (DIST / "dashboard" / "index.html").read_text()
-    assert "Content-Security-Policy" in html
-    assert "nonce-" in html
+def test_no_executable_inline_scripts_anywhere():
+    """Every executable script must be an external file.
+
+    Inline scripts needed a per-build CSP nonce shared between the HTML and
+    dist/_headers. Behind a CDN those two can come from different builds, and
+    a mismatch silently blocks every inline script on the page. Keeping scripts
+    external removes the coupling -- script-src 'self' is enough. JSON-LD is
+    exempt: it is data, never executed, so script-src does not gate it."""
     import re
-    nonces = re.findall(r'nonce="([^"]+)"', html)
-    assert len(nonces) >= 2, "Expected nonce on at least 2 script tags"
-    assert len(set(nonces)) == 1, "All nonces on the dashboard should match"
+
+    run_build()
+    pages = [
+        DIST / "index.html",
+        DIST / "tools" / "index.html",
+        DIST / "tools" / TOOL_SLUGS[0] / "index.html",
+        DIST / "changelog" / "index.html",
+        DIST / "dashboard" / "index.html",
+        DIST / "about" / "index.html",
+    ]
+    offenders = []
+    for page in pages:
+        for m in re.finditer(r"<script(?![^>]*\ssrc=)([^>]*)>", page.read_text()):
+            attrs = m.group(1)
+            if "application/ld+json" in attrs or "application/json" in attrs:
+                continue
+            offenders.append(f"{page.relative_to(DIST)}:{attrs.strip()[:60]}")
+    assert not offenders, f"executable inline scripts found: {offenders}"
 
 
 def test_sub_sitemaps_exist_and_index_references_them():
@@ -362,7 +380,17 @@ def test_sub_sitemaps_exist_and_index_references_them():
     assert "sitemap_pages.xml" in index
     assert "sitemap_intent.xml" in index
     tools_xml = (DIST / "sitemap_tools.xml").read_text()
+    # A tool whose canonical points at another page is not a canonical URL;
+    # listing it here would contradict its own canonical tag.
+    import yaml as _yaml
+    _tools = _yaml.safe_load((ROOT / "content" / "tools.yaml").read_text())
+    canonicalised = {t["slug"] for t in _tools if t.get("canonical_to")}
     for slug in TOOL_SLUGS:
+        if slug in canonicalised:
+            assert f"/tools/{slug}/</loc>" not in tools_xml, (
+                f"{slug} canonicalises elsewhere but is still listed in sitemap_tools.xml"
+            )
+            continue
         assert f"/tools/{slug}/" in tools_xml, f"sitemap_tools.xml missing {slug}"
     intent_xml = (DIST / "sitemap_intent.xml").read_text()
     parent, slug = INTENT_PAGES[0]
@@ -676,69 +704,40 @@ def test_break_even_tool_page_builds():
     assert "Contribution margin" in html
 
 
-def test_build_writes_csp_nonce_file():
-    """build.py should stamp a build-wide nonce for infra/Dockerfile to bake into nginx's CSP header."""
+def test_csp_does_not_depend_on_a_nonce():
+    """script-src must not carry a nonce.
+
+    A nonce ties the header to one specific build of the HTML; served from a
+    CDN the two can desync and block everything. With no inline executable
+    scripts left there is nothing for a nonce to authorise."""
     run_build()
-    nonce_file = ROOT / "csp_nonce.txt"
-    assert nonce_file.exists()
-    nonce = nonce_file.read_text().strip()
-    assert len(nonce) >= 16
+    headers = (DIST / "_headers").read_text()
+    script_src = headers.split("script-src", 1)[1].split(";", 1)[0]
+    assert "nonce-" not in script_src, "CSP still pins a per-build nonce"
+    assert "'self'" in script_src
 
 
-def test_inline_scripts_all_carry_the_same_build_nonce():
-    """Every inline <script> across page types must carry the nonce written to csp_nonce.txt,
-    since nginx's CSP (script-src 'nonce-...') has no 'unsafe-inline' fallback."""
-    import re
-
+def test_headers_file_csp_has_no_unsafe_inline_scripts():
+    """dist/_headers is what actually sets CSP now that hosting is Cloudflare
+    Pages (nginx.conf went away with the VPS). script-src must rely on the
+    build's nonce, never 'unsafe-inline'."""
     run_build()
-    nonce = (ROOT / "csp_nonce.txt").read_text().strip()
-
-    pages = [
-        DIST / "index.html",
-        DIST / "tools" / "index.html",
-        DIST / "tools" / TOOL_SLUGS[0] / "index.html",
-        DIST / "changelog" / "index.html",
-        DIST / "dashboard" / "index.html",
-        DIST / "about" / "index.html",
-    ]
-    if INTENT_PAGES:
-        parent, slug = INTENT_PAGES[0]
-        pages.append(DIST / "tools" / parent / slug / "index.html")
-
-    for page in pages:
-        html = page.read_text()
-        inline_scripts = re.findall(r"<script(?![^>]*\ssrc=)([^>]*)>", html)
-        assert inline_scripts, f"{page} has no inline <script> tags to check"
-        for attrs in inline_scripts:
-            assert f'nonce="{nonce}"' in attrs, (
-                f"{page} has an inline <script {attrs.strip()}> without the build nonce"
-            )
-
-
-def test_no_inline_event_handler_attributes():
-    """Inline onclick=/onload=-style attributes bypass nonce-based CSP entirely and must not be used."""
-    run_build()
-    pattern = __import__("re").compile(r'\son[a-z]+\s*=\s*"', __import__("re").IGNORECASE)
-    for page in [DIST / "index.html", DIST / "tools" / TOOL_SLUGS[0] / "index.html", DIST / "dashboard" / "index.html"]:
-        html = page.read_text()
-        assert not pattern.search(html), f"{page} contains an inline event-handler attribute"
-
-
-def test_nginx_conf_csp_has_no_unsafe_inline_scripts():
-    """nginx.conf's script-src must rely on the nonce placeholder, not 'unsafe-inline'."""
-    conf = (ROOT / "infra" / "nginx.conf").read_text()
-    assert "Content-Security-Policy" in conf
-    script_src = conf.split("script-src", 1)[1].split(";", 1)[0]
+    headers = (DIST / "_headers").read_text()
+    assert "Content-Security-Policy" in headers
+    script_src = headers.split("script-src", 1)[1].split(";", 1)[0]
     assert "unsafe-inline" not in script_src
-    assert "'nonce-__CSP_NONCE__'" in script_src
     assert "https://pagead2.googlesyndication.com" in script_src
 
 
-def test_dockerfile_substitutes_csp_nonce_placeholder():
-    """infra/Dockerfile must replace nginx.conf's nonce placeholder with the value build.py stamped."""
-    dockerfile = (ROOT / "infra" / "Dockerfile").read_text()
-    assert "csp_nonce.txt" in dockerfile
-    assert "__CSP_NONCE__" in dockerfile
+def test_headers_file_sets_transport_and_framing_protections():
+    """These shipped via nginx before the move to Pages; losing them silently
+    on a host migration is exactly what this test exists to catch."""
+    run_build()
+    headers = (DIST / "_headers").read_text()
+    assert "Strict-Transport-Security" in headers
+    assert "X-Frame-Options" in headers
+    assert "X-Content-Type-Options" in headers
+    assert "Referrer-Policy" in headers
 
 
 def test_no_inline_event_handlers_in_source():
@@ -860,11 +859,40 @@ def test_pages_have_manifest_link():
 
 
 def test_footer_newsletter_form_hidden_without_formspree_id():
-    """The site-wide footer signup form should not render while formspree_id is unset."""
+    """The site-wide footer signup form should not render while formspree_id is unset.
+
+    Renders with formspree_id explicitly blanked rather than reading dist/:
+    the shipped config now carries a real Formspree ID, so building the live
+    config would exercise the opposite case (see the sibling test below)."""
     run_build()
-    for html_path in (DIST / "index.html", DIST / "about" / "index.html"):
-        html = html_path.read_text()
-        assert "footer-newsletter" not in html, f"{html_path} should not have a footer newsletter form"
+    from freetoolkit import build as ftk_build
+
+    env = ftk_build.build_env()
+    config = ftk_build.load_config()
+    config["site"] = dict(config["site"], formspree_id="")
+    tools = ftk_build.load_tools()
+    pages = ftk_build.load_pages(config, len(tools))
+    about_page = next(p for p in pages if p["slug"] == "about")
+
+    out = DIST / "_test_footer_newsletter_off" / "index.html"
+    ftk_build.render(
+        env,
+        "page.html",
+        out,
+        path="/about/",
+        title=about_page["title"],
+        description=about_page["description"],
+        page=about_page,
+        site=config["site"],
+        categories=config["categories"],
+        tools=tools,
+        tools_by_category={},
+        all_intent_pages=[],
+        intent_count_by_category={},
+        year=2026,
+        build_date="2026-01-01",
+    )
+    assert "footer-newsletter" not in out.read_text()
 
 
 def test_footer_newsletter_form_appears_on_every_page_when_formspree_id_set():
@@ -887,7 +915,6 @@ def test_footer_newsletter_form_appears_on_every_page_when_formspree_id_set():
         intent_count_by_category={},
         year=2026,
         build_date="2026-01-01",
-        csp_nonce="test-nonce",
     )
 
     about_page = next(p for p in pages if p["slug"] == "about")
@@ -922,12 +949,60 @@ def test_footer_newsletter_form_appears_on_every_page_when_formspree_id_set():
     assert 'name="_gotcha"' in index_html
 
 
-def test_no_ad_or_cmp_scripts_when_ads_disabled():
-    """With ads_enabled: false (the current default), neither the AdSense
-    script nor the Funding Choices consent-management script should render
-    anywhere -- there's nothing to gather consent for if no ads ever load."""
+def test_no_ad_units_or_network_requests_when_ads_disabled():
+    """ads_enabled: false must mean no ad units *and* no contact with Google's
+    ad network -- no loader, no CMP, not even a preconnect.
+
+    AdSense review is satisfied by ads.txt (one of Google's three supported
+    verification methods) rather than by shipping the loader early, so the site
+    can keep its "no tracking" promise honestly until ads actually go live."""
     run_build()
     html = (DIST / "index.html").read_text()
+    assert 'class="adsbygoogle"' not in html, "an ad unit rendered while ads_enabled is false"
+    assert "ad-slot" not in html, "an ad slot container rendered while ads_enabled is false"
+    assert "adsbygoogle.js" not in html, "AdSense loader shipped while ads_enabled is false"
+    assert "fundingchoicesmessages.google.com" not in html, "CMP shipped while ads_enabled is false"
+    assert "pagead2.googlesyndication.com" not in html, "preconnect to ad network while ads disabled"
+
+
+def test_ads_txt_carries_publisher_line_for_verification():
+    """ads.txt is the verification method now, so it must contain the real
+    publisher line -- not the placeholder comments used when no ID is set."""
+    run_build()
+    ads_txt = (DIST / "ads.txt").read_text().strip()
+    assert ads_txt.startswith("google.com, ca-pub-"), f"ads.txt not a valid publisher line: {ads_txt!r}"
+    assert "DIRECT" in ads_txt
+
+
+def test_no_ad_or_cmp_scripts_without_adsense_client_id():
+    """With no client ID configured there is nothing to verify and nothing to
+    gather consent for, so neither script should ship."""
+    run_build()
+    from freetoolkit import build as ftk_build
+
+    env = ftk_build.build_env()
+    config = ftk_build.load_config()
+    config["site"] = dict(config["site"], adsense_client_id="", ads_enabled=False)
+    tools = ftk_build.load_tools()
+
+    out = DIST / "_test_no_adsense" / "index.html"
+    ftk_build.render(
+        env,
+        "index.html",
+        out,
+        path="/",
+        title=config["site"]["name"],
+        description=config["site"]["description"],
+        site=config["site"],
+        categories=config["categories"],
+        tools=tools,
+        tools_by_category={},
+        all_intent_pages=[],
+        intent_count_by_category={},
+        year=2026,
+        build_date="2026-01-01",
+    )
+    html = out.read_text()
     assert "adsbygoogle.js" not in html
     assert "fundingchoicesmessages.google.com" not in html
 
@@ -958,7 +1033,6 @@ def test_cmp_script_loads_before_adsense_when_ads_enabled():
         intent_count_by_category={},
         year=2026,
         build_date="2026-01-01",
-        csp_nonce="test-nonce",
     )
     html = out.read_text()
     assert "fundingchoicesmessages.google.com/i/ca-pub-1234567890" in html
@@ -2389,6 +2463,12 @@ def test_tool_widget_inputs_have_accessible_names():
         html = (DIST / "tools" / slug / "index.html").read_text()
         label_blocks = label_block_re.findall(html)
         for tag in input_re.findall(html):
+            # type="hidden" carries no accessible name by design -- it is never
+            # exposed to assistive tech or focusable, so axe/Lighthouse exempt
+            # it too. Same for anything explicitly hidden via aria-hidden
+            # (e.g. the Formspree honeypot).
+            if 'type="hidden"' in tag or 'aria-hidden="true"' in tag:
+                continue
             if 'aria-label="' in tag or "aria-labelledby=" in tag:
                 continue
             if any(tag in block for block in label_blocks):

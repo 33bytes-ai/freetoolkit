@@ -14,98 +14,37 @@ make test           # run all 837 tests
 
 ---
 
-## VPS deployment (recommended — $5–10/month)
+## Deployment (Cloudflare Pages — free)
 
-### Prerequisites
-- VPS running Ubuntu 22/24 or Debian 12
-- Docker and Docker Compose installed (`curl -fsSL https://get.docker.com | sh`)
-- Domain pointing to the VPS IP via an A record
+Migrated 2026-07-29 from a Hetzner VPS. The VPS existed solely to run
+GoAccess for zero-tracking analytics; Cloudflare Web Analytics gives the
+same guarantee for free, so the server was no longer justified. See
+`HUMAN_INPUTS.md` A2 and `docs/ARCHITECTURE.md` for the reasoning.
 
-### First deploy
-
-```bash
-# From your local machine
-FREETOOLKIT_HOST=root@your.vps.ip ./scripts/deploy.sh
-```
-
-This:
-1. Syncs the project to `/srv/freetoolkit/` via rsync
-2. Runs `docker compose build` (builds the static site inside Docker)
-3. Starts `web` (nginx) and `analytics` (GoAccess) containers
-
-### TLS / HTTPS
-
-Install Certbot on the VPS and issue a Let's Encrypt certificate:
+### First deploy / redeploy
 
 ```bash
-apt install certbot python3-certbot-nginx -y
-certbot --nginx -d yourdomain.com -d www.yourdomain.com
+make build   # regenerates dist/
+CLOUDFLARE_API_TOKEN=<token> npx wrangler pages deploy dist --project-name=foundercalc
 ```
 
-Certbot modifies the nginx config inside the container automatically. To keep
-TLS working across container rebuilds, mount the Certbot certs as a volume
-or install Certbot on the host with the host's nginx and reverse-proxy to the
-Docker container on port 80.
+Custom domain (`foundercalc.dev`) is attached to the Pages project in the
+Cloudflare dashboard (Workers & Pages → foundercalc → Custom domains) — DNS
+is a CNAME to `foundercalc.pages.dev`, proxied, SSL handled automatically.
 
-The simplest production pattern is:
-- Host nginx handles TLS termination and reverse-proxies to Docker on port 80
-- Or use Caddy on the host (handles TLS automatically) and proxy to Docker
-
-### Updating the site
-
-```bash
-# After changing content, tools, or templates locally:
-FREETOOLKIT_HOST=root@your.vps.ip ./scripts/deploy.sh
-```
-
-The deploy takes ~30 seconds. The old containers keep serving traffic while
-the new image builds.
-
----
-
-## Free static hosting (Cloudflare Pages / Netlify)
-
-Both Cloudflare Pages and Netlify host static sites for free with custom
-domains and automatic HTTPS.
-
-### Cloudflare Pages
-
-1. Push the repo to GitHub.
-2. Go to Cloudflare Dashboard → Workers & Pages → Create application → Pages.
-3. Connect GitHub repo.
-4. Build settings:
-   - Build command: `pip install -e . && python src/freetoolkit/build.py`
-   - Output directory: `dist`
-5. Add custom domain under the project's Custom domains tab.
-
-### Netlify
-
-1. Push the repo to GitHub.
-2. Go to netlify.com → Add new site → Import from Git.
-3. Build settings:
-   - Build command: `pip install -e . && python src/freetoolkit/build.py`
-   - Publish directory: `dist`
-4. Set custom domain under Domain settings.
+Continuous deployment from GitHub is also available (connect the repo under
+the project's Settings → Build, same build command/output dir above) if
+push-to-deploy is preferred over the manual `wrangler` command.
 
 ---
 
 ## Analytics
 
-GoAccess runs as a sidecar container and generates a real-time HTML report
-from nginx access logs at `http://127.0.0.1:7890` (accessible only on the VPS).
-
-To view the report remotely, create an SSH tunnel:
-
-```bash
-ssh -L 7890:127.0.0.1:7890 root@your.vps.ip
-# Then open http://localhost:7890 in your browser
-```
-
-To regenerate a static (non-real-time) report from all log archives:
-
-```bash
-./scripts/analytics_report.sh
-```
+**Cloudflare Web Analytics** — cookie-free, no JS tracking script, no
+server required. Enable it in the Cloudflare dashboard for this zone.
+Retention is 30 days (vs. GoAccess's unlimited local history), and it
+lacks custom events/funnels — a real but currently theoretical tradeoff
+given the site has negligible traffic history to lose.
 
 ---
 
@@ -167,12 +106,7 @@ signup steps ([UptimeRobot](https://uptimerobot.com) and
 
 ## Backup strategy
 
-The site itself is reproducible from source, so only two things need backing up:
-
-1. **nginx access logs** — automatically rotated weekly via logrotate on the VPS.
-   The Docker volume `nginx_logs` is on the host filesystem, backed up by
-   any VPS snapshot policy.
-2. **GoAccess database** (`/reports/db`) — persists accumulated traffic data
-   across log rotations. Included in VPS snapshots.
-
-For $5/month Hetzner servers, automated weekly VPS snapshots cost ~$0.01/GB.
+Nothing to back up. The site is fully reproducible from source (`make
+build`), Cloudflare Pages keeps every deployment's history natively (instant
+rollback from the dashboard), and analytics now live in Cloudflare Web
+Analytics rather than a local database that could be lost.

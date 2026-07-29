@@ -57,6 +57,14 @@ CATEGORY_META: dict[str, dict[str, str]] = {
         "icon": f'<svg {_ICON_ATTRS}><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/><line x1="6" y1="10" x2="6" y2="10.01"/><line x1="18" y1="14" x2="18" y2="14.01"/></svg>',
         "tagline": "Cash flow, ratios and core financial statements",
     },
+    "Cash Flow": {
+        "icon": f'<svg {_ICON_ATTRS}><path d="M3 12h4l2 5 4-14 2 9h6"/></svg>',
+        "tagline": "Runway, working capital and how fast cash actually arrives",
+    },
+    "Investment & Returns": {
+        "icon": f'<svg {_ICON_ATTRS}><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>',
+        "tagline": "NPV, IRR, payback and whether a spend earns its keep",
+    },
     "Valuation": {
         "icon": f'<svg {_ICON_ATTRS}><line x1="12" y1="3" x2="12" y2="21"/><path d="M4 7h6l-3 7a3.2 3.2 0 0 1-6 0z"/><path d="M14 7h6l-3 7a3.2 3.2 0 0 1-6 0z"/><line x1="6" y1="3" x2="18" y2="3"/></svg>',
         "tagline": "DCF, multiples, enterprise value and fundraising math",
@@ -372,7 +380,32 @@ def build_env() -> Environment:
     env.globals["stripe_fee"] = stripe_fee_breakdown
     env.globals["category_meta"] = CATEGORY_META
     env.globals["glossary_icons"] = GLOSSARY_ICONS
+    env.globals["i18n"] = load_i18n()
+    # Fee/tax calculators hardcode jurisdiction-bound rates (Stripe US is
+    # 2.9% + $0.30; the UK is 1.5% + GBP 0.20), so their currency symbol is
+    # part of a factual claim, not a label. Relabelling it would state a real
+    # number wrongly, so these opt out of currency switching entirely.
+    env.globals["currency_locked_tools"] = {
+        "stripe-fee-calculator",
+        "paypal-fee-calculator",
+        "shopify-fee-calculator",
+        "payment-fee-comparison",
+        "vat-calculator",
+        "payroll-tax-calculator",
+        "payroll-cost-calculator",
+        "freelance-tax-estimator",
+        "employee-cost-calculator",
+    }
     return env
+
+
+def load_i18n() -> dict:
+    """UI-chrome translations. Absent file is not an error -- the site is
+    English-first and stays fully functional without any translations."""
+    path = CONTENT_DIR / "i18n.yaml"
+    if not path.exists():
+        return {}
+    return load_yaml(path) or {}
 
 
 def _humandate(date_str: str) -> str:
@@ -432,6 +465,10 @@ def write_sitemap_tools(config: dict, tools: list[dict]) -> None:
         ' xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">',
     ]
     for t in tools:
+        # A page whose canonical points elsewhere is not a canonical URL, and
+        # listing it here would contradict the canonical tag.
+        if t.get("canonical_to"):
+            continue
         lastmod = t.get("date_added", today)
         title = t["title"].replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
         img_url = f"{base}/static/img/og-{t['slug']}.png"
@@ -533,6 +570,7 @@ def write_sitemap(
         + [
             (f"/tools/{t['slug']}/", "0.9", "monthly", tool_lastmod[t["slug"]])
             for t in tools
+            if not t.get("canonical_to")
         ]
         + [(f"/{p['slug']}/", "0.5", "monthly", today) for p in pages]
         + [
@@ -863,7 +901,6 @@ def build() -> Path:
         cat = _tool_cat.get(ip["parent_tool"], "")
         intent_count_by_category[cat] = intent_count_by_category.get(cat, 0) + 1
 
-    csp_nonce = secrets.token_urlsafe(16)
     asset_version = _compute_asset_version()
 
     common = dict(
@@ -875,7 +912,6 @@ def build() -> Path:
         intent_count_by_category=intent_count_by_category,
         year=datetime.date.today().year,
         build_date=datetime.date.today().isoformat(),
-        csp_nonce=csp_nonce,
         asset_version=asset_version,
     )
 
@@ -935,6 +971,11 @@ def build() -> Path:
             "tool.html",
             DIST_DIR / "tools" / tool["slug"] / "index.html",
             path=f"/tools/{tool['slug']}/",
+            # A near-duplicate tool can point its canonical at the page it
+            # duplicates, so Google consolidates ranking signals onto one URL
+            # without either page 404ing.
+            canonical_path=(f"/tools/{tool['canonical_to']}/"
+                            if tool.get("canonical_to") else None),
             title=tool["title"],
             description=tool["short"],
             tool=tool,
@@ -1056,14 +1097,60 @@ def build() -> Path:
     write_ads_txt(config)
     write_rss(config, tools)
     write_og_image(config, tools)
+    write_headers_file()
     _gzip_dist()
 
-    # Consumed by infra/Dockerfile to bake the matching CSP nonce into the
-    # nginx response header — inline <script> tags across dist/ carry this
-    # same value, so the header and markup must agree at deploy time.
-    (ROOT / "csp_nonce.txt").write_text(csp_nonce, encoding="utf-8")
-
     return DIST_DIR
+
+
+def write_headers_file() -> None:
+    """Emit dist/_headers — Cloudflare Pages' response-header mechanism.
+
+    These headers used to come from infra/nginx.conf. Pages doesn't read nginx
+    config, so migrating hosts silently dropped CSP, HSTS, X-Frame-Options and
+    Permissions-Policy from every response. Generating the file here also means
+    the CSP nonce is baked in by the same build that stamped it into the
+    markup, so header and inline <script> tags can't drift apart.
+    """
+    csp = (
+        "default-src 'self'; "
+        # No nonce: every executable script is an external file now, so
+        # script-src 'self' covers them. The nonce previously had to match
+        # between this header and the HTML, and on a CDN the two can be
+        # served from different builds -- a mismatch silently blocked every
+        # inline script site-wide. Removing inline scripts removes the class
+        # of bug. (JSON-LD blocks stay inline; they are data, never executed,
+        # so script-src does not gate them.)
+        "script-src 'self' "
+        "https://pagead2.googlesyndication.com https://www.googletagservices.com "
+        "https://adservice.google.com https://fundingchoicesmessages.google.com "
+        "https://static.cloudflareinsights.com; "
+        "style-src 'self' 'unsafe-inline'; "
+        "img-src 'self' data: https:; "
+        "connect-src 'self' https://pagead2.googlesyndication.com "
+        "https://googleads.g.doubleclick.net https://fundingchoicesmessages.google.com "
+        "https://cloudflareinsights.com; "
+        "font-src 'self'; "
+        "frame-src https://googleads.g.doubleclick.net https://www.google.com "
+        "https://fundingchoicesmessages.google.com; "
+        "frame-ancestors 'none'; base-uri 'self'; "
+        "form-action 'self' https://formspree.io; "
+        "object-src 'none'; upgrade-insecure-requests;"
+    )
+    lines = [
+        "/*",
+        "  X-Frame-Options: SAMEORIGIN",
+        "  X-Content-Type-Options: nosniff",
+        "  Referrer-Policy: strict-origin-when-cross-origin",
+        "  Permissions-Policy: geolocation=(), microphone=(), camera=()",
+        "  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload",
+        f"  Content-Security-Policy: {csp}",
+        "",
+        "/static/*",
+        "  Cache-Control: public, max-age=31536000, immutable",
+        "",
+    ]
+    (DIST_DIR / "_headers").write_text("\n".join(lines), encoding="utf-8")
 
 
 def _gzip_dist() -> None:

@@ -81,21 +81,19 @@ window.FTK (static/js/lib/common.js)
 
 ```
 Internet
-  │  443/80
-  ▼
-VPS (e.g. Hetzner CX11, €4.15/mo)
-  ├── Docker: web (nginx:alpine)
-  │     serves dist/ as static files
-  │     logs to /var/log/nginx/access.log
   │
-  └── Docker: analytics (goaccess)
-        reads nginx logs
-        generates /reports/index.html (GoAccess)
-        exposes :7890 on localhost only
+  ▼
+Cloudflare Pages (free tier)
+  serves dist/ as static files, global CDN, SSL automatic
+  │
+  └── Cloudflare Web Analytics
+        cookie-free traffic stats, no JS tracking, no server to run
 ```
 
-Alternatively, dist/ can be deployed directly to Cloudflare Pages or Netlify
-(free tier) with zero operational cost.
+Migrated 2026-07-29 from a VPS (Hetzner + Docker nginx + GoAccess) — the VPS
+was justified by GoAccess's server-log analytics, but Cloudflare Web
+Analytics gives the same zero-tracking guarantee for free, without needing
+a server at all. See `HUMAN_INPUTS.md` A2 for the migration note.
 
 ## Data flows
 
@@ -103,10 +101,9 @@ Alternatively, dist/ can be deployed directly to Cloudflare Pages or Netlify
 |------|-----------------|
 | User types text into a tool | Browser JS, never leaves device |
 | User generates a password | Web Crypto API, local only |
-| Page rendered | From static HTML file on disk (nginx) |
+| Page rendered | From static file on Cloudflare's CDN |
 | Ad displayed (when enabled) | AdSense script loads from Google CDN |
-| Traffic logged | nginx `access.log` (no JS tracking) |
-| Traffic analysed | GoAccess reads logs locally on server |
+| Traffic measured | Cloudflare Web Analytics (no cookies, no JS tracking script) |
 | Revenue reported | AdSense dashboard (manual check) |
 
 ## Key design decisions

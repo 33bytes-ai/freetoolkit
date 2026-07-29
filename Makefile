@@ -41,7 +41,7 @@ serve-network: build
 	$(PYTHON) -m http.server 8080 --bind 0.0.0.0 --directory dist
 
 deploy: test build
-	bash scripts/deploy.sh
+	npx wrangler pages deploy dist --project-name=foundercalc
 
 clean:
 	rm -rf dist/
