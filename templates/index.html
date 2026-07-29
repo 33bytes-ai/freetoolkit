@@ -11,24 +11,31 @@
 <div class="home-hero" id="main">
   <div class="wrap">
     <div class="hero-glass">
-      <h1>Free calculators for <span class="htc-wrapper"><span id="hero-text-cycle" class="htc-word">founders</span></span></h1>
-      <p class="hero-sub">
-        Stripe fees, MRR, LTV/CAC, runway, churn, NPS, pricing impact, freelance rates and more.
-        All math runs instantly in your browser — no sign-up, no data uploaded.
+      <h1><span data-i18n="hero_h1_prefix">Free calculators for</span> <span class="htc-wrapper"><span id="hero-text-cycle" class="htc-word">founders</span></span></h1>
+      <p class="hero-sub" data-i18n="hero_sub">
+        Price a product, check your runway, forecast growth, set a freelance rate.
+        Type your numbers, get the answer in seconds — free, no sign-up, nothing ever leaves your browser.
       </p>
+
+      <form class="hero-search" role="search" action="/tools/" method="get">
+        <label for="hero-q" class="sr-only">Search calculators</label>
+        <input id="hero-q" name="q" type="search" autocomplete="off"
+               placeholder="Search calculators — try &ldquo;runway&rdquo; or &ldquo;margin&rdquo;" data-i18n-placeholder="hero_search_placeholder">
+        <button type="submit" class="btn-primary" data-i18n="hero_search_btn">Search</button>
+      </form>
 
       <div class="hero-stats">
         <div class="hero-stat-item">
           <span class="stat-num hero-count" data-count="{{ tools | length }}">{{ tools | length }}</span>
-          <span class="stat-label">Free calculators</span>
+          <span class="stat-label" data-i18n="stat_calculators">Free calculators</span>
         </div>
         <div class="hero-stat-item">
           <span class="stat-num">100%</span>
-          <span class="stat-label">Browser-based</span>
+          <span class="stat-label" data-i18n="stat_browser">Browser-based</span>
         </div>
         <div class="hero-stat-item">
           <span class="stat-num">$0</span>
-          <span class="stat-label">Cost forever</span>
+          <span class="stat-label" data-i18n="stat_cost">Cost forever</span>
         </div>
       </div>
 
@@ -47,11 +54,16 @@
 <!-- Scrolling ticker of the real tool catalog -->
 <div class="tool-ticker">
   <div class="tool-ticker-track">
-    <span class="tool-ticker-set" aria-hidden="true">
-      {% for tool in tools %}<span class="tool-ticker-item">{{ tool.nav_title or tool.title }}</span>{% endfor %}
+    {# First set is the real one: announced and keyboard-reachable. The second
+       exists only so the marquee can loop seamlessly, so it is hidden from the
+       a11y tree AND taken out of the tab order -- aria-hidden on a focusable
+       link creates a phantom stop screen-reader users can land on but not
+       perceive. #}
+    <span class="tool-ticker-set">
+      {% for tool in tools %}<a class="tool-ticker-item" href="/tools/{{ tool.slug }}/">{{ tool.nav_title or tool.title }}</a>{% endfor %}
     </span>
     <span class="tool-ticker-set" aria-hidden="true">
-      {% for tool in tools %}<span class="tool-ticker-item">{{ tool.nav_title or tool.title }}</span>{% endfor %}
+      {% for tool in tools %}<a class="tool-ticker-item" href="/tools/{{ tool.slug }}/" tabindex="-1">{{ tool.nav_title or tool.title }}</a>{% endfor %}
     </span>
   </div>
 </div>
@@ -59,7 +71,7 @@
 <!-- Browse by category -->
 <section class="wrap home-section" id="categories">
   <div class="home-section-header reveal">
-    <h2>Browse by category</h2>
+    <h2 data-i18n="section_browse">Browse by category</h2>
     <a href="/tools/" style="font-size:0.88rem;color:var(--accent)">Or see all {{ tools | length }} tools →</a>
   </div>
   <div class="category-card-grid reveal-group">
@@ -123,7 +135,7 @@
     <p>No spam. One short email per new tool, max once a month.</p>
     <form action="https://formspree.io/f/{{ site.formspree_id }}" method="POST" class="newsletter-form">
       <input type="hidden" name="_subject" value="Newsletter — FounderCalc">
-      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
       <label for="nl-email" class="sr-only">Your email address</label>
       <input id="nl-email" type="email" name="email" placeholder="you@company.com" required autocomplete="email">
       <button type="submit" class="btn-primary">Subscribe</button>

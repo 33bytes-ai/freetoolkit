@@ -219,6 +219,9 @@ window.FTK = (function () {
       });
     })();
 
+    document.addEventListener("DOMContentLoaded", function () {
+      if (!currencyLocked()) applyCurrency();
+    });
     document.addEventListener("DOMContentLoaded", initNumberFormatting);
     document.addEventListener("DOMContentLoaded", initResultTweening);
 
@@ -247,20 +250,38 @@ window.FTK = (function () {
       if (navClose)  navClose.addEventListener("click", closeNav);
       if (overlay)   overlay.addEventListener("click", closeNav);
 
-      // Mobile nav groups: first tap expands the tool list in place (the
-      // label is also a real link to the category page -- a second tap
-      // follows it, since at that point the user has seen what's there).
-      document.querySelectorAll(".nav-group-label").forEach(function (label) {
-        label.addEventListener("click", function (e) {
-          if (window.innerWidth > 640) return;
-          var group = label.closest(".nav-group");
-          if (!group) return;
-          if (!group.classList.contains("open")) {
-            e.preventDefault();
-            group.classList.add("open");
+      // Calculators mega-menu. Click (not hover) to open: hover-only menus are
+      // unusable on touch and unreachable by keyboard.
+      var megaTrigger = document.getElementById("nav-mega-trigger");
+      var megaPanel   = document.getElementById("nav-mega-panel");
+      var mega        = document.getElementById("nav-mega");
+
+      function closeMega() {
+        if (!megaPanel) return;
+        megaPanel.classList.remove("open");
+        if (megaTrigger) megaTrigger.setAttribute("aria-expanded", "false");
+      }
+      function toggleMega() {
+        if (!megaPanel) return;
+        var isOpen = megaPanel.classList.toggle("open");
+        if (megaTrigger) megaTrigger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      }
+
+      if (megaTrigger) {
+        megaTrigger.addEventListener("click", function (e) {
+          e.stopPropagation();
+          toggleMega();
+        });
+        document.addEventListener("click", function (e) {
+          if (mega && !mega.contains(e.target)) closeMega();
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            closeMega();
+            closeNav();
           }
         });
-      });
+      }
 
       var btn = document.getElementById("theme-toggle");
       if (!btn) return;
@@ -504,6 +525,81 @@ window.FTK = (function () {
     setFieldError(inputEl, null);
   }
 
+
+  // ── Currency ──────────────────────────────────────────────────────────
+  // Display-only: these calculators operate on whatever numbers the user
+  // types, so the symbol is a label, not a conversion. No FX rates are
+  // applied and none are needed.
+  //
+  // Deliberately NOT applied to fee/tax calculators (Stripe, PayPal, Shopify,
+  // payment comparison, VAT, payroll & self-employment tax). Those hardcode
+  // jurisdiction-bound rates -- Stripe US is 2.9% + $0.30 while the UK is
+  // 1.5% + £0.20 -- so relabelling the symbol there would state a real,
+  // wrong number. Those pages carry data-currency-locked and are skipped;
+  // country-specific versions of them already exist as their own pages.
+  var CURRENCIES = {
+    USD: { symbol: "$",  code: "USD" },
+    EUR: { symbol: "\u20ac",  code: "EUR" },
+    GBP: { symbol: "\u00a3",  code: "GBP" },
+    CHF: { symbol: "CHF", code: "CHF" },
+    CAD: { symbol: "CA$", code: "CAD" },
+    AUD: { symbol: "A$", code: "AUD" }
+  };
+  // Language -> currency of the largest market for that language.
+  var LANG_CURRENCY = { en: "USD", fr: "EUR", es: "EUR", de: "EUR" };
+  var REGION_CURRENCY = {
+    US: "USD", GB: "GBP", CA: "CAD", AU: "AUD", CH: "CHF",
+    FR: "EUR", DE: "EUR", ES: "EUR", IT: "EUR", NL: "EUR", BE: "EUR",
+    IE: "EUR", PT: "EUR", AT: "EUR", FI: "EUR"
+  };
+
+  function currencyLocked() {
+    return document.body && document.body.hasAttribute("data-currency-locked");
+  }
+
+  function detectCurrency() {
+    try {
+      var stored = localStorage.getItem("ftk-currency");
+      if (stored && CURRENCIES[stored]) return stored;
+    } catch (e) { /* private mode */ }
+    var locale = (navigator.languages && navigator.languages[0]) || navigator.language || "en-US";
+    var parts = String(locale).split("-");
+    var region = parts[1] && parts[1].toUpperCase();
+    if (region && REGION_CURRENCY[region]) return REGION_CURRENCY[region];
+    var lang = parts[0].toLowerCase();
+    return LANG_CURRENCY[lang] || "USD";
+  }
+
+  var activeCurrency = "USD";
+
+  function cur() {
+    return CURRENCIES[activeCurrency].symbol;
+  }
+
+  function setCurrency(code) {
+    if (!CURRENCIES[code]) return;
+    activeCurrency = code;
+    try { localStorage.setItem("ftk-currency", code); } catch (e) { /* ignore */ }
+    applyCurrency();
+  }
+
+  // Static "$" baked into widget markup is wrapped in .cur-sym so it can be
+  // relabelled without touching each of the 90-odd widget templates at runtime.
+  function applyCurrency() {
+    var sym = cur();
+    document.querySelectorAll(".cur-sym").forEach(function (el) {
+      el.textContent = sym;
+    });
+    document.querySelectorAll("[data-cur-label]").forEach(function (el) {
+      var base = el.getAttribute("data-cur-label");
+      el.setAttribute("aria-label", base.replace("$", sym));
+    });
+  }
+
+  if (typeof document !== "undefined" && !currencyLocked()) {
+    activeCurrency = detectCurrency();
+  }
+
   return {
     copyToClipboard: copyToClipboard,
     flash: flash,
@@ -516,5 +612,10 @@ window.FTK = (function () {
     setFieldError: setFieldError,
     clearFieldError: clearFieldError,
     pulseGauge: pulseGauge,
+    cur: cur,
+    setCurrency: setCurrency,
+    applyCurrency: applyCurrency,
+    currencyLocked: currencyLocked,
+    CURRENCIES: CURRENCIES,
   };
 })();
