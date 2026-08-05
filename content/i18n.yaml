@@ -40,6 +40,7 @@ en:
   footer_contact: "Contact"
   footer_privacy: "Privacy Policy"
   footer_terms: "Terms of Use"
+  footer_legal: "Legal Notice"
   hero_search_placeholder: "Search calculators — try “runway” or “margin”"
   hero_search_btn: "Search"
 
@@ -70,6 +71,7 @@ fr:
   footer_contact: "Contact"
   footer_privacy: "Confidentialité"
   footer_terms: "Conditions d'utilisation"
+  footer_legal: "Mentions légales"
   hero_search_placeholder: "Rechercher — essayez « trésorerie » ou « marge »"
   hero_search_btn: "Rechercher"
 
@@ -100,6 +102,7 @@ es:
   footer_contact: "Contacto"
   footer_privacy: "Privacidad"
   footer_terms: "Términos de uso"
+  footer_legal: "Aviso legal"
   hero_search_placeholder: "Buscar — prueba «liquidez» o «margen»"
   hero_search_btn: "Buscar"
 
@@ -130,6 +133,7 @@ de:
   footer_contact: "Kontakt"
   footer_privacy: "Datenschutz"
   footer_terms: "Nutzungsbedingungen"
+  footer_legal: "Impressum"
   hero_search_placeholder: "Suchen — z.\xa0B. „Liquidität“ oder „Marge“"
   hero_search_btn: "Suchen"
 

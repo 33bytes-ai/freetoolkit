@@ -38,37 +38,46 @@ def size_kb(path: Path) -> float:
     return path.stat().st_size / 1024
 
 
+def gz_kb(path: Path) -> float:
+    """Size of the .gz twin build.py already writes next to every compressible
+    asset (_gzip_dist). Cloudflare Pages serves that, so it is the number a
+    visitor's connection actually carries -- raw bytes on disk are 3-5x larger
+    and nobody ever downloads them. Falls back to raw if the .gz is missing,
+    which fails loudly against a gzip budget rather than passing silently."""
+    gz = path.with_suffix(path.suffix + ".gz")
+    return gz.stat().st_size / 1024 if gz.exists() else size_kb(path)
+
+
 def main() -> int:
     if not DIST.exists():
         print(f"{FAIL} dist/ directory not found — run 'make build' first")
         return 1
 
-    print("\n── File size budgets ─────────────────────────────────────────────")
+    print("\n── File size budgets (gzipped — what visitors download) ──────────")
     css = DIST / "static" / "css" / "style.css"
     if css.exists():
-        kb = size_kb(css)
-        check(kb < 100, f"style.css = {kb:.1f} KB (budget: 100 KB)")
-        check(kb < 150, f"style.css gzip headroom = {kb:.1f} KB (warn: 150 KB)", warn_only=True)
+        check(gz_kb(css) < 20, f"style.css = {gz_kb(css):.1f} KB gz ({size_kb(css):.1f} raw) (budget: 20 KB)")
 
     tool_pages = list((DIST / "tools").glob("*/index.html"))
     if tool_pages:
-        sizes = [size_kb(p) for p in tool_pages]
-        max_kb = max(sizes)
+        sizes = [gz_kb(p) for p in tool_pages]
         avg_kb = sum(sizes) / len(sizes)
-        biggest = max(tool_pages, key=lambda p: p.stat().st_size)
-        check(max_kb < 80, f"Largest tool page = {max_kb:.1f} KB ({biggest.parent.name}) (budget: 80 KB)")
-        check(avg_kb < 65, f"Average tool page = {avg_kb:.1f} KB (budget: 65 KB)")
+        biggest = max(tool_pages, key=gz_kb)
+        check(gz_kb(biggest) < 25,
+              f"Largest tool page = {gz_kb(biggest):.1f} KB gz ({size_kb(biggest):.1f} raw) "
+              f"({biggest.parent.name}) (budget: 25 KB)")
+        check(avg_kb < 20, f"Average tool page = {avg_kb:.1f} KB gz (budget: 20 KB)")
     else:
         check(False, "No tool pages found in dist/tools/")
 
     js_files = list((DIST / "static" / "js" / "tools").glob("*.js")) if (DIST / "static" / "js" / "tools").exists() else []
     if js_files:
-        max_js = max(size_kb(f) for f in js_files)
-        check(max_js < 30, f"Largest tool JS = {max_js:.1f} KB (budget: 30 KB)")
+        max_js = max(gz_kb(f) for f in js_files)
+        check(max_js < 8, f"Largest tool JS = {max_js:.1f} KB gz (budget: 8 KB)")
     common_js = DIST / "static" / "js" / "lib" / "common.js"
     if common_js.exists():
-        kb = size_kb(common_js)
-        check(kb < 20, f"common.js = {kb:.1f} KB (budget: 20 KB)")
+        check(gz_kb(common_js) < 12,
+              f"common.js = {gz_kb(common_js):.1f} KB gz ({size_kb(common_js):.1f} raw) (budget: 12 KB)")
 
     print("\n── Meta tag coverage ────────────────────────────────────────────")
     index = DIST / "index.html"
