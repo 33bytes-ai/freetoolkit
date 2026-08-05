@@ -2576,12 +2576,46 @@ def test_lighthouserc_fails_ci_below_performance_90_and_seo_95():
     assert seo_opts["minScore"] >= 0.95
 
 
+def test_lighthouse_asserts_on_the_median_of_several_runs():
+    """A single Lighthouse pass is not a measurement: the performance score is
+    CPU time on a shared runner, and identical content scored 0.90+ on main and
+    0.63 on a branch within the same hour. Collect 3 runs and assert the median,
+    so a flake does not fail CI and one lucky pass does not hide a regression
+    (LHCI's default aggregation is optimistic, i.e. the best run)."""
+    config = json.loads((ROOT / ".lighthouserc.json").read_text())
+    assert config["ci"]["assert"]["aggregationMethod"] == "median"
+
+    workflow = (ROOT / ".github" / "workflows" / "ci.yml").read_text()
+    lighthouse_step = workflow[workflow.index("lighthouse-ci-action") :]
+    assert "runs: 3" in lighthouse_step
+
+
+def test_ci_does_not_run_twice_per_push_on_a_branch():
+    """`push` is restricted to main. With `branches: ["**"]` on both triggers,
+    every push to a PR branch started two identical 17-minute runs -- one per
+    trigger -- doubling both the billed minutes and the failure emails. Branch
+    pushes stay covered through the pull_request trigger."""
+    workflow = yaml.safe_load((ROOT / ".github" / "workflows" / "ci.yml").read_text())
+    # `on` parses as the boolean True in YAML 1.1, which is what PyYAML implements.
+    triggers = workflow.get("on", workflow.get(True))
+    assert triggers["push"]["branches"] == ["main"]
+    assert triggers["pull_request"]["branches"] == ["**"]
+
+
 def test_ci_workflow_runs_lighthouse_against_a_served_dist():
-    """The CI Lighthouse step should serve dist/ locally (staticDistDir)
-    rather than open file:// pages, matching real Lighthouse runs."""
+    """The CI Lighthouse step must audit dist/ over HTTP rather than file://
+    pages, so the numbers match a real Lighthouse run.
+
+    This used to assert `"staticDistDir" in workflow`, which passed for the
+    wrong reason: staticDistDir was dropped (it auto-discovers all 400+ built
+    pages), and the only remaining occurrence is the comment explaining why.
+    Deleting that comment would have failed a green build. Assert the
+    mechanism actually in use instead -- python -m http.server on 8080, and
+    absolute URLs pointing at it."""
     workflow = (ROOT / ".github" / "workflows" / "ci.yml").read_text()
     assert "treosh/lighthouse-ci-action" in workflow
-    assert "staticDistDir" in workflow
+    assert "http.server 8080 --directory dist" in workflow
+    assert "http://localhost:8080/" in workflow
     assert "file://" not in workflow
     assert ".lighthouserc.json" in workflow
 
