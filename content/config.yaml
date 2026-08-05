@@ -21,6 +21,18 @@ site:
   # Zapier integration (both are free-tier) once a list is set up there.
   formspree_id: "xnjewraq"
 
+  # Publisher identity, disclosed on /legal-notice/ as French law requires of
+  # any site published from France (LCEN art. 6-III). Each key is available to
+  # content/pages/*.md as {{ legal_<key> }}.
+  legal:
+    name: "Guillaume Malvestio"
+    address: "28 rue du Buisson Saint-Louis, 75010 Paris, France"
+    siren: "934129537"
+    siret: "93412953700023"
+    ape: "6201Z — Computer programming"
+    registered_on: "5 August 2026"
+    vat: "Not applicable — VAT exemption under art. 293 B of the French tax code"
+
 # Navigation categories, in display order.
 categories:
   - Payments

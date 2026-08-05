@@ -189,6 +189,8 @@ def load_page(path: Path, config: dict, tool_count: int) -> dict:
     meta = yaml.safe_load(frontmatter) or {}
     body = body.replace("{{ contact_email }}", config["site"]["contact_email"])
     body = body.replace("{{ tool_count }}", str(tool_count))
+    for key, value in config["site"].get("legal", {}).items():
+        body = body.replace(f"{{{{ legal_{key} }}}}", str(value))
     meta["content"] = markdown.markdown(body.strip(), extensions=MD_EXTENSIONS)
     return meta
 

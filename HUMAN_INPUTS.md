@@ -118,11 +118,14 @@ Me transmettre les IDs de tracking — je remplace tous les placeholders `YOURID
 
 ⚠️ Information générale, pas un conseil fiscal personnalisé — à valider avec un comptable ou directement sur les portails officiels pour ta situation exacte.
 
-### E1. Créer le statut auto-entrepreneur / micro-entreprise
-1. Point d'entrée unique et obligatoire depuis 2023 : [formalites.entreprises.gouv.fr](https://formalites.entreprises.gouv.fr) (guichet unique INPI, aussi accessible via `procedures.inpi.fr`)
-2. Créer un compte, s'identifier (les démarches sensibles demandent désormais une signature électronique via FranceConnect+)
-3. Choisir l'activité : revenus AdSense + affiliation se déclarent en **BIC Services**
-4. Recevoir le SIRET une fois la formalité traitée
+### E1. ~~Créer le statut auto-entrepreneur / micro-entreprise~~ ✅ fait le 2026-08-05
+Micro-entreprise immatriculée, SIREN 934129537 / SIRET 93412953700023, APE
+6201Z, franchise en base de TVA. Elle couvre aussi `aco` et `aams` — voir
+`../ENTITY_STRUCTURE.md`. L'identité est publiée sur `/legal-notice/`
+(alimentée par `site.legal` dans `content/config.yaml`).
+
+Il reste la déclaration récurrente, ci-dessous — c'est le seul point E encore
+ouvert, et il est obligatoire même à 0 € de CA.
 
 ### E2. Déclarations récurrentes
 1. Déclarer le chiffre d'affaires à l'URSSAF **chaque mois ou trimestre selon l'option choisie** — obligatoire même à 0€ de CA, aucun seuil d'exemption
