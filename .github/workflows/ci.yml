@@ -22,9 +22,12 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
+          # No cache: this project has no package.json and no npm
+          # dependencies -- the JS tests run on `node --test` alone. Asking
+          # setup-node to cache npm against a **/package-lock.json glob that
+          # matches nothing fails the step outright ("Some specified paths
+          # were not resolved"), which is what has been failing CI.
           node-version: "20"
-          cache: "npm"
-          cache-dependency-path: "**/package-lock.json"
 
       - name: Install Python deps
         run: pip install -e ".[dev]"
