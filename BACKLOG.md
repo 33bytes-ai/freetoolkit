@@ -2,8 +2,10 @@
 
 | Score | Titre | Impact | Effort | Risk | Statut |
 |---|---|---|---|---|---|
+| 72.00 | CI : setup-node échouait avant le premier test | 8 | 1 | 1 | done |
 | 45.00 | Respect du DNT dans tracker.js | 5 | 1 | 1 | done |
 | 45.00 | Validation widget manquant au build — erreur explicite | 5 | 1 | 1 | done |
+| 45.00 | CI : Lighthouse recevait des URLs invalides | 5 | 1 | 1 | in_progress |
 | 40.50 | CI/CD GitHub Actions — make test à chaque push | 9 | 2 | 1 | done |
 | 36.00 | Tests dynamiques — lire tools.yaml au lieu de listes hard-codées | 8 | 2 | 1 | done |
 | 36.00 | Remplacer document.execCommand fallback dans common.js | 4 | 1 | 1 | done |
@@ -14,6 +16,7 @@
 | 27.00 | Nettoyer les 15 fichiers *_tmp.txt commités par erreur à la racine | 3 | 1 | 1 | done |
 | 27.00 | Intégrer make check-perf dans le pipeline CI | 6 | 2 | 1 | done |
 | 27.00 | Corriger flash() dans common.js pour réinitialiser originalText à chaque appel | 3 | 1 | 1 | done |
+| 27.00 | Le budget de performance mesurait la mauvaise grandeur | 6 | 2 | 1 | done |
 | 24.00 | Remove fabricated testimonials with stock avatar photos | 8 | 3 | 1 | done |
 | 22.50 | Sitemap avec lastmod dynamique | 5 | 2 | 1 | done |
 | 22.50 | Élargir l'échantillon Lighthouse CI aux templates intent_page et intent_country | 5 | 2 | 1 | done |

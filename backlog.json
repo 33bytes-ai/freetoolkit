@@ -385,5 +385,29 @@
     "risk": 2,
     "status": "done",
     "note": "Built a reusable .ftk-gauge CSS component (track + colored threshold zones + position marker) wired into all 3 candidate tools exactly as scoped: rule-of-40-calculator (score vs. 40 threshold, -20..80 scale), ltv-cac-calculator (ratio vs. 1x/3x bands, 0..6x scale), pe-ratio-calculator (P/E vs. 20x/35x bands, 0..40x scale). No external charting library. Verified against known inputs (e.g. P/E=20 -> marker at exactly 50%). Commit db88973."
+  },
+  {
+    "title": "CI : setup-node échouait avant le premier test",
+    "description": "L'étape déclarait `cache: npm` avec un glob **/package-lock.json alors que le projet n'a ni package.json ni dépendance npm (les tests JS tournent sur `node --test`). setup-node traite un glob sans correspondance comme une erreur et non comme un no-op, donc le job mourait là à chaque fois. Corrigé le 2026-08-05.",
+    "impact": 8,
+    "effort": 1,
+    "risk": 1,
+    "status": "done"
+  },
+  {
+    "title": "Le budget de performance mesurait la mauvaise grandeur",
+    "description": "check_perf.py comparait les octets bruts sur disque (69,7 KB par page outil, 24,8 KB pour common.js) à des seuils de 65 et 20 — les deux en échec. Or build.py pré-compresse tout (_gzip_dist) et Cloudflare Pages sert les .gz : le réel est 13,8 KB et 7,4 KB, trois à cinq fois moins. Le garde-fou surveillait un nombre que personne ne télécharge, avec des seuils inchangés depuis le commit initial pendant que le site passait à 104 outils. Corrigé en changeant la mesure (lecture des .gz produits par le build), pas les seuils ; la taille brute reste affichée pour qu'une régression de compression soit visible. Corrigé le 2026-08-05.",
+    "impact": 6,
+    "effort": 2,
+    "risk": 1,
+    "status": "done"
+  },
+  {
+    "title": "CI : Lighthouse recevait des URLs invalides",
+    "description": "L'étape passait à la fois staticDistDir et une liste de chemins relatifs, alors que ces entrées sont alternatives : avec staticDistDir l'action sert dist/ sur un port éphémère et découvre les pages elle-même, donc « / » et « /tools/… » arrivaient tels quels à Lighthouse (LighthouseError: INVALID_URL) à chaque exécution. La découverte automatique n'est pas la réponse non plus, elle auditerait les 400+ pages générées. dist/ est servi sur un port connu, les cinq pages échantillons données en URLs absolues. PR #2, 2026-08-05.",
+    "impact": 5,
+    "effort": 1,
+    "risk": 1,
+    "status": "in_progress"
   }
 ]
