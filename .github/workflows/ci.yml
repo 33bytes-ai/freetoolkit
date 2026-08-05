@@ -1,8 +1,12 @@
 name: CI
 
 on:
+  # `push` on main only. With `branches: ["**"]` on both triggers, every push
+  # to a PR branch started two identical 17-minute runs -- a push run and a
+  # pull_request run -- doubling the minutes and the failure emails. Branch
+  # pushes are still covered: they arrive through the pull_request trigger.
   push:
-    branches: ["**"]
+    branches: [main]
   pull_request:
     branches: ["**"]
 
@@ -11,16 +15,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.11"
           cache: "pip"
 
       - name: Set up Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           # No cache: this project has no package.json and no npm
           # dependencies -- the JS tests run on `node --test` alone. Asking
@@ -68,12 +72,20 @@ jobs:
             http://localhost:8080/tools/stripe-fee-calculator/stripe-fees-for-subscriptions/
             http://localhost:8080/tools/stripe-fee-calculator/stripe-fees-uk/
           configPath: "./.lighthouserc.json"
+          # Three passes per URL, asserted on the median (see .lighthouserc.json).
+          # One pass was not a measurement: the same content scored 0.90+ on main
+          # and 0.63 on a branch, because Lighthouse's performance score is CPU
+          # time on a shared runner. The thresholds are unchanged -- moving them
+          # would hide regressions; this makes the number worth asserting on.
+          # Costs ~2.5 min: the step takes 77s, not the 17 minutes, which are
+          # the Python suite.
+          runs: 3
           uploadArtifacts: false
           temporaryPublicStorage: false
 
       - name: Upload test results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: test-results
           path: dist/

@@ -1,6 +1,8 @@
 {
   "ci": {
     "assert": {
+      "//": "Asserted on the median of the 3 runs the workflow collects, not the best. LHCI's default aggregation is optimistic, which would let one lucky pass hide a real regression.",
+      "aggregationMethod": "median",
       "assertions": {
         "categories:performance": ["error", { "minScore": 0.90 }],
         "categories:accessibility": ["error", { "minScore": 0.90 }],
