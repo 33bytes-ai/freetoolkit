@@ -44,16 +44,29 @@ jobs:
       - name: Check performance budgets
         run: make check-perf
 
+      # staticDistDir and urls are alternatives, not a pair: with
+      # staticDistDir the action serves dist/ on an ephemeral port and
+      # auto-discovers pages, so the relative "/" entries below reached
+      # Lighthouse verbatim and it rejected them with INVALID_URL. Auto-
+      # discovery is no answer either -- it would audit all 400+ built pages.
+      # So: serve dist/ ourselves on a known port and give absolute URLs.
+      - name: Serve dist for Lighthouse
+        run: |
+          python -m http.server 8080 --directory dist &
+          for _ in $(seq 1 30); do
+            curl -sf http://localhost:8080/ >/dev/null && break
+            sleep 1
+          done
+
       - name: Lighthouse CI
         uses: treosh/lighthouse-ci-action@v12
         with:
-          staticDistDir: "./dist"
           urls: |
-            /
-            /tools/
-            /tools/dcf-calculator/
-            /tools/stripe-fee-calculator/stripe-fees-for-subscriptions/
-            /tools/stripe-fee-calculator/stripe-fees-uk/
+            http://localhost:8080/
+            http://localhost:8080/tools/
+            http://localhost:8080/tools/dcf-calculator/
+            http://localhost:8080/tools/stripe-fee-calculator/stripe-fees-for-subscriptions/
+            http://localhost:8080/tools/stripe-fee-calculator/stripe-fees-uk/
           configPath: "./.lighthouserc.json"
           uploadArtifacts: false
           temporaryPublicStorage: false
