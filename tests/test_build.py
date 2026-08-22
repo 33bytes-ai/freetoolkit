@@ -2561,3 +2561,25 @@ def test_ads_and_ads_txt_are_live_for_review():
         assert 'id="consent-revoke"' not in html, (
             "consent control shipped without the consent platform that backs it"
         )
+
+
+def test_lighthouse_asserts_on_a_median_of_several_runs():
+    """A single Lighthouse run per URL is too noisy to gate on.
+
+    With numberOfRuns at 1, /tools/dcf-calculator/ scored 0.89 and then 0.77
+    on consecutive CI runs across a commit that only *removed* a script — a
+    change that cannot make a page slower. On the same run the heaviest page
+    on the site (stripe-fee-calculator, 22KB gzipped) passed while
+    dcf-calculator (15KB, the lightest audited) failed, so the spread was
+    measurement variance on a shared runner, not page weight. Asserting on the
+    median of several runs is the documented remedy; dropping back to one run
+    reinstates a flaky gate that fails honest PRs."""
+    config = json.loads((ROOT / ".lighthouserc.json").read_text())
+    ci = config["ci"]
+    assert ci.get("collect", {}).get("numberOfRuns", 1) >= 3, (
+        "Lighthouse must run at least 3 times per URL; a single run varies by "
+        "more than the 0.10 headroom the performance budget leaves"
+    )
+    assert ci["assert"].get("aggregationMethod") == "median", (
+        "assertions must be made against the median run, not an individual one"
+    )
