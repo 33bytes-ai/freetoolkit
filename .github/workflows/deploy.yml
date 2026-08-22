@@ -1,0 +1,96 @@
+# Deploy dist/ to Cloudflare Pages from CI, so a release never depends on
+# someone having a laptop, a Python toolchain and wrangler credentials to hand.
+#
+# Self-activating, same as uptime.yml: with no CLOUDFLARE_API_TOKEN secret set
+# the job runs and reports what is missing instead of failing, so merging this
+# file changes nothing until the secrets exist.
+#
+# Add both under Settings -> Secrets and variables -> Actions:
+#   CLOUDFLARE_API_TOKEN   token with the "Cloudflare Pages: Edit" permission
+#   CLOUDFLARE_ACCOUNT_ID  Workers & Pages -> Account ID in the dashboard
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+# Never let two deploys race to publish different builds; a queued one
+# supersedes an older queued one, but an in-flight publish is left to finish.
+concurrency:
+  group: deploy-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for Cloudflare credentials
+        id: creds
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -n "$CLOUDFLARE_API_TOKEN" ] && [ -n "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Explain what is missing
+        if: steps.creds.outputs.ready != 'true'
+        run: |
+          echo "Skipping deploy: CLOUDFLARE_API_TOKEN and/or CLOUDFLARE_ACCOUNT_ID are not set."
+          echo "Add them under Settings -> Secrets and variables -> Actions, then re-run this workflow."
+
+      - name: Set up Python
+        if: steps.creds.outputs.ready == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Set up Node
+        if: steps.creds.outputs.ready == 'true'
+        uses: actions/setup-node@v4
+        with:
+          # No cache: this project has no package.json (see ci.yml).
+          node-version: "20"
+
+      # The Makefile's own `deploy` target is `test build` then publish, and
+      # publishing something the tests have not seen would defeat the point of
+      # having them.
+      - name: Run tests
+        if: steps.creds.outputs.ready == 'true'
+        run: make test
+
+      - name: Build site
+        if: steps.creds.outputs.ready == 'true'
+        run: make build
+
+      - name: Publish to Cloudflare Pages
+        if: steps.creds.outputs.ready == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        # --branch is explicit because wrangler infers it from git, and a CI
+        # checkout is a detached HEAD. Cloudflare Pages publishes the project's
+        # production branch to the custom domain and every other branch to a
+        # preview URL, so getting this wrong quietly leaves foundercalc.dev
+        # serving the previous build.
+        run: |
+          npx --yes wrangler@4 pages deploy dist \
+            --project-name=foundercalc \
+            --branch="${{ github.ref_name }}"
+
+      - name: Say which deployment this was
+        if: steps.creds.outputs.ready == 'true'
+        run: |
+          if [ "${{ github.ref_name }}" = "main" ]; then
+            echo "Production deploy — this updates https://foundercalc.dev"
+          else
+            echo "Preview deploy from branch '${{ github.ref_name }}'."
+            echo "https://foundercalc.dev is NOT updated; use the preview URL printed above."
+          fi

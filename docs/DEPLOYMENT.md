@@ -21,7 +21,31 @@ GoAccess for zero-tracking analytics; Cloudflare Web Analytics gives the
 same guarantee for free, so the server was no longer justified. See
 `HUMAN_INPUTS.md` A2 and `docs/ARCHITECTURE.md` for the reasoning.
 
-### First deploy / redeploy
+### Deploying from GitHub (no local machine needed)
+
+`.github/workflows/deploy.yml` builds and publishes from CI. Two one-time
+secrets under **Settings → Secrets and variables → Actions**:
+
+| Secret | Where to get it |
+|---|---|
+| `CLOUDFLARE_API_TOKEN` | Cloudflare → My Profile → API Tokens → Create Token, permission **Cloudflare Pages: Edit** |
+| `CLOUDFLARE_ACCOUNT_ID` | Cloudflare → Workers & Pages → Account ID (right-hand column) |
+
+After that it runs on every push to `main`, and on demand from **Actions →
+Deploy → Run workflow** — which works from a browser on any device. Until both
+secrets exist the job is a no-op that prints what is missing, so it never
+reddens a build.
+
+It runs `make test` before publishing, matching the Makefile's own
+`deploy: test build` contract.
+
+**Branch matters.** Cloudflare Pages publishes the project's production branch
+to the custom domain and *every other branch to a preview URL*. Deploying from
+a feature branch leaves `foundercalc.dev` on the previous build — the workflow
+prints which kind of deployment it made, so check that line before concluding
+a deploy failed.
+
+### First deploy / redeploy (from a local machine)
 
 ```bash
 make build   # regenerates dist/

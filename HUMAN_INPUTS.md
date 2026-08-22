@@ -81,8 +81,19 @@ est écrit à chaque build avec le Publisher ID.
 
 **Ce qu'il reste à faire, dans cet ordre :**
 
-1. **Déployer** (`make deploy`). Rien de ce qui précède ne compte tant que ce
-   n'est pas en ligne : Google inspecte le site *tel qu'il est servi*.
+1. **Déployer.** Rien de ce qui précède ne compte tant que ce n'est pas en
+   ligne : Google inspecte le site *tel qu'il est servi*. Deux façons :
+   - **Depuis un navigateur, sans machine** (recommandé) : ajouter les secrets
+     `CLOUDFLARE_API_TOKEN` (permission *Cloudflare Pages: Edit*) et
+     `CLOUDFLARE_ACCOUNT_ID` dans Settings → Secrets and variables → Actions,
+     puis fusionner la PR sur `main` — `.github/workflows/deploy.yml` construit
+     et publie tout seul. Déclenchable aussi à la main via Actions → Deploy →
+     Run workflow.
+   - **Depuis une machine locale** : `make deploy` (voir `docs/DEPLOYMENT.md`).
+
+   ⚠️ Déployer depuis une branche autre que `main` produit une *preview*
+   Cloudflare, pas la mise en production : `foundercalc.dev` resterait sur
+   l'ancienne version.
 2. **Vérifier sur le domaine live**, pas en local :
    - `https://foundercalc.dev/ads.txt` renvoie
      `google.com, ca-pub-6294535713639434, DIRECT, f08c47fec0942fa0`

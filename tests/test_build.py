@@ -2583,3 +2583,40 @@ def test_lighthouse_asserts_on_a_median_of_several_runs():
     assert ci["assert"].get("aggregationMethod") == "median", (
         "assertions must be made against the median run, not an individual one"
     )
+
+
+def test_deploy_workflow_is_inert_without_cloudflare_secrets():
+    """Deploying must not require a laptop, and adding the workflow must not
+    break anything before the secrets exist.
+
+    Every step that builds or publishes is gated on both secrets being present,
+    mirroring how uptime.yml no-ops until base_url is real. Without that gate,
+    merging this file would turn every push to main into a red build."""
+    workflow = yaml.safe_load((ROOT / ".github" / "workflows" / "deploy.yml").read_text())
+    steps = workflow["jobs"]["deploy"]["steps"]
+
+    guard = next(s for s in steps if s.get("id") == "creds")
+    assert "CLOUDFLARE_API_TOKEN" in guard["env"]
+    assert "CLOUDFLARE_ACCOUNT_ID" in guard["env"]
+
+    for name in ("Run tests", "Build site", "Publish to Cloudflare Pages"):
+        step = next(s for s in steps if s.get("name") == name)
+        assert step.get("if") == "steps.creds.outputs.ready == 'true'", (
+            f"{name!r} must not run without Cloudflare credentials"
+        )
+
+    publish = next(s for s in steps if s.get("name") == "Publish to Cloudflare Pages")
+    # Wrangler infers the branch from git and a CI checkout is a detached HEAD;
+    # the wrong branch silently publishes a preview instead of production.
+    assert "--branch=" in publish["run"]
+    assert "--project-name=foundercalc" in publish["run"]
+
+
+def test_deploy_workflow_can_be_triggered_from_the_browser():
+    """workflow_dispatch is what makes this usable with no machine to hand."""
+    raw = (ROOT / ".github" / "workflows" / "deploy.yml").read_text()
+    assert "workflow_dispatch" in raw
+    workflow = yaml.safe_load(raw)
+    triggers = workflow[True] if True in workflow else workflow["on"]
+    assert "workflow_dispatch" in triggers
+    assert triggers["push"]["branches"] == ["main"]
