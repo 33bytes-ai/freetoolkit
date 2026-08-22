@@ -42,11 +42,15 @@ Both causes are addressed in the build (see "Content architecture" in
   462 URLs to ~134, and the median tool page from 303 words to ~1,300. Tests
   now fail if any tool page drops below 600 visible words, or if anything in
   `sitemap.xml` falls under 300.
-- `ads_enabled: true` and `adsense_client_id` are set, so the ad snippet, the
-  Funding Choices consent banner and `/ads.txt` all render. AdSense reviews
-  the site **as served**, so these must be live on the deployed site before
-  requesting a re-review — the `ads.txt` "not found" verdict was a stale
-  deploy, not a build problem.
+- `ads_enabled: true` and `adsense_client_id` are set, so the AdSense loader
+  and `/ads.txt` render. AdSense reviews the site **as served**, so these must
+  be live on the deployed site before requesting a re-review — the `ads.txt`
+  "not found" verdict was a stale deploy, not a build problem.
+- The Funding Choices consent platform is held back until `adsense_slots`
+  carries a real ad unit ID. No ad renders before then, so there is nothing to
+  consent to, and shipping the CMP cost ~9 Lighthouse performance points on
+  every page (it took the homepage from 0.90+ to 0.81 and failed CI). It
+  returns automatically with the first slot ID, before any ad serves.
 
 ### Configuration
 

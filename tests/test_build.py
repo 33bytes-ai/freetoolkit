@@ -907,15 +907,20 @@ def test_no_ad_or_cmp_scripts_without_adsense_client_id():
 
 
 def test_cmp_script_loads_before_adsense_when_ads_enabled():
-    """Setting ads_enabled: true should render Google's Funding Choices CMP
-    script (required before showing personalized ads to EEA/UK visitors)
-    and it must appear before adsbygoogle.js in the document so consent is
-    gathered before any ad request fires."""
+    """Once an ad unit can actually render, Google's Funding Choices CMP must
+    ship (required before showing personalized ads to EEA/UK visitors) and must
+    appear before adsbygoogle.js in the document, so consent is gathered before
+    any ad request fires."""
     from freetoolkit import build as ftk_build
 
     env = ftk_build.build_env()
     config = ftk_build.load_config()
-    config["site"] = dict(config["site"], ads_enabled=True, adsense_client_id="ca-pub-1234567890")
+    config["site"] = dict(
+        config["site"],
+        ads_enabled=True,
+        adsense_client_id="ca-pub-1234567890",
+        adsense_slots={"home-mid": "1234567890"},
+    )
     out = DIST / "_test_cmp" / "index.html"
     ftk_build.render(
         env,
@@ -2537,17 +2542,22 @@ def test_ads_and_ads_txt_are_live_for_review():
 
     html = (DIST / "tools" / TOOL_SLUGS[0] / "index.html").read_text()
     assert "pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" in html
-    # Consent gathering must load before any ad request in the EEA/UK.
-    assert html.index("fundingchoicesmessages.google.com") < html.index("adsbygoogle.js")
 
-    # No ad unit may render against a placeholder slot: it can never fill, and
-    # an empty frame labelled "Advertisement" is a worse review surface than
-    # none. Units appear once adsense_slots carries real IDs.
-    for slot_name, slot_id in (config["site"].get("adsense_slots") or {}).items():
-        if slot_id:
-            assert f'data-ad-slot="{slot_id}"' in html or slot_name != "tool-mid"
-        else:
-            assert "0000000000" not in html
-            assert 'class="adsbygoogle"' not in html, (
-                f"ad unit rendered for {slot_name} with no ad unit ID configured"
-            )
+    slot_ids = [v for v in (config["site"].get("adsense_slots") or {}).values() if v]
+    if slot_ids:
+        # Consent gathering must load before any ad request in the EEA/UK.
+        assert html.index("fundingchoicesmessages.google.com") < html.index("adsbygoogle.js")
+        assert 'class="adsbygoogle"' in html, "ad unit ID configured but no unit rendered"
+    else:
+        # No ad unit may render against a placeholder slot: it can never fill,
+        # and an empty frame labelled "Advertisement" is a worse review surface
+        # than none. The consent platform stays off with it -- there is nothing
+        # to consent to, and it costs performance on every page.
+        assert "0000000000" not in html
+        assert 'class="adsbygoogle"' not in html, "ad unit rendered with no ad unit ID configured"
+        assert "fundingchoicesmessages.google.com" not in html, (
+            "consent platform shipped while no ad unit can render"
+        )
+        assert 'id="consent-revoke"' not in html, (
+            "consent control shipped without the consent platform that backs it"
+        )

@@ -33,10 +33,14 @@ periodically deleted.
 
 ## Cookies and advertising
 
-This site carries display advertising served by **Google AdSense**. Google and
-its advertising partners use cookies and similar technologies to serve and
-measure ads, and — where you have consented to it — to personalise those ads
-based on your visits to this and other sites.
+This site is monetised by display advertising served by **Google AdSense**.
+Wherever an ad is shown, Google and its advertising partners use cookies and
+similar technologies to serve and measure it, and — where you have consented to
+it — to personalise it based on your visits to this and other sites.
+
+Advertising is not live on every page at all times: while the AdSense account
+is under review no ad units render, and on those pages no advertising cookie is
+set and no consent message is shown, because there is nothing to consent to.
 
 - Google's use of advertising cookies is described in
   [How Google uses information from sites that use its services](https://policies.google.com/technologies/partner-sites).
@@ -48,11 +52,12 @@ based on your visits to this and other sites.
 
 ### Consent in the EEA, UK and Switzerland
 
-Visitors from the EEA, the UK and Switzerland are shown a consent message,
-provided through **Google Funding Choices** (an IAB TCF-registered consent
-platform), before any non-essential cookie is set. You can accept or refuse
-personalised advertising there, and you can reopen that choice at any time
-using the privacy or consent link in the page footer. Refusing does not
+Wherever advertising is active, visitors from the EEA, the UK and Switzerland
+are shown a consent message, provided through **Google Funding Choices** (an
+IAB TCF-registered consent platform), before any non-essential cookie is set.
+You can accept or refuse personalised advertising there, and you can reopen
+that choice at any time using the **Privacy & ad settings** control in the page
+footer, which appears alongside that consent message. Refusing does not
 restrict access to any calculator on this site — the tools work identically
 either way, since none of them depend on advertising or cookies to compute a
 result.

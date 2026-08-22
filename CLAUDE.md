@@ -106,17 +106,25 @@ copy to `content/tools.yaml`, write tests in `tests/test_tools.js`, and run
 
 ## Ads
 
-`ads_enabled: true` and `adsense_client_id` are already set in
-`content/config.yaml`, so the AdSense snippet, the Funding Choices consent
-banner and `/ads.txt` all render — AdSense reviews the site as served and
-needs to find them. Slots stay blank until the account is approved.
+Two flags, not one — they mean different things and `base.html` keys different
+things off each:
 
-`ADSENSE_CLIENT_ID=ca-pub-XXXX make build` overrides the ID at build time.
+- **`ads_enabled`** (currently `true`): ship the AdSense loader. AdSense
+  reviews the site *as served* and has to find `adsbygoogle.js` and
+  `/ads.txt` on it. `ADSENSE_CLIENT_ID=ca-pub-XXXX make build` overrides the
+  ID at build time.
+- **`adsense_slots`** (currently all empty): the ad unit IDs, issued once the
+  account is approved. `ads_slot.html` draws an `<ins>` only for a slot with a
+  real ID — an empty frame labelled "Advertisement" that can never fill is a
+  worse review surface than no frame.
 
-The consent banner is required before personalised ads reach EEA/UK visitors.
-`static/js/ads.js` also wires the footer "Privacy & ad settings" button to
-Funding Choices' revocation message — consent has to be as easy to withdraw as
-to give, and `/privacy/` promises that control exists.
+`base.html` derives **`ads_serving`** from both: ads_enabled *and* at least one
+real slot ID. The Funding Choices consent platform, `static/js/ads.js` and the
+footer "Privacy & ad settings" button all ship only when `ads_serving` — a
+consent prompt for personalised ads is a prompt about nothing while no ad can
+render, and shipping it cost ~9 Lighthouse performance points per page. Adding
+a real slot ID brings all three back automatically, before any ad serves, so
+the EEA consent obligation is still met the moment it starts to apply.
 
 ## Updating the live domain
 Change `base_url` in `content/config.yaml` to your real domain before
