@@ -2418,15 +2418,48 @@ def test_every_intent_page_is_merged_into_its_parent_tool():
 
 
 def test_redirects_cover_every_retired_url():
-    """No retired URL may 404: each 301s to the section it was merged into."""
+    """No retired URL may 404: each 301s to the section it was merged into,
+    with and without its trailing slash."""
     run_build()
     redirects = (DIST / "_redirects").read_text()
+
+    def assert_both_forms(src: str, dest: str) -> None:
+        assert f"{src} {dest} 301" in redirects, f"missing redirect for {src}"
+        assert f"{src.rstrip('/')} {dest} 301" in redirects, (
+            f"missing no-trailing-slash redirect for {src}"
+        )
+
     for parent, slug in INTENT_PAGES:
-        assert f"/tools/{parent}/{slug}/* /tools/{parent}/#{slug} 301" in redirects
+        assert_both_forms(f"/tools/{parent}/{slug}/", f"/tools/{parent}/#{slug}")
     for slug in COUNTRY_PAGE_SLUGS:
-        assert f"/tools/stripe-fee-calculator/{slug}/*" in redirects
+        assert_both_forms(
+            f"/tools/stripe-fee-calculator/{slug}/",
+            f"/tools/stripe-fee-calculator/#{slug}",
+        )
     for entry in yaml.safe_load((ROOT / "content" / "glossary.yaml").read_text()):
-        assert f"/glossary/{entry['slug']}/* /glossary/#{entry['slug']} 301" in redirects
+        assert_both_forms(f"/glossary/{entry['slug']}/", f"/glossary/#{entry['slug']}")
+
+
+def test_redirects_stay_within_cloudflare_pages_rule_limits():
+    """Redirect rules must be static, not dynamic.
+
+    Cloudflare Pages accepts 2,000 static rules but only 100 *dynamic* ones,
+    and a single '*' anywhere in the source makes a rule dynamic. Emitting the
+    rules with a trailing splat therefore had Pages parse the first 100 and
+    silently skip the other 229 -- most retired URLs 404ing in production
+    while every local check still passed. Regression guard for that."""
+    run_build()
+    rules = [
+        line
+        for line in (DIST / "_redirects").read_text().splitlines()
+        if line.strip() and not line.startswith("#")
+    ]
+    dynamic = [r for r in rules if "*" in r.split()[0] or ":" in r.split()[0]]
+    assert not dynamic, (
+        f"{len(dynamic)} dynamic redirect rules; Pages honours only 100 of them "
+        f"and skips the rest. First: {dynamic[:3]}"
+    )
+    assert len(rules) <= 2000, f"{len(rules)} static rules exceeds the 2,000 cap"
 
 
 def test_glossary_is_one_page_with_a_section_per_term():

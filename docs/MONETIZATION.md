@@ -63,6 +63,22 @@ Or export at build time: `ADSENSE_CLIENT_ID=ca-pub-XXXX make build`.
 google.com, ca-pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
 ```
 
+### Verifying the redirects before you deploy
+
+`dist/_redirects` is a Cloudflare Pages file, so a plain static server ignores
+it. `wrangler pages dev` honours it and needs no login:
+
+```bash
+make build
+npx wrangler pages dev dist --port 8788
+curl -sI http://127.0.0.1:8788/tools/stripe-fee-calculator/stripe-fees-uk/
+```
+
+Check its startup line reads **"Parsed 658 valid redirect rules"** — if it
+instead warns *"Maximum number of dynamic rules supported is 100"*, the rules
+have regressed to containing `*` and most retired URLs will 404 in production.
+`test_redirects_stay_within_cloudflare_pages_rule_limits` guards this.
+
 ### Requesting a re-review
 
 1. Deploy, then confirm on the live domain: `/ads.txt` returns the publisher

@@ -39,7 +39,11 @@ The fix was consolidation, and it is a constraint to keep, not a one-off:
   sections of `/glossary/`, not a page per term.
 - **Retired URLs 301 to their anchor** via generated `dist/_redirects`
   (Cloudflare Pages). Never delete an entry from those YAML files without
-  leaving a redirect behind.
+  leaving a redirect behind. Keep the rules **static**: Pages honours 2,000
+  static rules but only 100 dynamic ones, and a single `*` in the source
+  makes a rule dynamic — that silently 404'd 229 of 329 retired URLs once
+  already. Verify with `npx wrangler pages dev dist`, which prints how many
+  rules it parsed; a plain static server ignores the file entirely.
 - **Link to sections, not retired pages**: `](/tools/<parent>/#<slug>)` and
   `](/glossary/#<slug>)`. `test_tools_yaml_guide_links_all_resolve` fails on
   the old path form.
