@@ -1,0 +1,341 @@
+# Editorial introduction for each category page at /categories/<slug>/.
+#
+# These pages were link grids with a one-line tagline -- ~130 words each, the
+# same thin-listing shape that got the site rejected by AdSense. Each intro
+# below answers the question a listing page can't: which of these calculators
+# you actually want, and what the number means once you have it.
+#
+# body: markdown, rendered above the tool grid.
+
+Payments:
+  body: |
+    Payment processing is usually the largest line item a small business never
+    negotiates. At 2.9% + $0.30, a business doing $30,000 a month in card volume
+    hands over roughly $10,500 a year — more than most founders spend on
+    software. The calculators here exist so that number stops being a surprise
+    on a monthly statement.
+
+    ## Which one you want
+
+    Start with the **Fee Comparison** calculator if you are choosing a processor
+    or wondering whether to switch: it puts Stripe, PayPal and all three Shopify
+    Payments plans side by side for a single sale amount and shows the exact net
+    payout for each. Use the individual **Stripe**, **PayPal** and **Shopify**
+    calculators when you already know your processor and need a precise figure —
+    each one handles the details the comparison view flattens, including
+    international cards, negotiated rates, and grossing a charge up so you
+    receive an exact amount after fees.
+
+    ## The mistakes these catch
+
+    Two errors turn up constantly. The first is comparing headline percentages
+    while ignoring the fixed fee: at a $5 sale, Stripe's $0.30 is 6% on its own,
+    which is why micro-transactions destroy margins that look fine on a
+    spreadsheet. The second is forgetting cross-border and currency-conversion
+    surcharges — an extra 1.5% and 1% respectively on Stripe — which quietly
+    make an international customer meaningfully less profitable than a domestic
+    one at the same price.
+
+SaaS Growth Metrics:
+  body: |
+    Growth metrics are how a subscription business explains itself to investors,
+    to a board, and to its own founders. They are also the metrics most often
+    quoted wrongly: MRR that silently includes one-off setup fees, ARR that
+    counts signed contracts nobody has paid yet, growth rates measured against a
+    month that happened to be unusually weak.
+
+    ## Which one you want
+
+    **MRR** and **ARR** are the base: normalise every plan — monthly, annual,
+    multi-year — into one comparable recurring figure, and use the **ARR ↔ MRR
+    converter** when you need to move between the two. **Runway** is the one to
+    run first if cash is finite; it tells you how many months of operation the
+    bank balance actually buys at the current burn. **Rule of 40** and **Burn
+    Multiple** are the efficiency checks investors apply at Series A and beyond:
+    growth rate plus profit margin should clear 40, and every dollar burned
+    should buy a reasonable amount of new ARR.
+
+    ## What the numbers mean
+
+    Growth rate is meaningless without the base it grows from. Trebling from
+    $10k to $30k MRR is a good quarter; trebling from $1M is a different company
+    entirely, and the benchmarks investors apply scale accordingly — roughly
+    15%+ month-on-month is strong at seed, while 5–7% is strong at $10M ARR.
+    Read any single month's figure alongside the trailing three: seasonality and
+    a couple of large annual contracts distort a monthly number far more than
+    most dashboards admit.
+
+SaaS Retention Metrics:
+  body: |
+    Retention decides whether growth compounds or leaks. A business adding 10%
+    new revenue a month while losing 8% to churn is working extremely hard to
+    stand still, and no amount of acquisition spend fixes a product people leave.
+    These calculators quantify what leaving actually costs.
+
+    ## Which one you want
+
+    **LTV & CAC** is the headline pair: what a customer is worth over the
+    relationship, against what it cost to win them. A ratio above 3:1 is the
+    conventional healthy floor, but read it with **CAC Payback** — a 3:1 ratio
+    that takes 30 months to repay is a cash-flow problem regardless of how good
+    the multiple looks. **NRR** captures expansion as well as loss and is the
+    single number late-stage investors care most about; above 100% means the
+    existing base grows on its own. Use **Churn Impact** and **Churn Revenue
+    Loss** to convert a percentage into the dollars it removes from a plan, and
+    **Churn Cohort** to see whether retention is genuinely improving or whether
+    one good cohort is flattering the average.
+
+    ## What the numbers mean
+
+    Churn is deceptive at small percentages. Monthly churn of 5% sounds
+    survivable and implies an average customer lifetime of 20 months; 2% implies
+    50 months, and roughly two and a half times the lifetime value from the same
+    acquisition spend. Always separate logo churn from revenue churn — losing
+    many small accounts and losing one enterprise contract produce very
+    different percentages and require very different responses.
+
+Freelance:
+  body: |
+    Independent work is priced badly more often than it is sold badly. The usual
+    error is dividing a target salary by 2,080 hours and quoting the result,
+    which ignores every hour that is not billable and every cost an employer
+    used to absorb.
+
+    ## Which one you want
+
+    **Freelance Rate** is the place to start: it works backwards from the income
+    you need, then adds back the non-billable time, unpaid holiday, sick days,
+    business expenses and self-employment tax that an employed salary hides.
+    **Salary to Hourly** converts an employed offer into the equivalent
+    freelance rate, which is the honest comparison when weighing a contract
+    against a job. **Project Estimate** prices fixed-scope work with a
+    contingency buffer, and **Invoice Calculator** handles the final document,
+    including tax and multi-line totals.
+
+    ## What the numbers mean
+
+    Realistic billable utilisation for a solo freelancer is 50–70%, not 100%.
+    Sales calls, proposals, admin, invoicing and marketing are real hours that no
+    client pays for directly. On a 60% utilisation assumption, a $100,000 income
+    target across 46 working weeks is roughly a $120/hour rate before tax and
+    expenses — not the $52/hour a naive 2,080-hour division suggests. Quote from
+    the first number and the business works; quote from the second and it
+    slowly does not.
+
+Pricing & Margins:
+  body: |
+    Price is the strongest lever a business has on profit, and the one changed
+    with the least analysis. A 1% price increase, absorbed without volume loss,
+    typically improves operating profit several times more than a 1% cut in
+    costs — the calculators here quantify that trade for a specific business
+    rather than in the abstract.
+
+    ## Which one you want
+
+    **Profit Margin**, **Gross Margin** and **Markup** answer the immediate
+    question of what you keep from a sale — and the markup calculator exists
+    largely because markup and margin are constantly confused (a 50% markup is a
+    33% margin). **Break-Even** and **Break-Even Revenue** tell you the volume
+    at which fixed costs are covered. **Price Impact** and **Price Elasticity**
+    model the harder question: how much volume can you afford to lose at a
+    higher price and still come out ahead. **SaaS Pricing** and **Tier
+    Comparison** are for structuring plans rather than pricing a single unit.
+
+    ## What the numbers mean
+
+    Margin percentages only compare meaningfully within an industry. Software
+    gross margins of 75–85% are normal; a physical-product business at 40% may
+    be performing well, and a reseller at 12% may be entirely healthy. The
+    figure that travels across industries is contribution margin per unit
+    against fixed cost — that is what decides whether volume growth makes money
+    or simply makes work.
+
+Marketing:
+  body: |
+    Marketing spend is defensible when it is measured against revenue rather
+    than activity. These calculators convert campaign metrics into the numbers a
+    finance conversation actually uses: cost per acquired customer, return per
+    dollar spent, and the revenue a given funnel will produce.
+
+    ## Which one you want
+
+    **ROAS** is the direct-response workhorse — revenue produced per dollar of
+    ad spend — while **Conversion Rate** and **Sales Funnel** show where in a
+    multi-step journey prospects are actually lost. **Revenue per Lead** and
+    **AOV** are the two inputs that make a funnel model worth anything;
+    improving either lifts every stage downstream. **Sales Velocity** combines
+    deal count, deal size, win rate and cycle length into one figure for how
+    fast a pipeline produces revenue, which is usually more actionable than any
+    of the four alone. **Email ROI** and **List Growth Rate** cover the channel
+    with the highest measured return and the slowest compounding.
+
+    ## What the numbers mean
+
+    A ROAS of 4:1 is a common rule-of-thumb target, but it is a gross figure —
+    it says nothing about margin. At a 25% gross margin, 4:1 ROAS is break-even
+    before any overhead. Judge campaigns on contribution after cost of goods,
+    and against customer lifetime value rather than first purchase, or you will
+    switch off the channels that acquire your most durable customers.
+
+Finance:
+  body: |
+    These are the ratios a lender, an acquirer or an experienced board member
+    reaches for first. They read a business the way a credit analyst does: can it
+    cover its obligations, how hard is its balance sheet working, and how much
+    of its profit survives its cost structure.
+
+    ## Which one you want
+
+    **EBITDA** and **Gross Profit** establish operating earnings before
+    financing and accounting choices distort the picture. **DSCR**, **Current
+    Ratio**, **Debt-to-Equity** and **Times Interest Earned** are the solvency
+    and liquidity set — these are the numbers a bank tests a loan application
+    against, and the **Business Loan** calculator shows what the resulting
+    repayment schedule costs. **ROE**, **ROA** and **Financial Ratios** measure
+    how efficiently capital is being used, and **Operating Leverage** explains
+    why a small revenue change can produce a large profit swing in a
+    fixed-cost-heavy business.
+
+    ## What the numbers mean
+
+    Ratios are comparisons, not verdicts. A current ratio of 1.2 is comfortable
+    for a subscription business collecting cash monthly in advance and alarming
+    for a manufacturer with long inventory cycles. Most lenders want DSCR at or
+    above 1.25 and read debt-to-equity against sector norms rather than an
+    absolute threshold. Run these on a trend across several periods: the
+    direction of travel tells you more than any single quarter's value.
+
+Cash Flow:
+  body: |
+    Profitable businesses fail by running out of cash. Profit is an accounting
+    result; cash is a bank balance, and the gap between them is where most
+    avoidable insolvencies live. These calculators measure that gap.
+
+    ## Which one you want
+
+    **Operating Cash Flow** and **Free Cash Flow** show what the business
+    actually generates once working capital and capital expenditure are
+    accounted for — FCF being the figure that funds growth or repays debt.
+    **Cash Conversion Cycle** and **DSO** measure how long cash is trapped
+    between paying suppliers and collecting from customers; shortening that
+    cycle releases cash without raising a round. **Working Capital** sizes the
+    buffer the business needs to keep operating, **Invoice Discount** prices the
+    trade-off in offering early-payment terms, and **Budget Variance** compares
+    plan against actual so a shortfall is caught in month two rather than month
+    six.
+
+    ## What the numbers mean
+
+    A rising DSO is one of the earliest reliable warnings in a small business:
+    it usually means either collections have slipped or customers are themselves
+    under pressure, and both worsen quietly. A negative cash conversion cycle —
+    collecting from customers before paying suppliers — is a genuine structural
+    advantage, and is a large part of why subscription and marketplace models
+    can fund growth from operations that a traditional retailer cannot.
+
+Investment & Returns:
+  body: |
+    Every capital decision is a comparison against the alternatives, including
+    doing nothing. These calculators put a defensible number on that comparison
+    rather than relying on the instinct that a project "feels worth it".
+
+    ## Which one you want
+
+    **ROI** is the simple, timing-blind version — useful for quick comparisons,
+    misleading over long horizons because it treats a dollar in five years as a
+    dollar today. **NPV** and **IRR** correct that by discounting future cash
+    flows, and **MIRR** fixes IRR's optimistic assumption that interim cash is
+    reinvested at the IRR itself. **WACC** produces the discount rate those
+    models need — the blended cost of the debt and equity funding the business.
+    **Payback Period** answers the cash-risk question rather than the return
+    question: how long until the money comes back. **Rule of 72** is the mental
+    shortcut for how long a rate takes to double a sum.
+
+    ## What the numbers mean
+
+    NPV and IRR can disagree, and when they do, NPV is the one to trust for
+    mutually exclusive projects — it measures value created rather than a rate.
+    Both are only as good as the cash-flow forecast underneath, which is where
+    the real uncertainty sits. Run each model at a pessimistic, expected and
+    optimistic case; a project that only clears the hurdle in the optimistic
+    case is a bet, not an investment.
+
+Valuation:
+  body: |
+    Valuation is a negotiation informed by arithmetic, not an output of it. The
+    calculators here produce the defensible range that a conversation starts
+    from, and make explicit which assumptions are doing the work.
+
+    ## Which one you want
+
+    **DCF** is the first-principles method: forecast cash flows, discount them,
+    and see what the business is worth on its own merits. **EBITDA Multiple**,
+    **P/E Ratio** and **P/S Ratio** are the comparables approach — faster,
+    market-anchored, and the way most small-business and SaaS transactions are
+    actually priced. **Enterprise Value** reconciles the two by adjusting equity
+    value for debt and cash, which is the number an acquirer negotiates.
+    **TAM/SAM/SOM** sizes the opportunity a growth story rests on, and **Equity
+    Dilution** shows what each funding round leaves founders holding.
+
+    ## What the numbers mean
+
+    Multiples vary enormously by growth rate and sector: a SaaS business growing
+    over 40% a year has historically commanded several times the revenue
+    multiple of one growing at 10%, and private companies trade at a discount to
+    public comparables for illiquidity. Treat any single multiple as the midpoint
+    of a wide range. On dilution, the figure founders consistently
+    underestimate is the cumulative effect — three rounds at 20% each leave
+    roughly 51%, not 40%, because each round dilutes the post-money
+    cap table rather than the original one.
+
+Tax & Compliance:
+  body: |
+    Tax is the cost most often left out of a pricing decision and most likely to
+    arrive as an unpleasant surprise. These calculators produce planning
+    estimates so the money is set aside before it is spent.
+
+    ## Which one you want
+
+    **VAT** handles adding and removing value-added tax at any rate, including
+    working backwards from a gross figure — the calculation that trips people up
+    most, since removing 20% VAT means dividing by 1.2, not subtracting 20%.
+    **Freelance Tax** estimates the self-employment liability independents
+    should be reserving from each invoice. **Payroll Tax** covers the employer
+    side, which is the part that surprises first-time hirers.
+
+    ## What the numbers mean
+
+    The single most useful habit these support is reserving tax on receipt
+    rather than at filing. A freelancer who moves 25–30% of every payment into a
+    separate account on the day it arrives never faces a quarterly bill they
+    cannot pay. Rates, thresholds and allowances change between jurisdictions
+    and between tax years, and these calculators are planning tools rather than
+    filing tools — check the current figures with your tax authority or an
+    accountant before submitting anything.
+
+HR & People:
+  body: |
+    People are the largest cost in most service and software businesses, and the
+    one most often budgeted at base salary alone. These calculators price the
+    real figure.
+
+    ## Which one you want
+
+    **Employee Cost** and **Payroll Cost** build the fully-loaded number: salary
+    plus employer taxes, benefits, equipment, software and workspace, which
+    together typically add 25–40% on top of base pay. **Turnover Cost** prices a
+    departure — recruitment, notice period, onboarding and the months of reduced
+    output before a replacement is productive. **Employee Turnover** tracks the
+    rate itself, and **Commission** models variable compensation so a sales plan
+    can be checked against margin before it is offered.
+
+    ## What the numbers mean
+
+    Replacing an employee commonly costs somewhere between six months and two
+    years of their salary once lost productivity is included, and the figure
+    rises with seniority and specialisation. That is the number worth holding
+    next to any retention decision: a raise, a training budget or a flexible
+    working arrangement that looks expensive in isolation is frequently far
+    cheaper than the departure it prevents. On commission design, check the plan
+    against contribution margin rather than revenue — a scheme that pays well on
+    a discounted deal quietly rewards discounting.

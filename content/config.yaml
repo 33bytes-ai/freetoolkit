@@ -9,10 +9,23 @@ site:
   base_url: "https://foundercalc.dev"
   twitter: ""
 
-  # Flip to true once AdSense application is approved (see docs/MONETIZATION.md).
+  # On during the AdSense site review: Google expects to find the ad code and a
+  # reachable /ads.txt on the site it is reviewing, so the snippet, the Funding
+  # Choices consent banner and the named slots all have to render (see
+  # docs/MONETIZATION.md). Slots stay blank until the account is approved.
   # Business/SaaS calculator audience commands RPM of $8–20 vs $1–3 for general tools.
-  ads_enabled: false
+  ads_enabled: true
   adsense_client_id: "ca-pub-6294535713639434"
+
+  # Ad unit IDs, created in the AdSense dashboard once the account is approved.
+  # Until a slot has a real ID, templates/ads_slot.html renders nothing: an
+  # empty box labelled "Advertisement" on every page is a worse review surface
+  # than no box at all, and an <ins> with a placeholder slot can never fill.
+  # The loader script and /ads.txt do not depend on these -- they ship as soon
+  # as ads_enabled is true, which is what the site review looks for.
+  adsense_slots:
+    tool-mid: ""
+    home-mid: ""
 
   # Set to your Formspree form ID to enable the newsletter signup forms: the
   # homepage card and the discreet one in the footer on every page.

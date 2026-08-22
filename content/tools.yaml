@@ -868,7 +868,7 @@
 
     **Which profit margin metric should I use?**
     Free cash flow margin is the most common choice, as it accounts for capex and working
-    capital. Some investors use [EBITDA](/glossary/ebitda/) margin. Net income margin is least common because it
+    capital. Some investors use [EBITDA](/glossary/#ebitda) margin. Net income margin is least common because it
     includes non-cash charges (stock compensation, depreciation) that distort the picture.
 
     **Can I game the Rule of 40 by cutting investment?**
@@ -1107,7 +1107,7 @@
     ## Frequently asked questions
 
     **What's a good CAC by channel?**
-    CAC benchmarks vary enormously by [ACV](/glossary/acv/). Divide your CAC by your expected LTV — if the
+    CAC benchmarks vary enormously by [ACV](/glossary/#acv). Divide your CAC by your expected LTV — if the
     ratio is above 3:1, the channel is viable. If below 1:1, it's destroying value.
 
     **How do I handle referral/word-of-mouth?**
@@ -2378,7 +2378,7 @@
     ## Why discounts hurt margins disproportionately
 
     A 20% discount on a product with 40% gross margin:
-    - Original: $99 price, $59.40 [COGS](/glossary/cogs/), $39.60 gross profit (40% margin)
+    - Original: $99 price, $59.40 [COGS](/glossary/#cogs), $39.60 gross profit (40% margin)
     - Discounted: $79.20 price, $59.40 COGS, $19.80 gross profit (25% margin)
 
     20% off the price = 50% reduction in gross profit. This asymmetry is why deep
@@ -2956,7 +2956,7 @@
     **CCC = DIO + DSO − DPO**
 
     Where:
-    - **DIO** (Days Inventory Outstanding) = Average Inventory ÷ [COGS](/glossary/cogs/) × 365
+    - **DIO** (Days Inventory Outstanding) = Average Inventory ÷ [COGS](/glossary/#cogs) × 365
     - **DSO** (Days Sales Outstanding) = Average AR ÷ Revenue × 365
     - **DPO** (Days Payable Outstanding) = Average AP ÷ COGS × 365
 
@@ -3085,7 +3085,7 @@
 
     1. **Reduce CAC** — more ARR from the same S&M spend
     2. **Reduce churn** — net new ARR improves when churned ARR falls
-    3. **Increase [ACV](/glossary/acv/)** — same headcount, higher ARR per deal
+    3. **Increase [ACV](/glossary/#acv)** — same headcount, higher ARR per deal
     4. **Expand existing customers** — expansion ARR requires near-zero additional burn
     5. **Automate operational work** — reduce gross burn without cutting growth investment
 
@@ -3776,7 +3776,7 @@
     | Series A ($5–10M) | 20–30% | 45–55% |
     | Series B ($20–40M) | 15–25% | 35–45% |
 
-    Dilution at each round is on the post-round [cap table](/glossary/cap-table/), not the original. A founder
+    Dilution at each round is on the post-round [cap table](/glossary/#cap-table), not the original. A founder
     at 85% post-seed who raises a 20% Series A retains 85% × 80% = **68%**.
 
     ## Option pool shuffle
@@ -4165,7 +4165,7 @@
 
     ## How to reduce concentration
 
-    1. **Diversify the pipeline**: Add [ICP](/glossary/icp/)-qualified leads from segments different
+    1. **Diversify the pipeline**: Add [ICP](/glossary/#icp)-qualified leads from segments different
        from your largest customers.
     2. **Grow small customers faster**: Focus expansion revenue on mid-tier accounts.
     3. **Limit contract size cap**: Consider capping individual contracts at 15–20%
@@ -4218,7 +4218,7 @@
     **Top-down**: Industry reports estimate total market size, and you identify your
     percentage. Fast, but imprecise. "The CRM market is $50B, and we target 1%."
 
-    **Bottom-up**: Count actual customers and multiply by [ACV](/glossary/acv/). More credible.
+    **Bottom-up**: Count actual customers and multiply by [ACV](/glossary/#acv). More credible.
     "There are 500,000 mid-market companies in the US, 30% have this problem, we can
     reach 15% of those with our current GTM (go-to-market), at $15k ACV = $337M SAM."
 
@@ -4243,7 +4243,7 @@
     specific product category.
 
     **Confusing TAM and SAM**: "Our SAM is the entire US market." SAM should
-    filter by who you can actually sell to today — your [ICP](/glossary/icp/), not the entire country.
+    filter by who you can actually sell to today — your [ICP](/glossary/#icp), not the entire country.
 
     **Unrealistic SOM**: "We'll capture 10% of the market in year 3." Without
     showing the GTM math (headcount, channels, CAC), this is unbelievable.
@@ -4521,7 +4521,7 @@
 
     ## The Rule of 40 Connection
 
-    High P/S multiples are justified when the [Rule of 40](/glossary/rule-of-40/) score is strong. A company
+    High P/S multiples are justified when the [Rule of 40](/glossary/#rule-of-40) score is strong. A company
     growing 50% with −5% FCF margin (Rule of 40 = 45%) trades at higher multiples
     than one growing 20% with −15% margin (Rule of 40 = 5%).
 
@@ -4591,7 +4591,7 @@
 
     For a constant monthly churn rate:
 
-    **[LTV](/glossary/ltv/)** = Monthly Revenue per Customer ÷ Monthly Churn Rate
+    **[LTV](/glossary/#ltv)** = Monthly Revenue per Customer ÷ Monthly Churn Rate
 
     At $99/month and 2% monthly churn: LTV = $99 ÷ 0.02 = **$4,950**
 
@@ -5182,7 +5182,7 @@
 
     Investors use gross margin to assess scalability. A SaaS business with 80% gross margin
     can fund sales and marketing from gross profit; a 50% gross margin business struggles
-    to reach [Rule of 40](/glossary/rule-of-40/) territory without tight cost discipline.
+    to reach [Rule of 40](/glossary/#rule-of-40) territory without tight cost discipline.
 
     ## Gross margin vs. net margin
 
@@ -5287,7 +5287,7 @@
 
     ## Burn multiples by stage
 
-    | Stage | Healthy burn multiple (net burn / net new [ARR](/glossary/arr/)) |
+    | Stage | Healthy burn multiple (net burn / net new [ARR](/glossary/#arr)) |
     |-------|----------------------------------------------|
     | Pre-revenue | N/A |
     | $0–1M ARR | 2–4× |
@@ -5464,7 +5464,7 @@
     ## Exponential growth applications
 
     The Rule of 72 works for any exponential process:
-    - SaaS [ARR](/glossary/arr/) growth rate → years to double revenue
+    - SaaS [ARR](/glossary/#arr) growth rate → years to double revenue
     - Population growth → doubling time
     - Debt at given interest rate → years to double what you owe
 
@@ -5506,7 +5506,7 @@
     | < 6 months | Exceptional — very capital-efficient |
     | 6–12 months | Strong — standard VC benchmark |
     | 12–18 months | Acceptable for enterprise SaaS |
-    | 18–24 months | Requires high [LTV](/glossary/ltv/) to justify |
+    | 18–24 months | Requires high [LTV](/glossary/#ltv) to justify |
     | > 24 months | High risk — needs high retention |
 
     ## CAC Payback vs LTV:CAC
@@ -5578,8 +5578,8 @@
 
     ### Intent Pages
 
-    - [What Is a Sales Funnel?](/tools/sales-funnel-calculator/what-is-a-sales-funnel/)
-    - [MQL vs SQL: What's the Difference?](/tools/sales-funnel-calculator/mql-vs-sql-difference/)
+    - [What Is a Sales Funnel?](/tools/sales-funnel-calculator/#what-is-a-sales-funnel)
+    - [MQL vs SQL: What's the Difference?](/tools/sales-funnel-calculator/#mql-vs-sql-difference)
 
 - slug: dscr-calculator
   title: DSCR Calculator
@@ -5634,8 +5634,8 @@
 
     ### Intent Pages
 
-    - [What Is Debt Service Coverage Ratio?](/tools/dscr-calculator/what-is-debt-service-coverage-ratio/)
-    - [DSCR Requirements by Lender Type](/tools/dscr-calculator/dscr-requirements-by-lender/)
+    - [What Is Debt Service Coverage Ratio?](/tools/dscr-calculator/#what-is-debt-service-coverage-ratio)
+    - [DSCR Requirements by Lender Type](/tools/dscr-calculator/#dscr-requirements-by-lender)
 
 - slug: ebitda-multiple-calculator
   title: EBITDA Multiple Calculator
@@ -5690,8 +5690,8 @@
 
     ### Intent Pages
 
-    - [What Is EV/EBITDA?](/tools/ebitda-multiple-calculator/what-is-ev-ebitda/)
-    - [EBITDA Multiple by Industry](/tools/ebitda-multiple-calculator/ebitda-multiple-by-industry/)
+    - [What Is EV/EBITDA?](/tools/ebitda-multiple-calculator/#what-is-ev-ebitda)
+    - [EBITDA Multiple by Industry](/tools/ebitda-multiple-calculator/#ebitda-multiple-by-industry)
 
 - slug: current-ratio-calculator
   title: Current Ratio Calculator
@@ -5739,8 +5739,8 @@
 
     ### Intent Pages
 
-    - [What Is the Current Ratio?](/tools/current-ratio-calculator/what-is-the-current-ratio/)
-    - [Current Ratio vs Quick Ratio: Key Differences](/tools/current-ratio-calculator/current-ratio-vs-quick-ratio/)
+    - [What Is the Current Ratio?](/tools/current-ratio-calculator/#what-is-the-current-ratio)
+    - [Current Ratio vs Quick Ratio: Key Differences](/tools/current-ratio-calculator/#current-ratio-vs-quick-ratio)
 
 - slug: markup-calculator
   title: Markup Calculator
@@ -5793,8 +5793,8 @@
 
     ### Intent Pages
 
-    - [What Is Markup vs Margin?](/tools/markup-calculator/what-is-markup-vs-margin/)
-    - [How to Calculate Markup Percentage](/tools/markup-calculator/how-to-calculate-markup-percentage/)
+    - [What Is Markup vs Margin?](/tools/markup-calculator/#what-is-markup-vs-margin)
+    - [How to Calculate Markup Percentage](/tools/markup-calculator/#how-to-calculate-markup-percentage)
 
 - slug: aov-calculator
   title: Average Order Value Calculator
@@ -5856,8 +5856,8 @@
 
     ### Intent Pages
 
-    - [What Is Average Order Value (AOV)?](/tools/aov-calculator/what-is-average-order-value/)
-    - [How to Increase Average Order Value](/tools/aov-calculator/how-to-increase-average-order-value/)
+    - [What Is Average Order Value (AOV)?](/tools/aov-calculator/#what-is-average-order-value)
+    - [How to Increase Average Order Value](/tools/aov-calculator/#how-to-increase-average-order-value)
 
 - slug: commission-calculator
   title: Commission Calculator
@@ -5899,7 +5899,7 @@
 
     | Role | Typical Commission Rate | OTE Split |
     |------|------------------------|-----------|
-    | Account Executive | 8–12% of [ARR](/glossary/arr/) | 50/50 base/variable |
+    | Account Executive | 8–12% of [ARR](/glossary/#arr) | 50/50 base/variable |
     | SDR/BDR (Sales/Business Development Representative) | 4–8% on pipeline | 70/30 base/variable |
     | Sales Manager | 2–4% on team | 60/40 base/variable |
     | CSM (Customer Success Manager) / Account Manager | 5–10% on expansion | 70/30 base/variable |
@@ -5910,8 +5910,8 @@
 
     ### Intent Pages
 
-    - [What Is On-Target Earnings (OTE)?](/tools/commission-calculator/what-is-on-target-earnings/)
-    - [How to Structure a Sales Commission Plan](/tools/commission-calculator/how-to-structure-sales-commission-plan/)
+    - [What Is On-Target Earnings (OTE)?](/tools/commission-calculator/#what-is-on-target-earnings)
+    - [How to Structure a Sales Commission Plan](/tools/commission-calculator/#how-to-structure-sales-commission-plan)
 
 - slug: roa-calculator
   title: Return on Assets Calculator
@@ -5964,8 +5964,8 @@
 
     ### Intent Pages
 
-    - [What Is Return on Assets (ROA)?](/tools/roa-calculator/what-is-return-on-assets/)
-    - [ROA vs ROE: What Is the Difference?](/tools/roa-calculator/roa-vs-roe-difference/)
+    - [What Is Return on Assets (ROA)?](/tools/roa-calculator/#what-is-return-on-assets)
+    - [ROA vs ROE: What Is the Difference?](/tools/roa-calculator/#roa-vs-roe-difference)
 
 - slug: debt-to-equity-calculator
   title: Debt-to-Equity Ratio Calculator
@@ -6018,8 +6018,8 @@
 
     ### Intent Pages
 
-    - [What Is the Debt-to-Equity Ratio?](/tools/debt-to-equity-calculator/what-is-debt-to-equity-ratio/)
-    - [Debt-to-Equity Ratio by Industry](/tools/debt-to-equity-calculator/debt-to-equity-ratio-by-industry/)
+    - [What Is the Debt-to-Equity Ratio?](/tools/debt-to-equity-calculator/#what-is-debt-to-equity-ratio)
+    - [Debt-to-Equity Ratio by Industry](/tools/debt-to-equity-calculator/#debt-to-equity-ratio-by-industry)
 
 - slug: customer-retention-rate-calculator
   title: Customer Retention Rate Calculator
@@ -6062,7 +6062,7 @@
     ### Retention Rate and LTV
 
     Add your average revenue per customer (ARPU) and this calculator also shows implied
-    customer [LTV](/glossary/ltv/) — the total revenue a customer generates before churning,
+    customer [LTV](/glossary/#ltv) — the total revenue a customer generates before churning,
     based on your current retention rate. Small improvements in retention compound into large
     LTV gains, since customers stick around longer on average.
 
@@ -6081,8 +6081,8 @@
 
     ### Intent Pages
 
-    - [What Is Customer Retention Rate?](/tools/customer-retention-rate-calculator/what-is-customer-retention-rate/)
-    - [How to Improve Customer Retention Rate](/tools/customer-retention-rate-calculator/how-to-improve-customer-retention/)
+    - [What Is Customer Retention Rate?](/tools/customer-retention-rate-calculator/#what-is-customer-retention-rate)
+    - [How to Improve Customer Retention Rate](/tools/customer-retention-rate-calculator/#how-to-improve-customer-retention)
 
 - slug: percentage-change-calculator
   title: Percentage Change Calculator
@@ -6132,8 +6132,8 @@
 
     ### Intent Pages
 
-    - [Percentage Change Formula and Examples](/tools/percentage-change-calculator/percentage-change-formula/)
-    - [What Is CAGR (Compound Annual Growth Rate)?](/tools/percentage-change-calculator/what-is-cagr/)
+    - [Percentage Change Formula and Examples](/tools/percentage-change-calculator/#percentage-change-formula)
+    - [What Is CAGR (Compound Annual Growth Rate)?](/tools/percentage-change-calculator/#what-is-cagr)
 
 - slug: cogs-calculator
   title: COGS Calculator
@@ -6191,8 +6191,8 @@
 
     ### Intent Pages
 
-    - [What Is COGS (Cost of Goods Sold)?](/tools/cogs-calculator/what-is-cost-of-goods-sold/)
-    - [COGS vs Operating Expenses: What's the Difference?](/tools/cogs-calculator/cogs-vs-operating-expenses/)
+    - [What Is COGS (Cost of Goods Sold)?](/tools/cogs-calculator/#what-is-cost-of-goods-sold)
+    - [COGS vs Operating Expenses: What's the Difference?](/tools/cogs-calculator/#cogs-vs-operating-expenses)
 
 - slug: net-profit-calculator
   title: Net Profit Calculator
@@ -6256,8 +6256,8 @@
 
     ### Intent Pages
 
-    - [How to Calculate Net Profit Margin](/tools/net-profit-calculator/how-to-calculate-net-profit-margin/)
-    - [Gross Profit vs Net Profit: Key Differences](/tools/net-profit-calculator/gross-profit-vs-net-profit/)
+    - [How to Calculate Net Profit Margin](/tools/net-profit-calculator/#how-to-calculate-net-profit-margin)
+    - [Gross Profit vs Net Profit: Key Differences](/tools/net-profit-calculator/#gross-profit-vs-net-profit)
 
 - slug: financial-ratios-calculator
   title: Financial Ratios Calculator
@@ -6320,8 +6320,8 @@
 
     ### Intent Pages
 
-    - [Key Financial Ratios Every Business Owner Should Know](/tools/financial-ratios-calculator/key-financial-ratios-guide/)
-    - [How to Read a Balance Sheet Using Ratios](/tools/financial-ratios-calculator/how-to-read-balance-sheet-ratios/)
+    - [Key Financial Ratios Every Business Owner Should Know](/tools/financial-ratios-calculator/#key-financial-ratios-guide)
+    - [How to Read a Balance Sheet Using Ratios](/tools/financial-ratios-calculator/#how-to-read-balance-sheet-ratios)
 
 - slug: times-interest-earned-calculator
   title: Times Interest Earned Calculator
@@ -6371,8 +6371,8 @@
 
     ### Intent Pages
 
-    - [What Is the Times Interest Earned Ratio?](/tools/times-interest-earned-calculator/what-is-times-interest-earned-ratio/)
-    - [TIE Ratio vs DSCR: What's the Difference?](/tools/times-interest-earned-calculator/tie-ratio-vs-dscr/)
+    - [What Is the Times Interest Earned Ratio?](/tools/times-interest-earned-calculator/#what-is-times-interest-earned-ratio)
+    - [TIE Ratio vs DSCR: What's the Difference?](/tools/times-interest-earned-calculator/#tie-ratio-vs-dscr)
 
 - slug: pe-ratio-calculator
   title: P/E Ratio Calculator
@@ -6431,8 +6431,8 @@
 
     ### Intent Pages
 
-    - [What Is the P/E Ratio and How to Use It?](/tools/pe-ratio-calculator/what-is-pe-ratio/)
-    - [PEG Ratio vs P/E Ratio: Which Is Better for Valuation?](/tools/pe-ratio-calculator/peg-ratio-vs-pe-ratio/)
+    - [What Is the P/E Ratio and How to Use It?](/tools/pe-ratio-calculator/#what-is-pe-ratio)
+    - [PEG Ratio vs P/E Ratio: Which Is Better for Valuation?](/tools/pe-ratio-calculator/#peg-ratio-vs-pe-ratio)
 
 - slug: revenue-growth-rate-calculator
   title: Revenue Growth Rate Calculator
@@ -6489,8 +6489,8 @@
 
     ### Intent Pages
 
-    - [How to Calculate Revenue Growth Rate](/tools/revenue-growth-rate-calculator/how-to-calculate-revenue-growth-rate/)
-    - [What Is the Rule of 40 for SaaS?](/tools/revenue-growth-rate-calculator/what-is-rule-of-40/)
+    - [How to Calculate Revenue Growth Rate](/tools/revenue-growth-rate-calculator/#how-to-calculate-revenue-growth-rate)
+    - [What Is the Rule of 40 for SaaS?](/tools/revenue-growth-rate-calculator/#what-is-rule-of-40)
 
 - slug: enterprise-value-calculator
   title: Enterprise Value Calculator
@@ -6552,8 +6552,8 @@
 
     ### Intent Pages
 
-    - [What Is Enterprise Value?](/tools/enterprise-value-calculator/what-is-enterprise-value/)
-    - [EV/EBITDA Multiple: What It Means and Industry Benchmarks](/tools/enterprise-value-calculator/ev-ebitda-multiple-benchmarks/)
+    - [What Is Enterprise Value?](/tools/enterprise-value-calculator/#what-is-enterprise-value)
+    - [EV/EBITDA Multiple: What It Means and Industry Benchmarks](/tools/enterprise-value-calculator/#ev-ebitda-multiple-benchmarks)
 
 - slug: invoice-discount-calculator
   title: Invoice Early Payment Discount Calculator
@@ -6604,8 +6604,8 @@
 
     ### Intent Pages
 
-    - [What Is a 2/10 Net 30 Payment Term?](/tools/invoice-discount-calculator/what-is-2-10-net-30/)
-    - [When Should You Take an Early Payment Discount?](/tools/invoice-discount-calculator/when-to-take-early-payment-discount/)
+    - [What Is a 2/10 Net 30 Payment Term?](/tools/invoice-discount-calculator/#what-is-2-10-net-30)
+    - [When Should You Take an Early Payment Discount?](/tools/invoice-discount-calculator/#when-to-take-early-payment-discount)
 
 - slug: price-per-unit-calculator
   title: Price Per Unit Calculator
@@ -6662,8 +6662,8 @@
 
     ### Intent Pages
 
-    - [How to Calculate Price Per Unit](/tools/price-per-unit-calculator/how-to-calculate-price-per-unit/)
-    - [Unit Price vs Total Price: Making Smart Bulk Purchase Decisions](/tools/price-per-unit-calculator/unit-price-bulk-purchasing-guide/)
+    - [How to Calculate Price Per Unit](/tools/price-per-unit-calculator/#how-to-calculate-price-per-unit)
+    - [Unit Price vs Total Price: Making Smart Bulk Purchase Decisions](/tools/price-per-unit-calculator/#unit-price-bulk-purchasing-guide)
 
 - slug: gross-revenue-retention-calculator
   title: Gross Revenue Retention Calculator
@@ -6698,7 +6698,7 @@
     | Metric | Includes Expansion | Can Exceed 100% |
     |--------|--------------------|----------------|
     | **GRR** | No | No |
-    | **[NRR](/glossary/nrr/)** | Yes | Yes |
+    | **[NRR](/glossary/#nrr)** | Yes | Yes |
 
     GRR tells you about the health of your base retention. NRR tells you about total revenue momentum. A company with GRR of 85% but NRR of 110% is masking a significant churn problem with upsells.
 
@@ -6718,8 +6718,8 @@
 
     ### Intent Pages
 
-    - [GRR vs NRR: What's the Difference?](/tools/gross-revenue-retention-calculator/grr-vs-nrr-difference/)
-    - [What Is a Good Gross Revenue Retention Rate?](/tools/gross-revenue-retention-calculator/what-is-good-gross-revenue-retention/)
+    - [GRR vs NRR: What's the Difference?](/tools/gross-revenue-retention-calculator/#grr-vs-nrr-difference)
+    - [What Is a Good Gross Revenue Retention Rate?](/tools/gross-revenue-retention-calculator/#what-is-good-gross-revenue-retention)
 
 - slug: employee-turnover-calculator
   title: Employee Turnover Rate Calculator
@@ -6775,8 +6775,8 @@
 
     ### Intent Pages
 
-    - [How to Calculate Employee Turnover Rate](/tools/employee-turnover-calculator/how-to-calculate-employee-turnover-rate/)
-    - [True Cost of Employee Turnover](/tools/employee-turnover-calculator/true-cost-of-employee-turnover/)
+    - [How to Calculate Employee Turnover Rate](/tools/employee-turnover-calculator/#how-to-calculate-employee-turnover-rate)
+    - [True Cost of Employee Turnover](/tools/employee-turnover-calculator/#true-cost-of-employee-turnover)
 
 - slug: budget-variance-calculator
   title: Budget Variance Calculator
@@ -6833,5 +6833,5 @@
 
     ### Intent Pages
 
-    - [What Is Budget Variance Analysis?](/tools/budget-variance-calculator/what-is-budget-variance-analysis/)
-    - [Favorable vs Unfavorable Variance: Key Differences](/tools/budget-variance-calculator/favorable-vs-unfavorable-variance/)
+    - [What Is Budget Variance Analysis?](/tools/budget-variance-calculator/#what-is-budget-variance-analysis)
+    - [Favorable vs Unfavorable Variance: Key Differences](/tools/budget-variance-calculator/#favorable-vs-unfavorable-variance)

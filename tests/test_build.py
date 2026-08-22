@@ -7,6 +7,7 @@ from pathlib import Path
 from urllib.parse import unquote
 
 import yaml
+from markupsafe import escape  # same escaping Jinja applies in templates
 
 ROOT = Path(__file__).resolve().parent.parent
 PYTHON = ROOT / ".venv" / "bin" / "python"
@@ -41,8 +42,6 @@ EXPECTED_FILES = (
     ]
     + [f"tools/{slug}/index.html" for slug in TOOL_SLUGS]
     + [f"static/js/tools/{slug}.js" for slug in TOOL_SLUGS]
-    + [f"tools/{parent}/{slug}/index.html" for parent, slug in INTENT_PAGES]
-    + [f"tools/stripe-fee-calculator/{slug}/index.html" for slug in COUNTRY_PAGE_SLUGS]
 )
 
 
@@ -69,10 +68,24 @@ def test_all_expected_files_exist():
 
 
 def test_sitemap_contains_all_tool_urls():
+    """Every canonical tool URL is in sitemap.xml.
+
+    A tool whose canonical points at another page is deliberately excluded --
+    listing it would contradict its own canonical tag. That exclusion used to
+    be masked here: the sitemap also carried its intent-page URLs, and
+    "/tools/<slug>/" matched as a substring of "/tools/<slug>/<intent>/".
+    With those URLs merged away, the assertion has to name the exception."""
     run_build()
     sitemap = (DIST / "sitemap.xml").read_text()
+    tools = yaml.safe_load((ROOT / "content" / "tools.yaml").read_text())
+    canonicalised = {t["slug"] for t in tools if t.get("canonical_to")}
     for slug in TOOL_SLUGS:
-        assert f"/tools/{slug}/" in sitemap, f"Tool {slug} missing from sitemap"
+        if slug in canonicalised:
+            assert f"/tools/{slug}/</loc>" not in sitemap, (
+                f"{slug} canonicalises elsewhere but is listed in sitemap.xml"
+            )
+            continue
+        assert f"/tools/{slug}/</loc>" in sitemap, f"Tool {slug} missing from sitemap"
 
 
 def test_robots_contains_sitemap_reference():
@@ -117,24 +130,6 @@ def test_privacy_page_exists_with_content():
     assert len(privacy) > 1000
 
 
-def test_intent_pages_exist():
-    run_build()
-    missing = [
-        f"tools/{parent}/{slug}/index.html"
-        for parent, slug in INTENT_PAGES
-        if not (DIST / "tools" / parent / slug / "index.html").exists()
-    ]
-    assert not missing, f"Missing intent page files: {missing}"
-
-
-def test_sitemap_contains_intent_page_urls():
-    run_build()
-    sitemap = (DIST / "sitemap.xml").read_text()
-    for parent, slug in INTENT_PAGES:
-        url = f"/tools/{parent}/{slug}/"
-        assert url in sitemap, f"Intent page {url} missing from sitemap"
-
-
 def test_contact_email_derived_from_base_url():
     run_build()
     config = yaml.safe_load((ROOT / "content" / "config.yaml").read_text())
@@ -147,13 +142,6 @@ def test_contact_email_derived_from_base_url():
 
     index = (DIST / "index.html").read_text()
     assert expected_email in index
-
-
-def test_intent_pages_link_to_parent_tool():
-    run_build()
-    for parent, slug in INTENT_PAGES[:3]:
-        html = (DIST / "tools" / parent / slug / "index.html").read_text()
-        assert f"/tools/{parent}/" in html, f"Intent page {slug} missing link to parent {parent}"
 
 
 def test_faq_schema_on_tools_with_faq_section():
@@ -174,11 +162,26 @@ def test_faq_schema_matches_visible_faq_text():
 
 
 def test_tools_without_faq_section_have_no_faq_schema():
+    """FAQPage schema appears only where a Q&A block is actually on the page.
+
+    A tool's own body is no longer the only source: a merged guide section can
+    carry its own FAQ block, and those questions are visibly on the tool page,
+    so they belong in its schema. The page must therefore be judged on the
+    body plus everything merged into it."""
     run_build()
-    from freetoolkit.build import extract_faqs_from_body
+    from freetoolkit.build import extract_faqs_from_body, load_intent_pages, load_countries
 
     tools = yaml.safe_load((ROOT / "content" / "tools.yaml").read_text())
-    slugs_without_faqs = [t["slug"] for t in tools if not extract_faqs_from_body(t["body"])]
+    merged_bodies: dict[str, list[str]] = {}
+    for entry in load_intent_pages() + load_countries():
+        merged_bodies.setdefault(entry["parent_tool"], []).append(entry.get("body", ""))
+
+    slugs_without_faqs = [
+        t["slug"]
+        for t in tools
+        if not extract_faqs_from_body(t["body"])
+        and not any(extract_faqs_from_body(b) for b in merged_bodies.get(t["slug"], []))
+    ]
     assert slugs_without_faqs, "expected at least one tool without a FAQ section"
     for slug in slugs_without_faqs:
         html = (DIST / "tools" / slug / "index.html").read_text()
@@ -242,49 +245,6 @@ def test_cross_tools_appear_on_tool_pages():
         assert "You might also need" in html, f"{slug} missing cross-category tools section"
 
 
-def test_intent_pages_have_body_html():
-    run_build()
-    for parent, slug in INTENT_PAGES[:5]:
-        html = (DIST / "tools" / parent / slug / "index.html").read_text()
-        assert len(html) > 2000, f"Intent page {slug} looks suspiciously short"
-        assert "<p>" in html or "<h" in html, f"Intent page {slug} missing body HTML content"
-
-
-def test_intent_and_country_pages_have_unique_meta_descriptions():
-    """No two of the 244 intent/country pages should share an identical
-    <meta name="description"> after template interpolation -- duplicate
-    descriptions read as thin/near-duplicate content to Google, and with
-    this many programmatically-templated pages it's easy for two entries
-    to accidentally collide."""
-    run_build()
-    desc_re = re.compile(r'<meta name="description" content="([^"]*)">')
-    seen: dict[str, str] = {}
-    duplicates = []
-    for parent, slug in INTENT_PAGES:
-        html = (DIST / "tools" / parent / slug / "index.html").read_text()
-        match = desc_re.search(html)
-        assert match, f"Intent page {parent}/{slug} missing meta description"
-        desc = match.group(1)
-        page_id = f"{parent}/{slug}"
-        if desc in seen:
-            duplicates.append((seen[desc], page_id, desc))
-        else:
-            seen[desc] = page_id
-    for slug in COUNTRY_PAGE_SLUGS:
-        html = (DIST / "tools" / "stripe-fee-calculator" / slug / "index.html").read_text()
-        match = desc_re.search(html)
-        assert match, f"Country page {slug} missing meta description"
-        desc = match.group(1)
-        page_id = f"stripe-fee-calculator/{slug}"
-        if desc in seen:
-            duplicates.append((seen[desc], page_id, desc))
-        else:
-            seen[desc] = page_id
-    assert not duplicates, "Duplicate meta descriptions found:\n" + "\n".join(
-        f"  {a} == {b}: {desc!r}" for a, b, desc in duplicates
-    )
-
-
 def test_nav_has_site_navigation_element_schema():
     run_build()
     html = (DIST / "index.html").read_text()
@@ -296,13 +256,6 @@ def test_pwa_manifest_linked():
     html = (DIST / "index.html").read_text()
     assert 'rel="manifest" href="/manifest.json"' in html, "Home page missing web app manifest link"
     assert (DIST / "manifest.json").exists(), "manifest.json not generated at dist root"
-
-
-def test_intent_pages_have_article_schema():
-    run_build()
-    for parent, slug in INTENT_PAGES[:5]:
-        html = (DIST / "tools" / parent / slug / "index.html").read_text()
-        assert '"Article"' in html, f"Intent page {slug} missing Article JSON-LD schema"
 
 
 def test_changelog_page_lists_all_tools():
@@ -373,12 +326,16 @@ def test_no_executable_inline_scripts_anywhere():
 
 def test_sub_sitemaps_exist_and_index_references_them():
     run_build()
-    for name in ("sitemap_tools.xml", "sitemap_pages.xml", "sitemap_intent.xml"):
+    for name in ("sitemap_tools.xml", "sitemap_pages.xml"):
         assert (DIST / name).exists(), f"Missing {name}"
+    assert not (DIST / "sitemap_intent.xml").exists(), (
+        "sitemap_intent.xml should be gone: intent pages are now sections of "
+        "their parent tool page, not separate URLs"
+    )
     index = (DIST / "sitemap_index.xml").read_text()
     assert "sitemap_tools.xml" in index
     assert "sitemap_pages.xml" in index
-    assert "sitemap_intent.xml" in index
+    assert "sitemap_intent.xml" not in index
     tools_xml = (DIST / "sitemap_tools.xml").read_text()
     # A tool whose canonical points at another page is not a canonical URL;
     # listing it here would contradict its own canonical tag.
@@ -392,9 +349,7 @@ def test_sub_sitemaps_exist_and_index_references_them():
             )
             continue
         assert f"/tools/{slug}/" in tools_xml, f"sitemap_tools.xml missing {slug}"
-    intent_xml = (DIST / "sitemap_intent.xml").read_text()
-    parent, slug = INTENT_PAGES[0]
-    assert f"/tools/{parent}/{slug}/" in intent_xml
+
 
 
 def test_payment_fee_comparison_tool_builds():
@@ -445,29 +400,6 @@ def test_tool_pages_have_date_published():
         assert tool["date_added"] in content, f"{tool['slug']} missing datePublished {tool['date_added']}"
 
 
-def test_intent_pages_article_schema_has_date():
-    """Intent pages whose parent tool has date_added should have datePublished in Article schema."""
-    run_build()
-    import yaml
-    tools = yaml.safe_load((ROOT / "content" / "tools.yaml").read_text())
-    tool_dates = {t["slug"]: t.get("date_added", "") for t in tools}
-    intent = yaml.safe_load((ROOT / "content" / "intent_pages.yaml").read_text())
-    checked = 0
-    for ip in intent:
-        date = tool_dates.get(ip["parent_tool"], "")
-        if not date:
-            continue
-        page = DIST / "tools" / ip["parent_tool"] / ip["slug"] / "index.html"
-        if not page.exists():
-            continue
-        content = page.read_text()
-        assert date in content, f"Intent page {ip['slug']} missing datePublished {date}"
-        checked += 1
-        if checked >= 5:
-            break
-    assert checked > 0, "No intent pages with date_added parent tool found"
-
-
 def test_rss_has_category_tags():
     """RSS feed should have <category> tags for each tool."""
     run_build()
@@ -481,20 +413,6 @@ def test_rss_has_channel_image():
     rss = (DIST / "rss.xml").read_text()
     assert "<image>" in rss, "RSS feed missing <image> channel element"
     assert "og.png" in rss, "RSS channel image should reference og.png"
-
-
-def test_sitemap_intent_has_lastmod():
-    """sitemap_intent.xml should have <lastmod> matching parent tool date_added."""
-    run_build()
-    intent_xml = (DIST / "sitemap_intent.xml").read_text()
-    import yaml
-    tools = yaml.safe_load((ROOT / "content" / "tools.yaml").read_text())
-    tool_dates = {t["slug"]: t.get("date_added", "") for t in tools}
-    intent = yaml.safe_load((ROOT / "content" / "intent_pages.yaml").read_text())
-    for ip in intent[:5]:
-        date = tool_dates.get(ip["parent_tool"], "")
-        if date:
-            assert date in intent_xml, f"sitemap_intent.xml missing lastmod {date} for {ip['slug']}"
 
 
 def test_sitemap_news_has_date_added():
@@ -615,14 +533,6 @@ def test_footer_has_build_date():
     assert today in html, f"Home page footer missing build date {today}"
 
 
-def test_intent_pages_have_hreflang():
-    """Intent pages should have hreflang='en'."""
-    run_build()
-    for parent, slug in INTENT_PAGES[:5]:
-        html = (DIST / "tools" / parent / slug / "index.html").read_text()
-        assert 'hreflang="en"' in html, f"Intent page {slug} missing hreflang=en"
-
-
 def test_payroll_tool_page_builds():
     """Payroll cost calculator page should build with required elements."""
     run_build()
@@ -631,14 +541,6 @@ def test_payroll_tool_page_builds():
     assert "HowTo" in html
     assert "pr-salary" in html
     assert "FICA" in html
-
-
-def test_intent_pages_have_reading_time():
-    """Intent pages should show reading time estimate."""
-    run_build()
-    for parent, slug in INTENT_PAGES[:5]:
-        html = (DIST / "tools" / parent / slug / "index.html").read_text()
-        assert "min read" in html, f"Intent page {slug} missing reading time estimate"
 
 
 def test_sitemap_tools_has_date_added_lastmod():
@@ -672,26 +574,13 @@ def test_sitemap_respects_updated_field_override():
     config = ftk_build.load_config()
     tools = ftk_build.load_tools()
     pages = ftk_build.load_pages(config, len(tools))
-    intent_pages = ftk_build.load_intent_pages()
     tools[0]["updated"] = "2099-01-01"
-    ftk_build.write_sitemap(config, tools, pages, intent_pages)
+    ftk_build.write_sitemap(config, tools, pages)
 
     sitemap = (DIST / "sitemap.xml").read_text()
     assert (
         f"/tools/{tools[0]['slug']}/</loc><lastmod>2099-01-01</lastmod>" in sitemap
     ), "sitemap.xml did not use the tool's 'updated' field for lastmod"
-
-
-def test_intent_pages_have_article_published_time():
-    """Intent pages should have article:published_time meta tag."""
-    run_build()
-    import yaml
-    tools = yaml.safe_load((ROOT / "content" / "tools.yaml").read_text())
-    tool_dates = {t["slug"]: t.get("date_added", "") for t in tools}
-    for parent, slug in INTENT_PAGES[:5]:
-        if tool_dates.get(parent):
-            html = (DIST / "tools" / parent / slug / "index.html").read_text()
-            assert "article:published_time" in html, f"Intent page {slug} missing article:published_time"
 
 
 def test_break_even_tool_page_builds():
@@ -786,22 +675,6 @@ def test_rss_has_managing_editor():
     rss = (DIST / "rss.xml").read_text()
     assert "<managingEditor>" in rss, "RSS missing managingEditor"
     assert "<webMaster>" in rss, "RSS missing webMaster"
-
-
-def test_intent_pages_have_article_tag():
-    """Intent pages with parent tool keywords should have article:tag meta."""
-    run_build()
-    import yaml
-    tools = yaml.safe_load((ROOT / "content" / "tools.yaml").read_text())
-    tools_with_kw = {t["slug"]: t for t in tools if t.get("keywords")}
-    count = 0
-    for parent, slug in INTENT_PAGES[:10]:
-        if parent in tools_with_kw:
-            html = (DIST / "tools" / parent / slug / "index.html").read_text()
-            assert 'article:tag' in html, f"Intent page {slug} missing article:tag meta"
-            count += 1
-            if count >= 3:
-                break
 
 
 def test_widget_inputs_have_autocomplete_off():
@@ -953,16 +826,42 @@ def test_no_ad_units_or_network_requests_when_ads_disabled():
     """ads_enabled: false must mean no ad units *and* no contact with Google's
     ad network -- no loader, no CMP, not even a preconnect.
 
-    AdSense review is satisfied by ads.txt (one of Google's three supported
-    verification methods) rather than by shipping the loader early, so the site
-    can keep its "no tracking" promise honestly until ads actually go live."""
+    The site now ships with ads_enabled: true, because AdSense reviews the site
+    as served and has to find the loader and /ads.txt on it. That makes this a
+    render-time check rather than an assertion about dist/: turning the flag
+    back off must still take every ad-network reference off the page."""
     run_build()
-    html = (DIST / "index.html").read_text()
+    from freetoolkit import build as ftk_build
+
+    env = ftk_build.build_env()
+    config = ftk_build.load_config()
+    config["site"] = dict(config["site"], ads_enabled=False)
+    tools = ftk_build.load_tools()
+
+    out = DIST / "_test_ads_disabled" / "index.html"
+    ftk_build.render(
+        env,
+        "index.html",
+        out,
+        path="/",
+        title=config["site"]["name"],
+        description=config["site"]["description"],
+        site=config["site"],
+        categories=config["categories"],
+        tools=tools,
+        tools_by_category={},
+        all_intent_pages=[],
+        intent_count_by_category={},
+        year=2026,
+        build_date="2026-01-01",
+    )
+    html = out.read_text()
     assert 'class="adsbygoogle"' not in html, "an ad unit rendered while ads_enabled is false"
     assert "ad-slot" not in html, "an ad slot container rendered while ads_enabled is false"
     assert "adsbygoogle.js" not in html, "AdSense loader shipped while ads_enabled is false"
     assert "fundingchoicesmessages.google.com" not in html, "CMP shipped while ads_enabled is false"
     assert "pagead2.googlesyndication.com" not in html, "preconnect to ad network while ads disabled"
+    assert 'id="consent-revoke"' not in html, "consent control shipped while ads_enabled is false"
 
 
 def test_ads_txt_carries_publisher_line_for_verification():
@@ -1052,18 +951,6 @@ def test_revenue_per_employee_tool_builds():
     assert "rpe-benchmark" in html
 
 
-def test_intent_pages_have_prev_next_links():
-    """Intent pages with siblings should have rel=prev/rel=next links."""
-    run_build()
-    found = False
-    for parent, slug in INTENT_PAGES:
-        html = (DIST / "tools" / parent / slug / "index.html").read_text()
-        if 'rel="prev"' in html or 'rel="next"' in html:
-            found = True
-            break
-    assert found, "No intent pages found with rel=prev or rel=next links"
-
-
 def test_rss_has_language_element():
     """RSS feed should have <language> channel element."""
     run_build()
@@ -1146,14 +1033,6 @@ def test_rss_has_generator():
     run_build()
     rss = (DIST / "rss.xml").read_text()
     assert "<generator>" in rss, "RSS missing <generator> element"
-
-
-def test_intent_pages_have_robots_meta():
-    """Intent pages should have robots meta tag."""
-    run_build()
-    for parent, slug in INTENT_PAGES[:3]:
-        html = (DIST / "tools" / parent / slug / "index.html").read_text()
-        assert 'name="robots"' in html, f"Intent page {slug} missing robots meta"
 
 
 def test_tools_index_has_role_search():
@@ -1268,13 +1147,6 @@ def test_tool_pages_have_keywords_meta():
     assert 'burn multiple' in html.lower()
 
 
-def test_sitemap_intent_has_image_entries():
-    """sitemap_intent.xml should have image:image entries."""
-    run_build()
-    xml = (DIST / "sitemap_intent.xml").read_text()
-    assert "image:image" in xml, "sitemap_intent.xml missing image entries"
-
-
 def test_pages_have_apple_mobile_title():
     """Pages should have apple-mobile-web-app-title meta."""
     run_build()
@@ -1295,14 +1167,6 @@ def test_saas_quick_ratio_tool_page_builds():
     html = (DIST / "tools" / "saas-quick-ratio-calculator" / "index.html").read_text()
     assert "sqr-result" in html, "Quick Ratio page missing result output element"
     assert "sqr-growth-mrr" in html, "Quick Ratio page missing growth-mrr output"
-
-
-def test_intent_pages_have_keywords_meta():
-    """Intent pages should have keywords meta from parent tool."""
-    run_build()
-    # Use a tool with known keywords
-    html = (DIST / "tools" / "saas-quick-ratio-calculator" / "what-is-saas-quick-ratio" / "index.html").read_text()
-    assert 'name="keywords"' in html, "Intent page missing keywords meta"
 
 
 def test_pages_have_css_preload():
@@ -1468,20 +1332,6 @@ def test_payback_period_tool_page_builds():
     assert "pp-disc-pb" in html, "Payback Period page missing discounted payback output"
 
 
-def test_intent_pages_have_article_author():
-    """Intent pages Article JSON-LD should include author."""
-    run_build()
-    html = (DIST / "tools" / "payback-period-calculator" / "payback-period-vs-roi" / "index.html").read_text()
-    assert '"author"' in html, "Intent page Article JSON-LD missing author"
-
-
-def test_intent_pages_have_article_image():
-    """Intent pages Article JSON-LD should include image from parent tool."""
-    run_build()
-    html = (DIST / "tools" / "payback-period-calculator" / "payback-period-vs-roi" / "index.html").read_text()
-    assert '"image"' in html, "Intent page Article JSON-LD missing image"
-
-
 def test_pages_have_robots_max_snippet():
     """Pages should have robots meta with max-snippet from base.html."""
     run_build()
@@ -1489,48 +1339,24 @@ def test_pages_have_robots_max_snippet():
     assert "max-snippet" in html, "Page missing robots max-snippet meta"
 
 
-def test_tool_intent_pages_build_count():
-    """Should have at least 320 intent pages built."""
-    run_build()
-    intent_pages = list(DIST.glob("tools/*/*/index.html"))
-    assert len(intent_pages) >= 320, f"Expected 320+ intent pages, found {len(intent_pages)}"
+def test_tools_yaml_guide_links_all_resolve():
+    """Every /tools/<parent>/#<section> link in a tool body must name a real
+    merged section, and no body may still link to a retired page URL.
 
-
-def test_previously_broken_intent_links_now_build():
-    """budget-variance-calculator, employee-turnover-calculator, and
-    gross-revenue-retention-calculator each reference two intent pages from
-    their own tools.yaml body's '### Intent Pages' section. Those six pages
-    didn't exist in content/intent_pages.yaml (dead links on live tool pages)
-    until this task added them."""
-    run_build()
-    expected = [
-        ("budget-variance-calculator", "what-is-budget-variance-analysis"),
-        ("budget-variance-calculator", "favorable-vs-unfavorable-variance"),
-        ("employee-turnover-calculator", "how-to-calculate-employee-turnover-rate"),
-        ("employee-turnover-calculator", "true-cost-of-employee-turnover"),
-        ("gross-revenue-retention-calculator", "grr-vs-nrr-difference"),
-        ("gross-revenue-retention-calculator", "what-is-good-gross-revenue-retention"),
-    ]
-    missing = [
-        f"{parent}/{slug}"
-        for parent, slug in expected
-        if not (DIST / "tools" / parent / slug / "index.html").exists()
-    ]
-    assert not missing, f"Missing intent pages: {missing}"
-
-
-def test_tools_yaml_intent_page_links_all_resolve():
-    """Every /tools/<parent>/<slug>/ link inside a tools.yaml tool body must
-    match an actual content/intent_pages.yaml entry. Regression test for the
-    six dead links this task fixed (tool bodies referenced intent pages that
-    were never added to intent_pages.yaml)."""
+    Replaces the old dead-intent-link test: those targets are now anchors on
+    the parent tool page rather than pages of their own."""
     tools_text = (ROOT / "content" / "tools.yaml").read_text()
-    referenced = set(re.findall(r"/tools/([a-z0-9-]+)/([a-z0-9-]+)/", tools_text))
     existing = {(p["parent_tool"], p["slug"]) for p in yaml.safe_load(
         (ROOT / "content" / "intent_pages.yaml").read_text()
     )}
-    missing = sorted(referenced - existing)
-    assert not missing, f"tools.yaml links to intent pages that don't exist: {missing}"
+    existing |= {("stripe-fee-calculator", f"stripe-fees-{c['slug']}") for c in COUNTRIES}
+
+    anchored = set(re.findall(r"/tools/([a-z0-9-]+)/#([a-z0-9-]+)", tools_text))
+    missing = sorted(anchored - existing)
+    assert not missing, f"tools.yaml links to guide sections that don't exist: {missing}"
+
+    stale = sorted(set(re.findall(r"\]\(/tools/([a-z0-9-]+)/([a-z0-9-]+)/\)", tools_text)))
+    assert not stale, f"tools.yaml still links to retired page URLs: {stale}"
 
 
 def test_arpu_tool_page_builds():
@@ -1592,12 +1418,6 @@ def test_tool_pages_have_author_link():
     assert 'rel="author"' in html, "Tool page missing rel=author link"
 
 
-def test_run_rate_intent_pages_build():
-    """Revenue run rate intent pages should build."""
-    run_build()
-    assert (DIST / "tools" / "revenue-run-rate-calculator" / "run-rate-vs-arr" / "index.html").exists()
-
-
 def test_tool_count_at_least_52():
     """Should have at least 52 tools built."""
     run_build()
@@ -1619,20 +1439,6 @@ def test_pages_have_category_meta():
     html = (DIST / "index.html").read_text()
     assert 'name="category"' in html, "Page missing category meta"
     assert "Business Tools" in html, "Category meta missing Business Tools value"
-
-
-def test_intent_page_article_has_word_count():
-    """Intent page Article JSON-LD should include wordCount."""
-    run_build()
-    html = (DIST / "tools" / "sales-velocity-calculator" / "what-is-sales-velocity" / "index.html").read_text()
-    assert "wordCount" in html, "Intent page Article JSON-LD missing wordCount"
-
-
-def test_sales_velocity_intent_pages_build():
-    """Sales velocity intent pages should build."""
-    run_build()
-    assert (DIST / "tools" / "sales-velocity-calculator" / "how-to-improve-win-rate" / "index.html").exists()
-    assert (DIST / "tools" / "sales-velocity-calculator" / "sales-cycle-length-benchmarks" / "index.html").exists()
 
 
 def test_tool_count_at_least_54():
@@ -1678,13 +1484,6 @@ def test_all_tool_pages_have_complete_web_application_schema():
         assert '"publisher"' in html, f"{slug} WebApplication schema missing publisher"
 
 
-def test_intent_pages_have_news_keywords():
-    """Intent pages should have news_keywords meta tag."""
-    run_build()
-    html = (DIST / "tools" / "free-cash-flow-calculator" / "what-is-free-cash-flow" / "index.html").read_text()
-    assert 'name="news_keywords"' in html, "Intent page missing news_keywords meta"
-
-
 def test_tool_count_at_least_55():
     """Should have at least 55 tools built."""
     run_build()
@@ -1716,13 +1515,6 @@ def test_tool_pages_have_speakable_schema():
     assert "SpeakableSpecification" in html, "Tool page missing SpeakableSpecification"
 
 
-def test_equity_dilution_intent_pages_build():
-    """Equity dilution intent pages should build."""
-    run_build()
-    assert (DIST / "tools" / "equity-dilution-calculator" / "pre-money-vs-post-money-valuation" / "index.html").exists()
-    assert (DIST / "tools" / "equity-dilution-calculator" / "cap-table-basics-for-founders" / "index.html").exists()
-
-
 def test_tool_count_at_least_56():
     """Should have at least 56 tools built."""
     run_build()
@@ -1744,13 +1536,6 @@ def test_tool_pages_have_subject_meta():
     html = (DIST / "tools" / "business-loan-calculator" / "index.html").read_text()
     assert 'name="subject"' in html, "Tool page missing subject meta"
     assert 'name="coverage"' in html, "Tool page missing coverage meta"
-
-
-def test_intent_pages_have_author_meta():
-    """Intent pages should have author meta tag."""
-    run_build()
-    html = (DIST / "tools" / "business-loan-calculator" / "sba-loan-calculator" / "index.html").read_text()
-    assert 'name="author"' in html, "Intent page missing author meta"
 
 
 def test_tool_count_at_least_57():
@@ -1819,13 +1604,6 @@ def test_tool_pages_have_icbm_meta():
     assert 'name="ICBM"' in html, "Tool page missing ICBM meta"
 
 
-def test_intent_pages_have_topic_meta():
-    """Intent pages should have topic meta from parent tool category."""
-    run_build()
-    html = (DIST / "tools" / "npv-calculator" / "npv-vs-irr" / "index.html").read_text()
-    assert 'name="topic"' in html, "Intent page missing topic meta"
-
-
 def test_tool_count_at_least_59():
     """Should have at least 59 tools built."""
     run_build()
@@ -1856,13 +1634,6 @@ def test_tool_pages_have_classification_meta():
     assert "Marketing" in html, "Classification meta missing category value"
 
 
-def test_intent_pages_have_summary_meta():
-    """Intent pages should have summary meta tag."""
-    run_build()
-    html = (DIST / "tools" / "revenue-per-lead-calculator" / "how-to-calculate-revenue-per-lead" / "index.html").read_text()
-    assert 'name="summary"' in html, "Intent page missing summary meta"
-
-
 def test_tool_count_at_least_60():
     """Should have at least 60 tools built."""
     run_build()
@@ -1890,13 +1661,6 @@ def test_tool_pages_have_identifier_url_meta():
     run_build()
     html = (DIST / "tools" / "customer-concentration-calculator" / "index.html").read_text()
     assert 'name="identifier-URL"' in html, "Tool page missing identifier-URL meta"
-
-
-def test_intent_pages_have_distribution_meta():
-    """Intent pages should have distribution meta tag."""
-    run_build()
-    html = (DIST / "tools" / "customer-concentration-calculator" / "what-is-customer-concentration-risk" / "index.html").read_text()
-    assert 'name="distribution"' in html, "Intent page missing distribution meta"
 
 
 def test_tool_count_at_least_61():
@@ -1937,13 +1701,6 @@ def test_tool_count_at_least_62():
     assert len(tool_dirs) >= 62, f"Expected 62+ tool dirs, found {len(tool_dirs)}"
 
 
-def test_tam_sam_som_intent_pages_build():
-    """TAM SAM SOM intent pages should build."""
-    run_build()
-    assert (DIST / "tools" / "tam-sam-som-calculator" / "how-to-calculate-tam-sam-som" / "index.html").exists()
-    assert (DIST / "tools" / "tam-sam-som-calculator" / "top-down-vs-bottom-up-market-sizing" / "index.html").exists()
-
-
 def test_contribution_margin_tool_page_builds():
     """contribution-margin-calculator page should build with CM outputs."""
     run_build()
@@ -1965,14 +1722,6 @@ def test_tool_pages_have_geo_position_meta():
     run_build()
     html = (DIST / "tools" / "contribution-margin-calculator" / "index.html").read_text()
     assert 'name="geo.position"' in html, "Tool page missing geo.position meta"
-
-
-def test_intent_pages_have_index_follow_robots():
-    """Intent pages robots meta should include index, follow directive."""
-    run_build()
-    for parent, slug in INTENT_PAGES[:3]:
-        html = (DIST / "tools" / parent / slug / "index.html").read_text()
-        assert "index, follow" in html, f"Intent page {slug} robots meta missing index, follow"
 
 
 def test_tool_count_at_least_63():
@@ -2002,14 +1751,6 @@ def test_tool_pages_have_index_follow_robots():
     run_build()
     html = (DIST / "tools" / "freelance-tax-estimator" / "index.html").read_text()
     assert "index, follow" in html, "Tool page missing index, follow robots meta"
-
-
-def test_intent_pages_have_geo_region_meta():
-    """Intent pages should have geo.region meta."""
-    run_build()
-    for parent, slug in INTENT_PAGES[:3]:
-        html = (DIST / "tools" / parent / slug / "index.html").read_text()
-        assert 'name="geo.region"' in html, f"Intent page {slug} missing geo.region meta"
 
 
 def test_tool_count_at_least_64():
@@ -2042,14 +1783,6 @@ def test_tool_pages_have_apple_status_bar_meta():
     assert "apple-mobile-web-app-status-bar-style" in html, "Tool page missing Apple status bar meta"
 
 
-def test_intent_pages_have_coverage_meta():
-    """Intent pages should have coverage meta tag."""
-    run_build()
-    for parent, slug in INTENT_PAGES[:3]:
-        html = (DIST / "tools" / parent / slug / "index.html").read_text()
-        assert 'name="coverage"' in html, f"Intent page {slug} missing coverage meta"
-
-
 def test_tool_count_at_least_65():
     """Should have at least 65 tools built."""
     run_build()
@@ -2078,14 +1811,6 @@ def test_tool_pages_have_og_image_secure_url():
     run_build()
     html = (DIST / "tools" / "price-to-sales-calculator" / "index.html").read_text()
     assert "og:image:secure_url" in html, "Tool page missing og:image:secure_url"
-
-
-def test_intent_pages_have_identifier_url_meta():
-    """Intent pages should have identifier-URL meta."""
-    run_build()
-    for parent, slug in INTENT_PAGES[:3]:
-        html = (DIST / "tools" / parent / slug / "index.html").read_text()
-        assert 'name="identifier-URL"' in html, f"Intent page {slug} missing identifier-URL meta"
 
 
 def test_tool_count_at_least_66():
@@ -2118,14 +1843,6 @@ def test_tool_pages_have_dc_language_meta():
     assert 'name="DC.language"' in html, "Tool page missing DC.language meta"
 
 
-def test_intent_pages_have_icbm_meta():
-    """Intent pages should have ICBM geo coordinates meta."""
-    run_build()
-    for parent, slug in INTENT_PAGES[:3]:
-        html = (DIST / "tools" / parent / slug / "index.html").read_text()
-        assert 'name="ICBM"' in html, f"Intent page {slug} missing ICBM meta"
-
-
 def test_tool_count_at_least_67():
     """Should have at least 67 tools built."""
     run_build()
@@ -2153,13 +1870,6 @@ def test_base_html_copyright_meta():
     assert 'name="copyright"' in html
 
 
-def test_intent_page_article_modified_time():
-    """intent_page.html should emit article:modified_time meta."""
-    run_build()
-    html = (DIST / "tools" / "segment-margin-calculator" / "gross-margin-by-product-line" / "index.html").read_text()
-    assert 'article:modified_time' in html
-
-
 def test_tool_count_at_least_68():
     """Should have at least 68 tools built."""
     run_build()
@@ -2178,13 +1888,6 @@ def test_dso_calculator_has_dc_type():
     run_build()
     html = (DIST / "tools" / "dso-calculator" / "index.html").read_text()
     assert 'name="DC.type"' in html
-
-
-def test_intent_page_dc_format():
-    """intent_page.html should emit DC.format meta."""
-    run_build()
-    html = (DIST / "tools" / "dso-calculator" / "how-to-reduce-dso" / "index.html").read_text()
-    assert 'name="DC.format"' in html
 
 
 def test_base_html_no_dead_preconnect():
@@ -2212,13 +1915,6 @@ def test_roe_calculator_has_dc_rights():
     run_build()
     html = (DIST / "tools" / "roe-calculator" / "index.html").read_text()
     assert 'name="DC.rights"' in html
-
-
-def test_intent_page_dc_subject():
-    """intent_page.html should emit DC.subject meta."""
-    run_build()
-    html = (DIST / "tools" / "roe-calculator" / "dupont-analysis-roe" / "index.html").read_text()
-    assert 'name="DC.subject"' in html
 
 
 def test_base_html_expires_meta():
@@ -2257,22 +1953,6 @@ def test_cac_payback_calculator_page_exists():
     run_build()
     page = DIST / "tools" / "cac-payback-calculator" / "index.html"
     assert page.exists(), "cac-payback-calculator/index.html not found"
-
-def test_intent_pages_have_defined_term_schema():
-    """Intent pages starting with 'What Is' should have DefinedTerm schema."""
-    run_build()
-    what_is_pages = list((DIST / "tools").glob("*/what-is-*/index.html"))
-    assert len(what_is_pages) > 0, "No 'what-is-*' intent pages found"
-    for page in what_is_pages[:3]:
-        html = page.read_text(encoding="utf-8")
-        assert '"DefinedTerm"' in html, f"Missing DefinedTerm schema in {page}"
-
-def test_nrr_intent_pages_exist():
-    """NRR calculator should have intent pages."""
-    run_build()
-    intent_dir = DIST / "tools" / "nrr-calculator"
-    intent_pages = [d for d in intent_dir.iterdir() if d.is_dir() and d.name != "index"]
-    assert len(intent_pages) >= 2, f"Expected 2+ intent pages for nrr-calculator, found {len(intent_pages)}"
 
 def test_tool_count_at_least_85():
     """Should have at least 85 tools built."""
@@ -2483,7 +2163,7 @@ def test_tool_widget_inputs_have_accessible_names():
 
 
 def test_stripe_fee_breakdown_computes_fee_and_net():
-    """stripe_fee_breakdown is the Jinja global intent_country.html uses to
+    """stripe_fee_breakdown is the Jinja global _country_section.html uses to
     compute worked examples — verify the math directly."""
     from freetoolkit.build import stripe_fee_breakdown
 
@@ -2506,59 +2186,48 @@ def test_load_countries_shapes_pages_like_intent_pages():
         assert page["country"]["deep_link"].startswith("/tools/stripe-fee-calculator/#")
 
 
-def test_country_pages_build_at_expected_urls():
-    """Each content/countries.yaml entry should build to
-    /tools/stripe-fee-calculator/stripe-fees-<slug>/."""
-    run_build()
-    for slug in COUNTRY_PAGE_SLUGS:
-        out = DIST / "tools" / "stripe-fee-calculator" / slug / "index.html"
-        assert out.exists(), f"Missing country page: {out}"
-
-
-def test_country_pages_use_intent_country_template():
-    """Country pages should render distinct per-country rate content, not the
-    generic intent_page.html body."""
-    run_build()
-    for country in COUNTRIES:
-        html = (DIST / "tools" / "stripe-fee-calculator" / f"stripe-fees-{country['slug']}" / "index.html").read_text()
-        assert country["name"] in html
-        assert f"{country['domestic_rate']}%" in html
-        assert "stripe.com/pricing" in html
-
-
-def test_country_pages_link_to_prefilled_calculator():
-    """The CTA on each country page should deep-link into the Stripe fee
-    calculator with the domestic rate and fixed fee pre-filled via the URL
-    hash, decoded to the exact values from countries.yaml (including
-    countries like India where domestic_fixed is 0)."""
-    run_build()
-    for country in COUNTRIES:
-        html = (DIST / "tools" / "stripe-fee-calculator" / f"stripe-fees-{country['slug']}" / "index.html").read_text()
-        match = re.search(r'/tools/stripe-fee-calculator/#([^"\'\s]+)', html)
-        assert match, f"stripe-fees-{country['slug']} is missing a deep-link into the calculator"
-        params = json.loads(unquote(match.group(1)))
-        assert params["cp"] == country["domestic_rate"]
-        assert params["cf"] == country["domestic_fixed"]
-
-
-def test_country_pages_cross_link_each_other():
-    """Each country page should link to the other country pages for
-    internal-linking SEO value."""
-    run_build()
-    for country in COUNTRIES:
-        html = (DIST / "tools" / "stripe-fee-calculator" / f"stripe-fees-{country['slug']}" / "index.html").read_text()
-        other_slugs = [c["slug"] for c in COUNTRIES if c["slug"] != country["slug"]]
-        found = sum(1 for s in other_slugs if f"/tools/stripe-fee-calculator/stripe-fees-{s}/" in html)
-        assert found == len(other_slugs), f"stripe-fees-{country['slug']} is missing links to sibling country pages"
-
-
-def test_country_pages_appear_on_parent_tool_page():
-    """The stripe-fee-calculator tool page should list the country pages
-    under its 'Related guides' section."""
+def test_country_sections_link_to_prefilled_calculator():
+    """Each country section deep-links into the calculator with that country's
+    domestic rate and fixed fee pre-filled via the URL hash, decoded to the
+    exact values from countries.yaml (including countries like India where
+    domestic_fixed is 0)."""
     run_build()
     html = (DIST / "tools" / "stripe-fee-calculator" / "index.html").read_text()
-    for slug in COUNTRY_PAGE_SLUGS:
-        assert f"/tools/stripe-fee-calculator/{slug}/" in html
+    hashes = [
+        json.loads(unquote(m))
+        for m in re.findall(r"/tools/stripe-fee-calculator/#(%7B[^\"'\s]+)", html)
+    ]
+    for country in COUNTRIES:
+        assert any(
+            params["cp"] == country["domestic_rate"]
+            and params["cf"] == country["domestic_fixed"]
+            for params in hashes
+        ), f"no pre-filled calculator link for {country['slug']}"
+
+
+def test_country_sections_are_reachable_from_one_another():
+    """Every country section is on the same page, so each is reachable from the
+    others through the guide table of contents."""
+    run_build()
+    html = (DIST / "tools" / "stripe-fee-calculator" / "index.html").read_text()
+    toc = html[html.index('class="guide-toc"') : html.index("</nav>", html.index('class="guide-toc"'))]
+    for country in COUNTRIES:
+        assert f'href="#stripe-fees-{country["slug"]}"' in toc, (
+            f"stripe-fees-{country['slug']} is missing from the guide table of contents"
+        )
+
+
+def test_country_sections_render_on_parent_tool_page():
+    """Every country's rates render as a section of the Stripe tool page, with
+    its worked examples still computed from that country's published rate."""
+    run_build()
+    html = (DIST / "tools" / "stripe-fee-calculator" / "index.html").read_text()
+    for country in COUNTRIES:
+        slug = f"stripe-fees-{country['slug']}"
+        assert f'id="{slug}"' in html, f"missing merged country section {slug}"
+        assert country["name"] in html
+        assert f"{country['domestic_rate']}%" in html
+    assert "stripe.com/pricing" in html
 
 
 def test_lighthouserc_fails_ci_below_performance_90_and_seo_95():
@@ -2586,27 +2255,6 @@ def test_ci_workflow_runs_lighthouse_against_a_served_dist():
     assert ".lighthouserc.json" in workflow
 
 
-def test_ci_workflow_lighthouse_samples_intent_and_country_templates():
-    """The Lighthouse CI step must sample at least one intent_page.html and one
-    intent_country.html URL, not just index.html/tools_index.html/tool.html —
-    those two templates share only part of tool.html's head/layout and were
-    never actually audited (see 'Elargir l'echantillon Lighthouse CI aux
-    templates intent_page et intent_country' backlog task)."""
-    workflow = (ROOT / ".github" / "workflows" / "ci.yml").read_text()
-    urls_block = workflow[workflow.index("urls:") : workflow.index("configPath:")]
-
-    intent_parent, intent_slug = INTENT_PAGES[0]
-    intent_url = f"/tools/{intent_parent}/{intent_slug}/"
-    assert intent_url in urls_block
-
-    country_url = f"/tools/stripe-fee-calculator/{COUNTRY_PAGE_SLUGS[0]}/"
-    assert country_url in urls_block
-
-    run_build()
-    assert (DIST / intent_url.strip("/") / "index.html").exists()
-    assert (DIST / country_url.strip("/") / "index.html").exists()
-
-
 def test_ci_workflow_runs_check_perf():
     """CI must run `make check-perf` so a perf/weight budget regression
     (file size budgets, meta coverage, sitemap, og:image) fails the build
@@ -2617,14 +2265,6 @@ def test_ci_workflow_runs_check_perf():
     check_perf_pos = workflow.index("make check-perf")
     lighthouse_pos = workflow.index("lighthouse-ci-action")
     assert build_pos < check_perf_pos < lighthouse_pos
-
-
-def test_country_pages_in_sitemap():
-    """Country pages should be included in sitemap.xml like other intent pages."""
-    run_build()
-    sitemap = (DIST / "sitemap.xml").read_text()
-    for slug in COUNTRY_PAGE_SLUGS:
-        assert f"/tools/stripe-fee-calculator/{slug}/" in sitemap
 
 
 def test_total_tool_count_mentions_match_tools_yaml():
@@ -2724,3 +2364,157 @@ def test_uptime_workflow_self_activates_on_real_domain():
 def test_human_inputs_documents_uptime_webhook_secret():
     human_inputs = (ROOT / "HUMAN_INPUTS.md").read_text()
     assert "UPTIME_WEBHOOK_URL" in human_inputs
+
+
+# --- Consolidation of thin pages (AdSense "low value content" remediation) ---
+#
+# AdSense rejected foundercalc.dev for "Contenu à faible valeur informative":
+# ~320 intent/country pages averaging 244 words plus a 9-entry glossary at 165,
+# all wrapped around calculators. Each is now a section of the page it supports.
+# These tests keep the site from drifting back to a page-per-snippet shape.
+
+MIN_TOOL_PAGE_WORDS = 600
+
+_TAG_RE = re.compile(r"<[^>]+>")
+_SCRIPT_RE = re.compile(r"(?is)<script.*?</script>|<style.*?</style>")
+_MAIN_RE = re.compile(r"(?is)<main.*?>(.*?)</main>")
+
+
+def _visible_words(html: str) -> int:
+    """Word count of a page's <main>, with markup and scripts stripped —
+    roughly what a crawler weighs when judging whether a page is thin."""
+    html = _SCRIPT_RE.sub(" ", html)
+    match = _MAIN_RE.search(html)
+    body = match.group(1) if match else html
+    return len(_TAG_RE.sub(" ", body).split())
+
+
+def test_no_standalone_intent_or_country_pages_are_built():
+    """The retired URLs must not come back as pages."""
+    run_build()
+    for parent, slug in INTENT_PAGES:
+        assert not (DIST / "tools" / parent / slug).exists(), (
+            f"/tools/{parent}/{slug}/ was rebuilt as a standalone page"
+        )
+    for slug in COUNTRY_PAGE_SLUGS:
+        assert not (DIST / "tools" / "stripe-fee-calculator" / slug).exists()
+    # Only /tools/index.html and /tools/<slug>/index.html should exist now.
+    nested = list(DIST.glob("tools/*/*/index.html"))
+    assert not nested, f"unexpected nested tool pages: {nested[:5]}"
+
+
+def test_every_intent_page_is_merged_into_its_parent_tool():
+    """Each retired page's body must be present as a section of its parent,
+    anchored at the slug the old URL redirects to."""
+    run_build()
+    intent = yaml.safe_load((ROOT / "content" / "intent_pages.yaml").read_text())
+    for entry in intent:
+        html = (DIST / "tools" / entry["parent_tool"] / "index.html").read_text()
+        assert f'id="{entry["slug"]}"' in html, (
+            f"{entry['slug']} is not a section of /tools/{entry['parent_tool']}/"
+        )
+        # Jinja escapes the title on the way in (& -> &amp;, ' -> &#39;).
+        assert str(escape(entry["title"])) in html
+
+
+def test_redirects_cover_every_retired_url():
+    """No retired URL may 404: each 301s to the section it was merged into."""
+    run_build()
+    redirects = (DIST / "_redirects").read_text()
+    for parent, slug in INTENT_PAGES:
+        assert f"/tools/{parent}/{slug}/* /tools/{parent}/#{slug} 301" in redirects
+    for slug in COUNTRY_PAGE_SLUGS:
+        assert f"/tools/stripe-fee-calculator/{slug}/*" in redirects
+    for entry in yaml.safe_load((ROOT / "content" / "glossary.yaml").read_text()):
+        assert f"/glossary/{entry['slug']}/* /glossary/#{entry['slug']} 301" in redirects
+
+
+def test_glossary_is_one_page_with_a_section_per_term():
+    """Nine ~165-word term pages are now one page of anchored sections."""
+    run_build()
+    entries = yaml.safe_load((ROOT / "content" / "glossary.yaml").read_text())
+    html = (DIST / "glossary" / "index.html").read_text()
+    for entry in entries:
+        assert not (DIST / "glossary" / entry["slug"]).exists(), (
+            f"/glossary/{entry['slug']}/ was rebuilt as a standalone page"
+        )
+        assert f'id="{entry["slug"]}"' in html
+        assert entry["term"] in html
+    assert _visible_words(html) >= 1500
+
+
+def test_tool_pages_meet_content_depth_budget():
+    """Every calculator page must carry real depth, not a widget and a caption.
+
+    This is the guard on the AdSense rejection: before consolidation the median
+    tool page held ~300 words and none of the 320 satellites cleared 600."""
+    run_build()
+    thin = []
+    for slug in TOOL_SLUGS:
+        words = _visible_words((DIST / "tools" / slug / "index.html").read_text())
+        if words < MIN_TOOL_PAGE_WORDS:
+            thin.append((slug, words))
+    assert not thin, (
+        f"{len(thin)} tool pages below {MIN_TOOL_PAGE_WORDS} words: {sorted(thin, key=lambda x: x[1])[:10]}"
+    )
+
+
+def test_no_indexable_page_is_thin():
+    """Nothing in sitemap.xml may be a thin page — that is the shape that got
+    the site rejected, whatever section of the site it appears in."""
+    run_build()
+    sitemap = (DIST / "sitemap.xml").read_text()
+    thin = []
+    for loc in re.findall(r"<loc>([^<]+)</loc>", sitemap):
+        path = loc.split("//", 1)[-1].split("/", 1)[1]
+        page = DIST / path / "index.html" if path else DIST / "index.html"
+        if not page.exists():
+            continue
+        words = _visible_words(page.read_text())
+        if words < 300:
+            thin.append((path or "/", words))
+    assert not thin, f"thin indexable pages: {sorted(thin, key=lambda x: x[1])}"
+
+
+def test_merged_sections_start_at_h3_under_their_h2():
+    """A merged body's own headings are demoted so the page keeps one outline
+    instead of a flat run of sibling <h2>s."""
+    from freetoolkit.build import demote_headings
+
+    assert demote_headings("<h2>A</h2><h3>B</h3>") == "<h3>A</h3><h4>B</h4>"
+    assert demote_headings("<h6>Z</h6>") == "<h6>Z</h6>", "must not exceed h6"
+
+    run_build()
+    html = (DIST / "tools" / "stripe-fee-calculator" / "index.html").read_text()
+    section = html[html.index('id="stripe-fees-for-subscriptions"'):]
+    section = section[: section.index("</article>")]
+    assert "<h3" in section
+
+
+def test_ads_and_ads_txt_are_live_for_review():
+    """AdSense reviews the site as served: it has to find the ad code and a
+    reachable /ads.txt carrying the publisher ID."""
+    run_build()
+    config = yaml.safe_load((ROOT / "content" / "config.yaml").read_text())
+    client_id = config["site"]["adsense_client_id"]
+    assert config["site"]["ads_enabled"] is True
+
+    ads_txt = (DIST / "ads.txt").read_text()
+    assert ads_txt.strip() == f"google.com, {client_id}, DIRECT, f08c47fec0942fa0"
+
+    html = (DIST / "tools" / TOOL_SLUGS[0] / "index.html").read_text()
+    assert "pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" in html
+    # Consent gathering must load before any ad request in the EEA/UK.
+    assert html.index("fundingchoicesmessages.google.com") < html.index("adsbygoogle.js")
+
+    # No ad unit may render against a placeholder slot: it can never fill, and
+    # an empty frame labelled "Advertisement" is a worse review surface than
+    # none. Units appear once adsense_slots carries real IDs.
+    for slot_name, slot_id in (config["site"].get("adsense_slots") or {}).items():
+        if slot_id:
+            assert f'data-ad-slot="{slot_id}"' in html or slot_name != "tool-mid"
+        else:
+            assert "0000000000" not in html
+            assert 'class="adsbygoogle"' not in html, (
+                f"ad unit rendered for {slot_name} with no ad unit ID configured"
+            )

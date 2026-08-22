@@ -30,6 +30,13 @@
     </div>
   </div>
 
+  {% if category_intro %}
+  <article class="tool-body category-intro">
+    {{ category_intro | safe }}
+  </article>
+  {% endif %}
+
+  <h2 class="category-tools-heading">All {{ category | lower }} calculators</h2>
   <div class="tool-grid">
     {% for tool in cat_tools %}
     <a class="tool-card" href="/tools/{{ tool.slug }}/" aria-label="{{ tool.nav_title }} — {{ tool.short[:80] }}">

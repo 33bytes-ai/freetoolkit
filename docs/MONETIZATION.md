@@ -29,25 +29,48 @@ most revenue at low scale comes from impressions.
 
 At 10,000 daily visitors the same model projects ~$1,650/month net.
 
-### Enabling AdSense (after approval)
+### AdSense status
 
-1. Register at https://adsense.google.com
-2. Add the AdSense verification snippet to `templates/base.html` while awaiting
-   review (see `HUMAN_INPUTS.md` for details)
-3. Once approved, update `content/config.yaml`:
-   ```yaml
-   site:
-     ads_enabled: true
-     adsense_client_id: "ca-pub-XXXXXXXXXXXXXXXX"
-   ```
-   Or export at build time: `ADSENSE_CLIENT_ID=ca-pub-XXXX make build`
-4. Rebuild and redeploy. Ad slots marked with `class="ad-slot"` in the
-   generated HTML will start rendering ads.
-5. Add `ads.txt` to your domain root to prevent ad fraud:
-   ```
-   google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
-   ```
-   Generate it at: https://support.google.com/adsense/answer/7532444
+**Rejected 7 August 2026** — *"Contenu à faible valeur informative"* (thin
+content), with `ads.txt` additionally reported as *Introuvable*.
+
+Both causes are addressed in the build (see "Content architecture" in
+`CLAUDE.md`):
+
+- ~320 intent/country pages averaging 244 words, plus a 9-term glossary
+  averaging 165, were merged into the pages they support. The site went from
+  462 URLs to ~134, and the median tool page from 303 words to ~1,300. Tests
+  now fail if any tool page drops below 600 visible words, or if anything in
+  `sitemap.xml` falls under 300.
+- `ads_enabled: true` and `adsense_client_id` are set, so the ad snippet, the
+  Funding Choices consent banner and `/ads.txt` all render. AdSense reviews
+  the site **as served**, so these must be live on the deployed site before
+  requesting a re-review — the `ads.txt` "not found" verdict was a stale
+  deploy, not a build problem.
+
+### Configuration
+
+`content/config.yaml`:
+```yaml
+site:
+  ads_enabled: true
+  adsense_client_id: "ca-pub-XXXXXXXXXXXXXXXX"
+```
+Or export at build time: `ADSENSE_CLIENT_ID=ca-pub-XXXX make build`.
+
+`build.py` writes `/ads.txt` from `adsense_client_id` on every build:
+```
+google.com, ca-pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+```
+
+### Requesting a re-review
+
+1. Deploy, then confirm on the live domain: `/ads.txt` returns the publisher
+   line, a tool page contains `adsbygoogle.js`, and a retired guide URL 301s
+   to its section anchor.
+2. Give Google a few days to recrawl the consolidated structure — resubmitting
+   before the old thin URLs drop out invites the same verdict.
+3. Request the review from the Sites page in the AdSense dashboard.
 
 ### Ad placement strategy
 

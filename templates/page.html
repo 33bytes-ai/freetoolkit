@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 {% block head_extra %}
+{# A required legal disclosure is short by nature and has no search audience.
+   Keeping it out of the index avoids presenting a deliberately thin page as
+   content; build.py drops noindex pages from the sitemaps to match. #}
+{% if page.noindex %}<meta name="robots" content="noindex, follow">{% endif %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -36,7 +40,7 @@
     {% include "widgets/" ~ page.widget ~ ".html" %}
     <noscript><p style="padding:1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius)">This calculator requires JavaScript. Please enable JavaScript in your browser to use it.</p></noscript>
   </div>
-  {% include "ads_slot.html" %}
+  {% with slot_name = "tool-mid" %}{% include "ads_slot.html" %}{% endwith %}
   {% endif %}
   <article>
     {{ page.content | safe }}

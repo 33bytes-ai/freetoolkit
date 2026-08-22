@@ -9,8 +9,8 @@ SaaS Retention Metrics, Freelance, Pricing & Margins, Marketing, Finance,
 Valuation, Tax & Compliance, HR & People) —
 Stripe/PayPal/Shopify fees · MRR & ARR · LTV/CAC · Runway · Churn impact ·
 Freelance rate · Profit margin · Break-even · VAT/Sales tax · payroll tax ·
-DCF/valuation, and more — plus a 9-entry glossary and 325 SEO intent/country
-pages.
+DCF/valuation, and more — each tool page carrying in-depth guide sections
+(~1,300 words median), plus a 9-term glossary.
 
 All math runs client-side — no backend, no database, no user data collected.
 Monetized via Google AdSense (RPM target: $8–20 for this business audience).

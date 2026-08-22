@@ -5,6 +5,7 @@ enabled: true
 description: >
   FounderCalc — static site of 105 free business calculators (Stripe/PayPal/
   Shopify fees, MRR/ARR, LTV/CAC, valuation, payroll tax, etc.) for founders,
-  freelancers, and SaaS builders, plus a 9-entry glossary and ~340 intent/
-  country pages. Monetized via Google AdSense. Zero ongoing operational cost.
+  freelancers, and SaaS builders, plus a 9-term glossary. Guide and country
+  content is merged into the tool pages it supports rather than published as
+  separate URLs. Monetized via Google AdSense. Zero ongoing operational cost.
 stack: Python/Jinja2 build + vanilla JS + nginx + Docker

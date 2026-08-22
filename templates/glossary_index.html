@@ -1,15 +1,65 @@
 {% extends "base.html" %}
+{% block head_extra %}
+{# One DefinedTermSet for the whole page. Each term used to be its own ~165-word
+   URL; those pages 301 here, to their anchor. #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DefinedTermSet",
+  "name": "FounderCalc Glossary",
+  "url": "{{ site.base_url }}/glossary/",
+  "hasDefinedTerm": [
+    {% for entry in glossary %}
+    {
+      "@type": "DefinedTerm",
+      "name": {{ entry.term | tojson }},
+      "description": {{ entry.short | tojson }},
+      "url": "{{ site.base_url }}/glossary/#{{ entry.slug }}"
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endblock %}
 {% block content %}
 <section class="wrap content-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a> <span aria-hidden="true">/</span>
+    <span aria-current="page">Glossary</span>
+  </nav>
+
   <h1>Glossary</h1>
   <p class="tool-short">Plain-language definitions for the finance and SaaS terms used across FounderCalc's calculators.</p>
-  <ul class="glossary-index-list">
-    {% for entry in glossary %}
-    <li>
+
+  <nav class="guide-toc" aria-labelledby="glossary-toc-heading">
+    <h2 id="glossary-toc-heading">Terms</h2>
+    <ul class="glossary-index-list">
+      {% for entry in glossary %}
+      <li>
+        <span class="glossary-index-icon" aria-hidden="true">{{ glossary_icons[entry.slug] | safe }}</span>
+        <span><a href="#{{ entry.slug }}">{{ entry.term }}</a> — {{ entry.short }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </nav>
+
+  {% for entry in glossary %}
+  <article class="tool-body glossary-entry" id="{{ entry.slug }}">
+    <h2>
       <span class="glossary-index-icon" aria-hidden="true">{{ glossary_icons[entry.slug] | safe }}</span>
-      <span><a href="/glossary/{{ entry.slug }}/">{{ entry.term }}</a> — {{ entry.short }}</span>
-    </li>
-    {% endfor %}
-  </ul>
+      {{ entry.term }}
+    </h2>
+    <p class="deep-dive-standfirst">{{ entry.short }}</p>
+    {{ entry.body_html | safe }}
+    {% set related = glossary_related.get(entry.slug, []) %}
+    {% if related %}
+    <p class="glossary-used-in">
+      <strong>Used in:</strong>
+      {% for tool in related %}<a href="/tools/{{ tool.slug }}/">{{ tool.title }}</a>{% if not loop.last %}, {% endif %}{% endfor %}
+    </p>
+    {% endif %}
+    <p class="deep-dive-back"><a href="#glossary-toc-heading">↑ Back to all terms</a></p>
+  </article>
+  {% endfor %}
 </section>
 {% endblock %}
