@@ -105,13 +105,15 @@ def main() -> int:
     else:
         check(False, "sitemap_tools.xml not found")
 
-    intent_sitemap = DIST / "sitemap_intent.xml"
-    if intent_sitemap.exists():
-        content = intent_sitemap.read_text(encoding="utf-8")
-        count = content.count("<loc>")
-        check(count >= 200, f"sitemap_intent.xml has {count} entries (expected ≥200)")
+    redirects = DIST / "_redirects"
+    if redirects.exists():
+        count = sum(
+            1 for line in redirects.read_text(encoding="utf-8").splitlines()
+            if line.strip() and not line.startswith("#")
+        )
+        check(count >= 300, f"_redirects has {count} rules (expected ≥300)")
     else:
-        check(False, "sitemap_intent.xml not found")
+        check(False, "_redirects not found — retired guide URLs would 404")
 
     print("\n── Structural checks ────────────────────────────────────────────")
     og_images = list((DIST / "static" / "img").glob("og-*.png")) if (DIST / "static" / "img").exists() else []

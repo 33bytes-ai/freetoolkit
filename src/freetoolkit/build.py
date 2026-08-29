@@ -171,6 +171,58 @@ def extract_faqs_from_body(body: str) -> list[dict]:
     return faqs
 
 
+HEADING_RE = re.compile(r"(</?h)([1-5])(?=[ >])")
+
+
+def demote_headings(html: str, by: int = 1) -> str:
+    """Push every heading in a fragment down `by` levels.
+
+    Deep-dive sections were standalone pages whose bodies started at <h2>.
+    Nested under the tool page's own <h2> section title they have to start at
+    <h3>, or the document outline reads as a flat list of sibling sections and
+    screen readers lose the parent/child relationship."""
+    def repl(m: re.Match) -> str:
+        return f"{m.group(1)}{min(int(m.group(2)) + by, 6)}"
+
+    return HEADING_RE.sub(repl, html)
+
+
+def attach_deep_dives(tools: list[dict], intent_pages: list[dict]) -> None:
+    """Fold every intent/country page into its parent tool as an in-page section.
+
+    Each of these was published as its own URL: ~320 pages averaging 244 words
+    of body copy. AdSense rejected the site for "low value content" on exactly
+    that shape -- lots of individually thin pages wrapped around one calculator.
+    Merging them puts the same writing on the tool page it supports, taking the
+    median tool page from ~300 to ~1,000 words and the site from 462 URLs to
+    ~150. The old URLs 301 to the section anchor (see write_redirects)."""
+    by_parent: dict[str, list[dict]] = {}
+    for ip in intent_pages:
+        by_parent.setdefault(ip["parent_tool"], []).append(ip)
+
+    for tool in tools:
+        dives = []
+        for ip in by_parent.get(tool["slug"], []):
+            dive = {
+                "slug": ip["slug"],
+                "title": ip["title"],
+                "description": ip["description"],
+                "keywords": ip.get("keywords", []),
+                "is_country_page": ip.get("is_country_page", False),
+                "country": ip.get("country"),
+                "body": ip.get("body", ""),
+                "body_html": demote_headings(ip.get("body_html", "")),
+            }
+            dives.append(dive)
+            # FAQ blocks inside a merged body are still on the rendered page,
+            # so they belong in the page's FAQPage schema.
+            tool["faqs"].extend(extract_faqs_from_body(dive["body"]))
+        tool["deep_dives"] = dives
+        tool["body_wordcount"] = len(tool["body"].split()) + sum(
+            len(d["body"].split()) for d in dives
+        )
+
+
 def load_yaml(path: Path):
     with path.open("r", encoding="utf-8") as f:
         return yaml.safe_load(f)
@@ -232,7 +284,11 @@ def load_intent_pages() -> list[dict]:
 def load_glossary() -> list[dict]:
     entries = load_yaml(CONTENT_DIR / "glossary.yaml") or []
     for entry in entries:
-        entry["body_html"] = markdown.markdown(render_math_blocks(entry["body"]), extensions=MD_EXTENSIONS)
+        # Every term is now a section of the single /glossary/ page, sitting
+        # under that section's <h2> -- so its own headings start at <h3>.
+        entry["body_html"] = demote_headings(
+            markdown.markdown(render_math_blocks(entry["body"]), extensions=MD_EXTENSIONS)
+        )
     return entries
 
 
@@ -245,9 +301,10 @@ def load_countries() -> list[dict]:
     """Programmatic Stripe fee pages, one per content/countries.yaml entry.
 
     Shaped like an intent_pages.yaml entry (slug/parent_tool/title/description/
-    keywords) so it can share sitemap, robots, and tool-page linking code with
-    the hand-written intent pages; is_country_page + country tell the render
-    loop to use intent_country.html instead.
+    keywords) so it shares the merge and redirect path with the hand-written
+    guides; is_country_page + country tell tool.html to render the section from
+    _country_section.html, which computes each worked example from the rates
+    below, instead of from a markdown body.
     """
     countries = load_yaml(CONTENT_DIR / "countries.yaml") or []
     pages = []
@@ -284,6 +341,21 @@ def load_countries() -> list[dict]:
             }
         )
     return pages
+
+
+def load_category_intros() -> dict[str, str]:
+    """Editorial intro markdown per category, keyed by category name.
+
+    Category pages were tool grids with a one-line tagline (~130 words). They
+    are listed in sitemap.xml, so they carried the same thin-page signal the
+    guide consolidation was meant to remove."""
+    raw = load_yaml(CONTENT_DIR / "categories.yaml") or {}
+    return {
+        name: markdown.markdown(
+            render_math_blocks(entry["body"]), extensions=MD_EXTENSIONS
+        )
+        for name, entry in raw.items()
+    }
 
 
 def load_pages(config: dict, tool_count: int) -> list[dict]:
@@ -491,34 +563,9 @@ def write_sitemap_pages(config: dict, pages: list[dict]) -> None:
     base = config["site"]["base_url"].rstrip("/")
     entries = (
         [("/", "weekly", "1.0"), ("/tools/", "weekly", "0.9"), ("/changelog/", "monthly", "0.6")]
-        + [(f"/{p['slug']}/", "monthly", "0.5") for p in pages]
+        + [(f"/{p['slug']}/", "monthly", "0.5") for p in pages if not p.get("noindex")]
     )
     (DIST_DIR / "sitemap_pages.xml").write_text(_sitemap_urlset(base, entries), encoding="utf-8")
-
-
-def write_sitemap_intent(config: dict, intent_pages: list[dict], tools: list[dict]) -> None:
-    base = config["site"]["base_url"].rstrip("/")
-    tool_dates = {t["slug"]: t.get("date_added", "") for t in tools}
-    today = datetime.date.today().isoformat()
-    lines = [
-        '<?xml version="1.0" encoding="UTF-8"?>',
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'
-        ' xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">',
-    ]
-    for ip in intent_pages:
-        lastmod = tool_dates.get(ip["parent_tool"], today)
-        img_url = f"{base}/static/img/og-{ip['parent_tool']}.png"
-        title = ip["title"].replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-        lines.append(
-            f"  <url>"
-            f"<loc>{base}/tools/{ip['parent_tool']}/{ip['slug']}/</loc>"
-            f"<lastmod>{lastmod}</lastmod>"
-            f"<changefreq>monthly</changefreq><priority>0.7</priority>"
-            f"<image:image><image:loc>{img_url}</image:loc><image:title>{title}</image:title></image:image>"
-            f"</url>"
-        )
-    lines.append("</urlset>")
-    (DIST_DIR / "sitemap_intent.xml").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 def write_sitemap_index(config: dict) -> None:
@@ -527,7 +574,6 @@ def write_sitemap_index(config: dict) -> None:
     sitemaps = [
         "sitemap_tools.xml",
         "sitemap_pages.xml",
-        "sitemap_intent.xml",
         "sitemap_news.xml",
         "sitemap.xml",
     ]
@@ -548,15 +594,12 @@ def write_sitemap(
     config: dict,
     tools: list[dict],
     pages: list[dict],
-    intent_pages: list[dict],
     tools_by_category: dict[str, list[dict]] | None = None,
-    glossary: list[dict] | None = None,
 ) -> None:
     base = config["site"]["base_url"].rstrip("/")
     today = datetime.date.today().isoformat()
     tool_lastmod = {t["slug"]: t.get("updated") or t.get("date_added") or today for t in tools}
     tools_by_category = tools_by_category or {}
-    glossary = glossary or []
     entries = (
         [
             ("/", "1.0", "weekly", today),
@@ -574,17 +617,11 @@ def write_sitemap(
             for t in tools
             if not t.get("canonical_to")
         ]
-        + [(f"/{p['slug']}/", "0.5", "monthly", today) for p in pages]
         + [
-            (
-                f"/tools/{ip['parent_tool']}/{ip['slug']}/",
-                "0.7",
-                "monthly",
-                tool_lastmod.get(ip["parent_tool"], today),
-            )
-            for ip in intent_pages
+            (f"/{p['slug']}/", "0.5", "monthly", today)
+            for p in pages
+            if not p.get("noindex")
         ]
-        + [(f"/glossary/{g['slug']}/", "0.6", "monthly", today) for g in glossary]
     )
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
@@ -870,6 +907,8 @@ def build() -> Path:
     affiliates = load_affiliates()
     intent_pages = load_intent_pages() + load_countries()
     glossary = load_glossary()
+    category_intros = load_category_intros()
+    attach_deep_dives(tools, intent_pages)
     env = build_env()
 
     if DIST_DIR.exists():
@@ -961,6 +1000,7 @@ def build() -> Path:
             category=category,
             cat_tools=cat_tools,
             meta=meta,
+            category_intro=category_intros.get(category, ""),
             other_categories=[c for c in config["categories"] if c != category and tools_by_category.get(c)],
             **common,
         )
@@ -983,7 +1023,6 @@ def build() -> Path:
             tool=tool,
             affiliate_links=affiliates.get(tool["slug"], []),
             tool_faqs=tool["faqs"],
-            intent_pages=[ip for ip in intent_pages if ip["parent_tool"] == tool["slug"]],
             related_tools=related,
             cross_tools=cross,
             **common,
@@ -1009,22 +1048,12 @@ def build() -> Path:
         title="Glossary",
         description="Plain-language definitions for the finance and SaaS terms used across FounderCalc's calculators.",
         glossary=glossary,
+        glossary_related={
+            e["slug"]: [tools_by_slug[t] for t in e.get("related_tools", []) if t in tools_by_slug]
+            for e in glossary
+        },
         **common,
     )
-
-    for entry in glossary:
-        related = [tools_by_slug[slug] for slug in entry.get("related_tools", []) if slug in tools_by_slug]
-        render(
-            env,
-            "glossary.html",
-            DIST_DIR / "glossary" / entry["slug"] / "index.html",
-            path=f"/glossary/{entry['slug']}/",
-            title=f"{entry['term']} — Glossary",
-            description=entry["short"],
-            entry=entry,
-            related=related,
-            **common,
-        )
 
     render(
         env,
@@ -1056,42 +1085,11 @@ def build() -> Path:
         **common,
     )
 
-    _ip_by_parent: dict[str, list[dict]] = {}
-    for ip in intent_pages:
-        _ip_by_parent.setdefault(ip["parent_tool"], []).append(ip)
-
-    country_pages = [ip for ip in intent_pages if ip.get("is_country_page")]
-
-    for ip in intent_pages:
-        parent = tools_by_slug.get(ip["parent_tool"])
-        siblings = _ip_by_parent.get(ip["parent_tool"], [])
-        idx = next((i for i, s in enumerate(siblings) if s["slug"] == ip["slug"]), None)
-        prev_ip = siblings[idx - 1] if idx is not None and idx > 0 else None
-        next_ip = siblings[idx + 1] if idx is not None and idx < len(siblings) - 1 else None
-        out = DIST_DIR / "tools" / ip["parent_tool"] / ip["slug"] / "index.html"
-        template_name = "intent_country.html" if ip.get("is_country_page") else "intent_page.html"
-        render(
-            env,
-            template_name,
-            out,
-            path=f"/tools/{ip['parent_tool']}/{ip['slug']}/",
-            title=ip["title"],
-            description=ip["description"],
-            intent_page=ip,
-            parent_tool=parent,
-            prev_intent_page=prev_ip,
-            next_intent_page=next_ip,
-            country=ip.get("country"),
-            other_countries=[cp for cp in country_pages if cp["slug"] != ip["slug"]] if ip.get("is_country_page") else None,
-            **common,
-        )
-
     shutil.copytree(STATIC_DIR, DIST_DIR / "static", ignore=shutil.ignore_patterns("fonts"))
 
-    write_sitemap(config, tools, pages, intent_pages, tools_by_category, glossary)
+    write_sitemap(config, tools, pages, tools_by_category)
     write_sitemap_tools(config, tools)
     write_sitemap_pages(config, pages)
-    write_sitemap_intent(config, intent_pages, tools)
     write_sitemap_news(config, tools)
     write_sitemap_index(config)
     write_robots(config)
@@ -1100,9 +1098,49 @@ def build() -> Path:
     write_rss(config, tools)
     write_og_image(config, tools)
     write_headers_file()
+    write_redirects(intent_pages, glossary)
     _gzip_dist()
 
     return DIST_DIR
+
+
+def write_redirects(intent_pages: list[dict], glossary: list[dict]) -> None:
+    """Emit dist/_redirects -- Cloudflare Pages' redirect mechanism.
+
+    Every URL that used to be its own thin page now 301s to the section it was
+    merged into, so existing links, bookmarks and any ranking signals land on
+    the consolidated page instead of a 404. The fragment sends the reader to
+    the exact section; Cloudflare preserves it on a 301."""
+    lines = [
+        "# Consolidated thin pages -> their section on the parent page.",
+        "# Generated by build.py; edit content/*.yaml, not this file.",
+        "#",
+        "# Rules are static (no '*'). Cloudflare Pages accepts up to 2,000 static",
+        "# rules but only 100 *dynamic* ones, and a single splat anywhere in the",
+        "# source makes a rule dynamic -- with splats, Pages parsed the first 100",
+        "# and silently skipped the rest, 404ing most of the retired URLs. Both",
+        "# the with- and without-trailing-slash forms are emitted so a link to",
+        "# either lands on the section rather than on a 404.",
+    ]
+
+    def rule(src: str, dest: str) -> None:
+        lines.append(f"{src} {dest} 301")
+        lines.append(f"{src.rstrip('/')} {dest} 301")
+
+    for ip in intent_pages:
+        rule(
+            f"/tools/{ip['parent_tool']}/{ip['slug']}/",
+            f"/tools/{ip['parent_tool']}/#{ip['slug']}",
+        )
+    for entry in glossary:
+        rule(f"/glossary/{entry['slug']}/", f"/glossary/#{entry['slug']}")
+
+    body = [ln for ln in lines if not ln.startswith("#")]
+    if len(body) > 2000:
+        raise ValueError(
+            f"_redirects has {len(body)} rules; Cloudflare Pages caps static rules at 2,000"
+        )
+    (DIST_DIR / "_redirects").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 def write_headers_file() -> None:

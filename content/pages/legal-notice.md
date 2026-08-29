@@ -2,6 +2,7 @@
 title: Legal Notice
 slug: legal-notice
 description: "Publisher and hosting information for FounderCalc, as required by French law (LCEN art. 6-III)."
+noindex: true
 ---
 
 _Last updated: 2026-08-05_

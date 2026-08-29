@@ -68,15 +68,62 @@ des emails (SMS, appel, checks multi-régions) :
 
 ## Catégorie B — Monétisation : AdSense
 
-### B1. Candidater (~10 min à remplir, 2-4 semaines de review)
-1. Aller sur [adsense.google.com](https://adsense.google.com), se connecter avec un compte Google
-2. Renseigner l'URL du site (une fois en ligne — le site doit être accessible publiquement pour candidater) et une adresse postale (utilisée à des fins fiscales)
-3. Coller le tag de vérification `<script>` fourni par Google — je peux l'intégrer dans `templates/base.html` si tu me donnes le tag exact
-4. **Astuce approbation :** 15-20 visiteurs organiques réels/jour aide la review — envisager de partager le site sur IndieHackers/Reddit/Twitter avant de candidater
+### B1. ⚠️ Candidature refusée le 7 août 2026 — demander un réexamen
+
+Motif Google : *« Contenu à faible valeur informative »*, plus `ads.txt`
+signalé *Introuvable*.
+
+Les deux causes sont corrigées côté code (voir `docs/MONETIZATION.md` et la
+section « Refus AdSense » de `PROJECT_STATE.md`) : les ~320 pages courtes ont
+été fusionnées dans les pages outil qu'elles accompagnent (462 URL → 134,
+médiane par page outil 303 → 1 315 mots), `ads_enabled: true`, et `/ads.txt`
+est écrit à chaque build avec le Publisher ID.
+
+**Ce qu'il reste à faire, dans cet ordre :**
+
+1. **Déployer.** Rien de ce qui précède ne compte tant que ce n'est pas en
+   ligne : Google inspecte le site *tel qu'il est servi*. Deux façons :
+   - **Depuis un navigateur, sans machine** (recommandé) : ajouter les secrets
+     `CLOUDFLARE_API_TOKEN` (permission *Cloudflare Pages: Edit*) et
+     `CLOUDFLARE_ACCOUNT_ID` dans Settings → Secrets and variables → Actions,
+     puis fusionner la PR sur `main` — `.github/workflows/deploy.yml` construit
+     et publie tout seul. Déclenchable aussi à la main via Actions → Deploy →
+     Run workflow.
+   - **Depuis une machine locale** : `make deploy` (voir `docs/DEPLOYMENT.md`).
+
+   ⚠️ Déployer depuis une branche autre que `main` produit une *preview*
+   Cloudflare, pas la mise en production : `foundercalc.dev` resterait sur
+   l'ancienne version.
+2. **Vérifier sur le domaine live**, pas en local :
+   - `https://foundercalc.dev/ads.txt` renvoie
+     `google.com, ca-pub-6294535713639434, DIRECT, f08c47fec0942fa0`
+   - une page outil contient bien `adsbygoogle.js`
+   - une ancienne URL de guide redirige en 301, ex.
+     `/tools/stripe-fee-calculator/stripe-fees-uk/` →
+     `/tools/stripe-fee-calculator/#stripe-fees-uk`
+3. **Attendre le recrawl** (compter ~1 à 2 semaines). Redemander l'examen
+   pendant que les ~320 anciennes URL courtes sont encore indexées invite le
+   même verdict. Dans Search Console, surveiller la baisse du nombre de pages
+   indexées vers ~134.
+4. **Demander le réexamen** depuis AdSense → Sites → foundercalc.dev.
+5. **Astuce approbation :** 15-20 visiteurs organiques réels/jour aide la
+   review — partager le site sur IndieHackers/Reddit/Twitter entre-temps.
 
 ### B2. Une fois approuvé
-1. Récupérer le **Publisher ID** (format `ca-pub-XXXXXXXXXXXXXXXX`)
-2. Me le transmettre — je mets `ads_enabled: true` et `adsense_client_id` dans `content/config.yaml` et rebuild
+1. Créer les blocs d'annonces dans AdSense → Annonces → Par bloc d'annonces.
+   Il en faut deux : un pour la page outil, un pour la page d'accueil.
+2. Me transmettre les deux **ad unit IDs** (format numérique, ex. `1234567890`).
+   Je les mets dans `content/config.yaml` :
+   ```yaml
+   adsense_slots:
+     tool-mid: "1234567890"
+     home-mid: "0987654321"
+   ```
+   Tant qu'ils sont vides, le script AdSense est chargé mais aucun bloc n'est
+   dessiné — volontaire : un cadre « Advertisement » vide qui ne peut pas se
+   remplir dessert la review.
+3. Laisser **Auto ads désactivé** dans le dashboard : l'auto-placement pose des
+   ancres en bas de viewport, par-dessus `.sticky-share-bar` et `.dash-fab`.
 
 ### B3. Configurer le paiement (à faire une fois que le solde approche 100$)
 1. Dans AdSense → Paiements → ajouter un compte bancaire à ton nom, dans le pays de ton profil AdSense
@@ -156,7 +203,7 @@ ouvert, et il est obligatoire même à 0 € de CA.
 |---|---|
 | Domaine enregistré | Mise à jour `base_url`, rebuild |
 | Accès SSH au VPS | Déploiement complet + TLS |
-| Publisher ID AdSense | `ads_enabled: true` + `adsense_client_id`, rebuild |
+| Réexamen AdSense accordé + ad unit IDs | `adsense_slots` dans `config.yaml`, rebuild |
 | IDs affiliés | Remplacement des placeholders `YOURID`, rebuild |
 | ID Formspree | `formspree_id`, rebuild |
 | Handle Twitter | Ajout dans `config.yaml`, rebuild |

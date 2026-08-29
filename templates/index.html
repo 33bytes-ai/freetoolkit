@@ -41,7 +41,7 @@
 
       <ul class="hero-facts">
         <li><strong>{{ categories | length }}</strong> categories</li>
-        <li><strong>{{ all_intent_pages | length }}+</strong> related guides</li>
+        <li><strong>{{ all_intent_pages | length }}+</strong> in-depth guides</li>
         <li>No sign-up &amp; no data uploaded</li>
         <li>Open-source on GitHub</li>
       </ul>
@@ -49,7 +49,7 @@
   </div>
 </div>
 
-{% include "ads_slot.html" %}
+{% with slot_name = "home-mid" %}{% include "ads_slot.html" %}{% endwith %}
 
 <!-- Scrolling ticker of the real tool catalog -->
 <div class="tool-ticker">

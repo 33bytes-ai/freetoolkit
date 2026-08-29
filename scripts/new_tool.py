@@ -252,8 +252,12 @@ Next steps:
      (add a "## Frequently asked questions" section with **bold** questions
      followed by their answers — it's auto-converted into FAQPage JSON-LD)
   4. Update/replace the test stubs in tests/test_tools.js and tests/test_build.py
-  5. Optionally add to content/intent_pages.yaml
-  6. Run: make build && make test
+  5. Optionally add guide sections to content/intent_pages.yaml (parent_tool:
+     {slug}) — these merge into the tool page as anchored sections rather than
+     building separate URLs; see "Content architecture" in CLAUDE.md
+  6. Give the tool body enough substance to clear the 600-word floor that
+     tests/test_build.py enforces on every tool page
+  7. Run: make build && make test
 """)
 
 

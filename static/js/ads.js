@@ -35,4 +35,30 @@
   } else {
     pushSlots();
   }
+
+  /* Let a visitor reopen the consent choice after the banner is dismissed --
+     required to be able to withdraw consent as easily as it was given, and
+     promised by /privacy/. Funding Choices only exposes a revocation message
+     where it actually showed one, so the button stays hidden until the CMP
+     confirms it has one. */
+  function wireConsentRevoke() {
+    var btn = document.getElementById("consent-revoke");
+    if (!btn) return;
+    window.googlefc = window.googlefc || {};
+    window.googlefc.callbackQueue = window.googlefc.callbackQueue || [];
+    window.googlefc.callbackQueue.push({
+      CONSENT_DATA_READY: function () {
+        if (typeof window.googlefc.showRevocationMessage !== "function") return;
+        btn.hidden = false;
+        btn.addEventListener("click", function () {
+          window.googlefc.showRevocationMessage();
+        });
+      },
+    });
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", wireConsentRevoke);
+  } else {
+    wireConsentRevoke();
+  }
 })();

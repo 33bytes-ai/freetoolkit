@@ -1,0 +1,60 @@
+{# One country's Stripe rates, rendered inside a tool page's deep-dive section.
+
+   Ported from the former standalone /tools/stripe-fee-calculator/stripe-fees-<c>/
+   pages. Every figure is still computed at build time from the country's
+   domestic_rate/domestic_fixed, so the worked examples can never drift out of
+   sync with the stated rate. Headings start at <h3>: the section title above
+   is the <h2>. #}
+<p>
+  Stripe charges businesses in {{ country.name }} <strong>{{ country.domestic_rate }}% + {{ country.currency_symbol }}{{ "%.2f"|format(country.domestic_fixed) }}</strong>
+  per successful transaction for {{ country.domestic_label }}, and
+  <strong>{{ country.intl_rate }}% + {{ country.currency_symbol }}{{ "%.2f"|format(country.intl_fixed) }}</strong> for {{ country.intl_label }}.
+  {% if country.amex_label %}American Express is charged at <strong>{{ country.amex_rate }}% + {{ country.currency_symbol }}{{ "%.2f"|format(country.amex_fixed) }}</strong>.{% endif %}
+</p>
+
+<h3>Stripe fee examples in {{ country.currency_code }}</h3>
+<div class="table-scroll">
+  <table>
+    <thead>
+      <tr>
+        <th>Charge</th>
+        <th>{{ country.domestic_label }}</th>
+        {% if country.amex_label %}<th>{{ country.amex_label }}</th>{% endif %}
+        <th>{{ country.intl_label }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for amount in country.example_amounts %}
+      {% set dom = stripe_fee(amount, country.domestic_rate, country.domestic_fixed) %}
+      {% set intl = stripe_fee(amount, country.intl_rate, country.intl_fixed) %}
+      <tr>
+        <td>{{ country.currency_symbol }}{{ amount }}</td>
+        <td>{{ country.currency_symbol }}{{ "%.2f"|format(dom.fee) }} ({{ "%.1f"|format(dom.fee / amount * 100) }}%)</td>
+        {% if country.amex_label %}
+        {% set amex = stripe_fee(amount, country.amex_rate, country.amex_fixed) %}
+        <td>{{ country.currency_symbol }}{{ "%.2f"|format(amex.fee) }} ({{ "%.1f"|format(amex.fee / amount * 100) }}%)</td>
+        {% endif %}
+        <td>{{ country.currency_symbol }}{{ "%.2f"|format(intl.fee) }} ({{ "%.1f"|format(intl.fee / amount * 100) }}%)</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% if country.tax_name %}
+<h3>{{ country.tax_name }} on Stripe fees</h3>
+<p>{{ country.tax_note }}</p>
+{% endif %}
+
+{% if country.alt_processor %}
+<h3>Stripe vs {{ country.alt_processor }} in {{ country.short_name }}</h3>
+<p>{{ country.alt_processor_note }}</p>
+{% endif %}
+
+<p>
+  Rates shown are Stripe's published standard-plan pricing and can change — verify
+  current figures at
+  <a href="https://stripe.com/pricing" rel="noopener noreferrer" target="_blank">stripe.com/pricing</a>
+  before relying on them for financial decisions.
+  <a href="{{ country.deep_link }}">Open the calculator pre-filled with {{ country.short_name }}'s rate →</a>
+</p>

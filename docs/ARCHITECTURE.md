@@ -28,23 +28,30 @@ Source (Python + Jinja2 + YAML + Markdown)
 ## Build pipeline
 
 ```
-content/config.yaml    ──┐
-content/tools.yaml     ──┤
-content/pages/*.md     ──┤  src/freetoolkit/build.py
-templates/*.html       ──┤         │
-templates/widgets/*.html─┤         │ Jinja2 render
-static/                ──┘         │
-                                   ▼
+content/config.yaml     ──┐
+content/tools.yaml      ──┤
+content/intent_pages.yaml─┤  merged into their parent tool page
+content/countries.yaml  ──┤  merged into the Stripe tool page
+content/glossary.yaml   ──┤  merged into /glossary/
+content/categories.yaml ──┤  src/freetoolkit/build.py
+content/pages/*.md      ──┤         │
+templates/*.html        ──┤         │ Jinja2 render
+templates/widgets/*.html──┤         │
+static/                 ──┘         │
+                                    ▼
                                dist/
                           ├── index.html
-                          ├── tools/<slug>/index.html (×105)
-                          ├── tools/<parent>/<slug>/index.html (×325, intent + country)
-                          ├── categories/<slug>/index.html (×9)
-                          ├── glossary/<slug>/index.html (×9)
-                          ├── <page>/index.html (×4)
+                          ├── tools/<slug>/index.html (×105, guides inlined
+                          │     as anchored <section> blocks)
+                          ├── categories/<slug>/index.html (×12)
+                          ├── glossary/index.html (one page, ×9 sections)
+                          ├── <page>/index.html
                           ├── 404.html
                           ├── sitemap.xml
                           ├── robots.txt
+                          ├── ads.txt
+                          ├── _redirects  (301s from every retired guide URL
+                          │     to its section anchor)
                           └── static/
                               ├── css/style.css
                               └── js/

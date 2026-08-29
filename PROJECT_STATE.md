@@ -1,6 +1,6 @@
 # PROJECT_STATE.md — FounderCalc / FreeToolKit
 
-_Mis à jour: 2026-06-16 — Rafraîchi: 2026-07-11_
+_Mis à jour: 2026-08-22 — Rafraîchi: 2026-08-22_
 
 ---
 
@@ -14,6 +14,57 @@ _Mis à jour: 2026-06-16 — Rafraîchi: 2026-07-11_
 | Niche | Calculateurs business pour fondateurs indie / SaaS / freelances |
 | Modèle de revenu | Google AdSense (RPM cible $8–20) + liens affiliés |
 | Phase actuelle | Build complet · 105 outils · Tests OK (826 au total) · **Déploiement non effectué** |
+
+---
+
+## Refus AdSense (7 août 2026) et remise à plat du contenu
+
+**Verdict Google :** *« Contenu à faible valeur informative »*, plus
+`ads.txt` signalé *Introuvable*.
+
+**Cause réelle — la forme, pas la qualité d'écriture.** Le site publiait
+462 URL dont ~275 sous 300 mots : 315 pages « intent » (médiane 244 mots),
+5 pages pays (252), 9 pages glossaire (165), et des pages outil à 303 mots
+de médiane. Le chevauchement textuel entre pages sœurs n'était que de 3 % —
+le contenu était bien distinct, mais découpé en trop de pages trop courtes,
+chacune enroulée autour d'un calculateur. C'est exactement le motif
+« thin content » décrit par les consignes qualité de Google.
+
+**Correctif — consolidation, sans rien jeter :**
+
+| Avant | Après |
+|-------|-------|
+| 462 URL | 134 URL |
+| Page outil : 303 mots (médiane) | **1 315 mots** (médiane), minimum 651 |
+| 315 pages intent + 5 pays | Sections ancrées de la page outil parente |
+| 9 pages glossaire | 9 sections de `/glossary/` (2 555 mots) |
+| Pages catégorie : grille de liens (~130 mots) | Intro éditoriale (`content/categories.yaml`) |
+| — | `dist/_redirects` : 329 redirections 301 vers l'ancre correspondante |
+
+`attach_deep_dives()` fusionne `intent_pages.yaml` + `countries.yaml` dans
+la page `parent_tool`, en rétrogradant les titres (`h2`→`h3`) pour garder un
+plan de document cohérent. Aucune URL retirée ne renvoie 404.
+
+**Garde-fous ajoutés (tests) :** `test_tool_pages_meet_content_depth_budget`
+(≥ 600 mots visibles par page outil) et `test_no_indexable_page_is_thin`
+(rien sous 300 mots dans `sitemap.xml`). 44 tests devenus obsolètes ont été
+retirés, remplacés par 10 tests du nouveau contrat.
+
+**Côté publicité :** `ads_enabled: true` — Google inspecte le site *tel que
+servi* et doit y trouver le code AdSense, la bannière de consentement Funding
+Choices et `/ads.txt`. Le verdict « ads.txt introuvable » venait d'un déploiement
+en retard, pas du build (`write_ads_txt()` l'écrit à chaque build).
+
+**Contenu de confiance renforcé :** `/about/` réécrit (813 mots : éditeur
+identifié, méthodologie, sources, limites), `/contact/`, `/terms/` et
+`/privacy/` étoffés — cette dernière décrit désormais AdSense, Funding
+Choices, Cloudflare, Formspree et les droits RGPD en termes affirmatifs.
+Un bouton « Privacy & ad settings » en pied de page rouvre le choix de
+consentement. `/legal-notice/` passe en `noindex` (mention légale obligatoire,
+sans audience de recherche).
+
+**Reste à faire côté humain :** déployer, vérifier `/ads.txt` et les 301 sur
+le domaine live, laisser Google recrawler, puis demander le réexamen.
 
 ---
 
@@ -36,7 +87,7 @@ _Mis à jour: 2026-06-16 — Rafraîchi: 2026-07-11_
 
 ```
 content/         YAML + Markdown (données site)
-templates/       Jinja2 (base, index, tool, page, 404, dashboard, intent_page, intent_country)
+templates/       Jinja2 (base, index, tool, page, 404, dashboard, glossary_index, _country_section)
 templates/widgets/  Un HTML par outil (formulaire spécifique)
 static/css/      style.css (design system CSS custom properties)
 static/js/lib/   common.js (FTK namespace) · tracker.js (analytics)

@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+{# ads_serving: ads_enabled says "ship the AdSense loader so the site review
+   finds it"; ads_serving says "an ad can actually render here". They differ
+   while the account is under review -- adsense_slots is empty, so no <ins> is
+   drawn and nothing can request an ad. The consent platform keys off the
+   second: asking an EEA visitor to consent to personalised advertising while
+   no advertising exists would be a prompt about nothing, and it cost ~9
+   Lighthouse performance points on every page to do it. #}
+{% set ads_serving = site.ads_enabled and site.adsense_client_id
+   and ((site.adsense_slots | default({})).values() | select | list) %}
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -57,13 +66,18 @@
   <meta name="twitter:description" content="{{ description }}">
   {% block twitter_image %}<meta name="twitter:image" content="{{ site.base_url }}/static/img/og.png">{% endblock %}
   {% block twitter_extra %}{% endblock %}
-  {% if site.ads_enabled and site.adsense_client_id %}
+  {% if ads_serving %}
   <!-- Google Funding Choices: free, IAB TCF-certified consent management
        platform. Required before showing personalized ads to EEA/UK
        visitors (Google's EU User Consent Policy) -- loaded before the
-       ad script below so consent is gathered before any ad request. -->
+       ad script below so consent is gathered before any ad request.
+       Ships only once an ad unit can actually render (see ads_serving). -->
   <script async src="https://fundingchoicesmessages.google.com/i/{{ site.adsense_client_id }}?ers=1"></script>
   <script src="/static/js/ads.js?v={{ asset_version }}" defer></script>
+  {% endif %}
+  {% if site.ads_enabled and site.adsense_client_id %}
+  {# The loader itself ships as soon as ads are enabled: it is what the AdSense
+     site review looks for on the served page. #}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.adsense_client_id }}" crossorigin="anonymous"></script>
   {% endif %}
   <script type="application/ld+json">
@@ -266,6 +280,14 @@
             <li><a href="/privacy/" data-i18n="footer_privacy">Privacy Policy</a></li>
             <li><a href="/terms/" data-i18n="footer_terms">Terms of Use</a></li>
             <li><a href="/legal-notice/" data-i18n="footer_legal">Legal Notice</a></li>
+            {% if ads_serving %}
+            {# Reopens the Funding Choices consent message. Only rendered where
+               the CMP itself ships, and hidden until the CMP reports it has a
+               message to show, so visitors outside the EEA/UK -- who never saw
+               a consent prompt -- are not offered a dead control.
+               Wired in ads.js: the CSP forbids inline handlers. #}
+            <li><button type="button" id="consent-revoke" class="footer-link-btn" hidden>Privacy &amp; ad settings</button></li>
+            {% endif %}
           </ul>
         </div>
         {% if site.formspree_id %}

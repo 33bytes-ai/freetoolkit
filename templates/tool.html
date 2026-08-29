@@ -146,13 +146,13 @@
     </button>
   </div>
 
-  {% include "ads_slot.html" %}
+  {% with slot_name = "tool-mid" %}{% include "ads_slot.html" %}{% endwith %}
 
   <article class="tool-body" itemscope itemtype="https://schema.org/Article" itemprop="articleBody">
     <meta itemprop="author" content="{{ site.name }}">
     {% if tool.body %}
     <p style="font-size:0.78rem;color:var(--text-muted);margin:0 0 1.25rem">
-      ~{{ ((tool.body | wordcount) / 200) | round | int }} min read
+      ~{{ ([(tool.body_wordcount / 200) | round | int, 1] | max) }} min read
     </p>
     {% endif %}
     {{ tool.body_html | safe }}
@@ -181,15 +181,30 @@
   </section>
   {% endif %}
 
-  {% if intent_pages %}
-  <section class="intent-links">
-    <h2>Related guides</h2>
-    <ul>
-      {% for ip in intent_pages %}
-      <li><a href="/tools/{{ ip.parent_tool }}/{{ ip.slug }}/">{{ ip.title }}</a></li>
+  {% if tool.deep_dives %}
+  <nav class="guide-toc" aria-labelledby="guide-toc-heading">
+    <h2 id="guide-toc-heading">In this guide</h2>
+    <ol>
+      {% for dive in tool.deep_dives %}
+      <li><a href="#{{ dive.slug }}">{{ dive.title }}</a></li>
       {% endfor %}
-    </ul>
-  </section>
+    </ol>
+  </nav>
+
+  {% for dive in tool.deep_dives %}
+  <article class="tool-body deep-dive" id="{{ dive.slug }}" itemscope itemtype="https://schema.org/Article" itemprop="articleBody">
+    <meta itemprop="author" content="{{ site.name }}">
+    <meta itemprop="headline" content="{{ dive.title }}">
+    <h2>{{ dive.title }}</h2>
+    <p class="deep-dive-standfirst">{{ dive.description }}</p>
+    {% if dive.is_country_page %}
+      {% with country = dive.country %}{% include "_country_section.html" %}{% endwith %}
+    {% else %}
+      {{ dive.body_html | safe }}
+    {% endif %}
+    <p class="deep-dive-back"><a href="#calculator" class="jump-to-calc">↑ Back to calculator</a></p>
+  </article>
+  {% endfor %}
   {% endif %}
 
   {% if affiliate_links %}
