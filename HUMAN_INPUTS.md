@@ -5,7 +5,7 @@ génère du revenu légalement encaissable. Rien ici n'est automatisable par
 Claude — création de comptes tiers, informations bancaires/fiscales, et
 démarches administratives nominatives.
 
-Mis à jour : 2026-07-10. Domaine retenu après vérification RDAP :
+Mis à jour : 2026-08-29. Domaine retenu après vérification RDAP :
 **`foundercalc.dev`** (`.com` et `.app` déjà pris).
 
 ---
@@ -68,7 +68,7 @@ des emails (SMS, appel, checks multi-régions) :
 
 ## Catégorie B — Monétisation : AdSense
 
-### B1. ⚠️ Candidature refusée le 7 août 2026 — demander un réexamen
+### B1. ⚠️ Candidature refusée le 7 août 2026 — correctif déployé, réexamen à demander
 
 Motif Google : *« Contenu à faible valeur informative »*, plus `ads.txt`
 signalé *Introuvable*.
@@ -79,35 +79,33 @@ section « Refus AdSense » de `PROJECT_STATE.md`) : les ~320 pages courtes ont
 médiane par page outil 303 → 1 315 mots), `ads_enabled: true`, et `/ads.txt`
 est écrit à chaque build avec le Publisher ID.
 
+**Déployé et vérifié le 2026-08-29.** La PR de consolidation est sur `main`,
+`.github/workflows/deploy.yml` a publié en production, et les contrôles sur le
+domaine live passent :
+
+- `/sitemap.xml` : **130 URLs** (460 auparavant)
+- `/tools/stripe-fee-calculator/stripe-fees-uk/` → **301** vers
+  `/tools/stripe-fee-calculator/#stripe-fees-uk`
+- `/ads.txt` sert bien `google.com, ca-pub-6294535713639434, DIRECT, f08c47fec0942fa0`
+- `adsbygoogle.js` présent sur les pages outil
+
+Un `/sitemap_intent.xml` fantôme reste servi depuis le cache edge Cloudflare
+(l'origine renvoie 404, la purge de zone ne l'atteint pas). Il expire seul
+sous 7 jours et ses 320 URL redirigent toutes en 301 — sans conséquence.
+
 **Ce qu'il reste à faire, dans cet ordre :**
 
-1. **Déployer.** Rien de ce qui précède ne compte tant que ce n'est pas en
-   ligne : Google inspecte le site *tel qu'il est servi*. Deux façons :
-   - **Depuis un navigateur, sans machine** (recommandé) : ajouter les secrets
-     `CLOUDFLARE_API_TOKEN` (permission *Cloudflare Pages: Edit*) et
-     `CLOUDFLARE_ACCOUNT_ID` dans Settings → Secrets and variables → Actions,
-     puis fusionner la PR sur `main` — `.github/workflows/deploy.yml` construit
-     et publie tout seul. Déclenchable aussi à la main via Actions → Deploy →
-     Run workflow.
-   - **Depuis une machine locale** : `make deploy` (voir `docs/DEPLOYMENT.md`).
-
-   ⚠️ Déployer depuis une branche autre que `main` produit une *preview*
-   Cloudflare, pas la mise en production : `foundercalc.dev` resterait sur
-   l'ancienne version.
-2. **Vérifier sur le domaine live**, pas en local :
-   - `https://foundercalc.dev/ads.txt` renvoie
-     `google.com, ca-pub-6294535713639434, DIRECT, f08c47fec0942fa0`
-   - une page outil contient bien `adsbygoogle.js`
-   - une ancienne URL de guide redirige en 301, ex.
-     `/tools/stripe-fee-calculator/stripe-fees-uk/` →
-     `/tools/stripe-fee-calculator/#stripe-fees-uk`
-3. **Attendre le recrawl** (compter ~1 à 2 semaines). Redemander l'examen
-   pendant que les ~320 anciennes URL courtes sont encore indexées invite le
-   même verdict. Dans Search Console, surveiller la baisse du nombre de pages
-   indexées vers ~134.
-4. **Demander le réexamen** depuis AdSense → Sites → foundercalc.dev.
-5. **Astuce approbation :** 15-20 visiteurs organiques réels/jour aide la
-   review — partager le site sur IndieHackers/Reddit/Twitter entre-temps.
+1. **Attendre le recrawl** (~1 à 2 semaines). Redemander l'examen pendant que
+   les ~320 anciennes URL courtes sont encore indexées invite le même verdict.
+   Dans Search Console → Indexation des pages, le signal est un couple :
+   « Indexées » qui descend vers **~130** *et* le motif « Page avec
+   redirection » qui monte vers **~320**. Les deux ensemble.
+   ⚠️ Les impressions vont chuter dans l'onglet Performances — c'est mécanique,
+   320 URL quittent les résultats. Ce n'est pas un signal d'alarme.
+2. **Demander le réexamen** depuis AdSense → Sites → foundercalc.dev.
+3. **Astuce approbation :** 15-20 visiteurs organiques réels/jour aide la
+   review — partager le site sur IndieHackers/Reddit/Twitter entre-temps, un
+   canal à la fois (le post simultané partout se fait sanctionner comme spam).
 
 ### B2. Une fois approuvé
 1. Créer les blocs d'annonces dans AdSense → Annonces → Par bloc d'annonces.
@@ -136,14 +134,35 @@ est écrit à chaque build avec le Publisher ID.
 ## Catégorie C — Monétisation : affiliation
 
 ### C1. S'inscrire aux programmes affiliés (~15-30 min chacun)
-Comptes à créer toi-même (infos personnelles/IBAN requises, non déléguables) :
-1. [Paddle Partners](https://paddle.com) (ou équivalent selon les outils SaaS pertinents)
-2. [Chargebee Solution Partner Program](https://www.chargebee.com/partners/solution-partner-program/) (commission sur les nouveaux clients référés — Lemon Squeezy retiré : son "affiliate" est par marchand individuel, pas une commission de parrainage plateforme)
-3. FreshBooks (programme affilié comptabilité, pertinent pour l'audience freelance)
-4. Tout autre programme pertinent identifié dans `content/affiliates.yaml`
+Comptes à créer toi-même (infos personnelles/IBAN requises, non déléguables).
+État au 2026-08-29 :
+
+| Programme | Pages concernées | État |
+|---|---|---|
+| **Gusto** | 3 | ✅ approuvé 2026-08-04, accord signé, lien `gusto.com/go/bd/foundercalc` câblé. **Reste : Stripe Connect pour les versements** |
+| **FreshBooks** (via PartnerStack) | 4 | ⏳ candidature déposée 2026-07-29. Bloqué sur la création de ton compte PartnerStack + connexion Stripe |
+| **Baremetrics** | 21 | ❌ jamais candidaté — [baremetrics.com/affiliate](https://baremetrics.com/affiliate) (impact.com) |
+| **ChartMogul** | 13 | ❌ jamais candidaté — [chartmogul.com/partners](https://chartmogul.com/partners/) |
+| **Paddle** | 8 | ❌ jamais candidaté — [paddle.com/partners](https://paddle.com/partners) |
+| **Chargebee** | 2 | ❌ jamais candidaté — [solution partner program](https://www.chargebee.com/partners/solution-partner-program/) |
+| Lemon Squeezy | — | ❌ écarté : commission par marchand individuel, pas de parrainage plateforme |
+
+Baremetrics et ChartMogul pèsent 34 pages à eux deux, plus que tous les
+programmes déjà engagés réunis. C'est là qu'est le rendement.
+
+Pour les versements US (Gusto), remplir le **W-8BEN** s'il est proposé :
+sans lui, 30 % de retenue à la source ; avec, 0 % via la convention
+France-US. Même logique qu'en B3.
+
+Les revenus d'affiliation sont du CA à déclarer à l'URSSAF comme le reste
+(voir E2) — le seuil de franchise de TVA est cumulé toutes activités.
 
 ### C2. Une fois les IDs obtenus
-Me transmettre les IDs de tracking — je remplace tous les placeholders `YOURID` dans `content/affiliates.yaml` et rebuild (mécanique, quelques minutes).
+Me transmettre les URL trackées — je remplace l'URL nue dans
+`content/affiliates.yaml` et passe `affiliate: true` (le badge
+« [Affiliate link] » exigé par la FTC/ASA est rendu automatiquement),
+puis rebuild. Mécanique, quelques minutes — voir le câblage Gusto comme
+modèle.
 
 ---
 
