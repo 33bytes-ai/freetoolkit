@@ -134,8 +134,8 @@ salary-to-hourly-calculator:
     description: "Turn your hourly rate into client contracts, invoices, and recurring billing. The first step after figuring out what to charge."
     cta: "Create your first contract →"
   - name: "Gusto"
-    url: "https://gusto.com"
-    affiliate: false
+    url: "https://gusto.com/go/bd/foundercalc"
+    affiliate: true
     category: "Payroll / HR"
     description: "If you're transitioning from contractor to hiring your first employee, Gusto handles payroll, benefits, and compliance automatically."
     cta: "Explore Gusto →"
@@ -684,8 +684,8 @@ pricing-elasticity-calculator:
 
 payroll-cost-calculator:
   - name: "Gusto"
-    url: "https://gusto.com/?utm_source=foundercalc"
-    affiliate: false
+    url: "https://gusto.com/go/bd/foundercalc"
+    affiliate: true
     category: "Payroll software"
     description: "Full-service payroll and HR for startups. Handles federal and state payroll taxes automatically, calculates employer contributions, and files W-2s and 1099s."
     cta: "Run payroll with Gusto →"
@@ -1099,10 +1099,10 @@ freelance-tax-estimator:
     affiliate: false
   - name: "Gusto"
     description: "If you elect S-Corp status, Gusto handles payroll, W-2s, and quarterly filings automatically — starting at $46/month."
-    url: "https://gusto.com"
+    url: "https://gusto.com/go/bd/foundercalc"
     cta: "Try Gusto →"
     category: "Payroll"
-    affiliate: false
+    affiliate: true
 
 employee-cost-calculator:
   - name: "Rippling"
