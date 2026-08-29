@@ -2255,13 +2255,14 @@ def test_lighthouse_asserts_on_the_median_of_several_runs():
     CPU time on a shared runner, and identical content scored 0.90+ on main and
     0.63 on a branch within the same hour. Collect 3 runs and assert the median,
     so a flake does not fail CI and one lucky pass does not hide a regression
-    (LHCI's default aggregation is optimistic, i.e. the best run)."""
-    config = json.loads((ROOT / ".lighthouserc.json").read_text())
-    assert config["ci"]["assert"]["aggregationMethod"] == "median"
+    (LHCI's default aggregation is optimistic, i.e. the best run).
 
-    workflow = (ROOT / ".github" / "workflows" / "ci.yml").read_text()
-    lighthouse_step = workflow[workflow.index("lighthouse-ci-action") :]
-    assert "runs: 3" in lighthouse_step
+    Both halves live in .lighthouserc.json. The run count was briefly also set
+    as the action's `runs:` input, which is the same knob reached another way --
+    asserting on the workflow would now pass for a config that never runs."""
+    config = json.loads((ROOT / ".lighthouserc.json").read_text())
+    assert config["ci"]["collect"]["numberOfRuns"] == 3
+    assert config["ci"]["assert"]["aggregationMethod"] == "median"
 
 
 def test_ci_does_not_run_twice_per_push_on_a_branch():
