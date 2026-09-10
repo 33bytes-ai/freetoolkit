@@ -563,6 +563,18 @@ nrr-calculator:
     category: "Revenue Analytics"
     description: "Best-in-class subscription analytics. NRR, GRR, cohort analysis, and MRR movements broken out by expansion, contraction, and churn — free up to $10k MRR."
     cta: "Measure your NRR with ChartMogul →"
+  - name: "ChurnZero"
+    url: "https://churnzero.com"
+    affiliate: false
+    category: "Customer success"
+    description: "Customer success platform with built-in NRR tracking, health scores, and expansion playbooks to improve net revenue retention."
+    cta: "Try ChurnZero →"
+  - name: "Gainsight"
+    url: "https://www.gainsight.com"
+    affiliate: false
+    category: "Customer success"
+    description: "Enterprise customer success platform for monitoring NRR and driving expansion revenue from your existing customer base."
+    cta: "Explore Gainsight →"
 
 burn-multiple-calculator:
   - name: "Brex"
@@ -577,6 +589,12 @@ burn-multiple-calculator:
     category: "SaaS Analytics"
     description: "Track net new ARR, expansion, churn, and contraction automatically from Stripe or Paddle. The net new ARR input for your Burn Multiple calculation, automated."
     cta: "Automate your ARR tracking →"
+  - name: "Runway"
+    url: "https://www.runway.com"
+    affiliate: false
+    category: "Financial planning"
+    description: "Financial planning for startups — model burn rate, ARR projections, and burn multiple scenarios with real-time bank data integration."
+    cta: "Model your burn with Runway →"
 
 email-list-growth-calculator:
   - name: "ConvertKit"
@@ -712,115 +730,123 @@ discount-calculator:
 
 break-even-revenue-calculator:
   - name: "Baremetrics"
-    description: "Track MRR, ARR, and break-even in real time with subscription analytics built for SaaS founders."
     url: "https://baremetrics.com"
     affiliate: false
+    category: "SaaS Analytics"
+    description: "Track MRR, ARR, and break-even in real time with subscription analytics built for SaaS founders."
+    cta: "Start free Baremetrics trial →"
   - name: "ProfitWell"
-    description: "Free subscription metrics — monitor contribution margin and break-even trends without manual spreadsheets."
     url: "https://www.profitwell.com"
     affiliate: false
+    category: "Revenue metrics"
+    description: "Free subscription metrics — monitor contribution margin and break-even trends without manual spreadsheets."
+    cta: "Get ProfitWell free →"
   - name: "FreshBooks"
-    description: "Small-business accounting with P&L reports that help you identify fixed vs variable costs for accurate break-even analysis."
     url: "https://www.freshbooks.com"
     affiliate: false
+    category: "Accounting"
+    description: "Small-business accounting with P&L reports that help you identify fixed vs variable costs for accurate break-even analysis."
+    cta: "Try FreshBooks free →"
 
 cac-calculator:
   - name: "HubSpot CRM"
-    description: "Free CRM to track deals and measure conversion rates by channel — essential for calculating accurate per-channel CAC."
     url: "https://www.hubspot.com/products/crm"
     affiliate: false
+    category: "CRM"
+    description: "Free CRM to track deals and measure conversion rates by channel — essential for calculating accurate per-channel CAC."
+    cta: "Start with HubSpot free →"
   - name: "Baremetrics"
-    description: "Real-time subscription analytics with CAC trends, payback period, and LTV:CAC ratio tracking built in."
     url: "https://baremetrics.com"
     affiliate: false
+    category: "SaaS Analytics"
+    description: "Real-time subscription analytics with CAC trends, payback period, and LTV:CAC ratio tracking built in."
+    cta: "Track CAC with Baremetrics →"
   - name: "Triple Whale"
-    description: "Ecommerce attribution platform for accurate paid CAC measurement across Google, Meta, and TikTok."
     url: "https://www.triplewhale.com"
     affiliate: false
+    category: "Ecommerce attribution"
+    description: "Ecommerce attribution platform for accurate paid CAC measurement across Google, Meta, and TikTok."
+    cta: "Try Triple Whale →"
 
 revenue-per-employee-calculator:
   - name: "Lattice"
-    description: "People management platform — track headcount, compensation, and performance to optimize revenue per employee."
     url: "https://lattice.com"
     affiliate: false
+    category: "HR & performance"
+    description: "People management platform — track headcount, compensation, and performance to optimize revenue per employee."
+    cta: "Explore Lattice →"
   - name: "Rippling"
-    description: "HR and payroll in one platform — accurate headcount and payroll data to keep RPE calculations up to date."
     url: "https://www.rippling.com"
     affiliate: false
+    category: "HR & payroll"
+    description: "HR and payroll in one platform — accurate headcount and payroll data to keep RPE calculations up to date."
+    cta: "Try Rippling →"
   - name: "Baremetrics"
+    url: "https://baremetrics.com"
+    affiliate: false
+    category: "SaaS Analytics"
     description: "Real-time ARR tracking for SaaS — pair with headcount data to monitor revenue per employee as a board metric."
-    url: "https://baremetrics.com"
-    affiliate: false
-
-nrr-calculator:
-  - name: "ChurnZero"
-    description: "Customer success platform with built-in NRR tracking, health scores, and expansion playbooks to improve net revenue retention."
-    url: "https://churnzero.com"
-    affiliate: false
-  - name: "Baremetrics"
-    description: "Real-time NRR and GRR tracking for SaaS — automatically calculates expansion, contraction, and churn MRR from Stripe data."
-    url: "https://baremetrics.com"
-    affiliate: false
-  - name: "Gainsight"
-    description: "Enterprise customer success platform for monitoring NRR and driving expansion revenue from your existing customer base."
-    url: "https://www.gainsight.com"
-    affiliate: false
+    cta: "Start free Baremetrics trial →"
 
 arr-calculator:
   - name: "Baremetrics"
-    description: "Real-time ARR, MRR, and YoY growth tracking for SaaS — automatic calculation from Stripe, Recurly, or Braintree data."
     url: "https://baremetrics.com"
     affiliate: false
+    category: "SaaS Analytics"
+    description: "Real-time ARR, MRR, and YoY growth tracking for SaaS — automatic calculation from Stripe, Recurly, or Braintree data."
+    cta: "Start free Baremetrics trial →"
   - name: "ChartMogul"
-    description: "Subscription analytics with ARR cohort analysis, YoY growth charts, and investor-ready dashboards."
     url: "https://chartmogul.com"
     affiliate: false
+    category: "Revenue Analytics"
+    description: "Subscription analytics with ARR cohort analysis, YoY growth charts, and investor-ready dashboards."
+    cta: "Try ChartMogul free →"
   - name: "Paddle"
-    description: "Merchant of record with built-in ARR reporting — handles billing, taxes, and compliance for global SaaS."
     url: "https://paddle.com"
     affiliate: false
+    category: "Merchant of record"
+    description: "Merchant of record with built-in ARR reporting — handles billing, taxes, and compliance for global SaaS."
+    cta: "Try Paddle free →"
 
 ebitda-calculator:
   - name: "FreshBooks"
-    description: "Small-business accounting with P&L statements — the source data for EBITDA calculations."
     url: "https://www.freshbooks.com"
     affiliate: false
+    category: "Accounting"
+    description: "Small-business accounting with P&L statements — the source data for EBITDA calculations."
+    cta: "Try FreshBooks free →"
   - name: "QuickBooks"
-    description: "Accounting software with detailed income statements to calculate EBITDA from your actual financial data."
     url: "https://quickbooks.intuit.com"
     affiliate: false
+    category: "Accounting"
+    description: "Accounting software with detailed income statements to calculate EBITDA from your actual financial data."
+    cta: "Try QuickBooks free →"
   - name: "Pilot"
-    description: "Bookkeeping and CFO services for startups — clean books mean accurate EBITDA you can present to investors."
     url: "https://www.pilot.com"
     affiliate: false
+    category: "Bookkeeping"
+    description: "Bookkeeping and CFO services for startups — clean books mean accurate EBITDA you can present to investors."
+    cta: "Talk to Pilot →"
 
 cash-conversion-cycle-calculator:
   - name: "Brex"
-    description: "Corporate cards and cash management for startups — extend DPO by using Brex Net 60 terms to improve working capital."
     url: "https://www.brex.com"
     affiliate: false
+    category: "Startup banking"
+    description: "Corporate cards and cash management for startups — extend DPO by using Brex Net 60 terms to improve working capital."
+    cta: "Track cash with Brex →"
   - name: "Stripe"
-    description: "Accept subscription payments automatically — reduce DSO to near-zero for SaaS businesses with automatic card billing."
     url: "https://stripe.com"
     affiliate: false
+    category: "Payments"
+    description: "Accept subscription payments automatically — reduce DSO to near-zero for SaaS businesses with automatic card billing."
+    cta: "Explore Stripe →"
   - name: "Bill.com"
-    description: "Accounts payable and receivable automation — optimize DPO and DSO with automated payment workflows."
     url: "https://www.bill.com"
     affiliate: false
-
-burn-multiple-calculator:
-  - name: "Runway"
-    description: "Financial planning for startups — model burn rate, ARR projections, and burn multiple scenarios with real-time bank data integration."
-    url: "https://www.runway.com"
-    affiliate: false
-  - name: "Baremetrics"
-    description: "Real-time ARR and MRR tracking — the data source for accurate burn multiple calculations alongside your accounting tool."
-    url: "https://baremetrics.com"
-    affiliate: false
-  - name: "Brex"
-    description: "Corporate cards for startups with spend analytics — track gross burn by category to optimize your burn multiple."
-    url: "https://www.brex.com"
-    affiliate: false
+    category: "AP & AR automation"
+    description: "Accounts payable and receivable automation — optimize DPO and DSO with automated payment workflows."
+    cta: "Try Bill.com →"
 
 saas-quick-ratio-calculator:
   - name: "ChartMogul"
