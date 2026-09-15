@@ -16,7 +16,7 @@ Mis à jour : 2026-09-15. Domaine retenu après vérification RDAP :
 make setup
 ```
 
-Une page locale (loopback uniquement) reprend tout ce qui suit dans l'ordre :
+Une page locale (http://127.0.0.1:8097, loopback uniquement) reprend tout ce qui suit dans l'ordre :
 elle explique chaque étape clic par clic, écrit ce que tu colles dans
 `content/config.yaml` ou `content/affiliates.yaml`, et **vérifie chaque étape
 sur le site servi** — une valeur enregistrée n'est en ligne qu'une fois mergée.

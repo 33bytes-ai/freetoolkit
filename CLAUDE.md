@@ -1,14 +1,17 @@
 # FreeToolKit — CLAUDE.md
 
 ## Overview
-Static SEO tools website — 10 free browser-based utilities monetized via
-Google AdSense. Zero database, zero backend, zero ongoing API costs.
+Static SEO tools website (FounderCalc, https://foundercalc.dev) — ~105 free
+browser-based business calculators monetized via Google AdSense and affiliate
+links. Zero database, zero backend, zero ongoing API costs.
 
 ## Stack
 - **Build**: Python 3.11+ + Jinja2 + PyYAML + Markdown → generates `dist/`
 - **Frontend**: Vanilla HTML/CSS/JS, no bundler, no frameworks
-- **Hosting**: nginx in Docker, deployable on any $5–10/mo VPS
-- **Analytics**: GoAccess on nginx access logs (no JS tracking script)
+- **Hosting**: Cloudflare Pages. `.github/workflows/deploy.yml` publishes every
+  merge to `main`; `build.py` writes `dist/_headers` and `dist/_redirects`
+- **Analytics**: Cloudflare Web Analytics, injected by Cloudflare (no cookie,
+  nothing in the templates)
 
 ## Dev commands
 
@@ -19,7 +22,8 @@ Google AdSense. Zero database, zero backend, zero ongoing API costs.
 | `make test-js` | Node test runner for JS pure functions |
 | `make test-py` | pytest for build output validation |
 | `make serve` | Serve `dist/` locally at port 8080 |
-| `make setup` | Setup wizard for the steps only a human can do |
+| `make setup` | Setup wizard at http://127.0.0.1:8097 — the steps only a human can do |
+| `make deploy` | Publish `dist/` to Cloudflare Pages by hand (CI does it on merge) |
 
 Python dependencies are managed with a local `.venv/` created by `make .venv`.
 
@@ -82,18 +86,16 @@ static/
   js/tools/          One JS file per tool
 src/freetoolkit/
   build.py           Static site generator (CLI: python build.py)
+  setup/             Setup wizard: catalogue, checks, YAML editor, web page
 tests/
   test_build.py      pytest — validates generated dist/ structure
   test_tools.js      Node test runner — validates JS pure functions
-infra/
-  Dockerfile         Multi-stage build (Python builder + nginx)
-  docker-compose.yml web + analytics (GoAccess) services
-  nginx.conf         nginx vhost config
-  goaccess.conf      GoAccess settings
+  test_setup_wizard.py  pytest — the wizard, without network
 scripts/
-  deploy.sh          rsync + docker compose up on VPS
   new_tool.py        Scaffold a new tool (adds entry + JS stub)
-  analytics_report.sh Regenerate GoAccess HTML report
+  setup_wizard.py    Entry point of `make setup`
+  check_perf.py      Size budgets, meta coverage, sitemap, og:images
+  uptime_check.sh    What .github/workflows/uptime.yml runs
 ```
 
 ## Setup wizard
@@ -148,19 +150,19 @@ Change `base_url` in `content/config.yaml` to your real domain before
 deploying. This affects sitemap URLs and canonical tags.
 
 ## Content-Security-Policy / inline scripts
-`infra/nginx.conf` sends a strict CSP with no `'unsafe-inline'` in
-`script-src`. `build.py` generates one random nonce per build, passes it to
-every template as `csp_nonce`, and writes it to `csp_nonce.txt` at the repo
-root (gitignored); `infra/Dockerfile` substitutes that value into nginx.conf's
-`__CSP_NONCE__` placeholder when it builds the image, so the header always
-matches the markup it's serving.
-- Any inline `<script>` (including `type="application/ld+json"`) needs
-  `nonce="{{ csp_nonce }}"` — the CSP applies to inline scripts regardless of
-  their `type`.
+`build.py` writes the CSP into `dist/_headers`, which Cloudflare Pages serves.
+`script-src` is `'self'` plus the AdSense and Cloudflare Analytics hosts, with
+no `'unsafe-inline'` and no nonce: a nonce had to match between a header and
+HTML that a CDN can serve from different builds, and a mismatch once blocked
+every inline script site-wide.
+- No executable inline `<script>`: put code in a file under `static/js/`.
+  JSON-LD blocks stay inline — they are data, never executed.
+- A new third-party script host has to be added to the CSP in
+  `write_headers_file()`, or the browser blocks it silently.
 - Never use inline event-handler attributes (`onclick="..."`, including ones
   built dynamically via `innerHTML`) — nonces don't cover them. Wire events
   with `addEventListener` instead (see `static/js/lib/common.js` or any
   `addRow()` in `static/js/tools/` for the pattern).
-- `tests/test_build.py` has CSP tests (nonce presence/consistency, no inline
-  handlers anywhere in `templates/` or `static/js/`) — run them after
-  touching any template or tool JS.
+- `tests/test_build.py` has CSP tests (no executable inline script, no nonce
+  dependency, the `_headers` protections, no inline handlers in `templates/`
+  or `static/js/`) — run them after touching any template or tool JS.
