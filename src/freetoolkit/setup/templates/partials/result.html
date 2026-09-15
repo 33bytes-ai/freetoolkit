@@ -1,0 +1,9 @@
+<p class="{{ 'ok' if outcome.ok else 'bad' }} result-summary">
+  {{ 'OK' if outcome.ok else 'ÉCHEC' }} — {{ outcome.summary }}
+</p>
+{% if outcome.detail %}<pre class="detail">{{ outcome.detail }}</pre>{% endif %}
+{% if outcome.remedy %}<p class="remedy"><strong>Que faire :</strong> {{ outcome.remedy }}</p>{% endif %}
+<p class="muted small">Vérifié {{ checked_at }}</p>
+{% if outcome.ok and step.unlocks %}
+  <p class="muted small">{{ step.unlocks }} — <a href="/">toutes les étapes</a></p>
+{% endif %}

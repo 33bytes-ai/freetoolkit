@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block title %}{{ step.title }}{% endblock %}
+
+{% block content %}
+<p class="muted small"><a href="/">← toutes les étapes</a> · GATE {{ step.gate }}</p>
+
+<h1>{{ step.title }}
+  {% if step.optional %}<span class="tag">facultative</span>{% endif %}
+  <span class="status {{ view.status|lower }}">{{ view.status }}</span>
+</h1>
+
+{% if not view.unlocked %}
+<div class="card warn-card">
+  <strong>Pas encore.</strong> Cette étape attend {{ view.blocked_by|join(", ") }}.
+  Lis-la quand même : savoir ce qui arrive aide.
+</div>
+{% endif %}
+
+<div class="card">
+  <h2>Pourquoi</h2>
+  <p>{{ step.why }}</p>
+  <p class="muted"><strong>Coût :</strong> {{ step.cost }}</p>
+  {% if step.unlocks %}<p class="muted"><strong>Débloque :</strong> {{ step.unlocks }}</p>{% endif %}
+  {% if step.docs %}<p class="muted small">Version longue : {{ step.docs|join(" · ") }}</p>{% endif %}
+</div>
+
+<div class="card">
+  <h2>À faire</h2>
+  <ol class="instructions">
+    {% for item in step.instructions %}
+    <li>
+      <p>{{ item.text }}</p>
+      {% if item.url %}
+        <p><a href="{{ item.url }}" target="_blank" rel="noreferrer noopener">{{ item.url }}</a></p>
+      {% endif %}
+      {% if item.paste %}
+        <pre class="paste">{{ item.paste }}<button class="copy" data-copy="{{ item.paste }}">copier</button></pre>
+      {% endif %}
+      {% if item.note %}<p class="note">{{ item.note }}</p>{% endif %}
+      {% if item.warning %}<p class="warning"><strong>Attention.</strong> {{ item.warning }}</p>{% endif %}
+    </li>
+    {% endfor %}
+  </ol>
+</div>
+
+{% if error %}<div class="card warn-card"><strong>Rien n'a été écrit.</strong> {{ error }}</div>{% endif %}
+{% if saved %}<div class="card ok-card">Enregistré. Vérifie maintenant — et publie si la valeur doit être en ligne.</div>{% endif %}
+
+{% if step.fields or step.acknowledgements %}
+<form class="card" method="post" action="/step/{{ step.id }}">
+  <h2>À enregistrer</h2>
+
+  {% for field in step.fields %}
+  <div class="field">
+    <label for="f-{{ loop.index }}">{{ field.label }}
+      {% if not field.required %}<span class="muted small">facultatif</span>{% endif %}</label>
+    {% if field.kind == "select" %}
+      <select id="f-{{ loop.index }}" name="{{ field.form_name }}">
+        <option value=""></option>
+        {% for choice in field.choices %}
+          <option value="{{ choice }}" {% if current[field.target] == choice %}selected{% endif %}>{{ choice }}</option>
+        {% endfor %}
+      </select>
+    {% else %}
+      <input id="f-{{ loop.index }}" name="{{ field.form_name }}"
+             type="{{ 'date' if field.kind == 'date' else 'text' }}" spellcheck="false"
+             placeholder="{{ field.placeholder }}" value="{{ current[field.target] }}">
+    {% endif %}
+    {% if field.help %}<p class="muted small">{{ field.help }}</p>{% endif %}
+    <p class="muted small">
+      {% if field.store == "config" %}Écrit dans content/config.yaml ({{ field.key }}).
+      {% elif field.store == "affiliate" %}Écrit sur toutes les cartes {{ field.key }} de content/affiliates.yaml.
+      {% else %}Retenu par le wizard seulement.{% endif %}
+    </p>
+  </div>
+  {% endfor %}
+
+  {% if step.acknowledgements %}
+  <h2>Confirmer</h2>
+  <p class="muted small">Aucune vérification ne peut constater ces points. Cocher enregistre
+     que tu l'as fait, et quand.</p>
+  {% for text in step.acknowledgements %}
+  <label class="ack">
+    <input type="checkbox" name="ack" value="{{ text }}" {% if text in view.acknowledged %}checked{% endif %}>
+    <span>{{ text }}</span>
+  </label>
+  {% endfor %}
+  {% endif %}
+
+  <div class="actions"><button class="button" type="submit">Enregistrer</button></div>
+</form>
+{% endif %}
+
+<div class="card">
+  <h2>Prouver</h2>
+  <button class="button" data-verify="/step/{{ step.id }}/verify">Vérifier</button>
+  {% if step.optional %}
+    <button class="button ghost" form="skip-form" type="submit">Écarter cette étape</button>
+  {% endif %}
+  <div id="result">
+    {% if view.summary %}
+      <p class="{{ 'ok' if view.status == StepStatus.VERIFIED else 'bad' }}">{{ view.summary }}</p>
+      <p class="muted small">Dernière vérification {{ view.checked_at }}</p>
+    {% endif %}
+  </div>
+</div>
+
+{% if step.optional %}<form id="skip-form" method="post" action="/step/{{ step.id }}/skip"></form>{% endif %}
+
+<nav class="pager">
+  {% if previous %}<a href="/step/{{ previous.id }}">← {{ previous.title }}</a>{% endif %}
+  {% if following %}<a class="right" href="/step/{{ following.id }}">{{ following.title }} →</a>{% endif %}
+</nav>
+{% endblock %}

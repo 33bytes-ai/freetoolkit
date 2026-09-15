@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Toutes les étapes{% endblock %}
+
+{% block content %}
+<h1>Ce que FounderCalc attend de toi</h1>
+<p class="lede">
+  Chaque étape est quelque chose qu'aucun agent ne peut faire à ta place : un compte,
+  une candidature, une information fiscale, une lecture dans un tableau de bord sans
+  API. Chacune explique à quoi elle sert, guide clic par clic, enregistre ce que tu
+  colles, puis <strong>vérifie sur le site servi</strong> que c'est vraiment en place.
+</p>
+<p class="muted">{{ done }} étape(s) vérifiée(s) sur {{ total }}.</p>
+
+{% if next_action %}
+<div class="card next">
+  <h2>Ensuite : {{ next_action.step.title }}</h2>
+  <p>{{ next_action.step.why }}</p>
+  <p class="muted small">{{ next_action.step.cost }}</p>
+  <a class="button" href="/step/{{ next_action.step.id }}">Ouvrir cette étape</a>
+</div>
+{% else %}
+<div class="card ok-card">
+  <h2>Tout est réglé</h2>
+  <p>Plus rien n'attend ici. Les obligations récurrentes restent à leur rythme.</p>
+</div>
+{% endif %}
+
+{% for gate, steps in gates %}
+<section class="card">
+  <h2>GATE {{ gate }} <span class="muted">{{ gate_titles[gate] }}</span></h2>
+  <ol class="steps">
+    {% for step in steps %}
+      {% set view = views[step.id] %}
+      <li class="step-row {{ view.status|lower }}{% if not view.unlocked %} locked{% endif %}">
+        <span class="dot {{ view.status|lower }}" aria-hidden="true"></span>
+        <div class="step-main">
+          <a href="/step/{{ step.id }}">{{ step.title }}</a>
+          {% if step.optional %}<span class="tag">facultative</span>{% endif %}
+          <span class="status">{{ view.status }}</span>
+          <p class="muted small">{{ view.summary or step.why }}</p>
+          {% if not view.unlocked %}
+            <p class="muted small">En attente de : {{ view.blocked_by|join(", ") }}.
+               Tu peux déjà la lire.</p>
+          {% endif %}
+        </div>
+        <span class="muted small when">{{ step.cost }}</span>
+      </li>
+    {% endfor %}
+  </ol>
+</section>
+{% endfor %}
+{% endblock %}

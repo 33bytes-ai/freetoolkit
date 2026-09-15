@@ -8,3 +8,4 @@ __pycache__/
 .lighthouseci/
 *_tmp.txt
 .wrangler/
+.setup/

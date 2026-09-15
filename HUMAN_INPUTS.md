@@ -10,6 +10,20 @@ Mis à jour : 2026-09-15. Domaine retenu après vérification RDAP :
 
 ---
 
+**Commencer ici :**
+
+```bash
+make setup
+```
+
+Une page locale (loopback uniquement) reprend tout ce qui suit dans l'ordre :
+elle explique chaque étape clic par clic, écrit ce que tu colles dans
+`content/config.yaml` ou `content/affiliates.yaml`, et **vérifie chaque étape
+sur le site servi** — une valeur enregistrée n'est en ligne qu'une fois mergée.
+Ce fichier reste la référence longue.
+
+---
+
 ## Catégorie A — Mise en ligne technique
 
 ### A1. ~~Enregistrer le domaine~~ ✅ fait

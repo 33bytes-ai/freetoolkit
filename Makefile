@@ -1,4 +1,4 @@
-.PHONY: build test-js test-py test check-perf serve serve-network deploy clean help
+.PHONY: build test-js test-py test check-perf serve serve-network deploy setup clean help
 
 PYTHON := .venv/bin/python
 PYTEST  := .venv/bin/pytest
@@ -12,6 +12,7 @@ help:
 	@echo "serve           Serve dist/ at http://localhost:8080"
 	@echo "serve-network   Serve dist/ on all interfaces (LAN access)"
 	@echo "deploy          Build and deploy to VPS (requires FREETOOLKIT_HOST)"
+	@echo "setup           Open the setup wizard: every step only a human can do"
 	@echo "clean           Remove dist/"
 
 build: .venv
@@ -21,7 +22,7 @@ test-js:
 	node --test tests/test_tools.js
 
 test-py: .venv
-	$(PYTEST) tests/test_build.py -v
+	$(PYTEST) tests/test_build.py tests/test_setup_wizard.py -v
 
 test: test-js test-py
 
@@ -42,6 +43,9 @@ serve-network: build
 
 deploy: test build
 	npx wrangler pages deploy dist --project-name=foundercalc
+
+setup: .venv
+	$(PYTHON) scripts/setup_wizard.py
 
 clean:
 	rm -rf dist/

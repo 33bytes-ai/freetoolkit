@@ -19,6 +19,7 @@ Google AdSense. Zero database, zero backend, zero ongoing API costs.
 | `make test-js` | Node test runner for JS pure functions |
 | `make test-py` | pytest for build output validation |
 | `make serve` | Serve `dist/` locally at port 8080 |
+| `make setup` | Setup wizard for the steps only a human can do |
 
 Python dependencies are managed with a local `.venv/` created by `make .venv`.
 
@@ -94,6 +95,22 @@ scripts/
   new_tool.py        Scaffold a new tool (adds entry + JS stub)
   analytics_report.sh Regenerate GoAccess HTML report
 ```
+
+## Setup wizard
+
+`make setup` opens a loopback-only page that walks through every step only a
+human can do (AdSense, affiliate programmes, Formspree, Hetzner, URSSAF) and
+checks each one against the site as served. Code in `src/freetoolkit/setup/`,
+entry point `scripts/setup_wizard.py`, tests in `tests/test_setup_wizard.py`.
+
+- `catalogue.py` is content: fixing a click path is not a code change. A field
+  targets `config:<dotted.path>`, `affiliate:<Name>` or `local:<key>`; a config
+  path must already exist in `content/config.yaml` (a test holds that).
+- `contentfile.py` edits the YAML line by line so its comments survive, and
+  refuses any write whose result does not read back as the value asked for.
+- Checks read the live site (`checks.fetch`), not the file: a value in
+  `content/` does nothing until merged. The wizard never commits or publishes.
+- Standard library plus Jinja2 only, and `build.py` never imports it.
 
 ## Adding a new tool
 ```bash
