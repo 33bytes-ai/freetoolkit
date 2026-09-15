@@ -1,0 +1,142 @@
+/* Setup wizard styles, shared with the Muse Factory wizard.
+
+   Same tokens as the Control Tower, self-hosted for the same reason: this page
+   is often open precisely when the network or the server is not cooperating.
+   Every state is communicated by text as well as by colour. */
+
+:root {
+  color-scheme: light dark;
+  --bg: #f6f7f9;
+  --panel: #ffffff;
+  --panel-2: #f0f2f6;
+  --ink: #171b24;
+  --muted: #5c6679;
+  --line: #dfe3ea;
+  --accent: #3b6fe0;
+  --ok: #1f8a5c;
+  --warn: #9a6b12;
+  --bad: #c33b3b;
+  --off: #8b93a3;
+  --radius: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #10131a; --panel: #171b24; --panel-2: #1d222d; --ink: #e9edf5;
+    --muted: #98a3b6; --line: #2a303c; --accent: #7ba1ff; --ok: #35c07f;
+    --warn: #e2b45b; --bad: #ef6b6b;
+  }
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink);
+       font: 15px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+a { color: var(--accent); }
+h1 { font-size: 1.6rem; margin: 1.2rem 0 .5rem; display: flex; gap: .6rem;
+     align-items: center; flex-wrap: wrap; }
+h2 { font-size: 1.05rem; margin: 0 0 .6rem; display: flex; gap: .6rem;
+     align-items: baseline; flex-wrap: wrap; }
+code { background: var(--panel-2); padding: .1em .35em; border-radius: 4px;
+       font-size: .88em; word-break: break-all; }
+
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 1rem; }
+.muted { color: var(--muted); }
+.small { font-size: .85rem; }
+.ok { color: var(--ok); }
+.bad { color: var(--bad); }
+.lede { font-size: 1.02rem; }
+
+.topbar { background: var(--panel); border-bottom: 1px solid var(--line); }
+.topbar-inner { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap;
+                padding: .7rem 1rem; }
+.brand { font-weight: 700; color: var(--ink); text-decoration: none; }
+.topbar nav { display: flex; gap: 1rem; flex: 1 1 auto; }
+.topbar nav a { color: var(--muted); text-decoration: none; }
+.topbar nav a:hover { color: var(--ink); }
+
+.card { background: var(--panel); border: 1px solid var(--line);
+        border-radius: var(--radius); padding: 1rem 1.1rem; margin: 1rem 0; }
+.card.next { border-color: var(--accent); }
+.ok-card { border-color: var(--ok); }
+.warn-card { border-color: var(--warn); }
+
+.button { display: inline-block; background: var(--accent); color: #fff;
+          border: 1px solid transparent; border-radius: 8px; cursor: pointer;
+          padding: .5rem .9rem; font-size: .95rem; text-decoration: none; }
+.button:disabled { opacity: .6; cursor: progress; }
+.button.ghost { background: transparent; color: var(--ink);
+                border-color: var(--line); }
+.actions { margin-top: 1rem; display: flex; gap: .6rem; }
+
+/* Overview list ---------------------------------------------------------- */
+.steps { list-style: none; margin: 0; padding: 0; }
+.step-row { display: flex; gap: .8rem; align-items: flex-start;
+            padding: .7rem 0; border-top: 1px solid var(--line); }
+.step-row:first-child { border-top: 0; }
+.step-row.locked { opacity: .62; }
+.step-main { flex: 1 1 auto; }
+.step-main p { margin: .2rem 0 0; }
+.step-main a { font-weight: 600; text-decoration: none; }
+.when { white-space: nowrap; text-align: right; max-width: 14ch; }
+
+.dot { width: .6rem; height: .6rem; border-radius: 50%; margin-top: .45rem;
+       flex: 0 0 auto; background: var(--off); }
+.dot.verified { background: var(--ok); }
+.dot.failed { background: var(--bad); }
+.dot.skipped { background: var(--off); }
+
+.status { font-size: .74rem; letter-spacing: .04em; text-transform: uppercase;
+          color: var(--muted); border: 1px solid var(--line);
+          border-radius: 999px; padding: .05rem .5rem; }
+.status.verified { color: var(--ok); border-color: var(--ok); }
+.status.failed { color: var(--bad); border-color: var(--bad); }
+.tag { font-size: .72rem; text-transform: uppercase; letter-spacing: .04em;
+       color: var(--muted); border: 1px solid var(--line); border-radius: 999px;
+       padding: .05rem .45rem; }
+
+/* Instructions ----------------------------------------------------------- */
+.instructions { padding-left: 1.4rem; }
+.instructions > li { margin-bottom: 1.1rem; }
+.instructions p { margin: .25rem 0; }
+.note { color: var(--muted); font-size: .9rem; }
+.warning { border-left: 3px solid var(--warn); padding-left: .7rem;
+           color: var(--ink); font-size: .92rem; }
+.warning strong { color: var(--warn); }
+
+.paste { position: relative; background: var(--panel-2); border: 1px solid var(--line);
+         border-radius: 8px; padding: .6rem 3.6rem .6rem .7rem; margin: .4rem 0;
+         white-space: pre-wrap; word-break: break-all; font-size: .86rem; }
+.copy { position: absolute; top: .4rem; right: .4rem; background: var(--panel);
+        border: 1px solid var(--line); border-radius: 6px; cursor: pointer;
+        font-size: .74rem; padding: .15rem .45rem; color: var(--muted); }
+
+/* Forms ------------------------------------------------------------------ */
+.field { margin-bottom: 1rem; }
+.field label { display: block; font-weight: 600; margin-bottom: .25rem; }
+.field p { margin: .25rem 0 0; }
+input[type=text], input[type=password], input[type=number], select, textarea {
+  width: 100%; padding: .5rem .6rem; border: 1px solid var(--line);
+  border-radius: 8px; background: var(--panel-2); color: var(--ink);
+  font: inherit; font-size: .95rem;
+}
+.field .button { margin-top: .5rem; }
+.ack { display: flex; gap: .6rem; align-items: flex-start; margin: .5rem 0;
+       font-weight: 400; }
+.ack input { margin-top: .35rem; }
+
+/* Results ---------------------------------------------------------------- */
+#result { margin-top: 1rem; }
+.result-summary { font-weight: 600; }
+.detail { background: var(--panel-2); border: 1px solid var(--line);
+          border-radius: 8px; padding: .7rem; white-space: pre-wrap;
+          font-size: .86rem; overflow-x: auto; }
+.remedy { border-left: 3px solid var(--accent); padding-left: .7rem; }
+
+table.env { width: 100%; border-collapse: collapse; }
+table.env th, table.env td { text-align: left; padding: .35rem .5rem;
+                             border-bottom: 1px solid var(--line);
+                             vertical-align: top; }
+
+.pager { display: flex; justify-content: space-between; margin: 1.5rem 0 3rem;
+         gap: 1rem; }
+.pager .right { margin-left: auto; }

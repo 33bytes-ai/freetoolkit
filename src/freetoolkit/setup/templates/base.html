@@ -1,0 +1,63 @@
+{#
+  Rien n'est chargé depuis un CDN : la page dont on a besoin quand quelque chose
+  ne marche pas ne doit pas dépendre du réseau.
+#}
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>{% block title %}Configuration{% endblock %} — FounderCalc</title>
+<link rel="stylesheet" href="/static/wizard.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="/">FounderCalc · configuration</a>
+    <nav>
+      <a href="/">Toutes les étapes</a>
+      <a href="/publish">Ce qui reste à publier</a>
+    </nav>
+    <span class="muted small">{{ DOMAIN }}</span>
+  </div>
+</header>
+
+<main class="wrap">
+  {% block content %}{% endblock %}
+</main>
+
+<footer class="wrap muted small">
+  <p>Ce wizard écrit <code>content/config.yaml</code>, <code>content/affiliates.yaml</code>
+     et son dossier <code>.setup/</code>, rien d'autre. Il n'est pas joignable depuis le
+     réseau, et ne publie rien : publier, c'est merger.</p>
+</footer>
+
+<script>
+document.addEventListener('click', async (event) => {
+  const button = event.target.closest('[data-verify]');
+  if (button) {
+    event.preventDefault();
+    const panel = document.getElementById('result');
+    button.disabled = true;
+    const label = button.textContent;
+    button.textContent = 'Vérification…';
+    panel.innerHTML = '<div class="card muted">Lecture du site servi, quelques secondes.</div>';
+    const response = await fetch(button.dataset.verify, {method: 'POST'});
+    panel.innerHTML = await response.text();
+    button.disabled = false;
+    button.textContent = label;
+    return;
+  }
+  const copy = event.target.closest('[data-copy]');
+  if (copy) {
+    event.preventDefault();
+    navigator.clipboard.writeText(copy.dataset.copy);
+    copy.textContent = 'copié';
+    setTimeout(() => { copy.textContent = 'copier'; }, 1500);
+  }
+});
+</script>
+</body>
+</html>

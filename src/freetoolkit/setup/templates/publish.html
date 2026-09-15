@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Ce qui reste à publier{% endblock %}
+
+{% block content %}
+<h1>Ce qui reste à publier</h1>
+<p class="lede">Une valeur enregistrée est dans <code>content/</code>, pas sur le site.
+  Elle est en ligne une fois mergée sur main : la CI tourne, puis le déploiement.</p>
+
+<div class="card">
+  {% if diff %}
+    <h2>Modifié et pas encore commité</h2>
+    <pre class="detail">{{ diff }}</pre>
+    <p>{{ publish.text }}</p>
+    <pre class="paste">{{ publish.paste }}<button class="copy" data-copy="{{ publish.paste }}">copier</button></pre>
+    <p class="note">{{ publish.note }}</p>
+  {% else %}
+    <p class="ok">Rien en attente : <code>content/config.yaml</code> et
+      <code>content/affiliates.yaml</code> sont identiques au dernier commit.</p>
+    <p class="muted small">Si une vérification dit encore « pas en ligne », le commit
+      attend peut-être sa PR ou son déploiement.</p>
+  {% endif %}
+</div>
+{% endblock %}
