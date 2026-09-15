@@ -869,7 +869,7 @@ def test_ads_txt_carries_publisher_line_for_verification():
     publisher line -- not the placeholder comments used when no ID is set."""
     run_build()
     ads_txt = (DIST / "ads.txt").read_text().strip()
-    assert ads_txt.startswith("google.com, ca-pub-"), f"ads.txt not a valid publisher line: {ads_txt!r}"
+    assert ads_txt.startswith("google.com, pub-"), f"ads.txt not a valid publisher line: {ads_txt!r}"
     assert "DIRECT" in ads_txt
 
 
@@ -2573,7 +2573,10 @@ def test_ads_and_ads_txt_are_live_for_review():
     assert config["site"]["ads_enabled"] is True
 
     ads_txt = (DIST / "ads.txt").read_text()
-    assert ads_txt.strip() == f"google.com, {client_id}, DIRECT, f08c47fec0942fa0"
+    # ads.txt carries the publisher ID, the client ID without "ca-".
+    assert ads_txt.strip() == (
+        f"google.com, {client_id.removeprefix('ca-')}, DIRECT, f08c47fec0942fa0"
+    )
 
     html = (DIST / "tools" / TOOL_SLUGS[0] / "index.html").read_text()
     assert "pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" in html

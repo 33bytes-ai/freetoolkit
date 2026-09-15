@@ -64,7 +64,7 @@ Or export at build time: `ADSENSE_CLIENT_ID=ca-pub-XXXX make build`.
 
 `build.py` writes `/ads.txt` from `adsense_client_id` on every build:
 ```
-google.com, ca-pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
 ```
 
 ### Verifying the redirects before you deploy
