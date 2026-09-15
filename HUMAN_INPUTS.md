@@ -86,7 +86,10 @@ domaine live passent :
 - `/sitemap.xml` : **130 URLs** (460 auparavant)
 - `/tools/stripe-fee-calculator/stripe-fees-uk/` → **301** vers
   `/tools/stripe-fee-calculator/#stripe-fees-uk`
-- `/ads.txt` sert bien `google.com, ca-pub-6294535713639434, DIRECT, f08c47fec0942fa0`
+- `/ads.txt` sert `google.com, pub-6294535713639434, DIRECT, f08c47fec0942fa0`
+  — corrigé le 2026-09-15 : il servait jusque-là `ca-pub-…`, l'ID client de la
+  balise, qui ne correspond à aucun vendeur dans ads.txt. C'est une cause
+  plausible du « ads.txt introuvable » du refus d'août
 - `adsbygoogle.js` présent sur les pages outil
 
 Un `/sitemap_intent.xml` fantôme reste servi depuis le cache edge Cloudflare

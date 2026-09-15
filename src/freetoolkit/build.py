@@ -721,11 +721,15 @@ def write_sitemap_news(config: dict, tools: list[dict]) -> None:
 
 
 def write_ads_txt(config: dict) -> None:
+    # The page tag takes the client ID (ca-pub-…); ads.txt takes the publisher
+    # ID, which is the same number without "ca-". Google's own line is
+    # "google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0". Serving the
+    # ca- form declares a seller ID that matches no account.
     client_id = config["site"].get("adsense_client_id", "")
     if client_id:
-        content = f"google.com, {client_id}, DIRECT, f08c47fec0942fa0\n"
+        content = f"google.com, {client_id.removeprefix('ca-')}, DIRECT, f08c47fec0942fa0\n"
     else:
-        content = "# Replace XXXXXXXXXXXXXXXX with your AdSense publisher ID (ca-pub-XXXXXXXXXXXXXXXX)\n# google.com, ca-pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0\n"
+        content = "# Replace XXXXXXXXXXXXXXXX with your AdSense publisher ID (pub-XXXXXXXXXXXXXXXX)\n# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0\n"
     (DIST_DIR / "ads.txt").write_text(content, encoding="utf-8")
 
 
