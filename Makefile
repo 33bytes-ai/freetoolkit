@@ -11,7 +11,7 @@ help:
 	@echo "check-perf      Check file size budgets, meta coverage, sitemap, og:images"
 	@echo "serve           Serve dist/ at http://localhost:8080"
 	@echo "serve-network   Serve dist/ on all interfaces (LAN access)"
-	@echo "deploy          Build and deploy to VPS (requires FREETOOLKIT_HOST)"
+	@echo "deploy          Build and publish to Cloudflare Pages by hand (CI does it on merge)"
 	@echo "setup           Open the setup wizard: every step only a human can do"
 	@echo "clean           Remove dist/"
 

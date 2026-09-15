@@ -25,7 +25,8 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from freetoolkit.setup.webapp import Wizard, serve  # noqa: E402
 
-DEFAULT_PORT = 8766
+#: Registered in ~/workspace/projets/PORTS.md.
+DEFAULT_PORT = 8097
 
 
 def _loopback(host: str) -> bool:
