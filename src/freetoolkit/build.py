@@ -241,8 +241,9 @@ def load_page(path: Path, config: dict, tool_count: int) -> dict:
     meta = yaml.safe_load(frontmatter) or {}
     body = body.replace("{{ contact_email }}", config["site"]["contact_email"])
     body = body.replace("{{ tool_count }}", str(tool_count))
-    for key, value in config["site"].get("legal", {}).items():
-        body = body.replace(f"{{{{ legal_{key} }}}}", str(value))
+    for prefix in ("legal", "pro"):
+        for key, value in config["site"].get(prefix, {}).items():
+            body = body.replace(f"{{{{ {prefix}_{key} }}}}", str(value))
     meta["content"] = markdown.markdown(body.strip(), extensions=MD_EXTENSIONS)
     return meta
 
@@ -1044,6 +1045,16 @@ def build() -> Path:
             **common,
         )
 
+    for tool in tools:
+        render(
+            env,
+            "embed.html",
+            DIST_DIR / "embed" / tool["slug"] / "index.html",
+            path=f"/embed/{tool['slug']}/",
+            tool=tool,
+            **common,
+        )
+
     render(
         env,
         "glossary_index.html",
@@ -1220,6 +1231,13 @@ def write_headers_file() -> None:
         "",
         "/static/*",
         "  Cache-Control: public, max-age=31536000, immutable",
+        "",
+        # Embeds are framed by other sites: drop the anti-framing headers /*
+        # sets, and re-send the CSP with only frame-ancestors opened.
+        "/embed/*",
+        "  ! X-Frame-Options",
+        "  ! Content-Security-Policy",
+        "  Content-Security-Policy: " + csp.replace("frame-ancestors 'none'", "frame-ancestors *"),
         "",
     ]
     (DIST_DIR / "_headers").write_text("\n".join(lines), encoding="utf-8")

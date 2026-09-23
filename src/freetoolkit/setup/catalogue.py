@@ -101,10 +101,11 @@ PUBLISH = Instruction(
 
 GATE_TITLES = {
     0: "le site tourne sans toi",
-    1: "AdSense",
-    2: "affiliation",
-    3: "audience",
-    4: "obligations qui reviennent",
+    1: "abonnements Pro",
+    2: "AdSense",
+    3: "affiliation",
+    4: "audience",
+    5: "obligations qui reviennent",
 }
 
 
@@ -204,12 +205,91 @@ HETZNER_CLOSURE = Step(
 
 
 # ---------------------------------------------------------------------------
-# GATE 1 — AdSense
+# GATE 1 — abonnements Pro
+# ---------------------------------------------------------------------------
+
+STRIPE_PRO = Step(
+    id="stripe_pro",
+    gate=1,
+    title="Abonnement Pro : Stripe encaisse",
+    why="La page /pro/ vend l'embed sans lien de crédit. Tant que son bouton pointe "
+        "vers /contact/, chaque acheteur doit t'écrire, et la plupart ne le feront pas.",
+    cost="Gratuit. Stripe prend 1,5 % + 0,25 € par paiement carte européenne. "
+         "Environ 25 minutes, dont 15 pour l'activation du compte.",
+    instructions=(
+        Instruction(text="Ouvre le tableau de bord Stripe et connecte-toi.",
+                    url="https://dashboard.stripe.com"),
+        Instruction(text="Tout en haut de l'accueil, clique « Activate payments » (ou "
+                         "« Complete your account setup »), puis « Start ».",
+                    note="Si le bandeau n'apparaît pas, le compte est déjà activé : passe "
+                         "à l'instruction « Product catalog »."),
+        Instruction(text="Business location : France. Type of business : « Individual » "
+                         "(Entreprise individuelle / micro-entreprise). Continue."),
+        Instruction(text="Personal details : ton nom légal, e-mail, date de naissance, "
+                         "adresse du domicile, téléphone. Continue."),
+        Instruction(text="Business details : SIRET, secteur « Software », site web, "
+                         "description du produit ci-dessous. Continue.",
+                    paste="Monthly subscription to white-label embeddable business "
+                          "calculators (https://foundercalc.dev/pro/)"),
+        Instruction(text="Public details : libellé bancaire « FOUNDERCALC », e-mail de "
+                         "support hello@foundercalc.dev. Continue."),
+        Instruction(text="Bank account : colle ton IBAN. Le BIC se remplit tout seul ; le "
+                         "BIC intermédiaire n'est pas demandé. Continue."),
+        Instruction(text="Verify identity : choisis la carte d'identité, puis « Use your "
+                         "phone » et scanne le QR code — recto, verso, selfie.",
+                    warning="Photographie la carte avec le téléphone plutôt que d'envoyer "
+                            "un PDF : ensuite, aucune copie de la pièce ne traîne sur "
+                            "l'ordinateur."),
+        Instruction(text="Review : relis, puis « Submit ». C'est fait quand le bandeau "
+                         "d'activation disparaît et que le bouton « Test mode » (en haut "
+                         "à droite) peut être désactivé. Désactive-le.",
+                    note="Stripe peut demander un justificatif de plus dans les 48 h : "
+                         "il arrive par e-mail et dans la cloche des notifications."),
+        Instruction(text="Menu de gauche → « Product catalog » → « + Add product ». "
+                         "Name : FounderCalc Pro. Description ci-dessous. Pricing : "
+                         "« Recurring », 12,00 EUR, Billing period « Monthly ». « Add "
+                         "product ».",
+                    paste="White-label embeds of every FounderCalc calculator: no credit "
+                          "line, your brand colour."),
+        Instruction(text="Sur la page du produit, à droite du prix : « … » → « Create "
+                         "payment link ». Coche « Collect customers' names », ajoute un "
+                         "champ personnalisé texte « Website where you'll embed ». Onglet "
+                         "« After payment » : garde « Show confirmation page » et colle le "
+                         "message ci-dessous. « Create link », puis copie l'URL "
+                         "https://buy.stripe.com/…",
+                    paste="Thanks! Your Pro key arrives by email within one business day."),
+        Instruction(text="Settings (roue dentée) → « Billing » → « Customer portal » → "
+                         "« Activate link ». Coche « Cancel subscriptions ». Copie "
+                         "l'URL https://billing.stripe.com/p/login/…"),
+        Instruction(text="Settings → « Customer emails » : active « Successful payments ». "
+                         "Settings → « Billing » → « Invoice template » → Footer : colle la "
+                         "mention ci-dessous.",
+                    paste="TVA non applicable, art. 293 B du CGI"),
+        PUBLISH,
+    ),
+    prerequisites=("deploy_pipeline",),
+    fields=(
+        Field("config:site.pro.payment_link", "Lien de paiement Stripe",
+              placeholder="https://buy.stripe.com/…"),
+        Field("config:site.pro.portal_link", "Lien du portail client",
+              placeholder="https://billing.stripe.com/p/login/…"),
+    ),
+    acknowledgements=("Le mode test est désactivé et le compte Stripe n'affiche plus de "
+                      "bandeau d'activation.",),
+    check="stripe_pro",
+    unlocks="Le bouton de /pro/ encaisse. À chaque vente, demande à Claude d'émettre une "
+            "clé Pro (son empreinte va dans site.pro.key_hashes) et envoie-la à l'acheteur.",
+    docs=("content/pages/pro.md",),
+)
+
+
+# ---------------------------------------------------------------------------
+# GATE 2 — AdSense
 # ---------------------------------------------------------------------------
 
 SEARCH_CONSOLE_API = Step(
     id="search_console_api",
-    gate=1,
+    gate=2,
     title="Accès à Search Console",
     why="Le rapport « Indexation des pages » de l'interface se met à jour avec des jours "
         "de retard — il est resté figé au 4 septembre pendant douze jours. L'API dit, URL "
@@ -245,7 +325,7 @@ SEARCH_CONSOLE_API = Step(
 
 SEARCH_CONSOLE = Step(
     id="search_console",
-    gate=1,
+    gate=2,
     title="Le recrawl a vu la consolidation",
     why="AdSense a refusé le site le 7 août pour contenu à faible valeur. La "
         "consolidation (462 URL → 130) est en ligne depuis le 29 août, mais redemander "
@@ -269,7 +349,7 @@ SEARCH_CONSOLE = Step(
 
 ADSENSE_REVIEW = Step(
     id="adsense_review",
-    gate=1,
+    gate=2,
     title="Demander le réexamen AdSense",
     why="Sans approbation, le script AdSense se charge mais aucune annonce ne peut "
         "s'afficher : le site ne rapporte rien.",
@@ -294,7 +374,7 @@ ADSENSE_REVIEW = Step(
 
 ADSENSE_SLOTS = Step(
     id="adsense_slots",
-    gate=1,
+    gate=2,
     title="Créer les deux blocs d'annonces",
     why="Tant qu'un emplacement n'a pas d'ID, il ne rend rien — volontairement : un "
         "cadre « Advertisement » vide dessert la revue. Une fois le site approuvé, sans "
@@ -327,7 +407,7 @@ ADSENSE_SLOTS = Step(
 
 ADSENSE_PAYMENT = Step(
     id="adsense_payment",
-    gate=1,
+    gate=2,
     title="Être payé par AdSense",
     why="Google n'envoie rien sans compte bancaire vérifié, et retient 24 % sans "
         "formulaire fiscal W-8BEN.",
@@ -353,14 +433,14 @@ ADSENSE_PAYMENT = Step(
 
 
 # ---------------------------------------------------------------------------
-# GATE 2 — affiliation
+# GATE 3 — affiliation
 # ---------------------------------------------------------------------------
 
 def _affiliate_step(name: str, cards: int, url: str, *, extra: tuple[Instruction, ...] = (),
                     acknowledgements: tuple[str, ...] = (), cost: str = "") -> Step:
     return Step(
         id=f"affiliate_{name.lower()}",
-        gate=2,
+        gate=3,
         title=f"Affiliation {name}",
         why=f"{name} apparaît sur {cards} carte(s) « Recommended tools ». Tant que le "
             "lien est l'URL nue, chaque clic envoyé ne rapporte rien.",
@@ -414,7 +494,7 @@ AFFILIATE_CHARGEBEE = _affiliate_step(
 
 GUSTO_PAYOUTS = Step(
     id="gusto_payouts",
-    gate=2,
+    gate=3,
     title="Recevoir les commissions Gusto",
     why="Le lien Gusto est câblé et approuvé depuis le 4 août, mais sans Stripe "
         "Connect côté partenaire, aucune commission gagnée n'est versée.",
@@ -434,12 +514,12 @@ GUSTO_PAYOUTS = Step(
 
 
 # ---------------------------------------------------------------------------
-# GATE 3 — audience
+# GATE 4 — audience
 # ---------------------------------------------------------------------------
 
 FORMSPREE = Step(
     id="formspree",
-    gate=3,
+    gate=4,
     title="L'inscription à la newsletter arrive quelque part",
     why="Le formulaire du pied de page et de l'accueil poste vers Formspree. Avec un "
         "ID faux ou un formulaire supprimé, chaque inscription est perdue en silence.",
@@ -467,7 +547,7 @@ FORMSPREE = Step(
 
 TWITTER = Step(
     id="twitter",
-    gate=3,
+    gate=4,
     title="Compte X / Twitter du site",
     why="Un partage du site sur X est attribué au compte du projet (twitter:site) "
         "plutôt qu'à personne.",
@@ -487,7 +567,7 @@ TWITTER = Step(
 
 UPTIME_ALERTS = Step(
     id="uptime_alerts",
-    gate=3,
+    gate=4,
     title="Être prévenu si le site tombe",
     why="Le workflow uptime.yml ping le site toutes les 15 minutes et un échec "
         "arrive par email GitHub. Plus que des emails (SMS, multi-régions) demande un "
@@ -509,7 +589,7 @@ UPTIME_ALERTS = Step(
 
 BING = Step(
     id="bing",
-    gate=3,
+    gate=4,
     title="Bing Webmaster Tools",
     why="Bing (et DuckDuckGo, qui s'en sert) n'indexe pas vite un site dont on ne lui "
         "a pas donné le sitemap.",
@@ -526,12 +606,12 @@ BING = Step(
 
 
 # ---------------------------------------------------------------------------
-# GATE 4 — obligations qui reviennent
+# GATE 5 — obligations qui reviennent
 # ---------------------------------------------------------------------------
 
 URSSAF = Step(
     id="urssaf",
-    gate=4,
+    gate=5,
     title="Déclarer le chiffre d'affaires à l'URSSAF",
     why="La déclaration est due même à 0 € — sans elle, 750 € de pénalité, plus 750 € "
         "par mois de retard. Elle couvre toute la micro-entreprise : FounderCalc, ACO et "
@@ -557,6 +637,7 @@ URSSAF = Step(
 
 STEPS: tuple[Step, ...] = (
     SITE_LIVE, DEPLOY_PIPELINE, WEB_ANALYTICS, HETZNER_CLOSURE,
+    STRIPE_PRO,
     SEARCH_CONSOLE_API, SEARCH_CONSOLE, ADSENSE_REVIEW, ADSENSE_SLOTS, ADSENSE_PAYMENT,
     AFFILIATE_BAREMETRICS, AFFILIATE_CHARTMOGUL, AFFILIATE_PADDLE,
     AFFILIATE_FRESHBOOKS, AFFILIATE_CHARGEBEE, GUSTO_PAYOUTS,

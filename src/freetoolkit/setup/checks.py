@@ -343,6 +343,27 @@ def check_affiliate_link(ctx: Context) -> CheckOutcome:
     return CheckOutcome.passed(f"{len(entries)} carte(s) {name} portent le lien affilié en ligne")
 
 
+def check_stripe_pro(ctx: Context) -> CheckOutcome:
+    pro = contentfile.config_value(ctx.config, "site.pro") or {}
+    links = {"lien de paiement": (str(pro.get("payment_link") or ""), "https://buy.stripe.com/"),
+             "portail client": (str(pro.get("portal_link") or ""),
+                                "https://billing.stripe.com/p/login/")}
+    for name, (url, prefix) in links.items():
+        if not url.startswith(prefix):
+            return CheckOutcome.failed(f"le {name} n'est pas une URL {prefix}…",
+                                       remedy="Colle l'URL que Stripe affiche, en entier.")
+        if "/test_" in url:
+            return CheckOutcome.failed(
+                f"le {name} est en mode test : il n'encaissera jamais",
+                remedy="Désactive « Test mode » en haut à droite du dashboard, puis recrée "
+                       "le lien : un lien de test ne passe pas en live.",
+            )
+    page = fetch(BASE_URL + "/pro/").text
+    if any(url not in page for url, _ in links.values()):
+        return CheckOutcome.failed("/pro/ ne porte pas encore ces liens", remedy=PUBLISH_REMEDY)
+    return CheckOutcome.passed("/pro/ encaisse en live et renvoie vers le portail client")
+
+
 def check_formspree(ctx: Context) -> CheckOutcome:
     form_id = str(contentfile.config_value(ctx.config, "site.formspree_id") or "")
     if not re.fullmatch(r"[A-Za-z0-9]{8}", form_id):
@@ -392,6 +413,7 @@ CHECKS: dict[str, Callable[[Context], CheckOutcome]] = {
     "ads_ready": check_ads_ready,
     "adsense_slots": check_adsense_slots,
     "affiliate_link": check_affiliate_link,
+    "stripe_pro": check_stripe_pro,
     "formspree": check_formspree,
     "twitter": check_twitter,
     "uptime_workflow": check_uptime_workflow,

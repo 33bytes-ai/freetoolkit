@@ -146,6 +146,27 @@ Then implement pure functions in `static/js/tools/my-tool.js`, add SEO body
 copy to `content/tools.yaml`, write tests in `tests/test_tools.js`, and run
 `make build`.
 
+## Embeds and Pro (the MRR line)
+
+Every tool also builds at `/embed/<slug>/` (`templates/embed.html`): the widget
+alone, `noindex`, canonical to the tool page, with a credit link. Tool pages
+show the two-line embed snippet (iframe + a credit link *outside* it — that one
+is the backlink). `write_headers_file()` detaches `X-Frame-Options` and the CSP
+for `/embed/*` and re-sends the CSP with `frame-ancestors *` only.
+
+**Pro** (`/pro/`, `content/pages/pro.md`, `site.pro` in `config.yaml`) removes
+the credit and unlocks `?accent=<hex>`. `static/js/lib/embed.js` hashes `?key=`
+and compares it with `site.pro.key_hashes`. Keys are issued by hand after each
+Stripe sale:
+
+```bash
+python3 -c "import secrets,hashlib;k=secrets.token_urlsafe(16);print(k);print(hashlib.sha256(k.encode()).hexdigest())"
+```
+
+Send the first line to the buyer (embed URL `…/embed/<slug>/?key=<key>`), add
+the second to `key_hashes`, merge. Revoke by deleting the hash. The Payment
+Link and portal URL come from the wizard step `stripe_pro`.
+
 ## Ads
 
 Two flags, not one — they mean different things and `base.html` keys different

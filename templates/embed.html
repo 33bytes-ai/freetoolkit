@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ tool.title }} — {{ site.name }}</title>
+  {# An embed is the calculator alone: thin by design, so it stays out of the
+     index and hands its ranking signals to the tool page. #}
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="{{ site.base_url }}/tools/{{ tool.slug }}/">
+  <link rel="stylesheet" href="/static/css/style.css?v={{ asset_version }}">
+</head>
+<body class="embed">
+  <main id="calculator" class="tool-widget" data-tool="{{ tool.slug }}" aria-label="{{ tool.title }} calculator">
+    {% include "widgets/" ~ tool.slug ~ ".html" %}
+    <noscript><p>This calculator requires JavaScript.</p></noscript>
+    <div id="ftk-a11y-results" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+  </main>
+  <p id="embed-credit" class="embed-credit">
+    <a href="{{ site.base_url }}/tools/{{ tool.slug }}/?ref=embed" target="_blank" rel="noopener">{{ tool.title }}</a> by {{ site.name }}
+  </p>
+  <script type="application/json" id="pro-key-hashes">{{ site.pro.key_hashes | tojson }}</script>
+  <script src="/static/js/lib/common.js?v={{ asset_version }}" defer></script>
+  <script src="/static/js/lib/embed.js?v={{ asset_version }}" defer></script>
+  <script src="/static/js/tools/{{ tool.js }}" defer></script>
+</body>
+</html>

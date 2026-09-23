@@ -3185,3 +3185,21 @@ test("tracker: enforceSizeLimit leaves small data untouched", () => {
   const str = tracker.enforceSizeLimit(data);
   assert.strictEqual(JSON.parse(str).pageviews["/"], 5);
 });
+
+// ---- embed.js (Pro key check) ----
+const embed = require(path.join(__dirname, "..", "static", "js", "lib", "embed.js"));
+
+test("embed: a key whose hash is published is Pro, any other is not", async () => {
+  const hash = await embed.sha256Hex("pro-key-1");
+  assert.equal(hash, require("crypto").createHash("sha256").update("pro-key-1").digest("hex"));
+  assert.equal(await embed.isProKey("pro-key-1", [hash]), true);
+  assert.equal(await embed.isProKey("pro-key-2", [hash]), false);
+  assert.equal(await embed.isProKey("", [hash]), false);
+  assert.equal(await embed.isProKey("pro-key-1", []), false);
+});
+
+test("embed: accent accepts six hex digits only", () => {
+  assert.equal(embed.accentColor("0E6B45"), "#0E6B45");
+  assert.equal(embed.accentColor("red;background:url(x)"), null);
+  assert.equal(embed.accentColor(null), null);
+});
