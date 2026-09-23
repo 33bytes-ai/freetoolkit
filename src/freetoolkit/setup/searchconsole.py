@@ -265,7 +265,7 @@ class Console:
         for attempt in range(4):
             reply = call("POST", INSPECTION, token=self.token, payload={
                 "inspectionUrl": url, "siteUrl": self.site, "languageCode": "en-US"})
-            if reply.status not in (429, 500, 503) or attempt == 3:
+            if reply.status not in (0, 429, 500, 503) or attempt == 3:
                 break
             time.sleep(2 ** attempt * 5)
         result = self._ok(reply, f"inspection de {url}").get("inspectionResult", {})
