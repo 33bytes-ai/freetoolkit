@@ -46,6 +46,17 @@ site:
     registered_on: "5 August 2026"
     vat: "Not applicable — VAT exemption under art. 293 B of the French tax code"
 
+  # FounderCalc Pro: embeds without the credit link. Each key is available to
+  # content/pages/*.md as {{ pro_<key> }}. payment_link stays on /contact/ until
+  # the Stripe Payment Link exists (setup wizard, step « Abonnement Pro »).
+  pro:
+    price: "€12/month"
+    payment_link: "/contact/"
+    portal_link: "/contact/"
+    # SHA-256 hex of each issued Pro key: static/js/lib/embed.js hides the
+    # credit when ?key= hashes to one of these. Remove a hash to revoke.
+    key_hashes: []
+
 # Navigation categories, in display order.
 categories:
   - Payments

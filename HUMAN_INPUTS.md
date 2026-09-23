@@ -85,6 +85,21 @@ des emails (SMS, appel, checks multi-régions) :
 
 ---
 
+## Catégorie A2 — Abonnement Pro (Stripe) ⭐ priorité revenu
+
+`/pro/` vend l'embed sans lien de crédit (12 €/mois). Son bouton pointe vers
+`/contact/` tant que le lien de paiement Stripe n'existe pas.
+
+Tout est dans le wizard, clic par clic, étape **« Abonnement Pro : Stripe
+encaisse »** (GATE 1) : activation du compte (identité, IBAN), produit récurrent,
+Payment Link, portail client, mention TVA. La vérification refuse un lien en
+mode test et attend les deux liens en ligne sur `/pro/`.
+
+À chaque vente : demander à Claude d'émettre une clé Pro (voir `CLAUDE.md` §
+Embeds and Pro), l'envoyer à l'acheteur sous 1 jour ouvré.
+
+---
+
 ## Catégorie B — Monétisation : AdSense
 
 ### B1. ⚠️ Candidature refusée le 7 août 2026 — correctif déployé, réexamen à demander

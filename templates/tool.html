@@ -146,6 +146,16 @@
     </button>
   </div>
 
+  {# ponytail: fixed iframe height; add a postMessage resize listener to the
+     snippet if embedders report scrollbars. #}
+  <details class="embed-box">
+    <summary>Embed this calculator on your site</summary>
+    <label for="embed-code" class="sr-only">Embed code</label>
+    <textarea id="embed-code" readonly>&lt;iframe src="{{ site.base_url }}/embed/{{ tool.slug }}/" title="{{ tool.title }}" width="100%" height="640" style="border:0;max-width:760px" loading="lazy"&gt;&lt;/iframe&gt;
+&lt;p style="font-size:13px"&gt;&lt;a href="{{ site.base_url }}/tools/{{ tool.slug }}/"&gt;{{ tool.title }}&lt;/a&gt; by {{ site.name }}&lt;/p&gt;</textarea>
+    <p class="tool-short">Free, with a credit link. <a href="/pro/">Pro</a> removes it and matches your brand colour — {{ site.pro.price }}.</p>
+  </details>
+
   {% with slot_name = "tool-mid" %}{% include "ads_slot.html" %}{% endwith %}
 
   <article class="tool-body" itemscope itemtype="https://schema.org/Article" itemprop="articleBody">

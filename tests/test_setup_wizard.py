@@ -398,3 +398,22 @@ def test_the_wizard_refuses_to_listen_off_this_machine():
     completed = subprocess.run([sys.executable, str(script), "--host", "0.0.0.0", "--no-browser"],
                                capture_output=True, text=True, timeout=30, check=False)
     assert completed.returncode != 0 and "refusing to bind" in completed.stderr
+
+
+def test_the_pro_links_must_be_live_stripe_urls_on_the_pro_page(site, repo):
+    config = repo / "content" / "config.yaml"
+    ctx = context(repo, "stripe_pro")
+    assert not checks.check_stripe_pro(ctx).ok
+
+    pay, portal = "https://buy.stripe.com/test_abc", "https://billing.stripe.com/p/login/xyz"
+    contentfile.set_config_values(config, {"site.pro.payment_link": pay,
+                                           "site.pro.portal_link": portal},
+                                  backup_dir=repo / "b")
+    assert "mode test" in checks.check_stripe_pro(ctx).summary
+
+    pay = "https://buy.stripe.com/abc"
+    contentfile.set_config_values(config, {"site.pro.payment_link": pay}, backup_dir=repo / "b")
+    assert checks.check_stripe_pro(ctx).remedy == checks.PUBLISH_REMEDY
+
+    site["/pro/"] = checks.Response(200, f'<a href="{pay}">…<a href="{portal}">')
+    assert checks.check_stripe_pro(ctx).ok

@@ -2648,3 +2648,11 @@ a.tool-ticker-item:hover { color: var(--accent); }
 .footer-link-btn:hover {
   text-decoration: underline;
 }
+
+/* Embed page (/embed/<slug>/) and the "Embed this calculator" box */
+body.embed { margin: 0; padding: 1rem; background: var(--bg); }
+.embed-credit { margin: .75rem 0 0; font-size: .8rem; color: var(--text-muted); text-align: right; }
+.embed-credit a { color: var(--accent); }
+.embed-box { margin: 1.5rem 0; }
+.embed-box summary { cursor: pointer; font-weight: 600; }
+.embed-box textarea { width: 100%; min-height: 6.5rem; margin: .75rem 0 .5rem; font: .8rem/1.4 ui-monospace, monospace; }
