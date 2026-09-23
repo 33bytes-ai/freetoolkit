@@ -2480,6 +2480,22 @@ def test_redirects_cover_every_retired_url():
         assert_both_forms(f"/glossary/{entry['slug']}/", f"/glossary/#{entry['slug']}")
 
 
+def test_retired_sitemap_lists_only_redirected_urls_and_is_submitted_by_hand():
+    """sitemap_retired.xml brings Google back to the 301s. Every URL in it must
+    redirect, and nothing that crawlers read on their own may point at it."""
+    run_build()
+    base = yaml.safe_load((ROOT / "content" / "config.yaml").read_text())["site"]["base_url"]
+    redirects = (DIST / "_redirects").read_text()
+    urls = re.findall(r"<loc>([^<]+)</loc>", (DIST / "sitemap_retired.xml").read_text())
+    glossary = yaml.safe_load((ROOT / "content" / "glossary.yaml").read_text())
+    assert len(urls) == len(INTENT_PAGES) + len(COUNTRY_PAGE_SLUGS) + len(glossary)
+    for url in urls:
+        path = url.removeprefix(base.rstrip("/"))
+        assert re.search(rf"^{re.escape(path)} \S+ 301$", redirects, re.M), path
+    for name in ("sitemap_index.xml", "robots.txt"):
+        assert "sitemap_retired" not in (DIST / name).read_text(), name
+
+
 def test_redirects_stay_within_cloudflare_pages_rule_limits():
     """Redirect rules must be static, not dynamic.
 

@@ -409,5 +409,22 @@
     "effort": 1,
     "risk": 1,
     "status": "done"
+  },
+  {
+    "title": "Search Console API : mesurer l'indexation au lieu de la lire",
+    "description": "L'étape wizard « Le recrawl a vu la consolidation » attendait deux confirmations cochées d'après le rapport « Indexation des pages », resté figé au 2026-09-04 (375 indexées, 49 « Page avec redirection » sur 329 URL retirées). Client Search Console en bibliothèque standard (src/freetoolkit/setup/searchconsole.py, OAuth loopback sur 8098 avec le client Desktop de foundercalc-mail), make gsc-auth / gsc / gsc-push, étape search_console_api, et le check search_console_recrawl qui inspecte chaque ancienne URL (passe à ≤ 10 % encore indexées). dist/sitemap_retired.xml liste les 329 URL retirées pour faire revenir Google sur les 301, soumis par l'API seulement.",
+    "impact": 8,
+    "effort": 3,
+    "risk": 1,
+    "status": "done"
+  },
+  {
+    "title": "Retirer sitemap_retired.xml une fois les anciennes URL sorties de l'index",
+    "description": "Temporaire par construction : quand make gsc montre ≤ 10 % des anciennes URL encore indexées et que l'étape search_console est vérifiée, supprimer write_sitemap_retired() et son test dans build.py/test_build.py, retirer le sitemap de Search Console (scripts/search_console.py push le retire dès qu'il répond 404), et faire lire à check_search_console_recrawl la liste depuis content/ plutôt que depuis le sitemap servi. Les règles _redirects restent.",
+    "impact": 4,
+    "effort": 1,
+    "risk": 1,
+    "status": "pending",
+    "human_input_needed": true
   }
 ]

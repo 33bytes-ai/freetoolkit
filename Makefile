@@ -1,4 +1,4 @@
-.PHONY: build test-js test-py test check-perf serve serve-network deploy setup clean help
+.PHONY: build test-js test-py test check-perf serve serve-network deploy setup gsc-auth gsc gsc-push clean help
 
 PYTHON := .venv/bin/python
 PYTEST  := .venv/bin/pytest
@@ -13,6 +13,9 @@ help:
 	@echo "serve-network   Serve dist/ on all interfaces (LAN access)"
 	@echo "deploy          Build and publish to Cloudflare Pages by hand (CI does it on merge)"
 	@echo "setup           Open the setup wizard: every step only a human can do"
+	@echo "gsc-auth        Authorize Google Search Console (once)"
+	@echo "gsc             Search Console: sitemaps, performance, what Google still indexes"
+	@echo "gsc-push        Submit the served sitemaps to Search Console, withdraw dead ones"
 	@echo "clean           Remove dist/"
 
 build: .venv
@@ -46,6 +49,15 @@ deploy: test build
 
 setup: .venv
 	$(PYTHON) scripts/setup_wizard.py
+
+gsc-auth: .venv
+	$(PYTHON) scripts/search_console.py auth
+
+gsc: .venv
+	$(PYTHON) scripts/search_console.py status
+
+gsc-push: .venv
+	$(PYTHON) scripts/search_console.py push
 
 clean:
 	rm -rf dist/

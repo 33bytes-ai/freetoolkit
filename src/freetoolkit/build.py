@@ -1103,9 +1103,42 @@ def build() -> Path:
     write_og_image(config, tools)
     write_headers_file()
     write_redirects(intent_pages, glossary)
+    write_sitemap_retired(config, intent_pages, glossary)
     _gzip_dist()
 
     return DIST_DIR
+
+
+def retired_urls(intent_pages: list[dict], glossary: list[dict]) -> list[tuple[str, str]]:
+    """(old path, section it was merged into) for every page the consolidation retired."""
+    pairs = [
+        (f"/tools/{ip['parent_tool']}/{ip['slug']}/", f"/tools/{ip['parent_tool']}/#{ip['slug']}")
+        for ip in intent_pages
+    ]
+    pairs += [(f"/glossary/{e['slug']}/", f"/glossary/#{e['slug']}") for e in glossary]
+    return pairs
+
+
+def write_sitemap_retired(config: dict, intent_pages: list[dict], glossary: list[dict]) -> None:
+    """Emit dist/sitemap_retired.xml: the old URLs, which all 301 now.
+
+    No sitemap listed them after the consolidation, so Google only came back to
+    them by chance -- 49 of 324 seen as redirects in the first week, while the
+    rest stayed indexed and held up the AdSense re-review. Listing them brings
+    the crawler back to find the 301s. Submitted through the Search Console API
+    only: it is kept out of sitemap_index.xml and robots.txt, and it goes once
+    Search Console stops counting the old pages as indexed."""
+    base = config["site"]["base_url"].rstrip("/")
+    entries = "".join(
+        f"  <url><loc>{base}{src}</loc></url>\n" for src, _ in retired_urls(intent_pages, glossary)
+    )
+    (DIST_DIR / "sitemap_retired.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + entries
+        + "</urlset>\n",
+        encoding="utf-8",
+    )
 
 
 def write_redirects(intent_pages: list[dict], glossary: list[dict]) -> None:
@@ -1131,13 +1164,8 @@ def write_redirects(intent_pages: list[dict], glossary: list[dict]) -> None:
         lines.append(f"{src} {dest} 301")
         lines.append(f"{src.rstrip('/')} {dest} 301")
 
-    for ip in intent_pages:
-        rule(
-            f"/tools/{ip['parent_tool']}/{ip['slug']}/",
-            f"/tools/{ip['parent_tool']}/#{ip['slug']}",
-        )
-    for entry in glossary:
-        rule(f"/glossary/{entry['slug']}/", f"/glossary/#{entry['slug']}")
+    for src, dest in retired_urls(intent_pages, glossary):
+        rule(src, dest)
 
     body = [ln for ln in lines if not ln.startswith("#")]
     if len(body) > 2000:

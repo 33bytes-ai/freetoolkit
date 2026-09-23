@@ -6,6 +6,7 @@ is replaced by a dictionary of what the "site" serves.
 
 from __future__ import annotations
 
+import json
 import shutil
 import subprocess
 import sys
@@ -17,7 +18,7 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
 
-from freetoolkit.setup import catalogue, checks, contentfile, webapp  # noqa: E402
+from freetoolkit.setup import catalogue, checks, contentfile, searchconsole, webapp  # noqa: E402
 from freetoolkit.setup.state import StepStatus  # noqa: E402
 
 TOKEN = "t0ken"
@@ -301,6 +302,89 @@ def test_an_undeployed_main_is_not_a_working_pipeline(monkeypatch, repo):
     monkeypatch.setattr(checks, "_github", github)
     outcome = checks.check_deploy_pipeline(context(repo, "deploy_pipeline"))
     assert not outcome.ok and "pas encore déployé" in outcome.summary
+
+
+@pytest.fixture
+def google(monkeypatch, tmp_path: Path):
+    """What the fake Google answers: a site list, and a verdict per inspected URL."""
+    secret = tmp_path / "config" / "client_secret.json"
+    secret.parent.mkdir()
+    secret.write_text(json.dumps({"installed": {
+        "client_id": "id", "client_secret": "s", "auth_uri": "https://auth",
+        "token_uri": "https://token"}}))
+    monkeypatch.setattr(searchconsole, "CLIENT_SECRET", secret)
+    monkeypatch.setattr(searchconsole, "TOKEN", tmp_path / "config" / "token.json")
+    fake = {"sites": [{"siteUrl": f"{BASE}/", "permissionLevel": "siteFullUser"}],
+            "indexed": set(), "calls": []}
+
+    def call(method, url, *, token="", payload=None, form=None):
+        fake["calls"].append((method, url))
+        if url == "https://token":
+            return searchconsole.ApiReply(200, {"access_token": "fresh", "expires_in": 3600})
+        if url.endswith("/sites"):
+            return searchconsole.ApiReply(200, {"siteEntry": fake["sites"]})
+        if url == searchconsole.INSPECTION:
+            indexed = payload["inspectionUrl"] in fake["indexed"]
+            return searchconsole.ApiReply(200, {"inspectionResult": {"indexStatusResult": {
+                "verdict": "PASS" if indexed else "NEUTRAL",
+                "coverageState": "Submitted and indexed" if indexed else "Page with redirect",
+                "lastCrawlTime": "2026-09-10T08:00:00Z"}}})
+        return searchconsole.ApiReply(404, {"error": {"message": url}})
+
+    monkeypatch.setattr(searchconsole, "call", call)
+    return fake
+
+
+def authorized(google) -> None:
+    searchconsole._write_token(searchconsole.TOKEN, {"refresh_token": "r", "access_token": "old",
+                                                     "expires_at": 0})
+
+
+def serve_sitemaps(site, live: int, retired: int) -> list[str]:
+    urls = [f"{BASE}/old/{n}/" for n in range(retired)]
+    site["/sitemap.xml"] = checks.Response(
+        200, "".join(f"<loc>{BASE}/tools/{n}/</loc>" for n in range(live)))
+    site["/sitemap_retired.xml"] = checks.Response(200, "".join(f"<loc>{u}</loc>" for u in urls))
+    return urls
+
+
+def test_search_console_access_names_what_is_missing(google, repo):
+    ctx = context(repo, "search_console_api")
+    missing = checks.check_search_console_access(ctx)
+    assert not missing.ok and "make gsc-auth" in missing.detail
+
+    authorized(google)
+    google["sites"] = [{"siteUrl": f"{BASE}/", "permissionLevel": "siteRestrictedUser"}]
+    assert "lecture seule" in checks.check_search_console_access(ctx).summary
+
+    google["sites"] = [{"siteUrl": f"{BASE}/", "permissionLevel": "siteOwner"}]
+    assert checks.check_search_console_access(ctx).ok
+
+
+def test_an_expired_token_is_refreshed_and_kept_private(google):
+    authorized(google)
+    assert searchconsole.access_token() == "fresh"
+    assert json.loads(searchconsole.TOKEN.read_text())["refresh_token"] == "r"
+    assert searchconsole.TOKEN.stat().st_mode & 0o777 == 0o600
+
+
+def test_the_recrawl_passes_only_once_the_old_urls_left_the_index(google, site, repo):
+    authorized(google)
+    retired = serve_sitemaps(site, live=3, retired=20)
+    google["indexed"] = set(retired[:5])
+    ctx = context(repo, "search_console")
+
+    waiting = checks.check_search_console_recrawl(ctx)
+    assert not waiting.ok and "5 des 20" in waiting.summary
+    assert "vues en redirection 15" in waiting.detail
+
+    inspections = len(google["calls"])
+    google["indexed"] = set(retired[:2])
+    assert not checks.check_search_console_recrawl(ctx).ok
+    assert len(google["calls"]) == inspections, "a fresh report must not spend the quota again"
+
+    shutil.rmtree(repo / searchconsole.SNAPSHOT_DIR)
+    assert checks.check_search_console_recrawl(ctx).ok
 
 
 def test_a_crashing_check_reports_instead_of_breaking_the_page(monkeypatch, repo):
