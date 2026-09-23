@@ -387,6 +387,15 @@ def test_the_recrawl_passes_only_once_the_old_urls_left_the_index(google, site, 
     assert checks.check_search_console_recrawl(ctx).ok
 
 
+def test_an_inspection_that_times_out_is_retried(monkeypatch):
+    replies = [searchconsole.ApiReply(0, {"error": {"message": "timed out"}}),
+               searchconsole.ApiReply(200, {"inspectionResult": {}})]
+    monkeypatch.setattr(searchconsole, "call", lambda *a, **k: replies.pop(0))
+    monkeypatch.setattr(searchconsole.time, "sleep", lambda s: None)
+    searchconsole.Console(token="t", site=f"{BASE}/", permission="siteOwner").inspect(BASE)
+    assert not replies
+
+
 def test_a_crashing_check_reports_instead_of_breaking_the_page(monkeypatch, repo):
     monkeypatch.setitem(checks.CHECKS, "site_live", lambda ctx: 1 / 0)
     outcome = checks.run("site_live", context(repo, "site_live"))
