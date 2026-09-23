@@ -5,7 +5,7 @@ génère du revenu légalement encaissable. Rien ici n'est automatisable par
 Claude — création de comptes tiers, informations bancaires/fiscales, et
 démarches administratives nominatives.
 
-Mis à jour : 2026-09-15. Domaine retenu après vérification RDAP :
+Mis à jour : 2026-09-16. Domaine retenu après vérification RDAP :
 **`foundercalc.dev`** (`.com` et `.app` déjà pris).
 
 ---
@@ -58,17 +58,19 @@ chaque mois (facturation Hetzner), donc rien à faire avant.
 3. **Settings → Delete user account** — fermer le compte
 4. Écrire à **cda-review@hetzner.com** pour demander le remboursement du solde de crédit restant
 
-### A3. Soumettre le sitemap aux moteurs (~10 min, gratuit)
-1. [Google Search Console](https://search.google.com/search-console) → ajouter la propriété `foundercalc.dev` → soumettre `sitemap_index.xml`
-2. [Bing Webmaster Tools](https://www.bing.com/webmasters) → même démarche
+### A3. Search Console par l'API (~10 min, gratuit, une fois)
+La propriété existe et Google lit le site. Les sitemaps se soumettent et
+s'inspectent désormais depuis le terminal — étape wizard « Accès à Search
+Console » :
+1. Google Cloud Console → projet du client OAuth de foundercalc-mail → activer
+   **Google Search Console API**
+2. Google Auth Platform → Audience : en « Testing », ton adresse dans les test
+   users (et le token expire tous les 7 jours) ; « In production » l'évite
+3. `install -Dm600 ~/.config/foundercalc-mail/client_secret.json ~/.config/freetoolkit/client_secret.json`
+4. `make gsc-auth`, puis `make gsc-push` (soumet les sitemaps, retire ceux qui répondent 404)
 
-⚠️ **En attente (2026-07-28)** : GSC affiche « Impossible de récupérer le
-sitemap » après soumission. Vérifié côté serveur — XML valide, HTTP 200,
-`content-type` correct, répond même avec un user-agent Googlebot — rien
-d'anormal détecté depuis l'extérieur. Probablement juste le délai normal
-GSC avant premier crawl (jusqu'à 24-48h). À revérifier le 2026-07-29 ; si
-toujours en échec, regarder Cloudflare Dashboard → Security → Bot Fight
-Mode (le token API actuel n'a pas la permission de vérifier ce réglage).
+[Bing Webmaster Tools](https://www.bing.com/webmasters) : import depuis Search
+Console (étape wizard optionnelle).
 
 ### A4. Monitoring d'uptime (optionnel, ~10 min, gratuit)
 Un healthcheck externe tourne déjà automatiquement dès que A1 est fait (voir
@@ -115,13 +117,17 @@ sous 7 jours et ses 320 URL redirigent toutes en 301 — sans conséquence.
 
 **Ce qu'il reste à faire, dans cet ordre :**
 
-1. **Attendre le recrawl** (~1 à 2 semaines). Redemander l'examen pendant que
-   les ~320 anciennes URL courtes sont encore indexées invite le même verdict.
-   Dans Search Console → Indexation des pages, le signal est un couple :
-   « Indexées » qui descend vers **~130** *et* le motif « Page avec
-   redirection » qui monte vers **~320**. Les deux ensemble.
-   ⚠️ Les impressions vont chuter dans l'onglet Performances — c'est mécanique,
-   320 URL quittent les résultats. Ce n'est pas un signal d'alarme.
+1. **Attendre le recrawl.** Redemander l'examen pendant que les 329 anciennes
+   URL courtes sont encore indexées invite le même verdict.
+   Le rapport « Indexation des pages » ne sert pas de signal : son export du
+   2026-09-16 était figé au **4 septembre** (375 indexées, 49 « Page avec
+   redirection », rien vu depuis). Le signal est `make gsc`, qui inspecte chaque
+   ancienne URL par l'API : l'étape wizard passe quand **≤ 10 %** sont encore
+   indexées. `dist/sitemap_retired.xml`, soumis par `make gsc-push`, fait
+   revenir Google sur les 301 au lieu d'attendre qu'il tombe dessus.
+   ⚠️ Les impressions chutent dans l'onglet Performances (~1 500 → ~600/jour
+   dès le 1er septembre) — c'est mécanique, 329 URL quittent les résultats.
+   Ce n'est pas un signal d'alarme.
 2. **Demander le réexamen** depuis AdSense → Sites → foundercalc.dev.
 3. **Astuce approbation :** 15-20 visiteurs organiques réels/jour aide la
    review — partager le site sur IndieHackers/Reddit/Twitter entre-temps, un

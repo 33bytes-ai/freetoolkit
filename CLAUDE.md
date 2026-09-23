@@ -23,6 +23,7 @@ links. Zero database, zero backend, zero ongoing API costs.
 | `make test-py` | pytest for build output validation |
 | `make serve` | Serve `dist/` locally at port 8080 |
 | `make setup` | Setup wizard at http://127.0.0.1:8097 — the steps only a human can do |
+| `make gsc` | Search Console: what Google still indexes (see § Search Console) |
 | `make deploy` | Publish `dist/` to Cloudflare Pages by hand (CI does it on merge) |
 
 Python dependencies are managed with a local `.venv/` created by `make .venv`.
@@ -94,6 +95,7 @@ tests/
 scripts/
   new_tool.py        Scaffold a new tool (adds entry + JS stub)
   setup_wizard.py    Entry point of `make setup`
+  search_console.py  Entry point of `make gsc`, `gsc-auth`, `gsc-push`
   check_perf.py      Size budgets, meta coverage, sitemap, og:images
   uptime_check.sh    What .github/workflows/uptime.yml runs
 ```
@@ -113,6 +115,27 @@ entry point `scripts/setup_wizard.py`, tests in `tests/test_setup_wizard.py`.
 - Checks read the live site (`checks.fetch`), not the file: a value in
   `content/` does nothing until merged. The wizard never commits or publishes.
 - Standard library plus Jinja2 only, and `build.py` never imports it.
+
+## Search Console
+
+The web report "Indexation des pages" lags by days (it sat on 2026-09-04 for
+twelve), so nothing is decided from it. `src/freetoolkit/setup/searchconsole.py`
+talks to the API instead — standard library, installed-app OAuth on
+`localhost:8098`, the Desktop client shared with foundercalc-mail.
+
+| Command | What it does |
+|---------|-------------|
+| `make gsc-auth` | Consent once; token in `~/.config/freetoolkit/search_console_token.json` |
+| `make gsc` | Sitemaps known to GSC, 28-day impressions, URL Inspection of every URL in `sitemap.xml` and `sitemap_retired.xml`; snapshot in `.setup/search_console/<date>.json` (reused for 12 h) |
+| `make gsc-push` | Submit `sitemap_index.xml` and `sitemap_retired.xml`, withdraw submitted sitemaps that now 404 |
+
+- The wizard's `search_console_recrawl` check passes once ≤ 10 % of the retired
+  URLs are still indexed — the signal to ask for the AdSense re-review.
+- **`dist/sitemap_retired.xml` is temporary.** It lists the 329 retired URLs so
+  Google comes back to their 301s; it is kept out of `sitemap_index.xml` and
+  `robots.txt` (a test holds that) and submitted through the API only. Remove it
+  once the check passes — see the backlog entry.
+- URL Inspection allows 2,000 calls a day per property; a full `make gsc` spends ~460.
 
 ## Adding a new tool
 ```bash

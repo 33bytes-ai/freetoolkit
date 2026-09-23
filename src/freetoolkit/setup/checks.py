@@ -6,8 +6,10 @@ and deployed — a check that read the file would pass the day before anyone
 could see the change. The file is still read first, so a failure says which
 half is missing: the value, or its publication.
 
-Nothing here writes, and nothing needs a credential: the site, /ads.txt and
-GitHub's API for this public repository all answer anonymously.
+Nothing here writes to content/. The site, /ads.txt and GitHub's API for this
+public repository all answer anonymously; only Search Console needs the OAuth
+token kept outside the repository (see searchconsole.py), and its inspection
+results are kept in .setup/ so a second click does not spend the daily quota.
 """
 
 from __future__ import annotations
@@ -19,18 +21,24 @@ import urllib.error
 import urllib.request
 from collections.abc import Callable
 from dataclasses import dataclass
+from datetime import timedelta
 from pathlib import Path
 from urllib.parse import urlsplit
 
 import yaml
 
-from freetoolkit.setup import contentfile
+from freetoolkit.setup import contentfile, searchconsole
 from freetoolkit.setup.catalogue import BASE_URL, REPO, Step
 
 TIMEOUT_SECONDS = 15
 USER_AGENT = "FounderCalc-setup-wizard/1 (+https://foundercalc.dev)"
 #: The sitemap held 460 URLs before the consolidation and 130 after.
 CONSOLIDATED_SITEMAP_MAX = 200
+#: Asking for the AdSense re-review while a tenth of the thin pages are still
+#: indexed is asking for the same verdict.
+RETIRED_INDEXED_MAX_SHARE = 0.10
+#: Google recrawls in days, not hours: a report this fresh is still the truth.
+RECRAWL_REPORT_MAX_AGE = timedelta(hours=12)
 
 
 @dataclass(frozen=True, slots=True)
@@ -193,20 +201,70 @@ def check_web_analytics(ctx: Context) -> CheckOutcome:
     return CheckOutcome.passed("Cloudflare Web Analytics mesure le trafic")
 
 
-def check_sitemap_consolidated(ctx: Context) -> CheckOutcome:
+def check_search_console_access(ctx: Context) -> CheckOutcome:
+    try:
+        console = searchconsole.connect()
+    except searchconsole.SearchConsoleError as error:
+        return CheckOutcome.failed(
+            "Search Console ne répond pas avec ton accès",
+            detail=str(error),
+            remedy="Suis les instructions dans l'ordre : API activée, client copié, "
+                   "make gsc-auth. Un « has not been used in project » veut dire que "
+                   "l'API n'est pas activée.",
+        )
+    if not console.can_write:
+        return CheckOutcome.failed(
+            f"accès en lecture seule à {console.site} ({console.permission})",
+            remedy="Soumettre un sitemap demande un accès « Complet » ou propriétaire : "
+                   "autorise le compte Google qui possède la propriété.",
+        )
+    return CheckOutcome.passed(f"Search Console répond pour {console.site}",
+                               detail=f"droits : {console.permission}")
+
+
+def sitemap_urls(response: Response) -> list[str]:
+    return re.findall(r"<loc>([^<]+)</loc>", response.text)
+
+
+def check_search_console_recrawl(ctx: Context) -> CheckOutcome:
     sitemap = fetch(BASE_URL + "/sitemap.xml")
     if sitemap.status != 200:
         return _unreachable(BASE_URL + "/sitemap.xml", sitemap)
-    urls = sitemap.text.count("<loc>")
-    if urls > CONSOLIDATED_SITEMAP_MAX:
+    live = sitemap_urls(sitemap)
+    if len(live) > CONSOLIDATED_SITEMAP_MAX:
         return CheckOutcome.failed(
-            f"le sitemap servi liste encore {urls} URL",
+            f"le sitemap servi liste encore {len(live)} URL",
             remedy="La consolidation n'est pas en ligne : Google recrawlerait les pages "
                    "courtes. Vérifie le dernier déploiement.",
         )
-    return CheckOutcome.passed(f"le sitemap servi liste {urls} URL",
-                               detail="Le reste — ce que Google a indexé — ne se lit que "
-                                      "dans Search Console : ce sont les deux confirmations.")
+
+    report = searchconsole.latest_report(ctx.root, RECRAWL_REPORT_MAX_AGE)
+    if report is None:
+        retired = fetch(BASE_URL + "/sitemap_retired.xml")
+        if retired.status != 200:
+            return CheckOutcome.failed("/sitemap_retired.xml n'est pas servi",
+                                       detail=f"HTTP {retired.status}", remedy=PUBLISH_REMEDY)
+        try:
+            report = searchconsole.recrawl_report(searchconsole.connect(), live,
+                                                  sitemap_urls(retired))
+        except searchconsole.SearchConsoleError as error:
+            return CheckOutcome.failed("Search Console n'a pas pu inspecter les URL",
+                                       detail=str(error),
+                                       remedy="L'étape « Accès à Search Console » passe-t-elle ?")
+        searchconsole.save_report(ctx.root, report)
+
+    still = report.retired_still_indexed
+    if report.retired_indexed_share > RETIRED_INDEXED_MAX_SHARE:
+        return CheckOutcome.failed(
+            f"Google indexe encore {still} des {len(report.retired)} anciennes URL",
+            detail=report.describe(),
+            remedy="Rien à corriger sur le site : Google doit repasser sur les 301. "
+                   "Soumets le sitemap des anciennes URL (make gsc-push) s'il ne l'est "
+                   "pas encore, puis revérifie dans quelques jours.",
+        )
+    return CheckOutcome.passed(
+        f"{len(report.retired) - still} des {len(report.retired)} anciennes URL ont quitté l'index",
+        detail=report.describe())
 
 
 def check_ads_ready(ctx: Context) -> CheckOutcome:
@@ -329,7 +387,8 @@ CHECKS: dict[str, Callable[[Context], CheckOutcome]] = {
     "site_live": check_site_live,
     "deploy_pipeline": check_deploy_pipeline,
     "web_analytics": check_web_analytics,
-    "sitemap_consolidated": check_sitemap_consolidated,
+    "search_console_access": check_search_console_access,
+    "search_console_recrawl": check_search_console_recrawl,
     "ads_ready": check_ads_ready,
     "adsense_slots": check_adsense_slots,
     "affiliate_link": check_affiliate_link,

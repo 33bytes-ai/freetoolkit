@@ -11,6 +11,7 @@
 | 36.00 | Remplacer document.execCommand fallback dans common.js | 4 | 1 | 1 | done |
 | 36.00 | Corriger _rejectattr pour supporter d'autres opérateurs | 4 | 1 | 1 | done |
 | 36.00 | Ajouter un champ honeypot anti-spam au formulaire newsletter Formspree | 4 | 1 | 1 | done |
+| 36.00 | Retirer sitemap_retired.xml une fois les anciennes URL sorties de l'index | 4 | 1 | 1 | pending |
 | 31.50 | Remplacer og:image SVG par PNG statique | 7 | 2 | 1 | done |
 | 27.00 | Corriger le compteur d'outils hardcodé (22 → réel) et ajouter un garde-fou [done] | 6 | 2 | 1 | done |
 | 27.00 | Nettoyer les 15 fichiers *_tmp.txt commités par erreur à la racine | 3 | 1 | 1 | done |
@@ -18,6 +19,7 @@
 | 27.00 | Corriger flash() dans common.js pour réinitialiser originalText à chaque appel | 3 | 1 | 1 | done |
 | 27.00 | Le budget de performance mesurait la mauvaise grandeur | 6 | 2 | 1 | done |
 | 24.00 | Remove fabricated testimonials with stock avatar photos | 8 | 3 | 1 | done |
+| 24.00 | Search Console API : mesurer l'indexation au lieu de la lire | 8 | 3 | 1 | done |
 | 22.50 | Sitemap avec lastmod dynamique | 5 | 2 | 1 | done |
 | 22.50 | Élargir l'échantillon Lighthouse CI aux templates intent_page et intent_country | 5 | 2 | 1 | done |
 | 22.50 | Préparer un monitoring d'uptime externe prêt à activer au déploiement | 5 | 2 | 1 | done |

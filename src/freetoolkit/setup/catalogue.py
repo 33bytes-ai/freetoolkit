@@ -207,31 +207,62 @@ HETZNER_CLOSURE = Step(
 # GATE 1 — AdSense
 # ---------------------------------------------------------------------------
 
+SEARCH_CONSOLE_API = Step(
+    id="search_console_api",
+    gate=1,
+    title="Accès à Search Console",
+    why="Le rapport « Indexation des pages » de l'interface se met à jour avec des jours "
+        "de retard — il est resté figé au 4 septembre pendant douze jours. L'API dit, URL "
+        "par URL et au jour même, ce que Google indexe encore, et permet de soumettre le "
+        "sitemap qui le fait repasser.",
+    cost="Gratuit. Dix minutes, une fois.",
+    instructions=(
+        Instruction(text="Google Cloud Console → le projet du client OAuth de "
+                         "foundercalc-mail → APIs & Services → Library → « Google Search "
+                         "Console API » → Enable.",
+                    url="https://console.cloud.google.com/apis/library/searchconsole.googleapis.com"),
+        Instruction(text="Google Auth Platform → Audience : si le statut est « Testing », ton "
+                         "adresse doit figurer dans les test users.",
+                    url="https://console.cloud.google.com/auth/audience",
+                    warning="En « Testing », le token expire au bout de 7 jours et il faut "
+                            "relancer make gsc-auth. « In production » l'évite : pour ton seul "
+                            "compte, Google affiche un avertissement mais n'exige pas de "
+                            "vérification."),
+        Instruction(text="Donne au projet freetoolkit le même client OAuth :",
+                    paste="install -Dm600 ~/.config/foundercalc-mail/client_secret.json "
+                          "~/.config/freetoolkit/client_secret.json"),
+        Instruction(text="Autorise l'accès depuis le dossier freetoolkit, avec le compte Google "
+                         "propriétaire de la propriété Search Console :",
+                    paste="make gsc-auth",
+                    note="Le navigateur revient sur localhost:8098. Le token reste dans "
+                         "~/.config/freetoolkit/, jamais dans le repo."),
+    ),
+    prerequisites=("site_live",),
+    check="search_console_access",
+    unlocks="make gsc mesure l'indexation et soumet les sitemaps.",
+    docs=("CLAUDE.md § Search Console",),
+)
+
 SEARCH_CONSOLE = Step(
     id="search_console",
     gate=1,
     title="Le recrawl a vu la consolidation",
     why="AdSense a refusé le site le 7 août pour contenu à faible valeur. La "
         "consolidation (462 URL → 130) est en ligne depuis le 29 août, mais redemander "
-        "l'examen pendant que Google indexe encore les ~320 anciennes pages courtes "
+        "l'examen pendant que Google indexe encore les 329 anciennes pages courtes "
         "appelle le même verdict.",
-    cost="Gratuit. Une à deux semaines d'attente après le 29 août ; deux minutes pour lire.",
+    cost="Gratuit. Quelques jours à quelques semaines d'attente : c'est Google qui repasse.",
     instructions=(
-        Instruction(text="Search Console → foundercalc.dev → Indexation → Pages.",
-                    url="https://search.google.com/search-console"),
-        Instruction(text="Le signal est un couple : « Indexées » qui descend vers ~130 ET "
-                         "« Page avec redirection » qui monte vers ~320. Les deux ensemble.",
+        Instruction(text="Soumets le sitemap des anciennes URL — il fait revenir Google sur "
+                         "les 301 — et regarde où en est l'index :",
+                    paste="make gsc-push && make gsc"),
+        Instruction(text="Vérifie : l'étape inspecte chaque ancienne URL et passe quand moins "
+                         "d'une sur dix est encore indexée. Le résultat est gardé 12 heures.",
                     warning="Les impressions chutent dans Performances pendant ce temps : "
-                            "c'est mécanique, 320 URL quittent les résultats."),
-        Instruction(text="Si la propriété n'a pas encore le sitemap : Sitemaps → soumettre.",
-                    paste="sitemap.xml"),
+                            "c'est mécanique, 329 URL quittent les résultats."),
     ),
-    prerequisites=("site_live",),
-    acknowledgements=(
-        "Search Console montre « Indexées » proche de 130.",
-        "Search Console montre « Page avec redirection » proche de 320.",
-    ),
-    check="sitemap_consolidated",
+    prerequisites=("search_console_api",),
+    check="search_console_recrawl",
     unlocks="Le réexamen AdSense peut être demandé sans rejouer le refus.",
     docs=("HUMAN_INPUTS.md §B1", "docs/MONETIZATION.md"),
 )
@@ -526,7 +557,7 @@ URSSAF = Step(
 
 STEPS: tuple[Step, ...] = (
     SITE_LIVE, DEPLOY_PIPELINE, WEB_ANALYTICS, HETZNER_CLOSURE,
-    SEARCH_CONSOLE, ADSENSE_REVIEW, ADSENSE_SLOTS, ADSENSE_PAYMENT,
+    SEARCH_CONSOLE_API, SEARCH_CONSOLE, ADSENSE_REVIEW, ADSENSE_SLOTS, ADSENSE_PAYMENT,
     AFFILIATE_BAREMETRICS, AFFILIATE_CHARTMOGUL, AFFILIATE_PADDLE,
     AFFILIATE_FRESHBOOKS, AFFILIATE_CHARGEBEE, GUSTO_PAYOUTS,
     FORMSPREE, TWITTER, UPTIME_ALERTS, BING,
