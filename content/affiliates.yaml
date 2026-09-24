@@ -10,7 +10,6 @@
 #
 # PROGRAMS TO JOIN:
 # - Paddle:        paddle.com/partners
-# - Chargebee:     chargebee.com/partners/solution-partner-program (referral commission on new customers)
 # - FreshBooks:    freshbooks.com/affiliates (ShareASale)
 # - QuickBooks:    quickbooksonline.com/affiliates
 # - Bonsai:        hellobonsai.com/affiliates
@@ -51,12 +50,6 @@ mrr-calculator:
     category: "MRR dashboard"
     description: "Real-time MRR, churn, LTV and 26 other SaaS metrics pulled directly from Stripe, Paddle or Braintree. Replaces manual spreadsheets."
     cta: "Start free Baremetrics trial →"
-  - name: "ChartMogul"
-    url: "https://chartmogul.com"
-    affiliate: false
-    category: "SaaS analytics"
-    description: "Connect your billing platform and see MRR, ARR, churn, LTV, and cohort analysis. Free plan up to $10k MRR."
-    cta: "Try ChartMogul free →"
 
 ltv-cac-calculator:
   - name: "Baremetrics"
@@ -315,12 +308,6 @@ arr-mrr-converter:
     category: "ARR/MRR tracking"
     description: "Live ARR and MRR pulled from Stripe — no manual conversion needed. Tracks expansions, contractions, and churn in real time."
     cta: "Start free Baremetrics trial →"
-  - name: "ChartMogul"
-    url: "https://chartmogul.com"
-    affiliate: false
-    category: "SaaS analytics"
-    description: "Free plan up to $10k MRR. Connects to Stripe, Paddle, or Braintree and shows ARR, MRR, and cohort retention automatically."
-    cta: "Try ChartMogul free →"
   - name: "Stripe Dashboard"
     url: "https://stripe.com/billing"
     affiliate: false
@@ -441,12 +428,6 @@ payment-fee-comparison:
     category: "Payments for SaaS"
     description: "Full-service merchant of record for digital goods and SaaS: handles checkout, global tax remittance, and subscription renewals so you never touch a Stripe account."
     cta: "Start selling with FastSpring →"
-  - name: "Chargebee"
-    url: "https://www.chargebee.com"
-    affiliate: false
-    category: "Subscription management"
-    description: "Subscription billing on top of Stripe or Braintree: proration, metered billing, dunning, revenue recognition. Free up to $250k ARR."
-    cta: "Start free with Chargebee →"
 
 subscription-churn-revenue:
   - name: "Baremetrics"
@@ -455,12 +436,6 @@ subscription-churn-revenue:
     category: "SaaS analytics"
     description: "Connects to Stripe/Braintree/Recurly and gives you real-time MRR, ARR, churn rate, LTV, and cohort analysis. The standard dashboard for SaaS founders tracking subscription health."
     cta: "Start with Baremetrics →"
-  - name: "ChartMogul"
-    url: "https://chartmogul.com"
-    affiliate: false
-    category: "Revenue analytics"
-    description: "Subscription analytics platform with deep cohort analysis, MRR movements, and churn reporting. Connects to Stripe, Recurly, Chargebee. Free up to $10k MRR."
-    cta: "Try ChartMogul free →"
   - name: "ProfitWell Metrics"
     url: "https://www.profitwell.com/product/metrics"
     affiliate: false
@@ -475,12 +450,6 @@ arr-growth-rate-calculator:
     category: "SaaS analytics"
     description: "Real-time ARR, MRR, and growth rate tracking connected to Stripe, Braintree, or Recurly. Tracks YoY growth rate, cohort analysis, and MRR movement automatically."
     cta: "Track ARR with Baremetrics →"
-  - name: "ChartMogul"
-    url: "https://chartmogul.com"
-    affiliate: false
-    category: "Revenue analytics"
-    description: "Subscription analytics platform with automatic ARR and MRR calculation, growth rate tracking, and cohort analysis. Free up to $10k MRR."
-    cta: "Try ChartMogul free →"
 
 saas-pricing-calculator:
   - name: "Paddle"
@@ -489,12 +458,6 @@ saas-pricing-calculator:
     category: "Merchant of Record"
     description: "All-in-one SaaS payments: subscriptions, billing, global tax compliance, and dunning. One flat rate with no surprise fees — built for SaaS pricing model flexibility."
     cta: "Try Paddle for SaaS →"
-  - name: "Chargebee"
-    url: "https://www.chargebee.com"
-    affiliate: false
-    category: "Subscription billing"
-    description: "Subscription billing management: A/B test pricing plans, manage multiple tiers, handle proration and upgrades. Free up to $250k ARR."
-    cta: "Start free with Chargebee →"
   - name: "FastSpring"
     url: "https://fastspring.com"
     affiliate: false
@@ -509,12 +472,6 @@ unit-economics-calculator:
     category: "SaaS Analytics"
     description: "Subscription analytics that tracks LTV, CAC, payback period, and all your unit economics automatically from Stripe, Paddle, or Braintree. One-click dashboard."
     cta: "Track your unit economics with Baremetrics →"
-  - name: "ChartMogul"
-    url: "https://chartmogul.com/?utm_source=foundercalc"
-    affiliate: false
-    category: "Revenue Analytics"
-    description: "Revenue analytics for subscription businesses. Tracks MRR, LTV, churn, and CAC payback in real time with cohort analysis and segmentation."
-    cta: "Analyze your SaaS metrics with ChartMogul →"
 
 customer-health-score:
   - name: "Gainsight"
@@ -543,12 +500,6 @@ revenue-growth-calculator:
     category: "SaaS Analytics"
     description: "Tracks MoM, QoQ, and YoY revenue growth automatically from Stripe or Paddle. See growth rate trends, cohort analysis, and forecasts without building spreadsheets."
     cta: "Track your growth with Baremetrics →"
-  - name: "ChartMogul"
-    url: "https://chartmogul.com/?utm_source=foundercalc"
-    affiliate: false
-    category: "Revenue Analytics"
-    description: "Revenue analytics platform with MRR growth tracking, cohort analysis, and ARR forecasting. Free tier up to $10k MRR."
-    cta: "Visualize your growth with ChartMogul →"
 
 nrr-calculator:
   - name: "Baremetrics"
@@ -557,12 +508,6 @@ nrr-calculator:
     category: "SaaS Analytics"
     description: "Tracks NRR, GRR, expansion MRR, and churn MRR automatically from Stripe or Paddle. See cohort-level retention without building spreadsheets."
     cta: "Track your NRR with Baremetrics →"
-  - name: "ChartMogul"
-    url: "https://chartmogul.com/?utm_source=foundercalc"
-    affiliate: false
-    category: "Revenue Analytics"
-    description: "Best-in-class subscription analytics. NRR, GRR, cohort analysis, and MRR movements broken out by expansion, contraction, and churn — free up to $10k MRR."
-    cta: "Measure your NRR with ChartMogul →"
   - name: "ChurnZero"
     url: "https://churnzero.com"
     affiliate: false
@@ -637,12 +582,6 @@ customer-ltv-calculator:
     category: "SaaS Analytics"
     description: "Tracks LTV, churn, MRR, and CAC payback automatically from Stripe or Paddle. See lifetime value by cohort, plan, and acquisition source without building spreadsheets."
     cta: "Track your LTV with Baremetrics →"
-  - name: "ChartMogul"
-    url: "https://chartmogul.com/?utm_source=foundercalc"
-    affiliate: false
-    category: "Revenue Analytics"
-    description: "Best-in-class subscription analytics with LTV by cohort, segmentation by plan and geography, and customer lifetime visualizations. Free up to $10k MRR."
-    cta: "Analyze LTV cohorts with ChartMogul →"
 
 conversion-rate-calculator:
   - name: "VWO (Visual Website Optimizer)"
@@ -795,12 +734,6 @@ arr-calculator:
     category: "SaaS Analytics"
     description: "Real-time ARR, MRR, and YoY growth tracking for SaaS — automatic calculation from Stripe, Recurly, or Braintree data."
     cta: "Start free Baremetrics trial →"
-  - name: "ChartMogul"
-    url: "https://chartmogul.com"
-    affiliate: false
-    category: "Revenue Analytics"
-    description: "Subscription analytics with ARR cohort analysis, YoY growth charts, and investor-ready dashboards."
-    cta: "Try ChartMogul free →"
   - name: "Paddle"
     url: "https://paddle.com"
     affiliate: false
@@ -849,12 +782,6 @@ cash-conversion-cycle-calculator:
     cta: "Try Bill.com →"
 
 saas-quick-ratio-calculator:
-  - name: "ChartMogul"
-    description: "SaaS analytics platform that tracks Quick Ratio, MRR movements, and cohort-level churn automatically from your billing data."
-    url: "https://chartmogul.com"
-    cta: "Try ChartMogul free →"
-    category: "SaaS Analytics"
-    affiliate: false
   - name: "Baremetrics"
     description: "Real-time MRR dashboards with quick ratio tracking, expansion/contraction breakdowns, and churn forecasting built in."
     url: "https://baremetrics.com"
@@ -943,12 +870,6 @@ payback-period-calculator:
     affiliate: false
 
 arpu-calculator:
-  - name: "ChartMogul"
-    description: "SaaS analytics platform that tracks ARPU, MRR movements, and customer cohorts automatically — the data source for reliable ARPU calculations."
-    url: "https://chartmogul.com"
-    cta: "Try ChartMogul free →"
-    category: "SaaS Analytics"
-    affiliate: false
   - name: "Baremetrics"
     description: "Real-time ARPU dashboard with segmentation by plan, cohort, and acquisition channel — shows exactly which customers drive your ARPU up or down."
     url: "https://baremetrics.com"
@@ -967,12 +888,6 @@ revenue-run-rate-calculator:
     description: "Real-time MRR and ARR tracking — the data source for accurate run rate calculations from your Stripe or Paddle billing data."
     url: "https://baremetrics.com"
     cta: "Try Baremetrics →"
-    category: "SaaS Analytics"
-    affiliate: false
-  - name: "ChartMogul"
-    description: "SaaS analytics with run rate tracking, growth cohorts, and ARR breakdowns from your subscription billing platform."
-    url: "https://chartmogul.com"
-    cta: "Try ChartMogul free →"
     category: "SaaS Analytics"
     affiliate: false
 
@@ -1075,12 +990,6 @@ revenue-per-lead-calculator:
     affiliate: false
 
 customer-concentration-calculator:
-  - name: "ChartMogul"
-    description: "SaaS analytics platform with customer-level MRR breakdown — see concentration by account, cohort, and plan for real-time risk monitoring."
-    url: "https://chartmogul.com"
-    cta: "Try ChartMogul free →"
-    category: "SaaS Analytics"
-    affiliate: false
   - name: "Baremetrics"
     description: "Real-time SaaS metrics including customer-level MRR — track your top 10 accounts and monitor concentration changes as your business grows."
     url: "https://baremetrics.com"
@@ -1164,12 +1073,6 @@ churn-cohort-calculator:
     url: "https://amplitude.com"
     cta: "Try Amplitude →"
     category: "Product Analytics"
-    affiliate: false
-  - name: "ChartMogul"
-    description: "ChartMogul automatically calculates cohort retention, MRR by cohort, and LTV from your Stripe or billing data — no SQL required."
-    url: "https://chartmogul.com"
-    cta: "Try ChartMogul →"
-    category: "SaaS Analytics"
     affiliate: false
 
 segment-margin-calculator:

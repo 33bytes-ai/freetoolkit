@@ -126,13 +126,13 @@ def test_a_programme_link_reaches_every_card_and_only_those(repo):
     before = contentfile.read_affiliates(path)
     comments = [line for line in path.read_text().splitlines() if line.lstrip().startswith("#")]
 
-    touched = contentfile.set_affiliate_url(path, "ChartMogul", "https://chartmogul.com/?ref=fc",
+    touched = contentfile.set_affiliate_url(path, "Paddle", "https://www.paddle.com/?ref=fc",
                                             backup_dir=repo / "backups")
 
     after = contentfile.read_affiliates(path)
-    cards = contentfile.programme_entries(after, "ChartMogul")
+    cards = contentfile.programme_entries(after, "Paddle")
     assert touched == len(cards) > 1
-    assert all(card["url"] == "https://chartmogul.com/?ref=fc" and card["affiliate"] is True
+    assert all(card["url"] == "https://www.paddle.com/?ref=fc" and card["affiliate"] is True
                for card in cards)
     assert contentfile.programme_entries(after, "Baremetrics") == \
         contentfile.programme_entries(before, "Baremetrics")
@@ -256,21 +256,21 @@ def test_ads_txt_must_carry_the_publisher_id_not_the_client_id(site, repo):
 
 def test_an_affiliate_link_is_proven_on_the_page_that_shows_it(site, repo):
     path = repo / "content" / "affiliates.yaml"
-    ctx = context(repo, "affiliate_chartmogul")
+    ctx = context(repo, "affiliate_paddle")
     assert not checks.check_affiliate_link(ctx).ok
 
-    contentfile.set_affiliate_url(path, "ChartMogul", "https://chartmogul.com",
+    contentfile.set_affiliate_url(path, "Paddle", "https://www.paddle.com",
                                   backup_dir=repo / "b")
     bare = checks.check_affiliate_link(ctx)
     assert not bare.ok and "page d'accueil" in bare.summary
 
-    tracked = "https://chartmogul.com/?ref=fc&utm_source=foundercalc"
-    contentfile.set_affiliate_url(path, "ChartMogul", tracked, backup_dir=repo / "b")
+    tracked = "https://www.paddle.com/?ref=fc&utm_source=foundercalc"
+    contentfile.set_affiliate_url(path, "Paddle", tracked, backup_dir=repo / "b")
     unpublished = checks.check_affiliate_link(ctx)
     assert not unpublished.ok and unpublished.remedy == checks.PUBLISH_REMEDY
 
     slug = next(slug for slug, cards in contentfile.read_affiliates(path).items()
-                if any(card["name"] == "ChartMogul" for card in cards or []))
+                if any(card["name"] == "Paddle" for card in cards or []))
     site[f"/tools/{slug}/"] = checks.Response(200, f'<a href="{tracked.replace("&", "&amp;")}">')
     assert checks.check_affiliate_link(ctx).ok
 

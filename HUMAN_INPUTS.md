@@ -183,13 +183,13 @@ Comptes à créer toi-même (infos personnelles/IBAN requises, non déléguables
 | **Gusto** | 3 | ✅ approuvé 2026-08-04, accord signé, lien `gusto.com/go/bd/foundercalc` câblé. **Reste : Stripe Connect pour les versements** |
 | **FreshBooks** (via PartnerStack) | 4 | ⏳ candidature déposée 2026-07-29. Bloqué sur la création de ton compte PartnerStack + connexion Stripe |
 | **Baremetrics** | 21 | ❌ jamais candidaté — [baremetrics.com/affiliate](https://baremetrics.com/affiliate) (impact.com) |
-| **ChartMogul** | 13 | ❌ jamais candidaté — [chartmogul.com/partners](https://chartmogul.com/partners/) |
 | **Paddle** | 8 | ❌ jamais candidaté — [paddle.com/partners](https://paddle.com/partners) |
-| **Chargebee** | 2 | ❌ jamais candidaté — [solution partner program](https://www.chargebee.com/partners/solution-partner-program/) |
 | Lemon Squeezy | — | ❌ écarté : commission par marchand individuel, pas de parrainage plateforme |
+| ChartMogul | — | ❌ écarté 2026-09-24 : plus de programme d'affiliation public (`/partners/` en 404), cartes retirées du site |
+| Chargebee | — | ❌ écarté 2026-09-24 : le « Solution Partner Program » vise agences et intégrateurs, pas un site éditorial ; cartes retirées du site |
 
-Baremetrics et ChartMogul pèsent 34 pages à eux deux, plus que tous les
-programmes déjà engagés réunis. C'est là qu'est le rendement.
+Baremetrics pèse 21 pages à lui seul, plus que tous les programmes déjà
+engagés réunis. C'est là qu'est le rendement.
 
 Pour les versements US (Gusto), remplir le **W-8BEN** s'il est proposé :
 sans lui, 30 % de retenue à la source ; avec, 0 % via la convention
