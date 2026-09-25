@@ -1,78 +1,41 @@
 {% extends "base.html" %}
 {% block content %}
 
-<!-- Glassmorphism Hero -->
 <div class="home-hero">
   <div class="wrap">
-    <div class="hero-glass">
-      <h1><span data-i18n="hero_h1_prefix">Free calculators for</span> <span class="htc-wrapper"><span id="hero-text-cycle" class="htc-word">founders</span></span></h1>
-      <p class="hero-sub" data-i18n="hero_sub">
-        Price a product, check your runway, forecast growth, set a freelance rate.
-        Type your numbers, get the answer in seconds — free, no sign-up, nothing ever leaves your browser.
-      </p>
+    <h1><span data-i18n="hero_h1_prefix">Free calculators for</span> founders</h1>
+    <p class="hero-sub" data-i18n="hero_sub">Price a product, check your runway, set a freelance rate. Free, no sign‑up, and nothing leaves your browser.</p>
 
-      <form class="hero-search" role="search" action="/tools/" method="get">
-        <label for="hero-q" class="sr-only">Search calculators</label>
-        <input id="hero-q" name="q" type="search" autocomplete="off"
-               placeholder="Search calculators — try &ldquo;runway&rdquo; or &ldquo;margin&rdquo;" data-i18n-placeholder="hero_search_placeholder">
-        <button type="submit" class="btn-primary" data-i18n="hero_search_btn">Search</button>
-      </form>
+    <form class="hero-search" role="search" action="/tools/" method="get">
+      <label for="hero-q" class="sr-only">Search calculators</label>
+      <input id="hero-q" name="q" type="search" autocomplete="off" spellcheck="false"
+             placeholder="Search calculators, e.g. runway or margin…" data-i18n-placeholder="hero_search_placeholder">
+      <button type="submit" class="btn-primary" data-i18n="hero_search_btn">Search</button>
+    </form>
 
-      <div class="hero-stats">
-        <div class="hero-stat-item">
-          <span class="stat-num hero-count" data-count="{{ tools | length }}">{{ tools | length }}</span>
-          <span class="stat-label" data-i18n="stat_calculators">Free calculators</span>
-        </div>
-        <div class="hero-stat-item">
-          <span class="stat-num">100%</span>
-          <span class="stat-label" data-i18n="stat_browser">Browser-based</span>
-        </div>
-        <div class="hero-stat-item">
-          <span class="stat-num">$0</span>
-          <span class="stat-label" data-i18n="stat_cost">Cost forever</span>
-        </div>
-      </div>
-
-      <ul class="hero-facts">
-        <li><strong>{{ categories | length }}</strong> categories</li>
-        <li><strong>{{ all_intent_pages | length }}+</strong> in-depth guides</li>
-        <li>No sign-up &amp; no data uploaded</li>
-        <li>Open-source on GitHub</li>
-      </ul>
-    </div>
+    <ul class="hero-popular" aria-label="Popular calculators">
+      <li>Popular:</li>
+      <li><a href="/tools/runway-calculator/">Runway</a></li>
+      <li><a href="/tools/profit-margin-calculator/">Profit margin</a></li>
+      <li><a href="/tools/stripe-fee-calculator/">Stripe fees</a></li>
+      <li><a href="/tools/freelance-rate-calculator/">Freelance rate</a></li>
+    </ul>
   </div>
 </div>
 
 {% with slot_name = "home-mid" %}{% include "ads_slot.html" %}{% endwith %}
 
-<!-- Scrolling ticker of the real tool catalog -->
-<div class="tool-ticker">
-  <div class="tool-ticker-track">
-    {# First set is the real one: announced and keyboard-reachable. The second
-       exists only so the marquee can loop seamlessly, so it is hidden from the
-       a11y tree AND taken out of the tab order -- aria-hidden on a focusable
-       link creates a phantom stop screen-reader users can land on but not
-       perceive. #}
-    <span class="tool-ticker-set">
-      {% for tool in tools %}<a class="tool-ticker-item" href="/tools/{{ tool.slug }}/">{{ tool.nav_title or tool.title }}</a>{% endfor %}
-    </span>
-    <span class="tool-ticker-set" aria-hidden="true">
-      {% for tool in tools %}<a class="tool-ticker-item" href="/tools/{{ tool.slug }}/" tabindex="-1">{{ tool.nav_title or tool.title }}</a>{% endfor %}
-    </span>
-  </div>
-</div>
-
 <!-- Browse by category -->
 <section class="wrap home-section" id="categories">
-  <div class="home-section-header reveal">
+  <div class="home-section-header">
     <h2 data-i18n="section_browse">Browse by category</h2>
-    <a href="/tools/" style="font-size:0.88rem;color:var(--accent)">Or see all {{ tools | length }} tools →</a>
+    <a href="/tools/" class="home-section-link">See all {{ tools | length }} tools →</a>
   </div>
-  <div class="category-card-grid reveal-group">
+  <div class="category-card-grid">
     {% for category in categories %}
     {% set cat_tools = tools_by_category.get(category, []) %}
     {% if cat_tools %}
-    <a class="category-card reveal-child" href="/categories/{{ category | category_slug }}/">
+    <a class="category-card" href="/categories/{{ category | category_slug }}/">
       <span class="category-card-icon" aria-hidden="true">{{ category_meta[category].icon | safe }}</span>
       <div>
         <h3>{{ category }}</h3>
@@ -88,18 +51,18 @@
 <!-- Featured: newest tools -->
 {% set new_tools = tools | selectattr("new") | list %}
 {% if new_tools %}
-<section class="wrap home-section reveal" style="padding-top:1.5rem">
+<section class="wrap home-section">
   <div class="home-section-header">
     <h2>Recently added</h2>
-    <a href="/tools/" style="font-size:0.88rem;color:var(--accent)">View all →</a>
+    <a href="/tools/" class="home-section-link">View all →</a>
   </div>
   <div class="tool-grid">
     {% for tool in new_tools[:3] %}
     <a class="tool-card" href="/tools/{{ tool.slug }}/">
       <span class="tool-card-icon" aria-hidden="true">{{ category_meta[tool.category].icon | safe }}</span>
-      <h3>{{ tool.nav_title }} <span class="tool-card-new">NEW</span></h3>
+      <h3>{{ tool.nav_title }} <span class="tool-card-new">New</span></h3>
       <p>{{ tool.short }}</p>
-      {% if tool.date_added %}<span style="font-size:0.75rem;color:var(--text-muted)">{{ tool.date_added | humandate }}</span>{% endif %}
+      {% if tool.date_added %}<span class="tool-card-date">{{ tool.date_added | humandate }}</span>{% endif %}
     </a>
     {% endfor %}
   </div>
@@ -107,12 +70,12 @@
 {% endif %}
 
 <!-- About section -->
-<section class="wrap intro-text reveal" style="padding-top:2.5rem; border-top:1px solid var(--border); margin-top:2rem;">
+<section class="wrap intro-text">
   <h2>Why FounderCalc?</h2>
   <p>
     Generic utility tools compete against 10-year-old domains with millions of backlinks.
     FounderCalc focuses exclusively on the calculations that indie founders, bootstrapped SaaS builders,
-    and freelancers actually need — the ones that involve real business math with real stakes.
+    and freelancers actually need: the ones that involve real business math with real stakes.
   </p>
   <p>
     Every calculator runs 100% in your browser. Nothing you type is ever sent to a server.
@@ -123,7 +86,7 @@
 
 {% if site.formspree_id %}
 <!-- Newsletter -->
-<section class="wrap newsletter-section reveal">
+<section class="wrap newsletter-section">
   <div class="newsletter-card">
     <h2>Get notified when new calculators ship</h2>
     <p>No spam. One short email per new tool, max once a month.</p>
@@ -139,5 +102,4 @@
 </section>
 {% endif %}
 
-<script src="/static/js/home.js?v={{ asset_version }}" defer></script>
 {% endblock %}

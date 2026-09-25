@@ -892,7 +892,6 @@ _ASSET_VERSION_FILES = (
     "css/style.css",
     "js/lib/common.js",
     "js/lib/tracker.js",
-    "js/home.js",
 )
 
 
@@ -1100,7 +1099,8 @@ def build() -> Path:
         **common,
     )
 
-    shutil.copytree(STATIC_DIR, DIST_DIR / "static", ignore=shutil.ignore_patterns("fonts"))
+    # The .ttf is the build-only OG-image font; the web font (woff2) ships.
+    shutil.copytree(STATIC_DIR, DIST_DIR / "static", ignore=shutil.ignore_patterns("*.ttf", "*.md"))
 
     write_sitemap(config, tools, pages, tools_by_category)
     write_sitemap_tools(config, tools)

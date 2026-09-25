@@ -102,12 +102,12 @@
   </nav>
 
   <h1 itemprop="name">{{ tool.title }}</h1>
-  {% if tool.date_added %}<p style="font-size:0.78rem;color:var(--text-muted);margin:0 0 1rem">Added <time itemprop="datePublished" datetime="{{ tool.date_added }}">{{ tool.date_added | humandate }}</time></p>{% endif %}
+  {% if tool.date_added %}<p class="tool-meta">Added <time itemprop="datePublished" datetime="{{ tool.date_added }}">{{ tool.date_added | humandate }}</time></p>{% endif %}
 
   <p id="tool-short-desc" class="tool-short">{{ tool.short }}</p>
   <div id="calculator" class="tool-widget" data-tool="{{ tool.slug }}" aria-label="{{ tool.title }} calculator" aria-describedby="tool-short-desc">
     {% include "widgets/" ~ tool.slug ~ ".html" %}
-    <noscript><p style="padding:1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius)">This calculator requires JavaScript. Please enable JavaScript in your browser to use it.</p></noscript>
+    <noscript><p class="noscript-note">This calculator requires JavaScript. Please enable JavaScript in your browser to use it.</p></noscript>
     <div id="ftk-a11y-results" aria-live="polite" aria-atomic="true" class="sr-only"></div>
   </div>
 
@@ -153,7 +153,7 @@
     <label for="embed-code" class="sr-only">Embed code</label>
     <textarea id="embed-code" readonly>&lt;iframe src="{{ site.base_url }}/embed/{{ tool.slug }}/" title="{{ tool.title }}" width="100%" height="640" style="border:0;max-width:760px" loading="lazy"&gt;&lt;/iframe&gt;
 &lt;p style="font-size:13px"&gt;&lt;a href="{{ site.base_url }}/tools/{{ tool.slug }}/"&gt;{{ tool.title }}&lt;/a&gt; by {{ site.name }}&lt;/p&gt;</textarea>
-    <p class="tool-short">Free, with a credit link. <a href="/pro/">Pro</a> removes it and matches your brand colour — {{ site.pro.price }}.</p>
+    <p class="tool-short">Free, with a credit link. <a href="/pro/">Pro</a> removes it and matches your brand colour for {{ site.pro.price }}.</p>
   </details>
 
   {% with slot_name = "tool-mid" %}{% include "ads_slot.html" %}{% endwith %}
@@ -161,12 +161,12 @@
   <article class="tool-body" itemscope itemtype="https://schema.org/Article" itemprop="articleBody">
     <meta itemprop="author" content="{{ site.name }}">
     {% if tool.body %}
-    <p style="font-size:0.78rem;color:var(--text-muted);margin:0 0 1.25rem">
+    <p class="tool-meta">
       ~{{ ([(tool.body_wordcount / 200) | round | int, 1] | max) }} min read
     </p>
     {% endif %}
     {{ tool.body_html | safe }}
-    {% if tool.body %}<p style="margin-top:1.5rem"><a href="#calculator" class="jump-to-calc">↑ Back to calculator</a></p>{% endif %}
+    {% if tool.body %}<p class="deep-dive-back"><a href="#calculator" class="jump-to-calc">↑ Back to calculator</a></p>{% endif %}
   </article>
 
   {% if related_tools %}

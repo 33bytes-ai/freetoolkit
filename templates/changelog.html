@@ -18,9 +18,9 @@
     <span aria-current="page">All Calculators</span>
   </nav>
   <h1>All Free Calculators</h1>
-  <p style="color:var(--text-muted); margin-bottom:1.5rem">{{ tools | length }} tools across {{ categories | length }} categories — all free, all run in your browser.</p>
+  <p style="color:var(--text-muted); margin-bottom:1.5rem">{{ tools | length }} tools across {{ categories | length }} categories, all free, all run in your browser.</p>
 
-  <section style="margin-bottom:2rem;padding:1rem 1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius)">
+  <section style="margin-bottom:2rem;padding:1rem 1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg)">
     <h2 style="margin:0 0 1rem;font-size:1rem;letter-spacing:0.02em;text-transform:uppercase;color:var(--text-muted)">Recent additions</h2>
     {% set dated_tools = tools | selectattr("date_added") | list | sort(attribute="date_added", reverse=True) %}
     {% for date, date_group in dated_tools | groupby("date_added") %}
@@ -30,7 +30,7 @@
       <p style="font-size:0.78rem;font-weight:600;color:var(--text-muted);margin:0 0 0.35rem">{{ date }} &mdash; {{ date_list | length }} tool{{ "s" if date_list | length > 1 else "" }} added</p>
       <ul style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:0.35rem">
         {% for tool in date_list %}
-        <li><a href="/tools/{{ tool.slug }}/" style="font-size:0.85rem;padding:0.2rem 0.5rem;border-radius:var(--radius);border:1px solid var(--border);background:var(--bg);text-decoration:none;display:inline-block">{{ tool.nav_title }}</a></li>
+        <li><a href="/tools/{{ tool.slug }}/" style="font-size:0.85rem;padding:0.2rem 0.5rem;border-radius:var(--radius-lg);border:1px solid var(--border);background:var(--bg);text-decoration:none;display:inline-block">{{ tool.nav_title }}</a></li>
         {% endfor %}
       </ul>
     </div>

@@ -38,7 +38,7 @@
   {% if page.widget %}
   <div id="calculator" class="tool-widget" data-tool="{{ page.widget }}" aria-label="{{ page.title }} calculator">
     {% include "widgets/" ~ page.widget ~ ".html" %}
-    <noscript><p style="padding:1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius)">This calculator requires JavaScript. Please enable JavaScript in your browser to use it.</p></noscript>
+    <noscript><p class="noscript-note">This calculator requires JavaScript. Please enable JavaScript in your browser to use it.</p></noscript>
   </div>
   {% with slot_name = "tool-mid" %}{% include "ads_slot.html" %}{% endwith %}
   {% endif %}

@@ -37,7 +37,7 @@
       {% for entry in glossary %}
       <li>
         <span class="glossary-index-icon" aria-hidden="true">{{ glossary_icons[entry.slug] | safe }}</span>
-        <span><a href="#{{ entry.slug }}">{{ entry.term }}</a> — {{ entry.short }}</span>
+        <span><a href="#{{ entry.slug }}">{{ entry.term }}</a>: {{ entry.short }}</span>
       </li>
       {% endfor %}
     </ul>
