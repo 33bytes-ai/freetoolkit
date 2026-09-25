@@ -51,8 +51,8 @@ site:
   # the Stripe Payment Link exists (setup wizard, step « Abonnement Pro »).
   pro:
     price: "€12/month"
-    payment_link: "/contact/"
-    portal_link: "/contact/"
+    payment_link: "https://buy.stripe.com/9B64gtdjD9GP2aLetm6J200"
+    portal_link: "https://billing.stripe.com/p/login/9B64gtdjD9GP2aLetm6J200"
     # SHA-256 hex of each issued Pro key: static/js/lib/embed.js hides the
     # credit when ?key= hashes to one of these. Remove a hash to revoke.
     key_hashes: []
