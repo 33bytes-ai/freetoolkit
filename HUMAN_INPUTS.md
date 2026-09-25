@@ -180,8 +180,8 @@ Comptes à créer toi-même (infos personnelles/IBAN requises, non déléguables
 | Programme | Pages concernées | État |
 |---|---|---|
 | **Gusto** | 3 | ✅ approuvé 2026-08-04, accord signé, lien `gusto.com/go/bd/foundercalc` câblé. **Reste : Stripe Connect pour les versements** |
-| **FreshBooks** (via PartnerStack) | 4 | ⏳ candidature déposée 2026-07-29. Bloqué sur la création de ton compte PartnerStack + connexion Stripe |
-| **Baremetrics** | 21 | ⏳ compte « Friends of Baremetrics » (Rewardful, 20 %) créé 2026-09-23 avec `hello@foundercalc.dev`, email confirmé 2026-09-25. **Reste : te connecter sur [affiliates.baremetrics.com](https://affiliates.baremetrics.com/login) et récupérer le lien tracké** |
+| **FreshBooks** (via PartnerStack) | 4 | ⏳ 1re candidature refusée le 2026-09-21 (compte PartnerStack jamais créé). Compte créé et nouvelle candidature envoyée le 2026-09-25 (canal Editorial / Reviews, audience petites entreprises, exemple `/tools/invoice-total-calculator/`) — réponse attendue sur `hello@foundercalc.dev` |
+| **Baremetrics** | 21 | ✅ lien `https://baremetrics.com?via=guillaume` câblé sur les 21 cartes le 2026-09-25 (étape wizard vérifiée). Versements PayPal sur `hello@foundercalc.dev` — **reste : compléter le profil PayPal (identité, numéro fiscal, IBAN) avant le premier retrait** |
 | **Paddle** | 8 | ⏳ demande envoyée 2026-09-25 via le formulaire [paddle.com/partners](https://www.paddle.com/partners) (Referral Partner) — réponse attendue sur `hello@foundercalc.dev` |
 | Lemon Squeezy | — | ❌ écarté : commission par marchand individuel, pas de parrainage plateforme |
 | ChartMogul | — | ❌ écarté 2026-09-24 : plus de programme d'affiliation public (`/partners/` en 404), cartes retirées du site |
