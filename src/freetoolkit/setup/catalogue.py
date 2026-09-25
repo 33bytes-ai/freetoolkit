@@ -471,7 +471,6 @@ AFFILIATE_BAREMETRICS = _affiliate_step(
     extra=(Instruction(text="Le programme passe par impact.com : crée ton compte partenaire "
                             "là-bas si on te le demande."),),
 )
-AFFILIATE_CHARTMOGUL = _affiliate_step("ChartMogul", 14, "https://chartmogul.com/partners/")
 AFFILIATE_PADDLE = _affiliate_step("Paddle", 8, "https://www.paddle.com/partners")
 AFFILIATE_FRESHBOOKS = _affiliate_step(
     "FreshBooks", 4, "https://www.freshbooks.com/affiliates",
@@ -486,10 +485,6 @@ AFFILIATE_FRESHBOOKS = _affiliate_step(
     acknowledgements=("Mon compte PartnerStack existe et Stripe y est connecté pour les "
                       "versements.",),
     cost="Gratuit. Bloqué sur le compte Stripe activé (banque).",
-)
-AFFILIATE_CHARGEBEE = _affiliate_step(
-    "Chargebee", 2,
-    "https://www.chargebee.com/partners/solution-partner-program/",
 )
 
 GUSTO_PAYOUTS = Step(
@@ -639,8 +634,7 @@ STEPS: tuple[Step, ...] = (
     SITE_LIVE, DEPLOY_PIPELINE, WEB_ANALYTICS, HETZNER_CLOSURE,
     STRIPE_PRO,
     SEARCH_CONSOLE_API, SEARCH_CONSOLE, ADSENSE_REVIEW, ADSENSE_SLOTS, ADSENSE_PAYMENT,
-    AFFILIATE_BAREMETRICS, AFFILIATE_CHARTMOGUL, AFFILIATE_PADDLE,
-    AFFILIATE_FRESHBOOKS, AFFILIATE_CHARGEBEE, GUSTO_PAYOUTS,
+    AFFILIATE_BAREMETRICS, AFFILIATE_PADDLE, AFFILIATE_FRESHBOOKS, GUSTO_PAYOUTS,
     FORMSPREE, TWITTER, UPTIME_ALERTS, BING,
     URSSAF,
 )
