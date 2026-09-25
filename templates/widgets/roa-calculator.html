@@ -5,12 +5,12 @@
   </div>
   <div class="field">
     <label for="roa-assets">Total assets (<span class="cur-sym">$</span>)</label>
-    <input type="number" autocomplete="off" id="roa-assets" value="5000000" min="1" step="100000">
+    <input type="number" inputmode="decimal" autocomplete="off" id="roa-assets" value="5000000" min="1" step="100000">
   </div>
 </div>
 <div class="field">
   <label for="roa-revenue">Annual revenue (<span class="cur-sym">$</span>) <span style="font-size:0.8em;color:var(--text-muted)">(for DuPont decomposition)</span></label>
-  <input type="number" autocomplete="off" id="roa-revenue" value="3000000" min="0" step="100000">
+  <input type="number" inputmode="decimal" autocomplete="off" id="roa-revenue" value="3000000" min="0" step="100000">
 </div>
 <div class="stats-grid">
   <div class="stat result-hero" data-tooltip="Net Income ÷ Total Assets × 100. How efficiently the business converts its asset base into profit. ROA > 5% is generally considered good; banks typically target 1–2%."><span class="stat-label">Return on Assets (ROA)</span><span class="stat-value" id="roa-result">—</span></div>

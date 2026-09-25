@@ -1,7 +1,7 @@
 <div class="field-row">
   <div class="field">
     <label for="stripe-amount">Charge amount ($)</label>
-    <input type="number" autocomplete="off" id="stripe-amount" value="100" min="0" step="0.01">
+    <input type="number" inputmode="decimal" autocomplete="off" id="stripe-amount" value="100" min="0" step="0.01">
   </div>
   <div class="field">
     <label for="stripe-card-type">Card type</label>
@@ -15,11 +15,11 @@
 <div class="field-row" id="stripe-custom-row" style="display:none">
   <div class="field">
     <label for="stripe-custom-pct">Rate (%)</label>
-    <input type="number" autocomplete="off" id="stripe-custom-pct" value="2.9" min="0" max="100" step="0.01">
+    <input type="number" inputmode="decimal" autocomplete="off" id="stripe-custom-pct" value="2.9" min="0" max="100" step="0.01">
   </div>
   <div class="field">
     <label for="stripe-custom-fixed">Fixed fee ($)</label>
-    <input type="number" autocomplete="off" id="stripe-custom-fixed" value="0.30" min="0" step="0.01">
+    <input type="number" inputmode="decimal" autocomplete="off" id="stripe-custom-fixed" value="0.30" min="0" step="0.01">
   </div>
 </div>
 <div class="checkbox-row">
@@ -46,7 +46,7 @@
   <div style="margin-top:1rem">
     <div class="field" style="max-width:220px; margin-bottom:1rem">
       <label for="stripe-monthly-txn">Transactions per month</label>
-      <input type="number" autocomplete="off" id="stripe-monthly-txn" value="200" min="1" step="10">
+      <input type="number" inputmode="decimal" autocomplete="off" id="stripe-monthly-txn" value="200" min="1" step="10">
     </div>
     <div class="stats-grid" id="stripe-volume-stats" style="display:none">
       <div class="stat"><span class="stat-label">Monthly fees</span><span class="stat-value" id="sv-monthly-fee"></span></div>

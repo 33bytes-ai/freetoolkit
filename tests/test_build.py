@@ -1565,11 +1565,13 @@ def test_pages_have_handheld_friendly_meta():
     assert "HandheldFriendly" in html, "Page missing HandheldFriendly meta"
 
 
-def test_tool_pages_have_role_main():
-    """Tool pages should have role=main on content section."""
+def test_pages_have_exactly_one_main_landmark():
+    """A nested role=main or a second id=main breaks landmarks and the skip link."""
     run_build()
-    html = (DIST / "tools" / "inventory-turnover-calculator" / "index.html").read_text()
-    assert 'role="main"' in html, "Tool page missing role=main"
+    for page in ("index.html", "tools/inventory-turnover-calculator/index.html"):
+        html = (DIST / page).read_text()
+        assert html.count("<main") + html.count('role="main"') == 1, page
+        assert html.count('id="main"') == 1, page
 
 
 def test_tool_pages_have_noscript_fallback():

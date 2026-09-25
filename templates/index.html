@@ -1,14 +1,8 @@
 {% extends "base.html" %}
-{% block head_extra %}
-<style>
-  /* Smooth scrolling for the whole home page */
-  html { scroll-behavior: smooth; }
-</style>
-{% endblock %}
 {% block content %}
 
 <!-- Glassmorphism Hero -->
-<div class="home-hero" id="main">
+<div class="home-hero">
   <div class="wrap">
     <div class="hero-glass">
       <h1><span data-i18n="hero_h1_prefix">Free calculators for</span> <span class="htc-wrapper"><span id="hero-text-cycle" class="htc-word">founders</span></span></h1>
@@ -105,7 +99,7 @@
       <span class="tool-card-icon" aria-hidden="true">{{ category_meta[tool.category].icon | safe }}</span>
       <h3>{{ tool.nav_title }} <span class="tool-card-new">NEW</span></h3>
       <p>{{ tool.short }}</p>
-      {% if tool.date_added %}<span style="font-size:0.75rem;color:var(--text-muted)">{{ tool.date_added }}</span>{% endif %}
+      {% if tool.date_added %}<span style="font-size:0.75rem;color:var(--text-muted)">{{ tool.date_added | humandate }}</span>{% endif %}
     </a>
     {% endfor %}
   </div>

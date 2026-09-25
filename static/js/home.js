@@ -78,6 +78,7 @@
   function animateCounter(el) {
     var target = parseInt(el.dataset.count, 10);
     if (isNaN(target)) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     var start = 0;
     var duration = 900;
     var startTime = null;

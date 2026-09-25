@@ -3,17 +3,17 @@
 <div class="input-grid">
   <div class="input-group">
     <label for="dso-ar">Accounts Receivable (<span class="cur-sym">$</span>)</label>
-    <input type="number" id="dso-ar" min="0" step="1000" value="150000" autocomplete="off">
+    <input type="number" inputmode="decimal" id="dso-ar" min="0" step="1000" value="150000" autocomplete="off">
     <span class="input-hint">Current outstanding receivables balance</span>
   </div>
   <div class="input-group">
     <label for="dso-sales">Total Credit Sales (<span class="cur-sym">$</span>)</label>
-    <input type="number" id="dso-sales" min="0" step="1000" value="450000" autocomplete="off">
+    <input type="number" inputmode="decimal" id="dso-sales" min="0" step="1000" value="450000" autocomplete="off">
     <span class="input-hint">Revenue on credit for the period</span>
   </div>
   <div class="input-group">
     <label for="dso-days">Period Length (days)</label>
-    <input type="number" id="dso-days" min="1" max="365" step="1" value="90" autocomplete="off">
+    <input type="number" inputmode="decimal" id="dso-days" min="1" max="365" step="1" value="90" autocomplete="off">
     <span class="input-hint">90 = quarterly, 365 = annual</span>
   </div>
 </div>

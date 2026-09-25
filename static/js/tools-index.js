@@ -39,7 +39,7 @@
         } else {
           var orig = h3.dataset.original;
           var re = new RegExp("(" + q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "gi");
-          h3.innerHTML = orig.replace(re, '<mark style="background:rgba(79,126,248,0.25);border-radius:2px;padding:0 1px">$1</mark>');
+          h3.innerHTML = orig.replace(re, '<mark class="search-hit">$1</mark>');
         }
       }
     });
@@ -50,6 +50,9 @@
     });
     document.getElementById("tools-no-match").style.display = visible === 0 ? "" : "none";
     var countEl = document.getElementById("tools-count");
+    var url = new URL(window.location.href);
+    if (q) url.searchParams.set("q", this.value.trim()); else url.searchParams.delete("q");
+    history.replaceState(null, "", url);
     if (countEl) countEl.textContent = q ? "Showing " + visible + " of " + TOTAL + " calculators" : "Showing all " + TOTAL + " calculators";
   });
 
