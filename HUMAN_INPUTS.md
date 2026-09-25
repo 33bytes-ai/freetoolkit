@@ -87,13 +87,12 @@ des emails (SMS, appel, checks multi-régions) :
 
 ## Catégorie A2 — Abonnement Pro (Stripe) ⭐ priorité revenu
 
-`/pro/` vend l'embed sans lien de crédit (12 €/mois). Son bouton pointe vers
-`/contact/` tant que le lien de paiement Stripe n'existe pas.
+✅ En ligne depuis le 2026-09-25 (étape wizard vérifiée). Compte Stripe
+**FounderCalc** dédié (`acct_1UJN7i9Qs45zrppX`), séparé du compte GoClose d'ACO,
+même IBAN Shine, libellé bancaire `FOUNDERCALC`, Radar Standard :
 
-Tout est dans le wizard, clic par clic, étape **« Abonnement Pro : Stripe
-encaisse »** (GATE 1) : activation du compte (identité, IBAN), produit récurrent,
-Payment Link, portail client, mention TVA. La vérification refuse un lien en
-mode test et attend les deux liens en ligne sur `/pro/`.
+- Payment Link : https://buy.stripe.com/9B64gtdjD9GP2aLetm6J200
+- Portail client (résiliation en fin de période) : https://billing.stripe.com/p/login/9B64gtdjD9GP2aLetm6J200
 
 À chaque vente : demander à Claude d'émettre une clé Pro (voir `CLAUDE.md` §
 Embeds and Pro), l'envoyer à l'acheteur sous 1 jour ouvré.
@@ -176,14 +175,14 @@ sous 7 jours et ses 320 URL redirigent toutes en 301 — sans conséquence.
 
 ### C1. S'inscrire aux programmes affiliés (~15-30 min chacun)
 Comptes à créer toi-même (infos personnelles/IBAN requises, non déléguables).
-État au 2026-08-29 :
+État au 2026-09-25 :
 
 | Programme | Pages concernées | État |
 |---|---|---|
 | **Gusto** | 3 | ✅ approuvé 2026-08-04, accord signé, lien `gusto.com/go/bd/foundercalc` câblé. **Reste : Stripe Connect pour les versements** |
 | **FreshBooks** (via PartnerStack) | 4 | ⏳ candidature déposée 2026-07-29. Bloqué sur la création de ton compte PartnerStack + connexion Stripe |
-| **Baremetrics** | 21 | ❌ jamais candidaté — [baremetrics.com/affiliate](https://baremetrics.com/affiliate) (impact.com) |
-| **Paddle** | 8 | ❌ jamais candidaté — [paddle.com/partners](https://paddle.com/partners) |
+| **Baremetrics** | 21 | ⏳ compte « Friends of Baremetrics » (Rewardful, 20 %) créé 2026-09-23 avec `hello@foundercalc.dev`, email confirmé 2026-09-25. **Reste : te connecter sur [affiliates.baremetrics.com](https://affiliates.baremetrics.com/login) et récupérer le lien tracké** |
+| **Paddle** | 8 | ⏳ demande envoyée 2026-09-25 via le formulaire [paddle.com/partners](https://www.paddle.com/partners) (Referral Partner) — réponse attendue sur `hello@foundercalc.dev` |
 | Lemon Squeezy | — | ❌ écarté : commission par marchand individuel, pas de parrainage plateforme |
 | ChartMogul | — | ❌ écarté 2026-09-24 : plus de programme d'affiliation public (`/partners/` en 404), cartes retirées du site |
 | Chargebee | — | ❌ écarté 2026-09-24 : le « Solution Partner Program » vise agences et intégrateurs, pas un site éditorial ; cartes retirées du site |
