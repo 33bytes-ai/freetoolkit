@@ -45,16 +45,16 @@ stripe-fee-calculator:
 
 mrr-calculator:
   - name: "Baremetrics"
-    url: "https://baremetrics.com"
-    affiliate: false
+    url: "https://baremetrics.com?via=guillaume"
+    affiliate: true
     category: "MRR dashboard"
     description: "Real-time MRR, churn, LTV and 26 other SaaS metrics pulled directly from Stripe, Paddle or Braintree. Replaces manual spreadsheets."
     cta: "Start free Baremetrics trial →"
 
 ltv-cac-calculator:
   - name: "Baremetrics"
-    url: "https://baremetrics.com"
-    affiliate: false
+    url: "https://baremetrics.com?via=guillaume"
+    affiliate: true
     category: "LTV & CAC tracking"
     description: "Tracks LTV, CAC, and payback period automatically from your Stripe data. See how your unit economics change over time."
     cta: "Start free Baremetrics trial →"
@@ -303,8 +303,8 @@ paypal-fee-calculator:
 
 arr-mrr-converter:
   - name: "Baremetrics"
-    url: "https://baremetrics.com"
-    affiliate: false
+    url: "https://baremetrics.com?via=guillaume"
+    affiliate: true
     category: "ARR/MRR tracking"
     description: "Live ARR and MRR pulled from Stripe — no manual conversion needed. Tracks expansions, contractions, and churn in real time."
     cta: "Start free Baremetrics trial →"
@@ -337,8 +337,8 @@ nps-calculator:
 
 rule-of-40-calculator:
   - name: "Baremetrics"
-    url: "https://baremetrics.com"
-    affiliate: false
+    url: "https://baremetrics.com?via=guillaume"
+    affiliate: true
     category: "SaaS metrics"
     description: "Tracks the growth component of Rule of 40 (MRR growth rate) live from Stripe. Pair with your P&L to monitor your Rule of 40 score continuously."
     cta: "Start free Baremetrics trial →"
@@ -431,8 +431,8 @@ payment-fee-comparison:
 
 subscription-churn-revenue:
   - name: "Baremetrics"
-    url: "https://baremetrics.com"
-    affiliate: false
+    url: "https://baremetrics.com?via=guillaume"
+    affiliate: true
     category: "SaaS analytics"
     description: "Connects to Stripe/Braintree/Recurly and gives you real-time MRR, ARR, churn rate, LTV, and cohort analysis. The standard dashboard for SaaS founders tracking subscription health."
     cta: "Start with Baremetrics →"
@@ -445,8 +445,8 @@ subscription-churn-revenue:
 
 arr-growth-rate-calculator:
   - name: "Baremetrics"
-    url: "https://baremetrics.com"
-    affiliate: false
+    url: "https://baremetrics.com?via=guillaume"
+    affiliate: true
     category: "SaaS analytics"
     description: "Real-time ARR, MRR, and growth rate tracking connected to Stripe, Braintree, or Recurly. Tracks YoY growth rate, cohort analysis, and MRR movement automatically."
     cta: "Track ARR with Baremetrics →"
@@ -467,8 +467,8 @@ saas-pricing-calculator:
 
 unit-economics-calculator:
   - name: "Baremetrics"
-    url: "https://baremetrics.com/?utm_source=foundercalc"
-    affiliate: false
+    url: "https://baremetrics.com?via=guillaume"
+    affiliate: true
     category: "SaaS Analytics"
     description: "Subscription analytics that tracks LTV, CAC, payback period, and all your unit economics automatically from Stripe, Paddle, or Braintree. One-click dashboard."
     cta: "Track your unit economics with Baremetrics →"
@@ -495,16 +495,16 @@ customer-health-score:
 
 revenue-growth-calculator:
   - name: "Baremetrics"
-    url: "https://baremetrics.com/?utm_source=foundercalc"
-    affiliate: false
+    url: "https://baremetrics.com?via=guillaume"
+    affiliate: true
     category: "SaaS Analytics"
     description: "Tracks MoM, QoQ, and YoY revenue growth automatically from Stripe or Paddle. See growth rate trends, cohort analysis, and forecasts without building spreadsheets."
     cta: "Track your growth with Baremetrics →"
 
 nrr-calculator:
   - name: "Baremetrics"
-    url: "https://baremetrics.com/?utm_source=foundercalc"
-    affiliate: false
+    url: "https://baremetrics.com?via=guillaume"
+    affiliate: true
     category: "SaaS Analytics"
     description: "Tracks NRR, GRR, expansion MRR, and churn MRR automatically from Stripe or Paddle. See cohort-level retention without building spreadsheets."
     cta: "Track your NRR with Baremetrics →"
@@ -529,8 +529,8 @@ burn-multiple-calculator:
     description: "No-fee business banking with real-time burn tracking, expense categories, and cash balance visibility. See your net burn in the same dashboard as your ARR."
     cta: "Track your burn with Brex →"
   - name: "Baremetrics"
-    url: "https://baremetrics.com/?utm_source=foundercalc"
-    affiliate: false
+    url: "https://baremetrics.com?via=guillaume"
+    affiliate: true
     category: "SaaS Analytics"
     description: "Track net new ARR, expansion, churn, and contraction automatically from Stripe or Paddle. The net new ARR input for your Burn Multiple calculation, automated."
     cta: "Automate your ARR tracking →"
@@ -577,8 +577,8 @@ ad-roas-calculator:
 
 customer-ltv-calculator:
   - name: "Baremetrics"
-    url: "https://baremetrics.com/?utm_source=foundercalc"
-    affiliate: false
+    url: "https://baremetrics.com?via=guillaume"
+    affiliate: true
     category: "SaaS Analytics"
     description: "Tracks LTV, churn, MRR, and CAC payback automatically from Stripe or Paddle. See lifetime value by cohort, plan, and acquisition source without building spreadsheets."
     cta: "Track your LTV with Baremetrics →"
@@ -599,8 +599,8 @@ conversion-rate-calculator:
 
 gross-margin-calculator:
   - name: "Baremetrics"
-    url: "https://baremetrics.com/?utm_source=foundercalc"
-    affiliate: false
+    url: "https://baremetrics.com?via=guillaume"
+    affiliate: true
     category: "SaaS Analytics"
     description: "Tracks gross margin, MRR, COGS, and 30+ SaaS metrics automatically from Stripe. See gross margin trends by cohort, plan, and geography without building spreadsheets."
     cta: "Track your gross margin with Baremetrics →"
@@ -669,8 +669,8 @@ discount-calculator:
 
 break-even-revenue-calculator:
   - name: "Baremetrics"
-    url: "https://baremetrics.com"
-    affiliate: false
+    url: "https://baremetrics.com?via=guillaume"
+    affiliate: true
     category: "SaaS Analytics"
     description: "Track MRR, ARR, and break-even in real time with subscription analytics built for SaaS founders."
     cta: "Start free Baremetrics trial →"
@@ -695,8 +695,8 @@ cac-calculator:
     description: "Free CRM to track deals and measure conversion rates by channel — essential for calculating accurate per-channel CAC."
     cta: "Start with HubSpot free →"
   - name: "Baremetrics"
-    url: "https://baremetrics.com"
-    affiliate: false
+    url: "https://baremetrics.com?via=guillaume"
+    affiliate: true
     category: "SaaS Analytics"
     description: "Real-time subscription analytics with CAC trends, payback period, and LTV:CAC ratio tracking built in."
     cta: "Track CAC with Baremetrics →"
@@ -721,16 +721,16 @@ revenue-per-employee-calculator:
     description: "HR and payroll in one platform — accurate headcount and payroll data to keep RPE calculations up to date."
     cta: "Try Rippling →"
   - name: "Baremetrics"
-    url: "https://baremetrics.com"
-    affiliate: false
+    url: "https://baremetrics.com?via=guillaume"
+    affiliate: true
     category: "SaaS Analytics"
     description: "Real-time ARR tracking for SaaS — pair with headcount data to monitor revenue per employee as a board metric."
     cta: "Start free Baremetrics trial →"
 
 arr-calculator:
   - name: "Baremetrics"
-    url: "https://baremetrics.com"
-    affiliate: false
+    url: "https://baremetrics.com?via=guillaume"
+    affiliate: true
     category: "SaaS Analytics"
     description: "Real-time ARR, MRR, and YoY growth tracking for SaaS — automatic calculation from Stripe, Recurly, or Braintree data."
     cta: "Start free Baremetrics trial →"
@@ -784,10 +784,10 @@ cash-conversion-cycle-calculator:
 saas-quick-ratio-calculator:
   - name: "Baremetrics"
     description: "Real-time MRR dashboards with quick ratio tracking, expansion/contraction breakdowns, and churn forecasting built in."
-    url: "https://baremetrics.com"
+    url: "https://baremetrics.com?via=guillaume"
     cta: "Try Baremetrics →"
     category: "MRR Analytics"
-    affiliate: false
+    affiliate: true
   - name: "ProfitWell"
     description: "Free subscription metrics tool that tracks MRR movements, quick ratio, and revenue churn in real-time."
     url: "https://www.profitwell.com"
@@ -810,10 +810,10 @@ magic-number-calculator:
     affiliate: false
   - name: "Baremetrics"
     description: "Real-time ARR tracking — provides the net new ARR figures you need to compute your Magic Number each quarter."
-    url: "https://baremetrics.com"
+    url: "https://baremetrics.com?via=guillaume"
     cta: "Try Baremetrics →"
     category: "SaaS Analytics"
-    affiliate: false
+    affiliate: true
 
 working-capital-calculator:
   - name: "QuickBooks"
@@ -872,10 +872,10 @@ payback-period-calculator:
 arpu-calculator:
   - name: "Baremetrics"
     description: "Real-time ARPU dashboard with segmentation by plan, cohort, and acquisition channel — shows exactly which customers drive your ARPU up or down."
-    url: "https://baremetrics.com"
+    url: "https://baremetrics.com?via=guillaume"
     cta: "Try Baremetrics →"
     category: "MRR Analytics"
-    affiliate: false
+    affiliate: true
   - name: "Paddle"
     description: "Merchant of record for SaaS — handles billing, tax compliance, and dunning globally, while providing accurate ARPU and revenue reporting."
     url: "https://www.paddle.com"
@@ -886,10 +886,10 @@ arpu-calculator:
 revenue-run-rate-calculator:
   - name: "Baremetrics"
     description: "Real-time MRR and ARR tracking — the data source for accurate run rate calculations from your Stripe or Paddle billing data."
-    url: "https://baremetrics.com"
+    url: "https://baremetrics.com?via=guillaume"
     cta: "Try Baremetrics →"
     category: "SaaS Analytics"
-    affiliate: false
+    affiliate: true
 
 sales-velocity-calculator:
   - name: "HubSpot CRM"
@@ -992,10 +992,10 @@ revenue-per-lead-calculator:
 customer-concentration-calculator:
   - name: "Baremetrics"
     description: "Real-time SaaS metrics including customer-level MRR — track your top 10 accounts and monitor concentration changes as your business grows."
-    url: "https://baremetrics.com"
+    url: "https://baremetrics.com?via=guillaume"
     cta: "Try Baremetrics →"
     category: "MRR Analytics"
-    affiliate: false
+    affiliate: true
 
 tam-sam-som-calculator:
   - name: "Crunchbase"
