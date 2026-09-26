@@ -1812,7 +1812,7 @@
     ## Why ROAS alone doesn't tell you if ads are profitable
 
     A 4× ROAS on a 30% margin product means you spent $1 to generate $4 revenue, but
-    only $1.20 in gross profit — a net loss of $0.20 per dollar spent. The same 4× ROAS
+    only $1.20 in gross profit — just $0.20 left per dollar spent, before any overhead. The same 4× ROAS
     on an 80% margin SaaS product means $3.20 gross profit per $1 spent.
 
     **Breakeven ROAS = 1 ÷ Gross Margin %**
@@ -1985,10 +1985,10 @@
 
     **Monthly Revenue = Visitors × Conversion Rate × Revenue per Conversion**
 
-    At 10,000 visitors, 1.5% CR, and $99 ARPU: $10,000 × 0.015 × $99 = **$14,850/month**
+    At 10,000 visitors, 1.5% CR, and $99 ARPU: 10,000 × 0.015 × $99 = **$14,850/month**
 
     Improving CR from 1.5% to 2.5% — a 67% relative increase — at the same traffic:
-    $10,000 × 0.025 × $99 = **$24,750/month** — a **$9,900/month uplift**.
+    10,000 × 0.025 × $99 = **$24,750/month** — a **$9,900/month uplift**.
 
     ## Why CRO is often more efficient than acquisition
 
@@ -4092,7 +4092,7 @@
     | LinkedIn Ads | 100 | $80k | $800 | $20k | $200 | 4× |
     | Organic | 600 | $200k | $333 | $15k | $25 | 13× |
 
-    Google Ads has the same RPL as organic. LinkedIn has higher RPL (better lead quality)
+    Google Ads has a higher RPL than organic ($400 vs $333). LinkedIn has higher RPL (better lead quality)
     but also higher CPL. Organic has the best ROI but lowest RPL.
 
     **Conclusion**: Scale organic first (highest ROI). Then Google Ads (good ROI, scalable).
@@ -4102,7 +4102,7 @@
 
     RPL is a marketing funnel metric. CAC (Customer Acquisition Cost) is a sales funnel
     metric. The relationship:
-    - RPL × Lead-to-Customer Rate = Revenue per Customer (ACV)
+    - RPL ÷ Lead-to-Customer Rate = Revenue per Customer (ACV)
     - CPL / Lead-to-Customer Rate = CAC
 
     If RPL = $400 and lead-to-customer rate is 5%, your ACV implied is $8,000.
