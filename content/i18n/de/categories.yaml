@@ -31,3 +31,33 @@
     großer Grund, warum Abo-Modelle und Marktplätze ihr Wachstum aus dem
     operativen Geschäft finanzieren können, was ein klassischer Händler nicht
     kann.
+
+"Payments":
+  "body": |
+    Zahlungsgebühren sind meist der größte Posten, den ein kleines Unternehmen
+    nie verhandelt. Bei 2,9 % + 0,30 $ gibt ein Unternehmen mit 30.000 $
+    Kartenumsatz pro Monat rund 10.500 $ im Jahr ab, mehr als die meisten Gründer
+    für Software ausgeben. Diese Rechner gibt es, damit diese Zahl auf der
+    Monatsabrechnung keine Überraschung mehr ist.
+
+    ## Welcher Rechner passt
+
+    Starte mit dem **Gebührenvergleich**, wenn du einen Zahlungsanbieter
+    auswählst oder einen Wechsel erwägst: Er stellt Stripe, PayPal und alle drei
+    Shopify-Payments-Pläne für einen Verkaufsbetrag nebeneinander und zeigt die
+    genaue Nettoauszahlung. Nutze die einzelnen Rechner für **Stripe**,
+    **PayPal** und **Shopify**, wenn dein Anbieter feststeht und du eine genaue
+    Zahl brauchst: Jeder berücksichtigt Details, die der Vergleich vereinfacht,
+    darunter internationale Karten, verhandelte Sätze und das Hochrechnen eines
+    Betrags, damit nach Gebühren genau die gewünschte Summe ankommt.
+
+    ## Die Fehler, die sie verhindern
+
+    Zwei Fehler tauchen ständig auf. Erstens: die beworbenen Prozentsätze zu
+    vergleichen und die Fixgebühr zu übersehen. Bei einem Verkauf über 5 $
+    machen Stripes 0,30 $ allein schon 6 % aus, deshalb zerstören
+    Kleinstbeträge Margen, die in der Tabelle gut aussehen. Zweitens: die
+    Aufschläge für grenzüberschreitende Zahlungen und Währungsumrechnung zu
+    vergessen (bei Stripe 1,5 % bzw. 1 % extra). Sie machen einen ausländischen
+    Kunden beim gleichen Preis still und leise deutlich weniger profitabel als
+    einen inländischen.

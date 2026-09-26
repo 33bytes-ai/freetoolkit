@@ -1081,3 +1081,781 @@
     Ambas tienen el mismo ratio de liquidez pero posiciones de liquidez absoluta muy distintas. El capital circulante las diferencia.
 
     Usa la [calculadora de capital circulante](/tools/working-capital-calculator/) para ver ambos.
+
+"how-to-reduce-stripe-fees":
+  "title": "Cómo reducir las comisiones de Stripe: 5 métodos prácticos"
+  "description": "Stripe cobra 2,9 % + $0,30 por defecto. Estas son cinco formas concretas de bajar tu tarifa efectiva, desde la facturación anual hasta negociar por volumen."
+  "body": |
+    La tarifa estándar de Stripe, **2,9 % + $0,30**, es fija para la mayoría de
+    negocios. Pero la tarifa *efectiva* que pagas depende de cómo estructures la
+    facturación y de cuánto volumen proceses. Estos son cinco métodos concretos
+    para bajarla.
+
+    ## 1. Pasar de facturación mensual a anual
+
+    En un plan de $99 al mes, Stripe cobra la comisión 12 veces: $3,17 por
+    renovación, $38,04 al año. En un plan anual equivalente de $990, pagas la
+    comisión una vez: $29,01. Ahorras $9,03 por suscriptor y año solo cambiando la
+    frecuencia de cobro, y además mejoras tu flujo de caja.
+
+    ## 2. Aumentar el importe medio de las transacciones
+
+    Los $0,30 fijos pesan más en las transacciones pequeñas: un 6 % a $5, un 0,6 %
+    a $50 y un 0,06 % a $500. Los packs, los planes anuales y los pedidos mínimos
+    reducen el impacto de la comisión fija por cada dólar.
+
+    ## 3. Usar la Optimized Checkout Suite de Stripe
+
+    [Link](https://stripe.com/payments/link) (el checkout en un clic de Stripe)
+    suele aumentar la conversión un 7–30 % sin comisión adicional. Más conversión
+    significa más ingresos con el mismo coste de procesamiento: baja tu coste
+    efectivo por dólar ingresado.
+
+    ## 4. Negociar precio por volumen
+
+    Stripe ofrece precios a medida a negocios que procesan más de **$80.000 al
+    mes** (unos $1M al año). El descuento varía, pero suele estar entre 0,2 y 0,5
+    puntos por debajo de la tarifa estándar. Contacta con ventas de Stripe cuando
+    te acerques a ese umbral: negociarán.
+
+    ## 5. Encauzar aparte los pagos ACH
+
+    Stripe cobra solo **un 0,8 % (con un máximo de $5,00)** por transferencias
+    bancarias en EE. UU. (ACH). Si tus clientes son empresas estadounidenses,
+    ofrecer ACH en facturas de más de ~$500 reduce mucho la comisión efectiva. A
+    $1.000, la comisión es de $5 (0,5 %) frente a $29,30 con tarjeta.
+
+    ## Lo que no puedes reducir
+
+    La comisión de Stripe no es negociable para la mayoría de negocios por debajo
+    de $1M al año. Cambiar de procesador por completo (a Shopify Payments, Paddle
+    o un adquirente local) puede ahorrar más que optimizar: usa el [comparador de
+    comisiones de pago](/tools/payment-fee-comparison/) para ver las cifras exactas
+    con tu importe medio de transacción.
+"lowest-payment-processing-fees-small-business":
+  "title": "Las comisiones de pago más bajas para pequeñas empresas (2026)"
+  "description": "Stripe, PayPal y Shopify Payments comparados para pequeñas empresas. ¿Qué procesador tiene las comisiones más bajas para tu importe medio de transacción?"
+  "body": |
+    Para la mayoría de pequeñas empresas, los tres grandes procesadores de pago
+    son **Stripe**, **PayPal** y **Shopify Payments**. El más barato depende casi
+    por completo de tu importe medio de transacción y de tu volumen mensual.
+
+    ## Comisiones de un vistazo (2026)
+
+    | Procesador | Tarifa | Fija | Ideal para |
+    |-----------|------|-------|---------|
+    | Stripe | 2,9 % | $0,30 | SaaS, perfiles técnicos, APIs |
+    | PayPal Standard | 2,99 % | $0,49 | Confianza del consumidor, marketplaces |
+    | PayPal Checkout | 3,49 % | $0,49 | Conversiones con el botón de PayPal |
+    | Shopify Basic | 2,0 % | $0,25 | E-commerce con plan de $39/mes |
+    | Shopify | 1,7 % | $0,25 | E-commerce con plan de $105/mes |
+    | Shopify Advanced | 1,5 % | $0,25 | E-commerce de alto volumen |
+
+    ## Los umbrales de equilibrio
+
+    **Shopify Basic frente a Stripe**: Shopify Basic (plan de $39/mes) cuesta lo
+    mismo que Stripe con unos **$3.900 de volumen mensual** (la cuota de $39
+    compensa un ahorro de ~1 %). Por encima, Shopify Basic es más barato; por
+    debajo, gana Stripe.
+
+    **Shopify frente a Stripe a $100 por transacción**:
+
+    | Procesador | Comisión sobre $100 | Te quedas |
+    |-----------|-------------|---------|
+    | Stripe | $3,20 | $96,80 |
+    | PayPal Standard | $3,48 | $96,52 |
+    | Shopify Basic | $2,25 | $97,75 |
+    | Shopify Advanced | $1,75 | $98,25 |
+
+    ## ¿Cuál elegir?
+
+    - **Menos de $2.000 al mes de volumen** → Stripe (sin cuota mensual, mejor experiencia para desarrolladores)
+    - **E-commerce en Shopify** → Shopify Payments (tarifas más bajas, sin comisión de transacción externa)
+    - **Venta al consumidor con mucho abandono de carrito** → PayPal (la mejora de conversión compensa la tarifa)
+    - **Más de $80.000 al mes** → negocia con Stripe o compara Stripe con Paddle/FastSpring
+
+    Introduce tu importe medio de transacción en el [comparador de comisiones de pago](/tools/payment-fee-comparison/)
+    para ver las comisiones exactas y la opción más barata en tu caso.
+"paypal-fees-for-online-payments":
+  "title": "Comisiones de PayPal en pagos online: desglose completo"
+  "description": "PayPal cobra entre 2,99 % y 3,49 % + $0,49 por transacción online. Aquí tienes el desglose completo, cuándo PayPal es competitivo y cuándo no."
+  "body": |
+    PayPal tiene dos niveles principales de precio para aceptar tarjetas online:
+    **PayPal Standard** al 2,99 % + $0,49 y **PayPal Checkout** (el botón con la
+    marca) al 3,49 % + $0,49. La diferencia importa en SaaS y suscripciones, donde
+    los $0,49 fijos erosionan el margen de las transacciones pequeñas.
+
+    ## ¿Cuándo tiene sentido PayPal?
+
+    La gran ventaja de PayPal es la **confianza del comprador**: quien ve el botón
+    de PayPal suele completar compras que de otro modo abandonaría, sobre todo en
+    el checkout. Un estudio del Baymard Institute concluyó que PayPal reduce hasta
+    un 14 % el abandono en el checkout como invitado frente a un checkout solo con
+    formulario.
+
+    Si tu pedido medio supera los $30 y vendes directamente al consumidor, la
+    mejora de conversión puede compensar con creces la tarifa más alta frente a
+    Stripe.
+
+    ## Las comisiones de PayPal comparadas en un pago de $100
+
+    | Procesador | Comisión | Recibes |
+    |-----------|-----|------------|
+    | Stripe | $3,20 | $96,80 |
+    | PayPal Standard | $3,48 | $96,52 |
+    | PayPal Checkout | $3,98 | $96,02 |
+
+    Con $100, Stripe ahorra $0,28–$0,78 por transacción. Con 1.000 transacciones al
+    mes son $280–$780 al mes, que se acumulan rápido a escala.
+
+    ## PayPal y las suscripciones
+
+    Los acuerdos de facturación de PayPal permiten cobros recurrentes sin que el
+    cliente apruebe cada pago. Sin embargo, la gestión de suscripciones
+    (prorrateos, cambios de plan, reintentos de cobro) es más limitada que en
+    Stripe Billing. Para una SaaS pura se suelen preferir las herramientas para
+    desarrolladores y la fiabilidad de los webhooks de Stripe.
+
+    ## La ventaja transfronteriza de PayPal
+
+    PayPal tiene adquirencia local en más de 40 países y gestiona de forma nativa
+    la liquidación en varias divisas. Si una parte importante de tus clientes es
+    internacional, la conversión de PayPal puede competir con las comisiones de
+    Stripe para tarjetas internacionales (+1,5 % en tarjetas no estadounidenses).
+
+    Usa el [comparador de comisiones de pago](/tools/payment-fee-comparison/) con tu
+    importe medio de transacción para ver la diferencia exacta en dólares en tu
+    caso.
+"stripe-vs-paypal-for-subscriptions":
+  "title": "Stripe o PayPal para suscripciones recurrentes: ¿cuál cuesta menos?"
+  "description": "Comparativa de comisiones de Stripe y PayPal para facturación de suscripciones, con ejemplos mensuales y anuales y un cálculo del punto de equilibrio."
+  "body": |
+    Para un negocio de suscripción, elegir entre Stripe y PayPal depende de las
+    comisiones, la fiabilidad y la profundidad de funciones. Esta es la
+    comparativa completa.
+
+    ## Comisiones en suscripciones mensuales
+
+    Ambos procesadores cobran su comisión estándar en cada renovación:
+
+    | Procesador | Plan mensual de $49 | Plan anual de $490 |
+    |-----------|-----------------|-----------------|
+    | Stripe | $1,72/renovación | $14,51 una vez |
+    | PayPal Standard | $1,96/renovación | $15,11 una vez |
+
+    En un plan de $49 al mes, Stripe ahorra **$2,88 al año por suscriptor** frente
+    a PayPal Standard. Con 1.000 suscriptores son **$2.880 al año** solo por la
+    diferencia de tarifa.
+
+    ## Funciones de suscripción: gana Stripe
+
+    Stripe Billing está pensado para SaaS: prorrateo, facturación por uso,
+    periodos de prueba, pausa de suscripciones y reintentos automáticos de pagos
+    fallidos. Las APIs de suscripción de PayPal funcionan, pero no tienen la misma
+    profundidad ni fiabilidad.
+
+    La tasa de contracargos de PayPal en suscripciones digitales también es más
+    alta que la de Stripe, algo crítico porque demasiados contracargos pueden
+    congelar tu cuenta.
+
+    ## Usa nuestra calculadora comparativa
+
+    Introduce el precio de tu plan mensual en el [comparador de comisiones de pago](/tools/payment-fee-comparison/)
+    para ver el ahorro mensual exacto de cambiar de procesador con tu importe de
+    suscripción.
+"stripe-vs-shopify-payments-fees":
+  "title": "Stripe o Shopify Payments: cuándo Shopify Payments sale realmente más barato"
+  "description": "Shopify Payments puede salir más barato que Stripe para tiendas online. Esta guía muestra los umbrales de volumen exactos y cuándo gana cada procesador."
+  "body": |
+    Shopify Payments y Stripe parecen similares a primera vista (ambos funcionan
+    sobre la infraestructura de Stripe), pero sus comisiones son bastante
+    distintas para los comerciantes de Shopify.
+
+    ## La diferencia clave: el recargo de pasarela de Shopify
+
+    Si usas Stripe directamente en Shopify (y no Shopify Payments), Shopify cobra
+    una **comisión por transacción adicional** sobre la de Stripe:
+    - Plan Basic: +2,0 %
+    - Plan Shopify: +1,0 %
+    - Plan Advanced: +0,5 %
+
+    Esto hace que Stripe sea **bastante más caro** que Shopify Payments para los
+    comerciantes de Shopify.
+
+    ## Comparación de tarifas: Shopify Payments frente a Stripe en Shopify
+
+    Para una tienda Shopify Basic ($39/mes) con $10.000 de volumen mensual:
+
+    | Opción | Comisión de procesamiento | Comisión de pasarela | Total mensual |
+    |--------|---------------|-------------|---------------|
+    | Stripe en Shopify | $320 | +$200 (2 %) | $520 |
+    | Shopify Payments Basic | $225 | $0 | $225 |
+
+    Shopify Payments ahorra **$295 al mes** con $10k de volumen, lo que cubre de
+    sobra la cuota de $39/mes.
+
+    ## Cuándo es mejor Stripe fuera de Shopify
+
+    Si **no vendes en Shopify**, Stripe es la mejor opción:
+    - Mejores APIs para un checkout personalizado
+    - Facturación de suscripciones superior
+    - Mejor cobertura internacional
+    - Sin dependencia de una plataforma
+
+    Compara las comisiones exactas para tus importes de transacción con nuestro
+    [comparador de comisiones de pago](/tools/payment-fee-comparison/).
+"paypal-fee-on-100-dollars":
+  "title": "¿Cuánto se queda PayPal en una transacción de $100?"
+  "description": "La comisión exacta de PayPal en un pago de $100: Standard, Checkout y Bienes y servicios, comparada con Stripe."
+  "body": |
+    En un **pago de $100** con PayPal Standard (tarjeta), la comisión es de **$3,49** (3,49 %):
+    - 2,99 % de $100 = $2,99
+    - Comisión fija = $0,49 (en USD, nacional)
+    - **Comisión total = $3,48 | Recibes = $96,52**
+
+    Con PayPal Checkout (el flujo más reciente): **$3,98 de comisión | $96,02 netos**
+
+    Con PayPal Bienes y servicios («Amigos y familiares» es solo para uso
+    personal; usarlo para un negocio incumple las condiciones de PayPal):
+    **$3,48 de comisión**.
+
+    ## $100 comparados: PayPal, Stripe y Square
+
+    | Procesador | Comisión sobre $100 | Neto recibido |
+    |-----------|---------|-------------|
+    | PayPal Standard | $3,49 | $96,52 |
+    | PayPal Checkout | $3,98 | $96,02 |
+    | Stripe (nacional) | $3,20 | $96,80 |
+    | Square (online) | $3,20 | $96,80 |
+
+    Stripe y Square salen **$0,29–0,78 más baratos** por cada transacción de $100.
+    Con 100 transacciones al mes, cambiar ahorra $29–78 al mes. Con $1M de volumen
+    anual, la diferencia es de $2.900–7.800 al año.
+
+    ## Para recibir exactamente $100 netos de PayPal
+    Cobra **$103,59** para recibir exactamente $100 después de las comisiones de PayPal Standard:
+    ($100 + $0,49) / (1 − 0,0299) = $103,59.
+"paypal-fee-on-1000-dollars":
+  "title": "¿Cuánto se queda PayPal en una transacción de $1.000?"
+  "description": "La comisión exacta de PayPal en un pago de $1.000 y cuándo se aplican los descuentos por volumen."
+  "body": |
+    En un **pago de $1.000** con PayPal Standard, la comisión es de **$30,49** (3,05 %):
+    - 2,99 % de $1.000 = $29,90
+    - Comisión fija = $0,49
+    - **Comisión total = $30,39 | Recibes = $969,61**
+
+    Con PayPal Checkout: **$35,39 de comisión | $964,61 netos**
+
+    ## ¿A partir de qué volumen ofrece PayPal tarifas más bajas?
+
+    El programa de **tarifa para comerciantes** de PayPal reduce las comisiones según el volumen de ventas mensual:
+    - $0–$3.000 al mes: 2,99 % + $0,49 (estándar)
+    - $3.001–$10.000 al mes: 2,89 % + $0,49
+    - $10.001–$100.000 al mes: 2,79 % + $0,49
+    - Más de $100.001 al mes: contacta con PayPal para una tarifa a medida
+
+    En una transacción de $1.000 con $50k de volumen mensual (2,79 % + $0,49):
+    comisión = **$28,39 | neto = $971,61**, unos $2 de ahorro por transacción
+    frente a la tarifa estándar.
+
+    ## ACH o transferencia bancaria como alternativa para $1.000
+    En facturas B2B de $1.000, una transferencia ACH cuesta $0 (o una tarifa plana de
+    $1–5 en algunos procesadores): 30 veces menos que PayPal. Si tu comprador es una
+    empresa, ofrecer ACH junto a PayPal con un «recargo del 3 % por PayPal» es cada
+    vez más habitual y legal en la mayoría de estados de EE. UU.
+"paypal-fees-australia":
+  "title": "Comisiones de PayPal en Australia: tarifas en AUD y comparación con Stripe"
+  "description": "Comisiones de PayPal para empresas australianas: tarifas en AUD, ejemplos con números y comparación con Stripe."
+  "body": |
+    Los comerciantes de PayPal en Australia pagan **2,6 % + A$0,30** por
+    transacción nacional. En PayPal Checkout la tarifa es **3,49 % + A$0,49**. Las
+    transacciones transfronterizas (tarjetas emitidas fuera de Australia) suman un
+    1,5 % más.
+
+    ## Ejemplos de comisiones de PayPal en Australia (AUD)
+
+    | Cobro | PayPal Standard | PayPal Checkout | Stripe (nacional AU) |
+    |--------|----------------|----------------|---------------------|
+    | A$25  | A$0,95 (3,8 %) | A$1,36 (5,4 %) | A$0,74 (2,96 %) |
+    | A$100 | A$2,90 (2,9 %) | A$3,98 (4,0 %) | A$2,05 (2,05 %) |
+    | A$500 | A$13,30 (2,66 %) | A$17,94 (3,6 %) | A$9,05 (1,81 %) |
+
+    ## BPAY y transferencia bancaria como alternativas
+    En facturas B2B en Australia, BPAY (transferencia con BSB + número de cuenta)
+    es prácticamente gratis para el comerciante. En facturas grandes (más de
+    A$2.000), ofrecer transferencia bancaria junto a PayPal y tarjeta puede ahorrar
+    un 2–3 % por transacción. Usa la calculadora de facturas para añadir una línea
+    de «descuento por transferencia» como incentivo.
+"paypal-fees-canada":
+  "title": "Comisiones de PayPal en Canadá: tarifas en CAD y comparación con Stripe"
+  "description": "Comisiones de PayPal para empresas canadienses: tarifas en CAD, comisiones transfronterizas y cuándo sale más barato Stripe."
+  "body": |
+    Los comerciantes de PayPal en Canadá pagan **2,99 % + C$0,49** en las
+    transacciones estándar. En PayPal Checkout (el flujo de marca más reciente), la
+    tarifa es **3,49 % + C$0,49**. Las transacciones transfronterizas suman un
+    1,5 %, y la conversión de divisa añade un margen del 3–4 % sobre el tipo de
+    cambio.
+
+    ## Ejemplos de comisiones de PayPal en Canadá (CAD)
+
+    | Cobro | PayPal Standard | PayPal Checkout | Stripe (nacional CA) |
+    |--------|----------------|----------------|---------------------|
+    | C$25  | C$1,24 (5,0 %) | C$1,36 (5,4 %) | C$1,03 (4,1 %) |
+    | C$100 | C$3,48 (3,5 %) | C$3,98 (4,0 %) | C$3,20 (3,2 %) |
+    | C$500 | C$15,44 (3,1 %) | C$17,94 (3,6 %) | C$14,80 (3,0 %) |
+
+    ## GST/HST sobre las comisiones de PayPal
+    PayPal aplica GST o HST a las comisiones de procesamiento de las empresas
+    canadienses según la provincia de registro. Las empresas registradas suelen
+    poder recuperarlo como crédito fiscal. PayPal emite un extracto de comisiones
+    cada mes.
+
+    ## PayPal o Stripe para empresas canadienses
+    Stripe es más barato en el procesamiento estándar con tarjeta (2,9 % + C$0,30
+    frente al 2,99 % + C$0,49 de PayPal). La diferencia crece con el volumen: con
+    C$10.000 al mes, Stripe ahorra unos C$24 al mes frente a PayPal Standard.
+    Stripe también ofrece mejor soporte de suscripciones, webhooks más fiables y
+    mejores herramientas para desarrolladores.
+"paypal-fees-uk":
+  "title": "Comisiones de PayPal en Reino Unido: tarifas, ejemplos y comparación con Stripe"
+  "description": "Las comisiones exactas de PayPal para empresas británicas: tarifas nacionales e internacionales con ejemplos y comparación con Stripe."
+  "body": |
+    PayPal cobra a las empresas británicas **1,2 % + 30p** por pagos con tarjeta de
+    débito británica, **2,99 % + 30p** por pagos con tarjeta estándar
+    (Visa/Mastercard) y **3,49 % + 49p** en PayPal Checkout. En transacciones
+    internacionales se suma una comisión transfronteriza del 1,5 % y un margen de
+    conversión de divisa del 3–4 %.
+
+    ## Ejemplos de comisiones de PayPal en Reino Unido (GBP)
+
+    | Cobro | PayPal Standard | PayPal Checkout | Stripe (nacional UK) |
+    |--------|----------------|----------------|---------------------|
+    | £10 | £0,60 (6,0 %) | £0,84 (8,4 %) | £0,35 (3,5 %) |
+    | £50 | £1,80 (3,6 %) | £2,24 (4,5 %) | £0,95 (1,9 %) |
+    | £100 | £3,29 (3,3 %) | £3,98 (4,0 %) | £1,70 (1,7 %) |
+    | £500 | £15,30 (3,1 %) | £17,94 (3,6 %) | £7,70 (1,54 %) |
+
+    ## Cuándo compensa la comisión más alta de PayPal
+
+    La gran ventaja de PayPal para las empresas británicas es la **confianza del
+    comprador y la tasa de conversión**. Los estudios muestran que el 56 % de los
+    compradores británicos confía más en PayPal que en introducir su tarjeta en un
+    sitio desconocido. En tiendas con tráfico frío (poca notoriedad de marca), la
+    mejora de conversión al ofrecer PayPal puede compensar el mayor coste.
+
+    **Regla práctica**: si tu pedido medio es inferior a £30 y llevas tráfico desde
+    redes sociales a una marca desconocida, la mejora de conversión de PayPal
+    probablemente justifica el coste. En SaaS por suscripción o B2B con pedidos
+    altos, Stripe es casi siempre más barato y mejor.
+"shopify-basic-vs-shopify-plan-fees":
+  "title": "Shopify Basic o plan Shopify: diferencia de comisiones y cuándo subir de plan"
+  "description": "Comparativa de comisiones de Shopify Basic ($39/mes) y Shopify Standard ($105/mes): cuándo se paga solo el cambio de plan."
+  "body": |
+    Shopify tiene tres planes principales: **Basic** ($39/mes), **Shopify**
+    ($105/mes) y **Advanced** ($399/mes). Cada escalón reduce las comisiones por
+    transacción y las tarifas de tarjeta.
+
+    ## Tabla comparativa de comisiones
+
+    | | Basic ($39/mes) | Shopify ($105/mes) | Advanced ($399/mes) |
+    |-|---------------|-----------------|-------------------|
+    | **Tarifa de Shopify Payments** | 2,0 % + 25¢ | 1,7 % + 25¢ | 1,5 % + 25¢ |
+    | **Comisión de pasarela de terceros** | 2,0 % | 1,0 % | 0,5 % |
+    | **Tarifa Amex / tarjeta internacional** | 3,5 % | 3,5 % | 3,5 % |
+
+    ## ¿Cuándo compensa pasar de Basic a Shopify?
+
+    El cambio de plan cuesta **$66 más al mes** ($105 − $39). La rebaja de
+    comisión es de 0,3 puntos en las transacciones de Shopify Payments.
+
+    **Fórmula del punto de equilibrio**: el volumen mensual (GMV) con el que un
+    0,3 % de ahorro = $66 al mes, es decir, **$22.000 de GMV al mes** (con Shopify
+    Payments).
+
+    Si tu tienda factura más de $22.000 al mes con Shopify Payments, pasar al plan
+    Shopify te ahorra dinero neto.
+
+    ## ¿Cuándo compensa pasar de Shopify a Advanced?
+
+    Coste extra: **$294 al mes**. Rebaja de comisión: 0,2 puntos en Shopify
+    Payments. Punto de equilibrio: **$147.000 de GMV al mes**
+
+    La mayoría de tiendas pasan a Advanced por los informes personalizados y la
+    menor comisión de pasarela de terceros (0,5 % frente a 1,0 %), no por la
+    diferencia en la tarifa de tarjeta.
+"shopify-fees-vs-woocommerce":
+  "title": "Comisiones de Shopify frente a WooCommerce: comparación del coste total"
+  "description": "Desglose completo de costes de Shopify y WooCommerce: cuota de plataforma, comisión por transacción, hosting y GMV de equilibrio."
+  "body": |
+    Shopify y WooCommerce tienen estructuras de costes muy distintas. Shopify cobra
+    una cuota mensual predecible; WooCommerce no cobra por la plataforma, pero
+    necesita hosting y más mantenimiento.
+
+    ## Comparación de costes mensuales
+
+    | Partida | Shopify Basic | WooCommerce |
+    |----------------|--------------|-------------|
+    | Cuota de plataforma | $39/mes | $0 |
+    | Hosting | incluido | $10–25/mes |
+    | Comisión por transacción (Stripe) | 2,0 % (sin SP) o 0 % (SP) | 0 % |
+    | Procesamiento con tarjeta (Stripe) | 2,0 % + 25¢ (SP) | 2,9 % + 30¢ |
+    | Dominio | ~$2/mes | ~$2/mes |
+    | Mantenimiento / plugins | $0 | $10–50/mes |
+
+    ## ¿A partir de qué GMV sale más barato WooCommerce?
+
+    Con Shopify Payments (sin comisión por transacción) y $22k de GMV al mes en Basic:
+    - Shopify: $39 + ($22.000 × 0,02) = $39 + $440 = **$479/mes**
+    - WooCommerce + Stripe: $20 + ($22.000 × 0,029) = $20 + $638 = **$658/mes**
+
+    Con este volumen, Shopify Basic con Shopify Payments es en realidad **más
+    barato** que WooCommerce + Stripe, porque Shopify Payments (2,0 % + 25¢) cuesta
+    menos que la tarifa estándar de Stripe (2,9 % + 30¢).
+
+    WooCommerce gana en:
+    - **Flexibilidad**: personalización ilimitada, cualquier hosting, código totalmente tuyo
+    - **Volumen muy bajo**: menos de $5k al mes, donde pesa más la cuota de plataforma
+    - **Sin comisiones por transacción con ningún procesador** (a diferencia del 2 % de Shopify con pasarelas de terceros)
+
+    Usa la calculadora de comisiones de Shopify de arriba para modelar tu plan y tu
+    volumen.
+"shopify-payments-vs-stripe":
+  "title": "Shopify Payments o Stripe: ¿cuál es más barato y cuándo?"
+  "description": "Comparativa detallada de comisiones entre Shopify Payments y una integración de Stripe aparte, con cálculos del GMV de equilibrio."
+  "body": |
+    Si estás en Shopify, tienes dos opciones principales para cobrar con tarjeta:
+    **Shopify Payments** (integrado, elimina la comisión por transacción) o
+    **Stripe mediante pasarela de terceros** (tarifas estándar de Stripe más un
+    0,5–2 % de comisión por transacción de Shopify).
+
+    ## Comparativa de comisiones: Shopify Payments frente a Stripe en Shopify
+
+    | Plan | Shopify Payments | Stripe + comisión de Shopify | Diferencia |
+    |------|-----------------|---------------------|-----------|
+    | Basic | 2,0 % + 25¢ | 2,9 % + 30¢ + 2,0 % = 4,9 % + 30¢ | +2,9 % |
+    | Shopify | 1,7 % + 25¢ | 2,9 % + 30¢ + 1,0 % = 3,9 % + 30¢ | +2,2 % |
+    | Advanced | 1,5 % + 25¢ | 2,9 % + 30¢ + 0,5 % = 3,4 % + 30¢ | +1,9 % |
+
+    **Shopify Payments es casi siempre más barato** en tiendas que cobran sobre
+    todo con Visa/Mastercard nacionales de EE. UU. Solo la comisión por
+    transacción de Shopify (2 % en Basic) ya penaliza mucho usar Stripe
+    directamente.
+
+    ## Cuándo tiene sentido Stripe fuera de Shopify
+
+    - Estás migrando fuera de Shopify y quieres conservar tus datos de clientes en Stripe
+    - Necesitas funciones propias de Stripe (Radar, Connect, Issuing) que Shopify Payments no tiene
+    - Vendes en un país donde Shopify Payments no está disponible
+    - Tienes ingresos por suscripción que Shopify Payments gestiona peor que Stripe Billing
+
+    Para la mayoría de tiendas Shopify: **usa Shopify Payments**. La penalización
+    por comisión de transacción al usar Stripe es demasiado alta salvo en los casos
+    anteriores.
+"stripe-fee-on-10-dollars":
+  "title": "¿Cuánto se queda Stripe en un cobro de $10?"
+  "description": "La comisión exacta de Stripe en una transacción de $10, con tarjeta nacional e internacional."
+  "body": |
+    En un **cobro de $10** con tarjeta nacional de EE. UU., Stripe se queda **$0,59** (tarifa efectiva del 5,9 %):
+    - 2,9 % de $10 = $0,29
+    - Comisión fija = $0,30
+    - **Comisión total = $0,59 | Recibes = $9,41**
+
+    Con tarjeta internacional (4,4 % + $0,30): **$0,74 de comisión | $9,26 netos**.
+
+    ## Por qué los cobros pequeños tienen una tarifa efectiva alta
+    Los $0,30 fijos pesan de forma desproporcionada en las transacciones pequeñas.
+    A $10 ya son un 3 % antes de sumar la parte porcentual. Por eso Stripe ofrece
+    una **tarifa de micropagos (5 % + $0,05)**, disponible para negocios elegibles
+    que procesan sobre todo transacciones de menos de $10. A $10, esa tarifa da:
+    5 % × $10 + $0,05 = **$0,55**, algo más barato que la tarifa estándar.
+
+    ## Para recibir exactamente $10 netos
+    Si necesitas recibir exactamente $10 de una tarjeta nacional, tienes que cobrar **$10,62**
+    (el ajuste al alza: ($10 + $0,30) / (1 − 0,029) = $10,617).
+
+    Usa la calculadora de arriba y activa «cobrar más para recibir exactamente ese importe».
+"stripe-fee-on-100-dollars":
+  "title": "¿Cuánto se queda Stripe en un cobro de $100?"
+  "description": "La comisión exacta de Stripe en una transacción de $100: nacional (2,9 % + $0,30) e internacional (4,4 % + $0,30)."
+  "body": |
+    En un **cobro de $100** con tarjeta nacional de EE. UU., Stripe se queda **$3,20** (tarifa efectiva del 3,2 %):
+    - 2,9 % de $100 = $2,90
+    - Comisión fija = $0,30
+    - **Comisión total = $3,20 | Recibes = $96,80**
+
+    Con tarjeta internacional (4,4 % + $0,30): **$4,70 de comisión | $95,30 netos**.
+
+    ## Casos habituales de cobros de $100
+
+    | Tipo de plan | Cobro mensual | Comisión de Stripe | Neto por suscriptor |
+    |-----------|---------------|-----------|-------------------|
+    | SaaS mensual | $99 | $3,17 | $95,83 |
+    | SaaS mensual | $100 | $3,20 | $96,80 |
+    | E-commerce | $100 | $3,20 | $96,80 |
+
+    ## Para recibir exactamente $100 netos
+    Cobra **$103,09** para recibir exactamente $100 después de la comisión de Stripe:
+    ($100 + $0,30) / (1 − 0,029) = $103,09.
+
+    Es útil si quieres fijar el precio en «$100 para mí» en lugar de «$100 para el cliente».
+"stripe-fee-on-1000-dollars":
+  "title": "¿Cuánto se queda Stripe en un cobro de $1.000?"
+  "description": "La comisión exacta de Stripe en una transacción de $1.000, y cuándo empiezan los descuentos por volumen."
+  "body": |
+    En un **cobro de $1.000** con tarjeta nacional de EE. UU., Stripe se queda **$29,30** (tarifa efectiva del 2,93 %):
+    - 2,9 % de $1.000 = $29,00
+    - Comisión fija = $0,30
+    - **Comisión total = $29,30 | Recibes = $970,70**
+
+    Con tarjeta internacional: **$44,30 de comisión | $955,70 netos**.
+
+    ## ¿A partir de qué volumen hay precio a medida en Stripe?
+
+    Stripe negocia precios a medida con negocios que procesan **más de $80.000 al
+    mes**. Las tarifas personalizadas suelen ir del 2,2–2,5 % + $0,10–$0,20, según el
+    mix de transacciones y el perfil de riesgo. Con $80k al mes y una tarifa de
+    2,4 % + $0,15, la comisión sobre $1.000 baja a **$24,15**: $5,15 de ahorro por
+    transacción frente al precio estándar.
+
+    ## $1.000 es el umbral del ACH
+
+    Stripe también admite transferencias ACH al **0,8 % (con un máximo de $5)**. En
+    una transferencia de $1.000, el ACH cuesta **$5,00**, un 83 % menos que la
+    tarjeta. En facturas B2B de más de $500, ofrecer ACH junto al pago con tarjeta
+    puede reducir mucho el coste. Ojo: el ACH tarda 2–5 días hábiles en liquidarse,
+    frente a la autorización instantánea con tarjeta.
+"stripe-fee-per-10k-revenue":
+  "title": "¿Cuánto se queda Stripe de $10.000 de ingresos?"
+  "description": "Las comisiones exactas de Stripe sobre $10.000 de ingresos, desglosadas por tamaño de transacción y tipo de tarjeta."
+  "body": |
+    La comisión de Stripe sobre $10.000 de ingresos depende por completo de cómo se
+    repartan esos $10.000 entre transacciones, porque los **$0,30 fijos por
+    transacción** pesan mucho más en los pagos pequeños que en los grandes.
+
+    ## Desglose de comisiones por tamaño de transacción
+
+    Si tus $10.000 vienen de una sola transacción:
+
+    | Métrica | Valor |
+    |--------|-------|
+    | Ingresos brutos | $10.000 |
+    | Comisión de Stripe (2,9 % + $0,30) | $290,30 |
+    | Neto recibido | $9.709,70 |
+    | Tarifa efectiva | 2,903 % |
+
+    Si tus $10.000 vienen de 100 transacciones de $100:
+
+    | Métrica | Valor |
+    |--------|-------|
+    | Ingresos brutos | $10.000 |
+    | Comisiones de Stripe (2,9 % + $0,30 × 100) | $320,00 |
+    | Neto recibido | $9.680,00 |
+    | Tarifa efectiva | 3,20 % |
+
+    Si tus $10.000 vienen de 1.000 transacciones de $10:
+
+    | Métrica | Valor |
+    |--------|-------|
+    | Ingresos brutos | $10.000 |
+    | Comisiones de Stripe (2,9 % + $0,30 × 1.000) | $590,00 |
+    | Neto recibido | $9.410,00 |
+    | Tarifa efectiva | 5,90 % |
+
+    ## La clave: los $0,30 fijos son regresivos
+
+    En una transacción de $10, los $0,30 ya son un 3 % por sí solos: la tarifa
+    efectiva de Stripe llega al 5,9 % al sumar el porcentaje. En una transacción de
+    $1.000, los $0,30 son solo un 0,03 %.
+
+    Si tu pedido medio es bajo (menos de $20), plantéate:
+    - Agrupar compras (por ejemplo, recargas de créditos en vez de compras por unidad)
+    - Usar Link de Stripe, que puede reducir las comisiones de pago sin tarjeta
+      presente para clientes recurrentes
+    - Valorar Paddle o Lemon Squeezy, cuyas tarifas todo incluido pueden salir más
+      baratas en modelos de microtransacciones
+
+    Usa la calculadora de arriba con tu importe de transacción habitual para ver la
+    comisión exacta y el neto que recibes.
+"stripe-fees-for-subscriptions":
+  "title": "Comisiones de Stripe en suscripciones recurrentes"
+  "description": "Cómo funcionan las comisiones de Stripe en suscripciones mensuales y anuales, y cómo calcular tu neto por ciclo de facturación."
+  "body": |
+    Si llevas un negocio de suscripción en Stripe, pagas la misma comisión de
+    **2,9 % + $0,30** en cada cobro recurrente correcto, igual que en un pago
+    puntual. Pero hay algunos matices propios de las suscripciones que conviene
+    entender antes de fijar precios.
+
+    ## ¿Pagas comisión cada vez que Stripe cobra a un suscriptor?
+
+    Sí. Cada renovación correcta genera una comisión por transacción aparte. Si un
+    cliente paga $99 al mes en un plan mensual, Stripe se queda $3,17 en cada
+    renovación (2,9 % × $99 + $0,30) y te deja $95,83. En 12 meses, un solo
+    suscriptor te cuesta $38,04 en comisiones sobre $1.188 de ingresos brutos.
+
+    En un plan anual de $990 (cobrado una vez), Stripe cobra la comisión una sola
+    vez: $29,01, y te deja $960,99. El neto es parecido, pero con una sola
+    deducción de comisión en lugar de doce.
+
+    ## Facturación anual o mensual: las cuentas de las comisiones
+
+    Para un plan de $99 al mes:
+
+    | Facturación | Bruto anual | Comisiones anuales | Neto anual |
+    |---------|-------------|------------|-----------|
+    | Mensual | $1.188 | $38,04 | $1.149,96 |
+    | Anual ($990) | $990 | $29,01 | $960,99 |
+
+    La facturación mensual genera $189 más de ingresos brutos al año y, aun con las
+    comisiones extra, te deja $188,97 más por suscriptor. Por eso muchas SaaS
+    ofrecen un descuento anual del 15–20 %: la ventaja para el negocio está en el
+    flujo de caja, no en el neto recibido.
+
+    ## Reintentos y cobros fallidos
+
+    Cuando una renovación falla (fondos insuficientes, tarjeta caducada), Stripe
+    puede reintentar el cobro automáticamente según un calendario configurable. El
+    intento fallido no tiene comisión, pero no recibes el ingreso. Herramientas de
+    terceros como Profitwell Retain mejoran un 40–60 % la recuperación de pagos
+    fallidos.
+
+    ## Suscriptores internacionales
+
+    Los suscriptores que pagan con tarjetas emitidas fuera de EE. UU. generan una
+    **comisión transfronteriza del 1,5 %** adicional (hasta un 4,4 % + $0,30 en
+    total). Si una parte importante de tus suscriptores es internacional, modela tu
+    tarifa efectiva combinada con la calculadora de abajo.
+
+    ## ¿Y los reembolsos?
+
+    Si reembolsas a un suscriptor, Stripe devuelve la parte porcentual (2,9 %) pero
+    no los $0,30 fijos. En un reembolso completo de $99, pierdes $0,30 netos.
+"stripe-fees-france":
+  "title": "Comisiones de Stripe en Francia: tarifas en EUR y ejemplos de liquidación"
+  "description": "Comisiones de Stripe para empresas francesas: 1,5 % + 0,25 € para tarjetas europeas y métodos de pago propios de Francia."
+  "body": |
+    Las empresas francesas en Stripe pagan **1,5 % + 0,25 €** por tarjetas emitidas
+    en el EEE y **2,5 % + 0,25 €** por tarjetas de fuera del EEE (Reino Unido,
+    EE. UU., internacional), igual que en otros países de la UE. Francia destaca por
+    la Carte Bancaire (CB), la red nacional que usa la mayoría de consumidores
+    franceses y que Stripe admite con la misma estructura de comisiones.
+
+    ## Particularidades de los pagos en Francia
+
+    **Carte Bancaire (CB)**: Stripe admite la CB dentro de su aceptación de tarjetas
+    europeas. La comisión es la misma que con Visa/Mastercard, porque las tarjetas
+    CB son cobranded. Sin comisión adicional por CB.
+
+    **Bancontact** (propio de Bélgica, poco relevante en Francia): no aplica.
+
+    **3D Secure**: Francia tiene una de las tasas de uso de 3DS más altas de Europa.
+    Stripe gestiona automáticamente el cumplimiento de 3DS sin comisión adicional
+    por transacción.
+
+    ## Ejemplos de comisiones de Stripe en Francia (EUR)
+
+    | Cobro | Tarjeta EEE | Tarjeta no EEE |
+    |--------|---------|-------------|
+    | 50 € | 1,00 € (2,0 %) | 1,50 € (3,0 %) |
+    | 150 € | 2,50 € (1,67 %) | 4,00 € (2,67 %) |
+    | 1.000 € | 15,25 € (1,53 %) | 25,25 € (2,53 %) |
+
+    Usa la calculadora de arriba con 1,5 % y 0,25 € para transacciones con tarjeta del EEE en Francia.
+"stripe-fees-germany":
+  "title": "Comisiones de Stripe en Alemania: tarifas en EUR y neto recibido"
+  "description": "Comisiones de Stripe para empresas alemanas: 1,5 % + 0,25 € para tarjetas europeas, con ejemplos y tratamiento del IVA."
+  "body": |
+    Las empresas alemanas que usan Stripe pagan **1,5 % + 0,25 €** por tarjetas
+    europeas (Visa y Mastercard emitidas en el EEE). En tarjetas emitidas fuera del
+    EEE (EE. UU., Reino Unido, internacional), la tarifa sube a **2,5 % + 0,25 €**.
+    Son de las tarifas de Stripe más bajas del mundo gracias a la regulación
+    europea de tasas de intercambio (limitadas al 0,2–0,3 % en tarjetas de
+    consumo).
+
+    ## Ejemplos de comisiones de Stripe en Alemania (EUR)
+
+    | Cobro | Tarjeta EEE | Tarjeta no EEE |
+    |--------|---------|-------------|
+    | 25 € | 0,63 € (2,5 %) | 0,88 € (3,5 %) |
+    | 100 € | 1,75 € (1,75 %) | 2,75 € (2,75 %) |
+    | 500 € | 7,75 € (1,55 %) | 12,75 € (2,55 %) |
+
+    ## IVA (Umsatzsteuer) sobre las comisiones de Stripe
+    Stripe aplica el IVA alemán (19 %) a sus comisiones para empresas alemanas. Las
+    empresas registradas a efectos de IVA (se requiere Umsatzsteuer-ID) pueden
+    recuperarlo como IVA soportado. Stripe emite cada mes una factura con IVA en
+    euros.
+
+    ## El adeudo directo SEPA como alternativa
+    Con clientes alemanes, el adeudo directo SEPA es un método de pago muy
+    popular. Stripe lo admite y cobra solo un 0,8 % (con un máximo de 5 €) por
+    transacción, bastante más barato en facturas B2B grandes. En suscripciones
+    recurrentes con grandes clientes alemanes, merece la pena activar SEPA.
+
+    Usa la calculadora de arriba con una tarifa personalizada de 1,5 % y 0,25 € para transacciones con tarjeta del EEE.
+"stripe-vs-paypal-fees":
+  "title": "Comisiones de Stripe frente a PayPal: comparación lado a lado"
+  "description": "Comparación exacta de comisiones entre Stripe y PayPal para transacciones estándar, suscripciones y pagos internacionales en 2024."
+  "body": |
+    Stripe y PayPal son los dos procesadores de pago más habituales en los negocios
+    online. Sus tarifas estándar parecen similares, pero los detalles importan
+    cuando optimizas márgenes.
+
+    ## Comisiones estándar (EE. UU., tarjetas nacionales)
+
+    | Procesador | Tarifa | Comisión fija | Comisión sobre $100 | Neto sobre $100 |
+    |-----------|------|-----------|------------|------------|
+    | Stripe | 2,9 % | $0,30 | $3,20 | **$96,80** |
+    | PayPal (PayPal Checkout) | 3,49 % | $0,49 | $3,98 | **$96,02** |
+    | PayPal (tarjeta avanzada) | 2,89 % | $0,49 | $3,38 | **$96,62** |
+
+    En una transacción típica de $100, Stripe es **$0,78 más barato** que PayPal
+    Checkout estándar. Sobre $100k de ingresos, la diferencia es de $780.
+
+    ## En suscripciones y facturación recurrente
+
+    | Procesador | Tarifa de suscripción | Notas |
+    |-----------|------------------|-------|
+    | Stripe Billing | 2,9 % + $0,30 | Incluido; reintentos avanzados disponibles con Stripe Radar |
+    | PayPal Subscriptions | 3,49 % + $0,49 | Tarifa por transacción más alta |
+
+    Stripe es siempre más barato en suscripciones SaaS recurrentes.
+
+    ## Comisiones internacionales y transfronterizas
+
+    | Procesador | Comisión internacional | Tarifa efectiva total |
+    |-----------|-----------------|---------------------|
+    | Stripe | +1,5 % | 4,4 % + $0,30 |
+    | PayPal | +1,5 % | ~5,0 % + $0,49 |
+
+    ## Experiencia para desarrolladores
+
+    La API y la documentación de Stripe se consideran en general superiores para
+    construir flujos de checkout personalizados. La gran ventaja de PayPal es el
+    reconocimiento de marca y la familiaridad de los compradores con «Pagar con
+    PayPal», que puede mejorar la conversión en algunos contextos B2C.
+
+    **Recomendación:** para SaaS, herramientas para desarrolladores y productos
+    B2B, Stripe es la mejor opción en comisiones, calidad de la API y ecosistema
+    (Stripe Atlas, Stripe Tax, Stripe Billing). En marketplaces o productos B2C
+    donde la familiaridad del checkout de PayPal ayuda a convertir, la comisión
+    extra puede compensar.
+
+    Usa la calculadora de comisiones de Stripe de arriba para modelar tu neto
+    exacto. Para PayPal, introduce 3,49 % y $0,49 en el campo de tarifa
+    personalizada.
+
+"stripe-fees-australia":
+  "title": "Comisiones de Stripe en Australia: tarifas, ejemplos y neto recibido"
+  "description": "Las comisiones exactas de Stripe para empresas en Australia: 1,75 % + A$0,30 para Visa/Mastercard nacionales, con ejemplos con números."
+"stripe-fees-canada":
+  "title": "Comisiones de Stripe en Canadá: tarifas, ejemplos y neto recibido"
+  "description": "Las comisiones exactas de Stripe para empresas en Canadá: 2,9 % + C$0,30 para Visa/Mastercard nacionales, con ejemplos con números."
+"stripe-fees-eu":
+  "title": "Comisiones de Stripe en la Unión Europea: tarifas, ejemplos y neto recibido"
+  "description": "Las comisiones exactas de Stripe para empresas en la Unión Europea: 1,5 % + 0,25 € para tarjetas emitidas en el EEE, con ejemplos con números."
+"stripe-fees-india":
+  "title": "Comisiones de Stripe en India: tarifas, ejemplos y neto recibido"
+  "description": "Las comisiones exactas de Stripe para empresas en India: 2 % + ₹0 para tarjetas nacionales indias, con ejemplos con números."
+"stripe-fees-uk":
+  "title": "Comisiones de Stripe en Reino Unido: tarifas, ejemplos y neto recibido"
+  "description": "Las comisiones exactas de Stripe para empresas en Reino Unido: 1,5 % + £0,20 para tarjetas emitidas en Reino Unido y el EEE, con ejemplos con números."
