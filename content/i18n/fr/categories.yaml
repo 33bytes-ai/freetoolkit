@@ -144,3 +144,34 @@
     bien moins que le départ qu'il évite. Pour les commissions, vérifiez le plan
     face à la marge sur coûts variables plutôt que face au chiffre d'affaires : un
     plan qui paie bien sur une affaire remisée récompense discrètement la remise.
+
+"Investment & Returns":
+  "body": |
+    Toute décision d'investissement est une comparaison avec les alternatives, y
+    compris celle de ne rien faire. Ces calculateurs mettent un chiffre défendable
+    sur cette comparaison, au lieu de se fier à l'intuition qu'un projet « a
+    l'air de valoir le coup ».
+
+    ## Lequel choisir
+
+    Le **ROI** est la version simple, aveugle au temps : pratique pour des
+    comparaisons rapides, trompeur sur des horizons longs car il traite un dollar
+    dans cinq ans comme un dollar aujourd'hui. La **VAN** et le **TRI** corrigent
+    cela en actualisant les flux futurs, et le **TRIM** corrige l'hypothèse
+    optimiste du TRI selon laquelle la trésorerie intermédiaire est réinvestie au
+    TRI lui-même. Le **CMPC** fournit le taux d'actualisation dont ces modèles ont
+    besoin : le coût moyen de la dette et des capitaux propres qui financent
+    l'entreprise. Le **délai de récupération** répond à la question du risque de
+    trésorerie plutôt qu'à celle du rendement : combien de temps avant que
+    l'argent revienne. La **règle de 72** est le raccourci mental pour savoir en
+    combien de temps un taux double une somme.
+
+    ## Ce que disent les chiffres
+
+    VAN et TRI peuvent se contredire ; dans ce cas, fiez-vous à la VAN pour des
+    projets mutuellement exclusifs, car elle mesure la valeur créée et non un
+    taux. Les deux ne valent que ce que vaut la prévision de flux qui les
+    sous-tend, et c'est là que se trouve la vraie incertitude. Faites tourner
+    chaque modèle sur un scénario pessimiste, central et optimiste : un projet qui
+    ne franchit la barre que dans le scénario optimiste est un pari, pas un
+    investissement.

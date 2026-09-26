@@ -3411,3 +3411,834 @@
 
     Usa la [calculadora de coste de nómina](/tools/payroll-cost-calculator/) para
     calcular el coste total exacto en cualquier escenario de salario y beneficios.
+
+"irr-formula-excel":
+  "title": "Cómo calcular la TIR en Excel (fórmula y ejemplos)"
+  "description": "Guía paso a paso para usar la función TIR de Excel: la fórmula, los datos necesarios, los errores habituales y cuándo usar TIR.NO.PER en su lugar."
+  "body": |
+    La función `TIR` de Excel (`IRR` en la versión inglesa) es la forma más rápida
+    de calcular la tasa interna de retorno con flujos convencionales. Así se usa
+    correctamente.
+
+    ## Sintaxis de TIR en Excel
+
+    ```
+    =TIR(valores; [estimar])
+    ```
+
+    **valores**: un rango con los flujos de caja (debe incluir al menos un valor
+    negativo y uno positivo). El año 0 (inversión inicial) debe ser la primera
+    celda.
+
+    **estimar**: punto de partida opcional para la iteración (0,1 = 10 % por
+    defecto). Solo hace falta si TIR devuelve `#¡NUM!` o esperas un resultado
+    poco habitual.
+
+    ## Ejemplo
+
+    En las celdas A1:A5: -100000, 25000, 30000, 35000, 40000
+    Fórmula: `=TIR(A1:A5)` → **10,48 %**
+
+    Si tu tasa mínima exigida es del 12 %, habría que rechazar esta inversión
+    (TIR < tasa mínima).
+
+    ## TIR.NO.PER frente a TIR
+
+    Usa `TIR.NO.PER` (`XIRR` en inglés) cuando los flujos no llegan a intervalos
+    anuales regulares:
+    ```
+    =TIR.NO.PER(valores; fechas)
+    ```
+
+    TIR.NO.PER es más precisa en inversiones reales con flujos variables (por
+    ejemplo, distribuciones trimestrales o aportaciones de capital irregulares).
+
+    ## Errores habituales
+
+    - **#¡NUM!**: la TIR no ha convergido. Prueba otro valor en `estimar` o revisa
+      si hay varios cambios de signo (en ese caso, usa la TIRM).
+    - **Olvidar el año 0**: si no incluyes la inversión inicial como valor negativo
+      en la primera celda, TIR devuelve un resultado incorrecto.
+
+    Usa la [calculadora de TIR](/tools/irr-calculator/) online para calcularla al
+    instante sin Excel.
+"irr-vs-npv-which-metric-to-use":
+  "title": "TIR o VAN: ¿qué métrica deberías usar?"
+  "description": "La TIR y el VAN pueden no coincidir en cuál de dos proyectos es mejor. Aquí se explica por qué y en cuál confiar cuando chocan."
+  "body": |
+    La TIR y el VAN se construyen con los mismos flujos y suelen coincidir en si un
+    proyecto aislado merece la pena. Pero al comparar dos proyectos mutuamente
+    excluyentes pueden ordenarlos al revés, y saber en cuál confiar es importante.
+
+    ## Qué mide realmente cada uno
+
+    El **VAN** responde a «¿cuánto valor, en dólares de hoy, crea este proyecto?»:
+    una cifra absoluta.
+
+    La **TIR** responde a «¿qué rentabilidad anualizada genera este proyecto?»: un
+    porcentaje, independiente del tamaño del proyecto.
+
+    ## Por qué pueden no coincidir
+
+    La TIR es ciega a la escala. Un proyecto de $10.000 con una TIR del 50 % genera
+    mucho menos valor total que uno de $1.000.000 con una TIR del 20 %, pero la TIR
+    por sí sola diría que el pequeño es «mejor». El VAN, en cambio, recoge el valor
+    real creado en dólares, que es lo que al final le importa a una empresa.
+
+    ## Una comparación con números
+
+    | Proyecto | Inversión | TIR | VAN (descuento del 10 %) |
+    |---------|-----------|-----|------------------------------|
+    | A | $10.000 | 45 % | $4.200 |
+    | B | $500.000 | 22 % | $85.000 |
+
+    El proyecto A «gana» por TIR. El proyecto B crea 20 veces más valor real. Si
+    solo puedes elegir uno y tienes el capital, B es muy probablemente la mejor
+    opción pese a su TIR más baja: justo la trampa en la que cae decidir solo por
+    TIR.
+
+    ## Cuándo la TIR sigue siendo la métrica principal adecuada
+
+    - **Filtrado con capital limitado**: cuando eliges entre muchos proyectos
+      pequeños y la restricción es el capital (no una única decisión de sí o no),
+      ordenar por TIR para maximizar la rentabilidad por dólar puede ser el enfoque
+      correcto
+    - **Comunicación con personas no financieras**: un porcentaje suele ser más
+      intuitivo que un VAN en dólares, sobre todo al compararlo con una tasa mínima
+
+    ## La recomendación estándar
+
+    Usa el VAN como criterio principal para comparar proyectos mutuamente
+    excluyentes de distinto tamaño: mide directamente el valor creado. Usa la TIR
+    como comprobación secundaria y para comunicar la rentabilidad anualizada
+    esperada, pero no dejes que se imponga al VAN cuando ambos ordenan distinto.
+
+    ## Preguntas frecuentes
+
+    **¿Y si un proyecto tiene varias TIR?**
+    Pasa cuando los flujos cambian de signo más de una vez (por ejemplo, un gran
+    coste a mitad del proyecto). En ese caso el VAN sigue bien definido, otra razón
+    para quedarse con el VAN cuando ambos chocan o la TIR parece inestable.
+
+    **¿La TIRM resuelve el desacuerdo entre TIR y VAN?**
+    La TIRM corrige la hipótesis de reinversión poco realista de la TIR, pero no su
+    ceguera a la escala: para ordenar proyectos de distinto tamaño, sigue siendo el
+    VAN en el que hay que confiar.
+
+    Usa la [calculadora de TIR](/tools/irr-calculator/) junto a tu propio cálculo
+    del VAN para ver ambas métricas con la misma serie de flujos antes de elegir.
+"what-is-a-good-irr-for-a-startup":
+  "title": "¿Qué es una buena TIR para invertir en una startup?"
+  "description": "Referencias de TIR para inversiones en startups, capital riesgo y private equity, y cómo interpretar la TIR junto al múltiplo (MOIC) y el periodo de recuperación."
+  "body": |
+    Las referencias de TIR (tasa interna de retorno) varían según la fase, el
+    sector y la clase de activo. Esto es lo que los inversores consideran «bueno»
+    en cada contexto.
+
+    ## Referencias de TIR por contexto
+
+    | Contexto | TIR mínima aceptable | TIR objetivo |
+    |---------|----------------------|------------|
+    | Business angel / pre-seed | 30 % | 50–100 % o más |
+    | Serie A / capital riesgo | 25 % | 40–60 % |
+    | Capital crecimiento | 20 % | 30–40 % |
+    | Compra apalancada (private equity) | 15 % | 20–30 % |
+    | Promoción inmobiliaria | 12 % | 18–25 % |
+    | Umbral del mercado cotizado | 8–12 % | — |
+
+    ## TIR frente a MOIC
+
+    La TIR depende del tiempo: multiplicar por 3 en 2 años = ~73 % de TIR;
+    multiplicar por 3 en 6 años = ~20 % de TIR. El MOIC (múltiplo sobre el capital
+    invertido) ignora el tiempo, así que los inversores usan ambos:
+    - **TIR** para comparar inversiones con periodos de tenencia distintos
+    - **MOIC** para comunicar la magnitud del retorno a los LP
+
+    ## Cuándo engaña la TIR
+
+    La TIR supone reinvertir a la misma tasa. En inversiones con grandes flujos al
+    principio (por ejemplo, dividendos rápidos), sobrestima la rentabilidad
+    combinada. Usa la TIRM (TIR modificada) cuando la tasa de reinversión difiera
+    mucho de la TIR del proyecto.
+
+    Usa la [calculadora de TIR](/tools/irr-calculator/) para calcular la TIR y el
+    VAN de cualquier serie de flujos de caja.
+"mirr-excel-formula":
+  "title": "La TIRM en Excel: fórmula, ejemplos y errores habituales"
+  "description": "Cómo calcular la TIRM en Excel con la función integrada, con ejemplos, explicación de los argumentos y errores habituales que conviene evitar."
+  "body": |
+    La función `TIRM` de Excel (`MIRR` en inglés) simplifica el cálculo, pero hay
+    algunas trampas que conviene conocer antes de usarla en un modelo.
+
+    ## Sintaxis de TIRM en Excel
+
+    ```
+    =TIRM(valores; tasa_financiamiento; tasa_reinversión)
+    ```
+
+    **valores**: un rango de celdas con los flujos de caja (del año 0 al año N).
+    El primer valor debe ser negativo (inversión inicial).
+
+    **tasa_financiamiento**: el tipo de interés que pagas por los flujos negativos
+    (coste de financiación). Usa tu WACC o tu coste de la deuda.
+
+    **tasa_reinversión**: el tipo de interés que obtienes al reinvertir los flujos
+    positivos. Usa una tasa prudente: rentabilidad de la deuda pública, tipo de
+    ahorro o coste de oportunidad.
+
+    ## Ejemplo
+
+    Flujos: año 0 = −$100.000, años 1–4 = $30.000 cada uno.
+    Tasa de financiación = 10 %, tasa de reinversión = 8 %.
+
+    ```
+    =TIRM(A1:A5; 10%; 8%)
+    = 7,83 %
+    ```
+
+    Con la TIR estándar: `=TIR(A1:A5)` = 7,71 %
+
+    Aquí la TIRM es algo mayor porque la tasa de reinversión (8 %) supera la TIR
+    (7,71 %). La TIRM se acerca a la tasa de reinversión: cuando esta es inferior a
+    la TIR, la TIRM sale más baja que la TIR.
+
+    ## Errores habituales
+
+    1. **No incluir el año 0**: el rango debe contener la salida inicial en la
+       primera posición. Si empiezas en el año 1, el resultado es incorrecto.
+    2. **Usar la misma tasa en ambos argumentos**: la TIRM queda reducida a una
+       simple aproximación de la TIR y pierde su sentido.
+    3. **Mezclar periodos**: la TIRM supone periodos anuales salvo que ajustes. Con
+       flujos mensuales, divide las tasas anuales entre 12.
+
+    Usa la [calculadora de TIRM](/tools/mirr-calculator/) online, sin necesidad de
+    Excel.
+"mirr-vs-irr-which-to-use":
+  "title": "TIRM o TIR: ¿cuál usar en el presupuesto de capital?"
+  "description": "Comparación práctica de la TIRM y la TIR para decisiones de inversión: cuándo conviene cada una y por qué la TIRM da resultados más realistas."
+  "body": |
+    La TIR se usa más, pero la TIRM es más realista. Aquí se explica cuándo y por
+    qué usar cada una.
+
+    ## El problema de la tasa de reinversión en la TIR
+
+    La TIR supone implícitamente que todos los flujos positivos se pueden
+    reinvertir a la propia TIR. Si un proyecto tiene una TIR del 35 %, supone que
+    puedes reinvertir cada año los retornos al 35 %, algo normalmente imposible.
+
+    La TIRM lo corrige separando la tasa de financiación (coste de endeudarse) de
+    la tasa de reinversión (tus oportunidades reales de reinversión).
+
+    ## Cuándo usar la TIRM en lugar de la TIR
+
+    1. **Varios cambios de signo en los flujos**: los proyectos que requieren
+       aportaciones de capital a mitad de camino pueden producir varias TIR
+       matemáticamente válidas. La TIRM siempre devuelve un único valor.
+    2. **Comparar proyectos de distinta escala**: la TIRM funciona mejor para
+       comparar un proyecto de $500k con otro de $5M con patrones de flujo
+       distintos.
+    3. **Prestamistas o consejeros exigentes lo piden**: las firmas de private
+       equity y los inversores sofisticados suelen preferir la TIRM para modelar
+       la rentabilidad de forma realista.
+
+    ## Cuándo basta con la TIR
+
+    Con flujos simples y convencionales (una salida inicial seguida de entradas),
+    la TIR y la TIRM dan resultados parecidos, y la TIR es más conocida.
+
+    Usa la [calculadora de TIRM](/tools/mirr-calculator/) para calcular la TIRM
+    con las tasas de financiación y reinversión que elijas.
+"how-to-choose-discount-rate":
+  "title": "Cómo elegir la tasa de descuento adecuada para calcular el VAN"
+  "description": "La tasa de descuento es el dato más importante del análisis del VAN. Aprende a calcular el WACC, la tasa mínima exigida y el coste de oportunidad, y por qué una tasa equivocada lleva a malas decisiones."
+  "body": |
+    La tasa de descuento es el dato más crítico del análisis del VAN. Si es
+    demasiado baja, aceptarás malas inversiones. Si es demasiado alta, rechazarás
+    buenas.
+
+    ## El concepto: el coste de oportunidad del capital
+
+    La tasa de descuento representa lo que podrías ganar invirtiendo el dinero en
+    otro sitio con un riesgo similar. Si puedes ganar un 10 % en bolsa con un riesgo
+    parecido, cualquier proyecto que no rinda al menos un 10 % destruye valor
+    frente a esa alternativa.
+
+    **Principio clave**: la tasa de descuento debe reflejar el riesgo del proyecto,
+    no el del inversor ni el de los proyectos medios de la empresa.
+
+    ## Método 1: WACC (coste medio ponderado del capital)
+
+    Para empresas financiadas con deuda y capital:
+
+    **WACC = (E/V × Re) + (D/V × Rd × (1 − tipo impositivo))**
+
+    Donde:
+    - E/V = peso del capital (capital / valor total)
+    - Re = coste del capital propio (por ejemplo, 12–15 % en una pequeña empresa)
+    - D/V = peso de la deuda
+    - Rd = coste de la deuda (tipo de interés de los préstamos)
+    - Tipo impositivo = tipo del impuesto de sociedades (los intereses son deducibles)
+
+    **Ejemplo**: 60 % de capital al 14 % + 40 % de deuda al 8 %, con un 25 % de impuestos:
+    WACC = (0,60 × 14 %) + (0,40 × 8 % × 0,75) = 8,4 % + 2,4 % = **10,8 %**
+
+    ## Método 2: tasa mínima exigida
+
+    Muchas empresas fijan una TIR mínima aceptable para sus proyectos (la «hurdle
+    rate»). Es una decisión de política, no una fórmula. Tasas mínimas habituales:
+    - Grandes empresas: 12–15 %
+    - Empresas medianas: 15–20 %
+    - Startups y proyectos de alto riesgo: 20–30 %
+    - Capital riesgo: 30–40 %
+
+    ## Método 3: tasa ajustada al riesgo
+
+    Para proyectos con un perfil de riesgo distinto al de tu negocio principal:
+    - Riesgo bajo (ahorro de costes, mejoras operativas): WACC − 2–3 puntos
+    - Riesgo medio (expansión del negocio principal): WACC
+    - Riesgo alto (nuevos mercados, tecnología no probada): WACC + 5–10 puntos
+    - Especulativo (proyectos muy ambiciosos): 25–40 %
+
+    ## Errores habituales
+
+    **Usar solo el coste de la deuda**: «Nuestro préstamo está al 7 %, así que
+    usamos el 7 %». Error: ignora el coste del capital propio, bastante más alto
+    que el de la deuda.
+
+    **Una tasa fija para todos los proyectos**: una inversión industrial estable no
+    tiene el mismo riesgo que una startup de software. Misma empresa, distinto
+    riesgo, distinta tasa.
+
+    **Tasa nominal con flujos reales**: si los flujos están en términos reales
+    (ajustados por inflación), usa una tasa real. Si son nominales, una nominal.
+
+    En la mayoría de decisiones, parte del WACC y súbelo en proyectos de más
+    riesgo. Si dudas, haz un análisis de sensibilidad: calcula el VAN al 8 %, 12 %,
+    16 % y 20 %.
+
+    Usa la [calculadora de VAN](/tools/npv-calculator/) para modelar distintos
+    escenarios de tasa de descuento.
+"npv-vs-irr":
+  "title": "VAN o TIR: qué métrica usar en las decisiones de inversión"
+  "description": "El VAN y la TIR evalúan la rentabilidad de una inversión, pero responden a preguntas distintas. Aprende cuándo conviene cada uno y por qué suele preferirse el VAN para asignar capital."
+  "body": |
+    El VAN y la TIR sirven para evaluar la rentabilidad de una inversión, pero
+    responden a preguntas algo distintas y a veces dan señales contradictorias.
+
+    ## El VAN: valor en dólares
+
+    **VAN = −inversión + Σ [flujo de caja / (1 + r)^t]**
+
+    El VAN responde a: «Con la rentabilidad que exijo, ¿cuántos dólares de valor
+    crea esta inversión?». El resultado es una cifra absoluta.
+
+    El VAN se puede aplicar directamente: acepta todos los proyectos con VAN
+    positivo. Entre dos proyectos, el de mayor VAN crea más riqueza (a igual
+    escala).
+
+    ## La TIR: la rentabilidad de equilibrio
+
+    La TIR es la tasa de descuento con la que el VAN es cero. Responde a: «¿Qué
+    rentabilidad obtiene realmente esta inversión?». Se expresa en porcentaje.
+
+    En el proyecto de ejemplo ($100k de inversión, $30k–$40k de flujos anuales
+    durante 5 años), la TIR ≈ 23,3 %. Es decir, el proyecto rinde un 23,3 % anual.
+
+    Si tu tasa mínima es del 10 %, TIR > 10 % → aceptar. Si es del 25 %, TIR < 25 %
+    → rechazar.
+
+    ## Cuándo coinciden el VAN y la TIR
+
+    En inversiones simples (una salida y luego entradas), el VAN y la TIR siempre
+    coinciden en aceptar o rechazar:
+    - VAN positivo ↔ TIR > tasa de descuento
+    - VAN negativo ↔ TIR < tasa de descuento
+
+    ## Cuándo discrepan: proyectos mutuamente excluyentes
+
+    Al elegir entre dos proyectos que compiten, el VAN y la TIR pueden ordenarlos
+    de forma distinta.
+
+    **Ejemplo:**
+    - Proyecto A: $100k de inversión, TIR del 25 %, VAN de $20k al 10 %
+    - Proyecto B: $500k de inversión, TIR del 20 %, VAN de $80k al 10 %
+
+    La TIR favorece al proyecto A (25 % > 20 %). El VAN favorece al B ($80k > $20k).
+
+    ¿Cuál acierta? **El VAN.** El proyecto B crea $80k de riqueza; el A solo $20k.
+    La TIR engaña porque ignora la escala.
+
+    ## Cuándo es siempre preferible el VAN
+
+    1. **Escalas distintas**: la TIR ignora el tamaño del proyecto; el VAN mide valor absoluto
+    2. **Flujos no convencionales**: varios cambios de signo pueden producir varias
+       TIR; el VAN solo tiene un valor
+    3. **Tasas de descuento variables**: si tu coste de capital cambia de un año a
+       otro, solo el VAN lo gestiona bien (una tasa por periodo)
+
+    ## Cuándo es útil la TIR
+
+    La TIR es intuitiva para comunicar: «Este proyecto rinde un 23,3 % anual» es
+    más fácil de explicar que «este proyecto tiene un VAN de $38k al 10 %».
+
+    También sirve para comparar rentabilidades de inversiones de distinto tamaño
+    junto con el análisis del VAN.
+
+    **Buena práctica**: calcula ambos. Decide por el VAN. Usa la TIR para el
+    contexto y la comunicación.
+
+    Usa la [calculadora de VAN](/tools/npv-calculator/) para tu análisis de
+    inversión.
+"what-is-net-present-value":
+  "title": "¿Qué es el valor actual neto (VAN)? Fórmula, ejemplos y reglas de decisión"
+  "description": "El VAN descuenta los flujos de caja futuros a su valor actual y resta la inversión inicial. Aprende la fórmula, cuándo usarlo y cómo elegir la tasa de descuento adecuada."
+  "body": |
+    El valor actual neto (VAN) responde a la pregunta más básica de la asignación
+    de capital: ¿esta inversión crea o destruye valor?
+
+    **VAN = −inversión inicial + Σ [flujo de caja_t / (1 + r)^t]**
+
+    Donde r es la tasa de descuento (coste de capital) y t el año.
+
+    Un VAN positivo significa que la inversión rinde más que la rentabilidad
+    exigida. Uno negativo, que rinde menos. La regla: aceptar todos los proyectos
+    con VAN positivo.
+
+    ## Por qué se descuentan los flujos
+
+    Un dólar hoy vale más que un dólar en el futuro. Si puedes ganar un 10 % anual,
+    $1.000 hoy se convierten en $1.100 dentro de un año. Dicho de otro modo, $1.100
+    dentro de un año valen $1.000 hoy con una tasa de descuento del 10 %.
+
+    El VAN aplica esta lógica a todos los flujos futuros de una inversión:
+    - El flujo del año 1 se descuenta por (1 + r)^1
+    - El del año 2 por (1 + r)^2
+    - Y así sucesivamente...
+
+    La suma de los flujos descontados, menos la inversión inicial, es el VAN.
+
+    ## Un ejemplo con números
+
+    Inversión: $100.000
+    Flujos: $30k, $35k, $40k, $40k, $40k durante 5 años
+    Tasa de descuento: 10 %
+
+    | Año | Flujo | Factor de descuento | Valor actual |
+    |---|---|---|---|
+    | 1 | $30.000 | 1/1,10 = 0,909 | $27.273 |
+    | 2 | $35.000 | 1/1,21 = 0,826 | $28.926 |
+    | 3 | $40.000 | 1/1,331 = 0,751 | $30.053 |
+    | 4 | $40.000 | 1/1,464 = 0,683 | $27.321 |
+    | 5 | $40.000 | 1/1,611 = 0,621 | $24.837 |
+    | **VA total** | | | **$138.410** |
+
+    **VAN = $138.410 − $100.000 = $38.410**
+
+    VAN positivo → aceptar. Esta inversión crea $38.410 de valor por encima de la
+    rentabilidad exigida del 10 %.
+
+    ## Reglas de decisión
+
+    | VAN | Interpretación |
+    |---|---|
+    | Positivo | La inversión crea valor: aceptar |
+    | Cero | La inversión rinde exactamente lo exigido |
+    | Negativo | La inversión destruye valor: rechazar |
+
+    Con proyectos que compiten por un capital limitado, ordénalos por índice de
+    rentabilidad (IR = VAN / inversión).
+
+    ## El efecto de la tasa de descuento
+
+    La misma inversión de $100k con distintas tasas:
+    - Tasa del 5 % → VAN = $59.120
+    - Tasa del 10 % → VAN = $38.410
+    - Tasa del 15 % → VAN = $21.610
+    - Tasa del 20 % → VAN = $7.819
+    - Tasa del 25 % → VAN = −$3.629 (proyecto rechazado)
+
+    La TIR (la tasa con la que el VAN es cero) es de aproximadamente el 23,3 %.
+
+    Calcula el VAN de tu inversión con la [calculadora de VAN](/tools/npv-calculator/).
+"discounted-payback-period-explained":
+  "title": "Periodo de recuperación descontado: fórmula, ejemplo y cuándo usarlo"
+  "description": "El periodo de recuperación descontado tiene en cuenta el valor temporal del dinero. Aprende la fórmula, un ejemplo con números y por qué importa en decisiones de inversión a largo plazo."
+  "body": |
+    El periodo de recuperación descontado ajusta por el valor temporal del dinero:
+    un dólar recibido dentro de 3 años vale menos que un dólar hoy. Por eso esta
+    versión es más prudente, y más precisa en inversiones a largo plazo.
+
+    ## La fórmula
+
+    Descuenta el flujo de cada año:
+    **VA del año N = flujo anual / (1 + tasa de descuento)^N**
+
+    Después acumula los flujos descontados hasta que superen la inversión inicial.
+
+    ## Ejemplo con números
+
+    Inversión: $200.000. Flujo anual: $80.000. Tasa de descuento: 10 %.
+
+    | Año | Flujo | Factor de descuento | VA | VA acumulado |
+    |---|---|---|---|---|
+    | 1 | $80k | 0,909 | $72.727 | $72.727 |
+    | 2 | $80k | 0,826 | $66.116 | $138.843 |
+    | 3 | $80k | 0,751 | $60.105 | $198.948 |
+    | 4 | $80k | 0,683 | $54.641 | $253.589 |
+
+    El punto de equilibrio llega justo después de terminar el año 3 (~$198.948,
+    apenas por debajo de $200.000): periodo descontado ≈ **3,02 años**, frente a
+    2,5 años en simple.
+
+    ## Cuándo usar el periodo descontado
+
+    Usa el periodo de recuperación descontado para:
+    - Cualquier inversión con un periodo de recuperación de más de 2 años
+    - Inversiones de capital grandes en las que pesa la inflación
+    - Decisiones en las que el coste de capital es relevante (> 5 %)
+
+    Para decisiones rápidas de marketing, el periodo simple suele bastar.
+
+    Calcula ambos con la [calculadora del periodo de recuperación](/tools/payback-period-calculator/).
+"payback-period-saas-investment":
+  "title": "Periodo de recuperación en inversiones SaaS: la recuperación del CAC explicada"
+  "description": "En SaaS, el periodo de recuperación suele referirse al del CAC: cuántos meses se tarda en recuperar el coste de adquisición de un cliente. Referencias y cómo calcularlo."
+  "body": |
+    En SaaS, «periodo de recuperación» casi siempre se refiere al **periodo de
+    recuperación del CAC**: los meses que se tarda en recuperar el coste de
+    adquirir un cliente con el margen bruto que genera.
+
+    ## Fórmula de la recuperación del CAC
+
+    **Recuperación del CAC (meses) = CAC / (ARPU mensual × % de margen bruto)**
+
+    Con un CAC de $2.400, un ARPU de $200 al mes y un 75 % de margen bruto:
+    - Beneficio bruto mensual por cliente = $200 × 75 % = $150
+    - Recuperación del CAC = $2.400 / $150 = **16 meses**
+
+    ## Referencias
+
+    | Recuperación del CAC | Valoración |
+    |---|---|
+    | < 6 meses | Excepcional: product-led, poco contacto comercial |
+    | 6–12 meses | Excelente: ventas eficientes |
+    | 12–18 meses | Buena: típica de una SaaS en serie A |
+    | 18–24 meses | En el límite: mejórala antes de escalar |
+    | > 24 meses | Preocupante: el CAC tarda demasiado en recuperarse |
+
+    ## Por qué importa en SaaS
+
+    Una recuperación del CAC de 24 meses significa que financias 2 años de costes
+    de adquisición antes de ganar dinero con cada cliente. Con un churn mensual del
+    5 %, ~70 % de los clientes se habrán ido antes de llegar al equilibrio.
+
+    Bajar la recuperación del CAC por debajo de 12 meses mejora mucho la economía unitaria y
+    reduce el capital que necesita el crecimiento de una SaaS.
+
+    Calcula tu recuperación del CAC con la [calculadora de CAC](/tools/cac-calculator/)
+    y el periodo de recuperación general con la [calculadora del periodo de recuperación](/tools/payback-period-calculator/).
+"payback-period-vs-roi":
+  "title": "Periodo de recuperación o ROI: ¿qué métrica de inversión usar?"
+  "description": "El periodo de recuperación mide cuándo llegas al equilibrio; el ROI mide la rentabilidad total. Aprende cuándo usar cada uno y cómo se complementan en las decisiones de capital."
+  "body": |
+    El periodo de recuperación y el ROI sirven para evaluar inversiones, pero
+    responden a preguntas distintas y tienen puntos ciegos distintos.
+
+    ## Periodo de recuperación: «¿Cuándo recupero mi dinero?»
+
+    **Periodo de recuperación = inversión / flujo neto anual**
+
+    El periodo de recuperación se centra por completo en el punto de equilibrio. Es
+    sencillo, intuitivo y útil para valorar el riesgo de liquidez: cuánto tiempo
+    hasta que tu capital deja de estar en riesgo.
+
+    **Punto débil**: ignora todos los flujos posteriores al equilibrio. Una inversión
+    de $100k que se recupera en 1 año y luego no genera nada tiene el mismo periodo
+    que otra que genera $100k al año durante 10 años más.
+
+    ## ROI: «¿Cuál es la rentabilidad total?»
+
+    **ROI = (retornos netos totales − inversión) / inversión × 100**
+
+    El ROI recoge el valor total de la inversión durante todo el periodo, no solo
+    cuándo llega al equilibrio.
+
+    **Punto débil**: no tiene en cuenta el valor temporal del dinero ni el riesgo de
+    liquidez.
+
+    ## Cuándo usar cada uno
+
+    - **Periodo de recuperación**: descartar inversiones de alto riesgo; planificar la caja
+    - **ROI**: comparar la eficiencia global de las inversiones
+    - **Ambos juntos**: decisiones completas de asignación de capital
+
+    Para cualquier inversión de más de $10k, calcula ambos con:
+    - La [calculadora del periodo de recuperación](/tools/payback-period-calculator/)
+    - La [calculadora de ROI](/tools/roi-calculator/)
+"how-to-calculate-roi":
+  "title": "Cómo calcular el ROI: fórmula, ejemplos y errores habituales"
+  "description": "Aprende la fórmula del ROI (beneficio neto / inversión × 100), mira ejemplos con números y evita los errores habituales que hacen engañoso el cálculo."
+  "body": |
+    ROI = (beneficio neto / inversión) × 100
+
+    Esa es la fórmula. Lo difícil es definir bien el «beneficio neto» y la
+    «inversión».
+
+    ## Cálculo del ROI paso a paso
+
+    **Paso 1**: calcula el beneficio neto
+    Beneficio neto = ingresos totales generados − costes totales asociados a la inversión
+
+    Los costes incluyen: costes operativos directos, tiempo del equipo, reparto de
+    gastos generales y coste de oportunidad del capital.
+
+    **Paso 2**: divide entre la inversión
+    ROI = beneficio neto / coste de la inversión × 100
+
+    **Ejemplo**: gastas $50k en una campaña de marketing de contenidos. En 12 meses
+    genera $200k de pipeline atribuido, que se cierra al 25 %: $50k de ingresos.
+    La producción de contenido costó $10k más en trabajo continuo.
+
+    - Beneficio neto = $50k − $10k = $40k
+    - ROI = $40k / $50k × 100 = **80 %**
+
+    ## Errores habituales al calcular el ROI
+
+    **Error 1: olvidar los costes indirectos**
+    El tiempo del equipo dedicado a gestionar una inversión es un coste real. Una
+    herramienta de $10k que exige 40 horas al mes de gestión cuesta $2.400 más al
+    mes a $60 la hora.
+
+    **Error 2: usar ingresos brutos en lugar de beneficio neto**
+    Un ROI sobre ingresos brutos ignora el coste de ventas. Si una campaña genera
+    $100k de ingresos pero el producto cuesta $60k, la contribución neta es de
+    $40k, no de $100k.
+
+    **Error 3: no anualizar**
+    Un ROI del 50 % suena genial, pero en 5 años es solo un 8,4 % anual. Compara
+    siempre el ROI en el mismo horizonte temporal.
+
+    Calcula el tuyo con la [calculadora de ROI](/tools/roi-calculator/).
+"marketing-roi-benchmarks":
+  "title": "Referencias de ROI de marketing por canal (2024)"
+  "description": "Referencias del sector de ROI de marketing por canal: email, SEO, búsqueda de pago, redes sociales y marketing de contenidos. Compara tus campañas."
+  "body": |
+    El ROI de marketing varía muchísimo según el canal. Estas son referencias
+    habituales basadas en estudios del sector y datos de profesionales.
+
+    ## Email marketing
+
+    ROI medio: **$36–$42 por cada $1 invertido** (3.500–4.100 %)
+
+    El email encabeza siempre las clasificaciones de ROI porque el coste variable
+    de cada envío es casi nulo una vez creada la lista. El coste de comprar listas
+    reduce el ROI a lo largo del tiempo al 500–1.000 % en la mayoría de negocios.
+
+    ## SEO (búsqueda orgánica)
+
+    ROI medio: **300–2.000 % en 3 años**
+
+    El ROI del SEO es alto pero diferido. Los meses 1–6 suelen tener ROI negativo.
+    Los meses 12–36 producen retornos acumulativos a medida que el contenido
+    posiciona. Calcula el ROI anualizado en todo el periodo de 3 años para
+    compararlo de forma justa con los canales de pago.
+
+    ## Búsqueda de pago (Google Ads)
+
+    ROAS medio: **2:1–5:1 según el sector**
+    ROI medio después de márgenes: **10–30 %** en sectores competitivos
+
+    La búsqueda de pago es inmediata pero competitiva. El ROI empeora al escalar la
+    inversión (palabras clave de peor calidad, competencia en pujas). Limita la
+    inversión de pago mientras el ROI sea positivo y lleva el excedente a canales
+    acumulativos.
+
+    ## Marketing de contenidos
+
+    ROI medio: **300–1.000 % en 12 meses**
+
+    Requiere invertir en calidad y distribución. Los mejores ven retornos
+    acumulativos a medida que el contenido gana autoridad de dominio.
+
+    ## Redes sociales (de pago)
+
+    ROAS medio: **1,5:1–3:1**
+
+    El ROI más bajo de los grandes canales en la mayoría de negocios B2B. Funciona
+    mejor para notoriedad de marca (ROI difícil de medir) que para respuesta
+    directa.
+
+    Sigue tus retornos reales con la [calculadora de ROI](/tools/roi-calculator/).
+"roi-vs-roas":
+  "title": "ROI frente a ROAS: en qué se diferencian y cuándo usar cada uno"
+  "description": "El ROI mide el retorno neto sobre la inversión total; el ROAS mide los ingresos por dólar publicitario. Qué métrica usar en las decisiones de marketing y cómo pasar de una a otra."
+  "body": |
+    El ROI y el ROAS miden la eficiencia del marketing, pero miden cosas distintas
+    y llevan a decisiones distintas.
+
+    ## ROAS: ingresos sobre inversión publicitaria
+
+    **ROAS = ingresos atribuidos a los anuncios / inversión publicitaria**
+
+    Un ROAS de 4,0 significa: $4 de ingresos por cada $1 de publicidad.
+
+    El ROAS ignora todos los costes salvo la publicidad. Una campaña con un ROAS de
+    5,0 parece genial, pero si el margen del producto es del 20 %, estás en
+    equilibrio.
+
+    ## ROI: retorno neto sobre la inversión
+
+    **ROI = (ingresos − todos los costes) / inversión × 100**
+
+    El ROI incluye el coste de ventas, la logística, el tiempo del equipo y la
+    propia inversión.
+
+    Una campaña con un ROAS de 5,0, un 20 % de margen de producto y un 15 % de
+    coste logístico:
+    - Margen neto = 20 % − 15 % = 5 %
+    - Ingresos: $500k. Neto del producto: $25k.
+    - Inversión publicitaria: $100k.
+    - ROI = ($25k − $100k) / $100k = **−75 %**
+
+    La misma campaña que parecía genial con un ROAS de 5,0 en realidad destruye
+    valor.
+
+    ## Cuándo usar cada uno
+
+    - **ROAS**: optimizar campañas concretas, hacer tests A/B de creatividades
+    - **ROI**: decisiones estratégicas de inversión, comparar canales, asignar presupuesto
+
+    Usa el ROAS para la optimización táctica y el ROI para las decisiones
+    estratégicas.
+
+    Calcula tu ROI con la [calculadora de ROI](/tools/roi-calculator/).
+"how-to-use-rule-of-72":
+  "title": "Cómo usar la regla del 72"
+  "description": "La regla del 72 explicada con ejemplos: cómo estimar el tiempo para duplicar una inversión, una deuda o el crecimiento de ingresos con un simple cálculo mental."
+  "body": |
+    La regla del 72 es un atajo de cálculo mental: divide 72 entre una tasa anual
+    para estimar cuántos años tarda una cantidad en duplicarse.
+
+    ## Ejemplos
+
+    - **Inversión con un 8 % de rentabilidad anual**: 72 ÷ 8 = **9 años** para duplicarse
+    - **Tarjeta de crédito al 24 % TAE**: 72 ÷ 24 = **3 años** para que la deuda se duplique
+    - **Inflación del 3 %**: 72 ÷ 3 = **24 años** para que los precios se dupliquen
+    - **SaaS que crece un 50 % anual**: 72 ÷ 50 = **~1,4 años** para duplicar el ARR
+
+    ## ¿Por qué funciona?
+
+    Con una tasa r, el tiempo exacto para duplicar es **ln(2) ÷ ln(1 + r)**.
+    Con tasas pequeñas, se aproxima a **0,693 / r**.
+    La regla usa 72 en lugar de 69,3 porque 72 es divisible entre más tasas
+    habituales (2, 3, 4, 6, 8, 9, 12…).
+
+    ## Precisión
+
+    La regla del 72 es más precisa con tasas del 6–10 % (menos del 1 % de error).
+    Con tasas de más del 20 %, usa la [calculadora de la regla del 72](/tools/rule-of-72-calculator/),
+    que muestra tanto la aproximación como el tiempo exacto para duplicar.
+"rule-of-72-vs-exact-compound-interest":
+  "title": "Regla del 72 frente a la fórmula exacta del interés compuesto"
+  "description": "Compara la aproximación de la regla del 72 con el tiempo exacto para duplicar con interés compuesto. Cuándo usar cada una y cuánto error introduce el atajo."
+  "body": |
+    ## Las dos fórmulas
+
+    **Regla del 72**: años ≈ 72 / tasa anual
+
+    **Fórmula exacta**: años = ln(2) / ln(1 + r), con r la tasa en decimal
+
+    ## Comparación de errores
+
+    | Tasa | Regla del 72 | Exacto | Error |
+    |------|-----------|-------|-------|
+    | 2 % | 36 años | 35,0 años | +2,9 % |
+    | 4 % | 18 años | 17,7 años | +1,9 % |
+    | 8 % | 9 años | 9,0 años | 0,0 % |
+    | 12 % | 6 años | 6,1 años | −1,9 % |
+    | 20 % | 3,6 años | 3,8 años | −5,3 % |
+    | 50 % | 1,44 años | 1,71 años | −16 % |
+
+    En la mayoría de decisiones financieras con tasas por debajo del 20 %, la regla
+    del 72 es suficientemente precisa. Por encima del 20 % (empresas de alto
+    crecimiento, deuda con intereses altos), usa la fórmula exacta.
+
+    La [calculadora de la regla del 72](/tools/rule-of-72-calculator/) muestra ambos
+    valores lado a lado para ver la diferencia con cualquier tasa.
+"wacc-discount-rate-dcf":
+  "title": "Usar el WACC como tasa de descuento en un DCF: guía práctica"
+  "description": "Cómo usar el WACC como tasa de descuento en una valoración DCF, incluido cómo estimar el coste del capital propio en empresas jóvenes, y los errores habituales."
+  "body": |
+    El WACC (coste medio ponderado del capital) es la tasa de descuento estándar
+    en las valoraciones por DCF (descuento de flujos de caja). Así se usa bien y
+    qué hacer cuando no hay datos de manual disponibles.
+
+    ## El WACC en un DCF: la mecánica
+
+    En un modelo DCF:
+    **Valor = Σ (flujo de caja libre_t / (1 + WACC)^t) + valor terminal / (1 + WACC)^n**
+
+    El WACC representa la rentabilidad exigida por toda la estructura de capital,
+    accionistas y acreedores. Descontar al WACC da el valor empresarial; resta la
+    deuda neta para obtener el valor del capital.
+
+    ## Estimar el WACC de una empresa joven
+
+    Las empresas no cotizadas y las startups no tienen datos de mercado para el
+    coste del capital propio. Enfoques posibles:
+
+    **Enfoque CAPM**: coste del capital propio = tasa libre de riesgo + β × (prima de mercado)
+    - Tasa libre de riesgo: rentabilidad del bono del Tesoro de EE. UU. a 10 años (~4,5 % en 2024)
+    - Prima de riesgo de mercado: 5–6 % (histórico de Damodaran)
+    - Beta: usa las betas de empresas cotizadas comparables (0,8–1,5 en SaaS)
+
+    **Enfoque de la tasa mínima de los VC**: usa la TIR objetivo del fondo (25–40 %
+    en fase inicial) como coste del capital propio. Refleja la rentabilidad que
+    realmente exigen los inversores.
+
+    **Sin deuda (antes de ingresos)**: WACC = coste del capital propio. No hace
+    falta ponderar la deuda.
+
+    ## Errores habituales con el WACC
+
+    1. **Usar valor contable en lugar de valor de mercado** para ponderar capital y deuda
+    2. **No ajustar por impuestos** el componente del coste de la deuda
+    3. **Usar el WACC en empresas muy apalancadas o en dificultades**: usa el valor
+       actual ajustado (APV) cuando el nivel de deuda cambia mucho con el tiempo
+
+    Usa la [calculadora de WACC](/tools/wacc-calculator/) para calcular tu coste
+    medio del capital en un análisis DCF.
+"wacc-for-startup-valuation":
+  "title": "WACC para valorar startups: qué tasa de descuento usar"
+  "description": "Cómo estimar el WACC de una startup en fase inicial, donde los comparables cotizados, la beta y las primas de riesgo no funcionan igual que en una empresa cotizada."
+  "body": |
+    El WACC de una startup es más arte que ciencia porque sus datos
+    (capitalización, beta, coste de la deuda) no existen o no son fiables. Así lo
+    abordan los profesionales.
+
+    ## Por qué el WACC tradicional no funciona en startups
+
+    1. **Sin capitalización bursátil**: el valor del capital es privado y muy incierto
+    2. **Sin beta**: no hay volatilidad histórica del precio que observar
+    3. **Poca o ninguna deuda**: la estructura de capital es casi toda capital propio
+    4. **Alta probabilidad de fracaso**: los modelos DCF recogen mal los resultados binarios
+
+    ## Cómo piensan los VC la tasa de descuento
+
+    Los VC rara vez usan el WACC de forma explícita. Aplican en su lugar una **TIR
+    objetivo** del 30–50 % o más (reflejo de un objetivo de 10x para el fondo
+    contando con fracasos). Equivale a usar un WACC del 30–50 %, muy por encima de
+    lo que sugerirían los modelos tradicionales.
+
+    ## En modelos DCF
+
+    Al construir un DCF para una startup, los profesionales suelen:
+    - Partir de un **WACC de empresas comparables** cotizadas (normalmente 8–15 % en SaaS)
+    - Sumar una **prima por tamaño** del 3–5 % por ser una empresa privada y más pequeña
+    - Sumar una **prima de riesgo específica** del 3–10 % por el riesgo de ejecución
+
+    Tasa de descuento efectiva de una startup: **14–30 %** según la fase y el
+    sector.
+
+    Usa la [calculadora de WACC](/tools/wacc-calculator/) con empresas
+    consolidadas cuyo valor de capital y deuda sea observable.

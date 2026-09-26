@@ -7177,13 +7177,13 @@
     ## The impact of the discount rate
 
     The same $100k investment at different discount rates:
-    - 5% discount rate → NPV = $62,948
+    - 5% discount rate → NPV = $59,120
     - 10% discount rate → NPV = $38,410
-    - 15% discount rate → NPV = $18,141
-    - 20% discount rate → NPV = $1,285
-    - 22% discount rate → NPV = −$4,900 (project rejected)
+    - 15% discount rate → NPV = $21,610
+    - 20% discount rate → NPV = $7,819
+    - 25% discount rate → NPV = −$3,629 (project rejected)
 
-    The IRR (where NPV = 0) is approximately 21.5%.
+    The IRR (where NPV = 0) is approximately 23.3%.
 
     Calculate NPV for your investment at the [NPV Calculator](/tools/npv-calculator/).
 
@@ -7211,7 +7211,7 @@
     this investment actually earn?" It's expressed as a percentage.
 
     For the example project ($100k investment, $30k–$40k annual cash flows over 5 years),
-    IRR ≈ 21.5%. This means the project earns 21.5% annually.
+    IRR ≈ 23.3%. This means the project earns 23.3% annually.
 
     If your hurdle rate is 10%, IRR > 10% → accept. If hurdle rate is 25%, IRR < 25% → reject.
 
@@ -7245,7 +7245,7 @@
 
     ## When IRR is useful
 
-    IRR is intuitive for communication: "This project earns 21.5% annually" is easier
+    IRR is intuitive for communication: "This project earns 23.3% annually" is easier
     to explain than "this project has $38k NPV at 10% discount rate."
 
     It's also useful for comparing returns across investments of different sizes when
@@ -9978,14 +9978,14 @@
 
     ```
     =MIRR({-100000,30000,30000,30000,30000}, 10%, 8%)
-    = 12.66%
+    = 7.83%
     ```
 
     With standard IRR: `=IRR({-100000,30000,30000,30000,30000})` = 7.71%
 
-    MIRR is lower here because the reinvest rate (8%) is lower than the IRR (7.71%...
-    wait, that seems backwards. Let me correct: MIRR can be higher OR lower than IRR
-    depending on the rates used. When reinvest rate < IRR, MIRR < IRR.)
+    MIRR is slightly higher here because the reinvest rate (8%) is above the IRR
+    (7.71%). MIRR moves toward the reinvest rate: when the reinvest rate is below
+    the IRR, MIRR comes out lower than IRR.
 
     ## Common mistakes
 
@@ -10112,7 +10112,7 @@
     ## Example
 
     In cells A1:A5: -100000, 25000, 30000, 35000, 40000
-    Formula: `=IRR(A1:A5)` → **7.66%**
+    Formula: `=IRR(A1:A5)` → **10.48%**
 
     If your hurdle rate is 12%, this investment should be rejected (IRR < hurdle).
 
@@ -11081,10 +11081,10 @@
     | Rate | Rule of 72 | Exact | Error |
     |------|-----------|-------|-------|
     | 2% | 36 yrs | 35.0 yrs | +2.9% |
-    | 4% | 18 yrs | 17.7 yrs | +1.7% |
+    | 4% | 18 yrs | 17.7 yrs | +1.9% |
     | 8% | 9 yrs | 9.0 yrs | 0.0% |
-    | 12% | 6 yrs | 6.1 yrs | −1.4% |
-    | 20% | 3.6 yrs | 3.8 yrs | −4.5% |
+    | 12% | 6 yrs | 6.1 yrs | −1.9% |
+    | 20% | 3.6 yrs | 3.8 yrs | −5.3% |
     | 50% | 1.44 yrs | 1.71 yrs | −16% |
 
     For most practical financial decisions at rates under 20%, the Rule of 72
