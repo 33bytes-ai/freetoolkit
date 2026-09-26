@@ -174,3 +174,32 @@
     pessimistischen, einem erwarteten und einem optimistischen Szenario: Ein
     Projekt, das die Hürde nur im optimistischen Fall nimmt, ist eine Wette, keine
     Investition.
+
+"Valuation":
+  "body": |
+    Bewertung ist eine Verhandlung, die auf Rechnung beruht, kein Ergebnis der
+    Rechnung. Diese Rechner liefern die belastbare Spanne, von der das Gespräch
+    ausgeht, und machen sichtbar, welche Annahmen den Ausschlag geben.
+
+    ## Welcher Rechner passt
+
+    **DCF** ist die Methode aus ersten Prinzipien: Cashflows prognostizieren,
+    abzinsen und sehen, was das Unternehmen aus eigener Kraft wert ist.
+    **EBITDA-Multiple**, **KGV** und **KUV** sind der Vergleichsansatz: schneller,
+    am Markt verankert und die Art, wie die meisten Transaktionen kleiner
+    Unternehmen und SaaS-Firmen tatsächlich bepreist werden. **Unternehmenswert**
+    verbindet beides, indem er den Eigenkapitalwert um Schulden und Cash bereinigt:
+    die Zahl, die ein Käufer verhandelt. **TAM/SAM/SOM** beziffert die Chance, auf
+    der eine Wachstumsstory ruht, und **Verwässerung** zeigt, was Gründern nach
+    jeder Finanzierungsrunde bleibt.
+
+    ## Was die Zahlen bedeuten
+
+    Multiples schwanken stark mit Wachstum und Branche: Ein SaaS mit über 40 %
+    Wachstum pro Jahr erzielte historisch ein Vielfaches des Umsatzmultiples eines
+    SaaS mit 10 %, und private Unternehmen werden gegenüber börsennotierten
+    Vergleichswerten mit einem Illiquiditätsabschlag gehandelt. Sieh jedes
+    einzelne Multiple als Mitte einer breiten Spanne. Bei der Verwässerung
+    unterschätzen Gründer regelmäßig den kumulierten Effekt: Drei Runden mit je
+    20 % lassen rund 51 % übrig, nicht 40 %, weil jede Runde die
+    Post-Money-Cap-Table verwässert und nicht die ursprüngliche.

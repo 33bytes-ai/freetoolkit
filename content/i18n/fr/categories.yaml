@@ -175,3 +175,33 @@
     chaque modèle sur un scénario pessimiste, central et optimiste : un projet qui
     ne franchit la barre que dans le scénario optimiste est un pari, pas un
     investissement.
+
+"Valuation":
+  "body": |
+    La valorisation est une négociation éclairée par le calcul, pas le résultat
+    d'un calcul. Ces calculateurs produisent la fourchette défendable d'où part la
+    discussion, et rendent explicites les hypothèses qui font le travail.
+
+    ## Lequel choisir
+
+    Le **DCF** est la méthode fondamentale : prévoir les flux de trésorerie, les
+    actualiser et voir ce que vaut l'entreprise par elle-même. **Multiple
+    d'EBITDA**, **PER** et **P/S** relèvent de l'approche par comparables : plus
+    rapide, ancrée dans le marché, et c'est ainsi que se fixe réellement le prix de
+    la plupart des cessions de petites entreprises et de SaaS. **Valeur
+    d'entreprise** fait le lien entre les deux en ajustant la valeur des capitaux
+    propres de la dette et de la trésorerie : c'est le chiffre que négocie un
+    acquéreur. **TAM/SAM/SOM** dimensionne l'opportunité sur laquelle repose un
+    récit de croissance, et **Dilution** montre ce que chaque levée laisse aux
+    fondateurs.
+
+    ## Ce que disent les chiffres
+
+    Les multiples varient énormément selon la croissance et le secteur : un SaaS
+    qui croît de plus de 40 % par an s'est historiquement valorisé à plusieurs
+    fois le multiple de chiffre d'affaires d'un SaaS à 10 %, et les entreprises non
+    cotées subissent une décote d'illiquidité par rapport aux comparables cotés.
+    Voyez tout multiple isolé comme le milieu d'une large fourchette. Côté
+    dilution, ce que les fondateurs sous-estiment toujours, c'est l'effet cumulé :
+    trois tours à 20 % chacun laissent environ 51 %, et non 40 %, car chaque tour
+    dilue la table de capitalisation post-money et non celle d'origine.
