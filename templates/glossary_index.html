@@ -37,7 +37,7 @@
       {% for entry in glossary %}
       <li>
         <span class="glossary-index-icon" aria-hidden="true">{{ glossary_icons[entry.slug] | safe }}</span>
-        <span><a href="#{{ entry.slug }}">{{ entry.term }}</a>: {{ entry.short }}</span>
+        <span><a href="#{{ entry.slug }}" data-i18n-region="term:{{ entry.slug }}">{{ entry.term }}</a>: <span data-i18n-region="term-short:{{ entry.slug }}">{{ entry.short }}</span></span>
       </li>
       {% endfor %}
     </ul>
@@ -47,10 +47,10 @@
   <article class="tool-body glossary-entry" id="{{ entry.slug }}">
     <h2>
       <span class="glossary-index-icon" aria-hidden="true">{{ glossary_icons[entry.slug] | safe }}</span>
-      {{ entry.term }}
+      <span data-i18n-region="term:{{ entry.slug }}">{{ entry.term }}</span>
     </h2>
-    <p class="deep-dive-standfirst">{{ entry.short }}</p>
-    {{ entry.body_html | safe }}
+    <p class="deep-dive-standfirst" data-i18n-region="term-short:{{ entry.slug }}">{{ entry.short }}</p>
+    <div data-i18n-region="term-body:{{ entry.slug }}">{{ entry.body_html | safe }}</div>
     {% set related = glossary_related.get(entry.slug, []) %}
     {% if related %}
     <p class="glossary-used-in">

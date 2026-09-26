@@ -146,6 +146,29 @@ Then implement pure functions in `static/js/tools/my-tool.js`, add SEO body
 copy to `content/tools.yaml`, write tests in `tests/test_tools.js`, and run
 `make build`.
 
+## Translations (fr / es / de)
+
+English is canonical and the only thing crawlers see. Translations are
+applied in the browser by `static/js/lib/i18n.js`, with no new URLs, no
+hreflang and nothing in the sitemaps. Machine-translated pages at their own URLs
+would be Google's "scaled content abuse" on a search-traffic site.
+
+- `content/i18n.yaml`: keyed interface strings (`data-i18n="..."`).
+- `content/i18n/<lang>/`: everything else, mirroring the English sources.
+  - `strings.yaml` maps English text to its translation, matched on any page:
+    labels, tooltips, tool names, and calculator results. Digits are written
+    `{0}`, `{1}`… and carried across.
+  - `tools.yaml`, `intent_pages.yaml`, `glossary.yaml`, `categories.yaml` and
+    `pages/*.md` hold the long-form text, filling `[data-i18n-region]` blocks.
+  - `_terms.yaml` is the finance vocabulary each batch must reuse.
+- The build (`src/freetoolkit/i18n.py`) writes `dist/i18n/<lang>/…json`, with
+  `noindex` and `Disallow`.
+- `make i18n-crawl` records the text calculators write at runtime into
+  `content/i18n/_runtime_strings.json`. Re-run it after changing a tool's
+  output text.
+- `make i18n-coverage` gives percentages per language.
+  `python scripts/i18n_coverage.py --missing fr` lists what is left, as YAML.
+
 ## Embeds and Pro (the MRR line)
 
 Every tool also builds at `/embed/<slug>/` (`templates/embed.html`): the widget

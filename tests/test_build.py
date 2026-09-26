@@ -2684,3 +2684,53 @@ def test_deploy_workflow_can_be_triggered_from_the_browser():
     triggers = workflow[True] if True in workflow else workflow["on"]
     assert "workflow_dispatch" in triggers
     assert triggers["push"]["branches"] == ["main"]
+
+
+def _i18n_langs():
+    from freetoolkit import i18n
+    return i18n.load(ROOT / "content" / "i18n")
+
+
+def test_i18n_translations_keep_their_placeholders():
+    """A translation must carry every {n} its English template has, or a
+    calculator result would lose its number."""
+    for lang, tr in _i18n_langs().items():
+        for en, local in tr["strings"].items():
+            want = sorted(re.findall(r"\{\d+\}", en))
+            assert sorted(re.findall(r"\{\d+\}", local)) == want, f"{lang}: {en!r}"
+
+
+def test_i18n_translations_point_at_real_content():
+    """A slug typo in content/i18n/<lang>/ would silently never show."""
+    tools = {t["slug"] for t in yaml.safe_load((ROOT / "content" / "tools.yaml").read_text())}
+    intents = {p["slug"] for p in yaml.safe_load((ROOT / "content" / "intent_pages.yaml").read_text())}
+    glossary = {e["slug"] for e in yaml.safe_load((ROOT / "content" / "glossary.yaml").read_text())}
+    cats = set(yaml.safe_load((ROOT / "content" / "categories.yaml").read_text()))
+    pages = {p.stem for p in (ROOT / "content" / "pages").glob("*.md")}
+    for lang, tr in _i18n_langs().items():
+        assert set(tr["tools"]) <= tools, lang
+        assert set(tr["intent_pages"]) <= intents, lang
+        assert set(tr["glossary"]) <= glossary, lang
+        assert set(tr["categories"]) <= cats, lang
+        assert set(tr["pages"]) <= pages, lang
+
+
+def test_i18n_output_is_data_not_pages():
+    """Translations ship as JSON that i18n.js applies in place: never indexed,
+    every region it fills exists on its page, and the English page keeps its
+    English text."""
+    run_build()
+    robots = (DIST / "robots.txt").read_text()
+    assert "Disallow: /i18n/" in robots
+    headers = (DIST / "_headers").read_text()
+    assert "/i18n/*\n  X-Robots-Tag: noindex" in headers
+    for lang in _i18n_langs():
+        json.loads((DIST / "i18n" / lang / "strings.json").read_text())
+        for page_json in (DIST / "i18n" / lang).rglob("index.json"):
+            rel = page_json.relative_to(DIST / "i18n" / lang).parent
+            html = (DIST / rel / "index.html").read_text()
+            for region in json.loads(page_json.read_text())["regions"]:
+                assert f'data-i18n-region="{region}"' in html, f"{lang}/{rel}: {region}"
+    fcf = (DIST / "tools" / "free-cash-flow-calculator" / "index.html").read_text()
+    assert "<h1 itemprop=\"name\">Free Cash Flow Calculator</h1>" in fcf
+    assert "Calculateur" not in fcf

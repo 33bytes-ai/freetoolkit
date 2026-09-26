@@ -22,6 +22,11 @@ import markdown
 import yaml
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
+try:
+    from freetoolkit import i18n as content_i18n
+except ImportError:  # run as a script: src/freetoolkit is on sys.path instead
+    import i18n as content_i18n
+
 ROOT = Path(__file__).resolve().parents[2]
 
 # One simple line-icon (24x24, stroke=currentColor, matches the site's
@@ -99,6 +104,7 @@ GLOSSARY_ICONS: dict[str, str] = {
 def category_slug(category: str) -> str:
     return category.lower().replace(" & ", "-").replace(" ", "-")
 CONTENT_DIR = ROOT / "content"
+I18N_DIR = CONTENT_DIR / "i18n"
 TEMPLATES_DIR = ROOT / "templates"
 STATIC_DIR = ROOT / "static"
 DIST_DIR = ROOT / "dist"
@@ -239,13 +245,19 @@ def load_page(path: Path, config: dict, tool_count: int) -> dict:
     frontmatter = match.group(1)
     body = text[match.end():]
     meta = yaml.safe_load(frontmatter) or {}
+    meta["content"] = markdown.markdown(
+        fill_page_placeholders(body, config, tool_count).strip(), extensions=MD_EXTENSIONS
+    )
+    return meta
+
+
+def fill_page_placeholders(body: str, config: dict, tool_count: int) -> str:
     body = body.replace("{{ contact_email }}", config["site"]["contact_email"])
     body = body.replace("{{ tool_count }}", str(tool_count))
     for prefix in ("legal", "pro"):
         for key, value in config["site"].get(prefix, {}).items():
             body = body.replace(f"{{{{ {prefix}_{key} }}}}", str(value))
-    meta["content"] = markdown.markdown(body.strip(), extensions=MD_EXTENSIONS)
-    return meta
+    return body
 
 
 def load_config() -> dict:
@@ -755,7 +767,7 @@ def write_manifest(config: dict) -> None:
 def write_robots(config: dict) -> None:
     base = config["site"]["base_url"].rstrip("/")
     (DIST_DIR / "robots.txt").write_text(
-        f"User-agent: *\nAllow: /\nDisallow: /dashboard/\n"
+        f"User-agent: *\nAllow: /\nDisallow: /dashboard/\nDisallow: /i18n/\n"
         f"Sitemap: {base}/sitemap_index.xml\n"
         f"Sitemap: {base}/sitemap.xml\n"
         f"Sitemap: {base}/sitemap_news.xml\n",
@@ -892,6 +904,8 @@ _ASSET_VERSION_FILES = (
     "css/style.css",
     "js/lib/common.js",
     "js/lib/tracker.js",
+    "js/lib/i18n.js",
+    "js/lib/i18n-boot.js",
 )
 
 
@@ -958,6 +972,7 @@ def build() -> Path:
         year=datetime.date.today().year,
         build_date=datetime.date.today().isoformat(),
         asset_version=asset_version,
+        i18n_version=content_i18n.version(I18N_DIR),
     )
 
     for tool in tools:
@@ -1102,6 +1117,18 @@ def build() -> Path:
     # The .ttf is the build-only OG-image font; the web font (woff2) ships.
     shutil.copytree(STATIC_DIR, DIST_DIR / "static", ignore=shutil.ignore_patterns("*.ttf", "*.md"))
 
+    content_i18n.write(
+        DIST_DIR,
+        content_i18n.load(I18N_DIR),
+        md=lambda body: markdown.markdown(render_math_blocks(body), extensions=MD_EXTENSIONS),
+        demote=demote_headings,
+        tools=tools,
+        intent_pages=intent_pages,
+        glossary=glossary,
+        category_slug=category_slug,
+        page_body=lambda body: fill_page_placeholders(body, config, len(tools)).strip(),
+    )
+
     write_sitemap(config, tools, pages, tools_by_category)
     write_sitemap_tools(config, tools)
     write_sitemap_pages(config, pages)
@@ -1232,6 +1259,12 @@ def write_headers_file() -> None:
         "/static/*",
         "  Cache-Control: public, max-age=31536000, immutable",
         "",
+        # Client-side translations: data for i18n.js, never a page to index.
+        # URLs carry ?v=<content hash>, so they can be cached like /static/.
+        "/i18n/*",
+        "  X-Robots-Tag: noindex",
+        "  Cache-Control: public, max-age=31536000, immutable",
+        "",
         # Embeds are framed by other sites: drop the anti-framing headers /*
         # sets, and re-send the CSP with only frame-ancestors opened.
         "/embed/*",
@@ -1244,7 +1277,7 @@ def write_headers_file() -> None:
 
 
 def _gzip_dist() -> None:
-    compressible = {".html", ".css", ".js", ".xml", ".txt", ".svg"}
+    compressible = {".html", ".css", ".js", ".xml", ".txt", ".svg", ".json"}
     for path in DIST_DIR.rglob("*"):
         if path.is_file() and path.suffix in compressible:
             gz = path.with_suffix(path.suffix + ".gz")
