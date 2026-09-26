@@ -457,7 +457,7 @@ def test_tools_index_shows_guide_count():
     """Tools index should show guide count in category headers."""
     run_build()
     html = (DIST / "tools" / "index.html").read_text()
-    assert "guides" in html, "/tools/ index missing guide count in category headers"
+    assert "guide sections" in html, "/tools/ index missing guide count in category headers"
 
 
 def test_webapplication_schema_has_date_modified():
@@ -2733,7 +2733,7 @@ def test_i18n_output_is_data_not_pages():
                 assert f'data-i18n-region="{region}"' in html, f"{lang}/{rel}: {region}"
     fcf = (DIST / "tools" / "free-cash-flow-calculator" / "index.html").read_text()
     assert "<h1 itemprop=\"name\">Free Cash Flow Calculator</h1>" in fcf
-    assert "Calculateur" not in fcf
+    assert "flux de trésorerie disponible" not in fcf
 
 
 def test_widget_tooltips_hold_no_markup():
