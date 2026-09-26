@@ -572,3 +572,197 @@
     Ja. Stripe Connect gibt dieselbe Grundgebühr je nach Konfiguration an die
     Plattform oder das verbundene Konto weiter. Gib den Gesamtbetrag und den
     geltenden kombinierten Satz im Feld für den individuellen Satz ein.
+
+"freelance-project-estimate":
+  "body": |
+    Freelance-Projekte genau zu kalkulieren ist teils Mathematik, teils
+    Risikomanagement. Kalkulierst du zu niedrig, arbeitest du unbezahlte Stunden.
+    Kalkulierst du ohne Begründung zu hoch, verlierst du den Auftrag. Dieser
+    Rechner startet mit dem, was du weißt (dein Satz, deine geschätzten Stunden
+    und ein Risikopuffer), und liefert ein Angebot, das du direkt an den Kunden
+    geben kannst.
+
+    ## Die zweiteilige Formel
+
+    **Basisschätzung** = Stundensatz × geschätzte Stunden
+    **Gesamtangebot** = Basisschätzung × (1 + Puffer in %)
+
+    Der Puffer ist kein Aufblähen und keine Unehrlichkeit, sondern ein
+    Risikopolster für das Unvermeidliche: unklare Anforderungen, wachsender
+    Umfang, Korrekturschleifen und Projektmanagement-Zeit, die du nicht
+    ausdrücklich geschätzt hast.
+
+    ## Welcher Puffer passt
+
+    | Projektart | Empfohlener Puffer |
+    |---|---|
+    | Klare Vorgaben, vertraute Arbeit | 10–15 % |
+    | Standardprojekt, einige Unbekannte | 20–25 % |
+    | Neues Gebiet, unklare Anforderungen | 30–40 % |
+    | F&E- / Discovery-Phasen | 50 %+ |
+
+    Studien zu Softwareprojekten zeigen Überschreitungen der ursprünglichen
+    Schätzung um 50–80 %. Ein Puffer von 20 % ist nicht aggressiv, sondern
+    vorsichtig. Kunden, die den Puffer anzweifeln, sagen dir, dass sie
+    Umfangsänderungen erwarten und nicht dafür zahlen wollen.
+
+    ## Festpreis oder Aufwand
+
+    Dieser Rechner erstellt ein **Festpreisangebot**. Alternativen:
+    - **Nach Aufwand (Time & Material)**: Du rechnest tatsächliche Stunden zu deinem
+      Satz ab. Weniger Risiko für dich, mehr gefühltes Risiko für den Kunden. Am
+      besten für laufende oder offene Arbeit.
+    - **Wertbasierte Preise**: Der Preis richtet sich nach dem Wert für den Kunden,
+      nicht nach deinen Stunden. Schwerer zu positionieren, hebt aber die
+      Obergrenze deines Verdiensts auf.
+
+    ## Häufige Fragen
+
+    **Aufschlüsselung zeigen oder nur die Summe?**
+    Den meisten Kunden zeigst du nur die Summe. Stundensatz × Stunden aufzuführen
+    lädt dazu ein, jede Komponente zu verhandeln, und lässt Kunden deinen Satz mit
+    dem Markt vergleichen. Für die Kaufentscheidung reicht die Summe.
+
+    **Wie gehe ich mit Anfragen außerhalb des Umfangs um?**
+    Nimm eine Umfangsklausel in deinen Vertrag auf: Alles außerhalb der
+    vereinbarten Leistungen wird separat angeboten. Verweise gelassen darauf, wenn
+    der Umfang wächst („Gern, ich schicke dir kurz ein Angebot für die
+    Zusatzarbeit“), statt es stillschweigend zu schlucken.
+"freelance-rate-calculator":
+  "body": |
+    Einen Freelance-Satz ohne systematische Rechnung festzulegen, ist einer der
+    häufigsten Gründe, warum Freelancer zu wenig verlangen. Die Zahl, die du
+    brauchst, ist nicht dein altes Gehalt geteilt durch 2.080, sondern diese Zahl
+    *plus* Steuern, *plus* Betriebsausgaben, *plus* ein Ausgleich dafür, dass du
+    wahrscheinlich nicht jede gearbeitete Stunde abrechnen kannst.
+
+    Dieser Rechner startet mit deinem **jährlichen Einkommensziel** und rechnet
+    rückwärts den Mindeststundensatz aus, den du verlangen musst, um es zu
+    erreichen, unter Berücksichtigung dreier Faktoren:
+
+    **1. Nicht abrechenbare Zeit.** E-Mails beantworten, Angebote schreiben,
+    Buchhaltung und Weiterbildung kosten Zeit, die du Kunden nicht berechnen
+    kannst. Die meisten Freelancer rechnen 60–70 % ihrer Arbeitszeit ab.
+
+    **2. Steuern.** Selbstständige zahlen Einkommensteuer *plus*
+    Selbstständigen-Abgaben (in den USA Social Security + Medicare ≈ 15,3 %), weil
+    Arbeitgeber normalerweise die Hälfte der Lohnabgaben für ihre Angestellten
+    übernehmen. Als Freelancer zahlst du beide Hälften.
+
+    **3. Betriebsausgaben.** Software-Abos, Ausstattung, Büro oder Coworking,
+    Krankenversicherung, Weiterbildung und Steuerberatung schmälern den Umsatz,
+    der dir nach Ausgaben bleibt.
+
+    ## Häufige Fragen
+
+    **Warum wirkt mein „echter Satz“ so viel höher als das, was Angestellte verdienen?**
+    Weil er es ist. Ein Vollzeitangestellter mit 100.000 $ Gehalt kostet seinen
+    Arbeitgeber insgesamt rund 130.000–145.000 $ (Zusatzleistungen, Lohnabgaben,
+    Ausstattung, Büro). Als Freelancer trägst du all das selbst, dazu das Risiko
+    nicht abrechenbarer Zeit und von Einkommenslücken zwischen Kunden.
+
+    **Sollte ich jemals unter meinem Mindestsatz arbeiten?**
+    Für einen strategischen Kunden, der Referenzen, Empfehlungen oder Zugang zu
+    besser bezahlten Aufträgen bringt, ist ein befristeter Rabatt eine legitime
+    Geschäftsentscheidung, solange du sie bewusst triffst und nicht, weil du die
+    Steuern vergessen hast.
+
+    **Wie erhöhe ich meinen Satz bei Bestandskunden?**
+    Kündige es 60–90 Tage vorher an, begründe es mit dem Wert („mein Satz steigt
+    auf X, weil ich jetzt Y liefere“) und bleib dabei. Die meisten Kunden, die zum
+    neuen Satz bleiben, respektieren deine Zeit danach mehr.
+"invoice-total-calculator":
+  "body": |
+    Rechnungssoftware ist ideal für Stammkunden. Wenn du aber schnell eine Summe
+    für ein Angebot, eine Kostenaufstellung für eine Kunden-E-Mail oder eine
+    Plausibilitätsprüfung vor dem Rechnungsversand brauchst, ist ein einfacher
+    Rechner schneller, als dein Rechnungstool zu öffnen.
+
+    Dieser Rechner verarbeitet bis zu vier Positionen, optional Rabatt und
+    Steuer/MwSt., und erstellt eine kopierfertige Textzusammenfassung der
+    gesamten Aufstellung.
+
+    ## Wann du diesen Rechner nutzt
+
+    - **Angebotsphase**: die Summe schnell durchrechnen, bevor du dich schriftlich auf einen Preis festlegst
+    - **Zwischenstände mit Kunden**: laufende Summe der bisher erledigten Arbeit zeigen
+    - **Mehrwährungs-Check**: die Rechnung prüfen, bevor du sie ins Rechnungstool überträgst
+    - **Steuerprüfung**: MwSt.- oder Sales-Tax-Betrag vor dem Versand bestätigen
+
+    ## Positionsstrategien für Freelancer
+
+    **Wertorientierte Positionen**: Statt „40 Stunden Entwicklung“ schreibst du
+    „Redesign und Entwicklung der Website“. So richtet sich der Blick des Kunden
+    auf das Ergebnis statt auf die Zeit.
+
+    **Abrechnung nach Meilensteinen**: Teile Projekte in zwei oder drei Rechnungen
+    (z. B. 50 % vorab, 25 % zur Halbzeit, 25 % bei Abgabe). Das schützt dich vor
+    Zahlungsausfällen und hilft Kunden bei ihrer Liquidität.
+
+    **Auslagen**: Füge Positionen für Auslagen (Stockfotos, Schriften, Tools,
+    Reisen) mit kurzer Beschreibung hinzu. Berechne sie zum Selbstkostenpreis,
+    sofern dein Vertrag keinen Aufschlag vorsieht.
+
+    ## Steuern und MwSt.
+
+    Bei B2B-Leistungen innerhalb der EU gilt in der Regel das
+    Reverse-Charge-Verfahren: Du berechnest Geschäftskunden in anderen
+    EU-Mitgliedstaaten keine MwSt., musst aber „Steuerschuldnerschaft des
+    Leistungsempfängers“ auf der Rechnung vermerken. Bei B2C-Leistungen in der EU
+    musst du unter Umständen MwSt. zum Satz des Kundenlandes erheben. Klär deine
+    Situation mit deiner Steuerberatung.
+
+    Für US-Freelancer fällt in den meisten Bundesstaaten keine Sales Tax auf
+    Dienstleistungen an (Ausnahmen: manche digitalen Leistungen). Prüf die Regeln
+    deines Bundesstaats, bevor du Steuern berechnest.
+
+    ## Häufige Fragen
+
+    **Wie füge ich mehr als 4 Positionen hinzu?**
+    Für längere Rechnungen nutzt du besser ein richtiges Rechnungstool (Bonsai,
+    FreshBooks oder HoneyBook sind für Freelancer gemacht). Dieser Rechner ist für
+    schnelle Schätzungen und einfache Rechnungen optimiert.
+
+    **Stundensatz zeigen oder nur die Positionssumme?**
+    Den meisten Kunden zeigst du nur die Summe pro Leistung. „40 Stunden × 125 $“
+    lädt zum Verhandeln des Satzes ein, „Entwicklung: 5.000 $“ positioniert dich
+    als jemand, der ein Ergebnis liefert.
+"salary-to-hourly-calculator":
+  "body": |
+    Ob du als Freelancer deinen Satz mit Angestelltengehältern vergleichst, als
+    Arbeitgeber eine Vertragsstelle bepreist oder einfach wissen willst, was dein
+    Jahresgehalt pro Stunde bedeutet: Dieser Rechner erledigt die Umrechnung
+    sofort und ohne Anmeldung.
+
+    Für Bruttowerte ist die Rechnung einfach:
+    **Stundensatz** = Jahresgehalt ÷ (Wochen pro Jahr × Stunden pro Woche)
+
+    Standardmäßig gelten 52 Wochen pro Jahr und 40 Stunden pro Woche. Du kannst
+    beide Werte anpassen, nützlich für:
+    - Teilzeitkräfte (z. B. 20 Stunden pro Woche)
+    - Mehr oder weniger als 52 bezahlte Wochen (z. B. bei unbezahltem Urlaub)
+    - Angestellte, deren bezahlter Urlaub im Gehalt enthalten ist
+
+    ## Stundensatz vor und nach Steuern
+
+    Der Rechner schätzt einen Stundensatz nach Steuern für die üblichen
+    US-Bundessteuerstufen (10 %, 12 %, 22 %, 24 %, 32 %, 35 %, 37 %). Hinweis: Das
+    ist eine vereinfachte Schätzung ohne Steuern der Bundesstaaten, Abzüge oder
+    Veranlagungsart. Nutze sie für grobe Vergleiche, nicht für die Steuerplanung.
+
+    ## Häufige Fragen
+
+    **Wie rechne ich einen Stundensatz in ein Jahresgehalt zurück?**
+    Jährlich = Stundensatz × Stunden pro Woche × Wochen pro Jahr. Bei 40 h und 52
+    Wochen: Stundensatz × 2.080 = jährlich.
+
+    **Mein Vertrag nennt X $ pro Tag: Wie rechne ich das um?**
+    Teile durch deine täglichen Stunden, um den Stundensatz zu erhalten, und
+    multipliziere mit Wochenstunden und Wochen pro Jahr für den Jahreswert. Bei
+    8-Stunden-Tagen: Tagessatz × 260 Arbeitstage = jährlich.
+
+    **Warum verlangen Freelancer das 2- bis 3-Fache des vergleichbaren Angestellten-Stundensatzes?**
+    Weil Arbeitgeberanteil an den Lohnabgaben, Zusatzleistungen, Ausstattung,
+    Verwaltungsaufwand und das Risiko von Einkommenslücken beim Freelancer liegen
+    statt beim Unternehmen. Die vollständige Aufschlüsselung findest du im
+    Freelance-Stundensatz-Rechner.

@@ -1864,3 +1864,454 @@
 "stripe-fees-uk":
   "title": "Stripe-Gebühren in Großbritannien: Sätze, Beispiele und Nettoauszahlung"
   "description": "Die genauen Stripe-Gebühren für Unternehmen in Großbritannien: 1,5 % + 0,20 £ für in Großbritannien und im EWR ausgegebene Karten, mit Rechenbeispielen."
+
+"fixed-price-vs-time-and-materials-quoting":
+  "title": "Festpreis oder Aufwand: So wählst du richtig"
+  "description": "Die Abwägung zwischen Festpreis und Abrechnung nach Aufwand, wer in welchem Modell das Risiko trägt und wie du pro Projekt das richtige wählst."
+  "body": |
+    Die zwei vorherrschenden Preismodelle für Freelancer legen das Risiko an
+    unterschiedliche Stellen. Wer für ein Projekt das falsche wählt, verschenkt
+    entweder Geld oder macht unbezahlte Überstunden.
+
+    ## Die Kernabwägung
+
+    **Festpreis**: Du nennst einen Preis für definierte Leistungen. Dauert das
+    Projekt länger als geschätzt, trägst du die Mehrzeit. Dauert es kürzer, behältst
+    du die Differenz.
+
+    **Nach Aufwand (Time & Material)**: Du rechnest die tatsächlich gearbeiteten
+    Stunden zu deinem Satz ab. Der Kunde trägt das Risiko, dass es länger dauert;
+    du wirst für jede Stunde bezahlt, egal wie Schätzung und Realität
+    auseinanderliegen.
+
+    ## Wann ein Festpreis gut funktioniert
+
+    - Der Umfang ist klar definiert und ändert sich wahrscheinlich nicht
+    - Du hast ähnliche Projekte gemacht und verlässliche Zeitdaten für die Schätzung
+    - Der Kunde will Budgetsicherheit und zahlt dafür einen Aufschlag
+    - Du kannst einen Puffer einplanen (meist 20–30 %), der normale Überschreitungen abfängt
+
+    ## Wann Aufwand besser ist
+
+    - Anforderungen entwickeln sich noch oder sind zu Beginn wirklich unbekannt
+      (Discovery, F&E, neue Themengebiete)
+    - Die Zusammenarbeit ist laufend, eher im Retainer-Stil als eine einzelne Leistung
+    - Der Kunde braucht Flexibilität, um die Richtung zu ändern, ohne jedes Mal den
+      Vertrag neu zu verhandeln
+
+    ## Der hybride Ansatz
+
+    Viele Freelancer bieten eine klar umrissene Phase (etwa Discovery oder einen
+    MVP) zum Festpreis an und wechseln für die laufende Arbeit auf Aufwand, sobald
+    sich die Anforderungen stabilisiert haben. So beschränkt sich das
+    Festpreisrisiko auf den Teil, den du wirklich sicher schätzen kannst.
+
+    ## Auch die Preispsychologie zählt
+
+    Manche Kunden bevorzugen den Festpreis unabhängig von allen Abwägungen, weil er
+    zu ihrer internen Budgetierung passt. Schon deshalb kann ein gut begründetes
+    Aufwandsangebot gegen einen Festpreis-Wettbewerber verlieren. Achte bei der
+    Wahl des Modells auf die Vorliebe des Kunden, nicht nur auf die Projektart.
+
+    ## Häufige Fragen
+
+    **Kann ich später von Aufwand auf Festpreis umstellen?**
+    Ja: Wenn du lange genug mit einem Kunden arbeitest, um seinen typischen Umfang
+    und seine Änderungswünsche zu kennen, kannst du künftige Phasen viel sicherer
+    bepreisen als zu Beginn.
+
+    **Wie gehe ich mit wachsendem Umfang bei Festpreisprojekten um?**
+    Definiere die Leistungen ausdrücklich im Vertrag und behandle alles darüber
+    hinaus als separat angebotenen Änderungsauftrag. Vereinbare diesen Ablauf vor
+    dem Start, nicht erst, wenn der Umfang schon gewachsen ist.
+
+    Mit der [Freelance-Projektkalkulation](/tools/freelance-project-estimate/)
+    erstellst du ein Festpreisangebot aus Stundensatz, geschätzten Stunden und
+    Risikopuffer.
+"freelance-hourly-rate-calculator-guide":
+  "title": "Deinen Freelance-Stundensatz festlegen: Was du 2024 verlangen solltest"
+  "description": "So berechnest du einen tragfähigen Freelance-Stundensatz, der Steuern, Zusatzleistungen und unbezahlte Verwaltungszeit abdeckt und Spielraum zum Sparen lässt, je nach Rolle und Markt."
+  "body": |
+    Der häufigste Preisfehler von Freelancern ist, vom Gehaltsvergleich aus
+    rückwärts zu rechnen. Hier ist ein Rahmen, der alles berücksichtigt, was ein
+    Gehalt nicht abdeckt.
+
+    ## Die echten Kosten der Selbstständigkeit gegenüber einer Anstellung
+
+    Als Freelancer bekommst du nicht mehr:
+    - Arbeitgeberanteil an den Lohnabgaben (~8 %)
+    - Krankenversicherung (500–1.500 $ pro Monat)
+    - Bezahlten Urlaub und Krankheitstage (10–20 Tage pro Jahr = 4–8 % der Zeit)
+    - Arbeitgeberzuschuss zur Altersvorsorge 401(k) (3–5 % des Gehalts)
+    - Büro und Ausstattung (unterschiedlich)
+
+    Rechne diese Posten zu deinem gewünschten Nettoeinkommen hinzu, um den
+    nötigen Bruttoumsatz zu erhalten.
+
+    ## Formel für den Freelance-Satz
+
+    **Nötiger Jahresumsatz = (gewünschtes Netto + Steuern + Zusatzleistungen + Urlaubsausgleich + Gemeinkosten)**
+    **Stundensatz = nötiger Jahresumsatz ÷ abrechenbare Stunden**
+
+    Dabei gilt: abrechenbare Stunden = Arbeitsstunden × 65–75 % (für Verwaltung,
+    Vertrieb und unbezahlte Arbeit)
+
+    ## Beispiel: Ziel 100.000 $ netto
+
+    | Posten | Betrag |
+    |------|--------|
+    | Gewünschtes Netto | 100.000 $ |
+    | Selbstständigen-Abgaben (15,3 %) | 20.000 $ |
+    | Einkommensteuer Bund/Staat (25 %) | 30.000 $ |
+    | Krankenversicherung | 12.000 $ |
+    | Urlaub (3 Wochen) | 6.000 $ |
+    | Nötiger Bruttoumsatz | 168.000 $ |
+    | Abrechenbare Stunden (1.600 h × 70 %) | 1.120 |
+    | **Mindeststundensatz** | **150 $/h** |
+
+    Mit 150 $ pro Stunde und 1.120 abrechenbaren Stunden erzielst du 168.000 $
+    Umsatz und behältst ~100.000 $ netto.
+
+    Mit der [Freelance-Projektkalkulation](/tools/freelance-project-estimate/)
+    baust du auf dieser Grundlage Projektangebote.
+"how-to-quote-a-freelance-project":
+  "title": "So kalkulierst du ein Freelance-Projekt: der vollständige Leitfaden"
+  "description": "Schritt für Schritt zu einem Freelance-Angebot, das deine Zeit deckt, deine Marge schützt und den Kunden überzeugt."
+  "body": |
+    Freelance-Projekte genau zu kalkulieren gehört zu den schwierigsten
+    Fähigkeiten. Kalkulierst du zu niedrig, ärgerst du dich über die Arbeit. Zu
+    hoch, und du verlierst den Kunden. Hier ist ein Rahmen, der dich jedes Mal zu
+    einer vertretbaren, profitablen Zahl führt.
+
+    ## Schritt 1: erst den Umfang, dann den Preis
+
+    Schätze nie Zeit ohne schriftlichen Umfang. Die „einfache Website“ eines
+    Kunden kann eine statische Seite mit 5 Unterseiten sein oder ein Onlineshop
+    mit 60. Bevor du irgendeine Zahl nennst, schreib Leistungen,
+    Korrekturschleifen und das ausdrücklich Ausgeschlossene auf.
+
+    ## Schritt 2: Stunden schätzen, dann mit 1,3–1,5 multiplizieren
+
+    Erfasse 30 Tage lang deine Stunden bei Projekten. Du wirst feststellen, dass
+    du systematisch um 30–50 % zu niedrig schätzt. Plane diesen Puffer in jedes
+    Angebot ein.
+
+    ## Schritt 3: deinen Satz anwenden
+
+    Dein Satz muss abdecken: dein gewünschtes Nettoeinkommen, Steuern (25–35 %),
+    Zusatzleistungen, unbezahlte Verwaltungszeit (20–30 % der Arbeitszeit) und
+    das Risiko auftragsloser Zeiten.
+
+    **Mindestsatz = (jährliches Einkommensziel + Steuern + Kosten) / abrechenbare Stunden**
+
+    ## Schritt 4: eine Projektmanagement-Pauschale aufschlagen
+
+    Schlag 10–15 % für Projektmanagement auf die Produktionszeit auf. Meetings,
+    E-Mails, Korrekturen und Kundentelefonate sind echte Arbeit, auch wenn sie sich
+    wie Overhead anfühlen.
+
+    Mit der [Freelance-Projektkalkulation](/tools/freelance-project-estimate/)
+    baust du dein Angebot aus seinen Bestandteilen auf.
+"freelance-rate-by-experience":
+  "title": "Freelance-Sätze nach Erfahrung und Technologie"
+  "description": "Marktübliche Stundensätze für freiberufliche Entwickler, Designer und Berater auf Junior-, Mid- und Senior-Niveau, dazu wie du deinen Mindestsatz berechnest."
+  "body": |
+    Die Marktsätze für Freelancer schwanken enorm nach Können, Erfahrung,
+    Technologie und Region. Die Zahlen unten beruhen auf aggregierten Daten von
+    Freelance-Plattformen, Umfragen und direkten Berichten aus der Praxis (Stand
+    2024). Nutze sie als Richtwert und finde dann mit dem Rechner oben den
+    Mindestsatz, der deine Einkommensziele erreicht.
+
+    ## Sätze für Entwickler (USD, remote)
+
+    | Level | Allgemeine Entwicklung | React/Node | Python/ML | Blockchain/Web3 |
+    |-------|------------|-----------|----------|----------------|
+    | Junior (0–2 J.) | 35–60 $ | 45–75 $ | 50–80 $ | 60–100 $ |
+    | Mid (2–5 J.) | 60–100 $ | 75–130 $ | 90–150 $ | 100–180 $ |
+    | Senior (5–10 J.) | 100–180 $ | 120–200 $ | 140–220 $ | 180–300 $ |
+    | Principal/Staff | 180–300 $+ | 200–350 $+ | 200–350 $+ | 300–500 $+ |
+
+    ## Sätze für Designer (USD, remote)
+
+    | Level | UI/UX-Design | Marke/Identität | Motion/3D |
+    |-------|-------------|--------------|----------|
+    | Junior | 40–65 $ | 45–70 $ | 50–80 $ |
+    | Mid | 70–110 $ | 80–130 $ | 90–150 $ |
+    | Senior | 120–180 $ | 130–200 $ | 150–250 $ |
+
+    ## Sätze für Berater / Strategie (USD)
+
+    Unabhängige Berater für Strategie, Produkt und Wachstum erzielen deutlich
+    höhere Sätze, weil ihre Arbeit direkt aufs Geschäft wirkt:
+
+    | Fachgebiet | Stundenspanne |
+    |-----------|------------|
+    | Produktstrategie | 150–350 $ |
+    | Wachstum / Paid Acquisition | 100–250 $ |
+    | Daten / Analytics | 100–200 $ |
+    | CTO / technischer Berater | 150–400 $ |
+    | Fractional CFO | 150–400 $ |
+
+    ## Warum dein Mindestsatz nicht dein tatsächlicher Satz sein sollte
+
+    Der Rechner ermittelt die Untergrenze, unter der du Geld verlierst. Dein
+    tatsächlicher Satz sollte die Marktsätze oben plus deinen
+    Spezialisierungsaufschlag widerspiegeln. Liegt der Marktsatz für deine
+    Fähigkeiten deutlich über deinem berechneten Minimum, verlange den Marktsatz.
+    Die Mindestsatz-Rechnung soll verhindern, dass du zu billig bist, nicht deine
+    Obergrenze festlegen.
+"freelance-rate-vs-salary":
+  "title": "Soll ich Freelancer werden? Freelance-Sätze und Angestelltengehalt im Vergleich"
+  "description": "Der echte Vergleich zwischen Freelance-Einkommen und Gehalt, unter Berücksichtigung von Steuern, Zusatzleistungen, nicht abrechenbarer Zeit und Einkommenssicherheit."
+  "body": |
+    Die Frage „Soll ich Freelancer werden?“ wird fast immer falsch gestellt, als
+    Vergleich zwischen deinem aktuellen Gehalt und einem Ziel-Stundensatz. Der
+    echte Vergleich ist viel differenzierter.
+
+    ## Was dein Arbeitgeber tatsächlich für dich zahlt
+
+    Ein Gehalt von 100.000 $ kostet den Arbeitgeber insgesamt etwa 130.000–145.000 $:
+
+    | Posten | Kosten |
+    |-----------|------|
+    | Gehalt | 100.000 $ |
+    | Lohnabgaben (Arbeitgeberanteil, ~7,65 %) | 7.650 $ |
+    | Krankenversicherung (Arbeitgeberanteil) | 8.000–15.000 $ |
+    | 401k-Zuschuss (3–6 %) | 3.000–6.000 $ |
+    | Ausstattung, Büro | 3.000–8.000 $ |
+    | Recruiting, Einarbeitung, Führung | 5.000–15.000 $ |
+    | **Gesamtkosten Arbeitgeber** | **~127.000–152.000 $** |
+
+    Als Freelancer trägst du all diese Kosten selbst. 100.000 $ Freelance-Umsatz
+    sind, bevor du sie abziehst, netto deutlich weniger wert als 100.000 $ Gehalt.
+
+    ## Der Multiplikator nicht abrechenbarer Zeit
+
+    Freelancer rechnen meist 50–70 % ihrer Arbeitszeit ab. Die übrigen 30–50 %
+    gehen in Akquise, Verwaltung, Rechnungen und Leerlauf zwischen Projekten.
+    Arbeitest du 2.000 Stunden im Jahr und rechnest 65 % ab, hast du 1.300
+    abrechenbare Stunden, um deine gesamten Jahreskosten zu decken.
+
+    Rechne das mit dem Freelance-Stundensatz-Rechner oben für deine Situation
+    durch: Der richtige Satz hängt von Einkommensziel, Steuersatz und
+    Auslastung ab.
+
+    ## Wann sich Freelancing finanziell lohnt
+
+    Freelancing schlägt die Anstellung finanziell, wenn:
+    - dein abrechenbarer Satz das 2,5- bis 3-Fache deines vergleichbaren Angestellten-Stundensatzes beträgt
+    - du ganzjährig über 60 % Auslastung halten kannst
+    - du eine gleichwertige Krankenversicherung zu vernünftigen Kosten bekommst
+    - deine Arbeit Fähigkeiten mit hohem Marktwert pro Stunde erfordert (Spezialisierungsaufschlag)
+"how-to-raise-your-freelance-rate-with-existing-clients":
+  "title": "So erhöhst du deinen Freelance-Satz bei Bestandskunden"
+  "description": "Ein praktischer Ablauf, um deinen Satz bei bestehenden Kunden zu erhöhen, ohne die Beziehung zu verlieren: Zeitpunkt, Formulierung und Umgang mit Widerstand."
+  "body": |
+    Bei einem neuen Kunden deinen Satz zu erhöhen ist einfach: Du nennst einen
+    höheren Preis. Bei jemandem, mit dem du seit einem Jahr arbeitest, ist es ein
+    anderes Gespräch, und die meisten Freelancer schieben es viel zu lange auf.
+
+    ## Warum Freelancer Bestandskunden zu selten erhöhen
+
+    Verlustangst wiegt schwerer als das Unbehagen, zu wenig zu verlangen: Einen
+    bekannten, verlässlichen Kunden zu verlieren fühlt sich riskanter an als die
+    langsamen, unsichtbaren Kosten, Monat für Monat unterbezahlt zu sein. Doch ein
+    Kunde, der mit deiner Arbeit zum aktuellen Satz zufrieden ist, bleibt bei
+    einer angemessenen Erhöhung sehr wahrscheinlich. Die Angst ist meist größer
+    als das tatsächliche Risiko.
+
+    ## Ein einfacher Ablauf
+
+    1. **Kündige es 60–90 Tage vorher an**: genug Zeit, um es einzuplanen, womit
+       der Einwand „das kommt jetzt überraschend“ komplett entfällt
+    2. **Begründe mit dem Wert, nicht mit Lebenshaltungskosten**: „Mein Satz
+       steigt auf X“ kommt besser an als „Ich muss erhöhen, weil meine Kosten
+       gestiegen sind“, was zur Verhandlung über deine privaten Ausgaben statt
+       über deinen Wert einlädt
+    3. **Teile es mit, statt um Erlaubnis zu bitten**: „Ab [Datum] beträgt mein
+       Satz X“ ist eine Tatsache über dein Geschäft, keine Bitte, die der Kunde
+       ablehnen kann
+    4. **Bleib dabei**: Die meisten Kunden, die sich wehren und dann zum neuen Satz
+       bleiben, respektieren deine Zeit und Fristen danach mehr
+
+    ## Wie viel und wie oft
+
+    10–20 % Erhöhung ein- bis zweimal im Jahr ist gut vertretbar und kostet selten
+    für sich allein einen Kunden. Größere Sprünge (30 % und mehr) lassen sich
+    leichter mit deutlich mehr Umfang, Erfahrung oder nachweisbaren Ergebnissen
+    seit der letzten Anpassung begründen.
+
+    ## Umgang mit Widerstand
+
+    Kann ein Kunde den neuen Satz nicht tragen, ist das eine nützliche
+    Information: Vielleicht hat er die Obergrenze dessen erreicht, was er dir
+    zahlen kann. Das ist ein Signal, mehr Energie in Kunden zu stecken, die mit
+    deinem Satz mitwachsen können, statt unterbezahlt zu bleiben, um jede
+    bestehende Beziehung zu halten.
+
+    ## Häufige Fragen
+
+    **Sollte ich alle Kunden gleichzeitig erhöhen?**
+    Nicht unbedingt: Staffle es nach Vertragsverlängerung und teste die Erhöhung
+    zuerst bei deiner sichersten Kundenbeziehung, um Vertrauen in den Ablauf zu
+    gewinnen.
+
+    **Was, wenn ein Kunde sagt, ein Wettbewerber sei günstiger?**
+    Frag, was genau er zu diesem Preis braucht. Oft zeigt sich, dass nicht
+    Gleiches mit Gleichem verglichen wird, oder es öffnet ein Gespräch über
+    kleineren Umfang, statt die Beziehung ganz zu verlieren.
+
+    Prüfe mit dem [Freelance-Stundensatz-Rechner](/tools/freelance-rate-calculator/),
+    ob dein neuer Satz nach Steuern und Ausgaben weiterhin dein
+    Mindesteinkommensziel erreicht.
+"freelance-invoice-best-practices":
+  "title": "Best Practices für Freelance-Rechnungen: Pflichtangaben und schneller bezahlt werden"
+  "description": "Was jede Freelance-Rechnung enthalten muss (Pflichtfelder, Zahlungsbedingungen, Verzugsregelung) und bewährte Techniken, um schneller bezahlt zu werden."
+  "body": |
+    Eine gut aufgebaute Rechnung leistet zweierlei: Sie dokumentiert klar, was du
+    geliefert hast, und macht es deinem Kunden so leicht wie möglich zu zahlen.
+
+    ## Pflichtangaben auf der Rechnung
+
+    Jede Rechnung sollte enthalten:
+    - Name und Anschrift deines Unternehmens (oder deinen bürgerlichen Namen als Einzelunternehmer)
+    - Name und Rechnungsanschrift des Kunden
+    - Rechnungsnummer (fortlaufend, nie doppelt)
+    - Rechnungsdatum und Fälligkeitsdatum
+    - Einzelne Positionen mit Menge, Preis und Positionssumme
+    - Zwischensumme, Rabatt (falls vorhanden), Steuer und Gesamtbetrag
+    - Zahlungshinweise (Bankverbindung, PayPal, Stripe-Link)
+    - Verzugsregelung („1,5 % pro Monat auf überfällige Beträge“)
+
+    ## Zahlungsbedingungen, die Verzug reduzieren
+
+    Die üblichen 30 Tage sind für Freelancer zu lang. Wirksamer sind:
+    - **14 Tage** für etablierte Kunden mit gutem Zahlungsverhalten
+    - **50 % vorab, 50 % bei Lieferung** für Neukunden oder große Projekte
+    - **7 Tage mit 2 % Skonto**: Kunden, die sonst spät zahlen würden, zahlen früh
+    - **Kartenabbuchung mit automatischer Wiederholung** (über Stripe) für Retainer-Kunden
+
+    ## Psychologische Kniffe, die funktionieren
+
+    1. **Nutze runde Zahlen** beim Satz und runde auf 5 $: einfacher für
+       Kreditorenabteilungen
+    2. **Füge einen „Jetzt bezahlen“-Button** mit Zahlungslink ein: weniger Reibung
+    3. **Schick die Rechnung innerhalb von 24 Stunden nach Lieferung**: Je frischer,
+       desto schneller wird bezahlt
+    4. **Erinnere 7 Tage vor Fälligkeit**: ein freundlicher Hinweis, keine Mahnung
+
+    Mit dem [Rechnungsrechner](/tools/invoice-total-calculator/) berechnest du die
+    Summe mit korrekt angewendeten Rabatten und Steuern.
+"how-to-calculate-invoice-total":
+  "title": "So berechnest du eine Rechnungssumme mit Steuern und Rabatten"
+  "description": "Schritt für Schritt zur korrekten Rechnungssumme: Positionen, Rabatte, Steuern und Verzugsgebühren."
+  "body": |
+    Wer die Rechnungssumme korrekt berechnet, vermeidet Streit, bekommt, was ihm
+    zusteht, und hält seine Forderungen sauber.
+
+    ## Formel der Rechnungssumme
+
+    **Zwischensumme** = Summe aller Positionen (Menge × Stückpreis)
+    **Nach Rabatt** = Zwischensumme × (1 − Rabatt in %)
+    **Steuer** = Betrag nach Rabatt × Steuersatz
+    **Gesamt** = Betrag nach Rabatt + Steuer
+
+    ## Rabatt vor oder nach Steuern?
+
+    Wende Rabatte immer auf den Nettobetrag an. Die Steuer wird auf den
+    rabattierten Preis berechnet, nicht auf den ursprünglichen. Manche
+    Rechtsordnungen schreiben das ausdrücklich vor; Steuer vor dem Rabatt zu
+    berechnen ist falsch und berechnet deinem Kunden zu viel.
+
+    ## Wann Verzugsgebühren dazukommen
+
+    Nenne auf jeder Rechnung die Zahlungsbedingungen (z. B. „30 Tage netto, 1,5 %
+    Verzugsgebühr pro Monat“). Verzugsgebühr = offener Betrag × Monatssatz ×
+    Monate im Verzug. Eine Rechnung über 5.000 $, 60 Tage überfällig bei 1,5 % pro
+    Monat = 5.000 $ × 1,5 % × 2 = 150 $ Gebühr.
+
+    ## Best Practice für Rechnungsnummern
+
+    Nutze fortlaufende Nummern (INV-001, INV-002 …) oder solche mit Jahrespräfix
+    (2024-INV-001). Verwende nie eine Nummer doppelt: Das schafft Chaos in der
+    Buchhaltung und kann bei einer Steuerprüfung auffallen.
+
+    Berechne deine Rechnung mit dem [Rechnungsrechner](/tools/invoice-total-calculator/).
+"contractor-vs-employee-hourly-rate":
+  "title": "Auftragnehmer oder Angestellter: der echte Stundensatz im Vergleich"
+  "description": "Wie du Tagessätze von Auftragnehmern und Angestelltengehälter vergleichbar machst: vollständige Stundensatz-Aufschlüsselung mit Zusatzleistungen und Steuern."
+  "body": |
+    Einen Tagessatz mit einer Festanstellung zu vergleichen ist wie Äpfel mit
+    Birnen, solange du nicht alle versteckten Unterschiede in der
+    Gesamtvergütung ausgleichst.
+
+    ## Was Angestellte haben und Auftragnehmer nicht
+
+    | Leistung | Jahreswert (Schätzung) |
+    |---------|------------------------|
+    | Krankenversicherung durch den Arbeitgeber | 6.000–14.000 $ |
+    | 401(k)-Zuschuss des Arbeitgebers (4 %) bei 75.000 $ | 3.000 $ |
+    | Bezahlter Urlaub (15 Tage) | ~4.300 $ bei 75.000 $ |
+    | Lohnabgaben (Arbeitgeberanteil FICA) | 7,65 % des Gehalts |
+    | Krankheitstage, Elternzeit | 1.000–5.000 $ |
+
+    Zusatzleistungen machen typischerweise **25–40 % zusätzlich zum Grundgehalt** aus.
+
+    ## Tagessatz in gleichwertiges Gehalt umrechnen
+
+    Ein Auftragnehmer, der 220 Tage à 500 $ abrechnet, verdient brutto 110.000 $. Abzüglich:
+    - Selbstständigen-Abgaben: ~15.000 $
+    - Keine Arbeitgeberleistungen: −20.000 $ gegenüber der Anstellung
+    - 20 % Puffer für Verwaltung und Leerlauf
+
+    Gleichwertiges Gehalt: etwa **75.000–85.000 $**.
+
+    ## Die Faustregel
+
+    **Stundensatz Auftragnehmer ≈ gleichwertiger Angestellten-Stundensatz × 1,5–2**
+
+    Ein Angestellter mit 75.000 $ kostet ~36 $ pro Stunde an Gehalt. Ein
+    Auftragnehmer mit vergleichbarer Arbeit muss 55–72 $ pro Stunde verlangen, um
+    nach allen Steuern und Kosten gleich vergütet zu sein.
+
+    Modelliere deine genauen Zahlen mit dem [Gehalt-in-Stundensatz-Rechner](/tools/salary-to-hourly-calculator/).
+"salary-to-hourly-conversion-guide":
+  "title": "Gehalt in Stundensatz: So rechnest du richtig um"
+  "description": "Schritt für Schritt vom Jahresgehalt zum Stundensatz, inklusive Teilzeit, Überstunden und effektivem Stundensatz nach Steuern."
+  "body": |
+    Ein Jahresgehalt in einen Stundensatz umzurechnen klingt einfach: durch
+    2.080 Stunden teilen (52 Wochen × 40 Stunden). Das ergibt aber einen
+    Bruttowert, der Urlaub, Feiertage, Kosten für Zusatzleistungen und
+    Lohnabgaben ignoriert. Hier ist das vollständige Bild.
+
+    ## Grundformel: Gehalt ÷ 2.080
+
+    Ein Gehalt von 75.000 $ ÷ 2.080 Arbeitsstunden = **36,06 $ pro Stunde brutto**.
+
+    Diesen Satz nutzt ein Arbeitgeber für die Überstundenberechnung, und er steht
+    auf den meisten Gehaltsabrechnungen. Er ist aber nicht das, was du pro
+    tatsächlich gearbeiteter Stunde verdienst.
+
+    ## Bezahlten Urlaub berücksichtigen
+
+    Mit 15 Urlaubstagen + 10 bundesweiten Feiertagen = 25 freie Tage = 200
+    Stunden. Du arbeitest 2.080 − 200 = 1.880 Stunden pro Jahr. Dein effektiver
+    Stundensatz: 75.000 $ ÷ 1.880 = **39,89 $ pro Stunde**. Du wirst auch für die
+    freie Zeit bezahlt, aber wenn du wissen willst, was du pro produktiver Stunde
+    kostest, nimm diese Zahl.
+
+    ## Stundensatz nach Steuern
+
+    Bei 22 % effektiver Bundessteuer und 6,2 % FICA:
+    - Nettogehalt: 75.000 $ × (1 − 0,22 − 0,062) = ~53.850 $
+    - Netto pro Stunde (÷ 2.080): **25,89 $ pro Stunde netto**
+
+    ## Freelance-Satz und Angestelltensatz
+
+    Freelancer müssen Selbstständigen-Abgaben (15,3 %), Zusatzleistungen,
+    unbezahlte Verwaltungszeit und das Leerlaufrisiko hinzurechnen. Wer als
+    Freelancer das Äquivalent von 75.000 $ erreichen will, muss meist **55–70 $
+    pro Stunde** verlangen, um die Gesamtvergütung eines Angestellten zu
+    erreichen.
+
+    Modelliere deine Situation mit dem [Gehalt-in-Stundensatz-Rechner](/tools/salary-to-hourly-calculator/).
