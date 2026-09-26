@@ -1,11 +1,13 @@
-// Records the text calculators write at runtime, for translation coverage.
+// Records every string i18n.js would try to translate, for coverage.
 //
-// Result sentences are built by concatenation ("World-class FCF margin: " +
-// x + "%. ..."), so scraping JS string literals gives fragments that never
-// match what is on screen. This loads every tool page from the built site,
-// varies each input, toggles every select/checkbox, and saves each distinct
-// text node / tooltip / placeholder seen inside the widget to
-// content/i18n/_runtime_strings.json. scripts/i18n_coverage.py reads it.
+// It reads the live DOM of every built page, skipping what i18n.js skips
+// ([data-i18n] keys, [data-i18n-region] blocks, translate="no", scripts), so
+// the inventory matches what visitors see rather than what an HTML parser
+// guesses. On tool pages it also varies each input and toggles every
+// select/checkbox: result sentences are built by concatenation
+// ("World-class FCF margin: " + x + "%. ..."), so only running the
+// calculators shows their real text. Output: content/i18n/_runtime_strings.json,
+// one example per template, read by scripts/i18n_coverage.py.
 //
 //   make build && make i18n-crawl        (uses Google Chrome, no npm install)
 "use strict";
@@ -46,23 +48,38 @@ function serve() {
   return new Promise((resolve) => server.listen(0, "127.0.0.1", () => resolve(server)));
 }
 
-// Runs in the page: every visible string inside the widget.
-function collect() {
+// Runs in the page: every string under `selector` that i18n.js would see.
+function collect(selector) {
   const out = [];
-  const w = document.querySelector(".tool-widget");
-  if (!w) return out;
-  const walker = document.createTreeWalker(w, NodeFilter.SHOW_TEXT);
+  const root = document.querySelector(selector);
+  if (!root) return out;
+  const OFF = "[data-i18n],[data-i18n-region],[translate='no'],script,style,noscript,textarea,code,pre";
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
   while (walker.nextNode()) {
     const el = walker.currentNode.parentElement;
-    if (el && !/^(SCRIPT|STYLE|NOSCRIPT|TEXTAREA)$/.test(el.tagName)) out.push(walker.currentNode.data);
+    if (el && !el.closest(OFF)) out.push(walker.currentNode.data);
   }
-  w.querySelectorAll("[placeholder],[aria-label],[title],[alt],[data-tooltip]").forEach((el) => {
+  root.querySelectorAll("[placeholder],[aria-label],[title],[alt],[data-tooltip]").forEach((el) => {
+    if (el.closest(OFF)) return;
     for (const a of ["placeholder", "aria-label", "title", "alt", "data-tooltip"]) {
       const v = el.getAttribute(a);
       if (v) out.push(v);
     }
   });
   return out;
+}
+
+function builtPages() {
+  const skip = /^(embed|dashboard|i18n|static|tools\/[^/]+)\//;
+  const found = [];
+  (function walk(dir) {
+    for (const name of fs.readdirSync(dir)) {
+      const full = path.join(dir, name);
+      if (fs.statSync(full).isDirectory()) walk(full);
+      else if (name === "index.html") found.push("/" + path.relative(DIST, dir).split(path.sep).join("/") + "/");
+    }
+  })(DIST);
+  return found.map((p) => p.replace("//", "/")).filter((p) => !skip.test(p.slice(1)));
 }
 
 async function main() {
@@ -82,7 +99,7 @@ async function main() {
     try {
       await page.goto(`${base}/tools/${slug}/`, { waitUntil: "load" });
       await page.waitForTimeout(300);
-      add(await page.evaluate(collect));
+      add(await page.evaluate(collect, "body"));
       // Push each input across ranges that trip the calculators' branches.
       const inputs = await page.$$(".tool-widget input[type=number], .tool-widget input[type=text], .tool-widget input:not([type])");
       for (const input of inputs) {
@@ -93,7 +110,7 @@ async function main() {
           await input.dispatchEvent("input");
           await input.dispatchEvent("change");
           await page.waitForTimeout(60);
-          add(await page.evaluate(collect));
+          add(await page.evaluate(collect, ".tool-widget"));
         }
         await input.fill(orig);
         await input.dispatchEvent("input");
@@ -102,16 +119,27 @@ async function main() {
         for (const opt of await sel.$$eval("option", (os) => os.map((o) => o.value))) {
           await sel.selectOption(opt);
           await page.waitForTimeout(60);
-          add(await page.evaluate(collect));
+          add(await page.evaluate(collect, ".tool-widget"));
         }
       }
       for (const box of await page.$$(".tool-widget input[type=checkbox], .tool-widget input[type=radio]")) {
         await box.click({ force: true }).catch(() => {});
         await page.waitForTimeout(60);
-        add(await page.evaluate(collect));
+        add(await page.evaluate(collect, ".tool-widget"));
       }
     } catch (e) {
       console.error(`${slug}: ${e.message.split("\n")[0]}`);
+    }
+    await page.close();
+  }
+  for (const url of builtPages()) {
+    const page = await browser.newPage();
+    try {
+      await page.goto(base + url, { waitUntil: "load" });
+      await page.waitForTimeout(200);
+      add(await page.evaluate(collect, "body"));
+    } catch (e) {
+      console.error(`${url}: ${e.message.split("\n")[0]}`);
     }
     await page.close();
   }
@@ -119,7 +147,7 @@ async function main() {
   server.close();
   const list = [...seen.values()].sort();
   fs.writeFileSync(OUT, JSON.stringify(list, null, 1) + "\n");
-  console.log(`${list.length} runtime strings from ${tools.length} tools -> ${path.relative(ROOT, OUT)}`);
+  console.log(`${list.length} strings from ${tools.length} tools + other pages -> ${path.relative(ROOT, OUT)}`);
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });

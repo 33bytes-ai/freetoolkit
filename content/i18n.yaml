@@ -38,11 +38,11 @@ en:
 
 fr:
   label: "Français"
-  nav_calculators: "Calculatrices"
+  nav_calculators: "Calculateurs"
   nav_all_tools: "Tous les outils"
   nav_glossary: "Glossaire"
   nav_browse_all: "Voir les {n} calculatrices →"
-  hero_h1_prefix: "Calculatrices gratuites pour"
+  hero_h1_prefix: "Calculateurs gratuits pour"
   hero_sub: "Fixez un prix, vérifiez votre trésorerie, projetez votre croissance, calculez votre TJM. Entrez vos chiffres, obtenez la réponse en quelques secondes. Gratuit, sans inscription, rien ne quitte votre navigateur."
   section_browse: "Parcourir par catégorie"
   banner_offer: "Afficher ce site en {lang} ?"
