@@ -169,3 +169,32 @@
     está la incertidumbre real. Calcula cada modelo con un escenario pesimista,
     uno esperado y uno optimista: un proyecto que solo supera el umbral en el
     optimista es una apuesta, no una inversión.
+
+"Valuation":
+  "body": |
+    La valoración es una negociación informada por los números, no un resultado de
+    ellos. Estas calculadoras producen el rango defendible del que parte la
+    conversación y hacen explícitas las hipótesis que sostienen el resultado.
+
+    ## Cuál necesitas
+
+    El **DCF** es el método de primeros principios: prever los flujos de caja,
+    descontarlos y ver cuánto vale el negocio por sí mismo. **Múltiplo de
+    EBITDA**, **PER** y **P/S** son el enfoque por comparables: más rápido,
+    anclado al mercado y como se fija realmente el precio en la mayoría de
+    operaciones de pequeñas empresas y SaaS. **Valor empresarial** concilia ambos
+    ajustando el valor del capital por la deuda y la caja: es la cifra que negocia
+    un comprador. **TAM/SAM/SOM** dimensiona la oportunidad en la que se apoya una
+    historia de crecimiento, y **Dilución** muestra con cuánto se quedan los
+    fundadores tras cada ronda.
+
+    ## Qué significan los números
+
+    Los múltiplos varían muchísimo según el crecimiento y el sector: una SaaS que
+    crece más del 40 % anual ha logrado históricamente varias veces el múltiplo de
+    ingresos de una que crece al 10 %, y las empresas no cotizadas cotizan con
+    descuento por iliquidez frente a sus comparables cotizadas. Toma cualquier
+    múltiplo aislado como el punto medio de un rango amplio. En dilución, lo que
+    los fundadores subestiman siempre es el efecto acumulado: tres rondas del 20 %
+    dejan aproximadamente un 51 %, no un 40 %, porque cada ronda diluye la tabla de
+    capitalización post-money y no la original.

@@ -4318,3 +4318,1024 @@ how-to-improve-fcf-margin:
     Utilisez le [calculateur de CMPC](/tools/wacc-calculator/) pour les
     entreprises établies dont la valeur des capitaux propres et de la dette est
     observable.
+
+"dcf-valuation-startup":
+  "title": "Valoriser une startup par DCF : quel taux d'actualisation retenir"
+  "description": "Comment appliquer un DCF à une startup en amorçage : choisir le taux d'actualisation, gérer l'incertitude de la valeur terminale, et pourquoi le DCF est difficile sans chiffre d'affaires."
+  "body": |
+    Le DCF est difficile à appliquer à une startup, mais pas impossible. Voici
+    comment l'utiliser avec discernement quand les flux sont incertains.
+
+    ## Choisir un taux d'actualisation pour une startup
+
+    Le CMPC classique dérivé du MEDAF fonctionne mal pour une entreprise sans
+    chiffre d'affaires, car :
+    - Il n'y a pas de bêta coté de référence
+    - La dette est minime ou inexistante
+    - Le risque sur les capitaux propres est extrême
+
+    Approches pratiques :
+    **Méthode du taux minimal des VC** : prendre le rendement attendu par les VC
+    (25 à 40 % en amorçage) comme coût des capitaux propres. Il reflète ce que les
+    investisseurs exigent réellement.
+
+    **Taux d'actualisation par stade** (méthode du capital-risque) :
+    - Amorçage : 50–80 %
+    - Série A : 35–50 %
+    - Série B : 25–35 %
+    - Série C et au-delà : 18–25 %
+    - Capital-croissance : 15–20 %
+
+    ## Le problème des taux d'actualisation élevés
+
+    À 40 % d'actualisation, les flux de l'année 5 ne valent que 18 cents par
+    dollar (1/(1,4^5) = 0,186). Ceux de l'année 10 valent 3 cents. Les DCF de
+    startups en amorçage dépendent donc presque entièrement de la valeur terminale,
+    extrêmement sensible aux hypothèses de croissance.
+
+    ## Une approche plus honnête pour les startups
+
+    Beaucoup de praticiens utilisent plutôt un DCF inversé : partir du prix actuel
+    (ou de la valorisation de sortie visée) et en déduire les hypothèses de
+    croissance et de marge implicites. Puis se demander : ces hypothèses sont-elles
+    réalistes ?
+
+    Utilisez le [calculateur de DCF](/tools/dcf-calculator/) pour la version
+    directe, en gardant en tête la sensibilité de la valeur terminale.
+"dcf-vs-comps-valuation":
+  "title": "DCF ou comparables boursiers : quelle méthode de valorisation utiliser"
+  "description": "Quand utiliser le DCF ou l'analyse par comparables pour valoriser une entreprise : forces, faiblesses, et quand chaque méthode donne des résultats fiables."
+  "body": |
+    Toute valorisation utilise au moins deux méthodes et les confronte. Voici quand
+    chacune est la plus fiable.
+
+    ## DCF (valeur intrinsèque)
+
+    **À utiliser quand** : vous disposez de prévisions de flux fiables, le modèle
+    économique est stable et vous voulez comprendre la valeur fondamentale
+    indépendamment du sentiment de marché.
+
+    **Forces** : oblige à expliciter les hypothèses de croissance et de marge ;
+    montre la valeur actuelle de l'économie future ; utile pour les acquisitions et
+    les LBO.
+
+    **Faiblesses** : de mauvaises données donnent un mauvais résultat ; de petits
+    changements du taux d'actualisation ou de la croissance terminale font varier
+    fortement la valorisation ; difficile à utiliser pour une entreprise sans
+    chiffre d'affaires ou non rentable.
+
+    ## Analyse par comparables
+
+    **À utiliser quand** : il existe de bons comparables cotés au profil de
+    croissance similaire, vous voulez un contrôle validé par le marché, ou vous
+    préparez une levée.
+
+    **Multiples courants** :
+    - Multiple d'ARR : 4 à 15× le chiffre d'affaires (SaaS, selon la croissance)
+    - Multiple d'EBITDA : 8 à 15× (entreprises rentables)
+    - Multiple de marge brute : 5 à 10× (services, places de marché)
+
+    **Forces** : reflète ce que les acheteurs paient réellement aujourd'hui ;
+    facile à communiquer.
+
+    **Faiblesses** : les multiples se contractent ou se dilatent avec le marché ;
+    les entreprises « comparables » ne le sont pas toujours vraiment.
+
+    ## Bonne pratique : croiser les méthodes
+
+    Utilisez le DCF comme ancre intrinsèque et les comparables comme contrôle de
+    réalité. Si le DCF donne 50 M$ et les comparables 25 M$, soit vos hypothèses
+    sont agressives, soit le marché applique une décote par rapport aux
+    fondamentaux.
+
+    Utilisez le [calculateur de DCF](/tools/dcf-calculator/) pour construire votre
+    valeur intrinsèque.
+"ebitda-multiple-by-industry":
+  "title": "Multiples d'EBITDA par secteur (repères 2024)"
+  "description": "Les multiples d'EBITDA vont de 4–6× dans les secteurs traditionnels à 15–30× pour le SaaS à forte croissance. Ce guide présente les multiples actuels par secteur, croissance et taille d'opération."
+  "body": |
+    Les multiples d'EBITDA reflètent les attentes de croissance, la qualité du
+    chiffre d'affaires récurrent et l'appétit du marché pour le risque. Une
+    croissance plus forte et des flux plus prévisibles justifient des multiples plus
+    élevés.
+
+    ## Multiples VE/EBITDA par secteur (2024)
+
+    | Secteur | Premier quartile | Médiane | Dernier quartile |
+    |--------|---------------|--------|----------------|
+    | SaaS (ARR > 10 M$, croissance de 30 % et plus) | 15× | 22× | 30× et plus |
+    | Logiciel B2B (mature) | 8× | 12× | 18× |
+    | Tech santé | 10× | 15× | 22× |
+    | Industrie | 4× | 6× | 9× |
+    | Distribution / logistique | 5× | 7× | 10× |
+    | Services aux entreprises | 5× | 8× | 12× |
+    | Commerce de détail | 4× | 6× | 8× |
+    | BTP | 3× | 5× | 7× |
+
+    ## Les facteurs qui font monter les multiples
+
+    - **Croissance du chiffre d'affaires** : chaque gain de 10 points de croissance annuelle ajoute en général 1 à 2 points de multiple
+    - **Chiffre d'affaires récurrent** : l'abonnement ou le contrat se valorise mieux que le transactionnel
+    - **Marge brute** : marge plus élevée = multiple plus élevé (les 70 % et plus du SaaS justifient une prime)
+    - **Concentration clients** : une faible concentration (aucun client à plus de 10 %) fait monter le multiple
+    - **Rétention** : un NRR supérieur à 110 % peut ajouter 3 à 5 points au multiple d'EBITDA d'un SaaS
+
+    ## La prime de taille
+
+    Les grosses opérations bénéficient d'une prime. Les entreprises à moins de
+    5 M$ d'EBITDA se vendent avec 3 à 5 points de décote par rapport aux grandes
+    capitalisations comparables, en raison d'un vivier d'acheteurs restreint, du
+    risque lié aux personnes clés et d'un levier opérationnel plus faible.
+"how-to-calculate-your-own-ebitda-multiple":
+  "title": "Comment estimer votre propre multiple d'EBITDA"
+  "description": "Une méthode pas à pas pour estimer un multiple VE/EBITDA réaliste pour votre entreprise, à partir de transactions comparables ajustées de la taille et de la croissance."
+  "body": |
+    Les multiples d'EBITDA moyens d'un secteur sont un point de départ, pas une
+    réponse : le multiple qui s'applique vraiment à votre entreprise dépend de sa
+    taille, de sa croissance et de sa ressemblance avec les transactions à partir
+    desquelles la moyenne a été calculée.
+
+    ## Étape 1 : partir de la fourchette du secteur
+
+    Trouvez la fourchette VE/EBITDA habituelle de votre secteur (à titre indicatif :
+    SaaS 15–30×, logiciel B2B 8–15×, industrie 5–8×, services 4–7×) comme point de
+    départ.
+
+    ## Étape 2 : ajuster selon la taille
+
+    À secteur égal, les petites entreprises se valorisent systématiquement à des
+    multiples plus bas que les grandes : une entreprise à 1 M$ d'EBITDA se vend
+    couramment avec une nette décote par rapport à une entreprise à 20 M$ d'EBITDA
+    du même secteur, car les acheteurs paient une prime pour la taille, la
+    profondeur de l'équipe de direction et un risque plus faible lié aux personnes
+    clés.
+
+    ## Étape 3 : ajuster selon la croissance
+
+    Une entreprise qui croît de plus de 30 % par an obtient en général un multiple
+    bien au-dessus de la médiane du secteur ; un EBITDA stable ou en baisse tire le
+    multiple vers le bas de la fourchette, voire en dessous. La croissance est en
+    général le premier facteur qui situe une entreprise dans la fourchette.
+
+    ## Étape 4 : ajuster selon la concentration et la dépendance
+
+    Une forte concentration clients (quelques clients faisant l'essentiel du
+    chiffre d'affaires), la dépendance à une personne clé (l'entreprise ne tourne
+    pas sans le fondateur) ou un chiffre d'affaires peu récurrent font tous baisser
+    le multiple par rapport aux pairs, car ce sont des risques dont hérite
+    l'acheteur.
+
+    ## Étape 5 : recouper avec le VE/chiffre d'affaires
+
+    Si l'EBITDA est faible ou volatil, un multiple VE/chiffre d'affaires sert de
+    contrôle utile : calculez la valeur d'entreprise des deux façons et vérifiez
+    que les deux estimations concordent à peu près. Un grand écart signifie en
+    général qu'une de vos hypothèses (trajectoire de marge, durabilité de la
+    croissance) doit être revue.
+
+    ## Questions fréquentes
+
+    **Où trouver de vrais multiples de transactions comparables ?**
+    Les rapports des conseils en fusions-acquisitions, les intermédiaires en
+    cession spécialisés dans votre secteur et, pour les comparables cotés, les
+    fournisseurs de données financières sont les sources habituelles. Un
+    intermédiaire qui connaît votre niche est souvent le chemin le plus rapide vers
+    un chiffre réaliste.
+
+    **Un multiple plus élevé est-il toujours meilleur pour le vendeur ?**
+    Seulement combiné au montant réel de l'EBITDA : un multiple élevé sur un petit
+    EBITDA peut donner une valorisation totale plus faible qu'un multiple modeste
+    sur un EBITDA bien plus grand.
+
+    Utilisez le [calculateur de multiple d'EBITDA](/tools/ebitda-multiple-calculator/)
+    pour convertir votre EBITDA et le multiple choisi en valeur d'entreprise et
+    valeur des capitaux propres estimées.
+"what-is-ev-ebitda":
+  "title": "Qu'est-ce que le multiple VE/EBITDA ?"
+  "description": "Le VE/EBITDA (valeur d'entreprise sur EBITDA) est le multiple de valorisation le plus utilisé en fusions-acquisitions et en private equity. Il mesure combien les acheteurs paient par dollar de résultat d'exploitation, indépendamment de la structure de financement et des choix comptables."
+  "body": |
+    Le **VE/EBITDA** divise la valeur d'entreprise par l'EBITDA (résultat avant intérêts, impôts, dépréciations et amortissements). C'est le multiple de valorisation de référence des fusions-acquisitions, car il neutralise les effets de la structure du capital, de la stratégie fiscale et des charges non décaissées.
+
+    $$\text{VE/EBITDA} = \frac{\text{Valeur d'entreprise}}{\text{EBITDA}}$$
+
+    ## Pourquoi le VE/EBITDA plutôt que le PER ?
+
+    Le PER (cours/bénéfice) dépend de l'endettement (charges d'intérêts) et de l'optimisation fiscale. Deux entreprises identiques avec des niveaux de dette différents affichent des PER très différents. Le VE/EBITDA élimine ces distorsions et se prête mieux à la comparaison d'entreprises aux structures de capital différentes.
+
+    ## Qu'est-ce que la valeur d'entreprise ?
+
+    $$\text{VE} = \text{Capitalisation} + \text{Dette totale} - \text{Trésorerie}$$
+
+    La VE est ce que paie réellement un acquéreur : il achète la capitalisation (les capitaux propres) et reprend la dette, mais récupère la trésorerie disponible.
+
+    ## VE/EBITDA ou VE/chiffre d'affaires
+
+    Le VE/EBITDA exige un EBITDA positif. Pour les SaaS jeunes ou à forte croissance dont l'EBITDA est proche de zéro, les investisseurs utilisent le **VE/chiffre d'affaires** (proche du ratio cours/chiffre d'affaires). À mesure que les entreprises mûrissent et que l'EBITDA grossit, le marché passe des multiples de chiffre d'affaires aux multiples d'EBITDA.
+
+    ## Limites
+
+    - L'EBITDA exclut le capex : les entreprises capitalistiques paraissent moins chères qu'elles ne le sont en VE/EBITDA
+    - Les retraitements (ajustements exceptionnels) peuvent gonfler l'EBITDA ajusté dans les présentations des vendeurs
+    - Peu utile pour les services financiers et l'assurance
+"enterprise-value-vs-market-cap-difference":
+  "title": "Valeur d'entreprise ou capitalisation : quelle différence ?"
+  "description": "La capitalisation ne mesure que la valeur des capitaux propres ; la valeur d'entreprise ajoute la dette et retranche la trésorerie pour donner le vrai coût de rachat de toute l'entreprise."
+  "body": |
+    Capitalisation et valeur d'entreprise répondent toutes deux à « combien vaut
+    cette entreprise ? », mais pour deux acheteurs différents : l'un n'achète que
+    les capitaux propres, l'autre toute l'entreprise, dettes et trésorerie
+    comprises.
+
+    ## Les formules
+
+    $$\text{Capitalisation} = \text{Cours} \times \text{Actions en circulation}$$
+
+    $$\text{Valeur d'entreprise} = \text{Capitalisation} + \text{Dette totale} - \text{Trésorerie et équivalents}$$
+
+    ## Pourquoi on ajoute la dette
+
+    Quand vous rachetez une entreprise, vous héritez en général de sa dette avec
+    ses actifs : le vrai coût de l'acquisition comprend donc le remboursement (ou
+    la reprise) de cette dette en plus du rachat des actionnaires. La seule
+    capitalisation sous-estime le coût réel d'une entreprise endettée.
+
+    ## Pourquoi on retranche la trésorerie
+
+    La trésorerie au bilan réduit de fait le coût net de l'acquisition, car
+    l'acquéreur peut utiliser la trésorerie de la cible pour financer
+    l'opération (ou simplement la compter comme un actif reçu). C'est pourquoi une
+    entreprise riche en trésorerie peut avoir une valeur d'entreprise nettement
+    inférieure à sa capitalisation.
+
+    ## Un exemple chiffré
+
+    Une entreprise a 500 M$ de capitalisation, 150 M$ de dette et 80 M$ de trésorerie :
+
+    $$\text{VE} = 500 \text{ M\$} + 150 \text{ M\$} - 80 \text{ M\$} = 570 \text{ M\$}$$
+
+    La capitalisation de 500 M$ seule sous-estimerait de 70 M$ le coût réel de
+    rachat de toute l'entreprise.
+
+    ## Quand VE et capitalisation divergent le plus
+
+    Les entreprises très endettées (détenues par des fonds de private equity,
+    secteurs capitalistiques) affichent une VE bien supérieure à leur
+    capitalisation. Les entreprises riches en trésorerie et peu endettées (beaucoup
+    d'éditeurs de logiciels matures) peuvent afficher une VE inférieure à leur
+    capitalisation, parfois nettement, si la trésorerie est importante par rapport
+    à leur taille.
+
+    ## Pourquoi les multiples utilisent la VE et non la capitalisation
+
+    Les multiples VE/EBITDA et VE/chiffre d'affaires utilisent la valeur
+    d'entreprise précisément parce qu'elle est neutre vis-à-vis de la structure du
+    capital : elle permet de comparer à égalité une entreprise très endettée et une
+    entreprise sans dette, les deux étant valorisées comme une activité complète,
+    quel que soit leur mode de financement.
+
+    ## Questions fréquentes
+
+    **La valeur d'entreprise peut-elle être négative ?**
+    Rarement, mais oui : si la trésorerie dépasse la capitalisation plus la dette,
+    ce qui arrive quand une entreprise se négocie bien en dessous de sa trésorerie.
+    C'est un signal inhabituel à creuser plutôt qu'à prendre pour argent comptant.
+
+    **Quel chiffre utiliser pour comparer la taille de deux entreprises ?**
+    La valeur d'entreprise compare plus justement la taille de l'activité, car elle
+    n'est pas faussée par les différences de financement.
+
+    Utilisez le [calculateur de valeur d'entreprise](/tools/enterprise-value-calculator/)
+    pour calculer la VE à partir de la capitalisation, de la dette et de la
+    trésorerie, et passer de la VE à la valeur des capitaux propres.
+"ev-ebitda-multiple-benchmarks":
+  "title": "Le multiple VE/EBITDA : signification et repères par secteur"
+  "description": "Le multiple VE/EBITDA expliqué, avec des repères par secteur, son usage en private equity et comment interpréter le multiple de votre entreprise."
+  "body": |
+    ## Le VE/EBITDA expliqué
+
+    $$\text{VE/EBITDA} = \frac{\text{Valeur d'entreprise}}{\text{EBITDA}}$$
+
+    Le VE/EBITDA mesure à quel point une entreprise est chère par rapport à sa génération de trésorerie d'exploitation. C'est le multiple d'acquisition le plus utilisé car il est neutre vis-à-vis de la structure du capital et gomme l'effet des politiques d'amortissement.
+
+    ## Repères par secteur
+
+    | Secteur | VE/EBITDA habituel |
+    |----------|-------------------|
+    | Technologie / SaaS | 20–40× |
+    | Santé | 12–18× |
+    | Biens de consommation | 10–15× |
+    | Industrie | 7–12× |
+    | Pétrole et gaz | 5–8× |
+    | Services publics | 8–12× |
+    | LBO de private equity | 6–10× |
+
+    ## Pourquoi le VE/EBITDA plutôt que le PER ?
+
+    - Insensible aux différences de structure du capital (l'endettement ne le fausse pas)
+    - Gomme les différences de méthode d'amortissement
+    - Fonctionne pour les entreprises sans bénéfice (EBITDA > résultat net)
+    - Langage standard des discussions de fusions-acquisitions
+
+    ## Qu'est-ce qui fait monter le multiple ?
+
+    - Un taux de croissance plus élevé
+    - Un chiffre d'affaires récurrent / par abonnement
+    - Des coûts de changement élevés / un avantage concurrentiel durable
+    - De fortes marges brutes
+    - L'historique de l'équipe dirigeante
+
+    Utilisez le [calculateur de valeur d'entreprise](/tools/enterprise-value-calculator/) pour calculer les multiples VE/EBITDA et VE/chiffre d'affaires.
+"what-is-enterprise-value":
+  "title": "Qu'est-ce que la valeur d'entreprise ?"
+  "description": "Le guide complet de la valeur d'entreprise : formule, composantes, différence avec la capitalisation et usage en fusions-acquisitions et en valorisation."
+  "body": |
+    ## Définition de la valeur d'entreprise
+
+    La valeur d'entreprise (VE) est le coût théorique total d'acquisition d'une entreprise :
+
+    $$\text{VE} = \text{Capitalisation} + \text{Dette totale} - \text{Trésorerie}$$
+
+    Contrairement à la capitalisation, la VE tient compte de la structure du capital : les dettes dont hérite l'acheteur et la trésorerie qu'il récupère.
+
+    ## VE et capitalisation
+
+    | | Capitalisation | Valeur d'entreprise |
+    |-|-----------|-----------------|
+    | **Ce qu'elle représente** | Valeur des capitaux propres seule | Coût total d'acquisition |
+    | **Inclut la dette** | Non | Oui |
+    | **Inclut la trésorerie** | Non | La retranche |
+    | **Usage** | Comparer des cours de bourse | Fusions-acquisitions, valorisation DCF |
+
+    ## Les composantes de la valeur d'entreprise
+
+    - **Capitalisation** : cours actuel × nombre d'actions en circulation
+    - **Dette totale** : tous les passifs portant intérêt (court et long terme)
+    - **Trésorerie** : la trésorerie et ses équivalents sont retranchés (l'acheteur les récupère)
+    - **Intérêts minoritaires** (avancé) : inclus si des filiales sont détenues partiellement
+    - **Actions de préférence** (avancé) : ajoutées comme de la dette
+
+    ## Pourquoi la VE compte
+
+    Pour comparer deux entreprises aux structures de capital différentes, la VE donne une comparaison plus propre. Une entreprise très endettée avec la même capitalisation qu'un concurrent sans dette coûte en réalité bien plus cher à racheter.
+
+    Calculez la valeur d'entreprise avec le [calculateur de valeur d'entreprise](/tools/enterprise-value-calculator/).
+"cap-table-basics-for-founders":
+  "title": "Les bases de la table de capitalisation pour les fondateurs : structure, dilution et erreurs courantes"
+  "description": "La table de capitalisation indique qui détient quoi dans votre entreprise. Sa structure, le fonctionnement de la dilution au fil des tours, le pool d'options et les erreurs qui posent problème à la sortie."
+  "body": |
+    La table de capitalisation (cap table) est le registre de référence de qui
+    détient des parts de votre entreprise et sous quelle forme. La tenir
+    correctement dès le premier jour évite des problèmes coûteux lors d'une levée,
+    d'une acquisition ou d'une introduction en bourse.
+
+    ## Ce que contient une table de capitalisation
+
+    Une table de base comporte trois sections :
+
+    **Actions ordinaires** : les actions des fondateurs et des salariés (en général
+    acquises sur 4 ans avec une période de carence d'un an). Les fondateurs
+    commencent souvent avec des actions ordinaires sans calendrier d'acquisition,
+    mais en prévoir un tôt est de plus en plus courant et bien vu des
+    investisseurs.
+
+    **Actions de préférence** : les actions des investisseurs issues des tours
+    valorisés (amorçage, série A, série B…). Elles donnent des préférences de
+    liquidation et d'autres droits dont ne bénéficient pas les actions ordinaires.
+
+    **Options / BSA** : options de souscription des salariés (issues du pool
+    d'options), bons attribués aux conseillers et autres titres dérivés. Les
+    options s'acquièrent en général sur 4 ans avec un an de carence, avec un prix
+    d'exercice égal à la juste valeur de marché (évaluation 409A aux États-Unis) à
+    l'attribution.
+
+    ## Actions entièrement diluées ou émises
+
+    **Actions émises** : les actions réellement détenues aujourd'hui.
+
+    **Actions entièrement diluées** : les actions émises plus toutes les options et
+    tous les bons, acquis ou non, exercés ou non.
+
+    Les investisseurs expriment presque toujours leur détention sur une base
+    entièrement diluée : « je détiens 20 % entièrement dilué » signifie 20 % du
+    total si toutes les options étaient exercées. C'est la bonne façon de calculer
+    la dilution.
+
+    ## Le pool d'options (ESOP)
+
+    Le pool d'options réserve des actions aux futures attributions aux salariés.
+    Tailles habituelles : 10 à 20 % des actions entièrement diluées.
+
+    Les investisseurs demandent en général d'augmenter le pool *avant* la clôture
+    de leur investissement, ce qui dilue les fondateurs, pas les investisseurs.
+    C'est le « option pool shuffle ».
+
+    Pour le limiter : négociez soigneusement la taille du pool. Ne réservez que ce
+    que vous comptez vraiment attribuer dans les 18 à 24 prochains mois. Un
+    investisseur qui demande un pool de 20 % pour une entreprise de 5 personnes
+    exagère : répondez avec un plan de recrutement.
+
+    ## Erreurs courantes
+
+    **Pas de calendrier d'acquisition pour les fondateurs** : si un cofondateur
+    part la première année, il ne devrait pas garder toutes ses parts. Mettez en
+    place une acquisition sur 4 ans avec un an de carence dès le premier jour.
+
+    **Pas d'élection 83(b)** : aux États-Unis, les fondateurs aux actions non
+    acquises doivent déposer une élection 83(b) dans les 30 jours suivant
+    l'attribution pour figer leur base fiscale. Manquer ce délai peut entraîner un
+    lourd impôt sur un revenu fictif à mesure que les actions s'acquièrent.
+
+    **Un historique de table de capitalisation désordonné** : des SAFE et des
+    obligations convertibles non converties avant un tour valorisé créent de la
+    complexité. Faites le ménage avant la série A.
+
+    **Des accords oraux** : des promesses de parts verbales sans accord signé ne
+    sont pas opposables et créent des litiges. Mettez tout par écrit.
+
+    Utilisez le [calculateur de dilution](/tools/equity-dilution-calculator/) pour
+    modéliser l'effet des levées sur votre table de capitalisation.
+"how-much-equity-to-give-investors":
+  "title": "Quelle part céder aux investisseurs à chaque stade"
+  "description": "Les repères de dilution des fondateurs en pré-amorçage, amorçage, série A et série B, et comment négocier la valorisation pour limiter la perte de contrôle sans faire capoter l'opération."
+  "body": |
+    Il n'y a pas de réponse universelle à la part à céder aux investisseurs, mais
+    il existe des normes de marché solides. Les connaître permet de négocier en
+    connaissance de cause plutôt qu'à l'aveugle.
+
+    ## Les normes de marché par stade
+
+    **Pré-amorçage / love money (100 k$–500 k$)**
+    Dilution habituelle : 5–15 %
+    Fourchette de valorisation : 1 M$–5 M$ pre-money
+    Investisseurs : business angels, amis, famille, micro-fonds
+
+    **Amorçage (500 k$–3 M$)**
+    Dilution habituelle : 15–25 %
+    Fourchette de valorisation : 3 M$–10 M$ pre-money
+    Investisseurs : fonds d'amorçage, business angels, accélérateurs
+
+    **Série A (3 M$–15 M$)**
+    Dilution habituelle : 20–30 %
+    Fourchette de valorisation : 10 M$–30 M$ pre-money
+    Investisseurs : fonds de capital-risque institutionnels (par exemple Sequoia, Andreessen Horowitz, Benchmark)
+
+    **Série B (10 M$–40 M$)**
+    Dilution habituelle : 15–25 %
+    Fourchette de valorisation : 30 M$–100 M$ pre-money
+    Investisseurs : fonds de capital-croissance, fonds de capital-risque institutionnels
+
+    ## Ce dont les investisseurs ont réellement besoin
+
+    Les investisseurs cherchent en général 15 à 25 % du capital à chaque tour. La
+    raison tient à la construction du portefeuille : si un fonds investit dans 30
+    entreprises en espérant que 3 rapportent 10 fois la mise, chaque participation
+    doit être significative pour que le fonds soit rentable.
+
+    Un fonds de 100 M$ qui investit 5 M$ pour 20 % détient 20 M$ d'une entreprise
+    valant 100 M$ à la sortie, soit 4 fois la mise. Avec 10 % seulement, la même
+    entreprise rapporte 10 M$ (2 fois). La logique du fonds compte.
+
+    ## Comment négocier une valorisation plus élevée
+
+    **La traction** : la meilleure position de négociation, c'est la croissance.
+    15 à 20 % de croissance mensuelle, un bon NPS et des clients payants vous
+    donnent du poids.
+
+    **Des lettres d'intention concurrentes** : plusieurs investisseurs intéressés
+    créent une concurrence sur le prix. Même un intérêt informel d'un second
+    investisseur améliore votre position.
+
+    **La valeur stratégique** : les investisseurs dotés d'une expertise précise
+    (votre secteur, votre stratégie commerciale) acceptent souvent une part plus
+    faible pour avoir le privilège d'entrer.
+
+    **Des étapes différées** : les SAFE et obligations convertibles reportent la
+    valorisation au tour valorisé suivant. Si vous n'avez pas encore de chiffre
+    d'affaires, un SAFE avec un plafond de valorisation raisonnable évite de
+    négocier une valorisation définitive avant d'avoir des données de traction.
+
+    ## Modèle de dilution cumulée
+
+    Des fondateurs qui lèvent 500 k$ pour 10 %, puis 2 M$ pour 20 %, puis 10 M$ pour 25 % :
+
+    Après le pré-amorçage : 90 % × 100 % = **90 %**
+    Après l'amorçage : 90 % × 80 % = **72 %**
+    Après la série A : 72 % × 75 % = **54 %**
+
+    Avec un pool d'options de 10 % créé à chaque tour, les fondateurs conservent en
+    général 35 à 45 % à la série A. C'est normal et sain.
+
+    Modélisez votre tour avec le [calculateur de dilution](/tools/equity-dilution-calculator/).
+"pre-money-vs-post-money-valuation":
+  "title": "Valorisation pre-money ou post-money : la différence et pourquoi elle compte"
+  "description": "Les valorisations pre-money et post-money déterminent la part que reçoivent les investisseurs. Une opération à 5 M$ pre-money et une à 5 M$ post-money aboutissent à des répartitions très différentes."
+  "body": |
+    La distinction entre valorisation pre-money et post-money est l'une des notions
+    les plus souvent confondues dans une levée de fonds, et se tromper peut coûter
+    cher en capital aux fondateurs.
+
+    ## Les définitions
+
+    **Valorisation pre-money** : la valeur convenue de l'entreprise *avant*
+    l'investissement. Le prix se fixe par négociation : investisseurs et
+    fondateurs s'accordent sur ce que vaut l'entreprise à cet instant, avant tout
+    nouvel apport.
+
+    **Valorisation post-money** : pre-money + investissement. C'est la valeur de
+    l'entreprise *après* la clôture du tour, une fois les fonds au bilan.
+
+    **Part de l'investisseur = investissement / valorisation post-money**
+
+    ## Pourquoi c'est important
+
+    Imaginez qu'un investisseur dise : « J'investis 1 M$ sur une valorisation de
+    5 M$. »
+
+    **Si 5 M$ est la pre-money :**
+    Post-money = 5 M$ + 1 M$ = 6 M$
+    Part de l'investisseur = 1 M$ / 6 M$ = **16,7 %**
+
+    **Si 5 M$ est la post-money :**
+    Pre-money = 5 M$ − 1 M$ = 4 M$
+    Part de l'investisseur = 1 M$ / 5 M$ = **20 %**
+
+    Même phrase, mêmes chiffres, mais 3,3 points d'écart dans la part de
+    l'investisseur. À la sortie, cet écart pèse lourd.
+
+    ## Ce que disent les lettres d'intention
+
+    Une lettre d'intention professionnelle précise toujours si la valorisation est
+    pre-money ou post-money. Formulation type : « La société émettra et cédera des
+    actions à un prix unitaire de X $, correspondant à une valorisation pre-money
+    de Y $. »
+
+    Signaux d'alerte :
+    - Une valorisation sans précision pre/post
+    - « Valorisation de 5 M$ » sans contexte
+    - Des accords oraux qui diffèrent du texte de la lettre d'intention
+
+    En cas de doute, demandez clairement : « 5 M$ pre-money ou post-money ? » Aucun
+    investisseur sérieux ne s'en offusquera.
+
+    ## La complication du pool d'options
+
+    Beaucoup de lettres d'intention exigent de créer un pool d'options avant la
+    clôture, ce qui ajoute des actions à la table avant l'investissement et dilue
+    encore les fondateurs.
+
+    Exemple : 5 M$ pre-money avec un élargissement du pool à 15 %.
+
+    Si vous avez 10 M d'actions et que les investisseurs exigent un pool de 15 %
+    post-tour :
+    Nouvelles options = (10 M + nouvelles options + actions des investisseurs) × 15 %
+
+    Cela se résout par itérations. L'essentiel : l'élargissement du pool se fait
+    *toujours* côté pre-money ; il dilue les actionnaires existants, pas les
+    investisseurs.
+
+    Modélisez votre tour avec le [calculateur de dilution](/tools/equity-dilution-calculator/).
+"peg-ratio-vs-pe-ratio":
+  "title": "PEG ou PER : lequel est le meilleur pour valoriser ?"
+  "description": "Comment le ratio PEG améliore le PER en tenant compte de la croissance, quand utiliser chacun et ce que les valeurs de PEG disent de la valorisation."
+  "body": |
+    ## Le problème du PER seul
+
+    Un PER de 30× paraît cher pour un service public à faible croissance, mais bon marché pour un éditeur de logiciels dont les bénéfices croissent de 40 % par an. Le PER ignore la croissance.
+
+    ## Le ratio PEG
+
+    Peter Lynch a popularisé le PEG comme indicateur de valorisation ajusté de la croissance :
+
+    $$\text{PEG} = \frac{\text{PER}}{\text{Croissance attendue du BPA (\%)}}$$
+
+    Le PEG corrige ce biais en rapportant le PER aux attentes de croissance.
+
+    ## Lecture du PEG
+
+    | PEG | Signal |
+    |----|--------|
+    | < 1,0 | Possiblement sous-valorisé au regard de la croissance |
+    | = 1,0 | « Prix juste » : on paie exactement la croissance |
+    | 1–2 | Prime modérée pour la croissance |
+    | > 2 | Cher au regard des attentes de croissance |
+
+    **La règle empirique de Lynch** : une action est attractive quand son PEG est inférieur à 1. Cette heuristique fonctionne surtout pour les valeurs de croissance de taille moyenne ; elle est moins fiable pour les entreprises matures à faible croissance.
+
+    ## Limites du PEG
+
+    - Les prévisions de croissance sont incertaines : une estimation manquée change fortement le PEG
+    - Moins pertinent pour les valeurs de rendement et les sociétés qui versent des dividendes
+    - Ne tient compte ni de la dette, ni des marges, ni de l'intensité capitalistique
+    - À utiliser comme outil de présélection, pas comme signal d'achat ou de vente à lui seul
+
+    ## Le rendement bénéficiaire, autre dérivé du PER
+
+    Le rendement bénéficiaire (1 ÷ PER × 100) transforme une valorisation en taux de rendement. Comparez-le au rendement des emprunts d'État à 10 ans : quand il en est proche ou inférieur, les actions paraissent moins attractives une fois le risque pris en compte.
+
+    Utilisez le [calculateur de PER](/tools/pe-ratio-calculator/) pour calculer en une fois le PER historique, le PER prévisionnel, le rendement bénéficiaire et le PEG.
+"what-is-pe-ratio":
+  "title": "Qu'est-ce que le PER et comment l'utiliser ?"
+  "description": "Le guide complet du ratio cours/bénéfice : formule, PER historique et prévisionnel, moyennes historiques et usage par les investisseurs pour valoriser une action."
+  "body": |
+    ## Le ratio cours/bénéfice (PER)
+
+    Le PER mesure combien les investisseurs paient par dollar de bénéfice de l'entreprise :
+
+    $$\text{PER} = \frac{\text{Cours de l'action}}{\text{Bénéfice par action (BPA)}}$$
+
+    Un PER de 20 signifie que les investisseurs paient 20 $ pour 1 $ de bénéfice annuel.
+
+    ## PER historique et PER prévisionnel
+
+    Le **PER historique** utilise le BPA réel publié des 12 derniers mois. Tourné vers le passé, mais fondé sur des chiffres réels.
+
+    Le **PER prévisionnel** utilise les estimations de BPA des analystes pour les 12 prochains mois. Plus pertinent pour valoriser une entreprise en croissance : il intègre les attentes plutôt que l'historique.
+
+    Quand le PER prévisionnel est inférieur au PER historique, le marché attend une hausse des bénéfices. Quand il est supérieur, il en attend une baisse.
+
+    ## Repères historiques de PER
+
+    | Période / contexte | PER moyen |
+    |-------------------|------------|
+    | Moyenne de long terme du S&P 500 | 15–17× |
+    | Depuis 2010 (ère des taux bas) | 20–25× |
+    | Creux de récession | 10–12× |
+    | Sommet de la bulle internet | 40–50× et plus |
+
+    ## Limites du PER
+
+    - **Entreprises cycliques** : le PER trompe au sommet des bénéfices ; utilisez des bénéfices normalisés
+    - **BPA négatif** : le PER n'est pas défini pour une entreprise en perte
+    - **Secteurs différents** : les éditeurs de logiciels se négocient naturellement à des PER plus élevés que les services publics
+    - **Choix comptables** : les bénéfices peuvent être manipulés ; les multiples de flux de trésorerie sont plus robustes
+
+    Utilisez le [calculateur de PER](/tools/pe-ratio-calculator/) pour calculer le PER historique et prévisionnel.
+"arr-multiple-vs-revenue-multiple":
+  "title": "Multiple d'ARR ou multiple de chiffre d'affaires : les différences clés pour valoriser un SaaS"
+  "description": "Multiple d'ARR ou de chiffre d'affaires pour un SaaS : pourquoi les investisseurs utilisent l'ARR, comment passer de l'un à l'autre et lequel utiliser selon les cas."
+  "body": |
+    Pour un SaaS, les investisseurs raisonnent presque toujours en **multiple
+    d'ARR** plutôt qu'en multiple de chiffre d'affaires, mais la distinction ne
+    compte que si une part significative du chiffre d'affaires est non récurrente.
+
+    ## Multiple d'ARR
+
+    **Multiple d'ARR** = valorisation ÷ ARR (chiffre d'affaires récurrent annuel)
+
+    L'ARR est la valeur annualisée de tous les contrats d'abonnement en cours. Il
+    exclut :
+    - Les prestations de services ponctuelles
+    - Le chiffre d'affaires à l'usage non encore contractualisé
+    - Les ventes de licences perpétuelles
+
+    ## Multiple de chiffre d'affaires (ratio P/S)
+
+    **Multiple de chiffre d'affaires** = valorisation ÷ chiffre d'affaires total (comptable ou sur 12 mois glissants)
+
+    Pour un pur SaaS par abonnement, ARR ≈ chiffre d'affaires comptable, donc
+    multiple d'ARR ≈ P/S.
+
+    Pour une entreprise dont 30 % du chiffre d'affaires vient des services :
+    - ARR = 7 M$ (abonnements récurrents)
+    - Chiffre d'affaires total = 10 M$ (dont 3 M$ de services)
+    - Multiple d'ARR = 70 M$ ÷ 7 M$ = 10x
+    - Multiple de chiffre d'affaires = 70 M$ ÷ 10 M$ = 7x
+
+    ## Pourquoi les investisseurs préfèrent l'ARR
+
+    Le chiffre d'affaires de services a une marge plus faible et il est moins
+    prévisible. Les investisseurs ne veulent pas le payer aussi cher qu'un chiffre
+    d'affaires d'abonnement fidèle. Le multiple d'ARR isole le moteur récurrent.
+
+    Pour un SaaS à l'usage (modèle AWS, Snowflake, Twilio), les investisseurs
+    utilisent souvent le **rythme annualisé (run rate)**, soit le chiffre
+    d'affaires du dernier mois × 12, plutôt que l'ARR contractuel, qui peut
+    sous-estimer le chiffre d'affaires réel.
+
+    ## Règle empirique
+
+    Si plus de 90 % de votre chiffre d'affaires est récurrent : multiple d'ARR ≈
+    multiple de chiffre d'affaires.
+
+    Si moins de 70 % est récurrent : utilisez le multiple d'ARR face aux
+    investisseurs et le multiple de chiffre d'affaires pour comparer avec les
+    sociétés cotées.
+
+    Calculez votre multiple d'ARR avec le [calculateur de P/S](/tools/price-to-sales-calculator/).
+"ev-revenue-multiple-vs-ps-ratio":
+  "title": "Multiple VE/chiffre d'affaires ou ratio P/S : quand ils diffèrent et pourquoi c'est important"
+  "description": "VE/chiffre d'affaires et ratio P/S expliqués : quand ils divergent, lequel les investisseurs préfèrent et comment calculer la valeur d'entreprise de votre société."
+  "body": |
+    VE/chiffre d'affaires et ratio P/S mesurent tous deux la valorisation par
+    rapport au chiffre d'affaires. Ils diffèrent par la définition de la
+    « valeur » au numérateur.
+
+    ## Ratio P/S : capitalisation ÷ chiffre d'affaires
+
+    **P/S** = capitalisation ÷ chiffre d'affaires annuel
+
+    Capitalisation = cours × nombre d'actions. Pour une entreprise non cotée, c'est
+    la valorisation post-money. C'est l'indicateur le plus simple et le plus
+    utilisé pour les jeunes entreprises.
+
+    ## VE/chiffre d'affaires : valeur d'entreprise ÷ chiffre d'affaires
+
+    **VE** = capitalisation + dette totale − trésorerie et équivalents
+
+    **VE/CA** = valeur d'entreprise ÷ chiffre d'affaires annuel
+
+    La VE corrige les différences de structure du capital entre entreprises. Une
+    entreprise qui a 50 M$ de trésorerie au bilan a une VE inférieure à sa
+    capitalisation : la trésorerie est « déjà là » et n'a pas à être valorisée dans
+    le multiple.
+
+    ## Quand ils divergent
+
+    Pour une startup SaaS financée par des VC avec 2 M$ de trésorerie et sans dette :
+    - Capitalisation (post-money) : 80 M$
+    - VE : 80 M$ − 2 M$ = 78 M$
+    - Écart : ~2,5 %, pratiquement identiques
+
+    Pour une société cotée avec 1 Md$ de trésorerie et 500 M$ de dette :
+    - Capitalisation : 8 Md$
+    - VE : 8 Md$ + 500 M$ − 1 Md$ = 7,5 Md$
+    - Écart : 6,25 %, significatif
+
+    ## Lequel utilisent les investisseurs ?
+
+    Les **acquéreurs stratégiques** préfèrent le VE/CA, car ils rachètent
+    l'entreprise nette de trésorerie et de dette. Racheter 100 M$ une entreprise qui
+    a 10 M$ de trésorerie coûte 90 M$ net : le VE/CA le reflète.
+
+    Les **VC** utilisent souvent le multiple d'ARR (post-money ÷ ARR) de façon
+    interchangeable avec le P/S, car la plupart des entreprises en série A/B ont
+    peu de dette et peu de trésorerie par rapport à leur valorisation.
+
+    Les **analystes des marchés cotés** utilisent le VE/CA comme référence pour
+    comparer des entreprises aux structures de capital différentes.
+
+    Utilisez le [calculateur de P/S](/tools/price-to-sales-calculator/) pour
+    modéliser les deux indicateurs.
+"saas-valuation-multiples-2024":
+  "title": "Les multiples de valorisation SaaS en 2024 : repères de P/S par stade de croissance"
+  "description": "Les multiples P/S et VE/chiffre d'affaires actuels des SaaS en 2024 : comparables cotés, médianes du non-coté et effet du taux de croissance sur le multiple."
+  "body": |
+    Après la compression des multiples de 2022–2023, les valorisations SaaS se sont
+    stabilisées en 2024. Voici les repères actuels qu'utilisent les investisseurs
+    pour valoriser les éditeurs en croissance.
+
+    ## Multiples P/S des SaaS cotés (2024)
+
+    À mi-2024, le SaaS coté médian se négocie à environ **4 à 6 fois le chiffre
+    d'affaires prévisionnel**. Le quartile supérieur à forte croissance (ARR en
+    hausse de 40 % et plus) obtient 8 à 12x, contre des sommets de 15 à 25x en 2021.
+
+    | Catégorie de croissance | Fourchette de P/S habituelle (2024) |
+    |---|---|
+    | Hypercroissance (ARR +50 % et plus) | 8–15x |
+    | Forte croissance (ARR +30–50 %) | 5–10x |
+    | Croissance (ARR +20–30 %) | 3–6x |
+    | Modérée (ARR +10–20 %) | 2–4x |
+    | Mature (ARR < +10 %) | 1–2x |
+
+    ## Multiples d'ARR sur le marché non coté
+
+    Les valorisations du non-coté suivent les marchés cotés avec 6 à 12 mois de
+    retard. En 2024 :
+    - **Amorçage** : 8–15x l'ARR (souvent avant chiffre d'affaires ; fondé sur l'équipe et le marché)
+    - **Série A** : 8–15x l'ARR pour les entreprises à plus de 80 % de croissance
+    - **Série B** : 10–20x l'ARR pour plus de 50 % de croissance et un NRR solide
+    - **Série C et au-delà** : converge vers les comparables cotés avec une décote d'illiquidité
+
+    ## Ce qui fait monter les multiples
+
+    Des multiples plus élevés se justifient par :
+    1. **La croissance du chiffre d'affaires** : de loin le premier facteur
+    2. **La rétention nette du chiffre d'affaires** : un NRR supérieur à 120 % vaut une prime de 1,5 à 2x
+    3. **La marge brute** : 80 % et plus, typique des SaaS à multiple élevé
+    4. **La règle des 40** : croissance + marge FCF au-dessus de 40 justifie des multiples premium
+    5. **La taille du marché** : un TAM manifestement vaste
+    6. **L'avantage concurrentiel** : coûts de changement, effets de réseau, avantage lié aux données
+
+    Calculez votre P/S actuel et une valorisation comparable avec le
+    [calculateur de P/S](/tools/price-to-sales-calculator/).
+"how-to-calculate-tam-sam-som":
+  "title": "Comment calculer TAM, SAM et SOM pour votre présentation aux investisseurs"
+  "description": "Un guide pas à pas pour dimensionner le marché dans une présentation aux investisseurs : méthodes descendante et ascendante pour TAM, SAM et SOM, avec des exemples chiffrés."
+  "body": |
+    Calculer TAM, SAM et SOM pour une présentation aux investisseurs demande plus
+    que multiplier une population par une dépense moyenne. Les investisseurs
+    veulent voir que vous comprenez votre marché précis, pas seulement que vous
+    savez trouver un gros chiffre.
+
+    ## Étape 1 : définir précisément votre marché
+
+    Avant de calculer, définissez qui est votre client. Plus votre définition est
+    précise, plus votre SAM et votre SOM seront crédibles.
+
+    **Trop large** : « le marché du logiciel pour PME »
+    **Trop étroit** : « les SaaS de 10 à 50 salariés à San Francisco qui utilisent Salesforce »
+    **Juste** : « les SaaS B2B de 10 à 200 salariés en Amérique du Nord dotés d'équipes commerciales dédiées »
+
+    Votre définition du marché doit correspondre à votre ICP (profil de client
+    idéal) : les clients que vous ciblez et à qui vous vendez réellement.
+
+    ## Étape 2 : calculer le TAM (descendant)
+
+    L'approche descendante s'appuie sur les études de marché existantes :
+
+    1. Trouvez les rapports d'analystes (Gartner, Forrester, IDC) qui estiment le
+       marché total de votre catégorie
+    2. À défaut, utilisez un indicateur de substitution : la dépense totale dans
+       la catégorie que vous remplacez
+    3. Convertissez selon votre prix : si le marché dépense 10 Md$ en logiciels
+       historiques et que votre SaaS de remplacement coûte 30 % de moins, le TAM de
+       rupture est de 7 Md$ et le TAM actuel de 10 Md$
+
+    **Exemple** : le marché des logiciels de gestion de projet est estimé à
+    7,3 Md$ par an (source : Grand View Research). TAM = **7,3 Md$**.
+
+    ## Étape 3 : calculer le TAM (ascendant, plus crédible)
+
+    L'approche ascendante compte les clients et multiplie par l'ACV :
+
+    1. Définissez votre ICP : entreprises américaines de 20 à 500 salariés dans les services professionnels
+    2. Comptez : LinkedIn affiche 85 000 entreprises correspondant à ce profil
+    3. Taux de conversion : les études indiquent que 40 % ont le problème précis que vous résolvez = 34 000
+    4. ACV moyen : 12 000 $ par an
+
+    TAM = 34 000 × 12 000 $ = **408 M$**
+
+    Vous obtenez un TAM crédible et argumenté, que les investisseurs peuvent
+    questionner.
+
+    ## Étape 4 : calculer le SAM
+
+    Le SAM filtre le TAM selon votre portée actuelle :
+    - Géographie : vous ne vendez qu'aux entreprises américaines aujourd'hui → exclure l'international
+    - Langue : produit uniquement en anglais → exclure les marchés non anglophones
+    - Environnement technique : produit dépendant d'intégrations → filtrer selon la compatibilité
+    - Segment : limites de canaux → filtrer selon la taille d'entreprise que vous savez signer
+
+    Si 60 % de votre TAM est accessible compte tenu de vos contraintes actuelles :
+    SAM = 408 M$ × 0,60 = **245 M$**
+
+    ## Étape 5 : calculer le SOM
+
+    Le SOM est un calcul de capacité commerciale, pas un pourcentage du marché :
+
+    Plan de recrutement à 3 ans : 8 commerciaux × 20 affaires par an × 12 k$ d'ACV = **1,92 M$ d'ARR**
+    C'est votre SOM : le marché que vous pouvez réellement servir d'ici 3 ans.
+
+    Exprimer le SOM en pourcentage du SAM est secondaire : 1,92 M$ / 245 M$ =
+    0,78 %, faible mais crédible pour une entreprise de 3 ans.
+
+    Utilisez le [calculateur TAM SAM SOM](/tools/tam-sam-som-calculator/) pour modéliser vos chiffres.
+"top-down-vs-bottom-up-market-sizing":
+  "title": "Dimensionnement descendant ou ascendant : quelle approche inspire confiance aux investisseurs ?"
+  "description": "L'approche descendante s'appuie sur des études sectorielles ; l'approche ascendante compte les clients et multiplie par l'ACV. Les investisseurs préfèrent l'ascendante : voici comment construire un modèle ascendant crédible."
+  "body": |
+    Quand vous présentez la taille de votre marché, la façon de la calculer compte
+    autant que le chiffre. Les investisseurs ont vu des milliers de diapositives
+    descendantes citant le même rapport Gartner. Une analyse ascendante montre que
+    vous comprenez vos vrais clients.
+
+    ## Le dimensionnement descendant
+
+    **Méthode** : partir d'une étude sectorielle et en découper votre part.
+
+    **Exemple** :
+    « Le marché mondial des logiciels RH pèse 16,5 Md$ (Gartner, 2025).
+    Nous visons la paie des PME, qui représente 15 % du marché = 2,5 Md$ de TAM. »
+
+    **Avantages** : rapide ; s'appuie sur des sources tierces crédibles.
+
+    **Inconvénients** : imprécis ; n'importe qui peut trouver un gros chiffre ; ne
+    montre pas de compréhension du client. Les investisseurs balaient souvent les
+    diapositives descendantes d'un « on sait que vous avez pris un rapport
+    Gartner ».
+
+    **Quand l'utiliser** : pour le contexte et la crédibilité apportée par des
+    sources reconnues. Toujours en complément de l'approche ascendante.
+
+    ## Le dimensionnement ascendant
+
+    **Méthode** : compter les clients potentiels et multiplier par le revenu moyen.
+
+    **Exemple pour un outil RH B2B** :
+    - Cible : entreprises américaines de 20 à 200 salariés dans les services professionnels
+    - Sources : Bureau of Labor Statistics + recherche LinkedIn
+    - Nombre : ~180 000 entreprises correspondent
+    - Filtre : ~40 % sont insatisfaites de leur solution RH actuelle = 72 000 prospects actifs
+    - ACV moyen : 8 000 $ par an
+
+    TAM ascendant = 72 000 × 8 000 $ = **576 M$**
+
+    **Avantages** : précis ; défendable ; montre que vous comprenez votre acheteur.
+
+    **Inconvénients** : long à produire ; demande des données parfois non
+    publiques ; les estimations se cumulent.
+
+    ## Construire un modèle ascendant
+
+    **Étape 1 : partir des données firmographiques**
+    Utilisez LinkedIn Sales Navigator, Bombora, ZoomInfo ou Apollo pour compter les
+    entreprises correspondant à votre ICP. Filtrez par taille, secteur, géographie
+    et environnement technique.
+
+    **Étape 2 : estimer la part qui a votre problème**
+    Enquêtes, entretiens clients ou indicateurs indirects (par exemple les offres
+    d'emploi pour le rôle que vous outillez) aident à estimer la part de votre ICP
+    qui a réellement le problème que vous résolvez.
+
+    **Étape 3 : estimer la conversion et l'ACV moyen**
+    Prenez votre taux de conversion et votre ACV actuels comme approximation, en
+    reconnaissant qu'ils peuvent évoluer si vous montez en gamme ou élargissez
+    l'offre.
+
+    **Étape 4 : recouper avec l'approche descendante**
+    Vérifiez que le chiffre ascendant tient de façon plausible dans le découpage
+    descendant : 576 M$ pour les services professionnels américains représentent
+    environ un quart du segment mondial de la paie PME (2,5 Md$), ce qui est
+    crédible pour un pays et une verticale. Si le chiffre ascendant dépasse le
+    segment descendant, ou n'en représente qu'une infime fraction, cherchez
+    pourquoi.
+
+    ## Présenter les deux dans un pitch
+
+    | Disposition | Contenu |
+    |---|---|
+    | Panneau gauche | Descendant : « Le marché mondial des logiciels RH pèse 16,5 Md$ ; nous opérons sur le segment paie des PME (2,5 Md$) » |
+    | Panneau droit | Ascendant : « 180 k entreprises américaines correspondent à notre ICP. 40 % ont le problème = 72 k entreprises × 8 k$ d'ACV = 576 M$ » |
+    | Pied de page | « Nos 24 premiers mois ciblent l'opportunité de 576 M$ des PME américaines ; expansion internationale d'ici l'année 3. » |
+
+    Cette présentation montre de la rigueur et un recoupement : les investisseurs
+    voient deux méthodes qui concordent.
+
+    Modélisez votre TAM avec le [calculateur TAM SAM SOM](/tools/tam-sam-som-calculator/).
+"what-tam-do-investors-want-to-see":
+  "title": "Quel TAM les investisseurs veulent-ils voir ? Les attentes des VC par stade"
+  "description": "La logique des fonds de capital-risque exige de grands marchés. Les attentes minimales de TAM par stade de financement, pourquoi certains investisseurs refusent des marchés de 500 M$, et comment présenter un petit marché."
+  "body": |
+    Le TAM minimum que les investisseurs veulent voir dépend de la taille du fonds,
+    du stade et des objectifs de rendement. Comprendre le calcul derrière leurs
+    attentes aide à bien présenter votre marché.
+
+    ## La logique du fonds derrière les exigences de TAM
+
+    Les VC visent un rendement de 3 fois le fonds. Un fonds de 100 M$ doit rendre 300 M$.
+    Supposons 30 investissements, 3 gagnants et 27 échecs (loi de puissance classique).
+    Les 3 gagnants doivent rapporter 300 M$ à eux trois : ~100 M$ chacun.
+
+    Pour qu'un gagnant rapporte 100 M$, le fonds doit détenir 20 % à la sortie, et la sortie doit dépasser 500 M$.
+
+    À 10 fois le chiffre d'affaires (courant en SaaS), une sortie à 500 M$ = 50 M$ d'ARR.
+    Pour que 50 M$ d'ARR aient du sens, l'entreprise doit détenir ~5 à 10 % de part de marché.
+    Donc : le TAM minimum pour que le calcul tienne = **500 M$ à 1 Md$**.
+
+    Les petits fonds (30 M$) peuvent financer des entreprises sur des TAM de 200 M$. Les gros fonds (500 M$) ont besoin de TAM de plus de 5 Md$.
+
+    ## Les attentes de TAM par stade
+
+    **Business angels / pré-amorçage (100 k$–500 k$)**
+    TAM : 200 M$ et plus acceptable
+    Les business angels prennent plus de risques ; les tickets sont petits et les
+    attentes de rendement variables. Ils regardent davantage l'équipe et la
+    traction initiale que le calcul du TAM.
+
+    **Amorçage (500 k$–3 M$)**
+    TAM : 500 M$ minimum, 1 Md$ et plus de préférence
+    Les fonds d'amorçage ont encore des exigences de rendement plus faibles qu'en
+    série A. La définition du problème et les premiers indicateurs pèsent plus que
+    le calcul de la taille du marché.
+
+    **Série A (3 M$–15 M$)**
+    TAM : 1 Md$ minimum, 3 Md$ et plus de préférence
+    En série A, vous prouvez la répétabilité et le passage à l'échelle. Les VC
+    veulent voir une trajectoire claire vers plus de 10 M$ d'ARR sur un marché
+    assez vaste pour viser 100 M$.
+
+    **Série B et au-delà (15 M$–100 M$ et plus)**
+    TAM : plus de 5 Md$ exigé
+    La série B parie sur le leadership du marché. Il faut un marché assez vaste
+    pour bâtir une société cotée (plus de 100 M$ d'ARR).
+
+    ## Que faire d'un « petit » TAM
+
+    Si votre TAM est de 200 à 500 M$, vous avez trois options :
+
+    **1. Recadrer le marché** : le regardez-vous de trop près ?
+    Un TAM « logiciel de comptabilité pour petites entreprises américaines » de
+    2 Md$ devient un TAM « plateforme mondiale de gestion financière des petites
+    entreprises » de 20 Md$, si l'expansion est crédible.
+
+    **2. Viser des voies sans VC** : l'autofinancement, le financement indexé sur le
+    chiffre d'affaires ou les fonds de private equity et family offices n'ont pas
+    les mêmes exigences de rendement. Beaucoup d'excellentes entreprises à 20–50 M$
+    de chiffre d'affaires ont été bâties sur de « petits » marchés.
+
+    **3. Montrer une expansion adjacente** : prouvez que le TAM principal vous
+    servira de tremplin vers des marchés voisins. AWS a commencé par le stockage
+    cloud ; HubSpot par l'e-mail marketing.
+
+    Utilisez le [calculateur TAM SAM SOM](/tools/tam-sam-som-calculator/) pour dimensionner votre marché.

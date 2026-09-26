@@ -7865,7 +7865,7 @@
     - Target: US companies with 20–200 employees in professional services
     - Data source: Bureau of Labor Statistics + LinkedIn search
     - Count: ~180,000 companies match
-    - Filter: ~60% have HR systems, 40% are dissatisfied with current solution = 72,000 active prospects
+    - Filter: ~40% are dissatisfied with their current HR solution = 72,000 active prospects
     - Average ACV: $8,000/year
 
     Bottom-up TAM = 72,000 × $8,000 = **$576M**
@@ -7890,9 +7890,11 @@
     may change as you move upmarket or expand features.
 
     **Step 4: Triangulate with top-down**
-    If your bottom-up TAM ($576M) is close to 15% of the industry report's figure
-    ($600M from your Gartner carve-out), they validate each other. If they diverge
-    significantly, investigate why.
+    Check that the bottom-up figure sits plausibly inside the top-down carve-out:
+    $576M for US professional-services firms is about a quarter of the $2.5B global
+    SMB payroll segment, which is credible for one country and one vertical. If the
+    bottom-up number exceeds the top-down segment, or is a tiny fraction of it,
+    investigate why.
 
     ## Presenting both in a pitch
 

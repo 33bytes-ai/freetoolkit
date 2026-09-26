@@ -1440,3 +1440,352 @@
     - **Investitionsrechnung**: Nur Projekte mit IRR über dem WACC annehmen
     - **Kapitalstruktur**: den Mix aus Eigen- und Fremdkapital so optimieren, dass der WACC minimal wird
     - **Erfolgsmessung**: ROIC über WACC heißt, das Unternehmen schafft ökonomischen Wert
+
+"dcf-calculator":
+  "body": |
+    Ein DCF-Modell (Discounted Cash Flow) bewertet ein Unternehmen oder eine
+    Investition, indem es den Barwert aller erwarteten künftigen Cashflows
+    aufsummiert. Es ist die grundlegende Bewertungsmethode der
+    Unternehmensfinanzierung.
+
+    ## Die DCF-Formel
+
+    **Unternehmenswert = Σ (FCF_t / (1 + r)^t) + Endwert / (1 + r)^n**
+
+    Dabei ist FCF_t = Free Cashflow in Jahr t, r = Diskontsatz (WACC), n = Prognosejahre.
+
+    **Endwert (Gordon-Growth-Modell, das ewig konstant wachsende Cashflows unterstellt) = FCF_n × (1 + g) / (r − g)**
+
+    Dabei ist g = langfristige Wachstumsrate (muss < r sein).
+
+    ## Richtwerte für den Diskontsatz
+
+    | Unternehmenstyp | Üblicher Diskontsatz |
+    |-------------|----------------------|
+    | Börsennotiert, Large Cap | 8–10 % |
+    | Börsennotiert, Mid Cap | 10–14 % |
+    | Privat, Wachstumsphase | 15–25 % |
+    | Startup in der Frühphase | 25–40 % |
+    | Seed / vor Umsatz | 40–60 % |
+
+    ## Die Bedeutung des Endwerts
+
+    In einem 10-Jahres-DCF macht der Endwert oft 70–90 % des gesamten
+    Unternehmenswerts aus. Damit ist die Annahme zum langfristigen Wachstum die
+    empfindlichste Variable: Kleine Änderungen von g bewirken große
+    Wertänderungen. Führe immer eine Sensitivitätsanalyse durch.
+
+    ## Grenzen des DCF
+
+    Ein DCF ist nur so gut wie deine Cashflow-Prognosen. Am verlässlichsten ist er
+    bei:
+    - stabilen, reifen Unternehmen mit planbaren Cashflows
+    - Unternehmen, die sich mit vertretbarer Sicherheit 5–10 Jahre vorausplanen lassen
+
+    Am wenigsten verlässlich ist er bei Unternehmen ohne Umsatz, stark zyklischen
+    Geschäften und Unternehmen, deren Wert vor allem immateriell ist.
+"ebitda-multiple-calculator":
+  "body": |
+    ## Was ist das EBITDA-Multiple?
+
+    Das EV/EBITDA-Multiple (kurz EBITDA-Multiple) ist die gängigste Bewertungskennzahl bei M&A und Private Equity. Es drückt den Unternehmenswert als Vielfaches des EBITDA aus (Ergebnis vor Zinsen, Steuern und Abschreibungen).
+
+    $$\text{Unternehmenswert} = \text{EBITDA} \times \text{EV/EBITDA-Multiple}$$
+
+    ### EBITDA-Multiples nach Branche (2024)
+
+    | Branche | Übliches EV/EBITDA |
+    |--------|-------------------|
+    | SaaS / wachstumsstarke Tech | 15–30× |
+    | B2B-Software (reif) | 8–15× |
+    | Industrie | 5–8× |
+    | Einzelhandel | 4–7× |
+    | Dienstleistung / Beratung | 4–7× |
+    | Großhandel | 5–8× |
+
+    ### Unternehmenswert und Eigenkapitalwert
+
+    Der Unternehmenswert schließt die Fremdkapitalgeber ein. Der Eigenkapitalwert ist das, was Aktionäre tatsächlich erhalten:
+
+    $$\text{Eigenkapitalwert} = \text{EV} - \text{Gesamtschulden} + \text{Cash}$$
+
+    ### EBITDA- und Umsatzmultiples
+
+    Umsatzmultiples (EV/Umsatz) nutzt man, wenn das EBITDA negativ oder nahe null ist, was bei wachstumsstarkem SaaS häufig vorkommt. Vergleiche beide, um deine Bewertungsspanne einzugrenzen.
+
+    ### Ratgeber
+
+    - [Was ist EV/EBITDA?](/tools/ebitda-multiple-calculator/#what-is-ev-ebitda)
+    - [EBITDA-Multiples nach Branche](/tools/ebitda-multiple-calculator/#ebitda-multiple-by-industry)
+"enterprise-value-calculator":
+  "body": |
+    ## Formel des Unternehmenswerts
+
+    $$\text{EV} = \text{Marktkapitalisierung} + \text{Gesamtschulden} - \text{Cash}$$
+
+    Der Unternehmenswert ist der theoretische Übernahmepreis: was ein Käufer für das ganze Unternehmen zahlen würde, einschließlich der Übernahme seiner Schulden und seines Cash.
+
+    ### Warum EV statt Marktkapitalisierung?
+
+    Die Marktkapitalisierung zeigt nur den Eigenkapitalwert. Der EV berücksichtigt die Kapitalstruktur:
+
+    - **Unternehmen A**: 1 Mrd. $ Marktkapitalisierung, 500 Mio. $ Schulden, 100 Mio. $ Cash → EV = 1,4 Mrd. $
+    - **Unternehmen B**: 1 Mrd. $ Marktkapitalisierung, 0 $ Schulden, 100 Mio. $ Cash → EV = 900 Mio. $
+
+    Unternehmen A ist in der Übernahme tatsächlich 56 % teurer, obwohl beide dieselbe Marktkapitalisierung haben. Der EV gleicht das aus.
+
+    ### EV/EBITDA-Richtwerte
+
+    | EV/EBITDA | Kontext |
+    |-----------|---------|
+    | < 5× | Value / notleidend |
+    | 6–10× | Traditionelle Branchen |
+    | 10–15× | Wachstum im Mittelstand |
+    | 15–25× | Stark wachsende Unternehmen |
+    | 25×+ | Premium-SaaS / Hyperwachstum |
+
+    ### EV/Umsatz-Richtwerte
+
+    | EV/Umsatz | Kontext |
+    |------------|---------|
+    | < 1× | Tiefer Value / rückläufig |
+    | 1–3× | Traditionelle Unternehmen |
+    | 3–10× | Wachstumsunternehmen |
+    | 10×+ | Stark wachsendes SaaS |
+
+    ### Ratgeber
+
+    - [Was ist der Unternehmenswert?](/tools/enterprise-value-calculator/#what-is-enterprise-value)
+    - [EV/EBITDA-Multiple: Bedeutung und Branchenrichtwerte](/tools/enterprise-value-calculator/#ev-ebitda-multiple-benchmarks)
+"equity-dilution-calculator":
+  "body": |
+    Verwässerung entsteht jedes Mal, wenn ein Unternehmen neue Anteile ausgibt.
+    Erhalten Investoren für ihr Investment neue Anteile, steigt die Gesamtzahl der
+    Anteile, und jeder bisherige Gesellschafter hält einen kleineren Prozentsatz,
+    obwohl sich seine Anteilszahl nicht ändert.
+
+    ## Die Rechnung
+
+    **Pre-Money-Bewertung**: 5.000.000 $
+    **Investment**: 1.000.000 $
+    **Post-Money-Bewertung**: 6.000.000 $
+    **Anteil des Investors**: 1 Mio. $ / 6 Mio. $ = **16,7 %**
+
+    Hieltest du vor der Runde 60 % (6 Mio. von 10 Mio. Anteilen), hältst du jetzt:
+    6 Mio. / (10 Mio. + 2 Mio. neue Anteile) = **50 %**
+
+    Dein Anteil fiel von 60 % auf 50 %: eine **Verwässerung um 10 Prozentpunkte**.
+
+    ## Pre-Money- und Post-Money-Bewertung
+
+    Diese Begriffe sorgen in Finanzierungsverhandlungen für viel Verwirrung:
+
+    **Pre-Money**: der Unternehmenswert vor dem Investment.
+    **Post-Money**: Pre-Money + Investmentbetrag.
+
+    Sagt ein Investor „Ich investiere 1 Mio. $ bei 5 Mio. $ Bewertung“, kläre: 5 Mio. $
+    pre-money oder post-money? Der Unterschied ist erheblich:
+    - 5 Mio. $ pre-money: Der Investor erhält 1 Mio. / 6 Mio. = **16,7 %**
+    - 5 Mio. $ post-money: Der Investor erhält 1 Mio. / 5 Mio. = **20 %**
+
+    Gib im Term Sheet immer die Pre-Money-Bewertung an.
+
+    ## Kumulierte Verwässerung über die Runden
+
+    Verwässerung summiert sich. Übliche Verwässerung je Phase:
+
+    | Runde | Verwässerung | Kumulierter Gründeranteil |
+    |---|---|---|
+    | Pre-Seed (500.000 $) | 10–15 % | 85–90 % |
+    | Seed (1–2 Mio. $) | 15–25 % | 65–75 % |
+    | Series A (5–10 Mio. $) | 20–30 % | 45–55 % |
+    | Series B (20–40 Mio. $) | 15–25 % | 35–45 % |
+
+    Die Verwässerung jeder Runde bezieht sich auf die [Cap Table](/glossary/#cap-table)
+    nach der Runde, nicht auf die ursprüngliche. Ein Gründer mit 85 % nach der
+    Seed-Runde, der eine Series A mit 20 % Verwässerung aufnimmt, behält
+    85 % × 80 % = **68 %**.
+
+    ## Der „Option Pool Shuffle“
+
+    Investoren verlangen oft, vor Abschluss der Runde einen Optionspool zu schaffen
+    oder zu vergrößern, was die Gründer zusätzlich verwässert. Ein „Optionspool
+    von 20 % post-money“ bei einer 6-Mio.-$-Runde heißt, Anteile in Höhe von 20 %
+    der Cap Table nach der Runde zu schaffen. Das verwässert die Gründer vor den
+    Investoren und erhöht die effektive Pre-Money-Verwässerung.
+
+    Bilde das ab, indem du die Anteile des Pools vor der Berechnung zu den
+    „aktuell ausgegebenen Anteilen“ addierst.
+
+    ## Häufige Fragen
+
+    **Was macht dieser Rechner?**
+    Er modelliert die Verwässerung von Gründern und Investoren in einer
+    Finanzierungsrunde: Post-Money-Bewertung, neu ausgegebene Anteile und dein
+    Anteil nach der Runde.
+"pe-ratio-calculator":
+  "body": |
+    ## KGV-Formel
+
+    $$\text{KGV} = \frac{\text{Aktienkurs}}{\text{Gewinn je Aktie}}$$
+
+    ### Historisches und erwartetes KGV
+
+    - **Historisches KGV**: nutzt die tatsächlichen Gewinne der letzten 12 Monate. Verlässlicher, aber rückwärtsgewandt.
+    - **Erwartetes KGV**: nutzt Analystenschätzungen für die nächsten 12 Monate. Relevanter für wachsende Unternehmen, weil es zeigt, was der Markt für die Zukunft einpreist.
+
+    Liegt das erwartete KGV unter dem historischen, erwartet der Markt steigende Gewinne. Liegt es darüber, sinkende.
+
+    ### Gewinnrendite
+
+    $$\text{Gewinnrendite} = \frac{1}{\text{KGV}} \times 100$$
+
+    Die Gewinnrendite ist der Kehrwert des KGV: Sie macht aus einer Bewertung eine Renditekennzahl, vergleichbar mit Anleiherenditen. Ein KGV von 20× = 5 % Gewinnrendite. Vergleiche sie mit der Rendite 10-jähriger Staatsanleihen, um die relative Attraktivität einzuschätzen.
+
+    ### PEG-Ratio (KGV im Verhältnis zum Wachstum)
+
+    $$\text{PEG} = \frac{\text{KGV}}{\text{Erwartetes Gewinnwachstum je Aktie (\%)}}$$
+
+    Peter Lynch machte das PEG als wachstumsbereinigte Bewertungskennzahl bekannt. PEG = 1 heißt, das KGV entspricht der Wachstumsrate: „fair bewertet“. PEG < 1 deutet auf mögliche Unterbewertung hin, PEG > 2 darauf, dass der Kurs sehr hohe Wachstumserwartungen einpreist.
+
+    ### Historisches KGV des S&P 500
+
+    - Langfristiger Durchschnitt: ~15–17×
+    - Durchschnitt seit 2010 (Niedrigzinsära): ~20–25×
+    - In Rezessionen: oft 10–12×
+    - Blasenhochs: 30–40×+
+
+    ### Ratgeber
+
+    - [Was ist das KGV und wie nutzt man es?](/tools/pe-ratio-calculator/#what-is-pe-ratio)
+    - [PEG oder KGV: Was eignet sich besser zur Bewertung?](/tools/pe-ratio-calculator/#peg-ratio-vs-pe-ratio)
+"price-to-sales-calculator":
+  "body": |
+    Das Kurs-Umsatz-Verhältnis (KUV, engl. P/S) gehört zu den meistgenutzten
+    Bewertungskennzahlen für wachstumsstarke Software- und SaaS-Unternehmen, deren
+    Gewinne noch kein verlässlicher Wertmaßstab sind.
+
+    **KUV** = Marktkapitalisierung ÷ Jahresumsatz
+
+    Oder gleichwertig: **EV/Umsatz** = Unternehmenswert ÷ Jahresumsatz
+
+    Bei privaten Unternehmen ist der Zähler die Post-Money-Bewertung der letzten
+    Finanzierungsrunde.
+
+    ## KUV-Richtwerte nach Phase (2024)
+
+    | Unternehmensphase | Übliche KUV-Spanne | Hinweise |
+    |---|---|---|
+    | SaaS in der Frühphase (50 %+ Wachstum) | 8–20x ARR | Seed bis Series A |
+    | SaaS in der Wachstumsphase (30–50 %) | 5–12x ARR | Series B bis C |
+    | SaaS in der Spätphase (20–30 %) | 3–8x ARR | Vor dem IPO |
+    | Börsennotiertes SaaS (10–20 %) | 2–6x Umsatz | Median ~4x im Jahr 2024 |
+    | Rückläufige / reife Software | 0,5–2x Umsatz | Spanne für PE-Buyouts |
+
+    Nach der Multiple-Kompression 2021–2022 fielen die KUVs börsennotierter
+    SaaS-Unternehmen mit steigenden Zinsen von 20–30x auf 4–8x. Der aktuelle Median
+    (2024) liegt bei etwa dem 4- bis 6-Fachen des erwarteten Umsatzes.
+
+    ## Der Zusammenhang mit der Rule of 40
+
+    Hohe KUVs sind gerechtfertigt, wenn der [Rule-of-40](/glossary/#rule-of-40)-Wert
+    stark ist. Ein Unternehmen mit 50 % Wachstum und −5 % FCF-Marge (Rule of 40 =
+    45 %) wird höher bewertet als eines mit 20 % Wachstum und −15 % Marge (Rule of
+    40 = 5 %).
+
+    **Wachstumsbereinigtes KUV** = KUV ÷ Wachstumsrate
+
+    Ein KUV von 10x bei 50 % Wachstum ergibt ein bereinigtes KUV von 0,2x, oft als
+    fair angesehen. Über 0,3x kann es ambitioniert sein, unter 0,15x ein
+    Schnäppchen.
+
+    ## EV/Umsatz oder KUV
+
+    Bei Unternehmen mit Schulden oder viel Cash ist Unternehmenswert / Umsatz
+    genauer als das KUV:
+
+    **EV** = Marktkapitalisierung + Gesamtschulden − Zahlungsmittel
+
+    Die meisten jungen Startups haben kaum Schulden und schrumpfendes Cash, also
+    gilt EV ≈ Marktkapitalisierung. Bei Unternehmen mit viel Cash oder Venture
+    Debt macht die Bereinigung einen Unterschied.
+
+    ## Häufige Fragen
+
+    **Welches KUV sollte ich für meine Startup-Bewertung ansetzen?**
+    In der Series A sind 8–15x ARR für SaaS mit über 80 % Wachstum üblich. In der
+    Series B 10–20x ARR für Unternehmen mit starker NRR (120 %+) und über 50 %
+    Wachstum. Mit nachlassendem Wachstum sinken diese Werte deutlich: Wer 30 %
+    wächst, bekommt meist 4–8x.
+
+    **Wie nutze ich das KUV für den Wettbewerbsvergleich?**
+    Suche 5–10 börsennotierte Vergleichsunternehmen mit ähnlichem Wachstum und
+    Geschäftsmodell. Nimm den Median ihres KUV und wende ihn auf deinen ARR an, um
+    eine grobe Bewertungsspanne zu erhalten. Ziehe 20–30 % Illiquiditätsabschlag
+    für private Unternehmen ab. Das ist die am häufigsten genutzte Methode von
+    VC-Investoren für Bewertungen ab der Series B.
+"tam-sam-som-calculator":
+  "body": |
+    TAM, SAM und SOM beschreiben deine Marktchance auf drei Genauigkeitsstufen.
+    Jedes Investoren-Deck braucht diese Zahlen, und wie du sie definierst, zeigt,
+    ob du deinen Markt verstehst.
+
+    ## Die drei Stufen
+
+    **TAM (Total Addressable Market)**: die gesamte weltweite Umsatzchance, wenn
+    du 100 % des Marktes erobern würdest. Eine Obergrenze, kein realistisches Ziel.
+
+    **SAM (Serviceable Addressable Market)**: der Teil des TAM, den du mit den
+    aktuellen Produktfähigkeiten, deiner geografischen Reichweite und deinem
+    Go-to-Market tatsächlich bedienen kannst.
+
+    **SOM (Serviceable Obtainable Market)**: der Teil des SAM, den du in 3–5 Jahren
+    angesichts des Wettbewerbs und deiner Vertriebskapazität realistisch gewinnen
+    kannst.
+
+    ## Top-down oder Bottom-up
+
+    **Top-down**: Branchenberichte schätzen die Gesamtmarktgröße, und du bestimmst
+    deinen Anteil. Schnell, aber ungenau. „Der CRM-Markt ist 50 Mrd. $ groß, wir
+    zielen auf 1 %.“
+
+    **Bottom-up**: echte Kunden zählen und mit dem [ACV](/glossary/#acv)
+    multiplizieren. Glaubwürdiger. „In den USA gibt es 500.000 mittelständische
+    Unternehmen, 30 % haben dieses Problem, 15 % davon erreichen wir mit unserem
+    aktuellen Go-to-Market (GTM), bei 15.000 $ ACV = 337 Mio. $ SAM.“
+
+    Investoren bevorzugen Bottom-up, weil es zeigt, dass du den tatsächlichen
+    Kundenpool verstehst.
+
+    ## Erwartungen der Investoren nach Phase
+
+    | Phase | Mindest-TAM | Hinweise |
+    |---|---|---|
+    | Seed | 500 Mio. $ | VCs brauchen Luft für einen Exit über 50 Mio. $ |
+    | Series A | 1 Mrd. $+ | Die Fondsrechnung verlangt großes Marktpotenzial |
+    | Series B+ | 5 Mrd. $+ | Um Wachstum im großen Maßstab und eine IPO-Story zu rechtfertigen |
+
+    Ein TAM unter 500 Mio. $ ist kein automatisches Ausschlusskriterium:
+    Dienstleister und vertikales SaaS können in kleineren Märkten hochprofitable
+    Unternehmen mit 50–100 Mio. $ Umsatz aufbauen. VC-finanziertes Hyperwachstum
+    braucht aber riesige Märkte.
+
+    ## Häufige Fehler bei der Marktgröße
+
+    **TAM überzählen**: „Der weltweite Markt für Unternehmenssoftware ist 500 Mrd. $
+    groß, wir machen Software, also ist unser TAM 500 Mrd. $.“ Falsch. Der TAM muss
+    der Markt deiner konkreten Produktkategorie sein.
+
+    **TAM und SAM verwechseln**: „Unser SAM ist der gesamte US-Markt.“ Der SAM
+    sollte auf die filtern, an die du heute verkaufen kannst, dein
+    [ICP](/glossary/#icp), nicht das ganze Land.
+
+    **Unrealistischer SOM**: „Wir gewinnen in Jahr 3 10 % des Marktes.“ Ohne die
+    Go-to-Market-Rechnung (Personal, Kanäle, CAC) ist das unglaubwürdig.
+
+    ## Häufige Fragen
+
+    **Was macht dieser Rechner?**
+    Er berechnet TAM (Kunden gesamt × Ausgaben), SAM (gefiltert nach deiner
+    Reichweite) und SOM (dein erreichbarer Anteil) für die Marktgröße in
+    Investoren-Decks.
