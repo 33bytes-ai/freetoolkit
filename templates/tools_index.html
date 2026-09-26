@@ -55,7 +55,7 @@
   {% endif %}
   {% endfor %}
 
-  <p id="tools-count" data-total="{{ tools | length }}" style="font-size:0.82rem;color:var(--text-muted);margin:0 0 0.5rem">Showing all {{ tools | length }} calculators</p>
+  <p id="tools-count" aria-live="polite" data-total="{{ tools | length }}" style="font-size:0.82rem;color:var(--text-muted);margin:0 0 0.5rem">Showing all {{ tools | length }} calculators</p>
   <p id="tools-no-match" style="display:none;color:var(--text-muted);padding:2rem 0"><span data-i18n="no_match">No calculators match your search.</span></p>
 </section>
 <script src="/static/js/tools-index.js?v={{ asset_version }}" defer></script>

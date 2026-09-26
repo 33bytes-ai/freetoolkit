@@ -80,6 +80,34 @@ window.FTK = (function () {
     }
   }
 
+  function prefersReducedMotion() {
+    return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }
+
+  // Keeps Tab / Shift+Tab inside `container` while isActive() is true.
+  function trapFocus(container, isActive) {
+    container.addEventListener("keydown", function (e) {
+      if (e.key !== "Tab" || !isActive()) return;
+      var items = Array.prototype.filter.call(
+        container.querySelectorAll("a[href], button:not([disabled]), input, select, textarea"),
+        function (el) { return el.offsetParent !== null; }
+      );
+      if (!items.length) return;
+      var first = items[0], last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+  }
+
+  var helpReturnFocus = null;
+  function closeHelp() {
+    var overlay = document.getElementById("ftk-help-overlay");
+    if (!overlay || overlay.style.display === "none") return;
+    overlay.style.display = "none";
+    if (helpReturnFocus && helpReturnFocus.focus) helpReturnFocus.focus();
+    helpReturnFocus = null;
+  }
+
   function buildHelpOverlay() {
     var overlay = document.createElement("div");
     overlay.id = "ftk-help-overlay";
@@ -93,20 +121,21 @@ window.FTK = (function () {
       + '<table style="width:100%;border-collapse:collapse;font-size:0.9rem">'
       + '<tr><td style="padding:0.35rem 0"><kbd style="border:1px solid var(--border);border-radius:4px;padding:0.1rem 0.4rem;font-size:0.8rem;background:var(--surface)">Ctrl+Enter</kbd></td><td style="padding:0.35rem 0 0.35rem 1rem;color:var(--text-muted)">Recalculate</td></tr>'
       + '<tr><td><kbd style="border:1px solid var(--border);border-radius:4px;padding:0.1rem 0.4rem;font-size:0.8rem;background:var(--surface)">/</kbd></td><td style="padding:0.35rem 0 0.35rem 1rem;color:var(--text-muted)">Focus search (tools page)</td></tr>'
-      + '<tr><td><kbd style="border:1px solid var(--border);border-radius:4px;padding:0.1rem 0.4rem;font-size:0.8rem;background:var(--surface)">d</kbd></td><td style="padding:0.35rem 0 0.35rem 1rem;color:var(--text-muted)">Toggle dark/light mode</td></tr>'
       + '<tr><td><kbd style="border:1px solid var(--border);border-radius:4px;padding:0.1rem 0.4rem;font-size:0.8rem;background:var(--surface)">?</kbd></td><td style="padding:0.35rem 0 0.35rem 1rem;color:var(--text-muted)">Open/close this help</td></tr>'
       + '<tr><td><kbd style="border:1px solid var(--border);border-radius:4px;padding:0.1rem 0.4rem;font-size:0.8rem;background:var(--surface)">Esc</kbd></td><td style="padding:0.35rem 0 0.35rem 1rem;color:var(--text-muted)">Close this help</td></tr>'
       + '</table>'
       + '<button id="ftk-help-close" style="margin-top:1.2rem;padding:0.4rem 1rem;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text);cursor:pointer;font-size:0.88rem">Close</button>';
     overlay.appendChild(box);
     document.body.appendChild(overlay);
+    trapFocus(overlay, function () { return overlay.style.display !== "none"; });
     return overlay;
   }
 
   if (typeof document !== "undefined") {
     // Theme toggle — apply saved preference immediately on load
     (function () {
-      var saved = localStorage.getItem("ftk-theme");
+      var saved = null;
+      try { saved = localStorage.getItem("ftk-theme"); } catch (e) { /* storage blocked */ }
       if (saved) document.documentElement.setAttribute("data-theme", saved);
     })();
 
@@ -116,7 +145,7 @@ window.FTK = (function () {
     (function () {
       var splash = document.getElementById("logo-splash");
       if (!splash) return;
-      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      if (prefersReducedMotion()) {
         splash.remove();
         return;
       }
@@ -153,30 +182,16 @@ window.FTK = (function () {
       }, Math.max(totalTime, 650));
     })();
 
-    // Reading progress bar
-    (function () {
-      var bar = document.getElementById("reading-progress");
-      if (!bar) return;
-      function updateProgress() {
-        var doc = document.documentElement;
-        var scrollTop = doc.scrollTop || document.body.scrollTop;
-        var scrollHeight = doc.scrollHeight - doc.clientHeight;
-        if (scrollHeight <= 0) { bar.style.width = "0%"; return; }
-        bar.style.width = Math.min(100, (scrollTop / scrollHeight) * 100) + "%";
-      }
-      window.addEventListener("scroll", updateProgress, { passive: true });
-    })();
-
     // Scroll-to-top button
     (function () {
       var btn = document.getElementById("scroll-top");
       if (!btn) return;
       window.addEventListener("scroll", function () {
-        var show = window.scrollY > 400;
-        btn.style.display = show ? "flex" : "none";
+        var hide = window.scrollY <= 400;
+        if (btn.hidden !== hide) btn.hidden = hide;
       }, { passive: true });
       btn.addEventListener("click", function () {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? "auto" : "smooth" });
       });
     })();
 
@@ -238,14 +253,17 @@ window.FTK = (function () {
         if (overlay) overlay.classList.add("active");
         if (navToggle) navToggle.setAttribute("aria-expanded", "true");
         document.body.style.overflow = "hidden";
+        if (navClose) navClose.focus();
       }
       function closeNav() {
-        if (!siteNav) return;
+        if (!siteNav || !siteNav.classList.contains("nav-open")) return;
         siteNav.classList.remove("nav-open");
         if (overlay) overlay.classList.remove("active");
         if (navToggle) navToggle.setAttribute("aria-expanded", "false");
         document.body.style.overflow = "";
+        if (navToggle) navToggle.focus();
       }
+      if (siteNav) trapFocus(siteNav, function () { return siteNav.classList.contains("nav-open"); });
       if (navToggle) navToggle.addEventListener("click", openNav);
       if (navClose)  navClose.addEventListener("click", closeNav);
       if (overlay)   overlay.addEventListener("click", closeNav);
@@ -287,11 +305,11 @@ window.FTK = (function () {
       if (!btn) return;
       function applyTheme(theme) {
         document.documentElement.setAttribute("data-theme", theme);
-        localStorage.setItem("ftk-theme", theme);
+        try { localStorage.setItem("ftk-theme", theme); } catch (e) { /* storage blocked */ }
         btn.setAttribute("aria-checked", theme === "dark" ? "true" : "false");
-        btn.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
       }
-      var current = localStorage.getItem("ftk-theme");
+      var current = null;
+      try { current = localStorage.getItem("ftk-theme"); } catch (e) { /* storage blocked */ }
       if (!current) {
         current = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
       }
@@ -315,37 +333,27 @@ window.FTK = (function () {
           el.dispatchEvent(new Event("change", { bubbles: true }));
         });
       }
-      if (e.key === "d" && !e.ctrlKey && !e.metaKey && !e.altKey) {
-        var active2 = document.activeElement;
-        if (active2 && (active2.tagName === "INPUT" || active2.tagName === "TEXTAREA" || active2.tagName === "SELECT")) return;
-        var btn2 = document.getElementById("theme-toggle");
-        if (btn2) btn2.click();
-      }
       if (e.key === "?" && !e.ctrlKey && !e.metaKey && !e.altKey) {
         var active = document.activeElement;
         if (active && (active.tagName === "INPUT" || active.tagName === "TEXTAREA" || active.tagName === "SELECT")) return;
         e.preventDefault();
         var overlay = document.getElementById("ftk-help-overlay") || buildHelpOverlay();
-        var isOpen = overlay.style.display !== "none";
-        overlay.style.display = isOpen ? "none" : "flex";
-        if (!isOpen) {
-          var closeBtn = document.getElementById("ftk-help-close");
-          if (closeBtn) closeBtn.focus();
+        if (overlay.style.display !== "none") {
+          closeHelp();
+        } else {
+          helpReturnFocus = document.activeElement;
+          overlay.style.display = "flex";
+          document.getElementById("ftk-help-close").focus();
         }
       }
       if (e.key === "Escape") {
-        var overlay = document.getElementById("ftk-help-overlay");
-        if (overlay && overlay.style.display !== "none") {
-          overlay.style.display = "none";
-        }
+        closeHelp();
       }
     });
     document.addEventListener("click", function (e) {
       var overlay = document.getElementById("ftk-help-overlay");
       if (!overlay || overlay.style.display === "none") return;
-      if (e.target === overlay || e.target.id === "ftk-help-close") {
-        overlay.style.display = "none";
-      }
+      if (e.target === overlay || e.target.id === "ftk-help-close") closeHelp();
     });
   }
 
@@ -445,6 +453,7 @@ window.FTK = (function () {
         newText = newText === null || newText === undefined ? "" : String(newText);
         var oldText = nativeDesc.get.call(el);
         if (newText === oldText) return;
+        if (prefersReducedMotion()) { nativeDesc.set.call(el, newText); return; }
         if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
         if (timeoutId) { clearTimeout(timeoutId); timeoutId = null; }
 

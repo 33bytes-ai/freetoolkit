@@ -27,6 +27,14 @@
    the browser's system blue regardless of the site's own accent color. */
 html {
   accent-color: var(--accent);
+  color-scheme: light dark;
+  /* Keeps a focused element clear of the sticky share bar. */
+  scroll-padding-bottom: 5rem;
+}
+[data-theme="light"] { color-scheme: light; }
+[data-theme="dark"] { color-scheme: dark; }
+a, button, input, select, textarea, label, summary {
+  touch-action: manipulation;
 }
 
 html, body {
@@ -433,7 +441,7 @@ input[type="search"]::-webkit-search-cancel-button {
   pointer-events: none;
   transition: color 0.25s ease, transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.theme-toggle-btn[aria-checked="true"] .tgl-moon { color: #93c5fd; transform: scale(1.15) rotate(0deg); }
+.theme-toggle-btn[aria-checked="true"] .tgl-moon { color: var(--accent); transform: scale(1.15) rotate(0deg); }
 .theme-toggle-btn[aria-checked="false"] .tgl-sun { color: #f59e0b; transform: scale(1.15) rotate(0deg); }
 .theme-toggle-btn[aria-checked="true"] .tgl-sun { transform: scale(0.8) rotate(-40deg); }
 .theme-toggle-btn[aria-checked="false"] .tgl-moon { transform: scale(0.8) rotate(40deg); }
@@ -500,7 +508,7 @@ input[type="search"]::-webkit-search-cancel-button {
   transition: border-color 0.15s, transform 0.15s;
 }
 .tool-card:hover,
-.tool-card:focus {
+.tool-card:focus-visible {
   border-color: var(--accent);
   transform: translateY(-2px);
 }
@@ -623,7 +631,7 @@ input[type="search"]::-webkit-search-cancel-button {
   transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
 }
 .category-card:hover,
-.category-card:focus {
+.category-card:focus-visible {
   border-color: var(--accent);
   transform: translateY(-2px);
   box-shadow: 0 12px 32px rgba(14, 107, 69, 0.12);
@@ -715,7 +723,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .tool-widget input:focus,
 .tool-widget select:focus,
 .tool-widget textarea:focus {
-  outline: none;
+  outline: 2px solid transparent;
   border-color: var(--accent);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
 }
@@ -1206,7 +1214,7 @@ button:hover {
 }
 .calc-grid input:focus,
 .calc-grid select:focus {
-  outline: none;
+  outline: 2px solid transparent;
   border-color: var(--accent);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
 }
@@ -1242,7 +1250,7 @@ button:hover {
 }
 .input-group input:focus,
 .input-group select:focus {
-  outline: none;
+  outline: 2px solid transparent;
   border-color: var(--accent);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
 }
@@ -1328,7 +1336,7 @@ button:hover {
   color: var(--text);
 }
 .data-table input:focus {
-  outline: none;
+  outline: 2px solid transparent;
   border-color: var(--accent);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
 }
@@ -1415,9 +1423,9 @@ body[data-ads="on"] {
   line-height: 1.5;
 }
 .calc-insight--info {
-  background: #f5f3ff;
-  border: 1px solid #ddd6fe;
-  color: #5b21b6;
+  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, var(--surface));
+  color: var(--accent);
 }
 .calc-insight--warning {
   background: #fffbeb;
@@ -1997,7 +2005,8 @@ body[data-ads="on"] {
 }
 .hero-search input::placeholder { color: rgba(255,255,255,0.6); }
 .hero-search input:focus {
-  outline: none;
+  outline: 2px solid #86e0b3;
+  outline-offset: 2px;
   border-color: rgba(255,255,255,0.55);
   background: rgba(255,255,255,0.16);
 }
@@ -2143,7 +2152,7 @@ a.tool-ticker-item:hover { color: var(--accent); }
 }
 
 .tool-card:hover,
-.tool-card:focus {
+.tool-card:focus-visible {
   border-color: var(--accent);
   transform: translateY(-3px);
   box-shadow: 0 12px 32px rgba(14, 107, 69, 0.12);
@@ -2292,7 +2301,6 @@ a.tool-ticker-item:hover { color: var(--accent); }
   .hero-glass {
     background: rgba(255,255,255,0.03);
   }
-  .calc-insight--info    { background: rgba(167,139,250,0.1); border-color: rgba(167,139,250,0.25); color: #c4b5fd; }
   .calc-insight--warning { background: rgba(217,119,6,0.1);   border-color: rgba(217,119,6,0.25);   color: #fcd34d; }
   .calc-insight--danger  { background: rgba(220,38,38,0.1);   border-color: rgba(220,38,38,0.25);   color: #fca5a5; }
   .calc-insight--success { background: rgba(22,163,74,0.1);   border-color: rgba(22,163,74,0.25);   color: #86efac; }
@@ -2327,7 +2335,6 @@ a.tool-ticker-item:hover { color: var(--accent); }
 [data-theme="dark"] .calc-table td { border-color: var(--border); }
 [data-theme="dark"] .output-box, [data-theme="dark"] .stat { background: #17201b; border-color: var(--border); }
 [data-theme="dark"] .hero-glass { background: rgba(255,255,255,0.03); }
-[data-theme="dark"] .calc-insight--info    { background: rgba(167,139,250,0.1); border-color: rgba(167,139,250,0.25); color: #c4b5fd; }
 [data-theme="dark"] .calc-insight--warning { background: rgba(217,119,6,0.1);   border-color: rgba(217,119,6,0.25);   color: #fcd34d; }
 [data-theme="dark"] .calc-insight--danger  { background: rgba(220,38,38,0.1);   border-color: rgba(220,38,38,0.25);   color: #fca5a5; }
 [data-theme="dark"] .calc-insight--success { background: rgba(22,163,74,0.1);   border-color: rgba(22,163,74,0.25);   color: #86efac; }
@@ -2656,3 +2663,32 @@ body.embed { margin: 0; padding: 1rem; background: var(--bg); }
 .embed-box { margin: 1.5rem 0; }
 .embed-box summary { cursor: pointer; font-weight: 600; }
 .embed-box textarea { width: 100%; min-height: 6.5rem; margin: .75rem 0 .5rem; font: .8rem/1.4 ui-monospace, monospace; }
+
+/* ── Back-to-top ─────────────────────────────────────────────────────── */
+.scroll-top {
+  position: fixed;
+  bottom: var(--sticky-bottom-offset);
+  right: 1.25rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  border: none;
+  cursor: pointer;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--accent) 25%, transparent);
+  transition: opacity 0.2s, transform 0.2s;
+}
+.scroll-top[hidden] { display: none; }
+.scroll-top:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+mark.search-hit {
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 1px;
+}

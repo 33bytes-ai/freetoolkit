@@ -1,26 +1,26 @@
 <div class="field-row">
   <div class="field">
     <label for="et-separated">Employees separated during period</label>
-    <input type="number" autocomplete="off" id="et-separated" value="12" min="0" step="1">
+    <input type="number" inputmode="decimal" autocomplete="off" id="et-separated" value="12" min="0" step="1">
   </div>
   <div class="field">
     <label for="et-start-hc">Headcount at start of period</label>
-    <input type="number" autocomplete="off" id="et-start-hc" value="95" min="0" step="1">
+    <input type="number" inputmode="decimal" autocomplete="off" id="et-start-hc" value="95" min="0" step="1">
   </div>
 </div>
 <div class="field-row">
   <div class="field">
     <label for="et-end-hc">Headcount at end of period</label>
-    <input type="number" autocomplete="off" id="et-end-hc" value="105" min="0" step="1">
+    <input type="number" inputmode="decimal" autocomplete="off" id="et-end-hc" value="105" min="0" step="1">
   </div>
   <div class="field">
     <label for="et-avg-salary">Average annual salary (<span class="cur-sym">$</span>) <span style="font-size:0.8em;color:var(--text-muted)">(for cost estimate)</span></label>
-    <input type="number" autocomplete="off" id="et-avg-salary" value="75000" min="0" step="5000">
+    <input type="number" inputmode="decimal" autocomplete="off" id="et-avg-salary" value="75000" min="0" step="5000">
   </div>
 </div>
 <div class="field" style="max-width:260px">
   <label for="et-repl-pct">Replacement cost (% of salary)</label>
-  <input type="number" autocomplete="off" id="et-repl-pct" value="33" min="0" max="300" step="5">
+  <input type="number" inputmode="decimal" autocomplete="off" id="et-repl-pct" value="33" min="0" max="300" step="5">
 </div>
 <div class="stats-grid">
   <div class="stat result-hero" data-tooltip="Separations ÷ Average Headcount × 100. Annual employee turnover rate. Industry average is 10–15%. Service industries (retail, hospitality) often run 25–50%."><span class="stat-label">Turnover Rate</span><span class="stat-value" id="et-result">—</span></div>

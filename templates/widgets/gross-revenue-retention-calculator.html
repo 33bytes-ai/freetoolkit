@@ -1,16 +1,16 @@
 <div class="field-row">
   <div class="field">
     <label for="grr-start-mrr">Starting MRR (<span class="cur-sym">$</span>)</label>
-    <input type="number" autocomplete="off" id="grr-start-mrr" value="100000" min="0" step="1000">
+    <input type="number" inputmode="decimal" autocomplete="off" id="grr-start-mrr" value="100000" min="0" step="1000">
   </div>
   <div class="field">
     <label for="grr-churned-mrr">Churned MRR (<span class="cur-sym">$</span>) <span style="font-size:0.8em;color:var(--text-muted)">cancelled accounts</span></label>
-    <input type="number" autocomplete="off" id="grr-churned-mrr" value="3000" min="0" step="500">
+    <input type="number" inputmode="decimal" autocomplete="off" id="grr-churned-mrr" value="3000" min="0" step="500">
   </div>
 </div>
 <div class="field" style="max-width:260px">
   <label for="grr-contracted-mrr">Contracted MRR (<span class="cur-sym">$</span>) <span style="font-size:0.8em;color:var(--text-muted)">downgrades only</span></label>
-  <input type="number" autocomplete="off" id="grr-contracted-mrr" value="1500" min="0" step="500">
+  <input type="number" inputmode="decimal" autocomplete="off" id="grr-contracted-mrr" value="1500" min="0" step="500">
 </div>
 <div class="stats-grid">
   <div class="stat result-hero" data-tooltip="(Starting MRR − Churned − Contracted) ÷ Starting MRR × 100. GRR excludes expansion revenue — it only measures revenue retention from existing customers. Always ≤ 100%."><span class="stat-label">Monthly GRR</span><span class="stat-value" id="grr-result">—</span></div>

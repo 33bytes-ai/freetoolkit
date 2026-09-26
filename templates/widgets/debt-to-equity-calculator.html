@@ -1,16 +1,16 @@
 <div class="field-row">
   <div class="field">
     <label for="dte-debt">Total debt (<span class="cur-sym">$</span>) <span style="font-size:0.8em;color:var(--text-muted)">(short + long term)</span></label>
-    <input type="number" autocomplete="off" id="dte-debt" value="500000" min="0" step="10000">
+    <input type="number" inputmode="decimal" autocomplete="off" id="dte-debt" value="500000" min="0" step="10000">
   </div>
   <div class="field">
     <label for="dte-equity">Total shareholders' equity (<span class="cur-sym">$</span>)</label>
-    <input type="number" autocomplete="off" id="dte-equity" value="750000" min="1" step="10000">
+    <input type="number" inputmode="decimal" autocomplete="off" id="dte-equity" value="750000" min="1" step="10000">
   </div>
 </div>
 <div class="field">
   <label for="dte-assets">Total assets (<span class="cur-sym">$</span>) <span style="font-size:0.8em;color:var(--text-muted)">(optional — for equity &amp; debt ratios)</span></label>
-  <input type="number" autocomplete="off" id="dte-assets" value="1250000" min="0" step="10000">
+  <input type="number" inputmode="decimal" autocomplete="off" id="dte-assets" value="1250000" min="0" step="10000">
 </div>
 <div class="stats-grid">
   <div class="stat result-hero" data-tooltip="Total Debt ÷ Total Equity. How much debt is used for every dollar of equity. Below 1× = more equity-financed; above 2× = highly leveraged. Capital-intensive industries (manufacturing, real estate) typically run higher."><span class="stat-label">Debt-to-Equity Ratio</span><span class="stat-value" id="dte-result">—</span></div>
