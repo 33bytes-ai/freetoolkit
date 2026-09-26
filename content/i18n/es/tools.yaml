@@ -370,3 +370,528 @@
     **¿Qué hace esta calculadora?**
     Calcula el capital circulante, el ratio de liquidez, la prueba ácida y los
     días de capital circulante a partir de tu activo y pasivo corrientes.
+
+"payment-fee-comparison":
+  "body": |
+    Elegir el procesador de pagos más barato para tu negocio es sencillo en
+    cuanto ves los números lado a lado. Introduce tu importe de venta habitual y
+    la tabla comparativa se actualiza al instante con las comisiones exactas y el
+    neto que recibes con **Stripe**, **PayPal Standard**, **PayPal Checkout** y
+    **Shopify Payments** en cada uno de sus tres planes.
+
+    ## Cómo funciona la comparación
+
+    La estructura de comisiones de cada procesador usa sus tarifas públicas en EE. UU.:
+
+    | Procesador | Tarifa | Comisión fija |
+    |-----------|------|-----------|
+    | Stripe | 2,9 % | + $0,30 |
+    | PayPal Standard | 2,99 % | + $0,49 |
+    | PayPal Checkout | 3,49 % | + $0,49 |
+    | Shopify Basic | 2,0 % | + $0,25 |
+    | Shopify (plan Shopify) | 1,7 % | + $0,25 |
+    | Shopify Advanced | 1,5 % | + $0,25 |
+
+    ## Cuándo sale más barato Shopify Payments
+
+    Shopify Payments supera a Stripe en transacciones nacionales de EE. UU. con
+    Visa/Mastercard por encima de unos $12. A $100, Shopify Basic ahorra $0,95
+    por transacción frente a Stripe. Con $500 al mes de volumen en el plan Basic
+    ($39/mes), las cuentas quedan más o menos igual; pero con $50.000 al mes el
+    ahorro en tarifa supera con creces la cuota del plan.
+
+    ## Cuándo quedarse con Stripe
+
+    Stripe gana en: facturación de suscripciones, APIs SaaS, pagos
+    internacionales (más de 135 divisas), adeudo directo ACH, facturación B2B y
+    negocios que no están en Shopify. Su ecosistema para desarrolladores no tiene
+    rival. Usa esta herramienta para cuantificar la diferencia de comisiones y
+    compárala con el coste de cambiar y tus necesidades de funcionalidades.
+
+    ## Preguntas frecuentes
+
+    **¿Qué procesador de pagos tiene las comisiones más bajas?**
+    Shopify Payments (plan Advanced) tiene la tarifa más baja, 1,5 % + $0,25,
+    pero exige una tienda Shopify y una suscripción de $399/mes. Fuera de
+    Shopify, Stripe (2,9 % + $0,30) supera a PayPal Standard (2,99 % + $0,49) en
+    transacciones de más de $15.
+
+    **¿Cuánto más barato es Shopify Payments que Stripe?**
+    En una transacción de $100: Shopify Basic cobra $2,25 y Stripe $3,20, así que
+    Shopify sale $0,95 más barato. Pero Shopify Basic exige un plan de $39/mes.
+    Necesitarías más de $4.100 al mes de volumen para que el ahorro frente a
+    Stripe cubra el plan.
+
+    **¿PayPal cobra más que Stripe?**
+    Sí. PayPal Standard cobra 2,99 % + $0,49 frente al 2,9 % + $0,30 de Stripe.
+    En una transacción de $100, PayPal Standard se queda $3,48 y Stripe $3,20:
+    PayPal es $0,28 más caro. PayPal Checkout (3,49 % + $0,49) es bastante más
+    caro que ambos.
+
+    **¿Puedo usar Stripe en Shopify sin pagar comisiones extra?**
+    Sí, pero Shopify cobra una comisión por transacción de terceros (0,5 %–2 %
+    según tu plan) si usas cualquier procesador que no sea Shopify Payments. Con
+    $10.000 al mes, eso suma $50–$200 en recargos de Shopify. Shopify Payments
+    (que funciona sobre la infraestructura de Stripe) elimina esa comisión.
+"paypal-fee-calculator":
+  "body": |
+    PayPal cobra **3,49 % + $0,49** por transacción online nacional, algo más que
+    el 2,9 % + $0,30 de Stripe. En pagos internacionales, la comisión sube a
+    **4,99 % + $0,49**. Los micropagos (transacciones de menos de $10) tienen una
+    tarifa especial: **5 % + $0,05**, más barata en importes muy pequeños pero cara
+    en porcentaje.
+
+    ## Comisiones de PayPal frente a Stripe
+
+    | Caso | PayPal | Stripe |
+    |---|---|---|
+    | $10 nacional | $0,84 (8,4 %) | $0,59 (5,9 %) |
+    | $100 nacional | $3,98 (4,0 %) | $3,20 (3,2 %) |
+    | $1.000 nacional | $35,39 (3,5 %) | $32,30 (3,2 %) |
+    | $100 internacional | $5,48 (5,5 %) | $4,70 (4,7 %) |
+
+    En la mayoría de importes, Stripe es más barato. La ventaja de PayPal es que
+    los consumidores lo conocen: ofrecerlo como opción puede mejorar la
+    conversión en el checkout.
+
+    ## Modo de repercutir la comisión
+    Si necesitas recibir un importe neto concreto, la calculadora hace el ajuste
+    al alza: para recibir exactamente $100 con un cobro PayPal nacional, tendrías
+    que cobrar **$104,66**.
+
+    ## PayPal «Amigos y familiares»
+    Los pagos personales («Amigos y familiares») son gratuitos en transacciones
+    nacionales financiadas con cuenta bancaria o saldo PayPal, pero usarlos para
+    pagos de negocio incumple las condiciones de PayPal. Te arriesgas al cierre
+    de la cuenta, sin la protección al vendedor de las transacciones estándar.
+
+    ## Preguntas frecuentes
+
+    **¿PayPal cobra por los reembolsos?**
+    PayPal devuelve la comisión fija de $0,49 pero se queda con la parte
+    porcentual (3,49 %) al reembolsar. Stripe, en cambio, devuelve la comisión
+    fija pero también se queda con el porcentaje.
+
+    **¿Se pueden evitar las comisiones de PayPal?**
+    En transferencias nacionales desde cuenta bancaria a contactos personales,
+    sí. En transacciones de negocio, la única forma de reducirlas es el programa
+    de tarifa para comerciantes de PayPal, que exige solicitarlo y demostrar un
+    volumen alto. En general, Stripe ofrece comisiones más bajas en la mayoría de
+    usos profesionales.
+"shopify-fee-calculator":
+  "body": |
+    Shopify cobra dos tipos de comisiones en cada venta: una **comisión de
+    procesamiento de pago** (parecida a la de Stripe) y una **comisión por
+    transacción** aparte si usas una pasarela de pago de terceros en lugar de
+    Shopify Payments. Entender ambas es imprescindible para calcular bien el
+    margen.
+
+    ## Estructura de comisiones de Shopify por plan
+
+    | Plan | Cuota mensual | Tarifa de procesamiento | Comisión por transacción (terceros) |
+    |---|---|---|---|
+    | Basic | $39 | 2,9 % + $0,30 | 2,0 % |
+    | Shopify | $105 | 2,6 % + $0,30 | 1,0 % |
+    | Advanced | $399 | 2,4 % + $0,30 | 0,5 % |
+
+    La comisión por transacción se aplica *solo* si usas un procesador distinto
+    de Shopify Payments (Stripe, PayPal, etc.). Con Shopify Payments desaparece
+    por completo.
+
+    ## Shopify Payments frente a pasarelas de terceros
+
+    Para la mayoría de comerciantes, Shopify Payments es la opción más barata
+    porque elimina la comisión por transacción. Una venta de $100 en el plan Basic
+    con Stripe cuesta **$2,90 + $0,30 + $2,00 = $5,20**, frente a solo **$3,20**
+    con Shopify Payments: un 62 % de diferencia.
+
+    Motivos para usar igualmente una pasarela de terceros:
+    - Tu país no está cubierto por Shopify Payments (disponible en más de 17 países)
+    - Necesitas herramientas antifraude, suscripciones o funciones que solo tiene tu pasarela actual
+    - Categorías de producto de alto riesgo que Shopify Payments no admite
+
+    ## Preguntas frecuentes
+
+    **¿La cuota mensual cuenta en el coste por venta?**
+    La calculadora muestra solo las comisiones por transacción. Para un coste
+    completo por venta con la cuota incluida, divide la cuota mensual entre tu
+    número de transacciones al mes y súmalo al total por transacción. Con 100
+    ventas al mes en el plan Basic, la cuota supone $0,39 por venta.
+
+    **¿Debería subir de plan para pagar menos comisiones?**
+    Las cuentas: si pasar de Basic a Shopify ($66 más al mes) ahorra un 0,3 % y
+    elimina un 1 % de comisión por transacción (con pasarela de terceros),
+    cubres costes con $66 / 0,013 = $5.077 de ventas al mes. Por encima de ese
+    volumen, subir de plan compensa.
+"stripe-fee-calculator":
+  "body": |
+    Stripe es el procesador de pagos preferido por la mayoría de productos SaaS,
+    marketplaces y negocios independientes, pero su estructura de comisiones
+    confunde constantemente a los fundadores. La tarifa estándar es **2,9 % +
+    $0,30** por cobro con tarjeta correcto, pero eso es solo el punto de partida.
+
+    Las tarjetas internacionales (emitidas fuera de EE. UU.) añaden una
+    **comisión transfronteriza del 1,5 %**, hasta un total de **4,4 % + $0,30**.
+    Si usas Stripe Connect (la plataforma de Stripe para repartir pagos entre un
+    marketplace y sus vendedores) para cobrar en nombre de cuentas conectadas, las
+    comisiones y el reparto de ingresos se complican. Esta calculadora cubre todos
+    los casos habituales.
+
+    ## Cómo funciona el cálculo de comisiones de Stripe
+    1. Introduce el importe que quieres cobrar al cliente.
+    2. Indica si la tarjeta es nacional o internacional.
+    3. Elige si absorbes la comisión o la repercutes al cliente
+       (modo «cobrar lo necesario para recibir»).
+    4. La calculadora muestra la comisión exacta, el neto que llega a tu cuenta
+       bancaria y, en modo repercusión, cuánto cobrar para recibir tu objetivo.
+
+    ## Por qué importa «cobrar más para recibir exactamente lo que necesitas»
+    Si necesitas recibir exactamente $100 de una tarjeta nacional de EE. UU., no
+    puedes cobrar $100 sin más: recibirías $96,80 tras el 2,9 % + $0,30 de Stripe.
+    Para recibir exactamente $100 tienes que cobrar **$103,09** (si el cliente paga
+    la comisión). Esta calculadora hace el ajuste al alza automáticamente.
+
+    ## Preguntas frecuentes
+
+    **¿Cambia la tarifa de Stripe según el volumen?**
+    Sí. Stripe negocia precios a medida con negocios que procesan más de unos
+    $80k al mes. Para la mayoría de fundadores independientes y empresas en fase
+    inicial se aplica el 2,9 % + $0,30 estándar. La calculadora usa la tarifa
+    estándar; ajusta el campo del porcentaje a tu tarifa negociada.
+
+    **¿Y las comisiones adicionales de Stripe (disputas, reembolsos, internacional)?**
+    Los reembolsos devuelven la comisión porcentual pero no los $0,30 fijos. Las
+    disputas cuestan $15 sea cual sea el resultado (se devuelven si ganas). Estos
+    casos no están en el cálculo por transacción, pero conviene presupuestarlos.
+
+    **¿Puedo usarla para Stripe Connect?**
+    Sí. Stripe Connect traslada la misma comisión base a la plataforma o a la
+    cuenta conectada según tu configuración. Introduce el cobro total y la tarifa
+    combinada aplicable en el campo de tarifa personalizada.
+
+"freelance-project-estimate":
+  "body": |
+    Presupuestar bien un proyecto freelance es en parte matemáticas y en parte
+    gestión del riesgo. Si te quedas corto, trabajas horas sin cobrar. Si te pasas
+    sin justificarlo, pierdes el trabajo. Esta calculadora parte de lo que sabes
+    (tu tarifa, tus horas estimadas y un colchón para imprevistos) y genera un
+    presupuesto que puedes entregar directamente al cliente.
+
+    ## La fórmula en dos partes
+
+    **Estimación base** = tarifa por hora × horas estimadas
+    **Presupuesto total** = estimación base × (1 + % de imprevistos)
+
+    El margen de imprevistos no es relleno ni deshonestidad: es un colchón de
+    riesgo que cubre lo inevitable, como requisitos poco claros, ampliaciones de
+    alcance, rondas de revisión y el tiempo de gestión del proyecto que no
+    estimaste de forma explícita.
+
+    ## Qué porcentaje de imprevistos usar
+
+    | Tipo de proyecto | Margen recomendado |
+    |---|---|
+    | Especificación clara, trabajo conocido | 10–15 % |
+    | Proyecto estándar, algunas incógnitas | 20–25 % |
+    | Ámbito nuevo, requisitos poco claros | 30–40 % |
+    | Fases de I+D o descubrimiento | 50 % o más |
+
+    Los estudios sobre proyectos de software muestran desviaciones del 50–80 %
+    sobre las estimaciones iniciales. Un 20 % de imprevistos no es agresivo, es
+    prudente. El cliente que discute el margen te está diciendo que espera cambios
+    de alcance y no piensa pagarlos.
+
+    ## Precio cerrado o por horas
+
+    Esta calculadora genera un **presupuesto de precio cerrado**. Alternativas:
+    - **Por horas (tiempo y materiales)**: facturas las horas reales a tu tarifa.
+      Menos riesgo para ti, más riesgo percibido para el cliente. Funciona mejor en
+      trabajos continuos o abiertos.
+    - **Precio por valor**: el precio sigue el valor que percibe el cliente, no tus
+      horas. Más difícil de plantear, pero elimina el techo de tus ingresos.
+
+    ## Preguntas frecuentes
+
+    **¿Muestro el desglose o solo el total?**
+    A la mayoría de clientes, muéstrales solo el total. Desglosar tarifa × horas
+    invita a negociar cada componente y hace que comparen tu tarifa con el
+    mercado. El total es todo lo que necesitan para decidir.
+
+    **¿Cómo gestiono las peticiones fuera del alcance?**
+    Añade una cláusula de alcance a tu contrato: cualquier trabajo fuera de los
+    entregables definidos se presupuesta aparte. Recúrrela con calma cuando el
+    alcance crezca («Encantado de hacerlo; te envío un presupuesto rápido por el
+    trabajo extra») en lugar de absorberlo en silencio.
+"freelance-rate-calculator":
+  "body": |
+    Fijar una tarifa freelance sin un cálculo sistemático es una de las formas más
+    habituales de cobrar de menos. La cifra que necesitas no es tu antiguo salario
+    dividido entre 2.080: es esa cifra *más* impuestos, *más* gastos del negocio,
+    *más* un ajuste porque probablemente no puedas facturar todas las horas que
+    trabajas.
+
+    Esta calculadora parte de tu **objetivo de ingresos anuales** y calcula hacia
+    atrás la tarifa por hora mínima que debes cobrar para alcanzarlo, teniendo en
+    cuenta tres factores:
+
+    **1. Tiempo no facturable.** Responder emails, redactar propuestas, llevar la
+    contabilidad y formarte llevan tiempo que no puedes facturar. La mayoría de
+    freelancers facturan el 60–70 % de sus horas de trabajo.
+
+    **2. Impuestos.** Un autónomo paga el impuesto sobre la renta *más* las
+    cotizaciones de autónomo (Seguridad Social + Medicare en EE. UU. ≈ 15,3 %),
+    porque normalmente el empleador paga la mitad de las cotizaciones de sus
+    empleados. Como freelance, pagas las dos mitades.
+
+    **3. Gastos del negocio.** Suscripciones de software, equipos, oficina o
+    coworking, seguro médico, formación y gestoría reducen los ingresos que te
+    quedan después de gastos.
+
+    ## Preguntas frecuentes
+
+    **¿Por qué mi «tarifa real» parece mucho más alta de lo que ganan los empleados?**
+    Porque lo es. Un empleado a tiempo completo que gana $100k le cuesta a su
+    empresa unos $130–145k en total (beneficios, cotizaciones, equipo, oficina).
+    Como freelance cubres todo eso tú mismo, además de asumir el riesgo del tiempo
+    no facturable y de los huecos de ingresos entre clientes.
+
+    **¿Debería cobrar alguna vez por debajo de mi tarifa mínima?**
+    Con un cliente estratégico que te aporta portfolio, recomendaciones o te abre
+    la puerta a trabajos mejor pagados, un descuento temporal es una decisión de
+    negocio válida, siempre que la tomes de forma consciente y no porque olvidaste
+    los impuestos.
+
+    **¿Cómo subo la tarifa a clientes actuales?**
+    Avisa con 60–90 días, apóyate en el valor («mi tarifa sube a X porque ahora
+    entrego Y») y mantente firme. La mayoría de clientes que se quedan con la nueva
+    tarifa acaban respetando más tu tiempo.
+"invoice-total-calculator":
+  "body": |
+    El software de facturación es ideal para clientes recurrentes, pero cuando
+    necesitas un total rápido para una propuesta, un desglose de costes para un
+    email a un cliente o una comprobación antes de enviar una factura, una
+    calculadora sencilla es más rápida que abrir tu herramienta de facturación.
+
+    Esta calculadora admite hasta cuatro líneas, un descuento y un impuesto/IVA
+    opcionales, y genera un resumen en texto del desglose completo listo para
+    copiar y pegar.
+
+    ## Cuándo usar esta calculadora
+
+    - **Fase de propuesta**: modelar el total rápidamente antes de comprometerte con un precio por escrito
+    - **Revisiones con el cliente**: mostrar el total acumulado del trabajo hecho a mitad de proyecto
+    - **Comprobación multidivisa**: verificar las cuentas antes de pegarlas en tu herramienta de facturación
+    - **Comprobación fiscal**: confirmar el importe del IVA o del impuesto antes de enviar
+
+    ## Estrategias de líneas de factura para freelancers
+
+    **Líneas basadas en valor**: en lugar de «40 horas de desarrollo», usa
+    «Rediseño y desarrollo web» como descripción. El cliente se fija en el
+    entregable, no en el tiempo.
+
+    **Facturación por hitos**: divide los proyectos en dos o tres facturas (por
+    ejemplo, 50 % al inicio, 25 % a mitad y 25 % a la entrega). Te protege frente a
+    impagos y ayuda al cliente a gestionar su caja.
+
+    **Gastos**: añade líneas para los gastos suplidos (fotos de stock, tipografías,
+    herramientas, viajes) con una breve descripción. Factúralos a coste salvo que
+    tu contrato prevea un margen.
+
+    ## IVA e impuestos
+
+    En servicios B2B dentro de la UE suele aplicarse la inversión del sujeto
+    pasivo: no cobras IVA a clientes empresa de otros Estados miembros, pero la
+    factura debe indicar «Inversión del sujeto pasivo». En servicios B2C dentro de
+    la UE, puede que tengas que cobrar el IVA al tipo del país del cliente.
+    Consulta a tu asesor para tu caso concreto.
+
+    En EE. UU., el impuesto sobre ventas no suele aplicarse a los servicios en la
+    mayoría de estados (con excepciones en algunos servicios digitales). Revisa
+    las normas de tu estado antes de cobrarlo.
+
+    ## Preguntas frecuentes
+
+    **¿Cómo añado más de 4 líneas?**
+    Para facturas más largas, usa una herramienta de facturación de verdad (Bonsai,
+    FreshBooks o HoneyBook están pensadas para freelancers). Esta calculadora está
+    optimizada para estimaciones rápidas y facturas sencillas.
+
+    **¿Muestro la tarifa por hora o solo el total de la línea?**
+    A la mayoría de clientes, muéstrales solo el total por entregable. «40 horas ×
+    $125» invita a negociar la tarifa; «Desarrollo: $5.000» te posiciona como
+    alguien que entrega un resultado.
+"salary-to-hourly-calculator":
+  "body": |
+    Tanto si eres freelance y comparas tu tarifa con salarios de empleados, como
+    si eres empresa y pones precio a un puesto por contrato, o simplemente quieres
+    saber cuánto supone tu salario anual por hora, esta calculadora hace la
+    conversión al instante y sin registro.
+
+    El cálculo es sencillo para importes brutos:
+    **Tarifa por hora** = salario anual ÷ (semanas al año × horas por semana)
+
+    Por defecto se asumen 52 semanas al año y 40 horas a la semana. La calculadora
+    permite ajustar ambas cifras, algo útil para:
+    - Trabajo a tiempo parcial (por ejemplo, 20 horas a la semana)
+    - Personas con más o menos de 52 semanas pagadas (por ejemplo, con permisos sin sueldo)
+    - Empleados con las vacaciones pagadas incluidas en el salario
+
+    ## Tarifa por hora antes y después de impuestos
+
+    La calculadora ofrece una tarifa por hora estimada después de impuestos para
+    los tramos habituales del impuesto federal de EE. UU. (10 %, 12 %, 22 %, 24 %,
+    32 %, 35 %, 37 %). Ojo: es una estimación simplificada que no tiene en cuenta
+    impuestos estatales, deducciones ni situación familiar. Úsala para
+    comparaciones aproximadas, no para planificar impuestos.
+
+    ## Preguntas frecuentes
+
+    **¿Cómo paso una tarifa por hora a salario anual?**
+    Anual = por hora × horas por semana × semanas al año. Con 40 h y 52 semanas:
+    por hora × 2.080 = anual.
+
+    **Mi contrato dice $X al día: ¿cómo lo convierto?**
+    Divide entre tus horas diarias para obtener la tarifa por hora y multiplica por
+    tus horas semanales y semanas al año para el anual. Con jornadas de 8 horas:
+    tarifa diaria × 260 días laborables = anual.
+
+    **¿Por qué los freelancers cobran 2–3 veces la tarifa por hora de un empleado equivalente?**
+    Porque la parte de cotizaciones del empleador, los beneficios, el equipo, la
+    gestión y el riesgo de huecos de ingresos los asume el freelance y no la
+    empresa. Consulta la calculadora de tarifa freelance para el desglose completo.
+
+"freelance-tax-estimator":
+  "body": |
+    Como freelance o contratista independiente en EE. UU., pagas tanto la parte
+    del empleado COMO la del empleador de las cotizaciones de Social Security y
+    Medicare, llamadas en conjunto **self-employment tax (SE tax)**: un 15,3 % del
+    beneficio neto.
+
+    A diferencia de los empleados W-2, nadie te retiene impuestos de tus cobros.
+    Debes hacer pagos estimados trimestrales (15 de abril, 16 de junio, 15 de
+    septiembre y 15 de enero) para evitar las penalizaciones del IRS por pago
+    insuficiente.
+
+    ## Cómo se calculan los impuestos de un freelance
+
+    **Paso 1: beneficio neto** = ingresos brutos − gastos del negocio
+
+    **Paso 2: SE tax** = beneficio neto × 15,3 %
+    (Social Security 12,4 % hasta $168.600 + Medicare 2,9 %, sin límite)
+
+    **Paso 3: deducción de la SE tax** = SE tax × 50 %
+    (Puedes deducir la mitad de la SE tax de la base imponible)
+
+    **Paso 4: base imponible** = beneficio neto − deducción SE + otros ingresos
+
+    **Paso 5: impuesto federal sobre la renta** = tramos marginales de 2024 aplicados a la base imponible
+
+    **Paso 6: pago trimestral** = (SE tax + impuesto federal) ÷ 4
+
+    ## Deducciones clave que reducen la factura
+
+    - **Gastos del negocio**: software, equipos, formación, despacho en casa
+    - **Primas del seguro médico**: totalmente deducibles si pagas tu propia póliza
+    - **Aportaciones a la jubilación**: SEP-IRA (hasta el 25 % del beneficio neto, máx. $69k),
+      Solo 401(k) (hasta $23k como empleado + 25 % como empleador) o Roth IRA ($7k)
+    - **La mitad de la SE tax**: se calcula y deduce automáticamente
+
+    ## La opción de tributar como S-Corp
+
+    A partir de unos $80.000 de beneficio neto, algunos freelancers ahorran
+    eligiendo el estatus de S-Corp. Te pagas un «salario razonable» (sujeto a SE
+    tax) y te llevas el resto como distribución (no sujeta a SE tax). El ahorro
+    puede superar los $5.000 al año, pero exige gestionar nóminas y presentar una
+    declaración adicional. Consulta con un asesor (CPA) antes de decidir.
+
+    ## Preguntas frecuentes
+
+    **¿Cuándo tengo que hacer pagos estimados trimestrales?**
+    Si esperas deber $1.000 o más de impuestos en el año, el IRS exige pagos
+    estimados trimestrales. Los vencimientos son el 15 de abril, 15 de junio,
+    15 de septiembre y 15 de enero. No pagar o pagar de menos conlleva una
+    penalización (actualmente ~8 % anual sobre el importe no pagado).
+
+    **¿Qué gastos puedo deducir como freelance?**
+    Cualquier gasto de negocio ordinario y necesario: despacho en casa (espacio
+    dedicado), software y suscripciones del negocio, formación, equipos, internet
+    (parte profesional), seguro de responsabilidad profesional, honorarios
+    contables y legales, y viajes de negocio.
+"payroll-tax-calculator":
+  "body": |
+    Las cotizaciones del empleador suman aproximadamente un 8–12 % al coste de
+    cada empleado, además de su salario base. Para un empleado de $75.000, eso
+    supone $6.000–$9.000 al año en impuestos obligatorios adicionales.
+
+    ## Cotizaciones del empleador en EE. UU. (2024)
+
+    | Impuesto | Tipo | Base |
+    |----|------|-----------|
+    | Social Security (empleador) | 6,2 % | Primeros $160.200 |
+    | Medicare (empleador) | 1,45 % | Sin límite |
+    | FUTA (desempleo federal) | 0,6 %* | Primeros $7.000 |
+
+    *Después del crédito por el impuesto estatal de desempleo. El tipo FUTA real
+    es del 6 %, reducido con un crédito de hasta el 5,4 %.
+
+    ## Impuestos estatales no incluidos
+
+    Esta calculadora solo cubre las cotizaciones federales. La mayoría de estados
+    tienen además un impuesto estatal de desempleo (SUTA) con tipos del 0,1 % a
+    más del 10 % según el historial del empleador.
+
+    ## Coste total de un empleado
+
+    El coste completo de un empleado incluye:
+    - Salario base
+    - Cotizaciones del empleador (~8–10 %)
+    - Aportación al seguro médico ($5.000–$15.000 al año)
+    - Aportación al 401(k) (3–5 % del salario)
+    - Equipo, software, oficina
+
+    Para presupuestar, calcula **1,25–1,40× el salario base** como coste total.
+"vat-calculator":
+  "body": |
+    Cuando facturas a un cliente de un país con IVA (Reino Unido, UE, Australia,
+    etc.), necesitas saber si tu precio es sin IVA (neto) o con IVA (bruto) y
+    calcular el otro. Equivocarte de sentido significa cobrar de menos al cliente
+    o asumir el impuesto sin querer.
+
+    Esta calculadora funciona en los dos sentidos:
+
+    **Añadir el impuesto:** precio neto × (1 + tipo) = precio bruto
+    **Quitar el impuesto:** precio bruto ÷ (1 + tipo) = precio neto
+
+    Los tipos estándar vienen precargados para las regiones habituales (Reino
+    Unido: 20 %, UE por defecto: 20 %/23 %, GST de Australia: 10 %, GST de Canadá:
+    5 %, EE. UU.: personalizado). También puedes introducir cualquier tipo.
+
+    ## Conceptos clave
+
+    **Precio neto (sin IVA / sin impuestos):** el precio antes de impuestos. Es lo
+    que ingresas como facturación. El IVA que paga el cliente va a Hacienda, no a
+    ti.
+
+    **Precio bruto (con IVA):** el total que paga el cliente, impuestos incluidos.
+
+    **Umbral de registro de IVA / GST:** en Reino Unido, debes registrarte a
+    efectos de IVA cuando tu facturación sujeta de los últimos 12 meses supera las
+    £90.000 (en 2024). Por debajo, no cobras IVA ni tienes que ingresarlo. El
+    impuesto sobre ventas de EE. UU. no tiene umbral federal y varía según el
+    estado.
+
+    ## Preguntas frecuentes
+
+    **¿Cobro IVA en productos digitales a clientes extranjeros?**
+    Las normas de la UE exigen cobrar el IVA al tipo del país del comprador en las
+    ventas B2C de productos digitales a clientes de la UE (las normas de
+    «servicios digitales» de la UE). Plataformas como Stripe Tax, Paddle y Lemon
+    Squeezy lo gestionan automáticamente como «merchant of record». Las ventas B2B
+    dentro de la UE suelen usar la inversión del sujeto pasivo (el cliente declara
+    el IVA).
+
+    **¿Qué diferencia hay entre IVA e impuesto sobre ventas?**
+    El IVA se recauda en cada fase de la producción y los clientes empresa pueden
+    recuperarlo. El impuesto sobre ventas de EE. UU. solo se cobra en la venta
+    final al por menor y las empresas no pueden recuperarlo. El consumidor final
+    soporta ambos; lo que cambia es la mecánica para las empresas.

@@ -30,3 +30,85 @@
     una ventaja estructural real, y explica en gran parte por qué los modelos de
     suscripción y los marketplaces pueden financiar su crecimiento con la
     operación, algo que un minorista tradicional no puede hacer.
+
+"Payments":
+  "body": |
+    Las comisiones de pago suelen ser la mayor partida que una pequeña empresa
+    nunca negocia. Al 2,9 % + $0,30, un negocio que procesa $30.000 al mes con
+    tarjeta entrega unos $10.500 al año, más de lo que la mayoría de fundadores
+    gasta en software. Estas calculadoras existen para que esa cifra deje de ser
+    una sorpresa en el extracto mensual.
+
+    ## Cuál necesitas
+
+    Empieza por el **Comparador de comisiones** si estás eligiendo procesador o
+    te planteas cambiar: pone Stripe, PayPal y los tres planes de Shopify
+    Payments lado a lado para un mismo importe de venta y muestra el neto exacto
+    de cada uno. Usa las calculadoras de **Stripe**, **PayPal** y **Shopify**
+    cuando ya conoces tu procesador y necesitas una cifra precisa: cada una
+    tiene en cuenta los detalles que la comparativa simplifica, como las
+    tarjetas internacionales, las tarifas negociadas y el ajuste al alza de un
+    cobro para recibir un importe exacto después de comisiones.
+
+    ## Los errores que evitan
+
+    Hay dos errores constantes. El primero es comparar los porcentajes anunciados
+    sin tener en cuenta la comisión fija: en una venta de $5, los $0,30 de
+    Stripe ya son un 6 %, y por eso las microtransacciones destrozan márgenes que
+    parecen correctos en una hoja de cálculo. El segundo es olvidar los recargos
+    por pago transfronterizo y conversión de divisa (un 1,5 % y un 1 % extra en
+    Stripe), que hacen que un cliente internacional sea bastante menos rentable
+    que uno nacional al mismo precio.
+
+"Freelance":
+  "body": |
+    El trabajo independiente se pone mal precio más a menudo de lo que se vende
+    mal. El error habitual es dividir un salario objetivo entre 2.080 horas y
+    cobrar el resultado, lo que ignora todas las horas no facturables y todos los
+    costes que antes asumía un empleador.
+
+    ## Cuál necesitas
+
+    **Tarifa freelance** es el punto de partida: parte de los ingresos que
+    necesitas y suma el tiempo no facturable, las vacaciones sin sueldo, los días
+    de baja, los gastos del negocio y los impuestos de autónomo que un salario
+    oculta. **Salario a tarifa por hora** convierte una oferta de empleo en la
+    tarifa freelance equivalente, la comparación honesta para decidir entre un
+    contrato y un puesto. **Presupuesto de proyecto** pone precio a un trabajo
+    cerrado con un colchón para imprevistos, y **Calculadora de factura** se
+    encarga del documento final, con impuestos y varias líneas.
+
+    ## Qué significan los números
+
+    La ocupación facturable realista de un freelance en solitario es del 50–70 %,
+    no del 100 %. Llamadas comerciales, propuestas, administración, facturación y
+    marketing son horas reales que ningún cliente paga directamente. Con un 60 %
+    de ocupación, un objetivo de $100.000 en 46 semanas de trabajo supone unos
+    $120 la hora antes de impuestos y gastos, no los $52 que sugiere dividir sin
+    más entre 2.080 horas. Presupuesta con la primera cifra y el negocio funciona;
+    con la segunda, se va apagando poco a poco.
+
+"Tax & Compliance":
+  "body": |
+    Los impuestos son el coste que más se olvida al fijar precios y el que más
+    probablemente llegue como una sorpresa desagradable. Estas calculadoras dan
+    estimaciones de planificación para que el dinero se aparte antes de gastarlo.
+
+    ## Cuál necesitas
+
+    **IVA** añade o quita el impuesto sobre el valor añadido a cualquier tipo,
+    incluido el cálculo inverso desde un importe con IVA: el que más confunde,
+    porque quitar un 20 % de IVA es dividir entre 1,2, no restar un 20 %.
+    **Impuestos freelance** estima lo que un autónomo debería reservar de cada
+    factura. **Cotizaciones del empleador** cubre la parte de la empresa, la que
+    sorprende a quien contrata por primera vez.
+
+    ## Qué significan los números
+
+    El hábito más útil que fomentan es reservar los impuestos al cobrar, no al
+    declarar. Un freelance que pasa un 25–30 % de cada pago a una cuenta aparte el
+    mismo día que lo recibe nunca se encuentra con un pago trimestral que no puede
+    afrontar. Tipos, umbrales y deducciones cambian según el país y el ejercicio
+    fiscal, y estas calculadoras sirven para planificar, no para declarar:
+    comprueba las cifras vigentes con la administración tributaria o un asesor
+    antes de presentar nada.

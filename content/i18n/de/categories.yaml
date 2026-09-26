@@ -31,3 +31,87 @@
     großer Grund, warum Abo-Modelle und Marktplätze ihr Wachstum aus dem
     operativen Geschäft finanzieren können, was ein klassischer Händler nicht
     kann.
+
+"Payments":
+  "body": |
+    Zahlungsgebühren sind meist der größte Posten, den ein kleines Unternehmen
+    nie verhandelt. Bei 2,9 % + 0,30 $ gibt ein Unternehmen mit 30.000 $
+    Kartenumsatz pro Monat rund 10.500 $ im Jahr ab, mehr als die meisten Gründer
+    für Software ausgeben. Diese Rechner gibt es, damit diese Zahl auf der
+    Monatsabrechnung keine Überraschung mehr ist.
+
+    ## Welcher Rechner passt
+
+    Starte mit dem **Gebührenvergleich**, wenn du einen Zahlungsanbieter
+    auswählst oder einen Wechsel erwägst: Er stellt Stripe, PayPal und alle drei
+    Shopify-Payments-Pläne für einen Verkaufsbetrag nebeneinander und zeigt die
+    genaue Nettoauszahlung. Nutze die einzelnen Rechner für **Stripe**,
+    **PayPal** und **Shopify**, wenn dein Anbieter feststeht und du eine genaue
+    Zahl brauchst: Jeder berücksichtigt Details, die der Vergleich vereinfacht,
+    darunter internationale Karten, verhandelte Sätze und das Hochrechnen eines
+    Betrags, damit nach Gebühren genau die gewünschte Summe ankommt.
+
+    ## Die Fehler, die sie verhindern
+
+    Zwei Fehler tauchen ständig auf. Erstens: die beworbenen Prozentsätze zu
+    vergleichen und die Fixgebühr zu übersehen. Bei einem Verkauf über 5 $
+    machen Stripes 0,30 $ allein schon 6 % aus, deshalb zerstören
+    Kleinstbeträge Margen, die in der Tabelle gut aussehen. Zweitens: die
+    Aufschläge für grenzüberschreitende Zahlungen und Währungsumrechnung zu
+    vergessen (bei Stripe 1,5 % bzw. 1 % extra). Sie machen einen ausländischen
+    Kunden beim gleichen Preis still und leise deutlich weniger profitabel als
+    einen inländischen.
+
+"Freelance":
+  "body": |
+    Selbstständige Arbeit wird öfter falsch bepreist als schlecht verkauft. Der
+    typische Fehler: ein Wunschgehalt durch 2.080 Stunden teilen und das Ergebnis
+    anbieten. Das ignoriert jede nicht abrechenbare Stunde und alle Kosten, die
+    früher der Arbeitgeber getragen hat.
+
+    ## Welcher Rechner passt
+
+    Starte mit dem **Freelance-Stundensatz**: Er rechnet vom benötigten Einkommen
+    rückwärts und schlägt nicht abrechenbare Zeit, unbezahlten Urlaub,
+    Krankheitstage, Betriebsausgaben und Selbstständigen-Abgaben wieder auf, die
+    ein Angestelltengehalt verdeckt. **Gehalt in Stundensatz** rechnet ein
+    Stellenangebot in den gleichwertigen Freelance-Satz um, der ehrliche
+    Vergleich zwischen Auftrag und Anstellung. **Projektkalkulation** bepreist
+    Festpreisarbeit mit Risikopuffer, und der **Rechnungsrechner** erledigt das
+    fertige Dokument inklusive Steuern und mehrerer Positionen.
+
+    ## Was die Zahlen bedeuten
+
+    Realistisch rechnet ein Solo-Freelancer 50–70 % seiner Zeit ab, nicht 100 %.
+    Vertriebsgespräche, Angebote, Verwaltung, Rechnungen und Marketing sind echte
+    Stunden, die kein Kunde direkt bezahlt. Bei 60 % Auslastung ergibt ein
+    Einkommensziel von 100.000 $ über 46 Arbeitswochen rund 120 $ pro Stunde vor
+    Steuern und Ausgaben, nicht die 52 $, die eine naive Division durch 2.080
+    Stunden nahelegt. Kalkulierst du mit der ersten Zahl, trägt sich das Geschäft;
+    mit der zweiten geht es langsam ein.
+
+"Tax & Compliance":
+  "body": |
+    Steuern sind die Kosten, die bei Preisentscheidungen am häufigsten vergessen
+    werden und am ehesten als unangenehme Überraschung kommen. Diese Rechner
+    liefern Planungsschätzungen, damit das Geld zurückgelegt wird, bevor es
+    ausgegeben ist.
+
+    ## Welcher Rechner passt
+
+    **MwSt.** schlägt die Mehrwertsteuer zu jedem Satz auf oder rechnet sie
+    heraus, auch rückwärts von einem Bruttobetrag. Genau das bringt die meisten
+    durcheinander: 20 % MwSt. herauszurechnen heißt, durch 1,2 zu teilen, nicht
+    20 % abzuziehen. **Freelance-Steuern** schätzt, was Selbstständige von jeder
+    Rechnung zurücklegen sollten. **Lohnabgaben** deckt die Arbeitgeberseite ab,
+    die Erst-Arbeitgeber am meisten überrascht.
+
+    ## Was die Zahlen bedeuten
+
+    Die nützlichste Gewohnheit, die sie fördern: Steuern beim Zahlungseingang
+    zurücklegen, nicht erst bei der Erklärung. Wer als Freelancer 25–30 % jeder
+    Zahlung am Tag des Eingangs auf ein separates Konto überweist, steht nie vor
+    einer Quartalszahlung, die er nicht begleichen kann. Sätze, Schwellen und
+    Freibeträge ändern sich je nach Land und Steuerjahr, und diese Rechner dienen
+    der Planung, nicht der Steuererklärung: Prüf die aktuellen Werte beim
+    Finanzamt oder mit deiner Steuerberatung, bevor du etwas einreichst.
