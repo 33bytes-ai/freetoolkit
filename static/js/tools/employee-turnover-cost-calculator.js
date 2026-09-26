@@ -57,11 +57,13 @@ if (typeof document !== "undefined") {
       window.FTK.showInsight(document.getElementById("etc-insight"), lbl.text, lbl.type);
     }
   }
-  ids.forEach(function (id) {
-    var el = document.getElementById(id);
-    if (el) el.addEventListener("input", run);
+  document.addEventListener("DOMContentLoaded", function () {
+    ids.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.addEventListener("input", run);
+    });
+    run();
   });
-  run();
 }
 
 if (typeof module !== "undefined") module.exports = { calcTurnoverCostPerExit, calcAnnualTurnoverCost, calcTurnoverCostAsPctPayroll, turnoverLabel };
