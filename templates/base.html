@@ -142,9 +142,32 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <nav class="site-nav" id="site-nav" aria-label="Main navigation">
-        <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close navigation">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
+        {# Drawer-only blocks (hidden above 900px). The desktop mega-menu lists
+           ~60 tools; in a phone drawer that was 3+ screens of links with
+           All tools / Glossary buried at the bottom, so the drawer shows the
+           12 categories instead and each category page lists its tools. #}
+        <div class="mobile-nav-head">
+          <span class="mobile-nav-title">{{ site.name }}</span>
+          <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close navigation">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <form class="mobile-nav-search" role="search" action="/tools/" method="get">
+          <label for="nav-q" class="sr-only">Search calculators</label>
+          <input id="nav-q" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="Filter calculators…" data-i18n-placeholder="search_placeholder">
+        </form>
+        <ul class="mobile-nav-cats">
+          {% for category in categories %}
+          {% set cat_tools = tools_by_category.get(category, []) %}
+          {% if cat_tools %}
+          <li><a href="/categories/{{ category | category_slug }}/">
+            <span class="nav-mega-cat-icon" aria-hidden="true">{{ category_meta[category].icon | safe }}</span>
+            {{ category }}
+            <span class="nav-mega-count">{{ cat_tools | length }}</span>
+          </a></li>
+          {% endif %}
+          {% endfor %}
+        </ul>
 
         {# One mega-menu instead of 10 inline category items: 10 items could never
            fit the header (they overlapped), and the overflow-x:auto used to hide
@@ -183,7 +206,6 @@
 
         <a class="nav-link" href="/tools/" data-i18n="nav_all_tools">All tools</a>
         <a class="nav-link" href="/glossary/" data-i18n="nav_glossary">Glossary</a>
-        <a href="/tools/" class="mobile-nav-all">Browse all {{ tools | length }} tools →</a>
       </nav>
       <div class="mobile-nav-overlay" id="mobile-nav-overlay" aria-hidden="true"></div>
       {% if i18n %}
