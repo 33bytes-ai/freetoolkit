@@ -1088,3 +1088,779 @@
     Beide haben dieselbe Current Ratio, aber sehr unterschiedliche absolute Liquidität. Das Working Capital unterscheidet sie.
 
     Mit dem [Working-Capital-Rechner](/tools/working-capital-calculator/) siehst du beides.
+
+"how-to-reduce-stripe-fees":
+  "title": "So senkst du deine Stripe-Gebühren: 5 praktische Methoden"
+  "description": "Stripe verlangt standardmäßig 2,9 % + 0,30 $. Fünf konkrete Wege, deinen effektiven Stripe-Satz zu senken, von jährlicher Abrechnung bis zur Volumenverhandlung."
+  "body": |
+    Stripes Standardsatz von **2,9 % + 0,30 $** ist für die meisten Unternehmen
+    fix. Der *effektive* Satz, den du zahlst, hängt aber davon ab, wie du deine
+    Abrechnung aufbaust und wie viel Volumen du abwickelst. Hier sind fünf
+    konkrete Methoden, ihn zu senken.
+
+    ## 1. Von monatlicher auf jährliche Abrechnung wechseln
+
+    Bei einem Plan für 99 $/Monat fällt die Stripe-Gebühr 12-mal an: 3,17 $ pro
+    Verlängerung = 38,04 $ pro Jahr. Bei einem entsprechenden Jahresplan für 990 $
+    zahlst du sie einmal: 29,01 $. Du sparst 9,03 $ pro Abonnent und Jahr, nur
+    durch den anderen Abrechnungsrhythmus, und verbesserst zugleich deinen
+    Cashflow.
+
+    ## 2. Den durchschnittlichen Transaktionsbetrag erhöhen
+
+    Die fixen 0,30 $ treffen kleine Transaktionen am härtesten: 6 % bei 5 $,
+    0,6 % bei 50 $, 0,06 % bei 500 $. Bundles, Jahrespläne und
+    Mindestbestellwerte senken den Anteil der Fixgebühr pro Dollar.
+
+    ## 3. Stripes Optimized Checkout Suite nutzen
+
+    Stripes [Link](https://stripe.com/payments/link) (Checkout mit einem Klick)
+    steigert die Conversion typischerweise um 7–30 %, ohne Zusatzgebühr. Mehr
+    Conversion heißt mehr Umsatz bei gleichen Abwicklungskosten: Deine
+    effektiven Kosten pro Umsatzdollar sinken.
+
+    ## 4. Volumenpreise verhandeln
+
+    Stripe bietet individuelle Preise ab **80.000 $ pro Monat** (etwa 1 Mio. $
+    pro Jahr). Der Nachlass variiert, liegt aber meist 0,2–0,5 Prozentpunkte
+    unter dem Standardsatz. Melde dich beim Stripe-Vertrieb, wenn du dich dieser
+    Schwelle näherst: Sie verhandeln.
+
+    ## 5. ACH-Zahlungen separat abwickeln
+
+    Für US-Banküberweisungen (ACH) verlangt Stripe nur **0,8 % (maximal 5,00 $)**.
+    Sind deine Kunden US-Unternehmen, senkt ACH als Zahlungsart für Rechnungen
+    über ~500 $ die effektiven Gebühren deutlich. Bei 1.000 $ beträgt die Gebühr
+    5 $ (0,5 %) statt 29,30 $ per Karte.
+
+    ## Was du nicht senken kannst
+
+    Unter 1 Mio. $ pro Jahr ist Stripes Gebühr für die meisten Unternehmen nicht
+    verhandelbar. Ein kompletter Anbieterwechsel (zu Shopify Payments, Paddle
+    oder einem lokalen Acquirer) kann mehr bringen als Optimierung: Im
+    [Gebührenvergleich](/tools/payment-fee-comparison/) siehst du die genauen
+    Zahlen für deinen durchschnittlichen Transaktionsbetrag.
+"lowest-payment-processing-fees-small-business":
+  "title": "Die niedrigsten Zahlungsgebühren für kleine Unternehmen (2026)"
+  "description": "Stripe, PayPal und Shopify Payments im Vergleich für kleine Unternehmen. Welcher Anbieter hat bei deinem durchschnittlichen Transaktionsbetrag die niedrigsten Gebühren?"
+  "body": |
+    Für die meisten kleinen Unternehmen sind **Stripe**, **PayPal** und **Shopify
+    Payments** die drei wichtigsten Zahlungsanbieter. Welcher am günstigsten ist,
+    hängt fast nur von deinem durchschnittlichen Transaktionsbetrag und deinem
+    Monatsvolumen ab.
+
+    ## Gebühren auf einen Blick (2026)
+
+    | Anbieter | Satz | Fix | Am besten für |
+    |-----------|------|-------|---------|
+    | Stripe | 2,9 % | 0,30 $ | SaaS, entwicklerorientiert, APIs |
+    | PayPal Standard | 2,99 % | 0,49 $ | Kundenvertrauen, Marktplätze |
+    | PayPal Checkout | 3,49 % | 0,49 $ | Conversion über den PayPal-Button |
+    | Shopify Basic | 2,0 % | 0,25 $ | E-Commerce mit Plan für 39 $/Monat |
+    | Shopify | 1,7 % | 0,25 $ | E-Commerce mit Plan für 105 $/Monat |
+    | Shopify Advanced | 1,5 % | 0,25 $ | E-Commerce mit hohem Volumen |
+
+    ## Die Gewinnschwellen
+
+    **Shopify Basic vs. Stripe**: Shopify Basic (Plan für 39 $/Monat) kostet bei
+    etwa **3.900 $ Monatsvolumen** gleich viel wie Stripe (die 39 $ Monatsgebühr
+    gleichen ~1 % Ersparnis aus). Darüber ist Shopify Basic günstiger, darunter
+    gewinnt Stripe.
+
+    **Shopify vs. Stripe bei 100 $ pro Transaktion**:
+
+    | Anbieter | Gebühr auf 100 $ | Dir bleiben |
+    |-----------|-------------|---------|
+    | Stripe | 3,20 $ | 96,80 $ |
+    | PayPal Standard | 3,48 $ | 96,52 $ |
+    | Shopify Basic | 2,25 $ | 97,75 $ |
+    | Shopify Advanced | 1,75 $ | 98,25 $ |
+
+    ## Welchen solltest du wählen?
+
+    - **Unter 2.000 $ Monatsvolumen** → Stripe (keine Monatsgebühr, beste Entwicklererfahrung)
+    - **E-Commerce auf Shopify** → Shopify Payments (niedrigere Sätze, keine externe Transaktionsgebühr)
+    - **Endkundengeschäft mit vielen Kaufabbrüchen** → PayPal (die höhere Conversion gleicht den Satz aus)
+    - **Über 80.000 $ pro Monat** → mit Stripe verhandeln oder Stripe mit Paddle/FastSpring vergleichen
+
+    Gib deinen durchschnittlichen Transaktionsbetrag in den [Gebührenvergleich](/tools/payment-fee-comparison/)
+    ein, um die genauen Gebühren und die günstigste Option für deine Situation zu sehen.
+"paypal-fees-for-online-payments":
+  "title": "PayPal-Gebühren für Online-Zahlungen: die vollständige Aufschlüsselung"
+  "description": "PayPal verlangt 2,99–3,49 % + 0,49 $ für Online-Transaktionen. Die vollständige Gebührenübersicht, wann PayPal konkurrenzfähig ist und wann nicht."
+  "body": |
+    PayPal hat zwei Hauptpreisstufen für Online-Kartenzahlungen: **PayPal
+    Standard** mit 2,99 % + 0,49 $ und **PayPal Checkout** (der gebrandete Button)
+    mit 3,49 % + 0,49 $. Der Unterschied zählt für SaaS- und Abo-Geschäfte, bei
+    denen die fixen 0,49 $ die Marge kleiner Transaktionen aufzehren.
+
+    ## Wann lohnt sich PayPal?
+
+    PayPals wichtigster Vorteil ist das **Käufervertrauen**: Wer den PayPal-Button
+    sieht, schließt oft Käufe ab, die er sonst abbrechen würde, gerade im
+    Checkout. Laut einer Studie des Baymard Institute senkt PayPal die
+    Abbruchrate beim Gast-Checkout um bis zu 14 % gegenüber einem reinen
+    Formular-Checkout.
+
+    Liegt dein durchschnittlicher Bestellwert über 30 $ und verkaufst du direkt
+    an Endkunden, kann der Conversion-Gewinn den höheren Satz gegenüber Stripe
+    mehr als ausgleichen.
+
+    ## PayPal-Gebühren im Vergleich bei einer Zahlung über 100 $
+
+    | Anbieter | Gebühr | Du erhältst |
+    |-----------|-----|------------|
+    | Stripe | 3,20 $ | 96,80 $ |
+    | PayPal Standard | 3,48 $ | 96,52 $ |
+    | PayPal Checkout | 3,98 $ | 96,02 $ |
+
+    Bei 100 $ spart Stripe 0,28–0,78 $ pro Transaktion. Bei 1.000 Transaktionen pro
+    Monat sind das 280–780 $ monatlich, was sich bei Wachstum schnell summiert.
+
+    ## PayPal und Abos
+
+    Mit PayPal-Abbuchungsvereinbarungen sind wiederkehrende Zahlungen möglich,
+    ohne dass der Kunde jede Zahlung bestätigt. Die Abo-Verwaltung (anteilige
+    Abrechnung, Upgrades, Mahnwesen) ist aber begrenzter als bei Stripe Billing.
+    Für reines SaaS werden meist Stripes Entwicklertools und die Zuverlässigkeit
+    seiner Webhooks bevorzugt.
+
+    ## PayPals Vorteil bei Auslandszahlungen
+
+    PayPal hat lokales Acquiring in über 40 Ländern und wickelt
+    Mehrwährungszahlungen nativ ab. Ist ein großer Teil deiner Kunden im Ausland,
+    kann PayPals Conversion mit Stripes Gebühren für internationale Karten
+    (+1,5 % für Nicht-US-Karten) mithalten.
+
+    Gib im [Gebührenvergleich](/tools/payment-fee-comparison/) deinen
+    durchschnittlichen Transaktionsbetrag ein, um den genauen Unterschied in
+    Dollar für deine Situation zu sehen.
+"stripe-vs-paypal-for-subscriptions":
+  "title": "Stripe oder PayPal für wiederkehrende Abos: Was kostet weniger?"
+  "description": "Gebührenvergleich von Stripe und PayPal für Abo-Abrechnung, mit Beispielen für monatliche und jährliche Abrechnung und einer Gewinnschwellenrechnung."
+  "body": |
+    Für Abo-Geschäfte entscheiden Gebühren, Zuverlässigkeit und Funktionstiefe
+    zwischen Stripe und PayPal. Hier ist der vollständige Vergleich.
+
+    ## Gebühren bei monatlichen Abos
+
+    Beide Anbieter berechnen bei jeder Verlängerung ihre Standardgebühr:
+
+    | Anbieter | Monatsplan für 49 $ | Jahresplan für 490 $ |
+    |-----------|-----------------|-----------------|
+    | Stripe | 1,72 $/Verlängerung | 14,51 $ einmalig |
+    | PayPal Standard | 1,96 $/Verlängerung | 15,11 $ einmalig |
+
+    Bei einem Plan für 49 $/Monat spart Stripe gegenüber PayPal Standard **2,88 $
+    pro Abonnent und Jahr**. Bei 1.000 Abonnenten sind das **2.880 $ pro Jahr**,
+    allein durch den Unterschied im Satz.
+
+    ## Abo-Funktionen: Stripe gewinnt
+
+    Stripe Billing ist für SaaS gebaut: anteilige Abrechnung, nutzungsbasierte
+    Abrechnung, Testphasen, pausierbare Abos und Mahnwesen (automatische
+    Wiederholung fehlgeschlagener Zahlungen). PayPals Abo-APIs funktionieren,
+    haben aber nicht dieselbe Tiefe und Zuverlässigkeit.
+
+    Auch PayPals Rückbuchungsquote bei digitalen Abos ist höher als die von
+    Stripe, ein kritischer Punkt, denn zu viele Rückbuchungen können dein Konto
+    einfrieren.
+
+    ## Nutze unseren Vergleichsrechner
+
+    Gib deinen monatlichen Planpreis in den [Gebührenvergleich](/tools/payment-fee-comparison/)
+    ein, um die genaue monatliche Ersparnis eines Anbieterwechsels für deinen
+    Abo-Betrag zu sehen.
+"stripe-vs-shopify-payments-fees":
+  "title": "Stripe oder Shopify Payments: Wann Shopify Payments wirklich günstiger ist"
+  "description": "Shopify Payments kann für Onlineshops günstiger sein als Stripe. Dieser Ratgeber zeigt die genauen Volumenschwellen und wann welcher Anbieter gewinnt."
+  "body": |
+    Shopify Payments und Stripe wirken auf den ersten Blick ähnlich (beide laufen
+    auf Stripes Infrastruktur), doch für Shopify-Händler unterscheiden sich die
+    Gebühren deutlich.
+
+    ## Der Kernunterschied: der Shopify-Gateway-Aufschlag
+
+    Nutzt du Stripe direkt auf Shopify (statt Shopify Payments), berechnet
+    Shopify zusätzlich zu Stripes Gebühren eine **weitere Transaktionsgebühr**:
+    - Basic-Plan: +2,0 %
+    - Shopify-Plan: +1,0 %
+    - Advanced-Plan: +0,5 %
+
+    Damit ist Stripe für Shopify-Händler **deutlich teurer** als Shopify Payments.
+
+    ## Satzvergleich: Shopify Payments vs. Stripe auf Shopify
+
+    Für einen Shopify-Basic-Shop (39 $/Monat) mit 10.000 $ Monatsvolumen:
+
+    | Option | Abwicklungsgebühr | Gateway-Gebühr | Summe pro Monat |
+    |--------|---------------|-------------|---------------|
+    | Stripe auf Shopify | 320 $ | +200 $ (2 %) | 520 $ |
+    | Shopify Payments Basic | 225 $ | 0 $ | 225 $ |
+
+    Shopify Payments spart bei 10.000 $ Volumen **295 $ pro Monat** und deckt die
+    Plangebühr von 39 $/Monat damit locker.
+
+    ## Wann Stripe außerhalb von Shopify besser ist
+
+    Wenn du **nicht auf Shopify verkaufst**, ist Stripe die bessere Wahl:
+    - Bessere APIs für einen individuellen Checkout
+    - Überlegene Abo-Abrechnung
+    - Bessere internationale Abdeckung
+    - Keine Plattformabhängigkeit
+
+    Vergleiche die genauen Gebühren für deine Transaktionsbeträge mit unserem
+    [Gebührenvergleich](/tools/payment-fee-comparison/).
+"paypal-fee-on-100-dollars":
+  "title": "Wie viel nimmt PayPal bei einer Transaktion über 100 $?"
+  "description": "Die genaue PayPal-Gebühr bei einer Zahlung über 100 $: Standard, Checkout und Waren & Dienstleistungen im Vergleich mit Stripe."
+  "body": |
+    Bei einer **Zahlung über 100 $** per PayPal Standard (Karte) beträgt die Gebühr **3,49 $** (3,49 %):
+    - 2,99 % von 100 $ = 2,99 $
+    - Fixgebühr = 0,49 $ (USD, inländisch)
+    - **Gebühr gesamt = 3,48 $ | Du erhältst = 96,52 $**
+
+    Bei PayPal Checkout (dem neueren Ablauf): **3,98 $ Gebühr | 96,02 $ netto**
+
+    Bei PayPal Waren & Dienstleistungen („Freunde & Familie“ ist nur für private
+    Zwecke; geschäftliche Nutzung verstößt gegen PayPals Bedingungen):
+    **3,48 $ Gebühr**.
+
+    ## 100 $ im Vergleich: PayPal, Stripe und Square
+
+    | Anbieter | Gebühr auf 100 $ | Netto erhalten |
+    |-----------|---------|-------------|
+    | PayPal Standard | 3,49 $ | 96,52 $ |
+    | PayPal Checkout | 3,98 $ | 96,02 $ |
+    | Stripe (inländisch) | 3,20 $ | 96,80 $ |
+    | Square (online) | 3,20 $ | 96,80 $ |
+
+    Stripe und Square sind pro 100-$-Transaktion **0,29–0,78 $ günstiger**. Bei
+    100 Transaktionen pro Monat spart ein Wechsel 29–78 $ monatlich. Bei 1 Mio. $
+    Jahresvolumen sind es 2.900–7.800 $ pro Jahr.
+
+    ## Um genau 100 $ netto von PayPal zu erhalten
+    Berechne **103,59 $**, um nach PayPal-Standard-Gebühren genau 100 $ zu erhalten:
+    (100 $ + 0,49 $) / (1 − 0,0299) = 103,59 $.
+"paypal-fee-on-1000-dollars":
+  "title": "Wie viel nimmt PayPal bei einer Transaktion über 1.000 $?"
+  "description": "Die genaue PayPal-Gebühr bei einer Zahlung über 1.000 $ und ab wann Mengenrabatte gelten."
+  "body": |
+    Bei einer **Zahlung über 1.000 $** per PayPal Standard beträgt die Gebühr **30,49 $** (3,05 %):
+    - 2,99 % von 1.000 $ = 29,90 $
+    - Fixgebühr = 0,49 $
+    - **Gebühr gesamt = 30,39 $ | Du erhältst = 969,61 $**
+
+    Bei PayPal Checkout: **35,39 $ Gebühr | 964,61 $ netto**
+
+    ## Ab welchem Volumen bietet PayPal niedrigere Sätze?
+
+    PayPals **Händlertarif**-Programm senkt die Gebühren je nach monatlichem Umsatz:
+    - 0–3.000 $/Monat: 2,99 % + 0,49 $ (Standard)
+    - 3.001–10.000 $/Monat: 2,89 % + 0,49 $
+    - 10.001–100.000 $/Monat: 2,79 % + 0,49 $
+    - Ab 100.001 $/Monat: PayPal für individuelle Sätze kontaktieren
+
+    Bei einer Transaktion über 1.000 $ und 50.000 $ Monatsvolumen (2,79 % + 0,49 $):
+    Gebühr = **28,39 $ | netto = 971,61 $**, etwa 2 $ Ersparnis pro Transaktion
+    gegenüber dem Standardsatz.
+
+    ## ACH / Banküberweisung als Alternative bei 1.000 $
+    Bei B2B-Rechnungen über 1.000 $ kostet eine ACH-Überweisung 0 $ (oder pauschal
+    1–5 $ bei manchen Anbietern), 30-mal günstiger als PayPal. Ist dein Käufer ein
+    Unternehmen, wird es immer üblicher, ACH neben PayPal anzubieten, mit „3 %
+    Aufschlag bei PayPal“, was in den meisten US-Bundesstaaten zulässig ist.
+"paypal-fees-australia":
+  "title": "PayPal-Gebühren in Australien: AUD-Sätze und Vergleich mit Stripe"
+  "description": "PayPal-Gebühren für australische Unternehmen: AUD-Sätze, Rechenbeispiele und Vergleich mit Stripe."
+  "body": |
+    Australische PayPal-Händler zahlen **2,6 % + 0,30 A$** für inländische
+    Transaktionen. Bei PayPal Checkout liegt der Satz bei **3,49 % + 0,49 A$**.
+    Grenzüberschreitende Transaktionen (außerhalb Australiens ausgegebene Karten)
+    kosten 1,5 % zusätzlich.
+
+    ## Beispiele für PayPal-Gebühren in Australien (AUD)
+
+    | Betrag | PayPal Standard | PayPal Checkout | Stripe (AU inländisch) |
+    |--------|----------------|----------------|---------------------|
+    | 25 A$  | 0,95 A$ (3,8 %) | 1,36 A$ (5,4 %) | 0,74 A$ (2,96 %) |
+    | 100 A$ | 2,90 A$ (2,9 %) | 3,98 A$ (4,0 %) | 2,05 A$ (2,05 %) |
+    | 500 A$ | 13,30 A$ (2,66 %) | 17,94 A$ (3,6 %) | 9,05 A$ (1,81 %) |
+
+    ## BPAY und Banküberweisung als Alternativen
+    Für B2B-Rechnungen in Australien ist BPAY (Überweisung per BSB und
+    Kontonummer) für Händler praktisch kostenlos. Bei hohen Rechnungen (ab
+    2.000 A$) kann eine Banküberweisung neben PayPal und Karte 2–3 % pro
+    Transaktion sparen. Füge mit dem Rechnungsrechner eine Position „Rabatt bei
+    Banküberweisung“ als Anreiz hinzu.
+"paypal-fees-canada":
+  "title": "PayPal-Gebühren in Kanada: CAD-Sätze und Vergleich mit Stripe"
+  "description": "PayPal-Gebühren für kanadische Unternehmen: CAD-Sätze, Auslandsgebühren und wann Stripe günstiger ist."
+  "body": |
+    Kanadische PayPal-Händler zahlen **2,99 % + 0,49 C$** für Standard-PayPal-
+    Transaktionen. Bei PayPal Checkout (dem neueren gebrandeten Ablauf) liegt der
+    Satz bei **3,49 % + 0,49 C$**. Grenzüberschreitende Transaktionen kosten 1,5 %
+    mehr, und die Währungsumrechnung schlägt 3–4 % auf den Wechselkurs auf.
+
+    ## Beispiele für PayPal-Gebühren in Kanada (CAD)
+
+    | Betrag | PayPal Standard | PayPal Checkout | Stripe (CA inländisch) |
+    |--------|----------------|----------------|---------------------|
+    | 25 C$  | 1,24 C$ (5,0 %) | 1,36 C$ (5,4 %) | 1,03 C$ (4,1 %) |
+    | 100 C$ | 3,48 C$ (3,5 %) | 3,98 C$ (4,0 %) | 3,20 C$ (3,2 %) |
+    | 500 C$ | 15,44 C$ (3,1 %) | 17,94 C$ (3,6 %) | 14,80 C$ (3,0 %) |
+
+    ## GST/HST auf PayPal-Gebühren
+    PayPal berechnet kanadischen Unternehmen je nach Provinz der Registrierung GST
+    oder HST auf die Abwicklungsgebühren. Registrierte Unternehmen können sie in
+    der Regel als Vorsteuer zurückholen. PayPal stellt monatlich eine
+    Gebührenübersicht aus.
+
+    ## PayPal oder Stripe für kanadische Unternehmen
+    Stripe ist bei Standard-Kartenzahlungen günstiger (2,9 % + 0,30 C$ gegenüber
+    PayPals 2,99 % + 0,49 C$). Der Unterschied wächst mit dem Volumen: Bei
+    10.000 C$ pro Monat spart Stripe gegenüber PayPal Standard etwa 24 C$
+    monatlich. Stripe bietet außerdem besseren Abo-Support, zuverlässigere
+    Webhooks und bessere Entwicklertools.
+"paypal-fees-uk":
+  "title": "PayPal-Gebühren in Großbritannien: Sätze, Beispiele und Vergleich mit Stripe"
+  "description": "Die genauen PayPal-Gebühren für britische Unternehmen: inländische und internationale Sätze mit Rechenbeispielen und Vergleich mit Stripe."
+  "body": |
+    PayPal berechnet britischen Unternehmen **1,2 % + 30p** für Zahlungen mit
+    britischer Debitkarte, **2,99 % + 30p** für normale Kartenzahlungen
+    (Visa/Mastercard) und **3,49 % + 49p** für PayPal Checkout. Bei internationalen
+    Transaktionen kommen 1,5 % Auslandsgebühr und 3–4 % Aufschlag bei der
+    Währungsumrechnung hinzu.
+
+    ## Beispiele für PayPal-Gebühren in Großbritannien (GBP)
+
+    | Betrag | PayPal Standard | PayPal Checkout | Stripe (UK inländisch) |
+    |--------|----------------|----------------|---------------------|
+    | 10 £ | 0,60 £ (6,0 %) | 0,84 £ (8,4 %) | 0,35 £ (3,5 %) |
+    | 50 £ | 1,80 £ (3,6 %) | 2,24 £ (4,5 %) | 0,95 £ (1,9 %) |
+    | 100 £ | 3,29 £ (3,3 %) | 3,98 £ (4,0 %) | 1,70 £ (1,7 %) |
+    | 500 £ | 15,30 £ (3,1 %) | 17,94 £ (3,6 %) | 7,70 £ (1,54 %) |
+
+    ## Wann sich die höhere PayPal-Gebühr lohnt
+
+    PayPals wichtigster Vorteil für britische Unternehmen ist **Käufervertrauen
+    und Conversion-Rate**. Studien zeigen, dass 56 % der britischen Käufer PayPal
+    mehr vertrauen, als ihre Kartendaten auf einer unbekannten Website
+    einzugeben. Bei Shops mit kaltem Traffic (geringe Markenbekanntheit) kann der
+    Conversion-Gewinn durch PayPal die höheren Kosten ausgleichen.
+
+    **Faustregel**: Liegt dein durchschnittlicher Bestellwert unter 30 £ und
+    schickst du Traffic aus sozialen Medien zu einer unbekannten Marke, rechtfertigt
+    PayPals Conversion-Gewinn wahrscheinlich die Kosten. Für Abo-SaaS oder B2B mit
+    hohem Bestellwert ist Stripe fast immer günstiger und besser.
+"shopify-basic-vs-shopify-plan-fees":
+  "title": "Shopify Basic oder Shopify-Plan: Gebührenunterschied und wann sich ein Upgrade lohnt"
+  "description": "Gebührenvergleich von Shopify Basic (39 $/Monat) und Shopify Standard (105 $/Monat): ab wann sich das Upgrade selbst bezahlt."
+  "body": |
+    Shopify hat drei Hauptpläne: **Basic** (39 $/Monat), **Shopify** (105 $/Monat)
+    und **Advanced** (399 $/Monat). Jede Stufe senkt Transaktionsgebühren und
+    Kartensätze.
+
+    ## Gebührenvergleich
+
+    | | Basic (39 $/Monat) | Shopify (105 $/Monat) | Advanced (399 $/Monat) |
+    |-|---------------|-----------------|-------------------|
+    | **Satz Shopify Payments** | 2,0 % + 25¢ | 1,7 % + 25¢ | 1,5 % + 25¢ |
+    | **Gebühr Drittanbieter-Gateway** | 2,0 % | 1,0 % | 0,5 % |
+    | **Satz Amex / internationale Karten** | 3,5 % | 3,5 % | 3,5 % |
+
+    ## Wann lohnt sich der Wechsel von Basic zu Shopify?
+
+    Das Upgrade kostet **66 $ mehr pro Monat** (105 $ − 39 $). Die Gebühr sinkt bei
+    Shopify-Payments-Transaktionen um 0,3 Prozentpunkte.
+
+    **Formel für die Gewinnschwelle**: das Monatsvolumen (GMV), bei dem 0,3 %
+    Ersparnis = 66 $ pro Monat, also **22.000 $ GMV pro Monat** (mit Shopify
+    Payments).
+
+    Macht dein Shop über Shopify Payments mehr als 22.000 $ pro Monat, sparst du
+    mit dem Shopify-Plan netto Geld.
+
+    ## Wann lohnt sich der Wechsel von Shopify zu Advanced?
+
+    Mehrkosten: **294 $ pro Monat**. Gebührensenkung: 0,2 Prozentpunkte bei
+    Shopify Payments. Gewinnschwelle: **147.000 $ GMV pro Monat**
+
+    Die meisten Shops wechseln zu Advanced wegen der individuellen Berichte und
+    der niedrigeren Drittanbieter-Gateway-Gebühr (0,5 % statt 1,0 %), nicht wegen
+    des Unterschieds beim Kartensatz.
+"shopify-fees-vs-woocommerce":
+  "title": "Shopify-Gebühren vs. WooCommerce: Gesamtkostenvergleich"
+  "description": "Vollständiger Kostenvergleich von Shopify und WooCommerce: Plattformgebühr, Transaktionsgebühr, Hosting und GMV an der Gewinnschwelle."
+  "body": |
+    Shopify und WooCommerce haben grundverschiedene Kostenstrukturen. Shopify
+    verlangt eine planbare Monatsgebühr, WooCommerce kostet als Plattform nichts,
+    braucht aber Hosting und mehr Wartung.
+
+    ## Monatliche Kosten im Vergleich
+
+    | Kostenposition | Shopify Basic | WooCommerce |
+    |----------------|--------------|-------------|
+    | Plattformgebühr | 39 $/Monat | 0 $ |
+    | Hosting | inklusive | 10–25 $/Monat |
+    | Transaktionsgebühr (Stripe) | 2,0 % (ohne SP) oder 0 % (SP) | 0 % |
+    | Kartenabwicklung (Stripe) | 2,0 % + 25¢ (SP) | 2,9 % + 30¢ |
+    | Domain | ~2 $/Monat | ~2 $/Monat |
+    | Wartung / Plugins | 0 $ | 10–50 $/Monat |
+
+    ## Ab welchem GMV wird WooCommerce günstiger?
+
+    Mit Shopify Payments (ohne Transaktionsgebühr) bei 22.000 $ GMV pro Monat im Basic-Plan:
+    - Shopify: 39 $ + (22.000 $ × 0,02) = 39 $ + 440 $ = **479 $/Monat**
+    - WooCommerce + Stripe: 20 $ + (22.000 $ × 0,029) = 20 $ + 638 $ = **658 $/Monat**
+
+    Bei diesem Volumen ist Shopify Basic mit Shopify Payments sogar **günstiger** als
+    WooCommerce + Stripe, weil Shopify Payments (2,0 % + 25¢) weniger kostet als
+    Stripes Standardsatz (2,9 % + 30¢).
+
+    WooCommerce gewinnt bei:
+    - **Flexibilität**: unbegrenzte Anpassung, beliebiges Hosting, voller Besitz am Code
+    - **Sehr kleinem Volumen**: unter 5.000 $ pro Monat, wo die Plattformgebühr dominiert
+    - **Keinen Transaktionsgebühren bei jedem Zahlungsanbieter** (anders als Shopifys 2 % für Drittanbieter-Gateways)
+
+    Modelliere deinen Plan und dein Volumen mit dem Shopify-Gebührenrechner oben.
+"shopify-payments-vs-stripe":
+  "title": "Shopify Payments oder Stripe: Was ist wann günstiger?"
+  "description": "Detaillierter Gebührenvergleich zwischen Shopify Payments und einer separaten Stripe-Integration, mit Berechnung des GMV an der Gewinnschwelle."
+  "body": |
+    Auf Shopify hast du zwei Hauptoptionen für Kartenzahlungen: **Shopify
+    Payments** (integriert, ohne Transaktionsgebühr) oder **Stripe über ein
+    Drittanbieter-Gateway** (Standardsätze von Stripe plus 0,5–2 %
+    Shopify-Transaktionsgebühr).
+
+    ## Gebührenvergleich: Shopify Payments vs. Stripe auf Shopify
+
+    | Plan | Shopify Payments | Stripe + Shopify-Gebühr | Unterschied |
+    |------|-----------------|---------------------|-----------|
+    | Basic | 2,0 % + 25¢ | 2,9 % + 30¢ + 2,0 % = 4,9 % + 30¢ | +2,9 % |
+    | Shopify | 1,7 % + 25¢ | 2,9 % + 30¢ + 1,0 % = 3,9 % + 30¢ | +2,2 % |
+    | Advanced | 1,5 % + 25¢ | 2,9 % + 30¢ + 0,5 % = 3,4 % + 30¢ | +1,9 % |
+
+    **Shopify Payments ist fast immer günstiger** für Shops, die überwiegend
+    inländische US-Visa/Mastercard-Zahlungen abwickeln. Allein die
+    Shopify-Transaktionsgebühr (2 % bei Basic) ist ein hoher Aufschlag für die
+    direkte Nutzung von Stripe.
+
+    ## Wann Stripe außerhalb von Shopify sinnvoll ist
+
+    - Du ziehst von Shopify weg und willst deine Stripe-Kundendaten behalten
+    - Du brauchst Stripe-spezifische Funktionen (Radar, Connect, Issuing), die Shopify Payments nicht bietet
+    - Du verkaufst in einem Land, in dem Shopify Payments nicht verfügbar ist
+    - Du hast Abo-Umsätze, die Shopify Payments schlechter abbildet als Stripe Billing
+
+    Für die meisten Shopify-Shops gilt: **Nutze Shopify Payments**. Der Aufschlag
+    durch die Transaktionsgebühr bei Stripe ist außer in den genannten Fällen zu
+    hoch.
+"stripe-fee-on-10-dollars":
+  "title": "Wie viel nimmt Stripe bei einer Zahlung über 10 $?"
+  "description": "Die genaue Stripe-Gebühr bei einer Transaktion über 10 $, inländisch und international."
+  "body": |
+    Bei einer **Zahlung über 10 $** mit inländischer US-Karte nimmt Stripe **0,59 $** (effektiv 5,9 %):
+    - 2,9 % von 10 $ = 0,29 $
+    - Fixgebühr = 0,30 $
+    - **Gebühr gesamt = 0,59 $ | Du erhältst = 9,41 $**
+
+    Mit internationaler Karte (4,4 % + 0,30 $): **0,74 $ Gebühr | 9,26 $ netto**.
+
+    ## Warum kleine Zahlungen einen hohen effektiven Satz haben
+    Die fixen 0,30 $ wiegen bei kleinen Transaktionen unverhältnismäßig schwer.
+    Bei 10 $ sind das schon 3 %, bevor der Prozentanteil dazukommt. Deshalb bietet
+    Stripe einen **Kleinstbetragstarif (5 % + 0,05 $)** für berechtigte
+    Unternehmen, die überwiegend Transaktionen unter 10 $ abwickeln. Bei 10 $
+    ergibt er: 5 % × 10 $ + 0,05 $ = **0,55 $**, etwas günstiger als der
+    Standardsatz.
+
+    ## Um genau 10 $ netto zu erhalten
+    Um von einer inländischen Karte genau 10 $ zu erhalten, musst du **10,62 $** berechnen
+    (Hochrechnung: (10 $ + 0,30 $) / (1 − 0,029) = 10,617 $).
+
+    Nutze den Rechner oben und aktiviere „mehr berechnen, um genau diesen Betrag zu erhalten“.
+"stripe-fee-on-100-dollars":
+  "title": "Wie viel nimmt Stripe bei einer Zahlung über 100 $?"
+  "description": "Die genaue Stripe-Gebühr bei einer Transaktion über 100 $: inländisch (2,9 % + 0,30 $) und international (4,4 % + 0,30 $)."
+  "body": |
+    Bei einer **Zahlung über 100 $** mit inländischer US-Karte nimmt Stripe **3,20 $** (effektiv 3,2 %):
+    - 2,9 % von 100 $ = 2,90 $
+    - Fixgebühr = 0,30 $
+    - **Gebühr gesamt = 3,20 $ | Du erhältst = 96,80 $**
+
+    Mit internationaler Karte (4,4 % + 0,30 $): **4,70 $ Gebühr | 95,30 $ netto**.
+
+    ## Typische Zahlungen um 100 $
+
+    | Planart | Monatsbetrag | Stripe-Gebühr | Netto pro Abonnent |
+    |-----------|---------------|-----------|-------------------|
+    | SaaS monatlich | 99 $ | 3,17 $ | 95,83 $ |
+    | SaaS monatlich | 100 $ | 3,20 $ | 96,80 $ |
+    | E-Commerce | 100 $ | 3,20 $ | 96,80 $ |
+
+    ## Um genau 100 $ netto zu erhalten
+    Berechne **103,09 $**, um nach Stripes Gebühr genau 100 $ zu erhalten:
+    (100 $ + 0,30 $) / (1 − 0,029) = 103,09 $.
+
+    Nützlich, wenn du den Preis als „100 $ für mich“ statt „100 $ für den Kunden“ festlegen willst.
+"stripe-fee-on-1000-dollars":
+  "title": "Wie viel nimmt Stripe bei einer Zahlung über 1.000 $?"
+  "description": "Die genaue Stripe-Gebühr bei einer Transaktion über 1.000 $ und ab wann Mengenrabatte greifen."
+  "body": |
+    Bei einer **Zahlung über 1.000 $** mit inländischer US-Karte nimmt Stripe **29,30 $** (effektiv 2,93 %):
+    - 2,9 % von 1.000 $ = 29,00 $
+    - Fixgebühr = 0,30 $
+    - **Gebühr gesamt = 29,30 $ | Du erhältst = 970,70 $**
+
+    Mit internationaler Karte: **44,30 $ Gebühr | 955,70 $ netto**.
+
+    ## Ab welchem Volumen gibt es individuelle Stripe-Preise?
+
+    Stripe verhandelt individuelle Preise ab **80.000 $ Monatsvolumen**. Die Sätze
+    liegen je nach Transaktionsmix und Risikoprofil meist bei 2,2–2,5 % +
+    0,10–0,20 $. Bei 80.000 $ pro Monat und 2,4 % + 0,15 $ sinkt die Gebühr auf
+    1.000 $ auf **24,15 $**, 5,15 $ Ersparnis pro Transaktion gegenüber dem
+    Standardpreis.
+
+    ## 1.000 $ ist die ACH-Schwelle
+
+    Stripe unterstützt auch ACH-Banküberweisungen zu **0,8 % (maximal 5 $)**. Bei
+    1.000 $ kostet ACH **5,00 $**, 83 % weniger als die Kartenabwicklung. Bei
+    B2B-Rechnungen über 500 $ kann ACH neben Kartenzahlung die Kosten deutlich
+    senken. Hinweis: ACH braucht 2–5 Werktage bis zur Gutschrift, die
+    Kartenautorisierung erfolgt sofort.
+"stripe-fee-per-10k-revenue":
+  "title": "Wie viel nimmt Stripe bei 10.000 $ Umsatz?"
+  "description": "Die genauen Stripe-Gebühren auf 10.000 $ Umsatz, aufgeschlüsselt nach Transaktionsgröße und Kartentyp."
+  "body": |
+    Stripes Gebühr auf 10.000 $ Umsatz hängt ganz davon ab, wie sich diese
+    10.000 $ auf Transaktionen verteilen, denn die **fixen 0,30 $ pro Transaktion**
+    wirken bei kleinen Zahlungen viel stärker als bei großen.
+
+    ## Gebühren nach Transaktionsgröße
+
+    Wenn deine 10.000 $ aus einer einzigen Transaktion stammen:
+
+    | Kennzahl | Wert |
+    |--------|-------|
+    | Bruttoumsatz | 10.000 $ |
+    | Stripe-Gebühr (2,9 % + 0,30 $) | 290,30 $ |
+    | Nettoauszahlung | 9.709,70 $ |
+    | Effektiver Satz | 2,903 % |
+
+    Wenn deine 10.000 $ aus 100 Transaktionen zu 100 $ stammen:
+
+    | Kennzahl | Wert |
+    |--------|-------|
+    | Bruttoumsatz | 10.000 $ |
+    | Stripe-Gebühren (2,9 % + 0,30 $ × 100) | 320,00 $ |
+    | Nettoauszahlung | 9.680,00 $ |
+    | Effektiver Satz | 3,20 % |
+
+    Wenn deine 10.000 $ aus 1.000 Transaktionen zu 10 $ stammen:
+
+    | Kennzahl | Wert |
+    |--------|-------|
+    | Bruttoumsatz | 10.000 $ |
+    | Stripe-Gebühren (2,9 % + 0,30 $ × 1.000) | 590,00 $ |
+    | Nettoauszahlung | 9.410,00 $ |
+    | Effektiver Satz | 5,90 % |
+
+    ## Die Kernerkenntnis: Die fixen 0,30 $ wirken regressiv
+
+    Bei einer Transaktion über 10 $ machen 0,30 $ allein schon 3 % aus, mit dem
+    Prozentanteil liegt Stripes effektiver Satz bei 5,9 %. Bei 1.000 $ sind 0,30 $
+    nur 0,03 %.
+
+    Ist dein durchschnittlicher Bestellwert niedrig (unter 20 $), erwäge:
+    - Käufe zu bündeln (z. B. Guthaben aufladen statt Einzelkäufe)
+    - Stripes Link zu nutzen, das die Gebühren für Zahlungen ohne vorliegende
+      Karte bei wiederkehrenden Kunden senken kann
+    - Paddle oder Lemon Squeezy zu prüfen, deren Komplettsätze bei
+      Kleinstbetragsmodellen günstiger sein können
+
+    Gib im Rechner oben deinen typischen Transaktionsbetrag ein, um die genaue
+    Gebühr und Nettoauszahlung zu sehen.
+"stripe-fees-for-subscriptions":
+  "title": "Stripe-Gebühren bei wiederkehrenden Abos"
+  "description": "Wie Stripe-Gebühren bei monatlichen und jährlichen Abos funktionieren und wie du deine Nettoauszahlung pro Abrechnungszyklus berechnest."
+  "body": |
+    Wer ein Abo-Geschäft auf Stripe betreibt, zahlt auf jede erfolgreiche
+    wiederkehrende Abbuchung dieselbe Gebühr von **2,9 % + 0,30 $** wie bei einer
+    Einmalzahlung. Einige Abo-spezifische Feinheiten solltest du aber kennen, bevor
+    du deine Preise festlegst.
+
+    ## Zahlst du bei jeder Abbuchung eine Gebühr?
+
+    Ja. Jede erfolgreiche Verlängerung löst eine eigene Transaktionsgebühr aus.
+    Zahlt ein Kunde 99 $ pro Monat im Monatsplan, nimmt Stripe bei jeder
+    Verlängerung 3,17 $ (2,9 % × 99 $ + 0,30 $), dir bleiben 95,83 $. Über 12 Monate
+    zahlst du für einen Abonnenten 38,04 $ Gebühren auf 1.188 $ Bruttoumsatz.
+
+    Bei einem Jahresplan für 990 $ (einmal abgerechnet) fällt die Gebühr einmal an:
+    29,01 $, dir bleiben 960,99 $. Netto ist das ähnlich, aber mit einem statt
+    zwölf Gebührenabzügen.
+
+    ## Jährliche oder monatliche Abrechnung: die Gebührenrechnung
+
+    Für einen Plan mit 99 $/Monat:
+
+    | Abrechnung | Brutto pro Jahr | Gebühren pro Jahr | Netto pro Jahr |
+    |---------|-------------|------------|-----------|
+    | Monatlich | 1.188 $ | 38,04 $ | 1.149,96 $ |
+    | Jährlich (990 $) | 990 $ | 29,01 $ | 960,99 $ |
+
+    Monatliche Abrechnung bringt pro Jahr 189 $ mehr Bruttoumsatz und selbst nach
+    den zusätzlichen Gebühren 188,97 $ mehr netto pro Abonnent. Deshalb bieten
+    viele SaaS-Produkte 15–20 % Jahresrabatt an: Der Vorteil fürs Unternehmen liegt
+    im besseren Cashflow, nicht in der Nettoauszahlung.
+
+    ## Mahnwesen und fehlgeschlagene Abbuchungen
+
+    Schlägt eine Verlängerung fehl (keine Deckung, abgelaufene Karte), kann Stripe
+    die Abbuchung nach einem konfigurierbaren Zeitplan automatisch wiederholen. Der
+    Fehlversuch selbst kostet nichts, aber du erhältst den Umsatz nicht.
+    Drittanbieter-Tools wie Profitwell Retain steigern die Wiederherstellungsquote
+    fehlgeschlagener Zahlungen um 40–60 %.
+
+    ## Internationale Abonnenten
+
+    Abonnenten mit außerhalb der USA ausgegebenen Karten verursachen zusätzlich
+    **1,5 % Auslandsgebühr** (insgesamt 4,4 % + 0,30 $). Ist ein großer Teil deiner
+    Abonnenten im Ausland, modelliere deinen effektiven Mischsatz entsprechend mit
+    dem Rechner unten.
+
+    ## Und Rückerstattungen?
+
+    Erstattest du einem Abonnenten den Betrag, gibt Stripe den Prozentanteil
+    (2,9 %) zurück, nicht aber die fixen 0,30 $. Bei einer vollen Erstattung von 99 $
+    verlierst du also netto 0,30 $.
+"stripe-fees-france":
+  "title": "Stripe-Gebühren in Frankreich: EUR-Sätze und Auszahlungsbeispiele"
+  "description": "Stripe-Gebühren für französische Unternehmen: 1,5 % + 0,25 € für europäische Karten und frankreichspezifische Zahlungsarten."
+  "body": |
+    Französische Unternehmen zahlen bei Stripe **1,5 % + 0,25 €** für im EWR
+    ausgegebene Karten und **2,5 % + 0,25 €** für Karten außerhalb des EWR
+    (Großbritannien, USA, international), genau wie in anderen EU-Ländern.
+    Besonders ist in Frankreich die Carte Bancaire (CB), das nationale
+    Kartennetz, das die meisten französischen Verbraucher nutzen und das Stripe mit
+    derselben Gebührenstruktur unterstützt.
+
+    ## Französische Besonderheiten
+
+    **Carte Bancaire (CB)**: Stripe unterstützt CB im Rahmen der europäischen
+    Kartenakzeptanz. Die Gebühr ist dieselbe wie bei Visa/Mastercard, da CB-Karten
+    co-gebrandet sind. Keine Zusatzgebühr für CB.
+
+    **Bancontact** (belgienspezifisch, in Frankreich kaum relevant): entfällt.
+
+    **3D Secure**: Frankreich hat eine der höchsten 3DS-Nutzungsraten in Europa.
+    Stripe übernimmt die 3DS-Compliance automatisch, ohne Zusatzgebühr pro
+    Transaktion.
+
+    ## Beispiele für Stripe-Gebühren in Frankreich (EUR)
+
+    | Betrag | EWR-Karte | Nicht-EWR-Karte |
+    |--------|---------|-------------|
+    | 50 € | 1,00 € (2,0 %) | 1,50 € (3,0 %) |
+    | 150 € | 2,50 € (1,67 %) | 4,00 € (2,67 %) |
+    | 1.000 € | 15,25 € (1,53 %) | 25,25 € (2,53 %) |
+
+    Nutze den Rechner oben mit 1,5 % und 0,25 € für Transaktionen mit EWR-Karten in Frankreich.
+"stripe-fees-germany":
+  "title": "Stripe-Gebühren in Deutschland: EUR-Sätze und Nettoauszahlung"
+  "description": "Stripe-Gebühren für deutsche Unternehmen: 1,5 % + 0,25 € für europäische Karten, mit Beispielen und Umsatzsteuer."
+  "body": |
+    Deutsche Unternehmen zahlen bei Stripe **1,5 % + 0,25 €** für europäische
+    Karten (im EWR ausgegebene Visa und Mastercard). Für Karten außerhalb des EWR
+    (USA, Großbritannien, international) steigt der Satz auf **2,5 % + 0,25 €**.
+    Das gehört dank der EU-Regulierung der Interchange-Gebühren (0,2–0,3 % für
+    Verbraucherkarten) zu den niedrigsten Stripe-Sätzen weltweit.
+
+    ## Beispiele für Stripe-Gebühren in Deutschland (EUR)
+
+    | Betrag | EWR-Karte | Nicht-EWR-Karte |
+    |--------|---------|-------------|
+    | 25 € | 0,63 € (2,5 %) | 0,88 € (3,5 %) |
+    | 100 € | 1,75 € (1,75 %) | 2,75 € (2,75 %) |
+    | 500 € | 7,75 € (1,55 %) | 12,75 € (2,55 %) |
+
+    ## Umsatzsteuer auf Stripe-Gebühren
+    Stripe berechnet deutschen Unternehmen 19 % Umsatzsteuer auf seine Gebühren.
+    Umsatzsteuerpflichtige Unternehmen (Umsatzsteuer-ID erforderlich) können sie
+    als Vorsteuer abziehen. Stripe stellt monatlich eine Rechnung mit
+    Umsatzsteuer in Euro aus.
+
+    ## SEPA-Lastschrift als Alternative
+    Bei deutschen Kunden ist die SEPA-Lastschrift eine beliebte Zahlungsart.
+    Stripe unterstützt SEPA und berechnet nur 0,8 % (maximal 5 €) pro Transaktion,
+    bei großen B2B-Rechnungen deutlich günstiger. Für wiederkehrende Abos mit
+    deutschen Großkunden lohnt es sich, SEPA zu aktivieren.
+
+    Nutze den Rechner oben mit individuellem Satz von 1,5 % und 0,25 € für Transaktionen mit EWR-Karten.
+"stripe-vs-paypal-fees":
+  "title": "Stripe- vs. PayPal-Gebühren: der direkte Vergleich"
+  "description": "Genauer Gebührenvergleich zwischen Stripe und PayPal für Standardtransaktionen, Abos und internationale Zahlungen im Jahr 2024."
+  "body": |
+    Stripe und PayPal sind die zwei häufigsten Zahlungsanbieter für
+    Online-Unternehmen. Ihre Standardsätze wirken ähnlich, doch bei der
+    Margenoptimierung kommt es auf die Details an.
+
+    ## Standard-Transaktionsgebühren (USA, inländische Karten)
+
+    | Anbieter | Satz | Fixgebühr | Gebühr auf 100 $ | Netto auf 100 $ |
+    |-----------|------|-----------|------------|------------|
+    | Stripe | 2,9 % | 0,30 $ | 3,20 $ | **96,80 $** |
+    | PayPal (PayPal Checkout) | 3,49 % | 0,49 $ | 3,98 $ | **96,02 $** |
+    | PayPal (Advanced Card) | 2,89 % | 0,49 $ | 3,38 $ | **96,62 $** |
+
+    Bei einer typischen Transaktion über 100 $ ist Stripe **0,78 $ günstiger** als
+    PayPal Checkout. Auf 100.000 $ Umsatz sind das 780 $ Unterschied.
+
+    ## Für Abos und wiederkehrende Abrechnung
+
+    | Anbieter | Abo-Satz | Hinweise |
+    |-----------|------------------|-------|
+    | Stripe Billing | 2,9 % + 0,30 $ | Inklusive; erweitertes Mahnwesen über Stripe Radar |
+    | PayPal Subscriptions | 3,49 % + 0,49 $ | Höherer Satz pro Transaktion |
+
+    Stripe ist bei wiederkehrenden SaaS-Abos durchweg günstiger.
+
+    ## Internationale und grenzüberschreitende Gebühren
+
+    | Anbieter | Auslandsgebühr | Effektiver Gesamtsatz |
+    |-----------|-----------------|---------------------|
+    | Stripe | +1,5 % | 4,4 % + 0,30 $ |
+    | PayPal | +1,5 % | ~5,0 % + 0,49 $ |
+
+    ## Entwicklererfahrung
+
+    Stripes API und Dokumentation gelten weithin als überlegen, wenn du einen
+    eigenen Checkout baust. PayPals Hauptvorteil ist die Bekanntheit der Marke und
+    die Vertrautheit der Käufer mit „Mit PayPal bezahlen“, was in manchen
+    B2C-Kontexten die Conversion steigern kann.
+
+    **Empfehlung:** Für SaaS, Entwicklertools und B2B-Produkte ist Stripe bei
+    Gebühren, API-Qualität und Ökosystem (Stripe Atlas, Stripe Tax, Stripe Billing)
+    die bessere Wahl. Für Marktplätze oder B2C-Produkte, bei denen PayPals
+    vertrauter Checkout die Conversion fördert, kann sich die höhere Gebühr lohnen.
+
+    Modelliere mit dem Stripe-Gebührenrechner oben deine genaue Nettoauszahlung.
+    Für PayPal gibst du 3,49 % und 0,49 $ im Feld für den individuellen Satz ein.
+
+"stripe-fees-australia":
+  "title": "Stripe-Gebühren in Australien: Sätze, Beispiele und Nettoauszahlung"
+  "description": "Die genauen Stripe-Gebühren für Unternehmen in Australien: 1,75 % + 0,30 A$ für inländische Visa/Mastercard, mit Rechenbeispielen."
+"stripe-fees-canada":
+  "title": "Stripe-Gebühren in Kanada: Sätze, Beispiele und Nettoauszahlung"
+  "description": "Die genauen Stripe-Gebühren für Unternehmen in Kanada: 2,9 % + 0,30 C$ für inländische Visa/Mastercard, mit Rechenbeispielen."
+"stripe-fees-eu":
+  "title": "Stripe-Gebühren in der Europäischen Union: Sätze, Beispiele und Nettoauszahlung"
+  "description": "Die genauen Stripe-Gebühren für Unternehmen in der Europäischen Union: 1,5 % + 0,25 € für im EWR ausgegebene Karten, mit Rechenbeispielen."
+"stripe-fees-india":
+  "title": "Stripe-Gebühren in Indien: Sätze, Beispiele und Nettoauszahlung"
+  "description": "Die genauen Stripe-Gebühren für Unternehmen in Indien: 2 % + 0 ₹ für inländische indische Karten, mit Rechenbeispielen."
+"stripe-fees-uk":
+  "title": "Stripe-Gebühren in Großbritannien: Sätze, Beispiele und Nettoauszahlung"
+  "description": "Die genauen Stripe-Gebühren für Unternehmen in Großbritannien: 1,5 % + 0,20 £ für in Großbritannien und im EWR ausgegebene Karten, mit Rechenbeispielen."

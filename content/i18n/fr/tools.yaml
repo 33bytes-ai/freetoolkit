@@ -383,3 +383,208 @@ free-cash-flow-calculator:
     Il calcule le fonds de roulement, le ratio de liquidité générale, le ratio de
     liquidité réduite et le fonds de roulement en jours à partir de votre actif et
     passif circulants.
+
+"payment-fee-comparison":
+  "body": |
+    Choisir le prestataire de paiement le moins cher devient simple dès qu'on voit
+    les chiffres côte à côte. Saisissez votre montant de vente habituel ci-dessous
+    et le tableau comparatif se met à jour instantanément avec les frais exacts et
+    le net versé pour **Stripe**, **PayPal Standard**, **PayPal Checkout** et
+    **Shopify Payments** sur chacun de ses trois forfaits.
+
+    ## Comment fonctionne la comparaison
+
+    La grille tarifaire de chaque prestataire est fixée à ses tarifs publics américains :
+
+    | Prestataire | Taux | Part fixe |
+    |-----------|------|-----------|
+    | Stripe | 2,9 % | + 0,30 $ |
+    | PayPal Standard | 2,99 % | + 0,49 $ |
+    | PayPal Checkout | 3,49 % | + 0,49 $ |
+    | Shopify Basic | 2,0 % | + 0,25 $ |
+    | Shopify (forfait Shopify) | 1,7 % | + 0,25 $ |
+    | Shopify Advanced | 1,5 % | + 0,25 $ |
+
+    ## Quand Shopify Payments est moins cher
+
+    Shopify Payments bat Stripe sur les transactions Visa/Mastercard nationales
+    américaines au-delà d'environ 12 $. À 100 $, Shopify Basic économise 0,95 $
+    par transaction par rapport à Stripe. À 500 $ de volume mensuel sur le forfait
+    Basic (39 $/mois), le calcul est à peu près neutre ; mais à 50 000 $ par mois,
+    l'économie sur le taux écrase le coût du forfait.
+
+    ## Quand rester sur Stripe
+
+    Stripe l'emporte pour : la facturation d'abonnements, les API SaaS, les
+    paiements internationaux (plus de 135 devises), le prélèvement ACH, la
+    facturation B2B et les entreprises qui ne sont pas sur Shopify. Son écosystème
+    pour développeurs est sans équivalent. Utilisez cet outil pour chiffrer
+    l'écart de frais, puis mettez-le en balance avec le coût d'un changement et
+    vos besoins fonctionnels.
+
+    ## Questions fréquentes
+
+    **Quel prestataire de paiement a les frais les plus bas ?**
+    Shopify Payments (forfait Advanced) a le taux le plus bas, 1,5 % + 0,25 $, mais
+    il faut une boutique Shopify et un abonnement à 399 $/mois. Hors Shopify,
+    Stripe (2,9 % + 0,30 $) bat PayPal Standard (2,99 % + 0,49 $) sur les
+    transactions de plus de 15 $.
+
+    **Combien Shopify Payments coûte-t-il de moins que Stripe ?**
+    Sur une transaction de 100 $ : 2,25 $ de frais chez Shopify Basic contre
+    3,20 $ chez Stripe, soit 0,95 $ d'économie. Mais Shopify Basic exige un
+    forfait à 39 $/mois. Il faut plus de 4 100 $ de volume mensuel pour que
+    l'économie par rapport à Stripe couvre le forfait.
+
+    **PayPal coûte-t-il plus cher que Stripe ?**
+    Oui. PayPal Standard facture 2,99 % + 0,49 $ contre 2,9 % + 0,30 $ chez
+    Stripe. Sur une transaction de 100 $, PayPal Standard prend 3,48 $ contre
+    3,20 $ pour Stripe : 0,28 $ de plus. PayPal Checkout (3,49 % + 0,49 $) est
+    nettement plus cher que les deux.
+
+    **Puis-je utiliser Stripe sur Shopify sans frais supplémentaires ?**
+    Oui, mais Shopify prélève des frais de transaction tiers (0,5 à 2 % selon
+    votre forfait) si vous utilisez un autre prestataire que Shopify Payments.
+    À 10 000 $ par mois, cela ajoute 50 à 200 $ de surcoût Shopify. Shopify
+    Payments (qui repose sur l'infrastructure de Stripe) supprime ces frais.
+"paypal-fee-calculator":
+  "body": |
+    PayPal facture **3,49 % + 0,49 $** par transaction en ligne nationale, un peu
+    plus que les 2,9 % + 0,30 $ de Stripe. Pour les paiements internationaux, les
+    frais passent à **4,99 % + 0,49 $**. Les micropaiements (moins de 10 $) ont un
+    tarif spécial : **5 % + 0,05 $**, moins cher sur de très petits montants mais
+    élevé en pourcentage.
+
+    ## Frais PayPal et Stripe comparés
+
+    | Cas | PayPal | Stripe |
+    |---|---|---|
+    | 10 $ national | 0,84 $ (8,4 %) | 0,59 $ (5,9 %) |
+    | 100 $ national | 3,98 $ (4,0 %) | 3,20 $ (3,2 %) |
+    | 1 000 $ national | 35,39 $ (3,5 %) | 32,30 $ (3,2 %) |
+    | 100 $ international | 5,48 $ (5,5 %) | 4,70 $ (4,7 %) |
+
+    Pour la plupart des montants, Stripe est moins cher. L'atout de PayPal, c'est
+    la familiarité des consommateurs : proposer PayPal peut améliorer la
+    conversion au paiement.
+
+    ## Mode report des frais
+    Si vous devez recevoir un montant net précis, le calculateur fait la
+    majoration : pour recevoir exactement 100 $ via un paiement PayPal national,
+    il faut facturer **104,66 $**.
+
+    ## PayPal « Entre proches »
+    Les paiements entre particuliers (« Entre proches ») sont gratuits au niveau
+    national s'ils sont financés par compte bancaire ou solde PayPal, mais les
+    utiliser pour des paiements professionnels enfreint les conditions
+    d'utilisation de PayPal. Vous risquez la fermeture du compte, sans la
+    protection vendeur des transactions standards.
+
+    ## Questions fréquentes
+
+    **PayPal facture-t-il les remboursements ?**
+    PayPal rend la part fixe de 0,49 $ mais garde la part en pourcentage (3,49 %)
+    lors d'un remboursement. Stripe, lui, rend la part fixe mais garde aussi le
+    pourcentage.
+
+    **Peut-on éviter les frais PayPal ?**
+    Pour des virements depuis un compte bancaire national vers des proches, oui.
+    Pour les transactions professionnelles, le seul moyen de réduire les frais est
+    le programme de tarif marchand de PayPal, qui exige une demande et un volume
+    de transactions élevé. En général, Stripe coûte moins cher pour la plupart des
+    usages professionnels.
+"shopify-fee-calculator":
+  "body": |
+    Shopify prélève deux types de frais sur chaque vente : des **frais de
+    traitement du paiement** (proches du tarif de Stripe) et des **frais de
+    transaction** distincts si vous utilisez une passerelle de paiement tierce au
+    lieu de Shopify Payments. Comprendre les deux est indispensable pour calculer
+    votre marge avec précision.
+
+    ## Grille de frais Shopify par forfait
+
+    | Forfait | Abonnement mensuel | Taux de traitement | Frais de transaction (tiers) |
+    |---|---|---|---|
+    | Basic | 39 $ | 2,9 % + 0,30 $ | 2,0 % |
+    | Shopify | 105 $ | 2,6 % + 0,30 $ | 1,0 % |
+    | Advanced | 399 $ | 2,4 % + 0,30 $ | 0,5 % |
+
+    Les frais de transaction s'appliquent *uniquement* si vous utilisez un autre
+    prestataire que Shopify Payments (Stripe, PayPal, etc.). Avec Shopify
+    Payments, ils disparaissent complètement.
+
+    ## Shopify Payments ou passerelle tierce
+
+    Pour la plupart des marchands, Shopify Payments est l'option la moins chère
+    car elle supprime les frais de transaction. Une vente de 100 $ sur le forfait
+    Basic via Stripe coûte **2,90 $ + 0,30 $ + 2,00 $ = 5,20 $**, contre seulement
+    **3,20 $** avec Shopify Payments, soit 62 % d'écart.
+
+    Raisons d'utiliser malgré tout une passerelle tierce :
+    - Votre pays n'est pas couvert par Shopify Payments (disponible dans plus de 17 pays)
+    - Vous avez besoin d'outils antifraude, d'abonnements ou de fonctions propres à votre passerelle actuelle
+    - Catégories de produits à risque que Shopify Payments n'accepte pas
+
+    ## Questions fréquentes
+
+    **L'abonnement mensuel entre-t-il dans le coût par vente ?**
+    Le calculateur affiche uniquement les frais par transaction. Pour un coût
+    complet par vente incluant l'abonnement, divisez l'abonnement mensuel par
+    votre nombre de transactions mensuelles et ajoutez-le au total par
+    transaction. À 100 ventes par mois sur le forfait Basic, l'abonnement pèse
+    0,39 $ par vente.
+
+    **Faut-il passer à un forfait supérieur pour payer moins de frais ?**
+    Le calcul : si passer de Basic à Shopify (66 $ de plus par mois) économise
+    0,3 % et supprime 1 % de frais de transaction (avec une passerelle tierce),
+    vous atteignez l'équilibre à 66 $ / 0,013 = 5 077 $ de ventes mensuelles.
+    Au-delà, le changement de forfait est rentable.
+"stripe-fee-calculator":
+  "body": |
+    Stripe est le prestataire de paiement de référence pour la plupart des
+    produits SaaS, des places de marché et des entreprises indépendantes, mais sa
+    grille tarifaire piège sans cesse les fondateurs. Le tarif standard est de
+    **2,9 % + 0,30 $** par paiement carte réussi, mais ce n'est qu'un point de
+    départ.
+
+    Les cartes internationales (émises hors des États-Unis) entraînent des
+    **frais transfrontaliers de 1,5 %** supplémentaires, soit **4,4 % + 0,30 $**
+    au total. Si vous utilisez Stripe Connect (la plateforme de Stripe qui répartit
+    les paiements entre une place de marché et ses vendeurs) pour encaisser pour le
+    compte de comptes connectés, les frais et le partage des revenus se
+    compliquent. Ce calculateur couvre tous les cas courants.
+
+    ## Comment fonctionne le calcul des frais Stripe
+    1. Saisissez le montant à facturer au client.
+    2. Indiquez si la carte est nationale ou internationale.
+    3. Choisissez si vous absorbez les frais ou si vous les répercutez au client
+       (mode « facturer ce qu'il faut pour recevoir »).
+    4. Le calculateur affiche le montant exact des frais, le net versé sur votre
+       compte bancaire et, en mode report, le montant à facturer pour recevoir
+       votre cible.
+
+    ## Pourquoi « facturer plus pour recevoir exactement ce qu'il faut » compte
+    Si vous devez recevoir exactement 100 $ d'une carte américaine, vous ne pouvez
+    pas simplement facturer 100 $ : vous recevriez 96,80 $ après les 2,9 % + 0,30 $
+    de Stripe. Pour recevoir exactement 100 $, il faut facturer **103,09 $** (si le
+    client paie les frais). Ce calculateur fait cette majoration automatiquement.
+
+    ## Questions fréquentes
+
+    **Le tarif de Stripe varie-t-il selon le volume ?**
+    Oui. Stripe négocie des tarifs sur mesure au-delà d'environ 80 k$ encaissés
+    par mois. Pour la plupart des fondateurs indépendants et des jeunes
+    entreprises, le tarif standard de 2,9 % + 0,30 $ s'applique. Le calculateur
+    utilise le tarif standard ; modifiez le champ du pourcentage pour votre taux
+    négocié.
+
+    **Et les frais annexes de Stripe (litiges, remboursements, international) ?**
+    Les remboursements rendent les frais en pourcentage mais pas la part fixe de
+    0,30 $. Un litige coûte 15 $ quelle que soit son issue (les 15 $ sont rendus si
+    vous gagnez). Ces cas particuliers ne figurent pas dans le calcul par
+    transaction, mais il vaut la peine de les budgéter.
+
+    **Puis-je l'utiliser pour Stripe Connect ?**
+    Oui. Stripe Connect répercute les mêmes frais de base à la plateforme ou au
+    compte connecté selon votre configuration. Saisissez le montant total et le
+    taux combiné applicable dans le champ de taux personnalisé.
