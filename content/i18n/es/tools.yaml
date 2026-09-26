@@ -370,3 +370,201 @@
     **¿Qué hace esta calculadora?**
     Calcula el capital circulante, el ratio de liquidez, la prueba ácida y los
     días de capital circulante a partir de tu activo y pasivo corrientes.
+
+"payment-fee-comparison":
+  "body": |
+    Elegir el procesador de pagos más barato para tu negocio es sencillo en
+    cuanto ves los números lado a lado. Introduce tu importe de venta habitual y
+    la tabla comparativa se actualiza al instante con las comisiones exactas y el
+    neto que recibes con **Stripe**, **PayPal Standard**, **PayPal Checkout** y
+    **Shopify Payments** en cada uno de sus tres planes.
+
+    ## Cómo funciona la comparación
+
+    La estructura de comisiones de cada procesador usa sus tarifas públicas en EE. UU.:
+
+    | Procesador | Tarifa | Comisión fija |
+    |-----------|------|-----------|
+    | Stripe | 2,9 % | + $0,30 |
+    | PayPal Standard | 2,99 % | + $0,49 |
+    | PayPal Checkout | 3,49 % | + $0,49 |
+    | Shopify Basic | 2,0 % | + $0,25 |
+    | Shopify (plan Shopify) | 1,7 % | + $0,25 |
+    | Shopify Advanced | 1,5 % | + $0,25 |
+
+    ## Cuándo sale más barato Shopify Payments
+
+    Shopify Payments supera a Stripe en transacciones nacionales de EE. UU. con
+    Visa/Mastercard por encima de unos $12. A $100, Shopify Basic ahorra $0,95
+    por transacción frente a Stripe. Con $500 al mes de volumen en el plan Basic
+    ($39/mes), las cuentas quedan más o menos igual; pero con $50.000 al mes el
+    ahorro en tarifa supera con creces la cuota del plan.
+
+    ## Cuándo quedarse con Stripe
+
+    Stripe gana en: facturación de suscripciones, APIs SaaS, pagos
+    internacionales (más de 135 divisas), adeudo directo ACH, facturación B2B y
+    negocios que no están en Shopify. Su ecosistema para desarrolladores no tiene
+    rival. Usa esta herramienta para cuantificar la diferencia de comisiones y
+    compárala con el coste de cambiar y tus necesidades de funcionalidades.
+
+    ## Preguntas frecuentes
+
+    **¿Qué procesador de pagos tiene las comisiones más bajas?**
+    Shopify Payments (plan Advanced) tiene la tarifa más baja, 1,5 % + $0,25,
+    pero exige una tienda Shopify y una suscripción de $399/mes. Fuera de
+    Shopify, Stripe (2,9 % + $0,30) supera a PayPal Standard (2,99 % + $0,49) en
+    transacciones de más de $15.
+
+    **¿Cuánto más barato es Shopify Payments que Stripe?**
+    En una transacción de $100: Shopify Basic cobra $2,25 y Stripe $3,20, así que
+    Shopify sale $0,95 más barato. Pero Shopify Basic exige un plan de $39/mes.
+    Necesitarías más de $4.100 al mes de volumen para que el ahorro frente a
+    Stripe cubra el plan.
+
+    **¿PayPal cobra más que Stripe?**
+    Sí. PayPal Standard cobra 2,99 % + $0,49 frente al 2,9 % + $0,30 de Stripe.
+    En una transacción de $100, PayPal Standard se queda $3,48 y Stripe $3,20:
+    PayPal es $0,28 más caro. PayPal Checkout (3,49 % + $0,49) es bastante más
+    caro que ambos.
+
+    **¿Puedo usar Stripe en Shopify sin pagar comisiones extra?**
+    Sí, pero Shopify cobra una comisión por transacción de terceros (0,5 %–2 %
+    según tu plan) si usas cualquier procesador que no sea Shopify Payments. Con
+    $10.000 al mes, eso suma $50–$200 en recargos de Shopify. Shopify Payments
+    (que funciona sobre la infraestructura de Stripe) elimina esa comisión.
+"paypal-fee-calculator":
+  "body": |
+    PayPal cobra **3,49 % + $0,49** por transacción online nacional, algo más que
+    el 2,9 % + $0,30 de Stripe. En pagos internacionales, la comisión sube a
+    **4,99 % + $0,49**. Los micropagos (transacciones de menos de $10) tienen una
+    tarifa especial: **5 % + $0,05**, más barata en importes muy pequeños pero cara
+    en porcentaje.
+
+    ## Comisiones de PayPal frente a Stripe
+
+    | Caso | PayPal | Stripe |
+    |---|---|---|
+    | $10 nacional | $0,84 (8,4 %) | $0,59 (5,9 %) |
+    | $100 nacional | $3,98 (4,0 %) | $3,20 (3,2 %) |
+    | $1.000 nacional | $35,39 (3,5 %) | $32,30 (3,2 %) |
+    | $100 internacional | $5,48 (5,5 %) | $4,70 (4,7 %) |
+
+    En la mayoría de importes, Stripe es más barato. La ventaja de PayPal es que
+    los consumidores lo conocen: ofrecerlo como opción puede mejorar la
+    conversión en el checkout.
+
+    ## Modo de repercutir la comisión
+    Si necesitas recibir un importe neto concreto, la calculadora hace el ajuste
+    al alza: para recibir exactamente $100 con un cobro PayPal nacional, tendrías
+    que cobrar **$104,66**.
+
+    ## PayPal «Amigos y familiares»
+    Los pagos personales («Amigos y familiares») son gratuitos en transacciones
+    nacionales financiadas con cuenta bancaria o saldo PayPal, pero usarlos para
+    pagos de negocio incumple las condiciones de PayPal. Te arriesgas al cierre
+    de la cuenta, sin la protección al vendedor de las transacciones estándar.
+
+    ## Preguntas frecuentes
+
+    **¿PayPal cobra por los reembolsos?**
+    PayPal devuelve la comisión fija de $0,49 pero se queda con la parte
+    porcentual (3,49 %) al reembolsar. Stripe, en cambio, devuelve la comisión
+    fija pero también se queda con el porcentaje.
+
+    **¿Se pueden evitar las comisiones de PayPal?**
+    En transferencias nacionales desde cuenta bancaria a contactos personales,
+    sí. En transacciones de negocio, la única forma de reducirlas es el programa
+    de tarifa para comerciantes de PayPal, que exige solicitarlo y demostrar un
+    volumen alto. En general, Stripe ofrece comisiones más bajas en la mayoría de
+    usos profesionales.
+"shopify-fee-calculator":
+  "body": |
+    Shopify cobra dos tipos de comisiones en cada venta: una **comisión de
+    procesamiento de pago** (parecida a la de Stripe) y una **comisión por
+    transacción** aparte si usas una pasarela de pago de terceros en lugar de
+    Shopify Payments. Entender ambas es imprescindible para calcular bien el
+    margen.
+
+    ## Estructura de comisiones de Shopify por plan
+
+    | Plan | Cuota mensual | Tarifa de procesamiento | Comisión por transacción (terceros) |
+    |---|---|---|---|
+    | Basic | $39 | 2,9 % + $0,30 | 2,0 % |
+    | Shopify | $105 | 2,6 % + $0,30 | 1,0 % |
+    | Advanced | $399 | 2,4 % + $0,30 | 0,5 % |
+
+    La comisión por transacción se aplica *solo* si usas un procesador distinto
+    de Shopify Payments (Stripe, PayPal, etc.). Con Shopify Payments desaparece
+    por completo.
+
+    ## Shopify Payments frente a pasarelas de terceros
+
+    Para la mayoría de comerciantes, Shopify Payments es la opción más barata
+    porque elimina la comisión por transacción. Una venta de $100 en el plan Basic
+    con Stripe cuesta **$2,90 + $0,30 + $2,00 = $5,20**, frente a solo **$3,20**
+    con Shopify Payments: un 62 % de diferencia.
+
+    Motivos para usar igualmente una pasarela de terceros:
+    - Tu país no está cubierto por Shopify Payments (disponible en más de 17 países)
+    - Necesitas herramientas antifraude, suscripciones o funciones que solo tiene tu pasarela actual
+    - Categorías de producto de alto riesgo que Shopify Payments no admite
+
+    ## Preguntas frecuentes
+
+    **¿La cuota mensual cuenta en el coste por venta?**
+    La calculadora muestra solo las comisiones por transacción. Para un coste
+    completo por venta con la cuota incluida, divide la cuota mensual entre tu
+    número de transacciones al mes y súmalo al total por transacción. Con 100
+    ventas al mes en el plan Basic, la cuota supone $0,39 por venta.
+
+    **¿Debería subir de plan para pagar menos comisiones?**
+    Las cuentas: si pasar de Basic a Shopify ($66 más al mes) ahorra un 0,3 % y
+    elimina un 1 % de comisión por transacción (con pasarela de terceros),
+    cubres costes con $66 / 0,013 = $5.077 de ventas al mes. Por encima de ese
+    volumen, subir de plan compensa.
+"stripe-fee-calculator":
+  "body": |
+    Stripe es el procesador de pagos preferido por la mayoría de productos SaaS,
+    marketplaces y negocios independientes, pero su estructura de comisiones
+    confunde constantemente a los fundadores. La tarifa estándar es **2,9 % +
+    $0,30** por cobro con tarjeta correcto, pero eso es solo el punto de partida.
+
+    Las tarjetas internacionales (emitidas fuera de EE. UU.) añaden una
+    **comisión transfronteriza del 1,5 %**, hasta un total de **4,4 % + $0,30**.
+    Si usas Stripe Connect (la plataforma de Stripe para repartir pagos entre un
+    marketplace y sus vendedores) para cobrar en nombre de cuentas conectadas, las
+    comisiones y el reparto de ingresos se complican. Esta calculadora cubre todos
+    los casos habituales.
+
+    ## Cómo funciona el cálculo de comisiones de Stripe
+    1. Introduce el importe que quieres cobrar al cliente.
+    2. Indica si la tarjeta es nacional o internacional.
+    3. Elige si absorbes la comisión o la repercutes al cliente
+       (modo «cobrar lo necesario para recibir»).
+    4. La calculadora muestra la comisión exacta, el neto que llega a tu cuenta
+       bancaria y, en modo repercusión, cuánto cobrar para recibir tu objetivo.
+
+    ## Por qué importa «cobrar más para recibir exactamente lo que necesitas»
+    Si necesitas recibir exactamente $100 de una tarjeta nacional de EE. UU., no
+    puedes cobrar $100 sin más: recibirías $96,80 tras el 2,9 % + $0,30 de Stripe.
+    Para recibir exactamente $100 tienes que cobrar **$103,09** (si el cliente paga
+    la comisión). Esta calculadora hace el ajuste al alza automáticamente.
+
+    ## Preguntas frecuentes
+
+    **¿Cambia la tarifa de Stripe según el volumen?**
+    Sí. Stripe negocia precios a medida con negocios que procesan más de unos
+    $80k al mes. Para la mayoría de fundadores independientes y empresas en fase
+    inicial se aplica el 2,9 % + $0,30 estándar. La calculadora usa la tarifa
+    estándar; ajusta el campo del porcentaje a tu tarifa negociada.
+
+    **¿Y las comisiones adicionales de Stripe (disputas, reembolsos, internacional)?**
+    Los reembolsos devuelven la comisión porcentual pero no los $0,30 fijos. Las
+    disputas cuestan $15 sea cual sea el resultado (se devuelven si ganas). Estos
+    casos no están en el cálculo por transacción, pero conviene presupuestarlos.
+
+    **¿Puedo usarla para Stripe Connect?**
+    Sí. Stripe Connect traslada la misma comisión base a la plataforma o a la
+    cuenta conectada según tu configuración. Introduce el cobro total y la tarifa
+    combinada aplicable en el campo de tarifa personalizada.

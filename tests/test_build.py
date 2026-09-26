@@ -2704,6 +2704,7 @@ def test_i18n_translations_point_at_real_content():
     """A slug typo in content/i18n/<lang>/ would silently never show."""
     tools = {t["slug"] for t in yaml.safe_load((ROOT / "content" / "tools.yaml").read_text())}
     intents = {p["slug"] for p in yaml.safe_load((ROOT / "content" / "intent_pages.yaml").read_text())}
+    intents |= {f"stripe-fees-{c['slug']}" for c in COUNTRIES}
     glossary = {e["slug"] for e in yaml.safe_load((ROOT / "content" / "glossary.yaml").read_text())}
     cats = set(yaml.safe_load((ROOT / "content" / "categories.yaml").read_text()))
     pages = {p.stem for p in (ROOT / "content" / "pages").glob("*.md")}
