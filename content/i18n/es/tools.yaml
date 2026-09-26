@@ -1781,3 +1781,471 @@
     Calcula el TAM (clientes totales × gasto), el SAM (filtrado según tu alcance)
     y el SOM (tu cuota alcanzable) para dimensionar el mercado en presentaciones
     para inversores.
+
+"ad-roas-calculator":
+  "body": |
+    El ROAS (retorno de la inversión publicitaria) es la medida más directa de la
+    rentabilidad de una campaña. Responde a: por cada dólar invertido en anuncios,
+    ¿cuántos ingresos generaste?
+
+    **ROAS = ingresos de los anuncios ÷ inversión publicitaria**
+
+    Un ROAS de 4× significa que generaste $4 de ingresos por cada $1 invertido.
+    Pero que ese 4× sea rentable depende por completo de tu margen bruto.
+
+    ## Por qué el ROAS por sí solo no dice si los anuncios son rentables
+
+    Un ROAS de 4× con un producto de margen del 30 % significa que gastaste $1 para
+    generar $4 de ingresos, pero solo $1,20 de beneficio bruto: te quedan apenas
+    $0,20 por dólar invertido, antes de gastos generales. El mismo ROAS de 4× en un
+    SaaS con un 80 % de margen da $3,20 de beneficio bruto por cada $1 invertido.
+
+    **ROAS de equilibrio = 1 ÷ % de margen bruto**
+
+    | Margen bruto | ROAS de equilibrio |
+    |---|---|
+    | 20 % | 5,0× |
+    | 30 % | 3,33× |
+    | 40 % | 2,5× |
+    | 50 % | 2,0× |
+    | 70 % | 1,43× |
+    | 80 % | 1,25× |
+
+    ## ROAS objetivo para un margen de beneficio concreto
+
+    Si quieres un margen de beneficio del 20 % (beneficio / ingresos), usa esta
+    fórmula:
+
+    **ROAS objetivo = 1 ÷ (% de margen bruto − % de margen de beneficio objetivo)**
+
+    Ejemplo: 50 % de margen bruto y 20 % de margen objetivo → 1 ÷ 0,30 = **ROAS objetivo de 3,33×**
+
+    ## ROAS frente a ROI: ¿en qué se diferencian?
+
+    El ROAS es un múltiplo de ingresos. El ROI es un múltiplo de beneficio.
+
+    **ROI = (ingresos − coste de ventas − inversión publicitaria) ÷ inversión publicitaria × 100**
+
+    Un ROAS de 4× con un 50 % de margen = $2 de beneficio bruto por $1 invertido = 100 % de ROI.
+    Un ROAS de 2× con un 50 % de margen = $1 de beneficio bruto por $1 invertido = 0 % de ROI (equilibrio).
+
+    El ROAS es más fácil de calcular en tiempo real (no necesita el coste de ventas
+    por canal). Úsalo para comparar canales y definir la estrategia de pujas. Usa
+    el ROI para la evaluación final de rentabilidad.
+
+    ## Referencias por canal publicitario
+
+    | Canal | ROAS habitual | Notas |
+    |---|---|---|
+    | Google Search (marca) | 5–20× | Alta intención, bajo coste competitivo |
+    | Google Shopping | 3–8× | Varía según el margen del producto |
+    | Meta / Facebook | 2–5× | Depende mucho de la creatividad y la audiencia |
+    | TikTok Ads | 1,5–4× | Canal en crecimiento, CPM aún bajos |
+    | Display programático | 1–3× | Menor intención; bueno para retargeting |
+
+    ## Preguntas frecuentes
+
+    **¿Qué es un buen ROAS?**
+    Depende por completo de tu margen bruto. Un ROAS de 4× es excelente para un
+    SaaS con un 60 % de margen, pero terrible para un dropshipping con un 15 %.
+    Calcula primero tu ROAS de equilibrio: todo lo que lo supere es rentable.
+
+    **¿Cómo mejoro el ROAS?**
+    Tres palancas: (1) mejores creatividades y textos para mejorar el CTR y la
+    conversión, (2) una segmentación más precisa para llegar a compradores con alta
+    intención, (3) pujar por palabras clave de más intención y excluir ubicaciones
+    que convierten poco. Subir precios también mejora el ROAS sin cambiar la
+    eficiencia publicitaria.
+
+    **¿Qué ROAS debo fijar en Google Ads?**
+    Google recomienda fijar el ROAS objetivo en 3–5 veces tu equilibrio como punto
+    de partida y dejar que Smart Bidding optimice. En campañas nuevas sin datos de
+    conversión, empieza con CPC manual y reúne 30–50 conversiones antes de pasar a
+    la puja por ROAS objetivo.
+"aov-calculator":
+  "body": |
+    ## ¿Qué es el ticket medio (AOV)?
+
+    El ticket medio es el ingreso medio por transacción en un periodo dado.
+
+    $$\text{Ticket medio} = \frac{\text{Ingresos totales}}{\text{Número de pedidos}}$$
+
+    ### Por qué el ticket medio es la palanca de crecimiento con mayor retorno
+
+    Subir el ticket medio aumenta los ingresos sin aumentar el coste de adquisición de clientes (CAC) ni el tráfico. Una mejora del 10 % en el ticket medio aporta un 10 % más de ingresos en cada interacción con clientes existentes.
+
+    ### Referencias de ticket medio por sector
+
+    | Sector | Ticket medio habitual |
+    |--------|------------|
+    | Lujo / moda | $150–400 |
+    | E-commerce general | $50–150 |
+    | Alimentación / gran consumo | $40–80 |
+    | SaaS (por transacción) | $200–500 |
+    | Productos digitales | $15–50 |
+
+    ### Ingresos por visitante
+
+    $$\text{Ingresos por visitante} = \frac{\text{Ingresos totales}}{\text{Visitantes mensuales}}$$
+
+    Los ingresos por visitante combinan la tasa de conversión y el ticket medio en una sola métrica. Mejorar cualquiera de los dos los mejora.
+
+    ### Tácticas para subir el ticket medio
+
+    - **Upselling**: ofrecer una versión superior en el checkout
+    - **Venta cruzada**: recomendaciones de «comprados juntos habitualmente»
+    - **Umbrales de envío gratis**: «Añade $15 más para el envío gratis» empuja los pedidos por encima de un mínimo
+    - **Packs**: combinar productos con un ligero descuento; el cliente gasta más y percibe valor
+    - **Descuentos por volumen**: precio unitario más bajo para cantidades mayores
+
+    ### Guías
+
+    - [¿Qué es el ticket medio?](/tools/aov-calculator/#what-is-average-order-value)
+    - [Cómo aumentar el ticket medio](/tools/aov-calculator/#how-to-increase-average-order-value)
+"conversion-rate-calculator":
+  "body": |
+    La tasa de conversión es el porcentaje de visitantes que completan una acción
+    deseada: registro, compra, inicio de prueba o envío de un formulario. Es una
+    de las métricas con más apalancamiento de cualquier embudo de crecimiento,
+    porque mejorarla aumenta los ingresos sin necesitar más tráfico.
+
+    **Tasa de conversión = (conversiones ÷ visitantes) × 100**
+
+    ## La fórmula del impacto en ingresos
+
+    **Ingresos mensuales = visitantes × tasa de conversión × ingresos por conversión**
+
+    Con 10.000 visitantes, un 1,5 % de conversión y un ARPU de $99: 10.000 × 0,015 × $99 = **$14.850 al mes**
+
+    Subir la conversión del 1,5 % al 2,5 % (un 67 % más en relativo) con el mismo tráfico:
+    10.000 × 0,025 × $99 = **$24.750 al mes**, **$9.900 más al mes**.
+
+    ## Por qué la CRO suele ser más eficiente que la adquisición
+
+    Duplicar el tráfico cuesta más o menos el doble de tu presupuesto de
+    marketing. Duplicar la tasa de conversión cuesta lo que valgan los
+    experimentos (investigación de usuarios, tests A/B, rediseños de landing
+    pages), a menudo 10 veces menos por dólar de ingresos ganado.
+
+    Las cuentas solo fallan cuando el tráfico es demasiado bajo para hacer tests
+    A/B estadísticamente significativos. Por debajo de ~1.000 visitantes al mes por
+    variante, la CRO (optimización de la tasa de conversión) es adivinar. Por
+    encima de 5.000 al mes, se vuelve muy fiable.
+
+    ## Referencias de tasa de conversión
+
+    | Fase del embudo | Media | Cuartil superior |
+    |---|---|---|
+    | Inicio → página de precios | 10–20 % | 30 %+ |
+    | Página de precios → prueba | 1–5 % | 8–15 % |
+    | Prueba → pago (SaaS B2B) | 15–25 % | 35 %+ |
+    | Adquisición de pago (en frío) | 0,5–2 % | 3–5 % |
+    | CTA de email → compra | 2–8 % | 10–20 % |
+
+    ## Los cinco cambios de CRO con más impacto
+
+    1. **Titular claro**: tu propuesta de valor en 10 palabras, no en 30. Los usuarios leen primero el H1.
+    2. **Prueba social en la parte visible**: logos, testimonios concretos, valoraciones en G2/Capterra
+    3. **Menos fricción en la llamada a la acción**: un clic para la prueba, sin tarjeta, divulgación progresiva
+    4. **Anclaje en la página de precios**: tres planes con el del medio destacado como «recomendado»
+    5. **Intención de salida y retargeting**: recuperar a los visitantes que se van sin convertir
+
+    ## Preguntas frecuentes
+
+    **¿Qué es una buena tasa de conversión?**
+    Depende por completo de la fase del embudo y de la fuente de tráfico. Que el
+    tráfico de pago en frío convierta al 0,5–1 % es normal. Que la búsqueda de
+    marca convierta al 5–15 % es lo esperado. Céntrate en mejorar respecto a tu
+    propia base más que respecto a las medias del sector.
+
+    **¿Cómo hago un test A/B de mi tasa de conversión?**
+    Usa una calculadora de tamaño de muestra antes de empezar: necesitas unas
+    1.000 conversiones por variante para detectar con fiabilidad una mejora del
+    10 %. Mantén los tests al menos 2 semanas completas para controlar el efecto
+    del día de la semana.
+"email-list-growth-calculator":
+  "body": |
+    El crecimiento de la lista de email es uno de los activos más valiosos que
+    puede construir un negocio autofinanciado. A diferencia de los seguidores en
+    redes sociales o las audiencias de pago, tu lista de email es un activo tuyo.
+    Pero una lista que no crece se deteriora: aunque no entre ningún suscriptor
+    nuevo, las bajas y la inactividad la reducen cada mes.
+
+    ## La fórmula de crecimiento
+
+    **Crecimiento neto mensual = suscriptores nuevos − (tamaño de la lista × tasa de bajas mensual)**
+
+    Con 10.000 suscriptores y un 3 % de bajas mensuales, pierdes 300 suscriptores
+    al mes de tu base actual. Para crecer necesitas más de 300 suscriptores nuevos
+    al mes.
+
+    ## El deterioro de la lista se acumula
+
+    Con un 3 % de bajas mensuales, una lista sin suscriptores nuevos pierde un 31 %
+    de su tamaño al año. Con un 5 %, pierde un 46 %. Por eso los profesionales del
+    email se obsesionan con las campañas de reactivación y las políticas de
+    limpieza: los suscriptores inactivos inflan el tamaño de la lista y dañan la
+    entregabilidad.
+
+    ## Referencias del sector
+
+    | Métrica | Buena | Media | Mala |
+    |--------|------|---------|------|
+    | Bajas mensuales | < 1,5 % | 2–3 % | > 4 % |
+    | Tasa de apertura | > 30 % | 20–25 % | < 15 % |
+    | Crecimiento de la lista | > 5 %/mes | 2–4 %/mes | < 1 %/mes |
+
+    ## Preguntas frecuentes
+
+    **¿Qué hace esta calculadora?**
+    Calcula la tasa de crecimiento de la lista de email, el crecimiento neto mensual y el tiempo para alcanzar el tamaño de lista objetivo.
+"email-roi-calculator":
+  "body": |
+    El email marketing ofrece de forma constante el ROI más alto de todos los
+    canales digitales. La DMA (Data & Marketing Association) informa de un retorno
+    medio de **$36–42 por cada $1 invertido**, pero esa media esconde una
+    variación enorme. La diferencia entre un programa de email excelente y uno
+    mediocre está casi por completo en la tasa de apertura, la tasa de clics y la
+    calidad de la lista.
+
+    ## El embudo de ingresos del email
+
+    **Aperturas** = tamaño de la lista × tasa de apertura
+    **Clics** = aperturas × tasa de clics
+    **Conversiones** = clics × tasa de conversión
+    **Ingresos** = conversiones × ticket medio
+
+    ## Tasas de referencia del sector
+
+    | Métrica | SaaS B2B | E-commerce | Newsletter |
+    |--------|----------|-----------|-----------|
+    | Tasa de apertura | 20–30 % | 15–25 % | 30–50 % |
+    | Tasa de clics (sobre aperturas) | 5–12 % | 8–15 % | 4–8 % |
+    | Tasa de conversión (sobre clics) | 3–8 % | 2–5 % | 1–3 % |
+
+    ## Por qué importa más la calidad que el tamaño de la lista
+
+    Una lista de 1.000 suscriptores con un 35 % de apertura supera a una de 10.000
+    con un 8 % tanto en ingresos como en entregabilidad. Segmenta tu lista por
+    interacción: excluye a los suscriptores inactivos (sin aperturas en 90 días)
+    para mejorar la entregabilidad y las tasas de apertura en toda la lista.
+
+    ## Tipos de campaña que conviene modelar
+
+    - **Lanzamiento de producto / promoción**: campaña puntual a toda la lista o a un segmento
+    - **Secuencia de bienvenida**: secuencia automática que se activa con el registro, normalmente la de mayor ROI
+    - **Campañas de reactivación**: recuperar suscriptores inactivos; suelen reactivar al 5–15 %
+    - **Newsletter**: basada en contenido; menos conversión directa, pero acumula confianza de la audiencia
+
+    ## Preguntas frecuentes
+
+    **¿Cómo mejoro las tasas de apertura?**
+    Probar asuntos (test A/B con el 20 % de la lista antes del envío completo),
+    optimizar la hora de envío (normalmente de martes a jueves entre las 10:00 y las
+    14:00 en la zona horaria del destinatario) y mantener limpia la lista (quitar a
+    los suscriptores sin interacción) son las tres palancas con más impacto.
+
+    **¿Qué tasa de conversión puedo esperar?**
+    Depende mucho de la oferta. Un buen email promocional a una lista caliente para
+    un producto de $49 puede convertir el 5–10 % de los clics. Un email de
+    prospección para un contrato de $10k puede convertir el 1–2 % de los clics, pero
+    generar muchos ingresos por conversión.
+"revenue-per-lead-calculator":
+  "body": |
+    Los ingresos por lead (RPL) son la métrica más útil para comparar la
+    rentabilidad de los canales de marketing. A diferencia del CTR (tasa de clics)
+    o del coste por lead por sí solos, el RPL tiene en cuenta la calidad del lead:
+    un canal que genera leads baratos puede tener un RPL pésimo si esos leads no
+    cierran o compran poco.
+
+    ## La fórmula
+
+    **Ingresos por lead = ingresos totales / leads totales**
+
+    Con $480k de ingresos y 1.200 leads: RPL = $480k / 1.200 = **$400 por lead**
+
+    ## Por qué el RPL supera al coste por lead
+
+    El coste por lead (CPL) mide la eficiencia de la captación. Pero un CPL de $10
+    no vale nada si esos leads nunca cierran. El RPL mide la eficacia de la
+    captación: los ingresos reales generados por lead, cueste lo que cueste.
+
+    Compara canales:
+
+    | Canal | Leads | Ingresos | RPL | Inversión | CPL | ROI |
+    |---|---|---|---|---|---|---|
+    | Google Ads | 500 | $200k | $400 | $25k | $50 | 8× |
+    | LinkedIn Ads | 100 | $80k | $800 | $20k | $200 | 4× |
+    | Orgánico | 600 | $200k | $333 | $15k | $25 | 13× |
+
+    Google Ads tiene un RPL más alto que el orgánico ($400 frente a $333). LinkedIn
+    tiene un RPL aún más alto (leads de más calidad), pero también un CPL mayor. El
+    orgánico tiene el mejor ROI pero el RPL más bajo.
+
+    **Conclusión**: escala primero el orgánico (mejor ROI). Después Google Ads (buen
+    ROI, escalable). LinkedIn es caro pero genera leads de alto valor: mantén un
+    presupuesto pequeño para grandes cuentas.
+
+    ## RPL frente a CAC
+
+    El RPL es una métrica del embudo de marketing; el CAC (coste de adquisición de
+    clientes), del embudo de ventas. La relación:
+    - RPL ÷ tasa de conversión de lead a cliente = ingresos por cliente (ACV)
+    - CPL / tasa de conversión de lead a cliente = CAC
+
+    Si el RPL es de $400 y la conversión de lead a cliente es del 5 %, el ACV
+    implícito es de $8.000. Si el CPL es de $50 con la misma conversión del 5 %, tu
+    CAC es de $1.000.
+
+    ## Cruzar cohortes en ciclos de venta largos
+
+    En B2B con ciclos de 60–90 días, usar el mismo periodo para leads e ingresos
+    crea un desajuste. Es mejor:
+    - Medir los leads captados en el T1
+    - Medir los ingresos cerrados en T2–T3 procedentes de esos leads
+    - Calcular el RPL con 6 meses de desfase
+
+    Así la atribución de las ventas de ciclo largo es precisa.
+
+    ## Preguntas frecuentes
+
+    **¿Qué hace esta calculadora?**
+    Calcula los ingresos por lead y el coste por lead de cada canal, compara el ROI de los canales y te dice cuántos leads necesitas para alcanzar un objetivo de ingresos.
+"sales-funnel-calculator":
+  "body": |
+    ## ¿Qué es una calculadora de embudo de ventas?
+
+    Una calculadora de embudo de ventas modela el avance de los prospectos por cada fase del pipeline, desde el lead en bruto hasta el cliente cerrado, para proyectar ingresos e identificar la fase más débil.
+
+    ### Fases habituales de un embudo B2B
+
+    | Fase | Tasa de conversión habitual |
+    |-------|------------------------|
+    | Lead → MQL | 20–40 % |
+    | MQL → SQL | 30–50 % |
+    | SQL → oportunidad | 40–60 % |
+    | Oportunidad → cierre | 20–30 % |
+    | **Total lead → cliente** | **1–5 %** |
+
+    ### Conversión total del embudo
+
+    $$\text{Conversión total} = \frac{\text{Clientes nuevos}}{\text{Leads}} \times 100$$
+
+    Una conversión total del 1–3 % es lo habitual en SaaS B2B. Por encima del 5 % es excelente y suele indicar una marca o un inbound fuertes.
+
+    ### Encontrar tu cuello de botella
+
+    La fase con la tasa de conversión más baja respecto a la referencia es tu restricción. Duplicar el volumen de leads con una fase MQL→SQL rota produce el mismo número de clientes, solo con el doble de desperdicio.
+
+    ### Ingresos del embudo
+
+    $$\text{Ingresos mensuales} = \text{Clientes nuevos} \times \text{ACV}$$
+
+    Modela varios escenarios: optimista (mejorar una fase un 10 %), base y pesimista (los leads caen un 20 %) para poner a prueba tu pipeline.
+
+    ### Guías
+
+    - [¿Qué es un embudo de ventas?](/tools/sales-funnel-calculator/#what-is-a-sales-funnel)
+    - [MQL o SQL: ¿en qué se diferencian?](/tools/sales-funnel-calculator/#mql-vs-sql-difference)
+"sales-quota-calculator":
+  "body": |
+    Crear un plan de ventas empieza por calcular hacia atrás desde el objetivo de
+    ingresos. Con un objetivo anual, un valor medio de contrato (ACV) y una tasa de
+    cierre, esta calculadora muestra exactamente cuántas ventas, leads y pipeline
+    necesitas generar, por mes y por año.
+
+    ## Las cuentas del embudo inverso
+
+    **Ventas necesarias** = objetivo de ingresos anual ÷ ACV
+
+    **Leads necesarios** = ventas necesarias ÷ tasa de cierre
+
+    **Pipeline necesario** = leads necesarios × ACV (valor total de pipeline que tiene que entrar)
+
+    Si tu objetivo anual es de $1M, el ACV de $12k y la tasa de cierre del 20 %:
+    - 83 ventas necesarias
+    - 417 leads cualificados necesarios
+    - ~7 ventas al mes, 35 leads al mes
+
+    ## Lo que dice sobre la contratación
+
+    Un SDR (representante de desarrollo de ventas) genera normalmente 40–80 leads
+    cualificados al mes según el segmento y la calidad de la prospección. Si tus
+    cuentas exigen más de 200 leads al mes, necesitas 3–5 SDR o un motor inbound
+    maduro. Usa estas cifras para modelar la plantilla antes de comprometerte con
+    un plan de ingresos.
+
+    ## Mejorar los datos de partida
+
+    Los cambios con más impacto en tus cuentas de cuota:
+    - **Tasa de cierre**: 5 puntos más (del 20 % al 25 %) reducen un 20 % los leads necesarios
+    - **ACV**: duplicar el ACV reduce a la mitad las ventas necesarias
+    - **Ciclo de ventas**: ciclos más cortos dan más vueltas de pipeline al año y mejor eficiencia del capital
+
+    ## Preguntas frecuentes
+
+    **¿Qué tasa de cierre uso?**
+    Mide la tasa de cierre desde el lead cualificado (llamada de descubrimiento
+    agendada) hasta la venta cerrada. Medias en SaaS B2B: 15–25 % en pymes, 20–30 %
+    en mid-market y 30–40 % en enterprise (embudo más largo, leads más
+    cualificados). Si aún no conoces tu tasa de cierre, empieza con un 20 %.
+
+    **¿Cómo afecta el ciclo de ventas al pipeline?**
+    Un ciclo de 30 días hace girar el pipeline ~12 veces al año; uno de 90 días, 4
+    veces. Los ciclos más cortos dan más datos, iteraciones más rápidas y menos
+    necesidad de caja para el mismo objetivo de ingresos.
+"sales-velocity-calculator":
+  "body": |
+    La velocidad de ventas mide lo rápido que tu pipeline se convierte en ingresos:
+    en concreto, cuántos dólares de ingresos genera tu equipo comercial al día. Es
+    una de las métricas más útiles en ventas B2B porque descompone el crecimiento
+    de ingresos en cuatro palancas que puedes optimizar por separado.
+
+    ## La fórmula
+
+    **Velocidad de ventas = (oportunidades × tasa de cierre × ACV) / días del ciclo de ventas**
+
+    Con 50 oportunidades, un 25 % de cierre, $8.000 de ACV y un ciclo de 90 días:
+    (50 × 0,25 × $8.000) / 90 = **$1.111 al día** → **$405k anualizados**
+
+    ## Las cuatro palancas
+
+    La velocidad de ventas tiene exactamente cuatro datos de entrada, y cada uno se
+    puede mejorar por separado:
+
+    1. **Número de oportunidades**: más pipeline cualificado. Un 20 % más de
+       oportunidades suma un 20 % de velocidad (con lo demás constante).
+    2. **Tasa de cierre**: mejor cualificación, demos más sólidas, mejor
+       seguimiento. Subir del 25 % al 30 % suma un 20 % de velocidad.
+    3. **ACV**: precios, paquetes, upsell al cierre. Subir de $8k a $10k suma un
+       25 % de velocidad.
+    4. **Ciclo de ventas**: acortarlo de 90 a 75 días suma un 20 % de velocidad.
+
+    Mejorar las cuatro un 10 % cada una se multiplica hasta **+46 % de velocidad**,
+    no +40 %.
+
+    ## Referencias por segmento
+
+    | Segmento | Velocidad de ventas habitual |
+    |---|---|
+    | SaaS pymes (ACV < $5k) | $200–500 al día |
+    | Mid-market (ACV $5k–$50k) | $500–2.000 al día |
+    | Enterprise (ACV > $50k) | $2.000–10.000+ al día |
+
+    ## Qué te dice la velocidad de ventas
+
+    **Velocidad baja con buena tasa de cierre**: la cobertura de pipeline es
+    escasa; añade oportunidades en la parte alta del embudo.
+
+    **Velocidad baja con buen pipeline**: el problema es la tasa de cierre o el
+    ACV; mejora la cualificación o los precios.
+
+    **Velocidad aceptable con ciclo largo**: acortar el ciclo tiene un impacto
+    enorme porque está en el denominador.
+
+    ## Preguntas frecuentes
+
+    **¿Qué hace esta calculadora?**
+    Calcula la velocidad de ventas (ingresos al día) a partir del tamaño del
+    pipeline, la tasa de cierre, el valor medio de contrato y la duración del ciclo
+    de ventas.

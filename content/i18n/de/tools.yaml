@@ -1789,3 +1789,467 @@
     Er berechnet TAM (Kunden gesamt × Ausgaben), SAM (gefiltert nach deiner
     Reichweite) und SOM (dein erreichbarer Anteil) für die Marktgröße in
     Investoren-Decks.
+
+"ad-roas-calculator":
+  "body": |
+    ROAS (Return on Ad Spend) ist das direkteste Maß für die Rentabilität einer
+    Werbekampagne. Er beantwortet: Wie viel Umsatz hast du pro ausgegebenem
+    Werbedollar erzielt?
+
+    **ROAS = Umsatz aus Anzeigen ÷ Werbeausgaben**
+
+    Ein ROAS von 4× heißt: 4 $ Umsatz pro ausgegebenem Dollar. Ob diese 4×
+    profitabel sind, hängt aber ganz von deiner Bruttomarge ab.
+
+    ## Warum der ROAS allein nicht zeigt, ob Werbung profitabel ist
+
+    Ein ROAS von 4× bei einem Produkt mit 30 % Marge heißt: 1 $ ausgegeben für 4 $
+    Umsatz, aber nur 1,20 $ Rohertrag. Pro ausgegebenem Dollar bleiben also nur
+    0,20 $, vor Gemeinkosten. Derselbe ROAS von 4× bei einem SaaS mit 80 % Marge
+    bringt 3,20 $ Rohertrag pro ausgegebenem Dollar.
+
+    **Break-even-ROAS = 1 ÷ Bruttomarge in %**
+
+    | Bruttomarge | Break-even-ROAS |
+    |---|---|
+    | 20 % | 5,0× |
+    | 30 % | 3,33× |
+    | 40 % | 2,5× |
+    | 50 % | 2,0× |
+    | 70 % | 1,43× |
+    | 80 % | 1,25× |
+
+    ## Ziel-ROAS für eine bestimmte Gewinnmarge
+
+    Für eine Gewinnmarge von 20 % (Gewinn / Umsatz) nutzt du diese Formel:
+
+    **Ziel-ROAS = 1 ÷ (Bruttomarge in % − Ziel-Gewinnmarge in %)**
+
+    Beispiel: 50 % Bruttomarge, 20 % Ziel-Gewinnmarge → 1 ÷ 0,30 = **Ziel-ROAS 3,33×**
+
+    ## ROAS oder ROI: Was ist der Unterschied?
+
+    Der ROAS ist ein Umsatzmultiple, der ROI ein Gewinnmultiple.
+
+    **ROI = (Umsatz − Herstellkosten − Werbeausgaben) ÷ Werbeausgaben × 100**
+
+    4× ROAS bei 50 % Marge = 2 $ Rohertrag pro ausgegebenem Dollar = 100 % ROI.
+    2× ROAS bei 50 % Marge = 1 $ Rohertrag pro ausgegebenem Dollar = 0 % ROI (Gewinnschwelle).
+
+    Der ROAS lässt sich leichter in Echtzeit berechnen (keine Herstellkosten pro
+    Kanal nötig). Nutze ihn für Kanalvergleiche und Gebotsstrategie, den ROI für
+    die abschließende Rentabilitätsbewertung.
+
+    ## Richtwerte nach Werbekanal
+
+    | Kanal | Üblicher ROAS | Hinweise |
+    |---|---|---|
+    | Google Search (Marke) | 5–20× | Hohe Kaufabsicht, geringe Wettbewerbskosten |
+    | Google Shopping | 3–8× | Je nach Produktmarge |
+    | Meta / Facebook | 2–5× | Hängt stark von Creative und Zielgruppe ab |
+    | TikTok Ads | 1,5–4× | Wachsender Kanal, noch niedrige CPMs |
+    | Programmatic Display | 1–3× | Geringere Kaufabsicht; gut fürs Retargeting |
+
+    ## Häufige Fragen
+
+    **Was ist ein guter ROAS?**
+    Das hängt ganz von deiner Bruttomarge ab. 4× ROAS sind großartig für ein SaaS
+    mit 60 % Marge, aber verheerend für Dropshipping mit 15 % Marge. Berechne
+    zuerst deinen Break-even-ROAS: Alles darüber ist profitabel.
+
+    **Wie verbessere ich den ROAS?**
+    Drei Hebel: (1) bessere Creatives und Texte für höhere Klickrate und
+    Conversion, (2) präziseres Targeting, um Käufer mit hoher Kaufabsicht zu
+    erreichen, (3) auf Keywords mit höherer Kaufabsicht bieten und schwach
+    konvertierende Platzierungen ausschließen. Auch höhere Preise verbessern den
+    ROAS, ohne die Werbeeffizienz zu ändern.
+
+    **Welchen ROAS sollte ich bei Google Ads anpeilen?**
+    Google empfiehlt, den Ziel-ROAS zunächst auf das 3- bis 5-Fache deiner
+    Gewinnschwelle zu setzen und dann Smart Bidding optimieren zu lassen. Bei neuen
+    Kampagnen ohne Conversion-Daten startest du mit manuellem CPC und sammelst 30–50
+    Conversions, bevor du auf Ziel-ROAS-Gebote umstellst.
+"aov-calculator":
+  "body": |
+    ## Was ist der durchschnittliche Bestellwert (AOV)?
+
+    Der durchschnittliche Bestellwert ist der mittlere Umsatz pro Transaktion in einem Zeitraum.
+
+    $$\text{Bestellwert} = \frac{\text{Gesamtumsatz}}{\text{Anzahl der Bestellungen}}$$
+
+    ### Warum der Bestellwert der renditestärkste Wachstumshebel ist
+
+    Ein höherer Bestellwert steigert den Umsatz, ohne Kundenakquisitionskosten (CAC) oder Traffic zu erhöhen. 10 % mehr Bestellwert bringen 10 % mehr Umsatz in jeder bestehenden Kundeninteraktion.
+
+    ### Bestellwert-Richtwerte nach Branche
+
+    | Branche | Üblicher Bestellwert |
+    |--------|------------|
+    | Luxus / Mode | 150–400 $ |
+    | Allgemeiner E-Commerce | 50–150 $ |
+    | Lebensmittel / Konsumgüter | 40–80 $ |
+    | SaaS (pro Transaktion) | 200–500 $ |
+    | Digitale Produkte | 15–50 $ |
+
+    ### Umsatz pro Besucher
+
+    $$\text{Umsatz pro Besucher} = \frac{\text{Gesamtumsatz}}{\text{Monatliche Besucher}}$$
+
+    Der Umsatz pro Besucher vereint Conversion-Rate und Bestellwert in einer Kennzahl. Verbesserst du eines davon, steigt er.
+
+    ### Taktiken für einen höheren Bestellwert
+
+    - **Upselling**: im Checkout eine höherwertige Variante anbieten
+    - **Cross-Selling**: Empfehlungen „wird oft zusammen gekauft“
+    - **Schwellen für Gratisversand**: „Noch 15 $ bis zum Gratisversand“ hebt Bestellungen über eine Untergrenze
+    - **Bundles**: Produkte mit leichtem Rabatt bündeln, Kunden geben mehr aus und empfinden Mehrwert
+    - **Mengenrabatte**: niedrigerer Stückpreis bei größeren Mengen
+
+    ### Ratgeber
+
+    - [Was ist der durchschnittliche Bestellwert (AOV)?](/tools/aov-calculator/#what-is-average-order-value)
+    - [So erhöhst du den durchschnittlichen Bestellwert](/tools/aov-calculator/#how-to-increase-average-order-value)
+"conversion-rate-calculator":
+  "body": |
+    Die Conversion-Rate ist der Anteil der Besucher, die eine gewünschte Aktion
+    abschließen: Anmeldung, Kauf, Teststart oder Formularabsendung. Sie gehört zu
+    den Kennzahlen mit dem größten Hebel in jedem Wachstumsfunnel, weil ihre
+    Verbesserung den Umsatz steigert, ohne mehr Traffic zu brauchen.
+
+    **Conversion-Rate = (Conversions ÷ Besucher) × 100**
+
+    ## Die Formel für die Umsatzwirkung
+
+    **Monatsumsatz = Besucher × Conversion-Rate × Umsatz pro Conversion**
+
+    Bei 10.000 Besuchern, 1,5 % Conversion und 99 $ ARPU: 10.000 × 0,015 × 99 $ = **14.850 $ pro Monat**
+
+    Steigt die Conversion bei gleichem Traffic von 1,5 % auf 2,5 % (relativ +67 %):
+    10.000 × 0,025 × 99 $ = **24.750 $ pro Monat**, also **9.900 $ mehr pro Monat**.
+
+    ## Warum CRO oft effizienter ist als Akquise
+
+    Den Traffic zu verdoppeln kostet ungefähr das Doppelte deines
+    Marketingbudgets. Die Conversion-Rate zu verdoppeln kostet so viel wie die
+    Experimente (Nutzerforschung, A/B-Tests, Landingpage-Redesigns), pro
+    gewonnenem Umsatzdollar oft 10-mal weniger.
+
+    Die Rechnung kippt nur, wenn dein Traffic zu gering für statistisch
+    signifikante A/B-Tests ist. Unter ~1.000 Besuchern pro Monat und Variante ist
+    CRO (Conversion-Rate-Optimierung) Rätselraten. Über 5.000 pro Monat wird sie
+    sehr verlässlich.
+
+    ## Richtwerte für die Conversion-Rate
+
+    | Funnel-Stufe | Durchschnitt | Oberes Quartil |
+    |---|---|---|
+    | Startseite → Preisseite | 10–20 % | 30 %+ |
+    | Preisseite → Test | 1–5 % | 8–15 % |
+    | Test → zahlend (B2B-SaaS) | 15–25 % | 35 %+ |
+    | Bezahlte Akquise (kalt) | 0,5–2 % | 3–5 % |
+    | E-Mail-CTA → Kauf | 2–8 % | 10–20 % |
+
+    ## Die fünf wirksamsten CRO-Änderungen
+
+    1. **Klare Headline**: dein Nutzenversprechen in 10 Wörtern, nicht 30. Nutzer lesen zuerst die H1.
+    2. **Social Proof im sichtbaren Bereich**: Logoleisten, konkrete Testimonials, G2-/Capterra-Bewertungen
+    3. **Weniger Reibung beim CTA**: ein Klick zum Test, keine Kreditkarte, schrittweise Abfrage
+    4. **Anker auf der Preisseite**: drei Stufen, die mittlere als „empfohlen“ hervorgehoben
+    5. **Exit-Intent und Retargeting**: Besucher zurückholen, die vor der Conversion abspringen
+
+    ## Häufige Fragen
+
+    **Was ist eine gute Conversion-Rate?**
+    Das hängt ganz von Funnel-Stufe und Traffic-Quelle ab. Kalter bezahlter
+    Traffic mit 0,5–1 % Conversion ist normal, Markensuchen mit 5–15 % sind zu
+    erwarten. Konzentriere dich auf Verbesserungen gegenüber deinem eigenen
+    Ausgangswert statt auf Branchendurchschnitte.
+
+    **Wie mache ich einen A/B-Test für meine Conversion-Rate?**
+    Nutze vor dem Start einen Stichprobenrechner: Um 10 % Verbesserung verlässlich
+    zu erkennen, brauchst du rund 1.000 Conversions pro Variante. Lass Tests
+    mindestens 2 volle Wochen laufen, um Wochentagseffekte auszugleichen.
+"email-list-growth-calculator":
+  "body": |
+    Eine wachsende E-Mail-Liste gehört zu den wertvollsten Assets, die ein
+    eigenfinanziertes Unternehmen aufbauen kann. Anders als Social-Media-Follower
+    oder bezahlte Zielgruppen gehört dir deine E-Mail-Liste. Aber eine Liste, die
+    nicht wächst, verfällt: Selbst ohne neue Abonnenten schrumpft sie jeden Monat
+    durch Abmeldungen und Inaktivität.
+
+    ## Die Wachstumsformel
+
+    **Netto-Monatswachstum = neue Abonnenten − (Listengröße × monatliche Abmelderate)**
+
+    Bei 10.000 Abonnenten und 3 % monatlicher Abmelderate verlierst du pro Monat 300
+    Abonnenten aus deinem Bestand. Um zu wachsen, brauchst du mehr als 300 neue
+    Abonnenten pro Monat.
+
+    ## Der Listenschwund summiert sich
+
+    Bei 3 % monatlicher Abmelderate verliert eine Liste ohne neue Abonnenten 31 %
+    ihrer Größe pro Jahr, bei 5 % sind es 46 %. Deshalb legen E-Mail-Marketer so
+    viel Wert auf Reaktivierungskampagnen und Bereinigungsregeln: Inaktive
+    Abonnenten blähen die Liste auf und schaden der Zustellbarkeit.
+
+    ## Branchenrichtwerte
+
+    | Kennzahl | Gut | Durchschnitt | Schwach |
+    |--------|------|---------|------|
+    | Monatliche Abmelderate | < 1,5 % | 2–3 % | > 4 % |
+    | Öffnungsrate | > 30 % | 20–25 % | < 15 % |
+    | Listenwachstum | > 5 %/Monat | 2–4 %/Monat | < 1 %/Monat |
+
+    ## Häufige Fragen
+
+    **Was macht dieser Rechner?**
+    Er berechnet die Wachstumsrate deiner E-Mail-Liste, das Netto-Monatswachstum und die Zeit bis zur Zielgröße der Liste.
+"email-roi-calculator":
+  "body": |
+    E-Mail-Marketing bringt beständig den höchsten ROI aller digitalen
+    Marketingkanäle. Die DMA (Data & Marketing Association) nennt eine
+    durchschnittliche Rendite von **36–42 $ pro ausgegebenem Dollar**, doch dieser
+    Durchschnitt verdeckt enorme Unterschiede. Was ein starkes E-Mail-Programm von
+    einem mittelmäßigen trennt, liegt fast ganz bei Öffnungsrate, Klickrate und
+    Listenqualität.
+
+    ## Der Umsatzfunnel per E-Mail
+
+    **Öffnungen** = Listengröße × Öffnungsrate
+    **Klicks** = Öffnungen × Klickrate
+    **Conversions** = Klicks × Conversion-Rate
+    **Umsatz** = Conversions × durchschnittlicher Bestellwert
+
+    ## Branchenrichtwerte
+
+    | Kennzahl | B2B-SaaS | E-Commerce | Newsletter |
+    |--------|----------|-----------|-----------|
+    | Öffnungsrate | 20–30 % | 15–25 % | 30–50 % |
+    | Klickrate (von Öffnungen) | 5–12 % | 8–15 % | 4–8 % |
+    | Conversion-Rate (von Klicks) | 3–8 % | 2–5 % | 1–3 % |
+
+    ## Warum Listenqualität wichtiger ist als Listengröße
+
+    Eine Liste mit 1.000 Abonnenten und 35 % Öffnungsrate schlägt eine mit 10.000
+    Abonnenten und 8 % Öffnungsrate bei Umsatz und Zustellbarkeit. Segmentiere
+    deine Liste nach Engagement: Schließe inaktive Abonnenten (90 Tage ohne
+    Öffnung) aus, um Zustellbarkeit und Öffnungsraten insgesamt zu verbessern.
+
+    ## Kampagnentypen zum Modellieren
+
+    - **Produktlaunch / Aktion**: einmalige Kampagne an die ganze Liste oder ein Segment
+    - **Onboarding-Sequenz**: automatische Sequenz nach der Anmeldung, meist der höchste ROI
+    - **Reaktivierungskampagnen**: inaktive Abonnenten zurückgewinnen; meist werden 5–15 % wieder aktiv
+    - **Newsletter**: inhaltsgetrieben; weniger direkte Conversion, aber wachsendes Vertrauen des Publikums
+
+    ## Häufige Fragen
+
+    **Wie verbessere ich die Öffnungsraten?**
+    Betreffzeilen testen (A/B-Test mit 20 % der Liste vor dem Versand an alle),
+    Versandzeit optimieren (meist Dienstag bis Donnerstag, 10–14 Uhr in der Zeitzone
+    des Empfängers) und Listenhygiene (inaktive Abonnenten entfernen) sind die drei
+    wirksamsten Hebel.
+
+    **Mit welcher Conversion-Rate kann ich rechnen?**
+    Das hängt stark vom Angebot ab. Eine starke Aktions-E-Mail an eine warme Liste
+    für ein Produkt zu 49 $ kann 5–10 % der Klicks konvertieren. Eine
+    Akquise-E-Mail für einen Auftrag über 10.000 $ konvertiert vielleicht 1–2 % der
+    Klicks, bringt aber viel Umsatz pro Conversion.
+"revenue-per-lead-calculator":
+  "body": |
+    Der Umsatz pro Lead (RPL) ist die handlungsrelevanteste Kennzahl, um die
+    Rentabilität von Marketingkanälen zu vergleichen. Anders als Klickrate oder
+    Kosten pro Lead allein berücksichtigt der RPL die Lead-Qualität: Ein Kanal mit
+    billigen Leads kann einen miserablen RPL haben, wenn diese Leads nicht
+    abschließen oder wenig kaufen.
+
+    ## Die Formel
+
+    **Umsatz pro Lead = Gesamtumsatz / Leads gesamt**
+
+    Bei 480.000 $ Umsatz und 1.200 Leads: RPL = 480.000 $ / 1.200 = **400 $ pro Lead**
+
+    ## Warum der RPL die Kosten pro Lead schlägt
+
+    Die Kosten pro Lead (CPL) messen die Effizienz der Akquise. Doch 10 $ CPL sind
+    wertlos, wenn diese Leads nie abschließen. Der RPL misst die Wirksamkeit der
+    Akquise: den tatsächlich erzielten Umsatz pro Lead, unabhängig von den Kosten.
+
+    Vergleich der Kanäle:
+
+    | Kanal | Leads | Umsatz | RPL | Ausgaben | CPL | ROI |
+    |---|---|---|---|---|---|---|
+    | Google Ads | 500 | 200.000 $ | 400 $ | 25.000 $ | 50 $ | 8× |
+    | LinkedIn Ads | 100 | 80.000 $ | 800 $ | 20.000 $ | 200 $ | 4× |
+    | Organisch | 600 | 200.000 $ | 333 $ | 15.000 $ | 25 $ | 13× |
+
+    Google Ads hat einen höheren RPL als organisch (400 $ gegenüber 333 $). LinkedIn
+    hat einen noch höheren RPL (bessere Lead-Qualität), aber auch höhere CPL.
+    Organisch hat den besten ROI, aber den niedrigsten RPL.
+
+    **Fazit**: Skaliere zuerst organisch (bester ROI), dann Google Ads (guter ROI,
+    skalierbar). LinkedIn ist teuer, bringt aber wertvolle Leads: Halte ein kleines
+    Budget für Enterprise.
+
+    ## RPL und CAC
+
+    Der RPL ist eine Kennzahl des Marketingfunnels, der CAC
+    (Kundenakquisitionskosten) eine des Vertriebsfunnels. Der Zusammenhang:
+    - RPL ÷ Lead-zu-Kunde-Quote = Umsatz pro Kunde (ACV)
+    - CPL / Lead-zu-Kunde-Quote = CAC
+
+    Bei 400 $ RPL und 5 % Lead-zu-Kunde-Quote liegt der implizierte ACV bei
+    8.000 $. Bei 50 $ CPL und derselben Quote von 5 % liegt dein CAC bei 1.000 $.
+
+    ## Kohorten abgleichen bei langen Vertriebszyklen
+
+    Im B2B mit Zyklen von 60–90 Tagen führt derselbe Zeitraum für Leads und Umsatz
+    zu einer Verzerrung. Besser:
+    - Leads aus Q1 messen
+    - Umsatz aus Q2–Q3 messen, der aus diesen Leads entstand
+    - RPL mit 6 Monaten Verzögerung berechnen
+
+    So werden Deals mit langem Zyklus richtig zugeordnet.
+
+    ## Häufige Fragen
+
+    **Was macht dieser Rechner?**
+    Er berechnet Umsatz und Kosten pro Lead je Kanal, vergleicht den ROI der Kanäle und zeigt, wie viele Leads du für ein Umsatzziel brauchst.
+"sales-funnel-calculator":
+  "body": |
+    ## Was ist ein Sales-Funnel-Rechner?
+
+    Ein Sales-Funnel-Rechner bildet ab, wie Interessenten die einzelnen Stufen deiner Pipeline durchlaufen, vom rohen Lead bis zum abgeschlossenen Kunden, damit du den Umsatz prognostizieren und die schwächste Stufe finden kannst.
+
+    ### Übliche Stufen eines B2B-Funnels
+
+    | Stufe | Übliche Conversion-Rate |
+    |-------|------------------------|
+    | Lead → MQL | 20–40 % |
+    | MQL → SQL | 30–50 % |
+    | SQL → Opportunity | 40–60 % |
+    | Opportunity → Abschluss | 20–30 % |
+    | **Gesamt Lead → Kunde** | **1–5 %** |
+
+    ### Gesamt-Conversion des Funnels
+
+    $$\text{Gesamt-Conversion} = \frac{\text{Neukunden}}{\text{Leads}} \times 100$$
+
+    Eine Gesamt-Conversion von 1–3 % ist im B2B-SaaS üblich. Über 5 % ist hervorragend und deutet meist auf eine starke Marke oder starkes Inbound hin.
+
+    ### Deinen Engpass finden
+
+    Die Stufe mit der im Vergleich zum Richtwert niedrigsten Conversion ist deine Engstelle. Verdoppelst du das Lead-Volumen bei defekter MQL→SQL-Stufe, bekommst du gleich viele Kunden, nur doppelt so viel Verschwendung.
+
+    ### Umsatz aus dem Funnel
+
+    $$\text{Monatsumsatz} = \text{Neukunden} \times \text{ACV}$$
+
+    Modelliere mehrere Szenarien: optimistisch (eine Stufe um 10 % verbessert), Basis und pessimistisch (20 % weniger Leads), um deine Pipeline zu testen.
+
+    ### Ratgeber
+
+    - [Was ist ein Sales-Funnel?](/tools/sales-funnel-calculator/#what-is-a-sales-funnel)
+    - [MQL oder SQL: Was ist der Unterschied?](/tools/sales-funnel-calculator/#mql-vs-sql-difference)
+"sales-quota-calculator":
+  "body": |
+    Ein Vertriebsplan beginnt damit, vom Umsatzziel aus rückwärts zu rechnen. Mit
+    einem jährlichen Umsatzziel, dem durchschnittlichen Vertragswert (ACV) und der
+    Abschlussquote zeigt dieser Rechner genau, wie viele Deals, Leads und wie viel
+    Pipeline du erzeugen musst, pro Monat und pro Jahr.
+
+    ## Die Rechnung des umgekehrten Funnels
+
+    **Nötige Deals** = jährliches Umsatzziel ÷ ACV
+
+    **Nötige Leads** = nötige Deals ÷ Abschlussquote
+
+    **Nötige Pipeline** = nötige Leads × ACV (gesamter Pipelinewert, der hineinkommen muss)
+
+    Bei einem Jahresziel von 1 Mio. $, 12.000 $ ACV und 20 % Abschlussquote:
+    - 83 nötige Deals
+    - 417 nötige qualifizierte Leads
+    - ~7 Deals pro Monat, 35 Leads pro Monat
+
+    ## Was das über Einstellungen sagt
+
+    Ein SDR (Sales Development Representative) erzeugt je nach Segment und
+    Outbound-Qualität meist 40–80 qualifizierte Leads pro Monat. Verlangt deine
+    Rechnung über 200 Leads pro Monat, brauchst du 3–5 SDRs oder eine ausgereifte
+    Inbound-Maschine. Modelliere mit diesen Zahlen den Personalbedarf, bevor du
+    dich auf einen Umsatzplan festlegst.
+
+    ## Die Eingaben verbessern
+
+    Die wirksamsten Stellschrauben deiner Quotenrechnung:
+    - **Abschlussquote**: 5 Prozentpunkte mehr (von 20 % auf 25 %) senken die nötigen Leads um 20 %
+    - **ACV**: Ein doppelter ACV halbiert die Zahl der nötigen Deals
+    - **Vertriebszyklus**: Kürzere Zyklen bringen mehr Pipeline-Umschläge pro Jahr und bessere Kapitaleffizienz
+
+    ## Häufige Fragen
+
+    **Welche Abschlussquote sollte ich ansetzen?**
+    Miss die Abschlussquote vom qualifizierten Lead (vereinbartes
+    Discovery-Gespräch) bis zum gewonnenen Deal. Durchschnitt im B2B-SaaS: 15–25 %
+    bei KMU, 20–30 % im Mid-Market, 30–40 % bei Enterprise (längerer Funnel,
+    qualifiziertere Leads). Kennst du deine Quote noch nicht, starte mit 20 %.
+
+    **Wie wirkt sich der Vertriebszyklus auf die Pipeline aus?**
+    Bei 30 Tagen Zyklus dreht sich die Pipeline ~12-mal pro Jahr, bei 90 Tagen
+    4-mal. Kürzere Zyklen bringen mehr Daten, schnellere Iteration und geringeren
+    Kapitalbedarf für dasselbe Umsatzziel.
+"sales-velocity-calculator":
+  "body": |
+    Sales Velocity misst, wie schnell deine Pipeline zu Umsatz wird, genauer: wie
+    viele Umsatzdollar dein Vertriebsteam pro Tag erzeugt. Sie gehört zu den
+    handlungsrelevantesten Kennzahlen im B2B-Vertrieb, weil sie Umsatzwachstum in
+    vier Hebel zerlegt, die du unabhängig optimieren kannst.
+
+    ## Die Formel
+
+    **Sales Velocity = (Opportunities × Abschlussquote × ACV) / Tage im Vertriebszyklus**
+
+    Bei 50 Opportunities, 25 % Abschlussquote, 8.000 $ ACV und 90 Tagen Zyklus:
+    (50 × 0,25 × 8.000 $) / 90 = **1.111 $ pro Tag** → **405.000 $ annualisiert**
+
+    ## Die vier Hebel
+
+    Sales Velocity hat genau vier Eingaben, die sich jeweils unabhängig verbessern
+    lassen:
+
+    1. **Zahl der Opportunities**: mehr qualifizierte Pipeline. 20 % mehr
+       Opportunities bringen 20 % mehr Velocity (bei sonst gleichen Werten).
+    2. **Abschlussquote**: bessere Qualifizierung, stärkere Demos, besseres
+       Nachfassen. Von 25 % auf 30 % bringt 20 % mehr Velocity.
+    3. **ACV**: Preise, Pakete, Upsell beim Abschluss. Von 8.000 $ auf 10.000 $
+       bringt 25 % mehr Velocity.
+    4. **Vertriebszyklus**: Von 90 auf 75 Tage verkürzt bringt 20 % mehr Velocity.
+
+    Werden alle vier um je 10 % verbessert, ergibt das multiplikativ **+46 %
+    Velocity**, nicht +40 %.
+
+    ## Richtwerte nach Segment
+
+    | Segment | Übliche Sales Velocity |
+    |---|---|
+    | KMU-SaaS (< 5.000 $ ACV) | 200–500 $ pro Tag |
+    | Mid-Market (5.000–50.000 $ ACV) | 500–2.000 $ pro Tag |
+    | Enterprise (> 50.000 $ ACV) | 2.000–10.000 $+ pro Tag |
+
+    ## Was dir die Sales Velocity sagt
+
+    **Niedrige Velocity bei guter Abschlussquote**: Die Pipeline ist zu dünn;
+    füge oben im Funnel mehr Opportunities hinzu.
+
+    **Niedrige Velocity bei guter Pipeline**: Abschlussquote oder ACV sind das
+    Problem; verbessere Qualifizierung oder Preise.
+
+    **Ordentliche Velocity bei langem Zyklus**: Einen kürzeren Zyklus spürst du
+    überproportional, weil er im Nenner steht.
+
+    ## Häufige Fragen
+
+    **Was macht dieser Rechner?**
+    Er berechnet die Sales Velocity (Umsatz pro Tag) aus Pipelinegröße,
+    Abschlussquote, durchschnittlichem Vertragswert und Länge des
+    Vertriebszyklus.

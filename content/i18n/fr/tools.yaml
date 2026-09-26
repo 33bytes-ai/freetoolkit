@@ -1813,3 +1813,477 @@ free-cash-flow-calculator:
     Il calcule le TAM (clients totaux × dépense), le SAM (filtré selon votre
     portée) et le SOM (votre part atteignable) pour dimensionner un marché dans une
     présentation aux investisseurs.
+
+"ad-roas-calculator":
+  "body": |
+    Le ROAS (retour sur dépenses publicitaires) est la mesure la plus directe de
+    la rentabilité d'une campagne. Il répond à la question : pour chaque dollar
+    dépensé en publicité, combien de chiffre d'affaires avez-vous généré ?
+
+    **ROAS = chiffre d'affaires publicitaire ÷ dépenses publicitaires**
+
+    Un ROAS de 4× signifie 4 $ de chiffre d'affaires pour 1 $ dépensé. Mais la
+    rentabilité de ce 4× dépend entièrement de votre marge brute.
+
+    ## Pourquoi le ROAS seul ne dit pas si la publicité est rentable
+
+    Un ROAS de 4× sur un produit à 30 % de marge signifie 1 $ dépensé pour 4 $ de
+    chiffre d'affaires, mais seulement 1,20 $ de marge brute : il ne reste que
+    0,20 $ par dollar dépensé, avant tout frais de structure. Le même ROAS de 4× sur
+    un SaaS à 80 % de marge donne 3,20 $ de marge brute par dollar dépensé.
+
+    **ROAS d'équilibre = 1 ÷ % de marge brute**
+
+    | Marge brute | ROAS d'équilibre |
+    |---|---|
+    | 20 % | 5,0× |
+    | 30 % | 3,33× |
+    | 40 % | 2,5× |
+    | 50 % | 2,0× |
+    | 70 % | 1,43× |
+    | 80 % | 1,25× |
+
+    ## ROAS cible pour une marge bénéficiaire donnée
+
+    Pour atteindre une marge bénéficiaire de 20 % (bénéfice / chiffre d'affaires),
+    utilisez cette formule :
+
+    **ROAS cible = 1 ÷ (% de marge brute − % de marge bénéficiaire visée)**
+
+    Exemple : 50 % de marge brute, 20 % de marge visée → 1 ÷ 0,30 = **ROAS cible de 3,33×**
+
+    ## ROAS ou ROI : quelle différence ?
+
+    Le ROAS est un multiple de chiffre d'affaires. Le ROI est un multiple de
+    bénéfice.
+
+    **ROI = (chiffre d'affaires − coût des ventes − dépenses publicitaires) ÷ dépenses publicitaires × 100**
+
+    Un ROAS de 4× avec 50 % de marge = 2 $ de marge brute pour 1 $ dépensé = 100 % de ROI.
+    Un ROAS de 2× avec 50 % de marge = 1 $ de marge brute pour 1 $ dépensé = 0 % de ROI (équilibre).
+
+    Le ROAS se calcule plus facilement en temps réel (pas besoin du coût des
+    ventes par canal). Utilisez-le pour comparer les canaux et piloter les
+    enchères. Utilisez le ROI pour l'évaluation finale de la rentabilité.
+
+    ## Repères par canal publicitaire
+
+    | Canal | ROAS habituel | Remarques |
+    |---|---|---|
+    | Google Search (marque) | 5–20× | Forte intention, faible coût concurrentiel |
+    | Google Shopping | 3–8× | Variable selon la marge produit |
+    | Meta / Facebook | 2–5× | Dépend fortement des créations et de l'audience |
+    | TikTok Ads | 1,5–4× | Canal en croissance, CPM encore bas |
+    | Display programmatique | 1–3× | Intention plus faible ; bon pour le reciblage |
+
+    ## Questions fréquentes
+
+    **Qu'est-ce qu'un bon ROAS ?**
+    Tout dépend de votre marge brute. Un ROAS de 4× est excellent pour un SaaS à
+    60 % de marge, mais catastrophique pour un dropshipping à 15 % de marge.
+    Calculez d'abord votre ROAS d'équilibre : tout ce qui le dépasse est rentable.
+
+    **Comment améliorer le ROAS ?**
+    Trois leviers : (1) de meilleures créations et accroches pour améliorer le
+    taux de clic et la conversion, (2) un ciblage plus précis pour toucher des
+    acheteurs à forte intention, (3) enchérir sur des mots-clés à plus forte
+    intention et exclure les emplacements qui convertissent mal. Augmenter les
+    prix améliore aussi le ROAS sans changer l'efficacité publicitaire.
+
+    **Quel ROAS viser sur Google Ads ?**
+    Google recommande de fixer le ROAS cible à 3 à 5 fois votre équilibre pour
+    commencer, puis de laisser le Smart Bidding optimiser. Pour une nouvelle
+    campagne sans données de conversion, commencez en CPC manuel et collectez 30 à
+    50 conversions avant de passer à l'enchère au ROAS cible.
+"aov-calculator":
+  "body": |
+    ## Qu'est-ce que le panier moyen (AOV) ?
+
+    Le panier moyen est le chiffre d'affaires moyen par transaction sur une période donnée.
+
+    $$\text{Panier moyen} = \frac{\text{Chiffre d'affaires total}}{\text{Nombre de commandes}}$$
+
+    ### Pourquoi le panier moyen est le levier de croissance le plus rentable
+
+    Augmenter le panier moyen fait croître le chiffre d'affaires sans augmenter le coût d'acquisition client (CAC) ni le trafic. Un panier moyen en hausse de 10 % apporte 10 % de chiffre d'affaires en plus sur chaque interaction client existante.
+
+    ### Repères de panier moyen par secteur
+
+    | Secteur | Panier moyen habituel |
+    |--------|------------|
+    | Luxe / mode | 150–400 $ |
+    | E-commerce généraliste | 50–150 $ |
+    | Alimentaire / grande consommation | 40–80 $ |
+    | SaaS (par transaction) | 200–500 $ |
+    | Produits numériques | 15–50 $ |
+
+    ### Chiffre d'affaires par visiteur
+
+    $$\text{CA par visiteur} = \frac{\text{Chiffre d'affaires total}}{\text{Visiteurs mensuels}}$$
+
+    Le chiffre d'affaires par visiteur combine taux de conversion et panier moyen en un seul indicateur. Améliorer l'un ou l'autre l'améliore.
+
+    ### Tactiques pour augmenter le panier moyen
+
+    - **Montée en gamme** : proposer une version supérieure au moment du paiement
+    - **Vente croisée** : recommandations « souvent achetés ensemble »
+    - **Seuils de livraison gratuite** : « Ajoutez 15 $ pour bénéficier de la livraison gratuite » pousse les commandes au-dessus d'un plancher
+    - **Offres groupées** : réunir des produits avec une légère remise, le client dépense plus tout en percevant de la valeur
+    - **Remises sur volume** : un prix unitaire plus bas pour des quantités plus grandes
+
+    ### Guides
+
+    - [Qu'est-ce que le panier moyen ?](/tools/aov-calculator/#what-is-average-order-value)
+    - [Comment augmenter le panier moyen](/tools/aov-calculator/#how-to-increase-average-order-value)
+"conversion-rate-calculator":
+  "body": |
+    Le taux de conversion est le pourcentage de visiteurs qui réalisent l'action
+    souhaitée : inscription, achat, début d'essai ou envoi d'un formulaire. C'est
+    l'un des indicateurs au plus fort effet de levier d'un tunnel de croissance,
+    car l'améliorer augmente le chiffre d'affaires sans demander plus de trafic.
+
+    **Taux de conversion = (conversions ÷ visiteurs) × 100**
+
+    ## La formule de l'impact sur le chiffre d'affaires
+
+    **Chiffre d'affaires mensuel = visiteurs × taux de conversion × chiffre d'affaires par conversion**
+
+    Avec 10 000 visiteurs, 1,5 % de conversion et un ARPU de 99 $ : 10 000 × 0,015 × 99 $ = **14 850 $ par mois**
+
+    Passer de 1,5 % à 2,5 % de conversion (+67 % en relatif) à trafic égal :
+    10 000 × 0,025 × 99 $ = **24 750 $ par mois**, soit **9 900 $ de plus par mois**.
+
+    ## Pourquoi l'optimisation de la conversion est souvent plus efficace que l'acquisition
+
+    Doubler le trafic coûte à peu près deux fois votre budget marketing. Doubler
+    le taux de conversion coûte le prix des expériences (recherche utilisateur,
+    tests A/B, refontes de pages d'atterrissage), souvent 10 fois moins cher par
+    dollar de chiffre d'affaires gagné.
+
+    Le calcul ne tient plus quand le trafic est trop faible pour des tests A/B
+    statistiquement significatifs. En dessous d'environ 1 000 visiteurs par mois et
+    par variante, l'optimisation de la conversion (CRO) relève de la devinette.
+    Au-delà de 5 000 par mois, elle devient très fiable.
+
+    ## Repères de taux de conversion
+
+    | Étape du tunnel | Moyenne | Quartile supérieur |
+    |---|---|---|
+    | Accueil → page tarifs | 10–20 % | 30 % et plus |
+    | Page tarifs → essai | 1–5 % | 8–15 % |
+    | Essai → payant (SaaS B2B) | 15–25 % | 35 % et plus |
+    | Acquisition payante (froide) | 0,5–2 % | 3–5 % |
+    | Bouton d'e-mail → achat | 2–8 % | 10–20 % |
+
+    ## Les cinq changements de CRO les plus efficaces
+
+    1. **Un titre clair** : votre proposition de valeur en 10 mots, pas 30. Les visiteurs lisent d'abord le H1.
+    2. **Preuve sociale au-dessus de la ligne de flottaison** : logos clients, témoignages précis, notes G2/Capterra
+    3. **Moins de friction sur l'appel à l'action** : un clic pour l'essai, sans carte bancaire, révélation progressive
+    4. **Ancrage sur la page tarifs** : trois offres, celle du milieu mise en avant comme « recommandée »
+    5. **Intention de sortie et reciblage** : récupérer les visiteurs qui partent avant de convertir
+
+    ## Questions fréquentes
+
+    **Qu'est-ce qu'un bon taux de conversion ?**
+    Tout dépend de l'étape du tunnel et de la source de trafic. Un trafic payant
+    froid qui convertit à 0,5–1 % est normal. Une recherche sur la marque qui
+    convertit à 5–15 % est attendue. Cherchez à progresser par rapport à votre
+    propre base plutôt qu'aux moyennes du secteur.
+
+    **Comment faire un test A/B sur mon taux de conversion ?**
+    Utilisez un calculateur de taille d'échantillon avant de commencer : il faut
+    environ 1 000 conversions par variante pour détecter de façon fiable une
+    amélioration de 10 %. Faites tourner les tests au moins 2 semaines complètes
+    pour neutraliser les effets du jour de la semaine.
+"email-list-growth-calculator":
+  "body": |
+    La croissance d'une liste e-mail est l'un des actifs les plus précieux qu'une
+    entreprise autofinancée puisse construire. Contrairement aux abonnés des
+    réseaux sociaux ou aux audiences publicitaires payantes, votre liste e-mail
+    vous appartient. Mais une liste qui ne grandit pas se dégrade : même sans
+    nouvel abonné, les désinscriptions et l'inactivité la réduisent chaque mois.
+
+    ## La formule de croissance
+
+    **Croissance nette mensuelle = nouveaux abonnés − (taille de la liste × taux d'attrition mensuel)**
+
+    Avec 10 000 abonnés et 3 % d'attrition mensuelle, vous perdez 300 abonnés par
+    mois sur votre base existante. Pour grandir, il vous faut plus de 300 nouveaux
+    abonnés par mois.
+
+    ## L'érosion de la liste se cumule
+
+    À 3 % d'attrition mensuelle, une liste sans nouveaux abonnés perd 31 % de sa
+    taille en un an. À 5 %, elle en perd 46 %. C'est pourquoi les spécialistes de
+    l'e-mailing soignent autant les campagnes de réactivation et les politiques de
+    purge : les abonnés inactifs gonflent la taille de la liste tout en abîmant la
+    délivrabilité.
+
+    ## Repères du secteur
+
+    | Indicateur | Bon | Moyen | Faible |
+    |--------|------|---------|------|
+    | Attrition mensuelle | < 1,5 % | 2–3 % | > 4 % |
+    | Taux d'ouverture | > 30 % | 20–25 % | < 15 % |
+    | Croissance de la liste | > 5 %/mois | 2–4 %/mois | < 1 %/mois |
+
+    ## Questions fréquentes
+
+    **Que fait ce calculateur ?**
+    Il calcule le taux de croissance de la liste e-mail, la croissance nette mensuelle et le temps nécessaire pour atteindre la taille de liste visée.
+"email-roi-calculator":
+  "body": |
+    L'e-mail marketing affiche régulièrement le ROI le plus élevé de tous les
+    canaux numériques. La DMA (Data & Marketing Association) fait état d'un
+    rendement moyen de **36 à 42 $ par dollar dépensé**, mais cette moyenne cache
+    d'énormes écarts. Ce qui sépare un programme e-mail performant d'un programme
+    médiocre tient presque entièrement au taux d'ouverture, au taux de clic et à
+    la qualité de la liste.
+
+    ## Le tunnel de revenus de l'e-mail
+
+    **Ouvertures** = taille de la liste × taux d'ouverture
+    **Clics** = ouvertures × taux de clic
+    **Conversions** = clics × taux de conversion
+    **Chiffre d'affaires** = conversions × panier moyen
+
+    ## Taux de référence du secteur
+
+    | Indicateur | SaaS B2B | E-commerce | Newsletter |
+    |--------|----------|-----------|-----------|
+    | Taux d'ouverture | 20–30 % | 15–25 % | 30–50 % |
+    | Taux de clic (sur ouvertures) | 5–12 % | 8–15 % | 4–8 % |
+    | Taux de conversion (sur clics) | 3–8 % | 2–5 % | 1–3 % |
+
+    ## Pourquoi la qualité de la liste compte plus que sa taille
+
+    Une liste de 1 000 abonnés avec 35 % d'ouverture surpasse une liste de 10 000
+    abonnés à 8 % d'ouverture, en chiffre d'affaires comme en délivrabilité.
+    Segmentez votre liste selon l'engagement : écartez les abonnés inactifs (aucune
+    ouverture depuis 90 jours) pour améliorer la délivrabilité et les taux
+    d'ouverture sur toute la liste.
+
+    ## Les types de campagnes à modéliser
+
+    - **Lancement de produit / promotion** : campagne ponctuelle vers toute la liste ou un segment
+    - **Séquence d'accueil** : séquence automatique déclenchée à l'inscription, en général le meilleur ROI
+    - **Campagnes de réactivation** : reconquérir les abonnés inactifs ; en général 5 à 15 % redeviennent actifs
+    - **Newsletter** : centrée sur le contenu ; moins de conversion directe, mais la confiance de l'audience se cumule
+
+    ## Questions fréquentes
+
+    **Comment améliorer les taux d'ouverture ?**
+    Tester les objets (test A/B sur 20 % de la liste avant l'envoi complet),
+    optimiser l'heure d'envoi (souvent du mardi au jeudi, entre 10 h et 14 h dans
+    le fuseau du destinataire) et entretenir la liste (retirer les abonnés
+    désengagés) sont les trois leviers les plus efficaces.
+
+    **Quel taux de conversion attendre ?**
+    Il dépend beaucoup de l'offre. Un e-mail promotionnel fort vers une liste
+    chaude pour un produit à 49 $ peut convertir 5 à 10 % des clics. Un e-mail de
+    prospection pour un contrat de 10 k$ convertira peut-être 1 à 2 % des clics,
+    mais générera un chiffre d'affaires important par conversion.
+"revenue-per-lead-calculator":
+  "body": |
+    Le chiffre d'affaires par lead (RPL) est l'indicateur le plus actionnable pour
+    comparer la rentabilité des canaux marketing. Contrairement au taux de clic ou
+    au coût par lead pris seuls, le RPL tient compte de la qualité des leads : un
+    canal qui génère des leads bon marché peut avoir un RPL désastreux si ces leads
+    ne signent pas ou achètent peu.
+
+    ## La formule
+
+    **Chiffre d'affaires par lead = chiffre d'affaires total / nombre total de leads**
+
+    Avec 480 k$ de chiffre d'affaires et 1 200 leads : RPL = 480 k$ / 1 200 = **400 $ par lead**
+
+    ## Pourquoi le RPL vaut mieux que le coût par lead
+
+    Le coût par lead (CPL) mesure l'efficience de l'acquisition. Mais un CPL de
+    10 $ ne vaut rien si ces leads ne signent jamais. Le RPL mesure l'efficacité de
+    l'acquisition : le chiffre d'affaires réellement généré par lead, quel qu'en
+    soit le coût.
+
+    Comparez les canaux :
+
+    | Canal | Leads | Chiffre d'affaires | RPL | Dépense | CPL | ROI |
+    |---|---|---|---|---|---|---|
+    | Google Ads | 500 | 200 k$ | 400 $ | 25 k$ | 50 $ | 8× |
+    | LinkedIn Ads | 100 | 80 k$ | 800 $ | 20 k$ | 200 $ | 4× |
+    | Naturel | 600 | 200 k$ | 333 $ | 15 k$ | 25 $ | 13× |
+
+    Google Ads a un RPL plus élevé que le naturel (400 $ contre 333 $). LinkedIn a
+    un RPL plus élevé encore (meilleure qualité de leads), mais aussi un CPL plus
+    élevé. Le naturel a le meilleur ROI mais le RPL le plus faible.
+
+    **Conclusion** : développez d'abord le naturel (meilleur ROI). Puis Google Ads
+    (bon ROI, extensible). LinkedIn coûte cher mais génère des leads à forte
+    valeur : gardez un petit budget pour les grands comptes.
+
+    ## RPL et CAC
+
+    Le RPL est un indicateur du tunnel marketing ; le CAC (coût d'acquisition
+    client) un indicateur du tunnel commercial. Le lien :
+    - RPL ÷ taux de conversion lead → client = chiffre d'affaires par client (ACV)
+    - CPL / taux de conversion lead → client = CAC
+
+    Si le RPL est de 400 $ et le taux de conversion lead → client de 5 %, l'ACV
+    implicite est de 8 000 $. Si le CPL est de 50 $ avec le même taux de 5 %, votre
+    CAC est de 1 000 $.
+
+    ## Rapprocher les cohortes pour les cycles de vente longs
+
+    En B2B avec des cycles de 60 à 90 jours, prendre la même période pour les leads
+    et le chiffre d'affaires crée un décalage. Mieux vaut :
+    - Mesurer les leads acquis au T1
+    - Mesurer le chiffre d'affaires signé aux T2–T3 à partir de ces leads
+    - Calculer le RPL avec 6 mois de décalage
+
+    Vous obtenez une attribution juste pour les affaires à cycle long.
+
+    ## Questions fréquentes
+
+    **Que fait ce calculateur ?**
+    Il calcule le chiffre d'affaires par lead et le coût par lead par canal, compare le ROI des canaux et indique combien de leads il vous faut pour atteindre un objectif de chiffre d'affaires.
+"sales-funnel-calculator":
+  "body": |
+    ## Qu'est-ce qu'un calculateur de tunnel de vente ?
+
+    Un calculateur de tunnel de vente modélise la progression des prospects à chaque étape du pipeline, du lead brut au client signé, pour projeter le chiffre d'affaires et repérer l'étape la plus faible.
+
+    ### Les étapes classiques d'un tunnel B2B
+
+    | Étape | Taux de conversion habituel |
+    |-------|------------------------|
+    | Lead → MQL | 20–40 % |
+    | MQL → SQL | 30–50 % |
+    | SQL → opportunité | 40–60 % |
+    | Opportunité → signature | 20–30 % |
+    | **Global lead → client** | **1–5 %** |
+
+    ### Conversion globale du tunnel
+
+    $$\text{Conversion globale} = \frac{\text{Nouveaux clients}}{\text{Leads}} \times 100$$
+
+    Une conversion globale de 1 à 3 % est courante en SaaS B2B. Au-delà de 5 %, c'est excellent et signe en général d'une marque forte ou d'un inbound solide.
+
+    ### Trouver votre goulot d'étranglement
+
+    L'étape dont le taux de conversion est le plus faible par rapport aux repères est votre contrainte. Doubler le volume de leads avec une étape MQL→SQL défaillante produit le même nombre de clients, juste deux fois plus de gaspillage.
+
+    ### Le chiffre d'affaires issu du tunnel
+
+    $$\text{Chiffre d'affaires mensuel} = \text{Nouveaux clients} \times \text{ACV}$$
+
+    Modélisez plusieurs scénarios : optimiste (une étape améliorée de 10 %), central et pessimiste (leads en baisse de 20 %) pour éprouver votre pipeline.
+
+    ### Guides
+
+    - [Qu'est-ce qu'un tunnel de vente ?](/tools/sales-funnel-calculator/#what-is-a-sales-funnel)
+    - [MQL ou SQL : quelle différence ?](/tools/sales-funnel-calculator/#mql-vs-sql-difference)
+"sales-quota-calculator":
+  "body": |
+    Construire un plan commercial commence par remonter depuis l'objectif de
+    chiffre d'affaires. À partir d'un objectif annuel, d'une valeur moyenne de
+    contrat (ACV) et d'un taux de signature, ce calculateur montre exactement
+    combien d'affaires, de leads et de pipeline il vous faut générer, par mois et
+    par an.
+
+    ## Le calcul du tunnel inversé
+
+    **Affaires nécessaires** = objectif de chiffre d'affaires annuel ÷ ACV
+
+    **Leads nécessaires** = affaires nécessaires ÷ taux de signature
+
+    **Pipeline nécessaire** = leads nécessaires × ACV (valeur totale de pipeline à faire entrer)
+
+    Si votre objectif annuel est de 1 M$, l'ACV de 12 k$ et le taux de signature de 20 % :
+    - 83 affaires nécessaires
+    - 417 leads qualifiés nécessaires
+    - ~7 affaires par mois, 35 leads par mois
+
+    ## Ce que cela dit du recrutement
+
+    Un SDR (commercial chargé de générer des rendez-vous) génère en général 40 à
+    80 leads qualifiés par mois selon le segment et la qualité de la prospection.
+    Si votre calcul exige plus de 200 leads par mois, il vous faut 3 à 5 SDR ou une
+    machine inbound mature. Servez-vous de ces chiffres pour modéliser les
+    effectifs avant de vous engager sur un plan de chiffre d'affaires.
+
+    ## Améliorer les données d'entrée
+
+    Les changements les plus efficaces sur votre calcul de quota :
+    - **Taux de signature** : 5 points de mieux (de 20 à 25 %) réduisent de 20 % les leads nécessaires
+    - **ACV** : doubler l'ACV divise par deux le nombre d'affaires nécessaires
+    - **Cycle de vente** : des cycles plus courts donnent plus de rotations du pipeline par an et une meilleure efficacité du capital
+
+    ## Questions fréquentes
+
+    **Quel taux de signature utiliser ?**
+    Mesurez le taux de signature du lead qualifié (rendez-vous de découverte
+    fixé) jusqu'à l'affaire signée. Moyennes en SaaS B2B : 15 à 25 % pour les PME,
+    20 à 30 % en mid-market, 30 à 40 % en grands comptes (tunnel plus long, leads
+    plus qualifiés). Si vous ne connaissez pas encore le vôtre, partez de 20 %.
+
+    **Quel est l'effet du cycle de vente sur le pipeline ?**
+    Un cycle de 30 jours fait tourner le pipeline ~12 fois par an ; un cycle de
+    90 jours, 4 fois. Des cycles plus courts donnent plus de données, une itération
+    plus rapide et moins de besoins de trésorerie pour le même objectif de chiffre
+    d'affaires.
+"sales-velocity-calculator":
+  "body": |
+    La vélocité des ventes mesure la vitesse à laquelle votre pipeline se
+    transforme en chiffre d'affaires : précisément, combien de dollars votre équipe
+    commerciale génère par jour. C'est l'un des indicateurs les plus actionnables
+    de la vente B2B, car il décompose la croissance du chiffre d'affaires en quatre
+    leviers que l'on peut optimiser séparément.
+
+    ## La formule
+
+    **Vélocité des ventes = (opportunités × taux de signature × ACV) / durée du cycle en jours**
+
+    Avec 50 opportunités, 25 % de signature, 8 000 $ d'ACV et un cycle de 90 jours :
+    (50 × 0,25 × 8 000 $) / 90 = **1 111 $ par jour** → **405 k$ annualisés**
+
+    ## Les quatre leviers
+
+    La vélocité a exactement quatre données d'entrée, chacune améliorable
+    indépendamment :
+
+    1. **Nombre d'opportunités** : plus de pipeline qualifié. 20 % d'opportunités
+       en plus ajoutent 20 % de vélocité (le reste égal par ailleurs).
+    2. **Taux de signature** : meilleure qualification, démos plus fortes,
+       meilleures relances. Passer de 25 à 30 % ajoute 20 % de vélocité.
+    3. **ACV** : prix, packaging, montée en gamme à la signature. Passer de 8 k$ à
+       10 k$ ajoute 25 % de vélocité.
+    4. **Cycle de vente** : passer de 90 à 75 jours ajoute 20 % de vélocité.
+
+    Améliorer chacun des quatre de 10 % donne **+46 % de vélocité** par effet
+    multiplicatif, et non +40 %.
+
+    ## Repères par segment
+
+    | Segment | Vélocité habituelle |
+    |---|---|
+    | SaaS PME (ACV < 5 k$) | 200–500 $ par jour |
+    | Mid-market (ACV 5–50 k$) | 500–2 000 $ par jour |
+    | Grands comptes (ACV > 50 k$) | 2 000–10 000 $ et plus par jour |
+
+    ## Ce que dit la vélocité
+
+    **Vélocité faible avec un bon taux de signature** : le pipeline est trop
+    mince ; ajoutez des opportunités en haut du tunnel.
+
+    **Vélocité faible avec un bon pipeline** : le problème vient du taux de
+    signature ou de l'ACV ; améliorez la qualification ou les prix.
+
+    **Vélocité correcte avec un cycle long** : raccourcir le cycle a un effet
+    démesuré, car il est au dénominateur.
+
+    ## Questions fréquentes
+
+    **Que fait ce calculateur ?**
+    Il calcule la vélocité des ventes (chiffre d'affaires par jour) à partir de la
+    taille du pipeline, du taux de signature, de la valeur moyenne des contrats et
+    de la durée du cycle de vente.
