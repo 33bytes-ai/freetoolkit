@@ -1949,17 +1949,26 @@ body[data-ads="on"] {
    Static on purpose (no animated gradient, glass card or rotating word:
    the word used to get clipped and the H1 read "Free calculators for"). */
 .home-hero {
+  position: relative;
+  overflow: hidden;
   --hero-bg: #0b1f16;
   --hero-text: #f2f7f3;
   --hero-muted: rgba(242, 247, 243, 0.74);
   --hero-accent: #86e0b3;
   color-scheme: dark;
   background:
-    radial-gradient(ellipse 60% 90% at 85% 20%, rgba(58, 156, 115, 0.28), transparent 70%),
     linear-gradient(160deg, #123826 0%, var(--hero-bg) 65%);
   color: var(--hero-text);
   padding: 4rem 0 3.5rem;
 }
+/* Separate layer so motion-fx.js can drift it on scroll. */
+.hero-glow {
+  position: absolute;
+  inset: -20% -10% -20% 30%;
+  background: radial-gradient(ellipse 55% 60% at 70% 30%, rgba(58, 156, 115, 0.32), transparent 70%);
+  pointer-events: none;
+}
+.home-hero .wrap { position: relative; }
 .home-hero h1 {
   color: var(--hero-text);
   font-size: clamp(2.1rem, 5vw, 3.4rem);
@@ -2520,4 +2529,22 @@ mark.search-hit {
   padding: 1rem;
   background: var(--surface-soft);
   border-radius: var(--radius-md);
+}
+
+/* Set by motion-fx.js once the page has scrolled. */
+.site-header { transition: box-shadow 0.2s; }
+.site-header.is-scrolled { box-shadow: 0 6px 20px rgba(14, 60, 40, 0.08); }
+
+/* Tool-page reading progress; motion-fx.js unhides it and drives scaleX. */
+.read-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  z-index: 200;
+  pointer-events: none;
 }

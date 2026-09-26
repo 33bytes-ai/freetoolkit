@@ -892,6 +892,8 @@ _ASSET_VERSION_FILES = (
     "css/style.css",
     "js/lib/common.js",
     "js/lib/tracker.js",
+    "js/lib/motion-fx.js",
+    "js/vendor/motion.min.js",
 )
 
 
