@@ -1565,6 +1565,14 @@ def test_pages_have_handheld_friendly_meta():
     assert "HandheldFriendly" in html, "Page missing HandheldFriendly meta"
 
 
+def test_stylesheet_has_no_containing_block_traps_for_the_drawer():
+    """The mobile drawer and its overlay are position:fixed inside .site-header.
+    backdrop-filter (or filter/transform) on an ancestor makes it their
+    containing block: in dark mode the drawer opened as a 59px strip."""
+    css = (ROOT / "static" / "css" / "style.css").read_text()
+    assert "backdrop-filter" not in css
+
+
 def test_pages_have_exactly_one_main_landmark():
     """A nested role=main or a second id=main breaks landmarks and the skip link."""
     run_build()

@@ -1816,10 +1816,9 @@ body[data-ads="on"] {
   color: var(--text);
   flex-shrink: 0;
 }
-.mobile-nav-close {
-  display: none;
-}
-.mobile-nav-all {
+.mobile-nav-head,
+.mobile-nav-search,
+.mobile-nav-cats {
   display: none;
 }
 .mobile-nav-overlay {
@@ -1840,76 +1839,98 @@ body[data-ads="on"] {
   .theme-toggle-btn { order: 2; }
   .mobile-nav-toggle { order: 3; }
 
+  /* Right-hand sheet over a dimmed page. visibility (not display) so the
+     slide can animate; visibility still removes it from the tab order. */
   .site-nav {
-    display: none;
+    display: flex;
     position: fixed;
-    inset: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(86vw, 22rem);
     background: var(--surface);
     z-index: 300;
     flex-direction: column;
-    padding: 1rem 1.25rem 2rem;
+    align-items: stretch;
+    padding: 0.75rem 1.25rem 2rem;
     overflow-y: auto;
+    overscroll-behavior: contain;
     gap: 0;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    box-shadow: -12px 0 32px rgba(0, 0, 0, 0.18);
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.22s ease, visibility 0s linear 0.22s;
   }
-  .site-nav.nav-open { display: flex; }
+  .site-nav.nav-open {
+    transform: none;
+    visibility: visible;
+    transition: transform 0.22s ease;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .site-nav, .site-nav.nav-open { transition: none; }
+  }
 
+  .mobile-nav-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.25rem 0 0.75rem;
+  }
+  .mobile-nav-title { font-weight: 650; letter-spacing: -0.01em; }
   .mobile-nav-close {
     display: flex;
-    align-self: flex-end;
     background: none;
     border: none;
-    padding: 0.35rem;
+    padding: 0.5rem;
+    margin-right: -0.5rem;
     cursor: pointer;
     color: var(--text);
-    margin-bottom: 0.5rem;
   }
 
-  /* In the drawer the mega-menu is just an always-open list -- no trigger,
-     no absolute positioning, no JS needed. */
-  .nav-mega { width: 100%; }
-  .nav-mega-trigger { display: none; }
-  .nav-mega-panel,
-  .nav-mega-panel.open {
-    display: block;
-    position: static;
+  .mobile-nav-search { display: block; margin-bottom: 0.75rem; }
+  .mobile-nav-search input {
     width: 100%;
-    max-height: none;
-    overflow: visible;
-    padding: 0;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    background: none;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    background: var(--bg);
+    color: var(--text);
+    font: inherit;
   }
-  .nav-mega-grid {
-    grid-template-columns: 1fr;
-    gap: 0;
+  .mobile-nav-search input:focus {
+    outline: 2px solid transparent;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
   }
-  .nav-mega-col {
+
+  .mobile-nav-cats {
+    display: block;
+    list-style: none;
+    margin: 0 0 0.75rem;
+    padding: 0 0 0.75rem;
     border-bottom: 1px solid var(--border);
-    padding: 0.35rem 0;
   }
-  .nav-mega-cat { font-size: 0.95rem; padding: 0.5rem 0; }
-  .nav-mega-tool, .nav-mega-more { font-size: 0.85rem; padding: 0.35rem 0 0.35rem 1.5rem; }
-  .nav-mega-footer { text-align: left; }
+  .mobile-nav-cats a {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 0;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .mobile-nav-cats a:hover { color: var(--accent); }
+
+  /* The desktop mega-menu is replaced by the category list above. */
+  .nav-mega { display: none; }
 
   .nav-link {
     width: 100%;
-    padding: 0.75rem 0;
+    padding: 0.7rem 0;
     font-size: 0.95rem;
     color: var(--text);
-    border-bottom: 1px solid var(--border);
   }
 
-  .mobile-nav-all {
-    display: block;
-    margin-top: 1.25rem;
-    font-size: 0.88rem;
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 600;
-  }
   .mobile-nav-overlay {
     display: none;
     position: fixed;
@@ -2051,12 +2072,6 @@ body[data-ads="on"] {
     --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 28px rgba(0, 0, 0, 0.3);
   }
 
-  :root:not([data-theme="light"]) .site-header {
-    background: rgba(23, 32, 27, 0.95);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
-
   :root:not([data-theme="light"]) .tool-card {
     background: var(--surface);
   }
@@ -2133,11 +2148,6 @@ body[data-ads="on"] {
   --accent-contrast: #06140d;
   --accent-pale: #16271e;
   --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 28px rgba(0, 0, 0, 0.3);
-}
-[data-theme="dark"] .site-header {
-  background: rgba(23, 32, 27, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
 }
 [data-theme="dark"] input[type="number"],
 [data-theme="dark"] input[type="text"],
