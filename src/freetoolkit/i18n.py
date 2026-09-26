@@ -14,7 +14,8 @@ this module writes:
 Sources live in content/i18n/<lang>/, mirroring the English files:
   strings.yaml      {english text: translation}; digits become {0}, {1}...
   tools.yaml        {slug: {body}}
-  intent_pages.yaml {slug: {title, description, body}}
+  intent_pages.yaml {slug: {title, description, body}}; a slug two tools share
+                    is keyed <parent_tool>/<slug> instead
   glossary.yaml     {slug: {term, short, body}}
   categories.yaml   {category name: {body}}
   pages/<slug>.md   front matter title/description + body
@@ -125,7 +126,8 @@ def write(dist: Path, translations: dict[str, dict], *, md: Callable[[str], str]
             if body:
                 regions["body"] = md(body)
             for ip in dives_by_tool.get(tool["slug"], []):
-                t = tr["intent_pages"].get(ip["slug"]) or {}
+                t = (tr["intent_pages"].get(f"{ip['parent_tool']}/{ip['slug']}")
+                     or tr["intent_pages"].get(ip["slug"]) or {})
                 if t.get("title"):
                     regions[f"dive-title:{ip['slug']}"] = html.escape(t["title"])
                 if t.get("description"):

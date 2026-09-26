@@ -895,3 +895,218 @@
     recuperarlo. El impuesto sobre ventas de EE. UU. solo se cobra en la venta
     final al por menor y las empresas no pueden recuperarlo. El consumidor final
     soporta ambos; lo que cambia es la mecánica para las empresas.
+
+"commission-calculator":
+  "body": |
+    ## ¿Qué es una comisión de ventas?
+
+    Una comisión de ventas es una retribución variable que se paga como porcentaje de los ingresos generados. Alinea los incentivos del comercial con los objetivos de ingresos de la empresa.
+
+    $$\text{Comisión} = \text{Ingresos} \times \text{Tasa de comisión}$$
+
+    ### Cumplimiento del OTE
+
+    El OTE (On-Target Earnings, retribución objetivo) es la retribución total de un comercial al 100 % de su cuota:
+
+    $$\text{Cumplimiento} = \frac{\text{Retribución total}}{\text{OTE}} \times 100$$
+
+    ### Estructuras de comisión habituales en SaaS B2B
+
+    | Puesto | Tasa de comisión habitual | Reparto del OTE |
+    |------|------------------------|-----------|
+    | Account Executive | 8–12 % del [ARR](/glossary/#arr) | 50/50 fijo/variable |
+    | SDR/BDR (desarrollo de ventas / negocio) | 4–8 % sobre el pipeline | 70/30 fijo/variable |
+    | Responsable de ventas | 2–4 % sobre el equipo | 60/40 fijo/variable |
+    | CSM (Customer Success Manager) / Account Manager | 5–10 % sobre la expansión | 70/30 fijo/variable |
+
+    ### Aceleradores
+
+    La mayoría de planes incluyen aceleradores por encima del 100 % del OTE: la tasa de comisión sube para los ingresos que superan la cuota. Premia el sobrecumplimiento y retiene a los mejores comerciales.
+
+    ### Guías
+
+    - [¿Qué es el OTE (retribución objetivo)?](/tools/commission-calculator/#what-is-on-target-earnings)
+    - [Cómo estructurar un plan de comisiones de ventas](/tools/commission-calculator/#how-to-structure-sales-commission-plan)
+"employee-cost-calculator":
+  "body": |
+    El error más común al presupuestar plantilla es usar el salario base como
+    coste. El coste real para la empresa de un empleado es **salario base × 1,25 a
+    1,45** para la mayoría de profesionales del conocimiento en EE. UU., por las
+    cotizaciones obligatorias y los beneficios.
+
+    ## Qué compone el coste total de un empleado
+
+    **1. Cotizaciones del empleador (~7,65 %)**
+    - FICA: 6,2 % de Social Security (sobre los primeros $168.600) + 1,45 % de Medicare (sin límite)
+    - FUTA: 0,6 % efectivo de desempleo federal (sobre los primeros $7.000 de salario)
+    - SUTA: ~2,7 % de media de desempleo estatal (sobre los primeros $7.000–$56.500, según el estado)
+
+    **2. Seguro médico**
+    - Coste medio para la empresa: $8.000–$18.000 al año por empleado (datos KFF 2024)
+    - Cobertura familiar: $14.000–$22.000 al año
+    - Cobertura individual: $7.000–$10.000 al año
+
+    **3. Aportaciones a la jubilación (opcional)**
+    - Aportación al 401(k): normalmente un 3–6 % del salario
+    - Con $100k de salario y un 4 % de aportación: $4.000 al año
+
+    **4. Bonus y acciones**
+    - Bonus objetivo de profesionales del conocimiento: 10–20 % del fijo
+    - Concesiones de acciones (RSU, acciones restringidas): $5.000–$50.000 al año según el nivel
+
+    ## La regla práctica de 1,25x a 1,4x
+
+    Un modelo mental rápido: multiplica cualquier salario por **1,3** para estimar
+    el coste completo (cotizaciones + seguro médico + 401k, sin bonus). Suma un
+    15–20 % en puestos con bonus.
+
+    | Salario | Cotizaciones (~8 %) | Beneficios (~12 %) | Total (1,2x) | + 10 % de bonus (1,3x) |
+    |---|---|---|---|---|
+    | $80.000 | $6.120 | $9.600 | $95.720 | $103.720 |
+    | $120.000 | $9.180 | $14.400 | $143.580 | $155.580 |
+    | $150.000 | $11.475 | $18.000 | $179.475 | $194.475 |
+
+    ## Contratistas frente a empleados
+
+    Al comparar una contratación W-2 con un contratista, recuerda que la tarifa del
+    contratista incluye sus propios impuestos y beneficios. Un contratista a $75 la
+    hora no es 1,3 veces más caro que un empleado: paga él mismo su SE tax del
+    15,3 % y sus beneficios. Para comparar de verdad, suma primero al salario el
+    coste completo del empleo.
+
+    ## Preguntas frecuentes
+
+    **¿Qué cotizaciones paga el empleador?**
+    El empleador paga FICA (7,65 %: 6,2 % de Social Security + 1,45 % de
+    Medicare), FUTA (0,6 % efectivo sobre los primeros $7.000 de salario) y SUTA
+    (desempleo estatal, del 0,6 % al 8,5 % según el estado y el historial).
+
+    **¿Cuánto le cuesta el seguro médico al empleador?**
+    Según la encuesta 2024 de la Kaiser Family Foundation, los empleadores pagan de
+    media $8.435 al año por cobertura individual y $17.393 al año por cobertura
+    familiar. Es la mayor variable del multiplicador de coste después de las
+    cotizaciones.
+"employee-turnover-calculator":
+  "body": |
+    ## Fórmula de la tasa de rotación
+
+    $$\text{Tasa de rotación} = \frac{\text{Bajas}}{\text{Plantilla media}} \times 100$$
+
+    $$\text{Plantilla media} = \frac{\text{Plantilla inicial} + \text{Plantilla final}}{2}$$
+
+    ### Referencias por sector
+
+    | Sector | Rotación anual media |
+    |----------|------------------------|
+    | Tecnología / software | 10–15 % |
+    | Finanzas / seguros | 10–15 % |
+    | Sanidad | 15–25 % |
+    | Comercio minorista | 25–60 % |
+    | Hostelería y restauración | 50–75 % |
+    | Empresas de trabajo temporal | 100 % o más |
+
+    ### El coste real de la rotación
+
+    La SHRM (Society for Human Resource Management) estima que el coste de sustitución va del 33 % al 200 % del salario anual según el puesto:
+
+    | Puesto | Coste de sustitución |
+    |------|-----------------|
+    | Nivel inicial / por horas | 33–50 % del salario |
+    | Profesional de nivel medio | 50–100 % del salario |
+    | Senior / especializado | 100–150 % del salario |
+    | Dirección / comité ejecutivo | 150–200 % o más del salario |
+
+    Los costes incluyen: anuncios, honorarios de headhunters, tiempo de entrevistas, pérdida de productividad mientras la vacante está abierta, incorporación y curva de aprendizaje del nuevo empleado.
+
+    ### Guías
+
+    - [Cómo calcular la tasa de rotación de empleados](/tools/employee-turnover-calculator/#how-to-calculate-employee-turnover-rate)
+    - [El coste real de la rotación de empleados](/tools/employee-turnover-calculator/#true-cost-of-employee-turnover)
+"employee-turnover-cost-calculator":
+  "body": |
+    La rotación de empleados es uno de los costes más subestimados en una
+    empresa. Los estudios de la SHRM (Society for Human Resource Management) y
+    Gallup sitúan de forma constante el coste real de sustitución en **6–9 meses
+    de salario anual** en puestos habituales, y hasta el **200 %** en puestos
+    senior o muy especializados.
+
+    ## Componentes del coste de la rotación
+
+    | Componente | Coste habitual |
+    |-----------|-------------|
+    | Salida (gestión de RR. HH., entrevista de salida, indemnización) | 3–5 % del salario anual |
+    | Vacante (productividad perdida con el puesto sin cubrir) | 50–150 % del salario diario × días |
+    | Selección (portales de empleo, agencias, tiempo de entrevistas) | 5–30 % del salario anual |
+    | Incorporación y formación | 10–20 % del salario anual |
+    | Curva hasta la plena productividad | 25–50 % del salario anual × meses de curva |
+
+    ## Referencias de la SHRM
+
+    - **Nivel inicial / por horas**: ~50 % del salario anual
+    - **Técnico / profesional**: 100–150 % del salario anual
+    - **Senior / directivo**: 200–400 % del salario anual
+
+    ## Reducir el coste de la rotación
+
+    Palancas de alto impacto: una incorporación estructurada (reduce a la mitad la
+    curva de aprendizaje), la formación de los mandos (la primera causa de bajas
+    voluntarias), comparar la retribución con el mercado y hacer entrevistas de
+    permanencia en lugar de entrevistas de salida.
+"payroll-cost-calculator":
+  "body": |
+    Contratar a un empleado cuesta bastante más que el salario que ofreces. El
+    empleador paga cotizaciones, financia beneficios y asume gastos generales que
+    suman un 20–40 % al salario base. Esta calculadora cuantifica el coste real
+    total.
+
+    ## Lo que paga el empleador en cotizaciones (EE. UU.)
+
+    **FICA (Federal Insurance Contributions Act)**
+    - Social Security: 6,2 % del salario (sobre los primeros $168.600 en 2024)
+    - Medicare: 1,45 % de todo el salario (más un 0,9 % de Medicare adicional por encima de $200k)
+    - FICA total: 7,65 % del salario
+
+    **FUTA (impuesto federal de desempleo)**
+    - 6,0 % sobre los primeros $7.000 de salario, reducido al 0,6 % tras el crédito por desempleo estatal
+    - Tipo efectivo: normalmente $42 por empleado y año tras el crédito
+
+    **SUTA (impuesto estatal de desempleo)**
+    - Varía según el estado: del 0,2 % a más del 8 % sobre una base estatal (normalmente los primeros $10.000–$40.000)
+    - El tipo por defecto para un empleador nuevo suele ser del 2,7 %
+
+    ## Lo que suelen costar los beneficios al empleador
+
+    | Beneficio | Coste habitual para el empleador |
+    |---|---|
+    | Seguro médico (individual) | $7.000–$15.000 al año |
+    | Seguro médico (familiar) | $18.000–$28.000 al año |
+    | Aportación al 401(k) (3–5 % del salario) | $3.600–$6.000 sobre un salario de $120k |
+    | Dental + visión | $600–$1.500 al año |
+    | Seguro de vida | $200–$500 al año |
+    | Vacaciones pagadas (15 días) | ~5,8 % del salario en coste |
+
+    ## La regla práctica de 1,25–1,40×
+
+    Una regla muy citada: coste total para el empleador = 1,25–1,40× el salario
+    anual en empleados a tiempo completo de EE. UU. con beneficios estándar. Con
+    un salario de $120k:
+    - 1,25×: $150.000 de coste total al año
+    - 1,35×: $162.000 de coste total al año
+
+    Más alto en empleados senior con beneficios completos; más bajo en
+    contratistas (sin cotizaciones si están bien clasificados como 1099).
+
+    ## Comparación de costes entre empleado y contratista
+
+    Los contratistas (1099) cuestan más por hora, pero sin cotizaciones ni
+    beneficios. En un encargo de 40 horas semanales, el equilibrio:
+    - Empleado de $120k = ~$58 la hora de coste efectivo
+    - Un contratista a $75–90 la hora puede costar más, pero sin compromiso a largo plazo
+
+    Usa esta calculadora junto con la calculadora de tarifa freelance para
+    comparar opciones.
+
+    ## Preguntas frecuentes
+
+    **¿Qué hace esta calculadora?**
+    Calcula el coste total para el empleador, incluidas las cotizaciones (FICA, FUTA, SUTA) y los beneficios.

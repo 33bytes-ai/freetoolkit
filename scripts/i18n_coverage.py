@@ -48,7 +48,7 @@ def content_fields() -> dict[str, set[str]]:
     cats = yaml.safe_load((CONTENT / "categories.yaml").read_text())
     return {
         "tools": {t["slug"] for t in tools if t.get("body")},
-        "intent_pages": {p["slug"] for p in intents},
+        "intent_pages": {f"{p['parent_tool']}/{p['slug']}" for p in intents},
         "glossary": {e["slug"] for e in glossary},
         "categories": set(cats),
         "pages": {p.stem for p in (CONTENT / "pages").glob("*.md")},
@@ -77,7 +77,8 @@ def main() -> int:
         have = sum(1 for k in found if k in tr["strings"])
         print(f"\n[{lang}] strings {have}/{len(found)} ({100 * have / max(len(found), 1):.0f}%)")
         for name, keys in fields.items():
-            done = keys & {k for k, v in (tr[name] or {}).items() if v}
+            have_keys = {k for k, v in (tr[name] or {}).items() if v}
+            done = {k for k in keys if k in have_keys or k.split("/")[-1] in have_keys}
             print(f"  {name:13} {len(done)}/{len(keys)}")
     return 0
 
