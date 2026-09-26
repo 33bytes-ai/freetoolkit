@@ -1,4 +1,4 @@
-.PHONY: build test-js test-py test check-perf serve serve-network deploy setup gsc-auth gsc gsc-push clean help
+.PHONY: build test-js test-py test check-perf serve serve-network deploy setup gsc-auth gsc gsc-push clean i18n-coverage i18n-crawl help
 
 PYTHON := .venv/bin/python
 PYTEST  := .venv/bin/pytest
@@ -9,6 +9,8 @@ help:
 	@echo "test-py         Run Python build tests"
 	@echo "test            Run all tests"
 	@echo "check-perf      Check file size budgets, meta coverage, sitemap, og:images"
+	@echo "i18n-coverage   Translation coverage per language (after make build)"
+	@echo "i18n-crawl      Record calculator runtime text for i18n coverage (needs Chrome)"
 	@echo "serve           Serve dist/ at http://localhost:8080"
 	@echo "serve-network   Serve dist/ on all interfaces (LAN access)"
 	@echo "deploy          Build and publish to Cloudflare Pages by hand (CI does it on merge)"
@@ -66,3 +68,9 @@ clean:
 	python3 -m venv .venv
 	.venv/bin/pip install -q -e ".[dev]"
 	@touch .venv
+
+i18n-coverage: .venv
+	$(PYTHON) scripts/i18n_coverage.py
+
+i18n-crawl: build
+	npx -y -p playwright-core@1.55.0 -c "node scripts/i18n_crawl.cjs"

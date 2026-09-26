@@ -1,0 +1,209 @@
+# slug -> {title, description, body}: French versions of the guide sections
+# in content/intent_pages.yaml, shown on their parent tool page.
+
+what-is-free-cash-flow:
+  title: "Qu'est-ce que le flux de trésorerie disponible ? Définition, formule et enjeux"
+  description: "Le flux de trésorerie disponible, c'est le flux d'exploitation moins le capex : la vraie mesure de la trésorerie générée. Formule, repères, et pourquoi les investisseurs le préfèrent au résultat."
+  body: |
+    Le flux de trésorerie disponible (FCF) est la trésorerie qui reste une fois
+    payées les dépenses d'investissement nécessaires pour maintenir ou développer
+    l'outil de production. C'est l'argent disponible pour rémunérer les
+    actionnaires, rembourser la dette ou réinvestir dans la croissance.
+
+    **Formule : FCF = flux de trésorerie d'exploitation − dépenses d'investissement**
+
+    ## Pourquoi les investisseurs regardent le FCF
+
+    Le résultat comptable se manipule : plans d'amortissement, calendrier de
+    reconnaissance du chiffre d'affaires, comptabilité d'engagement. La trésorerie
+    est plus difficile à maquiller. Une entreprise qui gagne 10 M$ mais affiche un
+    FCF négatif peut sembler rentable sur le papier tout en brûlant du cash.
+
+    Le FCF est le dénominateur de l'un des multiples de valorisation les plus
+    importants : **cours / FCF (P/FCF)**. Une entreprise valorisée 20 fois son FCF
+    (20 $ de capitalisation par dollar de FCF) offre un rendement FCF de 5 % :
+    c'est le taux de génération de trésorerie que vous achetez.
+
+    ## Où trouver les données
+
+    **Flux de trésorerie d'exploitation** : dans le tableau des flux de trésorerie,
+    à la ligne « Flux liés à l'activité ». Il part du résultat net, réintègre les
+    charges non décaissées (dotations aux amortissements) et corrige la variation
+    du besoin en fonds de roulement.
+
+    **Dépenses d'investissement (capex)** : dans le tableau des flux de trésorerie,
+    sous « Flux liés aux opérations d'investissement », en général libellées
+    « Acquisitions d'immobilisations corporelles ». Toujours un montant négatif
+    (sortie de trésorerie).
+
+    Pour une entreprise non cotée : flux d'exploitation = résultat net + dotations
+    aux amortissements − augmentation du besoin en fonds de roulement.
+
+    ## Le FCF face aux autres indicateurs
+
+    | Indicateur | Ce qu'il mesure |
+    |---|---|
+    | Flux de trésorerie disponible | Trésorerie après capex, disponible pour les propriétaires |
+    | EBITDA | Approximation du flux d'exploitation avant capex |
+    | Résultat net | Bénéfice comptable, y compris éléments non décaissés |
+    | Flux de trésorerie d'exploitation | Trésorerie issue de l'activité, avant capex |
+
+    Pour un SaaS, le capex est en général faible (serveurs, ordinateurs), donc
+    EBITDA et FCF sont proches. Dans les activités capitalistiques (industrie,
+    immobilier), le FCF peut être bien inférieur à l'EBITDA.
+
+    ## Repères de FCF
+
+    Les SaaS de qualité génèrent 15 à 30 % de marge de FCF à grande échelle :
+    - Veeva Systems : ~30 % de marge de FCF
+    - Shopify : ~25 % de marge de FCF
+    - HubSpot : ~18 % de marge de FCF
+    - Salesforce : ~25 % de marge de FCF
+
+    Les entreprises en phase d'amorçage (1 à 10 M$ d'ARR) ont souvent un FCF
+    négatif ou proche de zéro. C'est normal si l'économie unitaire justifie
+    l'investissement.
+
+    Calculez le vôtre avec le [calculateur de flux de trésorerie disponible](/tools/free-cash-flow-calculator/).
+
+fcf-vs-ebitda:
+  title: "Flux de trésorerie disponible ou EBITDA : les différences clés pour un SaaS"
+  description: "FCF et EBITDA mesurent tous deux la trésorerie générée, mais ne traitent pas le capex de la même façon. Quand utiliser chacun, et pourquoi le FCF est le signal le plus solide."
+  body: |
+    L'EBITDA et le FCF sont deux mesures courantes de la trésorerie générée, mais
+    ils répondent à des questions différentes. Comprendre l'écart aide à présenter
+    clairement vos chiffres aux investisseurs et à mieux allouer votre capital.
+
+    ## Ce que mesure l'EBITDA
+
+    **EBITDA = résultat net + intérêts + impôts + dotations aux amortissements**
+
+    L'EBITDA neutralise :
+    - les charges d'intérêts (choix de structure de capital)
+    - les taux d'imposition (différences entre pays)
+    - les dotations aux amortissements (charges non décaissées)
+
+    Il permet de comparer la rentabilité d'entreprises dont la structure de
+    capital, la politique d'amortissement ou la fiscalité diffèrent. C'est aussi
+    une donnée courante des modèles de LBO et des covenants bancaires
+    (dette nette / EBITDA).
+
+    ## Ce que mesure le FCF
+
+    **FCF = flux de trésorerie d'exploitation − dépenses d'investissement**
+
+    Le FCF va plus loin que l'EBITDA : il retranche la trésorerie réellement
+    investie en capex. Contrairement aux amortissements (que l'EBITDA réintègre),
+    le capex est de l'argent qui sort vraiment de l'entreprise.
+
+    Le FCF répond à la question : « une fois payés les investissements nécessaires
+    pour maintenir et développer l'activité, combien de trésorerie reste-t-il ? »
+
+    ## Pourquoi l'écart compte
+
+    Pour un SaaS au capex minime (serveurs, ordinateurs), EBITDA ≈ FCF.
+    L'écart représente en général 2 à 5 % du chiffre d'affaires.
+
+    Dans les activités capitalistiques, l'écart devient énorme :
+
+    | Type d'activité | Marge d'EBITDA | Capex / CA | Marge de FCF |
+    |---|---|---|---|
+    | SaaS cloud | 20 % | 2 % | 18 % |
+    | Logiciel on-premise | 25 % | 5 % | 20 % |
+    | Télécoms | 35 % | 20 % | 15 % |
+    | Industrie | 15 % | 12 % | 3 % |
+
+    ## Quand utiliser chacun
+
+    **Utilisez l'EBITDA pour :**
+    - comparer des entreprises d'un même secteur aux structures de capital différentes
+    - calculer des ratios de levier (dette nette / EBITDA)
+    - mener une analyse de LBO ou de fusion-acquisition
+
+    **Utilisez le FCF pour :**
+    - valoriser les fonds propres (multiple P/FCF)
+    - juger la qualité réelle de la génération de trésorerie
+    - décider d'une capacité de dividende ou de rachat d'actions
+    - comparer un modèle à fort capex à un modèle peu capitalistique
+
+    Face aux investisseurs, le FCF est le signal de meilleure qualité. L'EBITDA
+    peut être enjolivé ; le FCF exige d'avoir vraiment de l'argent en banque.
+
+    Calculez votre FCF avec le [calculateur de flux de trésorerie disponible](/tools/free-cash-flow-calculator/).
+
+how-to-improve-fcf-margin:
+  title: "Améliorer sa marge de FCF : 5 leviers pour les entreprises SaaS"
+  description: "Marge de FCF = FCF / chiffre d'affaires. Les cinq leviers les plus efficaces pour l'augmenter, de la réduction de l'intensité du capex à la gestion du besoin en fonds de roulement."
+  body: |
+    La marge de FCF est le flux de trésorerie disponible divisé par le chiffre
+    d'affaires. L'améliorer, c'est soit générer plus de trésorerie par euro de
+    chiffre d'affaires, soit réduire les dépenses d'investissement. Voici les cinq
+    leviers les plus efficaces pour un éditeur de logiciels.
+
+    ## Levier 1 : passer les clients en facturation annuelle
+
+    Le paiement annuel d'avance améliore fortement le FCF sans changer ni le
+    chiffre d'affaires ni l'EBITDA. Quand un client paie 12 000 $ d'avance au lieu
+    de 1 000 $/mois :
+    - la reconnaissance du chiffre d'affaires est identique (1/12 par mois)
+    - la trésorerie encaissée est 12 fois plus élevée dès le premier jour
+    - le besoin en fonds de roulement s'améliore d'environ 11 mois de MRR par client converti
+
+    Si vous convertissez 30 % de vos clients mensuels en annuel avec 10 % de
+    remise, le FCF peut progresser de 15 à 20 % de l'ARR l'année de la transition.
+
+    Tactique : proposez 1 à 2 mois offerts pour un prépaiement annuel. Présentez-le
+    comme « 2 mois offerts » plutôt qu'en pourcentage : la valeur perçue est plus forte.
+
+    ## Levier 2 : réduire le capex brut (efficacité des infrastructures)
+
+    Dans un SaaS, les coûts d'infrastructure (calcul, stockage cloud) apparaissent
+    souvent en charges d'exploitation plutôt qu'en capex. Mais gagner en efficacité
+    sur l'infrastructure améliore directement le flux d'exploitation, donc le FCF.
+
+    Améliorations courantes :
+    - ajuster les engagements d'instances réservées (savings plans AWS/GCP)
+    - repérer le calcul inutilisé et les occasions d'autoscaling
+    - optimiser les requêtes de base de données pour réduire le calcul
+
+    Un gain d'efficacité de 20 % sur 200 k$/an de dépenses cloud ajoute 40 k$ au
+    flux d'exploitation : autant de FCF en plus.
+
+    ## Levier 3 : mieux encaisser (réduire le DSO)
+
+    Délai moyen de paiement clients (DSO) = créances clients / chiffre d'affaires × 365
+
+    Un DSO élevé signifie que le chiffre d'affaires est reconnu avant d'être
+    encaissé : du besoin en fonds de roulement qui pèse sur le flux d'exploitation.
+    Passer de 45 à 30 jours de DSO à 5 M$ d'ARR libère environ 200 k$ de trésorerie.
+
+    Tactiques :
+    - exiger une carte bancaire ou un prélèvement avant l'activation
+    - automatiser les relances après un échec de paiement
+    - offrir 1 à 2 % d'escompte pour paiement anticipé sur les factures grands comptes
+
+    ## Levier 4 : piloter le calendrier des paiements fournisseurs
+
+    Délai moyen de paiement fournisseurs (DPO) = dettes fournisseurs / coût des ventes × 365
+
+    Allonger les délais de paiement de 30 à 45 jours avec vos principaux
+    fournisseurs améliore le fonds de roulement. Pour 500 k$/an de paiements
+    fournisseurs, passer de 30 à 45 jours dégage environ 20 k$ de trésorerie.
+
+    Attention : allonger les délais peut abîmer la relation fournisseur. Faites-le
+    avec de grands fournisseurs capables d'offrir de meilleures conditions, pas avec
+    de petits prestataires.
+
+    ## Levier 5 : réduire l'intensité du capex
+
+    Pour un SaaS pur, le capex est en général minime. S'il est significatif
+    (matériel de data center, acquisitions de propriété intellectuelle), étudiez :
+    - la location ou l'achat des équipements
+    - le cloud ou l'hébergement en colocation
+    - le report du capex non critique en période de faible croissance
+
+    Passer de matériel en propre au cloud augmente les charges d'exploitation mais
+    réduit le capex : la marge de FCF s'améliore en général même à coût total
+    équivalent, car les coûts cloud sont déjà hors capex.
+
+    Suivez l'évolution de votre marge de FCF avec le [calculateur de flux de trésorerie disponible](/tools/free-cash-flow-calculator/).
