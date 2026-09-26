@@ -31,3 +31,61 @@
     un vrai avantage structurel : c'est en grande partie pour cela que les modèles
     d'abonnement et les places de marché peuvent financer leur croissance par
     l'exploitation, ce qu'un distributeur classique ne peut pas faire.
+
+"Payments":
+  "body": |
+    Les frais de paiement sont souvent le premier poste de dépense qu'une petite
+    entreprise ne négocie jamais. À 2,9 % + 0,30 $, une activité qui encaisse
+    30 000 $ par mois par carte cède environ 10 500 $ par an, plus que ce que la
+    plupart des fondateurs dépensent en logiciels. Ces calculateurs existent pour
+    que ce chiffre ne soit plus une surprise sur le relevé mensuel.
+
+    ## Lequel choisir
+
+    Commencez par le **Comparateur de frais** si vous choisissez un prestataire
+    ou envisagez d'en changer : il place Stripe, PayPal et les trois forfaits
+    Shopify Payments côte à côte pour un même montant de vente et affiche le net
+    exact versé par chacun. Utilisez les calculateurs **Stripe**, **PayPal** et
+    **Shopify** quand vous connaissez déjà votre prestataire et voulez un chiffre
+    précis : chacun gère les détails que la vue comparative simplifie, dont les
+    cartes internationales, les taux négociés et la majoration d'un montant pour
+    recevoir une somme exacte après frais.
+
+    ## Les erreurs qu'ils évitent
+
+    Deux erreurs reviennent sans cesse. La première consiste à comparer les
+    pourcentages affichés en oubliant la part fixe : sur une vente de 5 $, les
+    0,30 $ de Stripe représentent à eux seuls 6 %, ce qui explique pourquoi les
+    micro-transactions détruisent des marges qui paraissent correctes dans un
+    tableur. La seconde est d'oublier les suppléments pour paiement
+    transfrontalier et conversion de devise (respectivement 1,5 % et 1 % de plus
+    chez Stripe), qui rendent discrètement un client étranger nettement moins
+    rentable qu'un client national au même prix.
+
+"Freelance":
+  "body": |
+    Le travail indépendant est plus souvent mal tarifé que mal vendu. L'erreur
+    classique consiste à diviser un salaire cible par 2 080 heures et à facturer
+    le résultat, ce qui ignore toutes les heures non facturables et tous les coûts
+    qu'un employeur prenait autrefois en charge.
+
+    ## Lequel choisir
+
+    Commencez par le **Taux freelance** : il part du revenu dont vous avez besoin,
+    puis réintègre le temps non facturable, les congés non payés, les jours de
+    maladie, les frais professionnels et les cotisations d'indépendant qu'un
+    salaire masque. **Salaire en taux horaire** convertit une offre salariée en
+    taux freelance équivalent, la comparaison honnête pour arbitrer entre une
+    mission et un poste. **Devis de projet** chiffre un travail au forfait avec une
+    marge pour imprévus, et **Calculateur de facture** gère le document final,
+    taxes et lignes multiples comprises.
+
+    ## Ce que disent les chiffres
+
+    Un freelance seul facture de façon réaliste 50 à 70 % de son temps, pas 100 %.
+    Rendez-vous commerciaux, propositions, administratif, facturation et marketing
+    sont de vraies heures qu'aucun client ne paie directement. Avec 60 % de temps
+    facturable, un objectif de revenu de 100 000 $ sur 46 semaines travaillées
+    donne environ 120 $ de l'heure avant impôts et frais, et non les 52 $ qu'une
+    division naïve par 2 080 heures suggère. Facturez sur la base du premier
+    chiffre et l'activité tient ; sur la base du second, elle s'étiole lentement.

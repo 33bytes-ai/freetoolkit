@@ -373,3 +373,396 @@
     Er berechnet Working Capital, Current Ratio, Quick Ratio und Working Capital
     in Tagen aus deinem Umlaufvermögen und deinen kurzfristigen
     Verbindlichkeiten.
+
+"payment-fee-comparison":
+  "body": |
+    Den günstigsten Zahlungsanbieter zu finden ist einfach, sobald du die Zahlen
+    nebeneinander siehst. Gib unten deinen typischen Verkaufsbetrag ein, und die
+    Vergleichstabelle zeigt sofort die genauen Gebühren und Nettoauszahlungen für
+    **Stripe**, **PayPal Standard**, **PayPal Checkout** und **Shopify Payments**
+    in allen drei Plänen.
+
+    ## So funktioniert der Gebührenvergleich
+
+    Die Gebühren jedes Anbieters sind mit den veröffentlichten US-Sätzen hinterlegt:
+
+    | Anbieter | Satz | Fixgebühr |
+    |-----------|------|-----------|
+    | Stripe | 2,9 % | + 0,30 $ |
+    | PayPal Standard | 2,99 % | + 0,49 $ |
+    | PayPal Checkout | 3,49 % | + 0,49 $ |
+    | Shopify Basic | 2,0 % | + 0,25 $ |
+    | Shopify (Shopify-Plan) | 1,7 % | + 0,25 $ |
+    | Shopify Advanced | 1,5 % | + 0,25 $ |
+
+    ## Wann Shopify Payments günstiger ist
+
+    Shopify Payments schlägt Stripe bei inländischen US-Visa/Mastercard-Zahlungen
+    ab etwa 12 $. Bei 100 $ spart Shopify Basic gegenüber Stripe 0,95 $ pro
+    Transaktion. Bei 500 $ Monatsvolumen im Basic-Plan (39 $/Monat) ist die
+    Rechnung etwa ausgeglichen, bei 50.000 $ pro Monat übersteigt die Ersparnis
+    beim Satz die Plangebühr um ein Vielfaches.
+
+    ## Wann du bei Stripe bleiben solltest
+
+    Stripe gewinnt bei Abo-Abrechnung, SaaS-APIs, internationalen Zahlungen (über
+    135 Währungen), ACH-Lastschrift, B2B-Rechnungen und Unternehmen, die nicht
+    auf Shopify sind. Stripes Entwickler-Ökosystem ist unerreicht. Beziffere mit
+    diesem Tool den Gebührenunterschied und wäge ihn gegen Wechselkosten und
+    Funktionsbedarf ab.
+
+    ## Häufige Fragen
+
+    **Welcher Zahlungsanbieter hat die niedrigsten Gebühren?**
+    Shopify Payments (Advanced-Plan) hat mit 1,5 % + 0,25 $ den niedrigsten Satz,
+    setzt aber einen Shopify-Shop und ein Abo für 399 $/Monat voraus. Ohne
+    Shopify schlägt Stripe (2,9 % + 0,30 $) PayPal Standard (2,99 % + 0,49 $) bei
+    Transaktionen über 15 $.
+
+    **Wie viel günstiger ist Shopify Payments als Stripe?**
+    Bei einer Transaktion über 100 $: Shopify Basic kostet 2,25 $, Stripe 3,20 $,
+    Shopify ist also 0,95 $ günstiger. Shopify Basic erfordert aber einen Plan
+    für 39 $/Monat. Erst ab über 4.100 $ Monatsvolumen deckt die Ersparnis
+    gegenüber Stripe die Plangebühr.
+
+    **Ist PayPal teurer als Stripe?**
+    Ja. PayPal Standard verlangt 2,99 % + 0,49 $, Stripe 2,9 % + 0,30 $. Bei
+    100 $ nimmt PayPal Standard 3,48 $, Stripe 3,20 $: PayPal ist 0,28 $ teurer.
+    PayPal Checkout (3,49 % + 0,49 $) ist deutlich teurer als beide.
+
+    **Kann ich Stripe auf Shopify ohne Zusatzgebühren nutzen?**
+    Ja, aber Shopify erhebt eine Drittanbieter-Transaktionsgebühr (je nach Plan
+    0,5–2 %), wenn du einen anderen Anbieter als Shopify Payments nutzt. Bei
+    10.000 $ pro Monat kommen so 50–200 $ Shopify-Aufschlag dazu. Mit Shopify
+    Payments (auf Stripes Infrastruktur) entfällt diese Gebühr.
+"paypal-fee-calculator":
+  "body": |
+    PayPal verlangt **3,49 % + 0,49 $** pro inländischer Online-Transaktion, etwas
+    mehr als Stripes 2,9 % + 0,30 $. Bei internationalen Zahlungen steigen die
+    Gebühren auf **4,99 % + 0,49 $**. Für Kleinstbeträge (unter 10 $) gibt es
+    einen Sondertarif: **5 % + 0,05 $**, bei winzigen Beträgen günstiger, aber
+    prozentual teuer.
+
+    ## PayPal- und Stripe-Gebühren im Vergleich
+
+    | Szenario | PayPal | Stripe |
+    |---|---|---|
+    | 10 $ inländisch | 0,84 $ (8,4 %) | 0,59 $ (5,9 %) |
+    | 100 $ inländisch | 3,98 $ (4,0 %) | 3,20 $ (3,2 %) |
+    | 1.000 $ inländisch | 35,39 $ (3,5 %) | 32,30 $ (3,2 %) |
+    | 100 $ international | 5,48 $ (5,5 %) | 4,70 $ (4,7 %) |
+
+    Bei den meisten Beträgen ist Stripe günstiger. PayPals Vorteil ist die
+    Vertrautheit bei Kunden: Die Checkout-Conversion kann steigen, wenn PayPal
+    als Option angeboten wird.
+
+    ## Gebühren weitergeben
+    Wenn du einen bestimmten Nettobetrag erhalten musst, rechnet der Rechner
+    hoch: Um genau 100 $ über eine inländische PayPal-Zahlung zu erhalten, musst
+    du **104,66 $** berechnen.
+
+    ## PayPal „Freunde & Familie“
+    Private Zahlungen („Freunde & Familie“) sind im Inland kostenlos, wenn sie
+    per Bankkonto oder PayPal-Guthaben bezahlt werden. Sie für geschäftliche
+    Zahlungen zu nutzen, verstößt aber gegen PayPals Nutzungsbedingungen. Du
+    riskierst die Kontosperrung, ohne den Verkäuferschutz normaler
+    Transaktionen.
+
+    ## Häufige Fragen
+
+    **Berechnet PayPal Gebühren für Rückerstattungen?**
+    PayPal erstattet die Fixgebühr von 0,49 $, behält aber den prozentualen Teil
+    (3,49 %). Stripe erstattet ebenfalls die Fixgebühr, behält aber auch den
+    Prozentsatz.
+
+    **Kann ich PayPal-Gebühren vermeiden?**
+    Bei inländischen Überweisungen vom Bankkonto an private Kontakte: ja. Bei
+    geschäftlichen Transaktionen senkt nur PayPals Händlertarif-Programm die
+    Gebühren, und das erfordert einen Antrag und hohes Transaktionsvolumen. Im
+    Allgemeinen ist Stripe für die meisten geschäftlichen Zwecke günstiger.
+"shopify-fee-calculator":
+  "body": |
+    Shopify erhebt auf jeden Verkauf zwei Arten von Gebühren: eine
+    **Zahlungsabwicklungsgebühr** (ähnlich Stripes Satz) und eine separate
+    **Transaktionsgebühr**, wenn du statt Shopify Payments ein
+    Drittanbieter-Gateway nutzt. Beide zu verstehen ist Pflicht für eine genaue
+    Margenrechnung.
+
+    ## Shopify-Gebühren nach Plan
+
+    | Plan | Monatsgebühr | Abwicklungssatz | Transaktionsgebühr (Drittanbieter) |
+    |---|---|---|---|
+    | Basic | 39 $ | 2,9 % + 0,30 $ | 2,0 % |
+    | Shopify | 105 $ | 2,6 % + 0,30 $ | 1,0 % |
+    | Advanced | 399 $ | 2,4 % + 0,30 $ | 0,5 % |
+
+    Die Transaktionsgebühr fällt *nur* an, wenn du einen anderen Anbieter als
+    Shopify Payments nutzt (Stripe, PayPal usw.). Mit Shopify Payments entfällt
+    sie komplett.
+
+    ## Shopify Payments oder Drittanbieter-Gateway
+
+    Für die meisten Händler ist Shopify Payments am günstigsten, weil die
+    Transaktionsgebühr wegfällt. Ein Verkauf über 100 $ im Basic-Plan über Stripe
+    kostet **2,90 $ + 0,30 $ + 2,00 $ = 5,20 $**, mit Shopify Payments nur
+    **3,20 $**: 62 % Unterschied.
+
+    Gründe, trotzdem ein Drittanbieter-Gateway zu nutzen:
+    - Dein Land wird von Shopify Payments nicht unterstützt (verfügbar in über 17 Ländern)
+    - Du brauchst Betrugsschutz, Abos oder Funktionen, die nur dein bisheriges Gateway bietet
+    - Risikoreiche Produktkategorien, die Shopify Payments nicht zulässt
+
+    ## Häufige Fragen
+
+    **Fließt die monatliche Plangebühr in die Kosten pro Verkauf ein?**
+    Der Rechner zeigt nur Gebühren pro Transaktion. Für die vollen Kosten pro
+    Verkauf inklusive Plangebühr teilst du die Monatsgebühr durch die Zahl deiner
+    monatlichen Transaktionen und addierst das Ergebnis. Bei 100 Verkäufen pro
+    Monat im Basic-Plan macht die Plangebühr 0,39 $ pro Verkauf aus.
+
+    **Lohnt sich ein Upgrade für niedrigere Gebühren?**
+    Die Rechnung: Wenn der Wechsel von Basic zu Shopify (66 $ mehr pro Monat)
+    0,3 % spart und 1 % Transaktionsgebühr (bei Drittanbieter-Gateway)
+    wegfallen lässt, liegt die Gewinnschwelle bei 66 $ / 0,013 = 5.077 $ Umsatz
+    pro Monat. Darüber zahlt sich das Upgrade aus.
+"stripe-fee-calculator":
+  "body": |
+    Stripe ist der bevorzugte Zahlungsanbieter für die meisten SaaS-Produkte,
+    Marktplätze und Indie-Unternehmen, doch die Gebührenstruktur stellt Gründern
+    ständig Fallen. Der Standardsatz liegt bei **2,9 % + 0,30 $** pro
+    erfolgreicher Kartenzahlung, aber das ist nur der Ausgangspunkt.
+
+    Internationale Karten (außerhalb der USA ausgegeben) kosten zusätzlich
+    **1,5 % Auslandsgebühr**, insgesamt also **4,4 % + 0,30 $**. Wenn du Stripe
+    Connect (Stripes Plattform, die Zahlungen zwischen einem Marktplatz und seinen
+    Verkäufern verteilt) nutzt, um Zahlungen für verbundene Konten abzuwickeln,
+    werden Gebühren und Umsatzaufteilung komplexer. Dieser Rechner deckt alle
+    gängigen Fälle ab.
+
+    ## So funktioniert die Stripe-Gebührenberechnung
+    1. Gib den Betrag ein, den du dem Kunden berechnen willst.
+    2. Wähle, ob die Karte inländisch oder international ist.
+    3. Entscheide, ob du die Gebühr selbst trägst oder an den Kunden weitergibst
+       (Modus „berechnen, was nötig ist, um den Zielbetrag zu erhalten“).
+    4. Der Rechner zeigt die genaue Gebühr, die Nettoauszahlung auf dein
+       Bankkonto und im Weitergabe-Modus, was du berechnen musst, um deinen
+       Zielbetrag zu erhalten.
+
+    ## Warum „mehr berechnen, um genau das Nötige zu erhalten“ wichtig ist
+    Wenn du genau 100 $ von einer inländischen US-Karte erhalten musst, reicht es
+    nicht, 100 $ zu berechnen: Nach Stripes 2,9 % + 0,30 $ kämen 96,80 $ an. Für
+    genau 100 $ musst du **103,09 $** berechnen (wenn der Kunde die Gebühr zahlt).
+    Der Rechner erledigt dieses Hochrechnen automatisch.
+
+    ## Häufige Fragen
+
+    **Ändert sich Stripes Satz mit dem Volumen?**
+    Ja. Stripe verhandelt individuelle Preise für Unternehmen mit mehr als etwa
+    80.000 $ pro Monat. Für die meisten Indie-Gründer und jungen Unternehmen
+    gilt der Standardsatz von 2,9 % + 0,30 $. Der Rechner nutzt den Standardsatz;
+    passe das Prozentfeld an deinen verhandelten Satz an.
+
+    **Was ist mit Stripes Zusatzgebühren (Streitfälle, Rückerstattungen, international)?**
+    Rückerstattungen geben die prozentuale Gebühr zurück, nicht aber die fixen
+    0,30 $. Streitfälle kosten 15 $ unabhängig vom Ausgang (bei Erfolg bekommst du
+    sie zurück). Diese Sonderfälle sind nicht in der Berechnung pro Transaktion
+    enthalten, sollten aber budgetiert werden.
+
+    **Kann ich den Rechner für Stripe Connect nutzen?**
+    Ja. Stripe Connect gibt dieselbe Grundgebühr je nach Konfiguration an die
+    Plattform oder das verbundene Konto weiter. Gib den Gesamtbetrag und den
+    geltenden kombinierten Satz im Feld für den individuellen Satz ein.
+
+"freelance-project-estimate":
+  "body": |
+    Freelance-Projekte genau zu kalkulieren ist teils Mathematik, teils
+    Risikomanagement. Kalkulierst du zu niedrig, arbeitest du unbezahlte Stunden.
+    Kalkulierst du ohne Begründung zu hoch, verlierst du den Auftrag. Dieser
+    Rechner startet mit dem, was du weißt (dein Satz, deine geschätzten Stunden
+    und ein Risikopuffer), und liefert ein Angebot, das du direkt an den Kunden
+    geben kannst.
+
+    ## Die zweiteilige Formel
+
+    **Basisschätzung** = Stundensatz × geschätzte Stunden
+    **Gesamtangebot** = Basisschätzung × (1 + Puffer in %)
+
+    Der Puffer ist kein Aufblähen und keine Unehrlichkeit, sondern ein
+    Risikopolster für das Unvermeidliche: unklare Anforderungen, wachsender
+    Umfang, Korrekturschleifen und Projektmanagement-Zeit, die du nicht
+    ausdrücklich geschätzt hast.
+
+    ## Welcher Puffer passt
+
+    | Projektart | Empfohlener Puffer |
+    |---|---|
+    | Klare Vorgaben, vertraute Arbeit | 10–15 % |
+    | Standardprojekt, einige Unbekannte | 20–25 % |
+    | Neues Gebiet, unklare Anforderungen | 30–40 % |
+    | F&E- / Discovery-Phasen | 50 %+ |
+
+    Studien zu Softwareprojekten zeigen Überschreitungen der ursprünglichen
+    Schätzung um 50–80 %. Ein Puffer von 20 % ist nicht aggressiv, sondern
+    vorsichtig. Kunden, die den Puffer anzweifeln, sagen dir, dass sie
+    Umfangsänderungen erwarten und nicht dafür zahlen wollen.
+
+    ## Festpreis oder Aufwand
+
+    Dieser Rechner erstellt ein **Festpreisangebot**. Alternativen:
+    - **Nach Aufwand (Time & Material)**: Du rechnest tatsächliche Stunden zu deinem
+      Satz ab. Weniger Risiko für dich, mehr gefühltes Risiko für den Kunden. Am
+      besten für laufende oder offene Arbeit.
+    - **Wertbasierte Preise**: Der Preis richtet sich nach dem Wert für den Kunden,
+      nicht nach deinen Stunden. Schwerer zu positionieren, hebt aber die
+      Obergrenze deines Verdiensts auf.
+
+    ## Häufige Fragen
+
+    **Aufschlüsselung zeigen oder nur die Summe?**
+    Den meisten Kunden zeigst du nur die Summe. Stundensatz × Stunden aufzuführen
+    lädt dazu ein, jede Komponente zu verhandeln, und lässt Kunden deinen Satz mit
+    dem Markt vergleichen. Für die Kaufentscheidung reicht die Summe.
+
+    **Wie gehe ich mit Anfragen außerhalb des Umfangs um?**
+    Nimm eine Umfangsklausel in deinen Vertrag auf: Alles außerhalb der
+    vereinbarten Leistungen wird separat angeboten. Verweise gelassen darauf, wenn
+    der Umfang wächst („Gern, ich schicke dir kurz ein Angebot für die
+    Zusatzarbeit“), statt es stillschweigend zu schlucken.
+"freelance-rate-calculator":
+  "body": |
+    Einen Freelance-Satz ohne systematische Rechnung festzulegen, ist einer der
+    häufigsten Gründe, warum Freelancer zu wenig verlangen. Die Zahl, die du
+    brauchst, ist nicht dein altes Gehalt geteilt durch 2.080, sondern diese Zahl
+    *plus* Steuern, *plus* Betriebsausgaben, *plus* ein Ausgleich dafür, dass du
+    wahrscheinlich nicht jede gearbeitete Stunde abrechnen kannst.
+
+    Dieser Rechner startet mit deinem **jährlichen Einkommensziel** und rechnet
+    rückwärts den Mindeststundensatz aus, den du verlangen musst, um es zu
+    erreichen, unter Berücksichtigung dreier Faktoren:
+
+    **1. Nicht abrechenbare Zeit.** E-Mails beantworten, Angebote schreiben,
+    Buchhaltung und Weiterbildung kosten Zeit, die du Kunden nicht berechnen
+    kannst. Die meisten Freelancer rechnen 60–70 % ihrer Arbeitszeit ab.
+
+    **2. Steuern.** Selbstständige zahlen Einkommensteuer *plus*
+    Selbstständigen-Abgaben (in den USA Social Security + Medicare ≈ 15,3 %), weil
+    Arbeitgeber normalerweise die Hälfte der Lohnabgaben für ihre Angestellten
+    übernehmen. Als Freelancer zahlst du beide Hälften.
+
+    **3. Betriebsausgaben.** Software-Abos, Ausstattung, Büro oder Coworking,
+    Krankenversicherung, Weiterbildung und Steuerberatung schmälern den Umsatz,
+    der dir nach Ausgaben bleibt.
+
+    ## Häufige Fragen
+
+    **Warum wirkt mein „echter Satz“ so viel höher als das, was Angestellte verdienen?**
+    Weil er es ist. Ein Vollzeitangestellter mit 100.000 $ Gehalt kostet seinen
+    Arbeitgeber insgesamt rund 130.000–145.000 $ (Zusatzleistungen, Lohnabgaben,
+    Ausstattung, Büro). Als Freelancer trägst du all das selbst, dazu das Risiko
+    nicht abrechenbarer Zeit und von Einkommenslücken zwischen Kunden.
+
+    **Sollte ich jemals unter meinem Mindestsatz arbeiten?**
+    Für einen strategischen Kunden, der Referenzen, Empfehlungen oder Zugang zu
+    besser bezahlten Aufträgen bringt, ist ein befristeter Rabatt eine legitime
+    Geschäftsentscheidung, solange du sie bewusst triffst und nicht, weil du die
+    Steuern vergessen hast.
+
+    **Wie erhöhe ich meinen Satz bei Bestandskunden?**
+    Kündige es 60–90 Tage vorher an, begründe es mit dem Wert („mein Satz steigt
+    auf X, weil ich jetzt Y liefere“) und bleib dabei. Die meisten Kunden, die zum
+    neuen Satz bleiben, respektieren deine Zeit danach mehr.
+"invoice-total-calculator":
+  "body": |
+    Rechnungssoftware ist ideal für Stammkunden. Wenn du aber schnell eine Summe
+    für ein Angebot, eine Kostenaufstellung für eine Kunden-E-Mail oder eine
+    Plausibilitätsprüfung vor dem Rechnungsversand brauchst, ist ein einfacher
+    Rechner schneller, als dein Rechnungstool zu öffnen.
+
+    Dieser Rechner verarbeitet bis zu vier Positionen, optional Rabatt und
+    Steuer/MwSt., und erstellt eine kopierfertige Textzusammenfassung der
+    gesamten Aufstellung.
+
+    ## Wann du diesen Rechner nutzt
+
+    - **Angebotsphase**: die Summe schnell durchrechnen, bevor du dich schriftlich auf einen Preis festlegst
+    - **Zwischenstände mit Kunden**: laufende Summe der bisher erledigten Arbeit zeigen
+    - **Mehrwährungs-Check**: die Rechnung prüfen, bevor du sie ins Rechnungstool überträgst
+    - **Steuerprüfung**: MwSt.- oder Sales-Tax-Betrag vor dem Versand bestätigen
+
+    ## Positionsstrategien für Freelancer
+
+    **Wertorientierte Positionen**: Statt „40 Stunden Entwicklung“ schreibst du
+    „Redesign und Entwicklung der Website“. So richtet sich der Blick des Kunden
+    auf das Ergebnis statt auf die Zeit.
+
+    **Abrechnung nach Meilensteinen**: Teile Projekte in zwei oder drei Rechnungen
+    (z. B. 50 % vorab, 25 % zur Halbzeit, 25 % bei Abgabe). Das schützt dich vor
+    Zahlungsausfällen und hilft Kunden bei ihrer Liquidität.
+
+    **Auslagen**: Füge Positionen für Auslagen (Stockfotos, Schriften, Tools,
+    Reisen) mit kurzer Beschreibung hinzu. Berechne sie zum Selbstkostenpreis,
+    sofern dein Vertrag keinen Aufschlag vorsieht.
+
+    ## Steuern und MwSt.
+
+    Bei B2B-Leistungen innerhalb der EU gilt in der Regel das
+    Reverse-Charge-Verfahren: Du berechnest Geschäftskunden in anderen
+    EU-Mitgliedstaaten keine MwSt., musst aber „Steuerschuldnerschaft des
+    Leistungsempfängers“ auf der Rechnung vermerken. Bei B2C-Leistungen in der EU
+    musst du unter Umständen MwSt. zum Satz des Kundenlandes erheben. Klär deine
+    Situation mit deiner Steuerberatung.
+
+    Für US-Freelancer fällt in den meisten Bundesstaaten keine Sales Tax auf
+    Dienstleistungen an (Ausnahmen: manche digitalen Leistungen). Prüf die Regeln
+    deines Bundesstaats, bevor du Steuern berechnest.
+
+    ## Häufige Fragen
+
+    **Wie füge ich mehr als 4 Positionen hinzu?**
+    Für längere Rechnungen nutzt du besser ein richtiges Rechnungstool (Bonsai,
+    FreshBooks oder HoneyBook sind für Freelancer gemacht). Dieser Rechner ist für
+    schnelle Schätzungen und einfache Rechnungen optimiert.
+
+    **Stundensatz zeigen oder nur die Positionssumme?**
+    Den meisten Kunden zeigst du nur die Summe pro Leistung. „40 Stunden × 125 $“
+    lädt zum Verhandeln des Satzes ein, „Entwicklung: 5.000 $“ positioniert dich
+    als jemand, der ein Ergebnis liefert.
+"salary-to-hourly-calculator":
+  "body": |
+    Ob du als Freelancer deinen Satz mit Angestelltengehältern vergleichst, als
+    Arbeitgeber eine Vertragsstelle bepreist oder einfach wissen willst, was dein
+    Jahresgehalt pro Stunde bedeutet: Dieser Rechner erledigt die Umrechnung
+    sofort und ohne Anmeldung.
+
+    Für Bruttowerte ist die Rechnung einfach:
+    **Stundensatz** = Jahresgehalt ÷ (Wochen pro Jahr × Stunden pro Woche)
+
+    Standardmäßig gelten 52 Wochen pro Jahr und 40 Stunden pro Woche. Du kannst
+    beide Werte anpassen, nützlich für:
+    - Teilzeitkräfte (z. B. 20 Stunden pro Woche)
+    - Mehr oder weniger als 52 bezahlte Wochen (z. B. bei unbezahltem Urlaub)
+    - Angestellte, deren bezahlter Urlaub im Gehalt enthalten ist
+
+    ## Stundensatz vor und nach Steuern
+
+    Der Rechner schätzt einen Stundensatz nach Steuern für die üblichen
+    US-Bundessteuerstufen (10 %, 12 %, 22 %, 24 %, 32 %, 35 %, 37 %). Hinweis: Das
+    ist eine vereinfachte Schätzung ohne Steuern der Bundesstaaten, Abzüge oder
+    Veranlagungsart. Nutze sie für grobe Vergleiche, nicht für die Steuerplanung.
+
+    ## Häufige Fragen
+
+    **Wie rechne ich einen Stundensatz in ein Jahresgehalt zurück?**
+    Jährlich = Stundensatz × Stunden pro Woche × Wochen pro Jahr. Bei 40 h und 52
+    Wochen: Stundensatz × 2.080 = jährlich.
+
+    **Mein Vertrag nennt X $ pro Tag: Wie rechne ich das um?**
+    Teile durch deine täglichen Stunden, um den Stundensatz zu erhalten, und
+    multipliziere mit Wochenstunden und Wochen pro Jahr für den Jahreswert. Bei
+    8-Stunden-Tagen: Tagessatz × 260 Arbeitstage = jährlich.
+
+    **Warum verlangen Freelancer das 2- bis 3-Fache des vergleichbaren Angestellten-Stundensatzes?**
+    Weil Arbeitgeberanteil an den Lohnabgaben, Zusatzleistungen, Ausstattung,
+    Verwaltungsaufwand und das Risiko von Einkommenslücken beim Freelancer liegen
+    statt beim Unternehmen. Die vollständige Aufschlüsselung findest du im
+    Freelance-Stundensatz-Rechner.

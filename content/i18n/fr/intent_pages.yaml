@@ -1106,3 +1106,1252 @@ how-to-improve-fcf-margin:
     Les deux ont le même ratio de liquidité générale mais des positions de liquidité absolue très différentes. Le fonds de roulement les distingue.
 
     Utilisez le [calculateur de fonds de roulement](/tools/working-capital-calculator/) pour voir les deux.
+
+"how-to-reduce-stripe-fees":
+  "title": "Comment réduire ses frais Stripe : 5 méthodes concrètes"
+  "description": "Stripe facture 2,9 % + 0,30 $ par défaut. Voici cinq moyens concrets de réduire votre taux effectif, de la facturation annuelle à la négociation sur volume."
+  "body": |
+    Le tarif standard de Stripe, **2,9 % + 0,30 $**, est fixe pour la plupart des
+    entreprises. Mais le taux *effectif* que vous payez dépend de la façon dont vous
+    structurez votre facturation et du volume que vous traitez. Voici cinq méthodes
+    concrètes pour le faire baisser.
+
+    ## 1. Passer de la facturation mensuelle à l'annuelle
+
+    Sur un forfait à 99 $/mois, Stripe prélève ses frais 12 fois : 3,17 $ par
+    renouvellement, soit 38,04 $ par an. Sur un forfait annuel équivalent à 990 $,
+    vous payez une seule fois : 29,01 $. Vous économisez 9,03 $ par abonné et par an
+    simplement en changeant de rythme de facturation, tout en améliorant votre
+    trésorerie.
+
+    ## 2. Augmenter le montant moyen des transactions
+
+    La part fixe de 0,30 $ pèse surtout sur les petites transactions : 6 % à 5 $,
+    0,6 % à 50 $, 0,06 % à 500 $. Les offres groupées, les forfaits annuels et les
+    montants minimums de commande réduisent tous le poids de la part fixe par
+    dollar encaissé.
+
+    ## 3. Utiliser l'Optimized Checkout Suite de Stripe
+
+    [Link](https://stripe.com/payments/link) (le paiement en un clic de Stripe)
+    augmente en général la conversion de 7 à 30 %, sans frais supplémentaires. Plus
+    de conversion, c'est plus de chiffre d'affaires pour le même coût de
+    traitement : votre coût effectif par dollar encaissé baisse.
+
+    ## 4. Négocier un tarif sur volume
+
+    Stripe propose des tarifs sur mesure au-delà de **80 000 $ par mois** (environ
+    1 M$ par an). La remise varie, mais se situe généralement 0,2 à 0,5 point
+    sous le tarif standard. Contactez l'équipe commerciale de Stripe à l'approche
+    de ce seuil : elle négociera.
+
+    ## 5. Faire passer les paiements ACH à part
+
+    Stripe ne facture que **0,8 % (plafonné à 5,00 $)** pour les virements
+    bancaires américains (ACH). Si vos clients sont des entreprises américaines,
+    proposer l'ACH pour les factures de plus de ~500 $ réduit fortement vos frais
+    effectifs. À 1 000 $, les frais sont de 5 $ (0,5 %) contre 29,30 $ par carte.
+
+    ## Ce que vous ne pouvez pas réduire
+
+    Le tarif de Stripe n'est pas négociable pour la plupart des entreprises sous
+    1 M$ par an. Changer complètement de prestataire (Shopify Payments, Paddle ou
+    un acquéreur local) peut rapporter plus que l'optimisation : utilisez le
+    [comparateur de frais de paiement](/tools/payment-fee-comparison/) pour voir
+    les chiffres exacts à votre montant moyen de transaction.
+"lowest-payment-processing-fees-small-business":
+  "title": "Les frais de paiement les plus bas pour une petite entreprise (2026)"
+  "description": "Stripe, PayPal et Shopify Payments comparés pour les petites entreprises. Quel prestataire a les frais les plus bas pour votre montant moyen de transaction ?"
+  "body": |
+    Pour la plupart des petites entreprises, les trois grands prestataires de
+    paiement sont **Stripe**, **PayPal** et **Shopify Payments**. Le moins cher
+    dépend presque entièrement de votre montant moyen de transaction et de votre
+    volume mensuel.
+
+    ## Les frais en un coup d'œil (2026)
+
+    | Prestataire | Taux | Part fixe | Idéal pour |
+    |-----------|------|-------|---------|
+    | Stripe | 2,9 % | 0,30 $ | SaaS, profils techniques, API |
+    | PayPal Standard | 2,99 % | 0,49 $ | Confiance des consommateurs, places de marché |
+    | PayPal Checkout | 3,49 % | 0,49 $ | Conversion via le bouton PayPal |
+    | Shopify Basic | 2,0 % | 0,25 $ | E-commerce, forfait à 39 $/mois |
+    | Shopify | 1,7 % | 0,25 $ | E-commerce, forfait à 105 $/mois |
+    | Shopify Advanced | 1,5 % | 0,25 $ | E-commerce à fort volume |
+
+    ## Les seuils de rentabilité
+
+    **Shopify Basic contre Stripe** : Shopify Basic (forfait à 39 $/mois) coûte
+    autant que Stripe autour de **3 900 $ de volume mensuel** (l'abonnement de 39 $
+    compense une économie d'environ 1 %). Au-delà, Shopify Basic est moins cher ;
+    en dessous, Stripe l'emporte.
+
+    **Shopify contre Stripe à 100 $ la transaction** :
+
+    | Prestataire | Frais sur 100 $ | Vous gardez |
+    |-----------|-------------|---------|
+    | Stripe | 3,20 $ | 96,80 $ |
+    | PayPal Standard | 3,48 $ | 96,52 $ |
+    | Shopify Basic | 2,25 $ | 97,75 $ |
+    | Shopify Advanced | 1,75 $ | 98,25 $ |
+
+    ## Lequel choisir ?
+
+    - **Moins de 2 000 $ de volume mensuel** → Stripe (pas d'abonnement, meilleure expérience développeur)
+    - **E-commerce sur Shopify** → Shopify Payments (taux plus bas, pas de frais de transaction externe)
+    - **Vente aux particuliers avec beaucoup de paniers abandonnés** → PayPal (le gain de conversion compense le taux)
+    - **Plus de 80 000 $ par mois** → négocier avec Stripe ou comparer Stripe à Paddle/FastSpring
+
+    Saisissez votre montant moyen de transaction dans le [comparateur de frais de paiement](/tools/payment-fee-comparison/)
+    pour voir les frais exacts et l'option la moins chère dans votre cas.
+"paypal-fees-for-online-payments":
+  "title": "Frais PayPal pour les paiements en ligne : le détail complet"
+  "description": "PayPal facture 2,99 à 3,49 % + 0,49 $ par transaction en ligne. Le détail complet des frais, quand PayPal est compétitif et quand il ne l'est pas."
+  "body": |
+    PayPal a deux grands niveaux de tarif pour l'acceptation des cartes en ligne :
+    **PayPal Standard** à 2,99 % + 0,49 $ et **PayPal Checkout** (le bouton à la
+    marque PayPal) à 3,49 % + 0,49 $. La différence compte pour les SaaS et les
+    abonnements, où la part fixe de 0,49 $ grignote la marge sur les petites
+    transactions.
+
+    ## Quand PayPal est-il pertinent ?
+
+    Le principal atout de PayPal est la **confiance des acheteurs** : les clients
+    qui voient le bouton PayPal finalisent souvent des achats qu'ils auraient
+    abandonnés, surtout au moment du paiement. Une étude du Baymard Institute
+    montre que PayPal réduit l'abandon au paiement sans compte jusqu'à 14 % par
+    rapport à un simple formulaire.
+
+    Si votre panier moyen dépasse 30 $ et que vous vendez en direct aux
+    consommateurs, le gain de conversion peut largement compenser le taux plus
+    élevé par rapport à Stripe.
+
+    ## Les frais PayPal comparés sur un paiement de 100 $
+
+    | Prestataire | Frais | Vous recevez |
+    |-----------|-----|------------|
+    | Stripe | 3,20 $ | 96,80 $ |
+    | PayPal Standard | 3,48 $ | 96,52 $ |
+    | PayPal Checkout | 3,98 $ | 96,02 $ |
+
+    Sur 100 $, Stripe économise 0,28 à 0,78 $ par transaction. À 1 000 transactions
+    par mois, cela fait 280 à 780 $ par mois, qui s'accumulent vite à grande
+    échelle.
+
+    ## PayPal et les abonnements
+
+    Les accords de facturation PayPal permettent des prélèvements récurrents sans
+    que le client valide chaque paiement. Mais la gestion des abonnements
+    (prorata, montées en gamme, relances) est plus limitée qu'avec Stripe
+    Billing. Pour un pur SaaS, on préfère en général l'outillage développeur et la
+    fiabilité des webhooks de Stripe.
+
+    ## L'avantage transfrontalier de PayPal
+
+    PayPal dispose d'une acquisition locale dans plus de 40 pays et gère nativement
+    le règlement multidevise. Si une part importante de vos clients est à
+    l'étranger, la conversion de PayPal peut rivaliser avec les frais de cartes
+    internationales de Stripe (+1,5 % pour les cartes non américaines).
+
+    Utilisez le [comparateur de frais de paiement](/tools/payment-fee-comparison/)
+    avec votre montant moyen de transaction pour voir l'écart exact en dollars dans
+    votre cas.
+"stripe-vs-paypal-for-subscriptions":
+  "title": "Stripe ou PayPal pour les abonnements : lequel coûte le moins ?"
+  "description": "Les frais de Stripe et PayPal comparés pour la facturation d'abonnements, avec des exemples mensuels et annuels et un calcul du point d'équilibre."
+  "body": |
+    Pour un modèle d'abonnement, le choix entre Stripe et PayPal se joue sur les
+    frais, la fiabilité et la richesse fonctionnelle. Voici la comparaison
+    complète.
+
+    ## Les frais sur un abonnement mensuel
+
+    Les deux prestataires prélèvent leurs frais standards à chaque renouvellement :
+
+    | Prestataire | Forfait mensuel à 49 $ | Forfait annuel à 490 $ |
+    |-----------|-----------------|-----------------|
+    | Stripe | 1,72 $/renouvellement | 14,51 $ une fois |
+    | PayPal Standard | 1,96 $/renouvellement | 15,11 $ une fois |
+
+    Sur un forfait à 49 $/mois, Stripe économise **2,88 $ par abonné et par an**
+    par rapport à PayPal Standard. À 1 000 abonnés, cela fait **2 880 $ par an**,
+    rien qu'avec l'écart de taux.
+
+    ## Fonctions d'abonnement : Stripe l'emporte
+
+    Stripe Billing est conçu pour le SaaS : prorata, facturation à l'usage,
+    périodes d'essai, mise en pause des abonnements et relances automatiques des
+    paiements échoués. Les API d'abonnement de PayPal fonctionnent, mais n'ont ni
+    la même profondeur ni la même fiabilité.
+
+    Le taux de rétrofacturation de PayPal sur les abonnements numériques est aussi
+    plus élevé que celui de Stripe, un point critique car trop de
+    rétrofacturations peuvent geler votre compte.
+
+    ## Utilisez notre comparateur
+
+    Saisissez le prix de votre forfait mensuel dans le [comparateur de frais de paiement](/tools/payment-fee-comparison/)
+    pour voir l'économie mensuelle exacte d'un changement de prestataire pour votre
+    montant d'abonnement.
+"stripe-vs-shopify-payments-fees":
+  "title": "Stripe ou Shopify Payments : quand Shopify Payments est vraiment moins cher"
+  "description": "Shopify Payments peut coûter moins cher que Stripe pour une boutique en ligne. Ce guide donne les seuils de volume exacts et quand chaque prestataire l'emporte."
+  "body": |
+    Shopify Payments et Stripe se ressemblent en surface (les deux reposent sur
+    l'infrastructure de Stripe), mais leurs grilles tarifaires diffèrent nettement
+    pour les marchands Shopify.
+
+    ## La différence clé : la surtaxe de passerelle Shopify
+
+    Si vous utilisez Stripe directement sur Shopify (et non Shopify Payments),
+    Shopify facture des **frais de transaction supplémentaires** en plus de ceux
+    de Stripe :
+    - Forfait Basic : +2,0 %
+    - Forfait Shopify : +1,0 %
+    - Forfait Advanced : +0,5 %
+
+    Stripe devient ainsi **nettement plus cher** que Shopify Payments pour les
+    marchands Shopify.
+
+    ## Comparaison des taux : Shopify Payments ou Stripe sur Shopify
+
+    Pour une boutique Shopify Basic (39 $/mois) à 10 000 $ de volume mensuel :
+
+    | Option | Frais de traitement | Frais de passerelle | Total mensuel |
+    |--------|---------------|-------------|---------------|
+    | Stripe sur Shopify | 320 $ | +200 $ (2 %) | 520 $ |
+    | Shopify Payments Basic | 225 $ | 0 $ | 225 $ |
+
+    Shopify Payments économise **295 $ par mois** à 10 k$ de volume, ce qui couvre
+    largement le forfait à 39 $/mois.
+
+    ## Quand Stripe hors Shopify est préférable
+
+    Si vous **ne vendez pas sur Shopify**, Stripe est le meilleur choix :
+    - De meilleures API pour un tunnel de paiement sur mesure
+    - Une facturation d'abonnements supérieure
+    - Une meilleure couverture internationale
+    - Aucune dépendance à une plateforme
+
+    Comparez les frais exacts pour vos montants de transaction avec notre
+    [comparateur de frais de paiement](/tools/payment-fee-comparison/).
+"paypal-fee-on-100-dollars":
+  "title": "Combien PayPal prend-il sur une transaction de 100 $ ?"
+  "description": "Les frais PayPal exacts sur un paiement de 100 $ : Standard, Checkout et Biens et services, avec la comparaison Stripe."
+  "body": |
+    Sur un **paiement de 100 $** via PayPal Standard (carte), les frais sont de **3,49 $** (3,49 %) :
+    - 2,99 % de 100 $ = 2,99 $
+    - Part fixe = 0,49 $ (en USD, national)
+    - **Total des frais = 3,48 $ | Vous recevez = 96,52 $**
+
+    Avec PayPal Checkout (le parcours plus récent) : **3,98 $ de frais | 96,02 $ net**
+
+    Avec PayPal Biens et services (« Entre proches » est réservé à un usage
+    personnel : l'utiliser pour une activité enfreint les conditions de PayPal) :
+    **3,48 $ de frais**.
+
+    ## 100 $ comparés : PayPal, Stripe et Square
+
+    | Prestataire | Frais sur 100 $ | Net reçu |
+    |-----------|---------|-------------|
+    | PayPal Standard | 3,49 $ | 96,52 $ |
+    | PayPal Checkout | 3,98 $ | 96,02 $ |
+    | Stripe (national) | 3,20 $ | 96,80 $ |
+    | Square (en ligne) | 3,20 $ | 96,80 $ |
+
+    Stripe et Square coûtent **0,29 à 0,78 $ de moins** par transaction de 100 $.
+    À 100 transactions par mois, changer fait économiser 29 à 78 $ par mois. À
+    1 M$ de volume annuel, l'écart atteint 2 900 à 7 800 $ par an.
+
+    ## Pour recevoir exactement 100 $ net via PayPal
+    Facturez **103,59 $** pour recevoir exactement 100 $ après les frais PayPal Standard :
+    (100 $ + 0,49 $) / (1 − 0,0299) = 103,59 $.
+"paypal-fee-on-1000-dollars":
+  "title": "Combien PayPal prend-il sur une transaction de 1 000 $ ?"
+  "description": "Les frais PayPal exacts sur un paiement de 1 000 $ et à partir de quand s'appliquent les remises sur volume."
+  "body": |
+    Sur un **paiement de 1 000 $** via PayPal Standard, les frais sont de **30,49 $** (3,05 %) :
+    - 2,99 % de 1 000 $ = 29,90 $
+    - Part fixe = 0,49 $
+    - **Total des frais = 30,39 $ | Vous recevez = 969,61 $**
+
+    Avec PayPal Checkout : **35,39 $ de frais | 964,61 $ net**
+
+    ## À partir de quel volume PayPal baisse-t-il ses tarifs ?
+
+    Le programme **tarif marchand** de PayPal réduit les frais selon le volume de ventes mensuel :
+    - 0 à 3 000 $/mois : 2,99 % + 0,49 $ (standard)
+    - 3 001 à 10 000 $/mois : 2,89 % + 0,49 $
+    - 10 001 à 100 000 $/mois : 2,79 % + 0,49 $
+    - Plus de 100 001 $/mois : contactez PayPal pour un tarif sur mesure
+
+    Pour une transaction de 1 000 $ avec 50 k$ de volume mensuel (2,79 % + 0,49 $) :
+    frais = **28,39 $ | net = 971,61 $**, soit environ 2 $ d'économie par transaction
+    par rapport au tarif standard.
+
+    ## Le virement ACH, alternative pour 1 000 $
+    Pour des factures B2B de 1 000 $, un virement ACH coûte 0 $ (ou un forfait de 1 à
+    5 $ chez certains prestataires), soit 30 fois moins que PayPal. Si votre acheteur
+    est une entreprise, proposer l'ACH à côté de PayPal avec « 3 % de supplément pour
+    PayPal » est de plus en plus courant et conforme dans la plupart des États
+    américains.
+"paypal-fees-australia":
+  "title": "Frais PayPal en Australie : tarifs en AUD et comparaison avec Stripe"
+  "description": "Les frais PayPal pour les entreprises australiennes : tarifs en AUD, exemples chiffrés et comparaison avec Stripe."
+  "body": |
+    Les marchands PayPal australiens paient **2,6 % + 0,30 A$** par transaction
+    nationale. Pour PayPal Checkout, le taux est de **3,49 % + 0,49 A$**. Les
+    transactions transfrontalières (cartes émises hors d'Australie) ajoutent 1,5 %.
+
+    ## Exemples de frais PayPal en Australie (AUD)
+
+    | Montant | PayPal Standard | PayPal Checkout | Stripe (national AU) |
+    |--------|----------------|----------------|---------------------|
+    | 25 A$  | 0,95 A$ (3,8 %) | 1,36 A$ (5,4 %) | 0,74 A$ (2,96 %) |
+    | 100 A$ | 2,90 A$ (2,9 %) | 3,98 A$ (4,0 %) | 2,05 A$ (2,05 %) |
+    | 500 A$ | 13,30 A$ (2,66 %) | 17,94 A$ (3,6 %) | 9,05 A$ (1,81 %) |
+
+    ## BPAY et virement bancaire comme alternatives
+    Pour les factures B2B en Australie, BPAY (virement via BSB + numéro de compte)
+    est pratiquement gratuit pour le marchand. Pour les grosses factures (plus de
+    2 000 A$), proposer le virement bancaire à côté de PayPal et de la carte peut
+    économiser 2 à 3 % par transaction. Utilisez le calculateur de facture pour
+    ajouter une ligne « remise pour virement bancaire » en guise d'incitation.
+"paypal-fees-canada":
+  "title": "Frais PayPal au Canada : tarifs en CAD et comparaison avec Stripe"
+  "description": "Les frais PayPal pour les entreprises canadiennes : tarifs en CAD, frais transfrontaliers, et quand Stripe coûte moins cher."
+  "body": |
+    Les marchands PayPal canadiens paient **2,99 % + 0,49 C$** pour les
+    transactions PayPal standards. Pour PayPal Checkout (le parcours de marque plus
+    récent), le taux est de **3,49 % + 0,49 C$**. Les transactions
+    transfrontalières ajoutent 1,5 %, et la conversion de devise ajoute un écart de
+    3 à 4 % sur le taux de change.
+
+    ## Exemples de frais PayPal au Canada (CAD)
+
+    | Montant | PayPal Standard | PayPal Checkout | Stripe (national CA) |
+    |--------|----------------|----------------|---------------------|
+    | 25 C$  | 1,24 C$ (5,0 %) | 1,36 C$ (5,4 %) | 1,03 C$ (4,1 %) |
+    | 100 C$ | 3,48 C$ (3,5 %) | 3,98 C$ (4,0 %) | 3,20 C$ (3,2 %) |
+    | 500 C$ | 15,44 C$ (3,1 %) | 17,94 C$ (3,6 %) | 14,80 C$ (3,0 %) |
+
+    ## TPS/TVH sur les frais PayPal
+    PayPal applique la TPS ou la TVH aux frais de traitement des entreprises
+    canadiennes selon la province d'immatriculation. Pour une entreprise inscrite,
+    elle est en général récupérable sous forme de crédit de taxe sur les intrants.
+    PayPal émet un relevé de frais chaque mois.
+
+    ## PayPal ou Stripe pour une entreprise canadienne
+    Stripe est moins cher pour le traitement carte standard (2,9 % + 0,30 C$ contre
+    2,99 % + 0,49 C$ chez PayPal). L'écart grossit avec le volume : à 10 000 C$ par
+    mois, Stripe économise environ 24 C$ par mois par rapport à PayPal Standard.
+    Stripe offre aussi une meilleure gestion des abonnements, des webhooks plus
+    fiables et de meilleurs outils pour les développeurs.
+"paypal-fees-uk":
+  "title": "Frais PayPal au Royaume-Uni : tarifs, exemples et comparaison avec Stripe"
+  "description": "Les frais PayPal exacts pour les entreprises britanniques : tarifs nationaux et internationaux, exemples chiffrés et comparaison avec Stripe."
+  "body": |
+    PayPal facture aux entreprises britanniques **1,2 % + 30p** pour les paiements
+    par carte de débit britannique, **2,99 % + 30p** pour les paiements par carte
+    standard (Visa/Mastercard) et **3,49 % + 49p** pour PayPal Checkout. Les
+    transactions internationales supportent en plus des frais transfrontaliers de
+    1,5 % et un écart de conversion de devise de 3 à 4 %.
+
+    ## Exemples de frais PayPal au Royaume-Uni (GBP)
+
+    | Montant | PayPal Standard | PayPal Checkout | Stripe (national UK) |
+    |--------|----------------|----------------|---------------------|
+    | 10 £ | 0,60 £ (6,0 %) | 0,84 £ (8,4 %) | 0,35 £ (3,5 %) |
+    | 50 £ | 1,80 £ (3,6 %) | 2,24 £ (4,5 %) | 0,95 £ (1,9 %) |
+    | 100 £ | 3,29 £ (3,3 %) | 3,98 £ (4,0 %) | 1,70 £ (1,7 %) |
+    | 500 £ | 15,30 £ (3,1 %) | 17,94 £ (3,6 %) | 7,70 £ (1,54 %) |
+
+    ## Quand PayPal vaut ses frais plus élevés
+
+    Le principal atout de PayPal pour une entreprise britannique est la **confiance
+    des acheteurs et le taux de conversion**. Des études montrent que 56 % des
+    acheteurs britanniques font davantage confiance à PayPal qu'à la saisie de leur
+    carte sur un site inconnu. Pour une boutique au trafic froid (faible notoriété),
+    le gain de conversion apporté par PayPal peut compenser le surcoût.
+
+    **Règle empirique** : si votre panier moyen est inférieur à 30 £ et que vous
+    envoyez du trafic depuis les réseaux sociaux vers une marque inconnue, le gain
+    de conversion de PayPal justifie probablement son coût. Pour un SaaS par
+    abonnement ou du B2B à panier élevé, Stripe est presque toujours moins cher et
+    meilleur.
+"shopify-basic-vs-shopify-plan-fees":
+  "title": "Shopify Basic ou forfait Shopify : écart de frais et quand passer au supérieur"
+  "description": "Les frais de Shopify Basic (39 $/mois) et Shopify Standard (105 $/mois) comparés : à partir de quand le changement de forfait se rembourse."
+  "body": |
+    Shopify propose trois forfaits principaux : **Basic** (39 $/mois), **Shopify**
+    (105 $/mois) et **Advanced** (399 $/mois). Chaque palier réduit les frais de
+    transaction et les taux carte.
+
+    ## Tableau comparatif des frais
+
+    | | Basic (39 $/mois) | Shopify (105 $/mois) | Advanced (399 $/mois) |
+    |-|---------------|-----------------|-------------------|
+    | **Taux Shopify Payments** | 2,0 % + 25¢ | 1,7 % + 25¢ | 1,5 % + 25¢ |
+    | **Frais de passerelle tierce** | 2,0 % | 1,0 % | 0,5 % |
+    | **Taux Amex / cartes internationales** | 3,5 % | 3,5 % | 3,5 % |
+
+    ## Quand passer de Basic à Shopify est-il rentable ?
+
+    Le changement coûte **66 $ de plus par mois** (105 $ − 39 $). La baisse de
+    frais est de 0,3 point sur les transactions Shopify Payments.
+
+    **Formule du point d'équilibre** : le volume d'affaires mensuel pour lequel
+    0,3 % d'économie = 66 $ par mois, soit **22 000 $ de GMV mensuel** (avec
+    Shopify Payments).
+
+    Si votre boutique dépasse 22 000 $ par mois via Shopify Payments, passer au
+    forfait Shopify vous fait gagner de l'argent net.
+
+    ## Quand passer de Shopify à Advanced est-il rentable ?
+
+    Surcoût : **294 $ par mois**. Baisse de frais : 0,2 point sur Shopify Payments.
+    Point d'équilibre : **147 000 $ de GMV mensuel**
+
+    La plupart des boutiques passent à Advanced pour les rapports personnalisés et
+    des frais de passerelle tierce plus bas (0,5 % au lieu de 1,0 %), pas pour
+    l'écart de taux carte.
+"shopify-fees-vs-woocommerce":
+  "title": "Frais Shopify ou WooCommerce : comparaison du coût total"
+  "description": "Le coût complet de Shopify et de WooCommerce comparé : abonnement, frais de transaction, hébergement et GMV d'équilibre."
+  "body": |
+    Shopify et WooCommerce ont des structures de coûts fondamentalement
+    différentes. Shopify facture un abonnement mensuel prévisible ; WooCommerce ne
+    coûte rien en plateforme mais demande un hébergement et davantage de
+    maintenance.
+
+    ## Comparaison des coûts mensuels
+
+    | Poste de coût | Shopify Basic | WooCommerce |
+    |----------------|--------------|-------------|
+    | Abonnement plateforme | 39 $/mois | 0 $ |
+    | Hébergement | inclus | 10–25 $/mois |
+    | Frais de transaction (Stripe) | 2,0 % (hors SP) ou 0 % (SP) | 0 % |
+    | Traitement carte (Stripe) | 2,0 % + 25¢ (SP) | 2,9 % + 30¢ |
+    | Nom de domaine | ~2 $/mois | ~2 $/mois |
+    | Maintenance / extensions | 0 $ | 10–50 $/mois |
+
+    ## À partir de quel GMV WooCommerce devient-il moins cher ?
+
+    Avec Shopify Payments (sans frais de transaction), à 22 k$ de GMV mensuel sur Basic :
+    - Shopify : 39 $ + (22 000 $ × 0,02) = 39 $ + 440 $ = **479 $/mois**
+    - WooCommerce + Stripe : 20 $ + (22 000 $ × 0,029) = 20 $ + 638 $ = **658 $/mois**
+
+    À ce volume, Shopify Basic avec Shopify Payments est en fait **moins cher** que
+    WooCommerce + Stripe, car Shopify Payments (2,0 % + 25¢) coûte moins que le
+    tarif standard de Stripe (2,9 % + 30¢).
+
+    WooCommerce l'emporte sur :
+    - **La flexibilité** : personnalisation illimitée, hébergement au choix, code entièrement à vous
+    - **Les très petits volumes** : moins de 5 k$ par mois, là où l'abonnement pèse le plus
+    - **L'absence de frais de transaction quel que soit le prestataire** (contrairement aux 2 % de Shopify pour les passerelles tierces)
+
+    Utilisez le calculateur de frais Shopify ci-dessus pour modéliser votre forfait
+    et votre volume.
+"shopify-payments-vs-stripe":
+  "title": "Shopify Payments ou Stripe : lequel est le moins cher, et quand ?"
+  "description": "Comparaison détaillée des frais entre Shopify Payments et une intégration Stripe séparée, avec le calcul du GMV d'équilibre."
+  "body": |
+    Sur Shopify, vous avez deux grandes options pour encaisser par carte :
+    **Shopify Payments** (intégré, supprime les frais de transaction) ou **Stripe
+    via une passerelle tierce** (tarifs Stripe standards, plus 0,5 à 2 % de frais
+    de transaction Shopify).
+
+    ## Comparaison des frais : Shopify Payments ou Stripe sur Shopify
+
+    | Forfait | Shopify Payments | Stripe + frais Shopify | Écart |
+    |------|-----------------|---------------------|-----------|
+    | Basic | 2,0 % + 25¢ | 2,9 % + 30¢ + 2,0 % = 4,9 % + 30¢ | +2,9 % |
+    | Shopify | 1,7 % + 25¢ | 2,9 % + 30¢ + 1,0 % = 3,9 % + 30¢ | +2,2 % |
+    | Advanced | 1,5 % + 25¢ | 2,9 % + 30¢ + 0,5 % = 3,4 % + 30¢ | +1,9 % |
+
+    **Shopify Payments est presque toujours moins cher** pour les boutiques qui
+    encaissent surtout des cartes Visa/Mastercard américaines. Les seuls frais de
+    transaction Shopify (2 % sur Basic) pénalisent lourdement l'usage direct de
+    Stripe.
+
+    ## Quand Stripe hors Shopify a du sens
+
+    - Vous quittez Shopify et voulez conserver vos données clients Stripe
+    - Vous avez besoin de fonctions propres à Stripe (Radar, Connect, Issuing) absentes de Shopify Payments
+    - Vous vendez dans un pays où Shopify Payments n'est pas disponible
+    - Vous avez des revenus d'abonnement que Shopify Payments gère moins bien que Stripe Billing
+
+    Pour la plupart des boutiques Shopify : **utilisez Shopify Payments**. La
+    pénalité liée aux frais de transaction est trop lourde, sauf dans les cas
+    ci-dessus.
+"stripe-fee-on-10-dollars":
+  "title": "Combien Stripe prend-il sur un paiement de 10 $ ?"
+  "description": "Les frais Stripe exacts sur une transaction de 10 $, carte nationale et internationale."
+  "body": |
+    Sur un **paiement de 10 $** par carte américaine, Stripe prend **0,59 $** (taux effectif de 5,9 %) :
+    - 2,9 % de 10 $ = 0,29 $
+    - Part fixe = 0,30 $
+    - **Total des frais = 0,59 $ | Vous recevez = 9,41 $**
+
+    Avec une carte internationale (4,4 % + 0,30 $) : **0,74 $ de frais | 9,26 $ net**.
+
+    ## Pourquoi les petits paiements ont un taux effectif élevé
+    La part fixe de 0,30 $ pèse de façon disproportionnée sur les petites
+    transactions. À 10 $, elle représente déjà 3 % avant même le pourcentage. C'est
+    pourquoi Stripe propose un **tarif micropaiement (5 % + 0,05 $)**, réservé aux
+    entreprises éligibles qui traitent surtout des transactions de moins de 10 $.
+    À 10 $, ce tarif donne : 5 % × 10 $ + 0,05 $ = **0,55 $**, un peu moins que le
+    tarif standard.
+
+    ## Pour recevoir exactement 10 $ net
+    Pour recevoir exactement 10 $ d'une carte nationale, il faut facturer **10,62 $**
+    (la majoration : (10 $ + 0,30 $) / (1 − 0,029) = 10,617 $).
+
+    Utilisez le calculateur ci-dessus en activant « facturer plus pour recevoir exactement ce montant ».
+"stripe-fee-on-100-dollars":
+  "title": "Combien Stripe prend-il sur un paiement de 100 $ ?"
+  "description": "Les frais Stripe exacts sur une transaction de 100 $ : carte nationale (2,9 % + 0,30 $) et internationale (4,4 % + 0,30 $)."
+  "body": |
+    Sur un **paiement de 100 $** par carte américaine, Stripe prend **3,20 $** (taux effectif de 3,2 %) :
+    - 2,9 % de 100 $ = 2,90 $
+    - Part fixe = 0,30 $
+    - **Total des frais = 3,20 $ | Vous recevez = 96,80 $**
+
+    Avec une carte internationale (4,4 % + 0,30 $) : **4,70 $ de frais | 95,30 $ net**.
+
+    ## Cas courants autour de 100 $
+
+    | Type d'offre | Montant mensuel | Frais Stripe | Net par abonné |
+    |-----------|---------------|-----------|-------------------|
+    | SaaS mensuel | 99 $ | 3,17 $ | 95,83 $ |
+    | SaaS mensuel | 100 $ | 3,20 $ | 96,80 $ |
+    | E-commerce | 100 $ | 3,20 $ | 96,80 $ |
+
+    ## Pour recevoir exactement 100 $ net
+    Facturez **103,09 $** pour recevoir exactement 100 $ après les frais Stripe :
+    (100 $ + 0,30 $) / (1 − 0,029) = 103,09 $.
+
+    Utile si vous voulez fixer votre prix à « 100 $ pour moi » plutôt qu'à « 100 $ pour le client ».
+"stripe-fee-on-1000-dollars":
+  "title": "Combien Stripe prend-il sur un paiement de 1 000 $ ?"
+  "description": "Les frais Stripe exacts sur une transaction de 1 000 $, et à partir de quand s'appliquent les remises sur volume."
+  "body": |
+    Sur un **paiement de 1 000 $** par carte américaine, Stripe prend **29,30 $** (taux effectif de 2,93 %) :
+    - 2,9 % de 1 000 $ = 29,00 $
+    - Part fixe = 0,30 $
+    - **Total des frais = 29,30 $ | Vous recevez = 970,70 $**
+
+    Avec une carte internationale : **44,30 $ de frais | 955,70 $ net**.
+
+    ## À partir de quel volume obtient-on un tarif sur mesure ?
+
+    Stripe négocie des tarifs sur mesure au-delà de **80 000 $ de volume mensuel**.
+    Ils vont en général de 2,2 à 2,5 % + 0,10 à 0,20 $, selon le mix de transactions
+    et le profil de risque. À 80 k$ par mois avec un tarif négocié de 2,4 % + 0,15 $,
+    les frais sur 1 000 $ tombent à **24,15 $**, soit 5,15 $ d'économie par
+    transaction par rapport au tarif standard.
+
+    ## 1 000 $, le seuil de l'ACH
+
+    Stripe accepte aussi les virements ACH à **0,8 % (plafonné à 5 $)**. Pour un
+    virement de 1 000 $, l'ACH coûte **5,00 $**, soit 83 % de moins qu'une carte.
+    Pour les factures B2B de plus de 500 $, proposer l'ACH à côté de la carte peut
+    réduire fortement les frais. Attention : l'ACH met 2 à 5 jours ouvrés à être
+    réglé, contre une autorisation carte immédiate.
+"stripe-fee-per-10k-revenue":
+  "title": "Combien Stripe prend-il sur 10 000 $ de chiffre d'affaires ?"
+  "description": "Les frais Stripe exacts sur 10 000 $ de chiffre d'affaires, selon la taille des transactions et le type de carte."
+  "body": |
+    Les frais Stripe sur 10 000 $ de chiffre d'affaires dépendent entièrement de la
+    façon dont ces 10 000 $ se répartissent entre les transactions, car la **part
+    fixe de 0,30 $ par transaction** pèse bien plus sur les petits paiements que
+    sur les gros.
+
+    ## Détail des frais selon la taille des transactions
+
+    Si vos 10 000 $ viennent d'une seule transaction :
+
+    | Indicateur | Valeur |
+    |--------|-------|
+    | Chiffre d'affaires brut | 10 000 $ |
+    | Frais Stripe (2,9 % + 0,30 $) | 290,30 $ |
+    | Net versé | 9 709,70 $ |
+    | Taux effectif | 2,903 % |
+
+    Si vos 10 000 $ viennent de 100 transactions de 100 $ :
+
+    | Indicateur | Valeur |
+    |--------|-------|
+    | Chiffre d'affaires brut | 10 000 $ |
+    | Frais Stripe (2,9 % + 0,30 $ × 100) | 320,00 $ |
+    | Net versé | 9 680,00 $ |
+    | Taux effectif | 3,20 % |
+
+    Si vos 10 000 $ viennent de 1 000 transactions de 10 $ :
+
+    | Indicateur | Valeur |
+    |--------|-------|
+    | Chiffre d'affaires brut | 10 000 $ |
+    | Frais Stripe (2,9 % + 0,30 $ × 1 000) | 590,00 $ |
+    | Net versé | 9 410,00 $ |
+    | Taux effectif | 5,90 % |
+
+    ## À retenir : la part fixe de 0,30 $ est régressive
+
+    Sur une transaction de 10 $, 0,30 $ représente à lui seul 3 % : le taux effectif
+    de Stripe atteint donc 5,9 % avec le pourcentage. Sur une transaction de
+    1 000 $, 0,30 $ ne pèse que 0,03 %.
+
+    Si votre panier moyen est faible (moins de 20 $), envisagez :
+    - De regrouper les achats (par exemple des recharges de crédits plutôt que des achats à l'unité)
+    - D'utiliser Link, la fonction de Stripe qui peut réduire les frais de paiement
+      à distance pour les clients récurrents
+    - D'étudier Paddle ou Lemon Squeezy, dont les tarifs tout compris peuvent revenir
+      moins cher pour les modèles de micro-transactions
+
+    Utilisez le calculateur ci-dessus avec votre montant de transaction habituel pour
+    voir les frais exacts et le net versé.
+"stripe-fees-for-subscriptions":
+  "title": "Les frais Stripe sur les abonnements récurrents"
+  "description": "Comment fonctionnent les frais Stripe sur les abonnements mensuels et annuels, et comment calculer votre net par cycle de facturation."
+  "body": |
+    Quand vous gérez un modèle d'abonnement sur Stripe, vous payez les mêmes frais
+    de **2,9 % + 0,30 $** sur chaque prélèvement récurrent réussi, comme pour un
+    paiement ponctuel. Mais quelques subtilités propres aux abonnements méritent
+    d'être comprises avant de fixer vos prix.
+
+    ## Payez-vous des frais à chaque prélèvement ?
+
+    Oui. Chaque renouvellement réussi déclenche des frais de transaction distincts.
+    Si un client paie 99 $ par mois sur un forfait mensuel, Stripe prend 3,17 $ à
+    chaque renouvellement (2,9 % × 99 $ + 0,30 $) et vous laisse 95,83 $. Sur
+    12 mois, un seul abonné vous coûte 38,04 $ de frais pour 1 188 $ de chiffre
+    d'affaires brut.
+
+    Sur un forfait annuel à 990 $ (facturé une fois), Stripe prélève ses frais une
+    seule fois : 29,01 $, et vous laisse 960,99 $. Le net est à peu près équivalent,
+    mais avec une seule retenue de frais au lieu de douze.
+
+    ## Facturation annuelle ou mensuelle : le calcul des frais
+
+    Pour un forfait à 99 $/mois :
+
+    | Facturation | Brut annuel | Frais annuels | Net annuel |
+    |---------|-------------|------------|-----------|
+    | Mensuelle | 1 188 $ | 38,04 $ | 1 149,96 $ |
+    | Annuelle (990 $) | 990 $ | 29,01 $ | 960,99 $ |
+
+    La facturation mensuelle génère 189 $ de chiffre d'affaires brut de plus par an
+    et, même après les frais supplémentaires, rapporte 188,97 $ de plus par abonné.
+    C'est pourquoi beaucoup de SaaS proposent une remise annuelle de 15 à 20 % :
+    l'intérêt pour l'entreprise vient de la trésorerie, pas du net versé.
+
+    ## Relances et paiements échoués
+
+    Quand un renouvellement échoue (fonds insuffisants, carte expirée), Stripe peut
+    retenter automatiquement le prélèvement selon un calendrier configurable. La
+    tentative échouée n'est pas facturée, mais vous ne touchez pas le revenu. Des
+    outils tiers comme Profitwell Retain améliorent de 40 à 60 % le taux de
+    récupération des paiements échoués.
+
+    ## Abonnés internationaux
+
+    Les abonnés qui paient avec une carte émise hors des États-Unis entraînent des
+    **frais transfrontaliers de 1,5 %** supplémentaires (soit 4,4 % + 0,30 $ au
+    total). Si une part importante de vos abonnés est à l'étranger, modélisez votre
+    taux de frais moyen en conséquence avec le calculateur ci-dessous.
+
+    ## Et les remboursements ?
+
+    Si vous remboursez un abonné, Stripe rend la part en pourcentage (2,9 %) mais
+    pas les 0,30 $ fixes. Sur un remboursement complet de 99 $, vous perdez donc
+    0,30 $ net.
+"stripe-fees-france":
+  "title": "Frais Stripe en France : tarifs en euros et exemples de versements"
+  "description": "Les frais Stripe pour les entreprises françaises : 1,5 % + 0,25 € pour les cartes européennes, et les moyens de paiement propres à la France."
+  "body": |
+    Les entreprises françaises sur Stripe paient **1,5 % + 0,25 €** pour les cartes
+    émises dans l'EEE et **2,5 % + 0,25 €** pour les cartes hors EEE (Royaume-Uni,
+    États-Unis, international), comme dans les autres pays de l'UE. La France se
+    distingue par la Carte Bancaire (CB), le réseau national utilisé par la plupart
+    des consommateurs français, que Stripe prend en charge avec la même grille.
+
+    ## Les spécificités françaises
+
+    **Carte Bancaire (CB)** : Stripe accepte la CB dans le cadre de son acceptation
+    des cartes européennes. Les frais sont les mêmes que pour Visa/Mastercard, car
+    les cartes CB sont cobrandées. Aucun frais supplémentaire pour la CB.
+
+    **Bancontact** (spécifique à la Belgique, peu utile en France) : sans objet.
+
+    **3D Secure** : la France a l'un des taux d'utilisation du 3DS les plus élevés
+    d'Europe. Stripe gère automatiquement la conformité 3DS, sans frais
+    supplémentaires par transaction.
+
+    ## Exemples de frais Stripe en France (EUR)
+
+    | Montant | Carte EEE | Carte hors EEE |
+    |--------|---------|-------------|
+    | 50 € | 1,00 € (2,0 %) | 1,50 € (3,0 %) |
+    | 150 € | 2,50 € (1,67 %) | 4,00 € (2,67 %) |
+    | 1 000 € | 15,25 € (1,53 %) | 25,25 € (2,53 %) |
+
+    Utilisez le calculateur ci-dessus avec 1,5 % et 0,25 € pour les transactions par carte EEE en France.
+"stripe-fees-germany":
+  "title": "Frais Stripe en Allemagne : tarifs en euros et net versé"
+  "description": "Les frais Stripe pour les entreprises allemandes : 1,5 % + 0,25 € pour les cartes européennes, avec exemples et traitement de la TVA."
+  "body": |
+    Les entreprises allemandes sur Stripe paient **1,5 % + 0,25 €** pour les cartes
+    européennes (Visa et Mastercard émises dans l'EEE). Pour les cartes émises hors
+    EEE (États-Unis, Royaume-Uni, international), le taux passe à **2,5 % + 0,25 €**.
+    Ce sont parmi les tarifs Stripe les plus bas au monde, grâce au plafonnement
+    européen des commissions d'interchange (0,2 à 0,3 % pour les cartes de
+    particuliers).
+
+    ## Exemples de frais Stripe en Allemagne (EUR)
+
+    | Montant | Carte EEE | Carte hors EEE |
+    |--------|---------|-------------|
+    | 25 € | 0,63 € (2,5 %) | 0,88 € (3,5 %) |
+    | 100 € | 1,75 € (1,75 %) | 2,75 € (2,75 %) |
+    | 500 € | 7,75 € (1,55 %) | 12,75 € (2,55 %) |
+
+    ## TVA (Umsatzsteuer) sur les frais Stripe
+    Stripe applique la TVA allemande (19 %) à ses frais pour les entreprises
+    allemandes. Les entreprises assujetties (numéro de TVA intracommunautaire
+    requis) peuvent la récupérer. Stripe émet chaque mois une facture de TVA en
+    euros.
+
+    ## Le prélèvement SEPA comme alternative
+    Pour les clients allemands, le prélèvement SEPA est un moyen de paiement très
+    répandu. Stripe le prend en charge pour seulement 0,8 % (plafonné à 5 €) par
+    transaction, nettement moins cher pour les grosses factures B2B. Pour des
+    abonnements récurrents avec de grands comptes allemands, activer SEPA vaut la
+    peine.
+
+    Utilisez le calculateur ci-dessus avec un taux personnalisé de 1,5 % et 0,25 € pour les transactions par carte EEE.
+"stripe-vs-paypal-fees":
+  "title": "Frais Stripe ou PayPal : la comparaison côte à côte"
+  "description": "Les frais de Stripe et PayPal comparés précisément pour les transactions standards, les abonnements et les paiements internationaux en 2024."
+  "body": |
+    Stripe et PayPal sont les deux prestataires de paiement les plus courants pour
+    les entreprises en ligne. Leurs tarifs standards se ressemblent en surface,
+    mais les détails comptent quand on optimise ses marges.
+
+    ## Frais de transaction standards (États-Unis, cartes nationales)
+
+    | Prestataire | Taux | Part fixe | Frais sur 100 $ | Net sur 100 $ |
+    |-----------|------|-----------|------------|------------|
+    | Stripe | 2,9 % | 0,30 $ | 3,20 $ | **96,80 $** |
+    | PayPal (PayPal Checkout) | 3,49 % | 0,49 $ | 3,98 $ | **96,02 $** |
+    | PayPal (carte avancée) | 2,89 % | 0,49 $ | 3,38 $ | **96,62 $** |
+
+    Sur une transaction type de 100 $, Stripe coûte **0,78 $ de moins** que PayPal
+    Checkout standard. Sur 100 k$ de chiffre d'affaires, l'écart atteint 780 $.
+
+    ## Pour les abonnements et la facturation récurrente
+
+    | Prestataire | Taux abonnement | Remarques |
+    |-----------|------------------|-------|
+    | Stripe Billing | 2,9 % + 0,30 $ | Inclus ; relances avancées disponibles via Stripe Radar |
+    | PayPal Subscriptions | 3,49 % + 0,49 $ | Taux par transaction plus élevé |
+
+    Stripe est systématiquement moins cher pour les abonnements SaaS récurrents.
+
+    ## Frais internationaux et transfrontaliers
+
+    | Prestataire | Frais internationaux | Taux effectif total |
+    |-----------|-----------------|---------------------|
+    | Stripe | +1,5 % | 4,4 % + 0,30 $ |
+    | PayPal | +1,5 % | ~5,0 % + 0,49 $ |
+
+    ## Expérience développeur
+
+    L'API et la documentation de Stripe sont largement considérées comme
+    supérieures pour construire un tunnel de paiement sur mesure. Le principal
+    atout de PayPal est sa notoriété et la familiarité des acheteurs avec « Payer
+    avec PayPal », qui peut améliorer la conversion dans certains contextes B2C.
+
+    **Recommandation :** pour le SaaS, les outils pour développeurs et les produits
+    B2B, Stripe est le meilleur choix en frais, en qualité d'API et en écosystème
+    (Stripe Atlas, Stripe Tax, Stripe Billing). Pour les places de marché ou les
+    produits B2C où la familiarité de PayPal aide la conversion, le surcoût peut
+    valoir la peine.
+
+    Utilisez le calculateur de frais Stripe ci-dessus pour modéliser votre net
+    exact. Pour PayPal, saisissez 3,49 % et 0,49 $ dans le champ de taux
+    personnalisé.
+
+"stripe-fees-australia":
+  "title": "Frais Stripe en Australie : tarifs, exemples et net versé"
+  "description": "Les frais Stripe exacts pour les entreprises en Australie : 1,75 % + 0,30 A$ pour les cartes Visa/Mastercard nationales, avec des exemples chiffrés."
+"stripe-fees-canada":
+  "title": "Frais Stripe au Canada : tarifs, exemples et net versé"
+  "description": "Les frais Stripe exacts pour les entreprises au Canada : 2,9 % + 0,30 C$ pour les cartes Visa/Mastercard nationales, avec des exemples chiffrés."
+"stripe-fees-eu":
+  "title": "Frais Stripe dans l'Union européenne : tarifs, exemples et net versé"
+  "description": "Les frais Stripe exacts pour les entreprises dans l'Union européenne : 1,5 % + 0,25 € pour les cartes émises dans l'EEE, avec des exemples chiffrés."
+"stripe-fees-india":
+  "title": "Frais Stripe en Inde : tarifs, exemples et net versé"
+  "description": "Les frais Stripe exacts pour les entreprises en Inde : 2 % + 0 ₹ pour les cartes indiennes nationales, avec des exemples chiffrés."
+"stripe-fees-uk":
+  "title": "Frais Stripe au Royaume-Uni : tarifs, exemples et net versé"
+  "description": "Les frais Stripe exacts pour les entreprises au Royaume-Uni : 1,5 % + 0,20 £ pour les cartes émises au Royaume-Uni et dans l'EEE, avec des exemples chiffrés."
+
+"fixed-price-vs-time-and-materials-quoting":
+  "title": "Forfait ou régie : comment choisir"
+  "description": "Les compromis entre devis au forfait et facturation en régie pour un freelance, qui porte le risque dans chaque modèle, et comment choisir le bon pour chaque projet."
+  "body": |
+    Les deux grands modèles de tarification freelance placent le risque à des
+    endroits différents. Choisir le mauvais pour un projet donné, c'est soit
+    laisser de l'argent sur la table, soit travailler des heures supplémentaires
+    non payées.
+
+    ## Le compromis de fond
+
+    **Forfait** : vous annoncez un prix unique pour des livrables définis. Si le
+    projet prend plus de temps que prévu, vous absorbez le surplus. S'il en prend
+    moins, vous gardez la différence.
+
+    **Régie (temps passé)** : vous facturez les heures réellement travaillées à
+    votre taux. Le client porte le risque d'un périmètre qui prend plus de temps
+    que prévu ; vous êtes payé pour chaque heure, quel que soit l'écart entre
+    estimation et réalité.
+
+    ## Quand le forfait fonctionne bien
+
+    - Le périmètre est clairement défini et peu susceptible de changer
+    - Vous avez déjà mené des projets similaires et disposez de données fiables pour estimer
+    - Le client veut une certitude budgétaire et accepte de la payer
+    - Vous pouvez intégrer une marge pour imprévus (généralement 20 à 30 %) pour absorber un dépassement raisonnable
+
+    ## Quand la régie est préférable
+
+    - Les besoins évoluent encore ou sont réellement inconnus au départ (phases de
+      cadrage, R&D, nouveaux domaines)
+    - La collaboration est continue, façon abonnement, plutôt qu'un livrable ponctuel
+    - Le client a besoin de souplesse pour changer de cap sans renégocier le
+      contrat à chaque fois
+
+    ## L'approche hybride
+
+    Beaucoup de freelances chiffrent au forfait une phase bien définie (le cadrage
+    ou la construction d'un MVP, par exemple) puis passent en régie pour la suite
+    une fois les besoins stabilisés. Le risque du forfait se limite ainsi à la
+    partie du projet que l'on sait vraiment estimer.
+
+    ## La psychologie du prix compte aussi
+
+    Certains clients préfèrent fermement le forfait quels que soient les
+    compromis, parce qu'il correspond à leur façon de budgéter en interne : une
+    proposition en régie bien argumentée peut perdre face à un concurrent au
+    forfait pour cette seule raison. Tenez compte de la préférence du client, pas
+    seulement du type de projet, pour choisir le modèle à mettre en avant.
+
+    ## Questions fréquentes
+
+    **Puis-je passer d'une régie à un forfait plus tard ?**
+    Oui : une fois que vous connaissez assez bien un client, son périmètre
+    habituel et sa façon de demander des changements, vous pouvez chiffrer les
+    phases suivantes avec bien plus d'assurance qu'au début.
+
+    **Comment gérer la dérive du périmètre sur un projet au forfait ?**
+    Définissez explicitement les livrables dans le contrat et traitez tout ce qui
+    en sort comme un avenant chiffré à part. Convenez de ce processus avant de
+    commencer, pas une fois la dérive installée.
+
+    Utilisez le [calculateur de devis freelance](/tools/freelance-project-estimate/)
+    pour construire un devis au forfait à partir de votre taux horaire, de vos
+    heures estimées et d'une marge pour imprévus.
+"freelance-hourly-rate-calculator-guide":
+  "title": "Fixer son taux horaire freelance : combien facturer en 2024"
+  "description": "Comment calculer un taux horaire freelance durable qui couvre impôts, protection sociale, temps administratif non payé et laisse de la place pour l'épargne, selon le métier et le marché."
+  "body": |
+    L'erreur de tarification freelance la plus courante consiste à partir d'une
+    comparaison avec un salaire. Voici une méthode qui prend en compte tout ce
+    qu'un salaire ne couvre pas.
+
+    ## Le vrai coût du freelance par rapport au salariat
+
+    En freelance, vous ne bénéficiez plus :
+    - Des charges sociales patronales (~8 %)
+    - De l'assurance santé (500 à 1 500 $ par mois)
+    - Des congés payés et jours de maladie (10 à 20 jours par an, soit 4 à 8 % du temps)
+    - De l'abondement retraite 401(k) (3 à 5 % du salaire)
+    - Du bureau et du matériel (variable)
+
+    Ajoutez-les à votre revenu net souhaité pour obtenir le chiffre d'affaires
+    brut nécessaire.
+
+    ## Formule du taux freelance
+
+    **Chiffre d'affaires annuel nécessaire = (revenu net souhaité + impôts + protection sociale + compensation des congés + frais généraux)**
+    **Taux horaire = chiffre d'affaires annuel nécessaire ÷ heures facturables**
+
+    Où heures facturables = heures travaillées × 65–75 % (pour tenir compte de
+    l'administratif, de la prospection et du travail non payé)
+
+    ## Exemple : objectif de 100 k$ net
+
+    | Poste | Montant |
+    |------|--------|
+    | Revenu net souhaité | 100 000 $ |
+    | Cotisations d'indépendant (15,3 %) | 20 000 $ |
+    | Impôt fédéral/État (25 %) | 30 000 $ |
+    | Assurance santé | 12 000 $ |
+    | Congés (3 semaines) | 6 000 $ |
+    | Chiffre d'affaires brut nécessaire | 168 000 $ |
+    | Heures facturables (1 600 h × 70 %) | 1 120 |
+    | **Taux horaire minimum** | **150 $/h** |
+
+    À 150 $ de l'heure et 1 120 heures facturables, vous réalisez 168 k$ de chiffre
+    d'affaires et gardez ~100 k$ net.
+
+    Utilisez le [calculateur de devis freelance](/tools/freelance-project-estimate/)
+    pour construire vos devis à partir de ce taux horaire.
+"how-to-quote-a-freelance-project":
+  "title": "Comment chiffrer un projet freelance : le guide complet"
+  "description": "Un guide pas à pas pour construire un devis freelance qui couvre votre temps, protège votre marge et convainc le client."
+  "body": |
+    Chiffrer précisément un projet freelance est l'une des compétences les plus
+    difficiles à acquérir. Sous-estimez et vous finissez par détester la mission.
+    Surestimez et vous perdez le client. Voici une méthode qui mène à chaque fois à
+    un chiffre défendable et rentable.
+
+    ## Étape 1 : cadrer avant de chiffrer
+
+    N'estimez jamais un temps sans périmètre écrit. Le « site simple » d'un client
+    peut désigner un site statique de 5 pages comme une boutique en ligne de
+    60 pages. Avant d'annoncer le moindre chiffre, notez les livrables, le nombre
+    de tours de révision et ce qui est explicitement hors périmètre.
+
+    ## Étape 2 : estimer les heures, puis multiplier par 1,3 à 1,5
+
+    Mesurez vos heures sur vos projets passés pendant 30 jours. Vous verrez que
+    vous sous-estimez systématiquement de 30 à 50 %. Intégrez cette marge à chaque
+    devis.
+
+    ## Étape 3 : appliquer votre taux
+
+    Votre taux doit couvrir : le revenu net souhaité, les impôts (25 à 35 %), la
+    protection sociale, le temps administratif non payé (20 à 30 % des heures
+    travaillées) et le risque de périodes creuses.
+
+    **Taux freelance minimum = (objectif de revenu annuel + impôts + frais) / heures facturables**
+
+    ## Étape 4 : ajouter des frais de gestion de projet
+
+    Ajoutez 10 à 15 % de gestion de projet en plus du temps de production.
+    Réunions, e-mails, révisions et appels clients sont du vrai travail, même s'ils
+    ressemblent à des frais généraux.
+
+    Utilisez le [calculateur de devis freelance](/tools/freelance-project-estimate/)
+    pour construire votre devis poste par poste.
+"freelance-rate-by-experience":
+  "title": "Taux freelance par niveau d'expérience et par technologie"
+  "description": "Les taux horaires du marché pour les développeurs, designers et consultants freelances, du junior au senior, et comment calculer votre taux minimum viable."
+  "body": |
+    Les taux du marché pour les freelances varient énormément selon la
+    compétence, l'expérience, la technologie et la géographie. Les chiffres
+    ci-dessous proviennent de données agrégées de plateformes freelance,
+    d'enquêtes et de retours directs de praticiens en 2024. Servez-vous-en pour
+    situer votre taux, puis utilisez le calculateur ci-dessus pour trouver le taux
+    minimum qui atteint vos objectifs de revenu.
+
+    ## Taux des développeurs (USD, à distance)
+
+    | Niveau | Dev généraliste | React/Node | Python/ML | Blockchain/Web3 |
+    |-------|------------|-----------|----------|----------------|
+    | Junior (0–2 ans) | 35–60 $ | 45–75 $ | 50–80 $ | 60–100 $ |
+    | Confirmé (2–5 ans) | 60–100 $ | 75–130 $ | 90–150 $ | 100–180 $ |
+    | Senior (5–10 ans) | 100–180 $ | 120–200 $ | 140–220 $ | 180–300 $ |
+    | Principal/Staff | 180–300 $+ | 200–350 $+ | 200–350 $+ | 300–500 $+ |
+
+    ## Taux des designers (USD, à distance)
+
+    | Niveau | Design UI/UX | Marque/Identité | Motion/3D |
+    |-------|-------------|--------------|----------|
+    | Junior | 40–65 $ | 45–70 $ | 50–80 $ |
+    | Confirmé | 70–110 $ | 80–130 $ | 90–150 $ |
+    | Senior | 120–180 $ | 130–200 $ | 150–250 $ |
+
+    ## Taux des consultants / stratégie (USD)
+
+    Les consultants indépendants en stratégie, produit et croissance obtiennent des
+    taux nettement plus élevés en raison de l'impact direct de leur travail sur
+    l'activité :
+
+    | Spécialité | Fourchette horaire |
+    |-----------|------------|
+    | Stratégie produit | 150–350 $ |
+    | Croissance / acquisition payante | 100–250 $ |
+    | Data / analytics | 100–200 $ |
+    | CTO / conseiller technique | 150–400 $ |
+    | DAF à temps partagé | 150–400 $ |
+
+    ## Pourquoi votre taux minimum ne doit pas ancrer votre taux réel
+
+    Le calculateur donne le plancher, le taux en dessous duquel vous perdez de
+    l'argent. Votre taux réel doit refléter les taux du marché ci-dessus, plus la
+    prime liée à votre spécialisation. Si le taux du marché pour vos compétences
+    est bien supérieur à votre minimum calculé, facturez le taux du marché. Le
+    calcul du minimum sert à ne jamais sous-facturer, pas à fixer votre plafond.
+"freelance-rate-vs-salary":
+  "title": "Faut-il passer freelance ? Comparer taux freelance et salaire"
+  "description": "La vraie comparaison entre revenu freelance et salaire, en tenant compte des impôts, de la protection sociale, du temps non facturable et de la stabilité des revenus."
+  "body": |
+    La question « faut-il passer freelance ? » est presque toujours mal posée,
+    sous la forme d'une comparaison entre votre salaire actuel et un taux horaire
+    cible. La vraie comparaison est bien plus nuancée.
+
+    ## Ce que votre employeur paie réellement pour vous
+
+    Un salaire de 100 k$ coûte à l'employeur environ 130 à 145 k$ au total :
+
+    | Poste | Coût |
+    |-----------|------|
+    | Salaire | 100 000 $ |
+    | Charges sociales (part patronale, ~7,65 %) | 7 650 $ |
+    | Assurance santé (part employeur) | 8 000–15 000 $ |
+    | Abondement 401k (3–6 %) | 3 000–6 000 $ |
+    | Matériel, bureaux | 3 000–8 000 $ |
+    | Recrutement, intégration, encadrement | 5 000–15 000 $ |
+    | **Coût total employeur** | **~127–152 k$** |
+
+    En freelance, vous supportez vous-même tous ces coûts. Un chiffre d'affaires
+    freelance de 100 k$, avant de les déduire, vaut nettement moins en revenu net
+    qu'un salaire de 100 k$.
+
+    ## Le multiplicateur du temps non facturable
+
+    Un freelance facture en général 50 à 70 % de ses heures travaillées. Les 30 à
+    50 % restants partent en développement commercial, administratif, facturation
+    et périodes creuses entre deux projets. Si vous travaillez 2 000 heures par an
+    et en facturez 65 %, vous disposez de 1 300 heures facturables pour couvrir
+    l'ensemble de vos coûts annuels.
+
+    Utilisez le calculateur de taux freelance ci-dessus pour faire ces calculs
+    dans votre situation : le bon taux dépend de votre objectif de revenu, de
+    votre taux d'imposition et de votre part de temps facturable.
+
+    ## Quand le freelance est financièrement intéressant
+
+    Le freelance bat le salariat financièrement quand :
+    - Votre taux facturable vaut 2,5 à 3 fois le taux horaire salarié équivalent
+    - Vous tenez plus de 60 % de temps facturable toute l'année
+    - Vous accédez à une assurance santé équivalente à un coût raisonnable
+    - Votre travail mobilise des compétences à forte valeur horaire (prime de spécialisation)
+"how-to-raise-your-freelance-rate-with-existing-clients":
+  "title": "Comment augmenter son taux freelance auprès de clients existants"
+  "description": "Une démarche concrète pour augmenter votre taux auprès de clients avec qui vous travaillez déjà, sans perdre la relation : calendrier, formulation et réponse aux objections."
+  "body": |
+    Augmenter votre taux avec un nouveau client est simple : vous annoncez un prix
+    plus élevé. L'augmenter avec quelqu'un avec qui vous travaillez depuis un an
+    est une autre conversation, que la plupart des freelances repoussent bien
+    trop longtemps.
+
+    ## Pourquoi les freelances augmentent trop peu leurs clients existants
+
+    L'aversion à la perte est plus forte que l'inconfort de sous-facturer : perdre
+    un client connu et fiable semble plus risqué que le coût lent et invisible
+    d'être sous-payé mois après mois. Pourtant, un client satisfait de votre
+    travail au taux actuel restera très probablement après une hausse
+    raisonnable ; la peur de le perdre dépasse généralement le risque réel.
+
+    ## Une démarche simple
+
+    1. **Prévenez 60 à 90 jours à l'avance** : le client a le temps de le budgéter,
+       ce qui supprime totalement l'objection « on me l'impose d'un coup »
+    2. **Appuyez-vous sur la valeur, pas sur le coût de la vie** : « mon taux passe
+       à X » passe mieux que « je dois augmenter car mes coûts ont monté », qui
+       ouvre une négociation sur vos dépenses personnelles plutôt que sur la
+       valeur que vous apportez
+    3. **Annoncez, ne demandez pas la permission** : « Mon taux sera de X à partir
+       du [date] » est un fait sur la façon dont vous gérez votre activité, pas une
+       demande que le client peut refuser
+    4. **Tenez bon** : la plupart des clients qui protestent puis restent au
+       nouveau taux respectent ensuite davantage votre temps et vos délais
+
+    ## De combien augmenter, et à quelle fréquence
+
+    Une hausse de 10 à 20 % une ou deux fois par an se défend et fait rarement
+    partir un client à elle seule. Des hausses plus fortes (30 % et plus) se
+    justifient plus facilement avec une nette augmentation du périmètre, de
+    l'expérience ou des résultats démontrés depuis le dernier ajustement.
+
+    ## Répondre aux objections
+
+    Si un client ne peut pas suivre le nouveau taux, c'est une information utile :
+    il a peut-être atteint le plafond de ce qu'il peut vous payer. C'est le signal
+    qu'il faut investir davantage dans des clients capables d'accompagner la
+    hausse de votre taux, plutôt que de rester sous-payé pour garder toutes vos
+    relations existantes.
+
+    ## Questions fréquentes
+
+    **Faut-il augmenter tous les clients en même temps ?**
+    Pas forcément : échelonnez selon les dates de renouvellement des contrats et
+    testez d'abord la hausse avec votre relation la plus solide pour prendre
+    confiance dans la démarche.
+
+    **Et si un client dit qu'un concurrent est moins cher ?**
+    Demandez ce dont il a précisément besoin à ce prix. Souvent, cela montre que
+    la comparaison ne porte pas sur la même chose, ou cela ouvre une discussion
+    sur un périmètre réduit plutôt que sur la fin de la relation.
+
+    Utilisez le [calculateur de taux freelance](/tools/freelance-rate-calculator/)
+    pour vérifier que votre nouveau taux dépasse toujours votre objectif de revenu
+    minimum après impôts et frais.
+"freelance-invoice-best-practices":
+  "title": "Bonnes pratiques de facturation freelance : les mentions à inclure et comment être payé plus vite"
+  "description": "Ce que doit contenir toute facture freelance (mentions obligatoires, conditions de paiement, pénalités de retard) et les techniques éprouvées pour réduire le délai de paiement."
+  "body": |
+    Une facture bien structurée fait deux choses : elle documente clairement ce
+    que vous avez livré, et elle rend le paiement aussi simple que possible pour
+    votre client.
+
+    ## Mentions obligatoires
+
+    Chaque facture doit comporter :
+    - Le nom et l'adresse de votre entreprise (ou votre nom légal si vous êtes entrepreneur individuel)
+    - Le nom et l'adresse de facturation du client
+    - Un numéro de facture (séquentiel, jamais réutilisé)
+    - La date de facture et la date d'échéance
+    - Des lignes détaillées avec quantité, prix unitaire et total de ligne
+    - Le sous-total, la remise éventuelle, la taxe et le total dû
+    - Les instructions de paiement (coordonnées bancaires, PayPal, lien Stripe)
+    - Les pénalités de retard (« 1,5 % par mois sur les sommes impayées »)
+
+    ## Des conditions de paiement qui réduisent les retards
+
+    Le paiement standard à 30 jours est trop lent pour un freelance. Plus efficace :
+    - **14 jours** pour les clients établis qui paient bien
+    - **50 % à la commande, 50 % à la livraison** pour les nouveaux clients ou les gros projets
+    - **7 jours avec 2 % d'escompte pour paiement anticipé** : les clients qui auraient payé en retard paient en avance
+    - **Prélèvement carte avec nouvelle tentative automatique** (via Stripe) pour les clients au forfait récurrent
+
+    ## Les leviers psychologiques qui marchent
+
+    1. **Utilisez des chiffres ronds** pour votre taux et arrondissez aux 5 $ près :
+       plus simple à traiter pour les services comptables
+    2. **Ajoutez un bouton « Payer maintenant »** qui mène à un lien de paiement :
+       vous supprimez une friction
+    3. **Envoyez la facture dans les 24 heures suivant la livraison** : plus c'est
+       récent, plus le paiement est rapide
+    4. **Relancez 7 jours avant l'échéance** : un rappel aimable, pas une traque
+
+    Utilisez le [calculateur de facture](/tools/invoice-total-calculator/) pour
+    calculer votre total avec remises et taxes correctement appliquées.
+"how-to-calculate-invoice-total":
+  "title": "Comment calculer le total d'une facture avec taxes et remises"
+  "description": "Un guide pas à pas pour calculer correctement le total d'une facture : lignes, remises, taxes et pénalités de retard."
+  "body": |
+    Calculer correctement le total d'une facture évite les litiges, garantit que
+    vous encaissez ce qui vous est dû et garde vos créances clients propres.
+
+    ## Formule du total de facture
+
+    **Sous-total** = somme de toutes les lignes (quantité × prix unitaire)
+    **Après remise** = sous-total × (1 − % de remise)
+    **Taxe** = montant après remise × taux de taxe
+    **Total** = montant après remise + taxe
+
+    ## Remise avant ou après taxe ?
+
+    Appliquez toujours la remise au montant hors taxe. La taxe se calcule sur le
+    prix remisé, pas sur le prix d'origine. Certaines juridictions l'exigent
+    explicitement ; appliquer la taxe avant la remise est incorrect et fait payer
+    trop cher votre client.
+
+    ## Quand ajouter des pénalités de retard
+
+    Indiquez les conditions de paiement sur chaque facture (par exemple « 30 jours,
+    pénalité de 1,5 % par mois »). Pénalité = solde impayé × taux mensuel × mois de
+    retard. Une facture de 5 000 $ en retard de 60 jours à 1,5 % par mois =
+    5 000 $ × 1,5 % × 2 = 150 $ de pénalité.
+
+    ## Bonnes pratiques de numérotation
+
+    Utilisez des numéros séquentiels (INV-001, INV-002…) ou préfixés par l'année
+    (2024-INV-001). Ne réutilisez jamais un numéro : cela sème la confusion en
+    comptabilité et peut attirer l'attention en cas de contrôle fiscal.
+
+    Construisez votre facture avec le [calculateur de facture](/tools/invoice-total-calculator/).
+"contractor-vs-employee-hourly-rate":
+  "title": "Prestataire ou salarié : le vrai taux horaire comparé"
+  "description": "Comment comparer à égalité le taux journalier d'un prestataire et le salaire d'un employé : le détail complet du taux horaire, avantages et impôts compris."
+  "body": |
+    Comparer le taux journalier d'un prestataire à un poste salarié revient à
+    comparer des pommes et des poires, sauf si l'on corrige toutes les différences
+    cachées de rémunération totale.
+
+    ## Ce que les salariés ont et pas les prestataires
+
+    | Avantage | Valeur annuelle (estimation) |
+    |---------|------------------------|
+    | Assurance santé payée par l'employeur | 6 000–14 000 $ |
+    | Abondement 401(k) de l'employeur (4 %) sur 75 k$ | 3 000 $ |
+    | Congés payés (15 jours) | ~4 300 $ sur 75 k$ |
+    | Charges sociales (part patronale FICA) | 7,65 % du salaire |
+    | Congés maladie, congé parental | 1 000–5 000 $ |
+
+    L'ensemble des avantages ajoute en général **25 à 40 % au salaire de base**.
+
+    ## Convertir un taux journalier en salaire équivalent
+
+    Un prestataire qui facture 220 jours à 500 $ par jour gagne 110 000 $ bruts. Après :
+    - Cotisations d'indépendant : ~15 000 $
+    - Absence d'avantages employeur : −20 000 $ par rapport au salariat
+    - 20 % de marge pour l'administratif et les périodes creuses
+
+    Valeur salariale équivalente : environ **75 000 à 85 000 $**.
+
+    ## La règle empirique
+
+    **Taux horaire du prestataire ≈ taux horaire salarié équivalent × 1,5 à 2**
+
+    Un salarié à 75 k$ coûte ~36 $ de l'heure en salaire. Un prestataire qui fait
+    un travail équivalent doit facturer 55 à 72 $ de l'heure pour être rémunéré
+    autant, une fois tous les impôts et coûts payés.
+
+    Modélisez vos chiffres exacts avec le [calculateur salaire en taux horaire](/tools/salary-to-hourly-calculator/).
+"salary-to-hourly-conversion-guide":
+  "title": "Salaire en taux horaire : comment bien convertir"
+  "description": "Un guide pas à pas pour convertir un salaire annuel en taux horaire : temps partiel, heures supplémentaires et taux horaire effectif après impôt."
+  "body": |
+    Convertir un salaire annuel en taux horaire paraît simple : on divise par
+    2 080 heures (52 semaines × 40 heures). Mais on obtient un chiffre brut qui
+    ignore congés, jours fériés, coût des avantages et charges sociales. Voici le
+    tableau complet.
+
+    ## Formule de base : salaire ÷ 2 080
+
+    Un salaire de 75 000 $ ÷ 2 080 heures travaillées = **36,06 $ de l'heure brut**.
+
+    C'est le taux qu'un employeur utilise pour calculer les heures supplémentaires
+    et celui qui figure sur la plupart des fiches de paie. Mais ce n'est pas ce que
+    vous gagnez réellement par heure travaillée.
+
+    ## Tenir compte des congés payés
+
+    Avec 15 jours de congés + 10 jours fériés fédéraux = 25 jours non travaillés =
+    200 heures. Vous travaillez 2 080 − 200 = 1 880 heures par an. Votre taux
+    horaire effectif : 75 000 $ ÷ 1 880 = **39,89 $ de l'heure**. Vous êtes aussi
+    payé pour le temps où vous ne travaillez pas, mais si vous voulez savoir ce que
+    vous coûtez par heure productive, c'est ce chiffre qu'il faut prendre.
+
+    ## Taux horaire après impôt
+
+    Avec un taux effectif d'impôt fédéral de 22 % et 6,2 % de FICA :
+    - Salaire net : 75 000 $ × (1 − 0,22 − 0,062) = ~53 850 $
+    - Net horaire (÷ 2 080) : **25,89 $ de l'heure net**
+
+    ## Taux freelance et taux salarié
+
+    Un freelance doit ajouter les cotisations d'indépendant (15,3 %), la
+    protection sociale, le temps administratif non payé et le risque de périodes
+    creuses. Un freelance qui vise l'équivalent de 75 k$ doit en général facturer
+    **55 à 70 $ de l'heure** pour égaler la rémunération totale d'un salarié.
+
+    Utilisez le [calculateur salaire en taux horaire](/tools/salary-to-hourly-calculator/)
+    pour modéliser votre situation.
