@@ -2315,3 +2315,380 @@
     erreichen.
 
     Modelliere deine Situation mit dem [Gehalt-in-Stundensatz-Rechner](/tools/salary-to-hourly-calculator/).
+
+"freelance-vs-w2-tax-comparison":
+  "title": "Steuern als Freelancer vs. W-2-Angestellter: die echten Kosten der Selbstständigkeit"
+  "description": "Wie Freelance-Steuern im Vergleich zur W-2-Anstellung ausfallen: die 15,3 % SE Tax erklärt, warum Freelancer 25–30 % zurücklegen müssen und wann es sich lohnt."
+  "body": |
+    Vergleicht man einen Freelance-Auftrag über 100.000 $ mit 100.000 $ Gehalt,
+    hat die Freelance-Option deutlich höhere Steuerkosten, aber auch mehr
+    Einkommen vor Abzügen. Hier ist das Gesamtbild.
+
+    ## Der Kernunterschied: SE Tax
+
+    Ein W-2-Angestellter mit 100.000 $ zahlt:
+    - Social Security (6,2 %) + Medicare (1,45 %) = **7,65 %** vom Gehalt
+    - Der Arbeitgeber zahlt weitere 7,65 % (für den Angestellten unsichtbar)
+
+    Ein Freelancer mit 100.000 $ Nettogewinn zahlt:
+    - Beide Anteile: **15,3 %** SE Tax (15.300 $)
+    - Die Hälfte (7.650 $) ist vom zu versteuernden Einkommen abziehbar
+
+    Der Selbstständige zahlt also ~7.650 $ mehr Sozialabgaben als ein
+    W-2-Angestellter mit gleichem Einkommen.
+
+    ## Der Unterschied bei den Sätzen
+
+    | Einkommen | W-2-Angestellter | Freelancer |
+    |---|---|---|
+    | 60.000 $ | ~9.000 $ Steuern gesamt | ~16.000 $ Steuern gesamt |
+    | 100.000 $ | ~18.000 $ Steuern gesamt | ~28.000 $ Steuern gesamt |
+    | 150.000 $ | ~32.000 $ Steuern gesamt | ~44.000 $ Steuern gesamt |
+
+    *Schätzungen für Alleinstehende, Standardabzug, keine weiteren Einkünfte.*
+
+    ## Warum Freelancer oft trotzdem besser dastehen
+
+    1. **Höhere Bruttosätze**: Auftragnehmer verdienen für gleichwertige Arbeit
+       meist 20–40 % mehr als Angestellte (das Unternehmen spart die
+       Zusatzleistungen).
+    2. **Abzüge**: Betriebsausgaben senken das zu versteuernde Einkommen unter das
+       W-2-Niveau.
+    3. **Altersvorsorge**: SEP-IRA und Solo 401(k) erlauben viel mehr steuerfreie
+       Einzahlungen als die 23.000-$-Grenze des 401(k) für Angestellte.
+    4. **Flexibilität**: Du kannst wählen, wann du Einkommen verbuchst, es in
+       Jahre mit weniger Einkommen verschieben oder Abzüge in starke Jahre
+       vorziehen.
+
+    ## Die Gewinnschwelle
+
+    Bietet ein Arbeitgeber 100.000 $ W-2 gegenüber einem Freelance-Auftrag über 115.000 $:
+    - Zusätzliche SE Tax ≈ 7.650 $
+    - Zusätzliches Einkommen: 15.000 $
+    - Nettovorteil Freelance: ~7.350 $ vor Abzügen
+
+    Rechnet man Abzüge hinzu (Arbeitszimmer, Krankenversicherung, Altersvorsorge),
+    liegt die Freelance-Option mit 115.000 $ meist deutlich vor 100.000 $ Gehalt.
+
+    Berechne deine Freelance-Steuern mit dem [Freelance-Steuerrechner](/tools/freelance-tax-estimator/).
+"quarterly-estimated-tax-dates":
+  "title": "Termine für vierteljährliche Steuervorauszahlungen 2024–2025 (Freelance-Ratgeber)"
+  "description": "Wann sind die vierteljährlichen Steuervorauszahlungen fällig? Genaue IRS-Fristen für 2024 und 2025, Safe-Harbor-Regeln und was passiert, wenn du eine Zahlung versäumst."
+  "body": |
+    Der IRS verlangt von Selbstständigen viermal im Jahr Steuervorauszahlungen.
+    Versäumte Fristen lösen Säumniszuschläge aus, derzeit etwa 8 % pro Jahr auf
+    den Fehlbetrag.
+
+    ## Fälligkeiten 2024
+
+    | Quartal | Zeitraum | Fällig am |
+    |---|---|---|
+    | Q1 | 1. Jan. – 31. März | **15. April 2024** |
+    | Q2 | 1. Apr. – 31. Mai | **17. Juni 2024** |
+    | Q3 | 1. Juni – 31. Aug. | **16. September 2024** |
+    | Q4 | 1. Sept. – 31. Dez. | **15. Januar 2025** |
+
+    ## Fälligkeiten 2025
+
+    | Quartal | Zeitraum | Fällig am |
+    |---|---|---|
+    | Q1 | 1. Jan. – 31. März | **15. April 2025** |
+    | Q2 | 1. Apr. – 31. Mai | **16. Juni 2025** |
+    | Q3 | 1. Juni – 31. Aug. | **15. September 2025** |
+    | Q4 | 1. Sept. – 31. Dez. | **15. Januar 2026** |
+
+    ## Safe-Harbor-Regeln
+
+    Du vermeidest Säumniszuschläge, wenn du zahlst:
+    - **Option A**: 90 % der Steuerschuld des laufenden Jahres, ODER
+    - **Option B**: 100 % der Steuerschuld des Vorjahres (110 %, wenn das AGI über 150.000 $ liegt)
+
+    Option B ist bei Freelancern mit schwankendem Einkommen beliebt: Du zahlst die
+    Vorjahressteuer in vier gleichen Raten und musst das laufende Einkommen nicht
+    genau vorhersagen.
+
+    ## So zahlst du
+
+    Zahle über [IRS Direct Pay](https://www.irs.gov/payments/direct-pay) (kostenlos,
+    ohne Registrierung) oder EFTPS (Electronic Federal Tax Payment System). Die
+    meisten Bundesstaaten haben eigene Vorauszahlungen mit ähnlichen Fristen: Sieh
+    auf der Website deiner bundesstaatlichen Steuerbehörde nach.
+
+    Schätze deine Zahlung mit dem [Freelance-Steuerrechner](/tools/freelance-tax-estimator/).
+"self-employment-tax-deductions":
+  "title": "Die wichtigsten Steuerabzüge für Freelancer und Selbstständige"
+  "description": "Die wertvollsten Steuerabzüge für Freelancer: Arbeitszimmer, Krankenversicherung, Altersvorsorge, Ausstattung und der Abzug der halben SE Tax erklärt."
+  "body": |
+    Jeder legitime Betriebsabzug senkt deinen Nettogewinn und damit sowohl deine
+    SE Tax (15,3 %) als auch deine Einkommensteuer. Ein Abzug von 10.000 $ bei 30 %
+    kombiniertem Satz spart 3.000 $ Steuern.
+
+    ## 1. Die Hälfte der SE Tax
+
+    Der IRS erlaubt dir, 50 % deiner SE Tax vor Berechnung der Einkommensteuer vom
+    Bruttoeinkommen abzuziehen. Beträgt deine SE Tax 12.240 $, ziehst du 6.120 $
+    ab. Das passiert automatisch, Belege brauchst du keine.
+
+    ## 2. Abzug für das Arbeitszimmer
+
+    **Vereinfachte Methode**: 5 $ pro Quadratfuß eigenem Büroraum (max. 1.500 $)
+    **Methode der tatsächlichen Kosten**: Wohnkosten (Hypothek oder Miete,
+    Nebenkosten, Versicherung) anteilig nach dem ausschließlich geschäftlich
+    genutzten Teil der Wohnung ansetzen.
+
+    Das Büro muss *regelmäßig und ausschließlich* geschäftlich genutzt werden: ein
+    Schreibtisch im gemeinsamen Wohnzimmer zählt nicht.
+
+    ## 3. Beiträge zur Krankenversicherung
+
+    Zahlst du deine Krankenversicherung selbst (nicht über den Arbeitgeberplan
+    deines Ehepartners), sind 100 % der Beiträge vom Bruttoeinkommen abziehbar
+    (nicht nur als Einzelabzug). Das gilt auch für Zahn- und Sehversicherung.
+
+    ## 4. Beiträge zur Altersvorsorge
+
+    - **SEP-IRA**: bis 25 % der Nettoeinkünfte aus selbstständiger Arbeit, max. 69.000 $ (2024)
+    - **Solo 401(k)**: 23.000 $ Arbeitnehmerbeitrag + 25 % Arbeitgeberbeitrag
+    - **Roth IRA**: 7.000 $ Beitrag, nicht abziehbar, aber steuerfreies Wachstum
+
+    SEP-IRA und Solo 401(k) sind für Freelancer die wirksamsten Abzüge. Bei
+    100.000 $ Nettogewinn spart ein voll ausgeschöpfter SEP-IRA ~7.000–10.000 $
+    Steuern.
+
+    ## 5. Ausstattung und Software
+
+    Computer, Kameras, Mikrofone, Software-Abos, Cloud-Dienste, Coworking,
+    Fachbücher und Kurse: alles abziehbar, wenn es geschäftlich genutzt wird.
+    Section 179 erlaubt den vollen Abzug im ersten Jahr statt einer Abschreibung
+    über die Zeit.
+
+    ## 6. Professionelle Dienstleistungen
+
+    Kosten für Buchhaltung, Rechtsberatung in geschäftlichen Angelegenheiten und
+    Beiträge zur Berufshaftpflicht sind voll abziehbar.
+
+    Schätze deine Steuerlast nach Abzügen mit dem [Freelance-Steuerrechner](/tools/freelance-tax-estimator/).
+"employer-payroll-tax-guide-us":
+  "title": "Arbeitgeber-Lohnabgaben in den USA: Leitfaden 2024"
+  "description": "Vollständiger Leitfaden zu den US-Bundeslohnabgaben für Arbeitgeber (Social Security, Medicare, FUTA) mit Sätzen, Bemessungsgrenzen 2024 und Rechenbeispielen."
+  "body": |
+    Als Arbeitgeber in den USA zahlst du Lohnabgaben zusätzlich zum Bruttogehalt
+    jedes Angestellten. Hier siehst du, was du schuldest und wie es berechnet wird.
+
+    ## Bundes-Lohnabgaben für Arbeitgeber (2024)
+
+    ### Social Security (OASDI): 6,2 %
+    Satz: 6,2 % auf Löhne bis 168.600 $ (Bemessungsgrenze 2024, aktuelles Jahr prüfen)
+    Der Angestellte zahlt ebenfalls 6,2 %; die gesamte FICA beträgt 12,4 %, je zur Hälfte.
+
+    ### Medicare: 1,45 %
+    Satz: 1,45 % auf den gesamten Lohn, ohne Obergrenze.
+    Der Angestellte zahlt ebenfalls 1,45 % (+ 0,9 % zusätzliche Medicare auf Löhne über 200.000 $, nur für den Angestellten).
+
+    ### FUTA (Bundes-Arbeitslosenabgabe): 0,6 %
+    Satz: 6,0 % auf die ersten 7.000 $ Lohn je Angestelltem.
+    Die meisten Arbeitgeber erhalten 5,4 % Anrechnung für die bundesstaatliche Arbeitslosenabgabe (SUTA), womit der effektive Satz auf **0,6 %** sinkt.
+
+    ## Rechenbeispiel: Gehalt 80.000 $
+
+    | Abgabe | Rechnung | Kosten Arbeitgeber |
+    |-----|-------------|--------------|
+    | Social Security | 80.000 $ × 6,2 % | 4.960 $ |
+    | Medicare | 80.000 $ × 1,45 % | 1.160 $ |
+    | FUTA | 7.000 $ × 0,6 % | 42 $ |
+    | **Gesamt** | | **6.162 $** |
+
+    Gesamte Beschäftigungskosten = 80.000 $ + 6.162 $ = **86.162 $**
+
+    SUTA-Sätze unterscheiden sich je Bundesstaat (0,1 % bis über 10 %) und nach
+    bisherigen Entlassungen. Modelliere den Satz deines Bundesstaats immer
+    separat.
+
+    Berechne mit dem [Lohnabgaben-Rechner](/tools/payroll-tax-calculator/) die
+    Arbeitgeberkosten für jedes Gehalt.
+"suta-futa-payroll-taxes-explained":
+  "title": "SUTA und FUTA: bundesstaatliche und Bundes-Arbeitslosenabgaben erklärt"
+  "description": "Wie FUTA und SUTA bei den Arbeitslosenabgaben des Arbeitgebers zusammenwirken: Sätze, Bemessungsgrenzen, Anrechnung und was eine Neueinstufung auslöst."
+  "body": |
+    Die meisten US-Arbeitgeber zahlen zwei Arbeitslosenabgaben gleichzeitig: FUTA
+    (Bund) und SUTA (Bundesstaat). So greifen sie ineinander.
+
+    ## FUTA: Bundes-Arbeitslosenabgabe
+
+    **Satz**: 6,0 % auf die ersten 7.000 $ Lohn je Angestelltem.
+    **Effektiver Nettosatz**: 0,6 % für die meisten Arbeitgeber.
+    **Warum niedriger**: Wer SUTA pünktlich und vollständig zahlt, erhält 5,4 %
+    Anrechnung, womit der effektive Satz auf 0,6 % sinkt.
+
+    FUTA finanziert die Bundes-Arbeitslosenversicherung und Darlehen an die
+    Programme der Bundesstaaten.
+
+    ## SUTA: bundesstaatliche Arbeitslosenabgabe
+
+    Die Sätze hängen vom Bundesstaat und der Einstufung des Arbeitgebers ab:
+    - Neue Arbeitgeber: meist 1–4 % (je nach Bundesstaat)
+    - Etablierte Arbeitgeber: 0,1 % bis über 10 % (je nach bisherigen Leistungsfällen)
+    - Bemessungsgrenzen: von 7.000 $ (Bundesminimum) bis über 62.500 $ (Bundesstaat Washington)
+
+    ## Das Einstufungssystem
+
+    Dein SUTA-Satz wird jedes Jahr anhand deiner Entlassungen neu berechnet:
+    - **Wenige Entlassungen** → der Satz sinkt („negative Erfahrung“)
+    - **Viele Entlassungen** → der Satz steigt („positive Erfahrung“ im steuerlichen Sinn)
+
+    Arbeitgeber mit umfangreichen Entlassungen können die FUTA-Anrechnung
+    verlieren (Bundesstaaten mit gekürzter Anrechnung).
+
+    ## Folgen für Personalentscheidungen
+
+    Bedenke vor einer Entlassung: Schon ein einziger Leistungsantrag kann deinen
+    SUTA-Satz für 3 Jahre oder länger erhöhen. Bei 100.000 $ Gehalt und 2 % SUTA
+    kostet ein Prozentpunkt mehr ~500 $ pro Jahr und Angestelltem auf die
+    Bemessungsgrundlage.
+
+    Berechne mit dem [Lohnabgaben-Rechner](/tools/payroll-tax-calculator/) deine
+    Bundesabgaben als Arbeitgeber. Die SUTA addierst du separat nach dem Satz
+    deines Bundesstaats.
+"vat-on-digital-services":
+  "title": "MwSt. auf digitale Dienstleistungen: Regeln für SaaS- und Softwareunternehmen"
+  "description": "Wie die MwSt. auf SaaS-Abos, Software und digitale Produkte für Kunden in Großbritannien und der EU anfällt, inklusive der OSS-Schwelle."
+  "body": |
+    Wenn du SaaS, Softwarelizenzen oder andere digitale Dienstleistungen
+    verkaufst, sind die MwSt.-Regeln deutlich komplexer als bei physischen Waren.
+    Das musst du wissen.
+
+    ## EU-MwSt. auf digitale Dienstleistungen (das „Bestimmungslandprinzip“)
+
+    Seit 2015 werden digitale Dienstleistungen an EU-Verbraucher dort besteuert,
+    wo der **Kunde** sitzt, nicht wo du ansässig bist. Das heißt:
+
+    - Ein US-SaaS, das einem französischen Verbraucher etwas berechnet, muss französische MwSt. (20 %) erheben
+    - Ein britisches SaaS, das einem deutschen Unternehmen etwas berechnet, erhebt 0 % (B2B-Reverse-Charge)
+    - Ein australischer Entwickler, der eine App an italienische Verbraucher verkauft, muss italienische MwSt. (22 %) erheben
+
+    **EU-OSS-Schwelle**: Übersteigen deine digitalen Verkäufe an EU-Verbraucher
+    insgesamt 10.000 € pro Jahr, musst du dich für die MwSt. registrieren (lokal
+    oder über den One-Stop-Shop der EU). Darunter darfst du den Satz deines eigenen
+    Landes anwenden.
+
+    ## B2B oder B2C: der entscheidende Unterschied
+
+    Die Regeln oben gelten für **B2C** (Verkauf an Verbraucher). Bei **B2B**
+    (Verkauf an andere umsatzsteuerlich registrierte Unternehmen) gilt das
+    Reverse-Charge-Verfahren:
+    - Du berechnest 0 % (bzw. keine MwSt.)
+    - Der Geschäftskunde meldet die MwSt. selbst in seinem Land
+    - Du musst seine USt-IdNr. einholen und prüfen
+
+    ## Regeln in Großbritannien nach dem Brexit
+
+    Großbritannien hat ein eigenes MwSt.-Regime für digitale Dienstleistungen.
+    Nicht britische Unternehmen mit digitalen Verkäufen in Großbritannien über
+    8.818 £ pro Jahr müssen sich für die britische MwSt. (derzeit 20 %)
+    registrieren und getrennt von der EU-MwSt. Erklärungen abgeben.
+
+    Mit unserem [MwSt.-Rechner](/tools/vat-calculator/) berechnest du den
+    richtigen Betrag zu jedem Satz. Aktuelle Schwellen findest du auf der Website
+    der Steuerbehörde deines Landes.
+"vat-rates-by-country-2024":
+  "title": "MwSt.-Sätze nach Land 2024: Großbritannien, EU, Australien, Kanada"
+  "description": "Vollständige Liste der MwSt.-/GST-Regelsätze nach Land für 2024, mit ermäßigten Sätzen für Güter des Grundbedarfs und Regeln für digitale Dienstleistungen."
+  "body": |
+    MwSt., GST (Goods and Services Tax) und Sales Tax sind allesamt
+    Verbrauchsteuern, doch Sätze, Regeln und Namen unterscheiden sich je nach
+    Land. Hier sind die Regelsätze der häufigsten Handelsziele.
+
+    ## MwSt.-/GST-Regelsätze 2024
+
+    | Land | Regelsatz | Ermäßigter Satz | Hinweise |
+    |---------|--------------|--------------|-------|
+    | Großbritannien | 20 % | 5 % | 0 % auf Lebensmittel und Kinderartikel |
+    | Deutschland | 19 % | 7 % | |
+    | Frankreich | 20 % | 5,5 % / 10 % | |
+    | Italien | 22 % | 10 % / 5 % | |
+    | Spanien | 21 % | 10 % | |
+    | Niederlande | 21 % | 9 % | |
+    | Schweden | 25 % | 6 % / 12 % | Höchster Satz in der EU |
+    | Norwegen | 25 % | 15 % | Nicht in der EU |
+    | Australien | GST 10 % | entfällt | Einheitssatz |
+    | Kanada | GST 5 % | entfällt | Zzgl. provinzieller PST |
+    | Neuseeland | GST 15 % | entfällt | |
+    | Indien | GST 18 % | 5 % / 12 % | Mehrere Stufen |
+    | USA | 0 % (Bund) | — | Nur Sales Tax der Bundesstaaten |
+
+    ## MwSt.-Regeln für digitale Dienstleistungen
+
+    Verkaufst du digitale Produkte (Software, E-Books, SaaS-Abos) an
+    EU-Verbraucher, musst du die MwSt. zum Satz des Kundenlandes berechnen, nicht
+    zu dem deines eigenen Landes, auch wenn du außerhalb der EU ansässig bist. Der
+    One-Stop-Shop (OSS) der EU vereinfacht das, weil du nur eine EU-MwSt.-Erklärung
+    abgibst.
+
+    Großbritannien hat seit dem Brexit ähnliche Regeln: Nicht britische
+    Unternehmen, die digitale Dienstleistungen an britische Verbraucher verkaufen,
+    müssen sich ab 8.818 £ Umsatz pro Jahr für die britische MwSt. registrieren.
+
+    Mit unserem [MwSt.-Rechner](/tools/vat-calculator/) schlägst du die MwSt. zu
+    jedem Satz auf oder rechnest sie heraus.
+"vat-reverse-charge-b2b-eu-explained":
+  "title": "Das Reverse-Charge-Verfahren bei B2B-Verkäufen in der EU, erklärt"
+  "description": "Wie das EU-Reverse-Charge-Verfahren bei grenzüberschreitenden B2B-Verkäufen funktioniert, wann es gilt und was auf deiner Rechnung stehen muss."
+  "body": |
+    Wenn du digitale Dienstleistungen oder Waren B2B an Kunden in anderen
+    EU-Ländern verkaufst, hast du „Reverse Charge“ vermutlich schon auf einer
+    Rechnungsvorlage gesehen. Für Verkäufer außerhalb der EU ist es einer der am
+    häufigsten missverstandenen Teile der EU-MwSt.
+
+    ## Was Reverse Charge tatsächlich bedeutet
+
+    Normalerweise berechnet der Verkäufer die MwSt. und führt sie ans Finanzamt
+    ab. Beim Reverse-Charge-Verfahren erfasst stattdessen der **Käufer** die MwSt.
+    selbst: Er meldet sie in seiner eigenen Erklärung als Steuerschuld und (in der
+    Regel) als voll abziehbare Vorsteuer, was sich bei einem voll
+    vorsteuerabzugsberechtigten Unternehmen zu null saldiert. Der Verkäufer
+    berechnet auf der Rechnung **0 % MwSt.**
+
+    ## Wann es gilt
+
+    - Der Verkauf ist **B2B** (der Käufer ist in einem anderen EU-Land für die MwSt. registriert)
+    - Der Käufer gibt eine **gültige USt-IdNr.** an, die du prüfst (über das VIES-System der EU)
+    - Es gilt **nicht** für B2C-Verkäufe; diese folgen den EU-Regeln für digitale
+      Dienstleistungen, bei denen du den Satz des Käuferlandes berechnest
+
+    ## Was auf der Rechnung stehen muss
+
+    - Die USt-IdNr. beider Parteien
+    - Der Vermerk „Steuerschuldnerschaft des Leistungsempfängers“ bzw. „Reverse Charge, Art. 196 MwSt-Systemrichtlinie“
+    - Kein berechneter MwSt.-Betrag (0 %)
+
+    ## Warum es das gibt
+
+    Reverse Charge erspart einem ausländischen Verkäufer die MwSt.-Registrierung
+    in jedem Käuferland für B2B-Geschäfte. Ohne das Verfahren bräuchte ein US-
+    oder britisches SaaS-Unternehmen, das an Firmen in allen 27 Mitgliedstaaten
+    verkauft, Dutzende lokaler Registrierungen. Die Compliance-Last geht auf den
+    Käufer über, der ohnehin registriert ist und die Steuer am besten selbst
+    korrekt erfassen kann.
+
+    ## Was schiefgehen kann
+
+    Berechnest du MwSt., wo Reverse Charge hätte gelten müssen, kann der Käufer sie
+    nicht auf normalem Weg zurückholen, und du hast eine Steuer vereinnahmt, die
+    dir nicht zustand. Umgekehrt kann dich Reverse Charge ohne Prüfung der
+    USt-IdNr. (etwa wenn sie ungültig ist oder der Käufer gar nicht registriert
+    ist) für die MwSt. haftbar machen, die du hättest berechnen müssen.
+
+    ## Häufige Fragen
+
+    **Muss ich die USt-IdNr. jedes Mal prüfen?**
+    Ja: Nutze vor jedem neuen B2B-Kunden die VIES-Abfrage der EU und bewahre einen
+    Nachweis der Prüfung in deinen Compliance-Unterlagen auf.
+
+    **Und Verkäufe aus Großbritannien nach dem Brexit?**
+    B2B-Verkäufe von Großbritannien in die EU werden meist weiterhin ähnlich
+    steuerfrei behandelt, aber die britischen Regeln haben sich vom EU-Rahmen
+    entfernt. Prüf die aktuellen Hinweise des HMRC, statt anzunehmen, dass die
+    EU-Regeln unverändert gelten.
+
+    Nutze den [MwSt.-Rechner](/tools/vat-calculator/) für übliche Brutto-/Netto-
+    Rechnungen bei Geschäften, bei denen MwSt. anfällt.

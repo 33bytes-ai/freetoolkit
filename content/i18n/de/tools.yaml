@@ -766,3 +766,139 @@
     Verwaltungsaufwand und das Risiko von Einkommenslücken beim Freelancer liegen
     statt beim Unternehmen. Die vollständige Aufschlüsselung findest du im
     Freelance-Stundensatz-Rechner.
+
+"freelance-tax-estimator":
+  "body": |
+    Als Freelancer oder unabhängiger Auftragnehmer in den USA zahlst du sowohl den
+    Arbeitnehmer- ALS AUCH den Arbeitgeberanteil zu Social Security und Medicare,
+    zusammen **Self-Employment Tax (SE Tax)** genannt: 15,3 % des Nettogewinns.
+
+    Anders als bei W-2-Angestellten behält niemand Steuern von deinen Zahlungen
+    ein. Du musst vierteljährlich Vorauszahlungen leisten (15. April, 16. Juni,
+    15. September, 15. Januar), um Säumniszuschläge des IRS zu vermeiden.
+
+    ## So werden Freelance-Steuern berechnet
+
+    **Schritt 1: Nettogewinn** = Bruttoeinnahmen − Betriebsausgaben
+
+    **Schritt 2: SE Tax** = Nettogewinn × 15,3 %
+    (Social Security 12,4 % bis 168.600 $ + Medicare 2,9 %, ohne Obergrenze)
+
+    **Schritt 3: Abzug der SE Tax** = SE Tax × 50 %
+    (Die Hälfte der SE Tax ist vom zu versteuernden Einkommen abziehbar)
+
+    **Schritt 4: zu versteuerndes Einkommen** = Nettogewinn − SE-Abzug + sonstige Einkünfte
+
+    **Schritt 5: Bundeseinkommensteuer** = Grenzsteuersätze 2024 auf das zu versteuernde Einkommen
+
+    **Schritt 6: Quartalszahlung** = (SE Tax + Bundeseinkommensteuer) ÷ 4
+
+    ## Wichtige Abzüge, die deine Steuerlast senken
+
+    - **Betriebsausgaben**: Software, Ausstattung, Weiterbildung, Arbeitszimmer
+    - **Beiträge zur Krankenversicherung**: voll abziehbar, wenn du deine Police selbst zahlst
+    - **Altersvorsorge**: SEP-IRA (bis 25 % des Nettogewinns, max. 69.000 $),
+      Solo 401(k) (bis 23.000 $ Arbeitnehmeranteil + 25 % Arbeitgeberanteil) oder Roth IRA (7.000 $)
+    - **Hälfte der SE Tax**: wird automatisch berechnet und abgezogen
+
+    ## Option S-Corp
+
+    Ab etwa 80.000 $ Nettogewinn sparen manche Freelancer mit der Wahl des
+    S-Corp-Status. Du zahlst dir ein „angemessenes Gehalt“ (SE-Tax-pflichtig) und
+    entnimmst den Rest als Ausschüttung (nicht SE-Tax-pflichtig). Die Ersparnis
+    kann über 5.000 $ pro Jahr liegen, erfordert aber eine Lohnabrechnung und eine
+    zusätzliche Steuererklärung. Sprich vorher mit einem Steuerberater (CPA).
+
+    ## Häufige Fragen
+
+    **Wann muss ich vierteljährliche Vorauszahlungen leisten?**
+    Wenn du für das Jahr mit 1.000 $ oder mehr Steuern rechnest, verlangt der IRS
+    Vorauszahlungen. Fällig sind sie am 15. April, 15. Juni, 15. September und
+    15. Januar. Versäumte oder zu niedrige Zahlungen kosten einen Zuschlag
+    (derzeit ~8 % pro Jahr auf den fehlenden Betrag).
+
+    **Welche Ausgaben kann ich als Freelancer absetzen?**
+    Jede übliche und notwendige Betriebsausgabe: Arbeitszimmer (eigener Raum),
+    Software und Abos fürs Geschäft, Weiterbildung, Ausstattung, Internet
+    (geschäftlicher Anteil), Berufshaftpflicht, Buchhaltungs- und
+    Rechtsberatungskosten sowie Geschäftsreisen.
+"payroll-tax-calculator":
+  "body": |
+    Arbeitgeber-Lohnabgaben erhöhen die Kosten jedes Angestellten um etwa 8–12 %
+    zusätzlich zum Grundgehalt. Bei 75.000 $ Gehalt sind das 6.000–9.000 $
+    zusätzliche Pflichtabgaben pro Jahr.
+
+    ## Arbeitgeber-Lohnabgaben in den USA (2024)
+
+    | Abgabe | Satz | Bemessungsgrenze |
+    |----|------|-----------|
+    | Social Security (Arbeitgeber) | 6,2 % | Erste 160.200 $ |
+    | Medicare (Arbeitgeber) | 1,45 % | Unbegrenzt |
+    | FUTA (Bundes-Arbeitslosenversicherung) | 0,6 %* | Erste 7.000 $ |
+
+    *Nach Anrechnung der bundesstaatlichen Arbeitslosenabgabe. Der eigentliche
+    FUTA-Satz beträgt 6 % und wird um bis zu 5,4 % Anrechnung gesenkt.
+
+    ## Bundesstaatliche Abgaben nicht enthalten
+
+    Dieser Rechner umfasst nur Bundesabgaben. Die meisten Bundesstaaten erheben
+    zusätzlich eine Arbeitslosenabgabe (SUTA) mit Sätzen von 0,1 % bis über 10 %,
+    je nach Einstufung des Arbeitgebers.
+
+    ## Gesamtkosten eines Angestellten
+
+    Die Vollkosten eines Angestellten umfassen:
+    - Grundgehalt
+    - Arbeitgeber-Lohnabgaben (~8–10 %)
+    - Zuschuss zur Krankenversicherung (5.000–15.000 $ pro Jahr)
+    - 401(k)-Zuschuss (3–5 % des Gehalts)
+    - Ausstattung, Software, Büro
+
+    Für die Budgetplanung rechne mit dem **1,25- bis 1,40-Fachen des Grundgehalts**
+    als Gesamtkosten.
+"vat-calculator":
+  "body": |
+    Wenn du einem Kunden in einem Land mit Mehrwertsteuer (Großbritannien, EU,
+    Australien usw.) eine Rechnung stellst, musst du wissen, ob dein Preis netto
+    (ohne MwSt.) oder brutto (inkl. MwSt.) ist, und den anderen Wert berechnen.
+    Verwechselst du das, berechnest du dem Kunden zu wenig oder trägst die Steuer
+    versehentlich selbst.
+
+    Dieser Rechner funktioniert in beide Richtungen:
+
+    **Steuer aufschlagen:** Nettopreis × (1 + Satz) = Bruttopreis
+    **Steuer herausrechnen:** Bruttopreis ÷ (1 + Satz) = Nettopreis
+
+    Standardsätze sind für gängige Regionen vorbelegt (Großbritannien: 20 %,
+    EU-Standard: 20 %/23 %, australische GST: 10 %, kanadische GST: 5 %, USA:
+    individuell). Du kannst auch jeden eigenen Satz eingeben.
+
+    ## Wichtige Begriffe
+
+    **Nettopreis (ohne MwSt. / ohne Steuer):** der Preis vor Steuern. Das ist dein
+    Umsatz. Die MwSt., die der Kunde zahlt, geht an den Staat, nicht an dich.
+
+    **Bruttopreis (inkl. MwSt.):** der Gesamtbetrag, den der Kunde einschließlich
+    Steuer zahlt.
+
+    **Registrierungsschwelle für MwSt. / GST:** In Großbritannien musst du dich für
+    die MwSt. registrieren, sobald dein steuerpflichtiger Umsatz in 12 Monaten
+    90.000 £ übersteigt (Stand 2024). Darunter berechnest du keine MwSt. und
+    führst keine ab. Die US-Sales-Tax hat keine bundesweite Schwelle und
+    unterscheidet sich je Bundesstaat.
+
+    ## Häufige Fragen
+
+    **Muss ich auf digitale Produkte für Kunden im Ausland MwSt. berechnen?**
+    Nach EU-Recht musst du bei B2C-Verkäufen digitaler Produkte an Kunden in der
+    EU die MwSt. zum Satz des Käuferlandes berechnen (EU-Regeln für digitale
+    Dienstleistungen). Plattformen wie Stripe Tax, Paddle und Lemon Squeezy
+    übernehmen das als „Merchant of Record“ automatisch. B2B-Verkäufe in der EU
+    laufen meist über das Reverse-Charge-Verfahren (der Kunde führt die MwSt.
+    selbst ab).
+
+    **Was ist der Unterschied zwischen MwSt. und Sales Tax?**
+    Die MwSt. wird auf jeder Produktionsstufe erhoben, und Geschäftskunden können
+    sie als Vorsteuer zurückholen. Die US-Sales-Tax wird nur beim Endverkauf
+    erhoben und ist für Unternehmen nicht erstattungsfähig. Beide trägt der
+    Endverbraucher; die Mechanik für Unternehmen ist verschieden.

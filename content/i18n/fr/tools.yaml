@@ -782,3 +782,142 @@ free-cash-flow-calculator:
     les frais de gestion et le risque de creux de revenus sont supportés par le
     freelance et non par l'entreprise. Voir le calculateur de taux freelance pour
     le détail complet.
+
+"freelance-tax-estimator":
+  "body": |
+    En tant que freelance ou prestataire indépendant, vous payez à la fois la part
+    salariale ET la part patronale des cotisations Social Security et Medicare,
+    appelées ensemble **self-employment tax (SE tax)**, soit 15,3 % du bénéfice
+    net.
+
+    Contrairement aux salariés (W-2), personne ne prélève d'impôt à la source sur
+    vos paiements. Vous devez verser des acomptes trimestriels (15 avril, 16 juin,
+    15 septembre, 15 janvier) pour éviter les pénalités de l'IRS pour
+    sous-paiement.
+
+    ## Comment se calculent les impôts d'un freelance
+
+    **Étape 1 : bénéfice net** = revenus bruts − frais professionnels
+
+    **Étape 2 : SE tax** = bénéfice net × 15,3 %
+    (Social Security 12,4 % jusqu'à 168 600 $ + Medicare 2,9 %, sans plafond)
+
+    **Étape 3 : déduction de la SE tax** = SE tax × 50 %
+    (La moitié de la SE tax est déductible du revenu imposable)
+
+    **Étape 4 : revenu imposable** = bénéfice net − déduction SE + autres revenus
+
+    **Étape 5 : impôt fédéral sur le revenu** = barème marginal 2024 appliqué au revenu imposable
+
+    **Étape 6 : acompte trimestriel** = (SE tax + impôt fédéral) ÷ 4
+
+    ## Les déductions qui réduisent la facture
+
+    - **Frais professionnels** : logiciels, matériel, formation, bureau à domicile
+    - **Primes d'assurance santé** : entièrement déductibles si vous payez votre propre contrat
+    - **Épargne retraite** : SEP-IRA (jusqu'à 25 % du bénéfice net, 69 k$ max),
+      Solo 401(k) (jusqu'à 23 k$ en part salarié + 25 % en part employeur) ou Roth IRA (7 k$)
+    - **La moitié de la SE tax** : calculée et déduite automatiquement
+
+    ## L'option S-Corp
+
+    Au-delà d'environ 80 000 $ de bénéfice net, certains freelances économisent en
+    optant pour le statut S-Corp. Vous vous versez un « salaire raisonnable »
+    (soumis à la SE tax) et prenez le reste en distribution (non soumis à la SE
+    tax). L'économie peut dépasser 5 000 $ par an, mais impose de gérer une paie et
+    de déposer une déclaration supplémentaire. Consultez un expert-comptable (CPA)
+    avant de vous décider.
+
+    ## Questions fréquentes
+
+    **Quand dois-je verser des acomptes trimestriels ?**
+    Si vous prévoyez de devoir 1 000 $ d'impôt ou plus sur l'année, l'IRS exige des
+    acomptes trimestriels. Les échéances sont le 15 avril, le 15 juin, le
+    15 septembre et le 15 janvier. Un oubli ou un sous-paiement entraîne une
+    pénalité (actuellement ~8 % par an sur le montant sous-payé).
+
+    **Quels frais un freelance peut-il déduire ?**
+    Toute dépense professionnelle courante et nécessaire : bureau à domicile
+    (espace dédié), logiciels et abonnements professionnels, formation, matériel,
+    accès internet (part professionnelle), assurance responsabilité civile
+    professionnelle, honoraires comptables et juridiques, et déplacements
+    professionnels.
+"payroll-tax-calculator":
+  "body": |
+    Les charges sociales patronales ajoutent environ 8 à 12 % au coût de chaque
+    salarié, en plus de son salaire de base. Pour un salarié à 75 000 $, cela
+    représente 6 000 à 9 000 $ de charges obligatoires supplémentaires par an.
+
+    ## Charges sociales patronales aux États-Unis (2024)
+
+    | Charge | Taux | Assiette |
+    |----|------|-----------|
+    | Social Security (part employeur) | 6,2 % | Premiers 160 200 $ |
+    | Medicare (part employeur) | 1,45 % | Sans plafond |
+    | FUTA (chômage fédéral) | 0,6 %* | Premiers 7 000 $ |
+
+    *Après crédit pour la taxe chômage de l'État. Le taux FUTA réel est de 6 %,
+    réduit d'un crédit pouvant aller jusqu'à 5,4 %.
+
+    ## Taxes des États non incluses
+
+    Ce calculateur ne couvre que les charges fédérales. La plupart des États
+    appliquent en plus une taxe chômage (SUTA) dont le taux va de 0,1 % à plus de
+    10 % selon l'historique de l'employeur.
+
+    ## Coût total d'un salarié
+
+    Le coût complet d'un salarié comprend :
+    - Le salaire de base
+    - Les charges sociales patronales (~8–10 %)
+    - La participation à l'assurance santé (5 000–15 000 $ par an)
+    - L'abondement 401(k) (3–5 % du salaire)
+    - Le matériel, les logiciels, les bureaux
+
+    Pour budgéter, comptez **1,25 à 1,40 fois le salaire de base** en coût total.
+"vat-calculator":
+  "body": |
+    Quand vous facturez un client dans un pays assujetti à la TVA (Royaume-Uni, UE,
+    Australie, etc.), vous devez savoir si votre prix est HT (net) ou TTC (brut) et
+    calculer l'autre. Se tromper de sens, c'est soit sous-facturer le client, soit
+    absorber la taxe par inadvertance.
+
+    Ce calculateur gère les deux sens :
+
+    **Ajouter la taxe :** prix HT × (1 + taux) = prix TTC
+    **Retirer la taxe :** prix TTC ÷ (1 + taux) = prix HT
+
+    Les taux standards sont préremplis pour les régions courantes (Royaume-Uni :
+    20 %, UE par défaut : 20 %/23 %, GST australienne : 10 %, GST canadienne :
+    5 %, États-Unis : personnalisé). Vous pouvez aussi saisir n'importe quel taux.
+
+    ## Notions clés
+
+    **Prix HT (hors taxe) :** le prix avant taxe. C'est ce que vous encaissez comme
+    chiffre d'affaires. La TVA payée par le client revient à l'État, pas à vous.
+
+    **Prix TTC (toutes taxes comprises) :** le total payé par le client, taxe
+    incluse.
+
+    **Seuil d'immatriculation à la TVA / GST :** au Royaume-Uni, l'immatriculation
+    à la TVA est obligatoire quand le chiffre d'affaires taxable sur 12 mois
+    dépasse 90 000 £ (en 2024). En dessous, vous ne facturez pas de TVA et n'avez
+    pas à la reverser. La sales tax américaine n'a pas de seuil fédéral et varie
+    selon les États.
+
+    ## Questions fréquentes
+
+    **Faut-il facturer la TVA sur les produits numériques vendus à l'étranger ?**
+    Les règles de l'UE imposent de facturer la TVA au taux du pays de l'acheteur
+    pour les ventes B2C de produits numériques à des clients européens (règles
+    « services numériques » de l'UE). Des plateformes comme Stripe Tax, Paddle et
+    Lemon Squeezy s'en chargent automatiquement en tant que « merchant of record ».
+    Les ventes B2B dans l'UE relèvent en général de l'autoliquidation (le client
+    déclare lui-même la TVA).
+
+    **Quelle différence entre TVA et sales tax ?**
+    La TVA est collectée à chaque étape de la production et les clients
+    professionnels peuvent la récupérer. La sales tax américaine n'est collectée
+    qu'à la vente finale au détail et les entreprises ne peuvent pas la récupérer.
+    Le consommateur final supporte les deux ; seule la mécanique pour les
+    entreprises diffère.
