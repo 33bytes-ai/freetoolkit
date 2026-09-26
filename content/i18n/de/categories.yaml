@@ -1,0 +1,33 @@
+# category name -> {body}: translated category intros from content/categories.yaml.
+# Same markdown structure (headings, tables, FAQ bold questions) as English.
+
+"Cash Flow":
+  "body": |
+    Profitable Unternehmen scheitern, weil ihnen das Geld ausgeht. Gewinn ist ein
+    Buchhaltungsergebnis, Cash ein Kontostand, und in der Lücke dazwischen
+    entstehen die meisten vermeidbaren Insolvenzen. Diese Rechner messen diese
+    Lücke.
+
+    ## Welcher Rechner passt
+
+    **Operativer Cashflow** und **Free Cashflow** zeigen, was das Unternehmen
+    tatsächlich erwirtschaftet, nachdem Working Capital und Investitionsausgaben
+    berücksichtigt sind; der FCF ist die Zahl, die Wachstum finanziert oder
+    Schulden tilgt. **Cash Conversion Cycle** und **DSO** messen, wie lange Cash
+    zwischen der Bezahlung von Lieferanten und dem Zahlungseingang von Kunden
+    gebunden ist; wer diesen Zyklus verkürzt, setzt Cash frei, ohne eine Runde
+    aufzunehmen. **Working Capital** bemisst den Puffer, den das Unternehmen für
+    den laufenden Betrieb braucht, **Skonto** beziffert, was ein Nachlass für
+    frühe Zahlung kostet, und **Budgetabweichung** vergleicht Plan und Ist, damit
+    eine Lücke im zweiten Monat auffällt und nicht erst im sechsten.
+
+    ## Was die Zahlen bedeuten
+
+    Ein steigender DSO ist in kleinen Unternehmen eines der frühesten
+    verlässlichen Warnsignale: Meist ist entweder das Inkasso nachlässiger
+    geworden oder die Kunden stehen selbst unter Druck, und beides verschlimmert
+    sich unbemerkt. Ein negativer Cash Conversion Cycle (Kunden zahlen, bevor die
+    Lieferanten bezahlt werden) ist ein echter struktureller Vorteil und ein
+    großer Grund, warum Abo-Modelle und Marktplätze ihr Wachstum aus dem
+    operativen Geschäft finanzieren können, was ein klassischer Händler nicht
+    kann.

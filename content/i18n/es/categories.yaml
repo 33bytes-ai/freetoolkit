@@ -1,0 +1,32 @@
+# category name -> {body}: translated category intros from content/categories.yaml.
+# Same markdown structure (headings, tables, FAQ bold questions) as English.
+
+"Cash Flow":
+  "body": |
+    Hay empresas rentables que quiebran por quedarse sin caja. El beneficio es un
+    resultado contable; la caja es un saldo bancario, y en la distancia entre
+    ambos se producen la mayoría de las insolvencias evitables. Estas calculadoras
+    miden esa distancia.
+
+    ## Cuál necesitas
+
+    **Flujo de caja operativo** y **Flujo de caja libre** muestran lo que el
+    negocio genera de verdad una vez descontados el capital circulante y las
+    inversiones de capital; el FCF es la cifra que financia el crecimiento o
+    devuelve deuda. **Ciclo de conversión de caja** y **DSO** miden cuánto tiempo
+    queda atrapada la caja entre pagar a proveedores y cobrar a clientes; acortar
+    ese ciclo libera caja sin levantar una ronda. **Capital circulante**
+    dimensiona el colchón que el negocio necesita para seguir operando,
+    **Descuento de factura** pone precio a ofrecer descuentos por pronto pago, y
+    **Desviación presupuestaria** compara lo previsto con lo real para detectar un
+    desfase en el segundo mes y no en el sexto.
+
+    ## Qué significan los números
+
+    Un DSO al alza es una de las primeras alertas fiables en una pequeña empresa:
+    normalmente significa que el cobro se ha relajado o que los propios clientes
+    están bajo presión, y ambas cosas empeoran en silencio. Un ciclo de conversión
+    de caja negativo (cobrar a los clientes antes de pagar a los proveedores) es
+    una ventaja estructural real, y explica en gran parte por qué los modelos de
+    suscripción y los marketplaces pueden financiar su crecimiento con la
+    operación, algo que un minorista tradicional no puede hacer.
