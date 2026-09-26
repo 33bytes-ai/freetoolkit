@@ -2733,4 +2733,12 @@ def test_i18n_output_is_data_not_pages():
                 assert f'data-i18n-region="{region}"' in html, f"{lang}/{rel}: {region}"
     fcf = (DIST / "tools" / "free-cash-flow-calculator" / "index.html").read_text()
     assert "<h1 itemprop=\"name\">Free Cash Flow Calculator</h1>" in fcf
-    assert "Calculateur" not in fcf
+    assert "flux de trésorerie disponible" not in fcf
+
+
+def test_widget_tooltips_hold_no_markup():
+    """A tag pasted inside data-tooltip="..." ends the attribute early and
+    spills the rest into the page (the ARPU and burn-multiple cards did)."""
+    for path in sorted((ROOT / "templates" / "widgets").glob("*.html")):
+        for tip in re.findall(r'data-tooltip="([^"]*)"', path.read_text()):
+            assert not re.search(r"</?[A-Za-z]", tip), f"{path.name}: {tip[:60]}"

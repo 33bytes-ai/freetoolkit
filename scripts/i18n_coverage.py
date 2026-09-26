@@ -3,11 +3,9 @@
     python scripts/i18n_coverage.py                 # summary per language
     python scripts/i18n_coverage.py --missing fr    # untranslated strings, as YAML
 
-The string inventory is every text node and placeholder/aria-label/title/alt/
-data-tooltip in dist/*.html outside [data-i18n] keys and [data-i18n-region]
-blocks, plus content/i18n/_runtime_strings.json: the text calculators write
-at runtime, recorded by scripts/i18n_crawl.cjs. All of it is normalised the
-way i18n.js matches it (digits -> {0}, {1}...). Run `make build` first.
+The string inventory is content/i18n/_runtime_strings.json, recorded from the
+live DOM of every built page by scripts/i18n_crawl.cjs (make i18n-crawl), and
+normalised the way i18n.js matches it (digits -> {0}, {1}...).
 """
 from __future__ import annotations
 
@@ -16,7 +14,6 @@ import json
 import re
 import sys
 from collections import Counter
-from html.parser import HTMLParser
 from pathlib import Path
 
 import yaml
@@ -25,44 +22,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 from freetoolkit import i18n  # noqa: E402
 
-DIST = ROOT / "dist"
 CONTENT = ROOT / "content"
-SKIP_TAGS = {"script", "style", "noscript", "textarea", "code", "pre", "template"}
-ATTRS = ("placeholder", "aria-label", "title", "alt", "data-tooltip")
-VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"}
-SKIP_DIRS = ("embed/", "dashboard/", "i18n/", "static/")
-
-
-class Collector(HTMLParser):
-    def __init__(self, found: Counter):
-        super().__init__(convert_charrefs=True)
-        self.found = found
-        self.stack: list[bool] = []  # True where this element or an ancestor is off-limits
-
-    def handle_starttag(self, tag, attrs):
-        a = dict(attrs)
-        off = (bool(self.stack and self.stack[-1]) or tag in SKIP_TAGS or "data-i18n" in a
-               or "data-i18n-region" in a or a.get("translate") == "no")
-        if not off:
-            for name in ATTRS:
-                self.add(a.get(name) or "")
-        if tag not in VOID:
-            self.stack.append(off)
-
-    def handle_endtag(self, tag):
-        if tag not in VOID and self.stack:
-            self.stack.pop()
-
-    def handle_data(self, data):
-        if not (self.stack and self.stack[-1]):
-            self.add(data)
-
-    def add(self, text: str):
-        key = i18n.templatize(text)
-        if re.search(r"[A-Za-z]{2}", key):
-            self.found[key] += 1
-
-
 RUNTIME = CONTENT / "i18n" / "_runtime_strings.json"
 
 
@@ -76,11 +36,6 @@ def runtime_strings(found: Counter) -> None:
 
 def inventory() -> Counter:
     found: Counter = Counter()
-    for page in sorted(DIST.rglob("*.html")):
-        rel = page.relative_to(DIST).as_posix()
-        if rel.startswith(SKIP_DIRS):
-            continue
-        Collector(found).feed(page.read_text(encoding="utf-8"))
     runtime_strings(found)
     return found
 
@@ -104,8 +59,8 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--missing", metavar="LANG", help="print untranslated strings for LANG as YAML")
     args = ap.parse_args()
-    if not (DIST / "index.html").exists():
-        print("dist/ is empty: run `make build` first.", file=sys.stderr)
+    if not RUNTIME.exists():
+        print("No inventory yet: run `make i18n-crawl` first.", file=sys.stderr)
         return 1
 
     found = inventory()
