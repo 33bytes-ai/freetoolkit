@@ -3203,3 +3203,20 @@ test("embed: accent accepts six hex digits only", () => {
   assert.equal(embed.accentColor("red;background:url(x)"), null);
   assert.equal(embed.accentColor(null), null);
 });
+
+// ---- i18n template matching ----
+const i18n = require(path.resolve(__dirname, "..", "static", "js", "lib", "i18n.js"));
+
+test("i18n: numbers become ordered slots, existing slots are kept", () => {
+  assert.equal(i18n.templatize("Pro at $49 generates $3.9k MRR at 40% conversion."), "Pro at {0} generates {1} MRR at {2} conversion.");
+  assert.equal(i18n.templatize("{0} more →"), "{0} more →");
+  assert.equal(i18n.templatize("  Margin:\n 12.5%  "), "Margin: {0}");
+});
+
+test("i18n: translates by template and puts the live numbers back", () => {
+  const dict = { "Healthy FCF margin: {0}.": "Marge saine : {0}.", "Share": "Partager" };
+  assert.equal(i18n.translateText(dict, " Healthy FCF margin: -4.0%. "), " Marge saine : -4.0%. ");
+  assert.equal(i18n.translateText(dict, "Share"), "Partager");
+  assert.equal(i18n.translateText(dict, "€420.0k"), null);
+  assert.equal(i18n.translateText(dict, "Unknown text"), null);
+});

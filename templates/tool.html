@@ -166,7 +166,7 @@
       ~{{ ([(tool.body_wordcount / 200) | round | int, 1] | max) }} min read
     </p>
     {% endif %}
-    {{ tool.body_html | safe }}
+    <div data-i18n-region="body">{{ tool.body_html | safe }}</div>
     {% if tool.body %}<p class="deep-dive-back"><a href="#calculator" class="jump-to-calc">↑ Back to calculator</a></p>{% endif %}
   </article>
 
@@ -197,7 +197,7 @@
     <h2 id="guide-toc-heading">In this guide</h2>
     <ol>
       {% for dive in tool.deep_dives %}
-      <li><a href="#{{ dive.slug }}">{{ dive.title }}</a></li>
+      <li><a href="#{{ dive.slug }}" data-i18n-region="dive-title:{{ dive.slug }}">{{ dive.title }}</a></li>
       {% endfor %}
     </ol>
   </nav>
@@ -206,12 +206,12 @@
   <article class="tool-body deep-dive" id="{{ dive.slug }}" itemscope itemtype="https://schema.org/Article" itemprop="articleBody">
     <meta itemprop="author" content="{{ site.name }}">
     <meta itemprop="headline" content="{{ dive.title }}">
-    <h2>{{ dive.title }}</h2>
-    <p class="deep-dive-standfirst">{{ dive.description }}</p>
+    <h2 data-i18n-region="dive-title:{{ dive.slug }}">{{ dive.title }}</h2>
+    <p class="deep-dive-standfirst" data-i18n-region="dive-desc:{{ dive.slug }}">{{ dive.description }}</p>
     {% if dive.is_country_page %}
       {% with country = dive.country %}{% include "_country_section.html" %}{% endwith %}
     {% else %}
-      {{ dive.body_html | safe }}
+      <div data-i18n-region="dive-body:{{ dive.slug }}">{{ dive.body_html | safe }}</div>
     {% endif %}
     <p class="deep-dive-back"><a href="#calculator" class="jump-to-calc">↑ Back to calculator</a></p>
   </article>

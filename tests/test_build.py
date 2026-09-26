@@ -457,7 +457,7 @@ def test_tools_index_shows_guide_count():
     """Tools index should show guide count in category headers."""
     run_build()
     html = (DIST / "tools" / "index.html").read_text()
-    assert "guides" in html, "/tools/ index missing guide count in category headers"
+    assert "guide sections" in html, "/tools/ index missing guide count in category headers"
 
 
 def test_webapplication_schema_has_date_modified():
@@ -2702,3 +2702,61 @@ def test_motion_is_deferred_and_opt_out_safe():
     for cls in animated:
         for block in re.findall(rf"\.{cls}[^{{]*\{{([^}}]*)\}}", css):
             assert "opacity: 0" not in block, cls
+
+
+def _i18n_langs():
+    from freetoolkit import i18n
+    return i18n.load(ROOT / "content" / "i18n")
+
+
+def test_i18n_translations_keep_their_placeholders():
+    """A translation must carry every {n} its English template has, or a
+    calculator result would lose its number."""
+    for lang, tr in _i18n_langs().items():
+        for en, local in tr["strings"].items():
+            want = sorted(re.findall(r"\{\d+\}", en))
+            assert sorted(re.findall(r"\{\d+\}", local)) == want, f"{lang}: {en!r}"
+
+
+def test_i18n_translations_point_at_real_content():
+    """A slug typo in content/i18n/<lang>/ would silently never show."""
+    tools = {t["slug"] for t in yaml.safe_load((ROOT / "content" / "tools.yaml").read_text())}
+    intents = {p["slug"] for p in yaml.safe_load((ROOT / "content" / "intent_pages.yaml").read_text())}
+    glossary = {e["slug"] for e in yaml.safe_load((ROOT / "content" / "glossary.yaml").read_text())}
+    cats = set(yaml.safe_load((ROOT / "content" / "categories.yaml").read_text()))
+    pages = {p.stem for p in (ROOT / "content" / "pages").glob("*.md")}
+    for lang, tr in _i18n_langs().items():
+        assert set(tr["tools"]) <= tools, lang
+        assert set(tr["intent_pages"]) <= intents, lang
+        assert set(tr["glossary"]) <= glossary, lang
+        assert set(tr["categories"]) <= cats, lang
+        assert set(tr["pages"]) <= pages, lang
+
+
+def test_i18n_output_is_data_not_pages():
+    """Translations ship as JSON that i18n.js applies in place: never indexed,
+    every region it fills exists on its page, and the English page keeps its
+    English text."""
+    run_build()
+    robots = (DIST / "robots.txt").read_text()
+    assert "Disallow: /i18n/" in robots
+    headers = (DIST / "_headers").read_text()
+    assert "/i18n/*\n  X-Robots-Tag: noindex" in headers
+    for lang in _i18n_langs():
+        json.loads((DIST / "i18n" / lang / "strings.json").read_text())
+        for page_json in (DIST / "i18n" / lang).rglob("index.json"):
+            rel = page_json.relative_to(DIST / "i18n" / lang).parent
+            html = (DIST / rel / "index.html").read_text()
+            for region in json.loads(page_json.read_text())["regions"]:
+                assert f'data-i18n-region="{region}"' in html, f"{lang}/{rel}: {region}"
+    fcf = (DIST / "tools" / "free-cash-flow-calculator" / "index.html").read_text()
+    assert "<h1 itemprop=\"name\">Free Cash Flow Calculator</h1>" in fcf
+    assert "flux de trésorerie disponible" not in fcf
+
+
+def test_widget_tooltips_hold_no_markup():
+    """A tag pasted inside data-tooltip="..." ends the attribute early and
+    spills the rest into the page (the ARPU and burn-multiple cards did)."""
+    for path in sorted((ROOT / "templates" / "widgets").glob("*.html")):
+        for tip in re.findall(r'data-tooltip="([^"]*)"', path.read_text()):
+            assert not re.search(r"</?[A-Za-z]", tip), f"{path.name}: {tip[:60]}"

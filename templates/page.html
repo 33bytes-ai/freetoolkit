@@ -34,7 +34,7 @@
 {% endblock %}
 {% block content %}
 <section class="wrap content-page">
-  <h1>{{ page.title }}</h1>
+  <h1 data-i18n-region="title">{{ page.title }}</h1>
   {% if page.widget %}
   <div id="calculator" class="tool-widget" data-tool="{{ page.widget }}" aria-label="{{ page.title }} calculator">
     {% include "widgets/" ~ page.widget ~ ".html" %}
@@ -42,7 +42,7 @@
   </div>
   {% with slot_name = "tool-mid" %}{% include "ads_slot.html" %}{% endwith %}
   {% endif %}
-  <article>
+  <article data-i18n-region="body">
     {{ page.content | safe }}
   </article>
 </section>

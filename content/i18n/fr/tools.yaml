@@ -1,0 +1,63 @@
+# slug -> {body}: French version of the tool body in content/tools.yaml.
+# Same markdown structure (headings, tables, FAQ bold questions) as English.
+
+free-cash-flow-calculator:
+  body: |
+    Le flux de trésorerie disponible (FCF) est la trésorerie qu'une entreprise
+    génère une fois ses dépenses d'investissement payées. C'est la mesure la plus
+    fidèle de sa capacité à produire du cash : plus fiable que le résultat (que
+    les choix comptables peuvent déformer) et plus utile que la seule croissance
+    du chiffre d'affaires.
+
+    ## La formule
+
+    **FCF = flux de trésorerie d'exploitation − dépenses d'investissement**
+
+    Une entreprise avec 500 k$ de flux d'exploitation et 80 k$ de capex génère
+    **420 k$ de FCF**.
+
+    ## Pourquoi le FCF compte plus que l'EBITDA
+
+    L'EBITDA réintègre les charges non décaissées pour comparer des résultats
+    entre structures de capital différentes. Le FCF va plus loin : il tient compte
+    du réinvestissement nécessaire pour faire tourner l'entreprise. Une société qui
+    investit lourdement en équipement peut afficher un bel EBITDA et un FCF
+    négatif : elle ne conserve pas de trésorerie.
+
+    Pour un SaaS, l'écart entre EBITDA et FCF est en général faible (peu de capex).
+    Dans le matériel, l'industrie ou les infrastructures, le capex peut absorber
+    30 à 50 % du flux d'exploitation, et le FCF s'éloigne alors nettement de
+    l'EBITDA.
+
+    ## Repères de marge de FCF
+
+    | Type d'entreprise | Marge de FCF |
+    |---|---|
+    | SaaS de premier plan (Shopify, Veeva) | 20–30 % |
+    | SaaS rentable typique | 10–20 % |
+    | SaaS en amorçage / en croissance | 0–10 % |
+    | Activités à fort capex | -10 à +5 % |
+
+    ## Le rendement FCF pour valoriser
+
+    Rendement FCF = FCF / capitalisation boursière × 100
+
+    Un rendement FCF de 5 % signifie que vous payez 20 fois le FCF. Un rendement
+    de 2 % signifie 50 fois le FCF. En règle générale, un rendement supérieur à
+    4–5 % est jugé bon marché, inférieur à 1,5 % cher. Tenez compte de la
+    croissance attendue : une entreprise en forte croissance justifie un rendement
+    plus bas.
+
+    ## FCF et flux de trésorerie disponible pour l'actionnaire (FCFE)
+
+    Le FCF mesure la trésorerie générée au niveau de l'entreprise, avant service
+    de la dette. Le FCFE retranche les flux de dette :
+    FCFE = FCF − (remboursements − nouvelles dettes). Pour un investisseur en
+    capital qui valorise une entreprise endettée, le FCFE est plus pertinent.
+
+    ## Questions fréquentes
+
+    **Que fait ce calculateur ?**
+    Il calcule le flux de trésorerie disponible à partir du flux d'exploitation
+    et du capex, ainsi que la marge de FCF et, en option, le rendement FCF pour
+    situer la valorisation.

@@ -31,7 +31,7 @@
   </div>
 
   {% if category_intro %}
-  <article class="tool-body category-intro">
+  <article class="tool-body category-intro" data-i18n-region="intro">
     {{ category_intro | safe }}
   </article>
   {% endif %}
@@ -39,7 +39,7 @@
   <h2 class="category-tools-heading">All {{ category | lower }} calculators</h2>
   <div class="tool-grid">
     {% for tool in cat_tools %}
-    <a class="tool-card" href="/tools/{{ tool.slug }}/" aria-label="{{ tool.nav_title }}: {{ tool.short[:80] }}">
+    <a class="tool-card" href="/tools/{{ tool.slug }}/">
       <span class="tool-card-icon" aria-hidden="true">{{ meta.icon | safe }}</span>
       <h3>{{ tool.nav_title or tool.title }}{% if tool.new %} <span class="tool-card-new">NEW</span>{% endif %}</h3>
       <p>{{ tool.short }}</p>

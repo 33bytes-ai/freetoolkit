@@ -1,15 +1,11 @@
-# UI-chrome translations.
+# Interface strings, keyed (data-i18n="..." in the templates).
 #
-# SCOPE, deliberately: interface strings only -- nav, hero, buttons, footer.
-# The ~1 MB of long-form SEO copy in tools.yaml / intent_pages.yaml stays
-# English and stays canonical. Machine-translating 459 pages x N languages is
-# exactly the "scaled content abuse" Google's spam policy names, and this site's
-# entire traffic plan is organic search -- so bulk translation is a strategic
-# decision to take deliberately (with human review and hreflang), not a side
-# effect of adding a language switcher.
-#
-# The calculators themselves are the part that actually crosses languages
-# without help: they operate on numbers.
+# Everything else on a page -- calculator labels and results, tool bodies,
+# guides, glossary, static pages -- is translated from content/i18n/<lang>/
+# (see src/freetoolkit/i18n.py). All of it is applied client-side: English
+# stays the only version crawlers see, with no new URLs. Machine-translated
+# pages at their own URLs would be the "scaled content abuse" Google's spam
+# policy names, on a site whose traffic plan is organic search.
 #
 # Adding a language: copy the `en` block, translate values, keep keys identical.
 
@@ -25,7 +21,6 @@ en:
   banner_offer: "View this site in {lang}?"
   banner_accept: "Switch"
   banner_dismiss: "No thanks"
-  banner_note: "Calculator guides stay in English."
   tools_h1: "All Free Business Calculators"
   search_placeholder: "Filter calculators…"
   sort_newest: "⚡ Newest first"
@@ -43,17 +38,16 @@ en:
 
 fr:
   label: "Français"
-  nav_calculators: "Calculatrices"
+  nav_calculators: "Calculateurs"
   nav_all_tools: "Tous les outils"
   nav_glossary: "Glossaire"
   nav_browse_all: "Voir les {n} calculatrices →"
-  hero_h1_prefix: "Calculatrices gratuites pour"
+  hero_h1_prefix: "Calculateurs gratuits pour"
   hero_sub: "Fixez un prix, vérifiez votre trésorerie, projetez votre croissance, calculez votre TJM. Entrez vos chiffres, obtenez la réponse en quelques secondes. Gratuit, sans inscription, rien ne quitte votre navigateur."
   section_browse: "Parcourir par catégorie"
   banner_offer: "Afficher ce site en {lang} ?"
   banner_accept: "Changer"
   banner_dismiss: "Non merci"
-  banner_note: "Les guides restent en anglais."
   tools_h1: "Toutes les calculatrices business gratuites"
   search_placeholder: "Filtrer les calculatrices…"
   sort_newest: "⚡ Plus récentes"
@@ -81,7 +75,6 @@ es:
   banner_offer: "¿Ver este sitio en {lang}?"
   banner_accept: "Cambiar"
   banner_dismiss: "No, gracias"
-  banner_note: "Las guías siguen en inglés."
   tools_h1: "Todas las calculadoras de negocio gratuitas"
   search_placeholder: "Filtrar calculadoras…"
   sort_newest: "⚡ Más recientes"
@@ -109,7 +102,6 @@ de:
   banner_offer: "Diese Seite auf {lang} anzeigen?"
   banner_accept: "Wechseln"
   banner_dismiss: "Nein danke"
-  banner_note: "Die Guides bleiben auf Englisch."
   tools_h1: "Alle kostenlosen Business-Rechner"
   search_placeholder: "Rechner filtern…"
   sort_newest: "⚡ Neueste zuerst"

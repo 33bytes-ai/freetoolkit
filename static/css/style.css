@@ -2548,3 +2548,11 @@ mark.search-hit {
   z-index: 200;
   pointer-events: none;
 }
+
+/* i18n-boot.js: hide the English page while i18n.js translates it. The
+   delayed animation is the failsafe if translation never finishes. */
+.i18n-pending body {
+  visibility: hidden;
+  animation: i18n-failsafe 0s linear 1.5s forwards;
+}
+@keyframes i18n-failsafe { to { visibility: visible; } }
