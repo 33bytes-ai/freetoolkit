@@ -2686,6 +2686,24 @@ def test_deploy_workflow_can_be_triggered_from_the_browser():
     assert triggers["push"]["branches"] == ["main"]
 
 
+def test_motion_is_deferred_and_opt_out_safe():
+    """Motion ships as a small vendored subset, deferred on every page, and the
+    effects script bails out under prefers-reduced-motion. Content must never be
+    hidden by CSS: a stylesheet-level opacity:0 left sections invisible once."""
+    run_build()
+    html = (DIST / "tools" / "free-cash-flow-calculator" / "index.html").read_text()
+    for src in ("/static/js/vendor/motion.min.js", "/static/js/lib/motion-fx.js"):
+        assert re.search(rf'<script src="{re.escape(src)}\?v=[^"]+" defer></script>', html), src
+    fx = (ROOT / "static" / "js" / "lib" / "motion-fx.js").read_text()
+    assert "prefers-reduced-motion: reduce" in fx
+    css = (ROOT / "static" / "css" / "style.css").read_text()
+    animated = ("category-card", "tool-card", "intro-text", "home-section",
+                "tool-body", "newsletter-card", "guide-toc", "affiliate-card")
+    for cls in animated:
+        for block in re.findall(rf"\.{cls}[^{{]*\{{([^}}]*)\}}", css):
+            assert "opacity: 0" not in block, cls
+
+
 def _i18n_langs():
     from freetoolkit import i18n
     return i18n.load(ROOT / "content" / "i18n")

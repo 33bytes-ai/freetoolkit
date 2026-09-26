@@ -78,6 +78,10 @@ def main() -> int:
     if common_js.exists():
         check(gz_kb(common_js) < 12,
               f"common.js = {gz_kb(common_js):.1f} KB gz ({size_kb(common_js):.1f} raw) (budget: 12 KB)")
+    motion_js = DIST / "static" / "js" / "vendor" / "motion.min.js"
+    check(motion_js.exists() and gz_kb(motion_js) < 9,
+          f"motion.min.js = {gz_kb(motion_js):.1f} KB gz (budget: 9 KB; full UMD is 49 KB)" if motion_js.exists()
+          else "motion.min.js missing from dist/static/js/vendor/")
 
     print("\n── Meta tag coverage ────────────────────────────────────────────")
     index = DIST / "index.html"
