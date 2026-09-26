@@ -1924,21 +1924,31 @@ body[data-ads="on"] {
    Home page
    ======================================================================== */
 
-/* Light sage band, left-aligned: the search box is the hero's one job. */
+/* Dark ledger-green band in both themes: the brand's one strong moment.
+   Static on purpose (no animated gradient, glass card or rotating word:
+   the word used to get clipped and the H1 read "Free calculators for"). */
 .home-hero {
-  background: var(--surface-soft);
-  border-bottom: 1px solid var(--border);
-  padding: 3.5rem 0 3rem;
+  --hero-bg: #0b1f16;
+  --hero-text: #f2f7f3;
+  --hero-muted: rgba(242, 247, 243, 0.74);
+  --hero-accent: #86e0b3;
+  color-scheme: dark;
+  background:
+    radial-gradient(ellipse 60% 90% at 85% 20%, rgba(58, 156, 115, 0.28), transparent 70%),
+    linear-gradient(160deg, #123826 0%, var(--hero-bg) 65%);
+  color: var(--hero-text);
+  padding: 4rem 0 3.5rem;
 }
 .home-hero h1 {
-  font-size: clamp(2rem, 4.5vw, 3.1rem);
-  line-height: 1.08;
+  color: var(--hero-text);
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+  line-height: 1.06;
   letter-spacing: -0.03em;
   max-width: 16ch;
   margin: 0 0 1rem;
 }
 .home-hero .hero-sub {
-  color: var(--text-muted);
+  color: var(--hero-muted);
   font-size: 1.1rem;
   max-width: 48ch;
   margin: 0 0 1.75rem;
@@ -1951,21 +1961,27 @@ body[data-ads="on"] {
 .hero-search input {
   flex: 1 1 auto;
   min-width: 0;
-  padding: 0.8rem 1rem;
+  padding: 0.85rem 1rem;
   border-radius: var(--radius-md);
-  border: 1px solid var(--border-strong);
-  background: var(--surface);
-  color: var(--text);
+  border: 1px solid transparent;
+  background: #ffffff;
+  color: #1a2420;
   font: inherit;
 }
+.hero-search input::placeholder { color: #5b665e; }
 .hero-search input:focus {
-  outline: 2px solid transparent;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+  outline: 3px solid var(--hero-accent);
+  outline-offset: 2px;
 }
 .hero-search .btn-primary {
-  padding: 0.8rem 1.4rem;
+  padding: 0.85rem 1.4rem;
   flex-shrink: 0;
+  background: var(--hero-accent);
+  color: #06140d;
+}
+.hero-search .btn-primary:focus-visible {
+  outline: 3px solid var(--hero-text);
+  outline-offset: 2px;
 }
 .hero-popular {
   display: flex;
@@ -1976,19 +1992,20 @@ body[data-ads="on"] {
   padding: 0;
   list-style: none;
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: var(--hero-muted);
 }
 .hero-popular a {
-  color: var(--text);
+  color: var(--hero-text);
   font-weight: 500;
   text-underline-offset: 3px;
-  text-decoration-color: var(--border-strong);
+  text-decoration-color: rgba(242, 247, 243, 0.35);
 }
-.hero-popular a:hover { color: var(--accent); text-decoration-color: currentColor; }
+.hero-popular a:hover { color: var(--hero-accent); text-decoration-color: currentColor; }
+.hero-popular a:focus-visible { outline: 2px solid var(--hero-accent); outline-offset: 2px; }
 @media (max-width: 640px) {
-  .home-hero { padding: 2rem 0 1.75rem; }
+  .home-hero { padding: 2.25rem 0 2rem; }
   .home-hero .hero-sub { font-size: 1rem; margin-bottom: 1.25rem; }
-  .hero-search .btn-primary { padding: 0.8rem 1rem; }
+  .hero-search .btn-primary { padding: 0.85rem 1rem; }
 }
 
 /* Home page section styling */
