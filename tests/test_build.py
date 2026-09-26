@@ -457,7 +457,7 @@ def test_tools_index_shows_guide_count():
     """Tools index should show guide count in category headers."""
     run_build()
     html = (DIST / "tools" / "index.html").read_text()
-    assert "guides" in html, "/tools/ index missing guide count in category headers"
+    assert "guide sections" in html, "/tools/ index missing guide count in category headers"
 
 
 def test_webapplication_schema_has_date_modified():
