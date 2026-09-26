@@ -207,3 +207,902 @@ how-to-improve-fcf-margin:
     équivalent, car les coûts cloud sont déjà hors capex.
 
     Suivez l'évolution de votre marge de FCF avec le [calculateur de flux de trésorerie disponible](/tools/free-cash-flow-calculator/).
+
+"favorable-vs-unfavorable-variance":
+  "title": "Écart favorable ou défavorable : les différences clés"
+  "description": "Comment savoir si un écart budgétaire est favorable ou défavorable, pourquoi le sens s'inverse entre lignes de chiffre d'affaires et de charges, et les erreurs d'étiquetage courantes."
+  "body": |
+    Un écart de même montant peut être une bonne ou une mauvaise nouvelle selon
+    la ligne budgétaire concernée. Se tromper de sens est l'erreur la plus
+    fréquente dans le reporting des écarts.
+
+    ## La règle
+
+    | Type de ligne | Réalisé > budget | Réalisé < budget |
+    |-----------|-----------------|------------------|
+    | Chiffre d'affaires | Favorable | Défavorable |
+    | Charge | Défavorable | Favorable |
+
+    Pour le chiffre d'affaires, plus c'est mieux : dépasser le budget est
+    favorable. Pour les charges, moins c'est mieux : dépenser moins que prévu est
+    favorable. L'étiquette décrit l'effet sur le résultat, pas le sens du chiffre.
+
+    ## Pourquoi on s'y trompe
+
+    Un tableur qui colore simplement en vert les écarts positifs et en rouge les
+    écarts négatifs se trompe sur les charges : un écart de charge « positif »
+    (dépassement) est une mauvaise nouvelle, mais une règle de couleur naïve
+    l'afficherait en vert. Calculez toujours explicitement favorable/défavorable
+    selon le type de ligne, au lieu de vous fier au seul signe.
+
+    ## Un exemple chiffré
+
+    Marketing budgété à 50 000 $, dépensé 58 000 $ → écart = +8 000 $ (16 % de
+    dépassement) → **défavorable**, car c'est une ligne de charge qui dépasse.
+
+    Chiffre d'affaires budgété à 200 000 $, réalisé 215 000 $ → écart = +15 000 $
+    (7,5 % au-dessus) → **favorable**, car c'est une ligne de chiffre d'affaires
+    qui dépasse.
+
+    Les deux écarts sont positifs. L'un est une bonne nouvelle, l'autre une
+    mauvaise.
+
+    ## Les écarts favorables méritent aussi un examen
+
+    Un gros écart favorable sur une charge n'est pas forcément bon : un projet a
+    peut-être été retardé (l'argent sera dépensé plus tard) ou un plan de
+    recrutement n'a pas été tenu, ce qui peut pénaliser la production. Analysez
+    les gros écarts favorables avec la même rigueur que les défavorables.
+
+    ## Questions fréquentes
+
+    **« Favorable » veut-il toujours dire bon pour l'entreprise ?**
+    Pas forcément. Sous-dépenser en marketing peut être favorable sur la ligne
+    budgétaire mais défavorable pour la génération de pipeline. Vérifiez toujours
+    l'effet en aval, pas seulement l'étiquette de la ligne.
+
+    **Comment afficher favorable/défavorable dans un rapport ?**
+    La plupart des équipes finance utilisent une colonne ou une icône dédiée
+    (▲/▼ en couleur) calculée selon la règle ci-dessus, plutôt que le signe brut
+    de l'écart : cela évite toute confusion entre chiffre d'affaires et charges.
+
+    Utilisez le [calculateur d'écart budgétaire](/tools/budget-variance-calculator/) :
+    il qualifie automatiquement chaque écart de favorable ou défavorable selon le
+    type de ligne choisi.
+"what-is-budget-variance-analysis":
+  "title": "Qu'est-ce que l'analyse des écarts budgétaires ?"
+  "description": "Un guide clair sur l'analyse des écarts budgétaires : ce qu'elle mesure, comment la calculer et comment les équipes finance l'utilisent pour repérer les problèmes tôt."
+  "body": |
+    L'analyse des écarts budgétaires consiste à comparer les résultats financiers
+    réels au budget prévu, puis à expliquer les différences. C'est l'une des
+    disciplines les plus élémentaires de la gestion financière, et l'une des plus
+    souvent négligées.
+
+    ## Le calcul de base
+
+    $$\text{Écart} = \text{Réalisé} - \text{Budget}$$
+
+    $$\text{Écart \%} = \frac{\text{Réalisé} - \text{Budget}}{|\text{Budget}|} \times 100$$
+
+    Un écart seul n'est qu'un chiffre. L'analyse consiste à se demander *pourquoi*
+    il existe et s'il se reproduira la période suivante.
+
+    ## Pourquoi les équipes finance analysent les écarts chaque mois
+
+    Une revue mensuelle des écarts repère les problèmes tant qu'ils coûtent peu à
+    corriger. Une ligne marketing qui dépasse de 40 % au premier mois se règle en
+    une conversation ; le même dépassement laissé sans suite pendant deux
+    trimestres devient une crise de trésorerie. L'analyse des écarts est le
+    système d'alerte précoce entre « nous avons fait un budget » et « nous l'avons
+    réellement tenu ».
+
+    ## Écarts de chiffre d'affaires et de charges se lisent en sens inverse
+
+    Un écart de charge positif (plus dépensé que prévu) est défavorable. Un écart
+    de chiffre d'affaires positif (plus encaissé que prévu) est favorable.
+    Confondre les deux est l'erreur de reporting la plus courante dans les
+    présentations financières : qualifiez toujours les écarts de
+    favorables/défavorables, pas seulement de positifs/négatifs, pour éviter
+    toute ambiguïté.
+
+    ## Trois questions auxquelles toute revue d'écarts doit répondre
+
+    1. **Est-ce un décalage de calendrier ou un vrai écart ?** Une dépense
+       marketing tombée au mois 2 au lieu du mois 1 n'est pas un vrai
+       dépassement, c'est un décalage.
+    2. **Est-ce ponctuel ou structurel ?** Une grosse dépense exceptionnelle ne
+       demande pas de changer les processus. Un dépassement récurrent de 15 % sur
+       la même ligne chaque mois, si.
+    3. **Cela change-t-il la prévision annuelle ?** Les écarts significatifs
+       doivent mettre à jour votre reprévision, pas seulement être notés puis
+       oubliés.
+
+    ## Questions fréquentes
+
+    **À partir de quelle taille un écart mérite-t-il d'être analysé ?**
+    La plupart des équipes finance utilisent un seuil de matérialité, souvent 5 à
+    10 % de la ligne budgétée, ou un montant fixe pour les petites lignes.
+    En dessous, c'est du bruit normal ; au-dessus, creusez.
+
+    **Chaque département doit-il revoir ses propres écarts ?**
+    Oui : les responsables de département ont le contexte opérationnel que la
+    finance n'a pas. Le rôle de la finance est de signaler l'écart et de poser
+    la question ; le responsable du département en explique la cause.
+
+    Utilisez le [calculateur d'écart budgétaire](/tools/budget-variance-calculator/)
+    pour calculer instantanément l'écart en valeur et en pourcentage sur
+    n'importe quelle ligne.
+"how-to-reduce-days-sales-outstanding":
+  "title": "Comment réduire le délai de paiement clients (DSO) dans un SaaS B2B"
+  "description": "Un DSO élevé immobilise de la trésorerie dans des factures non encaissées. Ce guide présente les leviers les plus efficaces pour le réduire dans un SaaS B2B, des conditions de paiement aux relances automatisées."
+  "body": |
+    Le délai de paiement clients (DSO) est l'une des composantes les plus
+    actionnables du cycle de conversion de trésorerie. Chaque jour gagné libère
+    du fonds de roulement.
+
+    À 5 M$ d'ARR avec un DSO de 30 jours : 5 M$ ÷ 365 × 30 = **411 k$ immobilisés en créances**.
+    Ramenez le DSO à 15 jours : les créances tombent à 205 k$, soit **206 k$ libérés immédiatement**.
+
+    ## Levier 1 : exiger un paiement annuel d'avance, contre une remise
+
+    Le levier le plus puissant dans un SaaS : proposer 15 à 20 % de remise pour
+    un prépaiement annuel. Un client annuel a un DSO de 0 dès qu'il paie. Un
+    client mensuel facturé a un DSO de 30 à 60 jours.
+
+    Faire passer 30 % des clients du mensuel à l'annuel peut diviser le DSO par
+    deux.
+
+    ## Levier 2 : passer de la facture au prélèvement automatique par carte
+
+    Les factures mensuelles créent du DSO. Un prélèvement automatique par carte a
+    un DSO ≈ 0 (hors délai de règlement, 1 à 2 jours).
+
+    Pour les clients en libre-service et les TPE-PME : imposez la facturation
+    automatique. Pour les grands comptes : gardez la facture, mais resserrez les
+    conditions.
+
+    ## Levier 3 : automatiser les séquences de relance
+
+    Programmez des e-mails de relance automatiques :
+    - 3 jours avant l'échéance : « Votre facture arrive à échéance »
+    - Jour 0 (échéance) : « Votre facture est due aujourd'hui »
+    - Jour 7 : « Facture en retard »
+    - Jour 14 : « Second rappel : paiement requis pour éviter une interruption de service »
+
+    Les séquences automatisées réduisent le DSO de 30 à 50 % par rapport à des
+    relances manuelles.
+
+    ## Levier 4 : raccourcir les délais de paiement standards
+
+    60 jours → 30 jours → 15 jours → paiement à réception. Chaque réduction abaisse
+    directement le DSO maximal. Les gros clients négocieront ; tenez bon sur les
+    conditions standards pour les petits comptes.
+
+    ## Levier 5 : exiger le virement pour les grands comptes
+
+    Le risque de rétrofacturation sur carte pousse certains grands comptes à
+    retarder leurs paiements. Les virements sont plus rapides et sans risque de
+    rétrofacturation. Proposez-les par défaut sur les factures grands comptes.
+
+    Utilisez le [calculateur de cycle de conversion de trésorerie](/tools/cash-conversion-cycle-calculator/)
+    pour voir l'effet d'un DSO plus court sur votre CCC total.
+"what-is-cash-conversion-cycle":
+  "title": "Qu'est-ce que le cycle de conversion de trésorerie ? Guide du fonds de roulement"
+  "description": "Le cycle de conversion de trésorerie (CCC) mesure combien de temps la trésorerie reste immobilisée dans l'exploitation. Ce guide explique le DIO, le DSO et le DPO, et comment utiliser le CCC pour optimiser le fonds de roulement."
+  "body": |
+    Le cycle de conversion de trésorerie (CCC) répond à une question : combien de
+    jours s'écoulent entre le moment où vous dépensez pour vos achats et celui où
+    vous encaissez vos clients ?
+
+    **CCC = rotation des stocks (DIO) + délai de paiement clients (DSO) − délai de paiement fournisseurs (DPO)**
+
+    Plus le CCC est bas, plus vite l'exploitation se transforme en trésorerie, ce
+    qui libère du fonds de roulement pour la croissance sans financement
+    supplémentaire.
+
+    ## Les trois composantes
+
+    ### DIO : rotation des stocks en jours
+
+    Le temps pendant lequel les stocks restent en rayon avant d'être vendus.
+
+    **DIO = stock moyen ÷ coût des ventes × 365**
+
+    Avec 500 k$ de stock moyen et 3 M$ de coût des ventes annuel : DIO = 60,8 jours.
+
+    DIO plus bas = rotation plus rapide = moins de trésorerie immobilisée en stock.
+
+    ### DSO : délai de paiement clients
+
+    Le temps nécessaire pour encaisser après une vente.
+
+    **DSO = créances clients moyennes ÷ chiffre d'affaires × 365**
+
+    Avec 400 k$ de créances moyennes et 5 M$ de chiffre d'affaires : DSO = 29,2 jours.
+
+    Un DSO élevé signale un encaissement lent : conditions de paiement trop
+    souples, facturation tardive ou clients qui paient en retard.
+
+    ### DPO : délai de paiement fournisseurs
+
+    Le temps que vous mettez à payer vos fournisseurs.
+
+    **DPO = dettes fournisseurs moyennes ÷ coût des ventes × 365**
+
+    Avec 200 k$ de dettes fournisseurs moyennes et 3 M$ de coût des ventes : DPO = 24,3 jours.
+
+    DPO plus élevé = vous gardez la trésorerie plus longtemps = mieux pour le
+    fonds de roulement.
+
+    ## Utiliser le CCC pour planifier
+
+    Les entreprises à CCC élevé ont besoin de plus de fonds de roulement (et
+    souvent de lignes de crédit) pour financer leur croissance. Celles à CCC
+    faible ou négatif peuvent croître avec très peu de financement externe.
+
+    Si vous prévoyez de doubler votre chiffre d'affaires, votre besoin en fonds
+    de roulement augmente à peu près proportionnellement au CCC : un CCC de
+    65 jours avec un chiffre d'affaires doublé, c'est deux fois plus de
+    trésorerie immobilisée dans l'exploitation.
+
+    Calculez votre CCC avec le [calculateur de cycle de conversion de trésorerie](/tools/cash-conversion-cycle-calculator/).
+"working-capital-management-saas":
+  "title": "La gestion du fonds de roulement dans un SaaS"
+  "description": "Les SaaS ont une dynamique de fonds de roulement particulière. Ce guide explique comment le CCC s'applique au SaaS, pourquoi la plupart ont un fonds de roulement négatif, et comment l'optimiser."
+  "body": |
+    Le fonds de roulement est la différence entre l'actif circulant et le passif
+    circulant. Bien le gérer, c'est avoir la trésorerie quand il le faut sans
+    se surfinancer.
+
+    Pour un SaaS, la gestion du fonds de roulement est plus simple que pour une
+    entreprise de produits physiques, mais elle reste importante, surtout à
+    grande échelle.
+
+    ## Pourquoi un SaaS a souvent un fonds de roulement négatif
+
+    Un SaaS facturé à l'année, avec des dettes fournisseurs mensuelles, a :
+    - **DIO = 0** (pas de stock : tout est numérique)
+    - **DSO ≈ 0** (les clients paient d'avance ou par prélèvement automatique)
+    - **DPO = 30 à 60 jours** (AWS, salaires, prestataires payés 30 à 60 jours après le service)
+
+    **CCC = 0 + 0 − 45 = −45 jours**
+
+    Un CCC négatif signifie que l'entreprise fonctionne sur le crédit
+    fournisseurs : elle encaisse avant de devoir payer. C'est naturellement
+    générateur de trésorerie.
+
+    À comparer avec une société de services qui facture à 30 jours et paie ses
+    fournisseurs à 60 :
+    - DSO = 30 jours, DPO = 60 jours
+    - CCC = 30 − 60 = −30 jours (toujours négatif, mais moins)
+
+    ## Quand le fonds de roulement d'un SaaS devient positif
+
+    Le fonds de roulement d'un SaaS peut devenir positif quand :
+    - De gros contrats grands comptes sont facturés à 30–60 jours (les créances s'accumulent)
+    - Les recrutements et les dépenses vont plus vite que les encaissements
+    - Les produits constatés d'avance des contrats annuels ne sont pas adossés à des réserves de trésorerie
+
+    Un SaaS à 10 M$ d'ARR dont 50 % en grands comptes (paiement à 45 jours) :
+    - Créances grands comptes : 5 M$ ÷ 365 × 45 ≈ 616 k$ en attente à tout moment
+    - Ce n'est pas négligeable, et cela double à 20 M$ d'ARR si les processus ne changent pas
+
+    ## Optimiser le fonds de roulement d'un SaaS
+
+    1. **Pousser la facturation annuelle d'avance** chez les grands comptes : moins de créances, meilleur DSO
+    2. **Automatiser la facturation mensuelle** des TPE-PME et du mid-market : plus aucune créance
+    3. **Allonger les délais fournisseurs** avec les prestataires clés (cloud, freelances) : DPO plus élevé
+    4. **Utiliser une ligne de crédit pour les décalages** : couvrir les besoins de fonds de roulement
+       à court terme sans dilution
+
+    Calculez votre CCC et suivez votre fonds de roulement avec le
+    [calculateur de cycle de conversion de trésorerie](/tools/cash-conversion-cycle-calculator/).
+"accounts-receivable-turnover-ratio":
+  "title": "Rotation des créances clients : formule, calcul et repères"
+  "description": "Comment calculer la rotation des créances clients, ce qu'elle dit de l'efficacité de votre recouvrement, et les repères par type d'activité."
+  "body": |
+    ## Qu'est-ce que la rotation des créances clients ?
+
+    La rotation des créances clients mesure combien de fois par période une
+    entreprise encaisse son solde moyen de créances :
+
+    **Rotation des créances = ventes nettes à crédit ÷ créances clients moyennes**
+
+    Une rotation de 12× signifie que l'entreprise encaisse l'équivalent de tout
+    son solde de créances 12 fois par an, soit environ tous les 30 jours.
+
+    ## Rotation des créances et DSO
+
+    Les deux indicateurs mesurent la vitesse d'encaissement sous des angles
+    différents :
+
+    | Rotation des créances | DSO équivalent |
+    |---|---|
+    | 18× | ~20 jours |
+    | 12× | ~30 jours |
+    | 8× | ~45 jours |
+    | 6× | ~60 jours |
+    | 4× | ~90 jours |
+
+    **DSO = 365 ÷ rotation des créances**
+
+    ## Comment calculer les créances moyennes
+
+    Pour un trimestre : (créances en début + créances en fin) ÷ 2
+
+    Exemple :
+    - Créances au début du T3 : 120 000 $
+    - Créances à la fin du T3 : 150 000 $
+    - Créances moyennes : 135 000 $
+    - Ventes nettes à crédit du T3 : 540 000 $
+    - Rotation des créances (annualisée) : (540 000 $ × 4) ÷ 135 000 $ = 16×
+    - DSO équivalent : 365 ÷ 16 = 22,8 jours
+
+    ## Repères de rotation par secteur
+
+    | Secteur | Rotation habituelle | DSO habituel |
+    |---|---|---|
+    | SaaS (abonnement) | 18–52× | 7–20 jours |
+    | Services professionnels | 6–10× | 36–60 jours |
+    | Industrie B2B | 5–8× | 45–73 jours |
+    | BTP | 4–7× | 52–91 jours |
+    | Santé | 5–9× | 40–73 jours |
+
+    Calculez votre rotation des créances et votre DSO avec le
+    [calculateur de délai de paiement clients](/tools/dso-calculator/).
+"how-to-reduce-dso":
+  "title": "Comment réduire le DSO et encaisser plus vite"
+  "description": "Des leviers concrets pour réduire le délai de paiement clients, de la facturation à la politique de crédit en passant par les incitations au paiement."
+  "body": |
+    ## Pourquoi réduire le DSO
+
+    Chaque jour de DSO en moins libère une trésorerie égale à votre chiffre d'affaires quotidien. Une entreprise à 5 M$ par an qui ramène son DSO de 45 à 30 jours libère ~205 k$ de fonds de roulement.
+
+    ## Leviers concrets
+
+    **Facturer plus vite :**
+    - Envoyer la facture le jour de la livraison, pas en fin de mois
+    - Passer à la facture électronique pour supprimer les délais postaux
+    - Automatiser les factures récurrentes des abonnements
+
+    **Relancer méthodiquement :**
+    - J+1 après l'échéance : e-mail de rappel courtois
+    - J+15 : relance téléphonique
+    - J+30 : escalade vers un interlocuteur de direction
+    - J+45 et au-delà : procédure de recouvrement ou règlement du litige
+
+    **Inciter au paiement anticipé :**
+    - Proposer un escompte pour paiement anticipé (voir le [calculateur d'escompte sur facture](/tools/invoice-discount-calculator/))
+    - Appliquer des pénalités de retard (vérifiez d'abord la réglementation locale)
+    - Programmes d'escompte dynamique via les plateformes de gestion fournisseurs et clients
+
+    **Revoir la politique de crédit :**
+    - Exiger un acompte ou un paiement d'avance des nouveaux clients
+    - Raccourcir les délais des mauvais payeurs
+    - Vérifier la solvabilité avant d'accorder un délai de paiement
+
+    ## Le DSO selon le contexte
+
+    Un « bon » DSO dépend beaucoup du secteur et du type de client :
+    - **Commerce de détail** : proche de zéro (espèces, carte)
+    - **Petit B2B** : 20 à 35 jours
+    - **B2B grands comptes** : 45 à 75 jours
+    - **Marchés publics** : 60 à 120 jours
+
+    Suivez votre DSO chaque mois avec le [calculateur de rotation des créances](/tools/dso-calculator/).
+"what-is-accounts-receivable-turnover":
+  "title": "Qu'est-ce que la rotation des créances clients ?"
+  "description": "Définition, formule et repères pour la rotation des créances clients et le délai de paiement clients (DSO)."
+  "body": |
+    ## Rotation des créances clients
+
+    La rotation des créances mesure combien de fois par an une entreprise encaisse son solde moyen de créances clients :
+
+    $$\text{Rotation des créances} = \frac{\text{Ventes nettes à crédit}}{\text{Créances clients moyennes}}$$
+
+    Une rotation de 12 signifie que vous encaissez votre solde moyen de créances tous les 30 jours.
+
+    ## DSO : délai de paiement clients
+
+    Le DSO exprime la rotation des créances en jours, ce qui facilite la comparaison avec les conditions de paiement :
+
+    $$\text{DSO} = \frac{\text{Créances moyennes}}{\text{Ventes nettes à crédit}} \times 365$$
+
+    DSO et rotation des créances sont mathématiquement inverses : rotation élevée = DSO bas.
+
+    ## Pourquoi la rotation des créances compte
+
+    Un encaissement lent immobilise du fonds de roulement. Une entreprise qui a 500 k$ de créances au lieu de 300 k$ bloque inutilement 200 k$ de trésorerie, de l'argent qui pourrait financer l'exploitation ou rembourser la dette.
+
+    Suivre la rotation des créances dans le temps révèle les tendances de recouvrement avant qu'elles ne tournent à la crise de trésorerie.
+
+    Utilisez le [calculateur de rotation des créances](/tools/dso-calculator/) pour calculer votre ratio et votre DSO.
+"working-capital-impact-of-dso":
+  "title": "L'effet du DSO sur le fonds de roulement : encaisser plus vite pour libérer du cash"
+  "description": "Comment calculer la trésorerie libérée en améliorant le DSO, et pourquoi l'efficacité du recouvrement est souvent le moyen le plus rapide d'améliorer le fonds de roulement sans lever de fonds."
+  "body": |
+    ## DSO et fonds de roulement
+
+    Le fonds de roulement (actif circulant moins passif circulant) détermine si
+    une entreprise peut financer son exploitation sans financement externe. Dans
+    une entreprise B2B, les créances clients sont généralement le premier poste
+    de l'actif circulant : le DSO pilote donc directement le besoin en fonds de
+    roulement.
+
+    ## Le calcul
+
+    **Trésorerie libérée = chiffre d'affaires quotidien × jours de DSO gagnés**
+
+    Chiffre d'affaires quotidien = chiffre d'affaires annuel ÷ 365
+
+    Exemples :
+    - Entreprise à 2 M$ d'ARR : 15 jours de DSO gagnés libèrent **82 000 $**
+    - Entreprise à 5 M$ d'ARR : 15 jours de DSO gagnés libèrent **205 000 $**
+    - Entreprise à 10 M$ d'ARR : 15 jours de DSO gagnés libèrent **411 000 $**
+
+    ## Le DSO, une source de capital gratuite
+
+    Améliorer le DSO équivaut économiquement à lever des fonds sans dette :
+    - Aucune dilution (contrairement à une levée en capital)
+    - Aucun intérêt (contrairement à un emprunt)
+    - Une amélioration durable (contrairement à un prêt de trésorerie ponctuel)
+
+    Une entreprise qui gagne 20 jours de DSO « lève » en fait l'équivalent de
+    20 jours de chiffre d'affaires en fonds de roulement, sans aucun coût.
+
+    ## Quand le DSO se dégrade
+
+    Un DSO en hausse est l'un des premiers signaux de difficultés :
+
+    1. **Clients sous tension** : des clients qui paient en retard faute de
+       trésorerie, signe avant-coureur de créances irrécouvrables
+    2. **Qualité des ventes** : de nouveaux clients moins solvables ajoutés pour
+       faire croître le chiffre d'affaires
+    3. **Erreurs de facturation** : des litiges qui bloquent les paiements
+    4. **Recouvrement sous-dimensionné** : une équipe qui ne relance pas
+       méthodiquement
+
+    Suivez votre DSO chaque mois et analysez toute hausse de plus de 5 jours.
+    Utilisez le [calculateur de délai de paiement clients](/tools/dso-calculator/).
+"should-you-offer-an-early-payment-discount":
+  "title": "Faut-il proposer un escompte pour paiement anticipé ?"
+  "description": "Le calcul côté vendeur : un escompte comme 2/10 net 30 vaut-il son coût, et quand est-il pertinent d'en proposer un ?"
+  "body": |
+    L'escompte pour paiement anticipé accélère les encaissements, mais c'est en
+    réalité un taux d'intérêt que vous payez pour être réglé plus tôt. Que
+    l'échange en vaille la peine dépend de ce que vaut la trésorerie pour vous
+    maintenant.
+
+    ## Le coût annuel implicite d'un escompte standard
+
+    Une condition 2/10 net 30 (2 % de remise si payé sous 10 jours, sinon
+    échéance à 30) signifie que vous renoncez à 2 % pour être payé 20 jours plus
+    tôt que l'échéance normale. Annualisé, cela donne environ :
+
+    $$\text{Taux annuel implicite} = \frac{\text{Remise \%}}{100 - \text{Remise \%}} \times \frac{365}{\text{Jours d'avance}}$$
+
+    Pour 2/10 net 30 : (2 ÷ 98) × (365 ÷ 20) ≈ **37 % annualisé**, un taux
+    implicite étonnamment élevé pour ce qui ressemble à une petite remise de 2 %.
+
+    ## Quand en proposer un reste pertinent
+
+    - **Vous avez un meilleur usage de la trésorerie** : si un encaissement plus
+      rapide vous évite un prêt ou une ligne de crédit à court terme plus chers,
+      l'escompte peut coûter moins que le financement alternatif
+    - **Votre trésorerie est tendue** : pour une entreprise réellement à court de
+      fonds de roulement, être payé à 10 jours plutôt qu'à 30 (ou plus tard, tant
+      « net 30 » veut souvent dire « net 45 et plus » en pratique) peut justifier
+      un coût réel
+    - **Vous voulez réduire le risque de recouvrement** : un paiement plus rapide
+      réduit la fenêtre pendant laquelle la situation d'un client peut se
+      dégrader avant qu'il ne vous paie
+
+    ## Quand ça n'en vaut pas la peine
+
+    Si votre trésorerie n'est pas tendue et que vous n'avez pas d'usage précis et
+    rentable du cash 20 jours plus tôt, un taux annuel implicite de 37 % et plus
+    est une façon coûteuse d'acheter de la vitesse. La plupart des entreprises
+    dans cette situation feraient mieux de ne pas proposer d'escompte et de faire
+    simplement respecter leurs conditions standards.
+
+    ## Une alternative moins chère : des délais standards plus courts
+
+    Plutôt qu'un escompte, raccourcissez vos délais standards (15 jours au lieu
+    de 30) pour les nouveaux clients, ou exigez un acompte sur les grosses
+    factures. Vous encaissez plus vite sans payer un taux implicite de 37 %.
+
+    ## Questions fréquentes
+
+    **La plupart des clients prennent-ils l'escompte ?**
+    Le taux d'utilisation varie beaucoup selon le type de client et sa trésorerie.
+    Les clients bien capitalisés l'ignorent souvent, car 2 % ne change rien pour
+    eux, tandis que ceux qui manquent de trésorerie le prennent plus volontiers :
+    vous risquez donc de subventionner précisément les clients les plus
+    susceptibles de payer en retard autrement.
+
+    **Existe-t-il un pourcentage d'escompte standard ?**
+    2/10 net 30 est la convention la plus répandue, mais rien n'impose ce chiffre :
+    calculez le taux annuel implicite de toute combinaison remise/jours avant de
+    la proposer.
+
+    Utilisez le [calculateur d'escompte sur facture](/tools/invoice-discount-calculator/)
+    pour calculer le coût annualisé implicite de toute condition d'escompte que
+    vous envisagez.
+"what-is-2-10-net-30":
+  "title": "Qu'est-ce que la condition de paiement 2/10 net 30 ?"
+  "description": "La condition 2/10 net 30 expliquée : ce qu'elle signifie, comment calculer son coût annualisé et quand l'acheteur a intérêt à prendre l'escompte."
+  "body": |
+    ## 2/10 net 30 expliqué
+
+    « 2/10 net 30 » est une condition de crédit commercial courante qui signifie :
+    - **2 %** de remise si la facture est payée sous **10 jours**
+    - Montant intégral dû sous **30 jours** si l'escompte n'est pas pris
+
+    Elle figure sur les factures sous la forme « 2/10 N30 ».
+
+    ## Le vrai coût du renoncement à l'escompte
+
+    Renoncer à un escompte 2/10 net 30 revient à emprunter à un taux annuel de 37,2 % :
+
+    $$\frac{2\%}{98\%} \times \frac{365}{20 \text{ jours}} = 37.2\%$$
+
+    Vous payez en fait 2 % pour garder l'argent 20 jours de plus. C'est un financement extrêmement cher.
+
+    ## Quand renoncer à l'escompte
+
+    La seule raison rationnelle de renoncer à un escompte est que votre coût du capital soit inférieur à son coût annualisé, ce qui est rarement le cas pour un 2/10 net 30.
+
+    Si vous ne pouvez vraiment pas payer plus tôt faute de trésorerie, c'est un problème de fonds de roulement à traiter à part. Envisagez une ligne de crédit renouvelable : emprunter à 8 % pour saisir un escompte à 37 % annualisé en vaut clairement la peine.
+
+    Utilisez le [calculateur d'escompte sur facture](/tools/invoice-discount-calculator/) pour calculer le coût annualisé de n'importe quelle condition d'escompte.
+"when-to-take-early-payment-discount":
+  "title": "Quand prendre un escompte pour paiement anticipé ?"
+  "description": "Une grille de décision pour savoir s'il faut prendre un escompte pour paiement anticipé, avec la comparaison du coût annualisé et les enjeux de fonds de roulement."
+  "body": |
+    ## Prendre ou refuser
+
+    Prenez l'escompte quand : **coût annualisé de l'escompte > votre coût du capital**
+
+    Refusez-le quand : **coût annualisé de l'escompte < votre coût du capital**
+
+    Pour un 2/10 net 30 à 37,2 % de coût annualisé, presque toute entreprise devrait prendre l'escompte. La vraie question est de savoir si vous avez la trésorerie.
+
+    ## Grille de décision
+
+    | Trésorerie | Coût du capital | Recommandation |
+    |--------------|----------------|----------------|
+    | Solide | Quel que soit le taux | Toujours prendre l'escompte |
+    | Tendue | Inférieur au coût de l'escompte | Emprunter pour prendre l'escompte |
+    | Tendue | Supérieur au coût de l'escompte | Refuser : préserver la trésorerie coûte moins cher |
+    | Crise | Sans objet | Refuser : la survie d'abord |
+
+    ## Quand c'est vous qui proposez l'escompte
+
+    Si vous proposez un escompte à vos clients (en tant que vendeur), le calcul s'inverse : c'est vous qui payez. Modélisez soigneusement le coût : proposer 2/10 net 30 réduit de 2 % le chiffre d'affaires réellement encaissé sur les clients qui paient tôt.
+
+    Le [calculateur d'escompte sur facture](/tools/invoice-discount-calculator/) couvre le point de vue de l'acheteur comme celui du vendeur.
+"free-cash-flow-formula-explained":
+  "title": "Flux de trésorerie disponible : formule, exemples et enjeux"
+  "description": "Ce qu'est le flux de trésorerie disponible (FCF), comment le calculer à partir de l'OCF et du capex, et pourquoi c'est l'indicateur clé de la valorisation d'une entreprise."
+  "body": |
+    Le flux de trésorerie disponible (FCF) est la trésorerie qui reste une fois
+    couvertes les charges d'exploitation et les dépenses d'investissement. C'est
+    ce qui est disponible pour investir dans la croissance, rembourser la dette,
+    verser des dividendes ou constituer des réserves.
+
+    **Flux de trésorerie disponible = flux de trésorerie d'exploitation − dépenses d'investissement**
+
+    ## Pourquoi le FCF est la référence en valorisation
+
+    La plupart des modèles de valorisation sérieux reposent sur l'actualisation
+    des flux de trésorerie disponibles (DCF). Acquéreurs et fonds de private
+    equity valorisent les entreprises sur un multiple du FCF plutôt que du chiffre
+    d'affaires ou de l'EBITDA, car le FCF représente de l'argent réel et
+    distribuable.
+
+    Une entreprise valorisée à 15× un FCF de 500 k$ par an a une valeur
+    d'entreprise de 7,5 M$.
+
+    ## Le rendement FCF, raccourci de l'investisseur
+
+    **Rendement FCF = FCF / valeur d'entreprise**
+
+    Un rendement FCF de 5 % signifie que vous gagneriez chaque année 5 % du prix
+    d'achat en trésorerie disponible, soit environ un multiple de 20× le FCF. La
+    plupart des acheteurs visent au minimum 5 à 10 % de rendement FCF.
+
+    ## Quel capex inclure
+
+    Le capex comprend :
+    - Les achats d'équipements
+    - L'aménagement des bureaux et les agencements
+    - Le développement logiciel immobilisé (important pour un SaaS B2B)
+    - Les véhicules et machines
+
+    Le capex ne comprend PAS :
+    - L'entretien courant (passé en charges, non immobilisé)
+    - Les abonnements logiciels (charges d'exploitation)
+    - Les salaires de R&D (charges d'exploitation)
+
+    ## La marge FCF comme repère de croissance
+
+    **Marge FCF = FCF / chiffre d'affaires**
+
+    Pour un SaaS, la marge FCF compte autant que la croissance du chiffre
+    d'affaires. L'indicateur combiné (taux de croissance + marge FCF) est de plus
+    en plus utilisé comme variante de la règle des 40.
+
+    Utilisez le [calculateur de flux de trésorerie d'exploitation](/tools/operating-cash-flow-calculator/)
+    pour calculer votre OCF et votre FCF à partir de votre compte de résultat.
+"operating-cash-flow-vs-net-income":
+  "title": "Flux de trésorerie d'exploitation ou résultat net : quelle différence ?"
+  "description": "Pourquoi l'OCF et le résultat net divergent, ce que mesure chacun, et comment les lire ensemble pour comprendre la rentabilité réelle d'une entreprise."
+  "body": |
+    Le flux de trésorerie d'exploitation et le résultat net prétendent tous deux
+    mesurer la rentabilité, mais ils racontent des histoires très différentes.
+    Comprendre les deux est indispensable pour lire correctement des états
+    financiers.
+
+    ## Ce que mesure le résultat net
+
+    Le résultat net (bénéfice) est le chiffre d'affaires moins l'ensemble des
+    coûts, tel qu'inscrit au compte de résultat. Il suit la comptabilité
+    d'engagement : le chiffre d'affaires est constaté quand il est acquis, et les
+    charges sont rattachées à la période qui les concerne.
+
+    Une entreprise peut donc afficher un résultat net élevé sans recevoir aucune
+    trésorerie. Une société qui vend pour 1 M$ à crédit sans rien encaisser
+    affichera 1 M$ de résultat net et 0 $ de trésorerie.
+
+    ## Ce que mesure l'OCF
+
+    Le flux de trésorerie d'exploitation corrige le résultat net :
+
+    1. **Des charges non décaissées** (amortissements, rémunération en actions) :
+    réintégrées, car elles réduisent le résultat sans consommer de trésorerie
+
+    2. **De la variation du besoin en fonds de roulement** : créances clients,
+    stocks et dettes fournisseurs, c'est-à-dire les décalages entre constatation
+    du chiffre d'affaires et encaissement ou paiement
+
+    OCF = résultat net + charges non décaissées + variation du BFR
+
+    ## Pourquoi ils divergent
+
+    **Cas 1 : entreprise A**, croissance rapide, grosses créances
+    Résultat net : 500 k$. Les clients doivent 600 k$ (pas encore encaissés). OCF : négatif.
+    Lecture : l'entreprise est rentable mais brûle de la trésorerie pour financer sa croissance.
+
+    **Cas 2 : entreprise B**, activité mature et capitalistique
+    Résultat net : 200 k$. Amortissement des équipements : 300 k$. OCF : 500 k$.
+    Lecture : la génération réelle de trésorerie est bien supérieure à ce que montre le compte de résultat.
+
+    ## La fiabilité de l'OCF
+
+    Les investisseurs avertis préfèrent l'OCF et le flux de trésorerie disponible
+    au résultat net, car :
+    - La constatation du chiffre d'affaires peut être manipulée (avancée, différée)
+    - Les plans d'amortissement relèvent de choix de la direction
+    - L'OCF exige que l'argent arrive réellement en banque
+
+    Une entreprise au résultat net durablement élevé mais à l'OCF faible mérite
+    un examen attentif.
+
+    Utilisez le [calculateur de flux de trésorerie d'exploitation](/tools/operating-cash-flow-calculator/)
+    pour convertir votre compte de résultat en OCF et mesurer l'écart.
+"working-capital-impact-on-cash-flow":
+  "title": "Le besoin en fonds de roulement et son impact sur la trésorerie"
+  "description": "Comment la variation des créances clients, des stocks et des dettes fournisseurs agit sur le flux de trésorerie d'exploitation, et comment piloter le fonds de roulement pour générer plus de cash."
+  "body": |
+    Le fonds de roulement est la différence entre l'actif circulant (trésorerie,
+    créances, stocks) et le passif circulant (dettes fournisseurs, charges à
+    payer). Sa variation est souvent le moteur caché de l'écart entre résultat
+    net et flux de trésorerie d'exploitation.
+
+    ## La formule du fonds de roulement
+
+    **Fonds de roulement = actif circulant − passif circulant**
+
+    **Effet d'une variation du fonds de roulement sur l'OCF :**
+    - Créances **en hausse** → l'argent n'est pas encore encaissé → l'OCF baisse
+    - Stocks **en hausse** → payés mais pas encore vendus → l'OCF baisse
+    - Dettes fournisseurs **en hausse** → vous devez de l'argent sans l'avoir payé → l'OCF augmente
+
+    ## Les fuites de trésorerie courantes liées au fonds de roulement
+
+    **Encaissement lent** : un SaaS à 1 M$ d'ARR qui facture à 60 jours a en
+    permanence ~165 k$ immobilisés en créances (deux mois de chiffre d'affaires).
+    Passer à 15 jours libère 125 k$ de trésorerie immédiate sans changer le
+    chiffre d'affaires.
+
+    **Constitution de stocks** : un e-commerçant qui stocke avant la haute saison
+    consomme de la trésorerie des mois avant d'encaisser. Une planification
+    soignée des stocks réduit ce piège.
+
+    **Paiements d'avance** : facturer les plans annuels d'avance (abonnement payé
+    à l'avance) crée un fonds de roulement négatif : vous encaissez avant de
+    constater le chiffre d'affaires. C'est l'une des raisons pour lesquelles les
+    SaaS adorent le prépaiement annuel.
+
+    ## Comment améliorer le fonds de roulement
+
+    1. **Proposer un escompte pour paiement anticipé** : 1 à 2 % de remise pour
+    un paiement sous 10 jours (au lieu de 30) est souvent rationnel pour
+    l'acheteur et accélère nettement vos encaissements.
+
+    2. **Passer à la facturation annuelle** : faire passer les clients du mensuel
+    à l'annuel encaisse 12 mois d'avance au lieu d'un seul.
+
+    3. **Négocier les délais fournisseurs** : passer de 30 à 60 jours vous offre
+    un financement à court terme sans intérêts, aux frais de vos fournisseurs.
+
+    4. **Stocks en flux tendu** : pour les produits physiques, réduire le coût de
+    stockage en commandant au plus près de la demande réelle.
+
+    Utilisez le [calculateur de flux de trésorerie d'exploitation](/tools/operating-cash-flow-calculator/)
+    pour modéliser l'effet d'une amélioration du fonds de roulement sur votre
+    trésorerie.
+"how-to-improve-working-capital":
+  "title": "Comment améliorer son fonds de roulement : 5 stratégies éprouvées"
+  "description": "Améliorez votre fonds de roulement en accélérant les encaissements, en maîtrisant les stocks, en allongeant les délais fournisseurs et en optimisant votre cycle de conversion de trésorerie."
+  "body": |
+    Améliorer le fonds de roulement tient en trois leviers : encaisser plus vite,
+    stocker moins et payer les fournisseurs plus tard (sans abîmer la relation).
+
+    ## 1. Accélérer l'encaissement des créances
+
+    Chaque jour où une créance reste impayée consomme du fonds de roulement.
+    - Passer à la facturation automatique (abonnements Stripe, prélèvement)
+    - Proposer 1 à 2 % d'escompte pour paiement anticipé (souvent rentable face aux intérêts d'une ligne de crédit)
+    - Envoyer des relances automatiques à 15, 30 et 45 jours de retard
+    - Exiger un acompte ou un paiement d'avance des nouveaux clients
+
+    ## 2. Optimiser les niveaux de stock
+
+    Un stock excédentaire, c'est du fonds de roulement bloqué dans un entrepôt.
+    - Utiliser des prévisions de demande pour dimensionner le stock de sécurité
+    - Négocier une gestion des stocks par le fournisseur (VMI) avec les fournisseurs clés
+    - Repérer et écouler les références à faible rotation
+
+    ## 3. Allonger les délais fournisseurs (sans abîmer la relation)
+
+    Payer les fournisseurs au 45e jour plutôt qu'au 20e libère 25 jours de fonds de roulement.
+    - Négocier des paiements à 45 ou 60 jours avec les principaux fournisseurs
+    - Utiliser des cartes professionnelles à débit différé (30 jours) pour les petits achats
+    - Allonger en priorité les délais des fournisseurs qui tiennent à votre volume
+
+    ## 4. Utiliser une ligne de crédit renouvelable pour les creux
+
+    Une ligne de crédit ne « répare » pas le fonds de roulement : c'est une
+    passerelle pour les creux saisonniers. Gardez votre ratio de liquidité
+    générale au-dessus de 1,5x même après tirage.
+
+    ## 5. Passer à la facturation annuelle pour les abonnements
+
+    La facturation annuelle d'avance transforme des créances futures en
+    trésorerie immédiate. Les SaaS facturés à l'année encaissent en général 40 à
+    60 % mieux que leurs pairs facturés au mois.
+
+    Suivez vos progrès avec le [calculateur de fonds de roulement](/tools/working-capital-calculator/).
+"what-is-working-capital":
+  "title": "Qu'est-ce que le fonds de roulement ?"
+  "description": "Définition, formule et guide pratique du fonds de roulement : ce qu'il signifie, comment le calculer et comment le piloter."
+  "body": |
+    ## Qu'est-ce que le fonds de roulement ?
+
+    Le fonds de roulement est la différence entre l'actif circulant et le passif circulant d'une entreprise :
+
+    $$\text{Fonds de roulement} = \text{Actif circulant} - \text{Passif circulant}$$
+
+    Il représente le coussin financier à court terme disponible pour financer l'exploitation au quotidien.
+
+    ## Composantes
+
+    **Actif circulant** (convertible en trésorerie sous 12 mois) :
+    - Trésorerie et équivalents
+    - Créances clients
+    - Stocks
+    - Charges constatées d'avance
+
+    **Passif circulant** (exigible sous 12 mois) :
+    - Dettes fournisseurs
+    - Dettes à court terme
+    - Salaires et charges à payer
+    - Produits constatés d'avance
+
+    ## Fonds de roulement positif ou négatif
+
+    Un **fonds de roulement positif** signifie que l'actif dépasse le passif : l'entreprise peut financer son exploitation sans financement externe.
+
+    Un **fonds de roulement négatif** signifie que le passif dépasse l'actif. Certaines entreprises fonctionnent volontairement ainsi en encaissant avant de payer leurs fournisseurs (grande distribution, Amazon). Pour la plupart des entreprises, c'est un signal de risque de liquidité.
+
+    ## Le fonds de roulement dans l'analyse financière
+
+    La variation du fonds de roulement agit directement sur la trésorerie. Des créances ou des stocks en hausse consomment du cash ; des dettes fournisseurs en hausse en préservent. C'est pourquoi les entreprises en forte croissance ont souvent des problèmes de trésorerie alors qu'elles sont rentables : la croissance dévore du fonds de roulement.
+
+    Utilisez le [calculateur de fonds de roulement](/tools/working-capital-calculator/) pour évaluer votre ratio de liquidité générale.
+"working-capital-vs-cash-flow":
+  "title": "Fonds de roulement ou flux de trésorerie : quelle différence ?"
+  "description": "Le fonds de roulement est une photo du bilan ; le flux de trésorerie, c'est l'activité en mouvement. Comment ils sont liés et pourquoi il faut suivre les deux."
+  "body": |
+    Le fonds de roulement et le flux de trésorerie mesurent tous deux la santé
+    financière, mais sous des angles différents. Beaucoup d'entreprises rentables
+    ont échoué en pilotant l'un sans l'autre.
+
+    ## Le fonds de roulement : la photo
+
+    Le fonds de roulement se calcule à partir du bilan : il indique où vous en
+    êtes à un instant donné.
+
+    **Fonds de roulement = actif circulant − passif circulant**
+
+    Il répond à la question : « Si je figeais tout aujourd'hui, pourrais-je
+    payer mes échéances à court terme ? »
+
+    ## Le flux de trésorerie : le mouvement
+
+    Le flux de trésorerie (en particulier le flux d'exploitation) mesure la
+    trésorerie nette générée par l'entreprise sur une période : mois, trimestre
+    ou année.
+
+    Une entreprise peut avoir un fonds de roulement solide et un flux de
+    trésorerie faible si :
+    - Ses créances sont importantes mais lentes à encaisser (DSO élevé)
+    - Ses stocks sont élevés mais ne tournent pas
+
+    À l'inverse, elle peut avoir un fonds de roulement faible et un flux de
+    trésorerie solide si :
+    - Ses clients paient d'avance (facturation annuelle d'un SaaS)
+    - Ses fournisseurs accordent de longs délais de paiement
+
+    ## Pourquoi suivre les deux ?
+
+    Le fonds de roulement renseigne sur le risque de liquidité immédiat. Le flux
+    de trésorerie renseigne sur la trajectoire : le fonds de roulement
+    s'améliore-t-il ou se dégrade-t-il ?
+
+    Les entreprises qui modélisent leur fonds de roulement avec une [analyse du CCC](/tools/cash-conversion-cycle-calculator/)
+    en parallèle de leurs prévisions de trésorerie évitent les crises de
+    trésorerie surprises.
+
+    Calculez votre fonds de roulement avec le [calculateur de fonds de roulement](/tools/working-capital-calculator/).
+"working-capital-vs-current-ratio":
+  "title": "Fonds de roulement ou ratio de liquidité générale : les différences clés"
+  "description": "Comment le fonds de roulement et le ratio de liquidité générale mesurent différemment la liquidité, et quand utiliser chacun."
+  "body": |
+    ## Fonds de roulement et ratio de liquidité générale
+
+    Les deux indicateurs évaluent la liquidité à court terme à partir des mêmes données, mais expriment le résultat différemment :
+
+    | Indicateur | Formule | Résultat |
+    |--------|---------|--------|
+    | Fonds de roulement | Actif circulant − passif circulant | Montant en dollars |
+    | Ratio de liquidité générale | Actif circulant ÷ passif circulant | Ratio / multiple |
+
+    ## Quand le fonds de roulement est plus utile
+
+    Le fonds de roulement (le montant) est plus utile pour :
+    - Comparer la liquidité absolue d'une même entreprise d'une période à l'autre
+    - Estimer votre marge de trésorerie en valeur absolue
+    - Calculer la variation du fonds de roulement pour l'analyse des flux de trésorerie
+
+    ## Quand le ratio de liquidité générale est plus utile
+
+    Le ratio de liquidité générale est plus utile pour :
+    - Comparer des entreprises de tailles différentes
+    - Se situer par rapport aux normes du secteur
+    - Rendre compte du respect des covenants bancaires
+
+    ## Exemple
+
+    **Entreprise A** : 10 M$ d'actif circulant, 8 M$ de passif circulant
+    - Fonds de roulement = 2 M$
+    - Ratio de liquidité générale = 1,25×
+
+    **Entreprise B** : 1 M$ d'actif circulant, 800 k$ de passif circulant
+    - Fonds de roulement = 200 k$
+    - Ratio de liquidité générale = 1,25×
+
+    Les deux ont le même ratio de liquidité générale mais des positions de liquidité absolue très différentes. Le fonds de roulement les distingue.
+
+    Utilisez le [calculateur de fonds de roulement](/tools/working-capital-calculator/) pour voir les deux.

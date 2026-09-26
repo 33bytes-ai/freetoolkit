@@ -1,0 +1,1083 @@
+# slug -> {title, description, body}: translated guide sections from content/intent_pages.yaml.
+# Same markdown structure (headings, tables, FAQ bold questions) as English.
+
+"favorable-vs-unfavorable-variance":
+  "title": "Desviación favorable o desfavorable: diferencias clave"
+  "description": "Cómo saber si una desviación presupuestaria es favorable o desfavorable, por qué el sentido se invierte entre partidas de ingresos y de gastos, y errores habituales al etiquetarlas."
+  "body": |
+    Una desviación del mismo importe puede ser una buena o una mala noticia según
+    la partida presupuestaria. Equivocarse de sentido es el error más frecuente
+    en los informes de desviaciones.
+
+    ## La regla
+
+    | Tipo de partida | Real > presupuesto | Real < presupuesto |
+    |-----------|-----------------|------------------|
+    | Ingresos | Favorable | Desfavorable |
+    | Gastos | Desfavorable | Favorable |
+
+    En ingresos, más es mejor: superar el presupuesto es favorable. En gastos,
+    menos es mejor: gastar por debajo de lo previsto es favorable. La etiqueta
+    describe el efecto en el beneficio, no el signo de la cifra.
+
+    ## Por qué confunde
+
+    Una hoja de cálculo que pinta de verde las desviaciones positivas y de rojo
+    las negativas se equivoca con los gastos: una desviación de gasto «positiva»
+    (por encima del presupuesto) es una mala noticia, pero una regla de color
+    ingenua la marcaría en verde. Calcula siempre favorable/desfavorable de forma
+    explícita según el tipo de partida, en lugar de fiarte solo del signo.
+
+    ## Un ejemplo con números
+
+    Marketing presupuestado en $50.000, gastado $58.000 → desviación = +$8.000
+    (16 % por encima) → **desfavorable**, porque es una partida de gasto que se
+    pasa.
+
+    Ingresos presupuestados en $200.000, reales $215.000 → desviación = +$15.000
+    (7,5 % por encima) → **favorable**, porque es una partida de ingresos que se
+    supera.
+
+    Las dos desviaciones son positivas. Una es buena noticia y la otra, mala.
+
+    ## Las desviaciones favorables también merecen análisis
+
+    Una gran desviación favorable en gastos no es automáticamente buena: puede
+    que un proyecto se haya retrasado (el dinero se gastará igual, solo que más
+    tarde) o que no se haya cumplido el plan de contratación, lo que puede
+    afectar a la producción. Analiza las grandes desviaciones favorables con el
+    mismo rigor que las desfavorables.
+
+    ## Preguntas frecuentes
+
+    **¿«Favorable» significa siempre bueno para el negocio?**
+    No necesariamente. Gastar menos en marketing puede ser favorable en la
+    partida pero desfavorable para generar pipeline. Revisa siempre el efecto
+    posterior, no solo la etiqueta de la partida.
+
+    **¿Cómo mostrar favorable/desfavorable en un informe?**
+    La mayoría de equipos financieros usan una columna o un icono específico
+    (▲/▼ con color) calculado con la regla anterior, en lugar del signo bruto de
+    la desviación: así se evita por completo la confusión entre ingresos y gastos.
+
+    Usa la [calculadora de desviación presupuestaria](/tools/budget-variance-calculator/):
+    etiqueta automáticamente cada desviación como favorable o desfavorable según
+    el tipo de partida que elijas.
+"what-is-budget-variance-analysis":
+  "title": "¿Qué es el análisis de desviaciones presupuestarias?"
+  "description": "Una guía clara sobre el análisis de desviaciones presupuestarias: qué mide, cómo se calcula y cómo lo usan los equipos financieros para detectar problemas a tiempo."
+  "body": |
+    El análisis de desviaciones presupuestarias consiste en comparar los
+    resultados financieros reales con el presupuesto y luego investigar las
+    diferencias. Es una de las disciplinas más básicas de la gestión financiera,
+    y una de las que más a menudo se saltan.
+
+    ## El cálculo básico
+
+    $$\text{Desviación} = \text{Real} - \text{Presupuesto}$$
+
+    $$\text{Desviación \%} = \frac{\text{Real} - \text{Presupuesto}}{|\text{Presupuesto}|} \times 100$$
+
+    Una desviación por sí sola es solo una cifra. Analizarla es preguntarse *por
+    qué* existe y si se repetirá el próximo periodo.
+
+    ## Por qué los equipos financieros revisan las desviaciones cada mes
+
+    Revisar las desviaciones cada mes detecta los problemas cuando todavía es
+    barato corregirlos. Una partida de marketing que se pasa un 40 % el primer
+    mes se resuelve con una conversación; el mismo exceso sin control durante dos
+    trimestres es una crisis de caja. El análisis de desviaciones es el sistema
+    de alerta temprana entre «hemos hecho un presupuesto» y «lo hemos cumplido».
+
+    ## Las desviaciones de ingresos y de gastos se leen al revés
+
+    Una desviación de gasto positiva (se gastó más de lo previsto) es
+    desfavorable. Una desviación de ingresos positiva (se ingresó más de lo
+    previsto) es favorable. Confundirlas es el error más habitual en las
+    presentaciones financieras: etiqueta siempre las desviaciones como
+    favorables/desfavorables, no solo como positivas/negativas, para evitar
+    ambigüedades.
+
+    ## Tres preguntas que toda revisión de desviaciones debe responder
+
+    1. **¿Es un desfase temporal o un hueco real?** Un gasto de marketing que
+       cayó en el mes 2 en lugar del mes 1 no es un exceso real, es un desfase.
+    2. **¿Es puntual o estructural?** Un gasto extraordinario grande no requiere
+       cambiar procesos. Un exceso recurrente del 15 % en la misma partida cada
+       mes, sí.
+    3. **¿Cambia la previsión anual?** Las desviaciones relevantes deben
+       actualizar tu reprevisión, no solo quedar registradas y olvidadas.
+
+    ## Preguntas frecuentes
+
+    **¿A partir de qué tamaño debo investigar una desviación?**
+    La mayoría de equipos financieros usan un umbral de materialidad,
+    normalmente del 5–10 % de la partida presupuestada, o un importe fijo para
+    las partidas pequeñas. Por debajo es ruido normal; por encima, investiga.
+
+    **¿Debe cada departamento revisar sus propias desviaciones?**
+    Sí: los responsables de cada departamento tienen el contexto operativo que
+    finanzas no tiene. El papel de finanzas es señalar la desviación y hacer la
+    pregunta; el responsable del departamento explica la causa.
+
+    Usa la [calculadora de desviación presupuestaria](/tools/budget-variance-calculator/)
+    para calcular al instante la desviación en importe y en porcentaje de
+    cualquier partida.
+"how-to-reduce-days-sales-outstanding":
+  "title": "Cómo reducir el periodo medio de cobro (DSO) en una SaaS B2B"
+  "description": "Un DSO alto bloquea caja en facturas sin cobrar. Esta guía repasa las tácticas más eficaces para reducir el DSO en una SaaS B2B, desde las condiciones de pago hasta el cobro automatizado."
+  "body": |
+    El periodo medio de cobro (DSO) es uno de los componentes más accionables del
+    ciclo de conversión de caja. Cada día que lo reduces libera capital
+    circulante.
+
+    Con $5M de ARR y un DSO de 30 días: $5M ÷ 365 × 30 = **$411k bloqueados en cuentas por cobrar**.
+    Baja el DSO a 15 días: las cuentas por cobrar caen a $205k, **$206k liberados al instante**.
+
+    ## Táctica 1: exigir pago anual por adelantado con descuento
+
+    La palanca de DSO más potente en SaaS: ofrecer un 15–20 % de descuento por
+    prepago anual. Un cliente anual tiene DSO = 0 en cuanto paga. Un cliente
+    mensual con factura tiene DSO = 30–60.
+
+    Pasar un 30 % de los clientes de mensual a anual puede reducir el DSO a la
+    mitad.
+
+    ## Táctica 2: pasar de factura a cobro automático con tarjeta
+
+    Las facturas mensuales generan DSO. El cobro automático con tarjeta tiene
+    DSO ≈ 0 (salvo la liquidación, que tarda 1–2 días).
+
+    Para clientes self-serve y pymes: exige facturación automática. Para grandes
+    cuentas: mantén la factura pero endurece las condiciones.
+
+    ## Táctica 3: automatizar secuencias de cobro
+
+    Configura emails de recordatorio automáticos:
+    - 3 días antes del vencimiento: «Tu factura vence pronto»
+    - Día 0 (vencimiento): «Tu factura vence hoy»
+    - Día 7: «Factura vencida»
+    - Día 14: «Segundo aviso: pago necesario para evitar la interrupción del servicio»
+
+    Las secuencias automatizadas reducen el DSO un 30–50 % frente al seguimiento
+    manual.
+
+    ## Táctica 4: acortar los plazos de pago estándar
+
+    60 días → 30 días → 15 días → pago a la recepción. Cada reducción recorta
+    directamente el DSO máximo. Los clientes grandes pueden resistirse; mantente
+    firme con las condiciones estándar en cuentas pequeñas.
+
+    ## Táctica 5: exigir transferencia a las grandes cuentas
+
+    El riesgo de contracargo con tarjeta lleva a algunas grandes empresas a
+    retrasar pagos. Las transferencias son más rápidas y no tienen riesgo de
+    contracargo. Ofrécelas por defecto en las facturas enterprise.
+
+    Usa la [calculadora del ciclo de conversión de caja](/tools/cash-conversion-cycle-calculator/)
+    para ver cómo afecta la mejora del DSO a tu CCC total.
+"what-is-cash-conversion-cycle":
+  "title": "¿Qué es el ciclo de conversión de caja? Guía de capital circulante"
+  "description": "El ciclo de conversión de caja (CCC) mide cuánto tiempo está inmovilizada la caja en la operación. Esta guía explica el DIO, el DSO y el DPO, y cómo usar el CCC para mejorar la eficiencia del capital circulante."
+  "body": |
+    El ciclo de conversión de caja (CCC) responde a una pregunta: ¿cuántos días
+    pasan desde que gastas caja en insumos hasta que cobras a tus clientes?
+
+    **CCC = días de inventario + periodo medio de cobro − periodo medio de pago**
+
+    Un CCC más bajo significa convertir la operación en caja más rápido, lo que
+    libera capital circulante para crecer sin financiación adicional.
+
+    ## Los tres componentes
+
+    ### DIO: días de inventario
+
+    Cuánto tiempo pasa el inventario en almacén antes de venderse.
+
+    **DIO = inventario medio ÷ coste de ventas × 365**
+
+    Con $500k de inventario medio y $3M de coste de ventas anual: DIO = 60,8 días.
+
+    Menor DIO = rotación más rápida = menos caja atrapada en stock.
+
+    ### DSO: periodo medio de cobro
+
+    Cuánto se tarda en cobrar tras una venta.
+
+    **DSO = cuentas por cobrar medias ÷ ingresos × 365**
+
+    Con $400k de cuentas por cobrar medias y $5M de ingresos: DSO = 29,2 días.
+
+    Un DSO alto indica cobros lentos: condiciones de pago laxas, facturación
+    tardía o clientes que pagan tarde.
+
+    ### DPO: periodo medio de pago
+
+    Cuánto tardas en pagar a tus proveedores.
+
+    **DPO = cuentas por pagar medias ÷ coste de ventas × 365**
+
+    Con $200k de cuentas por pagar medias y $3M de coste de ventas: DPO = 24,3 días.
+
+    Mayor DPO = conservas la caja más tiempo = mejor para el capital circulante.
+
+    ## Usar el CCC para planificar
+
+    Los negocios con CCC alto necesitan más capital circulante (y a menudo
+    líneas de crédito) para financiar el crecimiento. Los de CCC bajo o negativo
+    pueden crecer con muy poca financiación externa.
+
+    Si planeas duplicar los ingresos, tu necesidad de capital circulante crece
+    más o menos en proporción al CCC: un CCC de 65 días con el doble de ingresos
+    supone el doble de caja atrapada en la operación.
+
+    Calcula tu CCC con la [calculadora del ciclo de conversión de caja](/tools/cash-conversion-cycle-calculator/).
+"working-capital-management-saas":
+  "title": "Gestión del capital circulante en negocios SaaS"
+  "description": "Los negocios SaaS tienen una dinámica de capital circulante propia. Esta guía explica cómo se aplica el CCC a una SaaS, por qué la mayoría tienen capital circulante negativo y cómo optimizarlo."
+  "body": |
+    El capital circulante es la diferencia entre el activo corriente y el pasivo
+    corriente. Gestionarlo bien significa tener caja cuando la necesitas sin
+    sobrefinanciarte.
+
+    En una SaaS, la gestión del capital circulante es más sencilla que en un
+    negocio de productos físicos, pero sigue siendo importante, sobre todo a
+    escala.
+
+    ## Por qué una SaaS suele tener capital circulante negativo
+
+    Una SaaS con facturación anual y cuentas por pagar mensuales tiene:
+    - **DIO = 0** (sin inventario: todo es digital)
+    - **DSO ≈ 0** (los clientes pagan por adelantado o con cobro automático)
+    - **DPO = 30–60 días** (AWS, nóminas y proveedores se pagan 30–60 días después del servicio)
+
+    **CCC = 0 + 0 − 45 = −45 días**
+
+    Un CCC negativo significa que el negocio opera con crédito de proveedores:
+    cobra antes de tener que pagarles. Genera caja de forma natural.
+
+    Compáralo con una empresa de servicios que factura a 30 días y paga a sus
+    proveedores a 60:
+    - DSO = 30 días, DPO = 60 días
+    - CCC = 30 − 60 = −30 días (sigue siendo negativo, pero menos)
+
+    ## Cuándo el capital circulante de una SaaS se vuelve positivo
+
+    El capital circulante de una SaaS puede volverse positivo cuando:
+    - Grandes contratos enterprise se facturan a 30–60 días (se acumulan cuentas por cobrar)
+    - Las contrataciones y los gastos avanzan más rápido que los cobros
+    - Los ingresos diferidos de contratos anuales no están respaldados por reservas de caja
+
+    Una SaaS con $10M de ARR y un 50 % enterprise (pago a 45 días):
+    - Cuentas por cobrar enterprise: $5M ÷ 365 × 45 ≈ $616k pendientes en todo momento
+    - No es poco, y se duplica con $20M de ARR si no mejoran los procesos
+
+    ## Optimizar el capital circulante de una SaaS
+
+    1. **Impulsar la facturación anual por adelantado** en enterprise: menos cuentas por cobrar y mejor DSO
+    2. **Automatizar la facturación mensual** en pymes y mid-market: elimina las cuentas por cobrar
+    3. **Alargar los plazos de pago** con proveedores clave (cloud, freelancers): aumenta el DPO
+    4. **Usar una línea de crédito para los desfases**: cubrir necesidades de capital circulante
+       a corto plazo sin dilución
+
+    Calcula tu CCC y sigue tu capital circulante con la
+    [calculadora del ciclo de conversión de caja](/tools/cash-conversion-cycle-calculator/).
+"accounts-receivable-turnover-ratio":
+  "title": "Rotación de cuentas por cobrar: fórmula, cálculo y referencias"
+  "description": "Cómo calcular la rotación de cuentas por cobrar, qué dice de la eficiencia de tus cobros y referencias del sector por tipo de negocio."
+  "body": |
+    ## ¿Qué es la rotación de cuentas por cobrar?
+
+    La rotación de cuentas por cobrar mide cuántas veces por periodo una empresa
+    cobra su saldo medio de cuentas por cobrar:
+
+    **Rotación = ventas netas a crédito ÷ cuentas por cobrar medias**
+
+    Una rotación de 12× significa que la empresa cobra en la práctica todo su
+    saldo de cuentas por cobrar 12 veces al año, es decir, cada 30 días
+    aproximadamente.
+
+    ## Rotación de cuentas por cobrar frente a DSO
+
+    Ambas métricas miden la velocidad de cobro desde ángulos distintos:
+
+    | Rotación | DSO equivalente |
+    |---|---|
+    | 18× | ~20 días |
+    | 12× | ~30 días |
+    | 8× | ~45 días |
+    | 6× | ~60 días |
+    | 4× | ~90 días |
+
+    **DSO = 365 ÷ rotación de cuentas por cobrar**
+
+    ## Cómo calcular las cuentas por cobrar medias
+
+    Para un trimestre: (cuentas por cobrar iniciales + finales) ÷ 2
+
+    Ejemplo:
+    - Cuentas por cobrar al inicio del T3: $120.000
+    - Cuentas por cobrar al final del T3: $150.000
+    - Media: $135.000
+    - Ventas netas a crédito del T3: $540.000
+    - Rotación (anualizada): ($540.000 × 4) ÷ $135.000 = 16×
+    - DSO equivalente: 365 ÷ 16 = 22,8 días
+
+    ## Referencias de rotación por sector
+
+    | Sector | Rotación habitual | DSO habitual |
+    |---|---|---|
+    | SaaS (suscripción) | 18–52× | 7–20 días |
+    | Servicios profesionales | 6–10× | 36–60 días |
+    | Industria B2B | 5–8× | 45–73 días |
+    | Construcción | 4–7× | 52–91 días |
+    | Salud | 5–9× | 40–73 días |
+
+    Calcula tu rotación de cuentas por cobrar y tu DSO con la
+    [calculadora del periodo medio de cobro](/tools/dso-calculator/).
+"how-to-reduce-dso":
+  "title": "Cómo reducir el DSO y cobrar antes"
+  "description": "Tácticas prácticas para reducir el periodo medio de cobro, desde mejoras en la facturación hasta cambios en la política de crédito e incentivos de pago."
+  "body": |
+    ## Por qué importa reducir el DSO
+
+    Cada día que baja tu DSO libera una caja igual a tus ingresos diarios. Una empresa de $5M al año que baja el DSO de 45 a 30 días libera ~$205k de capital circulante.
+
+    ## Tácticas para reducir el DSO
+
+    **Facturar antes:**
+    - Enviar la factura el mismo día de la entrega, no a fin de mes
+    - Usar factura electrónica para eliminar los retrasos postales
+    - Automatizar las facturas recurrentes de las suscripciones
+
+    **Hacer seguimiento sistemático:**
+    - Día 1 tras el vencimiento: email de recordatorio cordial
+    - Día 15: llamada de seguimiento
+    - Día 30: escalar a un contacto de dirección
+    - Día 45 en adelante: proceso de recobro o resolución de la disputa
+
+    **Incentivar el pronto pago:**
+    - Ofrecer descuentos por pronto pago (ver la [calculadora de descuento de factura](/tools/invoice-discount-calculator/))
+    - Añadir recargos por demora (revisa antes la normativa local)
+    - Programas de descuento dinámico mediante plataformas de cuentas por pagar y cobrar
+
+    **Cambios en la política de crédito:**
+    - Pedir anticipo o pago por adelantado a los clientes nuevos
+    - Acortar los plazos a los clientes que pagan tarde
+    - Revisar la solvencia antes de conceder aplazamientos
+
+    ## El DSO según el contexto del sector
+
+    Un DSO «bueno» depende mucho del sector y del tipo de cliente:
+    - **Comercio minorista**: casi cero (efectivo o tarjeta)
+    - **B2B pequeño**: 20–35 días
+    - **B2B enterprise**: 45–75 días
+    - **Contratos públicos**: 60–120 días
+
+    Sigue tu DSO cada mes con la [calculadora de rotación de cuentas por cobrar](/tools/dso-calculator/).
+"what-is-accounts-receivable-turnover":
+  "title": "¿Qué es la rotación de cuentas por cobrar?"
+  "description": "Definición, fórmula y referencias de la rotación de cuentas por cobrar y del periodo medio de cobro (DSO)."
+  "body": |
+    ## Rotación de cuentas por cobrar
+
+    La rotación de cuentas por cobrar mide cuántas veces al año un negocio cobra su saldo medio de cuentas por cobrar:
+
+    $$\text{Rotación} = \frac{\text{Ventas netas a crédito}}{\text{Cuentas por cobrar medias}}$$
+
+    Una rotación de 12 significa que cobras tu saldo medio cada 30 días.
+
+    ## DSO: periodo medio de cobro
+
+    El DSO expresa la rotación en días, lo que facilita compararla con las condiciones de pago:
+
+    $$\text{DSO} = \frac{\text{Cuentas por cobrar medias}}{\text{Ventas netas a crédito}} \times 365$$
+
+    DSO y rotación son inversos matemáticos: rotación alta = DSO bajo.
+
+    ## Por qué importa la rotación de cuentas por cobrar
+
+    Los cobros lentos bloquean capital circulante. Una empresa con $500k en cuentas por cobrar que deberían ser $300k tiene $200k de caja atrapados sin necesidad, dinero que podría financiar la operación o reducir deuda.
+
+    Seguir la rotación en el tiempo revela las tendencias de cobro antes de que se conviertan en crisis de caja.
+
+    Usa la [calculadora de rotación de cuentas por cobrar](/tools/dso-calculator/) para obtener tu ratio y tu DSO.
+"working-capital-impact-of-dso":
+  "title": "Impacto del DSO en el capital circulante: cobrar antes libera caja"
+  "description": "Cómo calcular la caja que libera mejorar el DSO, y por qué la eficiencia en el cobro suele ser la vía más rápida para mejorar el capital circulante sin levantar capital."
+  "body": |
+    ## DSO y capital circulante
+
+    El capital circulante (activo corriente menos pasivo corriente) determina si
+    una empresa puede financiar su operación sin financiación externa. En los
+    negocios B2B, las cuentas por cobrar suelen ser la mayor partida del activo
+    corriente, así que el DSO determina directamente la necesidad de capital
+    circulante.
+
+    ## Las cuentas
+
+    **Caja liberada = ingresos diarios × días de mejora del DSO**
+
+    Ingresos diarios = ingresos anuales ÷ 365
+
+    Ejemplos:
+    - Empresa con $2M de ARR: mejorar el DSO 15 días libera **$82.000**
+    - Empresa con $5M de ARR: mejorar el DSO 15 días libera **$205.000**
+    - Empresa con $10M de ARR: mejorar el DSO 15 días libera **$411.000**
+
+    ## El DSO como fuente de capital gratuita
+
+    Mejorar el DSO equivale económicamente a obtener capital sin deuda:
+    - Sin dilución (a diferencia de una ronda de capital)
+    - Sin intereses (a diferencia de la deuda)
+    - Mejora permanente (a diferencia de un préstamo puntual de circulante)
+
+    Una empresa que mejora su DSO en 20 días «levanta» en la práctica el
+    equivalente a 20 días de ingresos en capital circulante, sin coste alguno.
+
+    ## Cuando el DSO empeora
+
+    Un DSO al alza es una de las primeras señales de problemas:
+
+    1. **Clientes con tensión de caja**: retrasan pagos porque les falta liquidez,
+       un indicador adelantado de posibles impagos
+    2. **Calidad de las ventas**: se incorporan clientes con peor solvencia para
+       hacer crecer la facturación
+    3. **Errores de facturación**: disputas que bloquean los pagos
+    4. **Poca inversión en cobros**: el equipo no hace seguimiento sistemático
+
+    Sigue tu DSO cada mes e investiga cualquier subida de más de 5 días.
+    Usa la [calculadora del periodo medio de cobro](/tools/dso-calculator/).
+"fcf-vs-ebitda":
+  "title": "Flujo de caja libre frente a EBITDA: diferencias clave para una SaaS"
+  "description": "El FCF y el EBITDA miden la generación de caja, pero tratan de forma distinta las inversiones de capital. Descubre cuándo importa cada métrica y por qué el FCF es el indicador más sólido."
+  "body": |
+    El EBITDA y el FCF son medidas populares de generación de caja, pero
+    responden a preguntas distintas. Entender la diferencia te ayuda a comunicar
+    tus números con claridad a los inversores y a asignar mejor el capital.
+
+    ## Qué mide el EBITDA
+
+    **EBITDA = beneficio neto + intereses + impuestos + depreciación + amortización**
+
+    El EBITDA normaliza el beneficio eliminando:
+    - Los gastos financieros (decisiones de estructura de capital)
+    - Los tipos impositivos (diferencias entre jurisdicciones)
+    - La depreciación y la amortización (cargos que no son caja)
+
+    El EBITDA sirve para comparar la rentabilidad entre empresas con distintas
+    estructuras de capital, políticas de amortización o tipos impositivos. También
+    es un dato habitual en modelos LBO y covenants de deuda (deuda neta / EBITDA).
+
+    ## Qué mide el FCF
+
+    **FCF = flujo de caja operativo − inversiones de capital**
+
+    El FCF va más allá que el EBITDA: resta la caja realmente invertida en
+    capex. A diferencia de la amortización (que el EBITDA suma de nuevo), el
+    capex es caja real que sale del negocio.
+
+    El FCF responde a: «Después de pagar las inversiones necesarias para mantener
+    y hacer crecer el negocio, ¿cuánta caja queda?»
+
+    ## Por qué importa la diferencia
+
+    En una SaaS con capex mínimo (servidores, portátiles), EBITDA ≈ FCF. La
+    diferencia suele ser del 2–5 % de los ingresos.
+
+    En negocios intensivos en capital, la diferencia es enorme:
+
+    | Tipo de negocio | Margen EBITDA | Capex / ingresos | Margen FCF |
+    |---|---|---|---|
+    | SaaS en la nube | 20 % | 2 % | 18 % |
+    | Software on-premise | 25 % | 5 % | 20 % |
+    | Telecomunicaciones | 35 % | 20 % | 15 % |
+    | Industria | 15 % | 12 % | 3 % |
+
+    ## Cuándo usar cada uno
+
+    **Usa el EBITDA para:**
+    - Comparar empresas del mismo sector con distintas estructuras de capital
+    - Calcular ratios de apalancamiento (deuda neta/EBITDA)
+    - Análisis de valoración en LBO o fusiones y adquisiciones
+
+    **Usa el FCF para:**
+    - Valorar el capital (múltiplo P/FCF)
+    - Evaluar la calidad real de la generación de caja
+    - Decidir la capacidad de dividendos o recompras
+    - Comparar modelos con mucho capex frente a modelos asset-light
+
+    En los informes para inversores, el FCF es la señal de más calidad. El EBITDA
+    se puede inflar; el FCF exige tener caja de verdad en el banco.
+
+    Calcula el FCF con la [calculadora de flujo de caja libre](/tools/free-cash-flow-calculator/).
+"how-to-improve-fcf-margin":
+  "title": "Cómo mejorar el margen de flujo de caja libre: 5 palancas para una SaaS"
+  "description": "Margen FCF = FCF / ingresos. Descubre las cinco palancas más eficaces para ampliarlo, desde reducir la intensidad del capex hasta mejorar la gestión del capital circulante."
+  "body": |
+    El margen FCF es el flujo de caja libre dividido entre los ingresos.
+    Mejorarlo significa generar más caja por cada dólar de ingresos o reducir las
+    inversiones de capital. Estas son las cinco palancas más eficaces para una
+    empresa de software.
+
+    ## Palanca 1: pasar a los clientes a facturación anual
+
+    Los pagos anuales por adelantado mejoran mucho el FCF sin cambiar ni los
+    ingresos ni el EBITDA. Cuando un cliente paga $12.000 por adelantado en lugar
+    de $1.000 al mes:
+    - El reconocimiento de ingresos es el mismo (1/12 al mes)
+    - La caja cobrada el primer día es 12 veces mayor
+    - El capital circulante mejora en ~11 meses de MRR por cliente convertido
+
+    Si conviertes a anual un 30 % de los clientes mensuales con un 10 % de
+    descuento, la mejora del FCF puede ser del 15–20 % del ARR el año de la
+    transición.
+
+    Táctica: ofrece 1–2 meses de descuento por prepago anual. Preséntalo como
+    «2 meses gratis» y no como un porcentaje: el valor percibido es mayor.
+
+    ## Palanca 2: reducir el capex bruto (eficiencia de infraestructura)
+
+    En una SaaS, los costes de infraestructura (computación y almacenamiento en la
+    nube) suelen figurar como gasto operativo y no como capex. Pero la eficiencia
+    de infraestructura mejora directamente el OCF y, por tanto, el FCF.
+
+    Mejoras habituales:
+    - Ajustar los compromisos de instancias reservadas (savings plans de AWS/GCP)
+    - Detectar capacidad ociosa y oportunidades de autoescalado
+    - Optimizar las consultas a la base de datos para reducir el coste de cómputo
+
+    Una mejora del 20 % en eficiencia sobre $200k al año de gasto en la nube suma
+    $40k al OCF: mejora directa del FCF.
+
+    ## Palanca 3: mejorar el cobro (reducir el DSO)
+
+    Periodo medio de cobro (DSO) = cuentas por cobrar / ingresos × 365
+
+    Un DSO alto significa que el ingreso se reconoce antes de cobrarlo: un lastre
+    de capital circulante que reduce el OCF. Bajar el DSO de 45 a 30 días con
+    $5M de ARR libera ~$200k de caja.
+
+    Tácticas:
+    - Exigir tarjeta o domiciliación registrada antes de la activación
+    - Automatizar las secuencias de reintento de pagos fallidos
+    - Ofrecer un 1–2 % de descuento por pronto pago en facturas enterprise
+
+    ## Palanca 4: gestionar el calendario de pagos a proveedores
+
+    Periodo medio de pago (DPO) = cuentas por pagar / coste de ventas × 365
+
+    Alargar los plazos de pago de 30 a 45 días con proveedores clave aporta
+    capital circulante. Para una empresa con $500k al año en pagos a proveedores,
+    pasar de 30 a 45 días añade ~$20k de margen de caja.
+
+    Ojo: alargar plazos puede dañar la relación con los proveedores. Hazlo con
+    proveedores grandes que puedan permitírselo, no con los pequeños.
+
+    ## Palanca 5: reducir la intensidad del capex
+
+    En una SaaS pura el capex suele ser mínimo. Si es relevante (hardware de
+    centro de datos, compras de propiedad intelectual), evalúa:
+    - Alquilar o comprar el equipo
+    - Nube frente a colocation
+    - Aplazar el capex no crítico en periodos de bajo crecimiento
+
+    Pasar de hardware propio a la nube aumenta los gastos operativos pero reduce
+    el capex, y suele mejorar el margen FCF aunque el coste total sea parecido,
+    porque el gasto en la nube ya está fuera del capex.
+
+    Sigue la evolución de tu margen FCF con la [calculadora de flujo de caja libre](/tools/free-cash-flow-calculator/).
+"what-is-free-cash-flow":
+  "title": "¿Qué es el flujo de caja libre? Definición, fórmula y por qué importa"
+  "description": "El flujo de caja libre es el flujo de caja operativo menos el capex: la verdadera medida de la caja que genera una empresa. Descubre la fórmula, las referencias y por qué los inversores prefieren el FCF al beneficio."
+  "body": |
+    El flujo de caja libre (FCF) es la caja que queda después de que una empresa
+    paga las inversiones de capital necesarias para mantener o ampliar su base de
+    activos. Es la caja disponible para devolver a los accionistas, reducir deuda
+    o reinvertir en crecimiento.
+
+    **Fórmula: FCF = flujo de caja operativo − inversiones de capital**
+
+    ## Por qué los inversores se fijan en el FCF
+
+    El beneficio contable se puede manipular con los planes de amortización, el
+    calendario de reconocimiento de ingresos y el criterio de devengo. La caja es
+    más difícil de falsear. Una empresa que gana $10M pero tiene FCF negativo
+    puede parecer rentable sobre el papel mientras quema caja.
+
+    El flujo de caja libre es el denominador de uno de los múltiplos de valoración
+    más importantes: **precio/FCF (P/FCF)**. Una empresa que cotiza a 20× el FCF
+    ($20 de capitalización por cada $1 de FCF) ofrece una rentabilidad FCF del
+    5 %: el ritmo de generación de caja por el que estás pagando.
+
+    ## Dónde encontrar los datos
+
+    **Flujo de caja operativo**: en el estado de flujos de efectivo, en «Flujos
+    de efectivo de las actividades de explotación». Parte del beneficio neto,
+    suma los cargos que no son caja (amortizaciones) y ajusta la variación del
+    capital circulante.
+
+    **Inversiones de capital (capex)**: en el estado de flujos de efectivo, en
+    «Flujos de efectivo de las actividades de inversión», normalmente como
+    «Adquisición de inmovilizado material» o «Inversiones de capital». Siempre es
+    una cifra negativa (salida de caja).
+
+    En empresas no cotizadas, OCF = beneficio neto + amortizaciones − aumento del
+    capital circulante.
+
+    ## El FCF frente a métricas relacionadas
+
+    | Métrica | Qué mide |
+    |---|---|
+    | Flujo de caja libre | Caja después del capex, disponible para los propietarios |
+    | EBITDA | Aproximación al flujo de caja operativo antes del capex |
+    | Beneficio neto | Beneficio contable, incluye partidas que no son caja |
+    | Flujo de caja operativo | Caja de la operación antes del capex |
+
+    En una SaaS, el capex suele ser bajo (servidores, portátiles), así que EBITDA
+    y FCF son parecidos. En negocios intensivos en capital (industria,
+    inmobiliario), el FCF puede ser muy inferior al EBITDA.
+
+    ## Referencias de FCF
+
+    Las SaaS de alta calidad generan márgenes FCF del 15–30 % a escala:
+    - Veeva Systems: margen FCF de ~30 %
+    - Shopify: margen FCF de ~25 %
+    - HubSpot: margen FCF de ~18 %
+    - Salesforce: margen FCF de ~25 %
+
+    Las empresas en fase inicial ($1M–$10M de ARR) suelen tener un FCF negativo o
+    cercano a cero: es lo esperado si la economía unitaria justifica la inversión.
+
+    Calcula el tuyo con la [calculadora de flujo de caja libre](/tools/free-cash-flow-calculator/).
+"should-you-offer-an-early-payment-discount":
+  "title": "¿Deberías ofrecer un descuento por pronto pago?"
+  "description": "Las cuentas desde el lado del vendedor: si ofrecer un descuento por pronto pago como 2/10 neto 30 compensa su coste y cuándo tiene sentido ofrecerlo."
+  "body": |
+    Los descuentos por pronto pago aceleran el cobro, pero en la práctica son un
+    tipo de interés que pagas por cobrar antes. Que el intercambio compense
+    depende de lo que valga para ti la caja ahora mismo.
+
+    ## El coste anual implícito de un descuento estándar
+
+    Una condición 2/10 neto 30 (2 % de descuento si se paga en 10 días; si no,
+    vence a 30) significa que renuncias a un 2 % para cobrar 20 días antes del
+    plazo normal. Anualizado, sale aproximadamente:
+
+    $$\text{TAE implícita} = \frac{\text{Descuento \%}}{100 - \text{Descuento \%}} \times \frac{365}{\text{Días de adelanto}}$$
+
+    Para 2/10 neto 30: (2 ÷ 98) × (365 ÷ 20) ≈ **37 % anualizado**, un tipo
+    implícito sorprendentemente alto para lo que parece un pequeño descuento del
+    2 %.
+
+    ## Cuándo tiene sentido ofrecerlo de todos modos
+
+    - **Tienes un uso más rentable para la caja**: si cobrar antes te evita un
+      préstamo o una línea de crédito a corto plazo más caros, el descuento puede
+      salir más barato que la financiación alternativa
+    - **Vas justo de caja**: para un negocio con poco capital circulante, cobrar a
+      10 días en lugar de a 30 (o más tarde, porque en la práctica «neto 30»
+      suele significar «neto 45 o más») puede justificar un coste real
+    - **Quieres reducir el riesgo de cobro**: cobrar antes reduce el margen en el
+      que la situación financiera del cliente puede empeorar antes de pagarte
+
+    ## Cuándo no compensa
+
+    Si no vas justo de caja y no tienes un uso concreto y rentable para cobrar
+    20 días antes, una TAE implícita del 37 % o más es una forma cara de comprar
+    velocidad. La mayoría de negocios en esa situación harán mejor en no ofrecer
+    el descuento y aplicar sus condiciones estándar con constancia.
+
+    ## Una alternativa más barata: plazos estándar más cortos
+
+    En lugar de un descuento, acorta tus plazos estándar (15 días en vez de 30)
+    para los clientes nuevos, o pide anticipos en las facturas grandes. Cobras
+    antes sin pagar un tipo implícito del 37 %.
+
+    ## Preguntas frecuentes
+
+    **¿La mayoría de clientes aprovechan el descuento?**
+    Varía mucho según el tipo de cliente y su caja. Los clientes bien
+    capitalizados suelen ignorarlo porque un 2 % no les cambia nada, mientras que
+    los que van justos lo aprovechan más: puedes acabar subvencionando justo a los
+    clientes que más probablemente pagarían tarde.
+
+    **¿Hay un porcentaje de descuento estándar?**
+    2/10 neto 30 es la convención más habitual, pero nada obliga a esa cifra:
+    calcula la TAE implícita de cualquier combinación de descuento y días antes
+    de ofrecerla.
+
+    Usa la [calculadora de descuento de factura](/tools/invoice-discount-calculator/)
+    para calcular el coste anualizado implícito de cualquier condición de pronto
+    pago que estés valorando.
+"what-is-2-10-net-30":
+  "title": "¿Qué es la condición de pago 2/10 neto 30?"
+  "description": "La condición 2/10 neto 30 explicada: qué significa, cómo calcular su coste anualizado y cuándo le conviene al comprador aprovechar el descuento."
+  "body": |
+    ## 2/10 neto 30, explicado
+
+    «2/10 neto 30» es una condición de crédito comercial habitual que significa:
+    - **2 %** de descuento si la factura se paga en **10 días**
+    - Importe íntegro a pagar en **30 días** si no se aprovecha el descuento
+
+    En las facturas aparece como «2/10 N30».
+
+    ## El coste real de renunciar al descuento
+
+    Renunciar a un descuento 2/10 neto 30 equivale a pedir prestado a una TAE del 37,2 %:
+
+    $$\frac{2\%}{98\%} \times \frac{365}{20 \text{ días}} = 37.2\%$$
+
+    En la práctica pagas un 2 % por quedarte el dinero 20 días más. Es una financiación carísima.
+
+    ## Cuándo renunciar al descuento
+
+    La única razón racional para renunciar a un descuento por pronto pago es que tu coste de capital sea inferior a su coste anualizado, y eso rara vez ocurre con un 2/10 neto 30.
+
+    Si de verdad no puedes pagar antes por falta de caja, es un problema de capital circulante que hay que resolver aparte. Plantéate una línea de crédito revolving: financiarte al 8 % para aprovechar un descuento del 37 % anualizado compensa claramente.
+
+    Usa la [calculadora de descuento de factura](/tools/invoice-discount-calculator/) para calcular el coste anualizado de cualquier condición de descuento.
+"when-to-take-early-payment-discount":
+  "title": "¿Cuándo aprovechar un descuento por pronto pago?"
+  "description": "Un marco de decisión para saber si aprovechar un descuento por pronto pago, con la comparación del coste anualizado y las consideraciones de capital circulante."
+  "body": |
+    ## Aprovechar o renunciar
+
+    Aprovecha el descuento cuando: **coste anualizado del descuento > tu coste de capital**
+
+    Renuncia cuando: **coste anualizado del descuento < tu coste de capital**
+
+    Con un 2/10 neto 30 y un coste anualizado del 37,2 %, casi cualquier negocio debería aprovechar el descuento. La cuestión es si tienes la caja.
+
+    ## Matriz de decisión
+
+    | Situación de caja | Coste de capital | Recomendación |
+    |--------------|----------------|----------------|
+    | Holgada | Cualquier tipo | Aprovechar siempre el descuento |
+    | Justa | Inferior al coste del descuento | Financiarte para aprovechar el descuento |
+    | Justa | Superior al coste del descuento | Renunciar: conservar la caja sale más barato |
+    | Crisis | No aplica | Renunciar: lo primero es sobrevivir |
+
+    ## Cuando eres tú quien ofrece el descuento
+
+    Si ofreces descuentos a tus clientes (como vendedor), las cuentas se invierten: eres tú quien paga. Modela bien el coste: ofrecer 2/10 neto 30 reduce un 2 % los ingresos efectivamente cobrados a quienes pagan antes.
+
+    La [calculadora de descuento de factura](/tools/invoice-discount-calculator/) cubre tanto la perspectiva del comprador como la del vendedor.
+"free-cash-flow-formula-explained":
+  "title": "Flujo de caja libre: fórmula, ejemplos y por qué importa"
+  "description": "Qué es el flujo de caja libre (FCF), cómo calcularlo a partir del OCF y el capex, y por qué es la métrica más importante para valorar un negocio."
+  "body": |
+    El flujo de caja libre (FCF) es la caja que queda cuando un negocio ha
+    cubierto sus gastos operativos y sus inversiones de capital. Es lo disponible
+    para invertir en crecimiento, devolver deuda, repartir dividendos o acumular
+    reservas.
+
+    **Flujo de caja libre = flujo de caja operativo − inversiones de capital**
+
+    ## Por qué el FCF es la referencia para valorar
+
+    La mayoría de modelos serios de valoración usan el descuento de flujos de
+    caja libres (DCF). Compradores y fondos de private equity valoran los negocios
+    por un múltiplo del FCF y no de los ingresos o el EBITDA, porque el FCF
+    representa dinero real y distribuible.
+
+    Un negocio valorado en 15× que genera $500k de FCF al año tiene un valor
+    empresarial de $7,5M.
+
+    ## Rentabilidad FCF: el atajo del inversor
+
+    **Rentabilidad FCF = FCF / valor empresarial**
+
+    Una rentabilidad FCF del 5 % significa que ganarías cada año el 5 % del
+    precio de compra en caja libre, lo que equivale aproximadamente a un múltiplo
+    de 20× el FCF. La mayoría de compradores exigen como mínimo un 5–10 %.
+
+    ## Qué capex incluir
+
+    El capex incluye:
+    - Compra de equipos
+    - Acondicionamiento de oficinas y mejoras en locales alquilados
+    - Desarrollo de software activado (en una SaaS B2B puede ser importante)
+    - Vehículos y maquinaria
+
+    El capex NO incluye:
+    - Reparaciones de mantenimiento (gasto, no se activan)
+    - Suscripciones de software (gasto operativo)
+    - Salarios de I+D (gasto operativo)
+
+    ## El margen FCF como referencia de crecimiento
+
+    **Margen FCF = FCF / ingresos**
+
+    En una SaaS, el margen FCF importa tanto como el crecimiento de ingresos. La
+    métrica combinada (tasa de crecimiento + margen FCF) se usa cada vez más como
+    variante de la regla del 40.
+
+    Usa la [calculadora de flujo de caja operativo](/tools/operating-cash-flow-calculator/)
+    para calcular tu OCF y tu FCF a partir de tu cuenta de resultados.
+"operating-cash-flow-vs-net-income":
+  "title": "Flujo de caja operativo frente a beneficio neto: ¿en qué se diferencian?"
+  "description": "Por qué el OCF y el beneficio neto divergen, qué mide cada uno y cómo usarlos juntos para entender la rentabilidad real de un negocio."
+  "body": |
+    El flujo de caja operativo y el beneficio neto dicen medir la rentabilidad
+    del negocio, pero cuentan historias muy distintas. Entender ambos es
+    imprescindible para interpretar bien unos estados financieros.
+
+    ## Qué mide el beneficio neto
+
+    El beneficio neto (resultado o ganancias) son los ingresos menos todos los
+    costes, tal como figuran en la cuenta de resultados. Sigue el criterio de
+    devengo: el ingreso se reconoce cuando se gana y los gastos se imputan al
+    periodo al que corresponden.
+
+    Por eso un negocio puede tener un beneficio neto alto sin recibir caja. Una
+    empresa que vende $1M a crédito sin cobrar nada mostrará $1M de beneficio
+    neto y $0 de caja.
+
+    ## Qué mide el OCF
+
+    El flujo de caja operativo ajusta el beneficio neto por:
+
+    1. **Cargos que no son caja** (amortización, retribución en acciones): se
+    suman de nuevo porque reducen el beneficio pero no consumen caja
+
+    2. **Variación del capital circulante**: cuentas por cobrar, inventario y
+    cuentas por pagar, es decir, los desfases entre reconocer un ingreso y
+    cobrarlo o pagarlo
+
+    OCF = beneficio neto + cargos que no son caja + variación del capital circulante
+
+    ## Por qué divergen
+
+    **Caso 1: empresa A**, crecimiento rápido, muchas cuentas por cobrar
+    Beneficio neto: $500k. Los clientes deben $600k (aún sin cobrar). OCF: negativo.
+    Interpretación: el negocio es rentable pero quema caja para financiar su crecimiento.
+
+    **Caso 2: empresa B**, negocio maduro e intensivo en activos
+    Beneficio neto: $200k. Amortización de equipos: $300k. OCF: $500k.
+    Interpretación: la generación real de caja es muy superior a lo que muestra la cuenta de resultados.
+
+    ## La fiabilidad del OCF
+
+    Los inversores sofisticados prefieren el OCF y el flujo de caja libre al
+    beneficio neto porque:
+    - El reconocimiento de ingresos se puede manipular (adelantar, diferir)
+    - Los planes de amortización son decisiones de la dirección
+    - El OCF exige que el dinero llegue de verdad al banco
+
+    Un negocio con un beneficio neto alto de forma constante pero un OCF bajo
+    merece un análisis detallado.
+
+    Usa la [calculadora de flujo de caja operativo](/tools/operating-cash-flow-calculator/)
+    para convertir tu cuenta de resultados en OCF y ver la diferencia.
+"working-capital-impact-on-cash-flow":
+  "title": "El capital circulante y su impacto en el flujo de caja"
+  "description": "Cómo afectan las variaciones de cuentas por cobrar, inventario y cuentas por pagar al flujo de caja operativo, y cómo gestionar el capital circulante para generar más caja."
+  "body": |
+    El capital circulante es la diferencia entre el activo corriente (caja,
+    cuentas por cobrar, inventario) y el pasivo corriente (cuentas por pagar,
+    gastos devengados). Su variación suele ser el motor oculto de la diferencia
+    entre beneficio neto y flujo de caja operativo.
+
+    ## La fórmula del capital circulante
+
+    **Capital circulante = activo corriente − pasivo corriente**
+
+    **Efecto de la variación del capital circulante en el OCF:**
+    - Cuentas por cobrar **al alza** → la caja aún no se ha cobrado → el OCF baja
+    - Inventario **al alza** → pagado pero aún no vendido → el OCF baja
+    - Cuentas por pagar **al alza** → debes dinero que aún no has pagado → el OCF sube
+
+    ## Fugas de caja habituales en el capital circulante
+
+    **Cobro lento**: una SaaS con $1M de ARR que factura a 60 días tiene ~$165k
+    bloqueados de forma permanente en cuentas por cobrar (dos meses de
+    ingresos). Pasar a 15 días libera $125k de caja inmediata sin cambiar los
+    ingresos.
+
+    **Acumulación de inventario**: los e-commerce que acumulan stock antes de la
+    temporada alta consumen caja meses antes de ingresar. Una planificación
+    cuidadosa del inventario reduce esa trampa.
+
+    **Pagos por adelantado**: cobrar los planes anuales por adelantado crea un
+    capital circulante negativo: recibes la caja antes de reconocer el ingreso.
+    Es una de las razones por las que a las SaaS les encanta el prepago anual.
+
+    ## Cómo mejorar el capital circulante
+
+    1. **Ofrecer descuentos por pronto pago**: un 1–2 % de descuento por pagar en
+    10 días (en lugar de 30) suele ser racional para el comprador y acelera
+    mucho tus cobros.
+
+    2. **Pasar a facturación anual**: llevar a los clientes de mensual a anual
+    cobra 12 meses de caja por adelantado en lugar de uno.
+
+    3. **Negociar plazos con proveedores**: pasar de 30 a 60 días te da
+    financiación a corto plazo sin intereses a costa de tus proveedores.
+
+    4. **Inventario just-in-time**: en productos físicos, reduce el coste de
+    almacenaje pidiendo más cerca de la demanda real.
+
+    Usa la [calculadora de flujo de caja operativo](/tools/operating-cash-flow-calculator/)
+    para modelar el efecto de mejorar el capital circulante en tu caja.
+"how-to-improve-working-capital":
+  "title": "Cómo mejorar el capital circulante: 5 estrategias probadas"
+  "description": "Mejora tu capital circulante acelerando los cobros, gestionando el inventario, alargando los pagos y optimizando tu ciclo de conversión de caja."
+  "body": |
+    Mejorar el capital circulante se reduce a tres palancas: cobrar antes, tener
+    menos inventario y pagar más tarde a los proveedores (sin dañar la relación).
+
+    ## 1. Acelerar el cobro de las cuentas por cobrar
+
+    Cada día que una factura sigue sin cobrarse consume capital circulante.
+    - Pasar a facturación automática (suscripciones de Stripe, domiciliación)
+    - Ofrecer un 1–2 % de descuento por pronto pago (suele compensar frente a los intereses de una línea de crédito)
+    - Enviar recordatorios automáticos a los 15, 30 y 45 días de retraso
+    - Pedir anticipo o pago por adelantado a los clientes nuevos
+
+    ## 2. Optimizar los niveles de inventario
+
+    El exceso de inventario es capital circulante bloqueado en un almacén.
+    - Usar previsiones de demanda para dimensionar el stock de seguridad
+    - Negociar inventario gestionado por el proveedor (VMI) con los proveedores clave
+    - Detectar y liquidar las referencias de rotación lenta
+
+    ## 3. Alargar los pagos (sin dañar la relación con los proveedores)
+
+    Pagar a los proveedores el día 45 en vez del día 20 libera 25 días de capital circulante.
+    - Negociar plazos de 45 o 60 días con los proveedores principales
+    - Usar tarjetas de empresa con pago diferido (30 días) en compras pequeñas
+    - Priorizar alargar plazos con proveedores que necesitan tu volumen
+
+    ## 4. Usar una línea de crédito revolving para los desfases
+
+    Una línea de crédito no «arregla» el capital circulante: es un puente para
+    los desfases estacionales. Mantén tu ratio de liquidez por encima de 1,5x
+    incluso después de disponer de la línea.
+
+    ## 5. Pasar a facturación anual en negocios de suscripción
+
+    La facturación anual por adelantado convierte cuentas por cobrar futuras en
+    caja inmediata. Las SaaS con facturación anual suelen cobrar un 40–60 % mejor
+    que sus pares con facturación mensual.
+
+    Sigue tu evolución con la [calculadora de capital circulante](/tools/working-capital-calculator/).
+"what-is-working-capital":
+  "title": "¿Qué es el capital circulante?"
+  "description": "Definición, fórmula y guía práctica del capital circulante: qué significa, cómo calcularlo y cómo gestionarlo."
+  "body": |
+    ## ¿Qué es el capital circulante?
+
+    El capital circulante es la diferencia entre el activo corriente y el pasivo corriente de una empresa:
+
+    $$\text{Capital circulante} = \text{Activo corriente} - \text{Pasivo corriente}$$
+
+    Representa el colchón financiero a corto plazo disponible para financiar la operación diaria.
+
+    ## Componentes
+
+    **Activo corriente** (convertible en caja en menos de 12 meses):
+    - Caja y equivalentes
+    - Cuentas por cobrar
+    - Inventario
+    - Gastos anticipados
+
+    **Pasivo corriente** (vence en menos de 12 meses):
+    - Cuentas por pagar
+    - Deuda a corto plazo
+    - Salarios y gastos devengados
+    - Ingresos diferidos
+
+    ## Capital circulante positivo o negativo
+
+    Un **capital circulante positivo** significa que el activo supera al pasivo: el negocio puede financiar su operación sin financiación externa.
+
+    Un **capital circulante negativo** significa que el pasivo supera al activo. Algunos negocios operan así a propósito cobrando antes de pagar a los proveedores (grandes minoristas, Amazon). Para la mayoría, es señal de riesgo de liquidez.
+
+    ## El capital circulante en el análisis financiero
+
+    La variación del capital circulante afecta directamente al flujo de caja. Más cuentas por cobrar o más inventario consumen caja; más cuentas por pagar la conservan. Por eso las empresas que crecen rápido suelen tener problemas de caja aunque sean rentables: el crecimiento se come el capital circulante.
+
+    Usa la [calculadora de capital circulante](/tools/working-capital-calculator/) para evaluar tu ratio de liquidez.
+"working-capital-vs-cash-flow":
+  "title": "Capital circulante frente a flujo de caja: ¿en qué se diferencian?"
+  "description": "El capital circulante es una foto del balance; el flujo de caja es el negocio en movimiento. Cómo se relacionan y por qué necesitas seguir ambos."
+  "body": |
+    El capital circulante y el flujo de caja miden la salud financiera, pero
+    desde perspectivas distintas. Muchos negocios rentables han fracasado por
+    gestionar uno sin el otro.
+
+    ## El capital circulante: la foto
+
+    El capital circulante se calcula a partir del balance: te dice dónde estás en
+    un momento concreto.
+
+    **Capital circulante = activo corriente − pasivo corriente**
+
+    Responde a: «Si congelara todo hoy, ¿podría pagar mis obligaciones a corto
+    plazo?»
+
+    ## El flujo de caja: el movimiento
+
+    El flujo de caja (sobre todo el operativo) mide la caja neta que genera el
+    negocio en un periodo: mes, trimestre o año.
+
+    Un negocio puede tener un capital circulante sólido y un flujo de caja pobre
+    si:
+    - Tiene muchas cuentas por cobrar pero tarda en cobrarlas (DSO alto)
+    - Tiene mucho inventario pero no rota
+
+    Y al revés, puede tener un capital circulante débil y un flujo de caja
+    sólido si:
+    - Los clientes pagan por adelantado (facturación anual de una SaaS)
+    - Los proveedores conceden plazos de pago largos
+
+    ## ¿Por qué seguir ambos?
+
+    El capital circulante te informa del riesgo de liquidez ahora mismo. El
+    flujo de caja, de la trayectoria: si el capital circulante mejora o empeora.
+
+    Las empresas que modelan su capital circulante con un [análisis del CCC](/tools/cash-conversion-cycle-calculator/)
+    junto a sus previsiones de caja evitan crisis de caja inesperadas.
+
+    Calcula tu capital circulante con la [calculadora de capital circulante](/tools/working-capital-calculator/).
+"working-capital-vs-current-ratio":
+  "title": "Capital circulante frente a ratio de liquidez: diferencias clave"
+  "description": "Cómo miden la liquidez de forma distinta el capital circulante y el ratio de liquidez, y cuándo usar cada métrica."
+  "body": |
+    ## Capital circulante y ratio de liquidez
+
+    Ambas métricas evalúan la liquidez a corto plazo con los mismos datos, pero expresan el resultado de forma distinta:
+
+    | Métrica | Fórmula | Resultado |
+    |--------|---------|--------|
+    | Capital circulante | Activo corriente − pasivo corriente | Importe en dólares |
+    | Ratio de liquidez | Activo corriente ÷ pasivo corriente | Ratio / múltiplo |
+
+    ## Cuándo es más útil el capital circulante
+
+    El capital circulante (el importe) es más útil para:
+    - Comparar la liquidez absoluta de una misma empresa entre periodos
+    - Estimar cuánto margen de caja tienes en términos absolutos
+    - Calcular la variación del capital circulante para analizar el flujo de caja
+
+    ## Cuándo es más útil el ratio de liquidez
+
+    El ratio de liquidez es más útil para:
+    - Comparar empresas de distinto tamaño
+    - Compararte con las referencias del sector
+    - Informar del cumplimiento de covenants ante los prestamistas
+
+    ## Ejemplo
+
+    **Empresa A**: $10M de activo corriente, $8M de pasivo corriente
+    - Capital circulante = $2M
+    - Ratio de liquidez = 1,25×
+
+    **Empresa B**: $1M de activo corriente, $800k de pasivo corriente
+    - Capital circulante = $200k
+    - Ratio de liquidez = 1,25×
+
+    Ambas tienen el mismo ratio de liquidez pero posiciones de liquidez absoluta muy distintas. El capital circulante las diferencia.
+
+    Usa la [calculadora de capital circulante](/tools/working-capital-calculator/) para ver ambos.

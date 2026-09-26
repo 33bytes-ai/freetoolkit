@@ -61,3 +61,325 @@ free-cash-flow-calculator:
     Il calcule le flux de trésorerie disponible à partir du flux d'exploitation
     et du capex, ainsi que la marge de FCF et, en option, le rendement FCF pour
     situer la valorisation.
+
+"budget-variance-calculator":
+  "body": |
+    ## Formule de l'écart budgétaire
+
+    $$\text{Écart} = \text{Réalisé} - \text{Budget}$$
+
+    $$\text{Écart \%} = \frac{\text{Réalisé} - \text{Budget}}{|\text{Budget}|} \times 100$$
+
+    ### Favorable ou défavorable
+
+    Le sens qui rend un écart « favorable » dépend du type de ligne :
+
+    | Type de ligne | Condition favorable |
+    |-----------|---------------------|
+    | Chiffre d'affaires | Réalisé > budget (plus encaissé que prévu) |
+    | Charge | Réalisé < budget (moins dépensé que prévu) |
+
+    ### Seuils de matérialité
+
+    La plupart des organisations fixent des seuils de matérialité au-delà desquels un écart doit être analysé. Règles courantes :
+    - Analyser les écarts > 5–10 % sur les lignes budgétaires de plus de 10 k$
+    - Toujours analyser les écarts de chiffre d'affaires > 10 %
+    - Signaler les écarts cumulés même si chaque période reste dans la tolérance
+
+    ### Types d'écarts budgétaires
+
+    - **Écart sur prix** : le prix unitaire diffère du budget
+    - **Écart sur volume** : la quantité vendue ou consommée diffère
+    - **Écart de rendement** : la consommation de main-d'œuvre ou de matière par unité diffère
+    - **Écart de mix** : la combinaison de produits ou services vendus diffère du mix prévu
+
+    Comprendre l'origine d'un écart détermine l'action corrective adaptée.
+
+    ### Guides
+
+    - [Qu'est-ce que l'analyse des écarts budgétaires ?](/tools/budget-variance-calculator/#what-is-budget-variance-analysis)
+    - [Écart favorable ou défavorable : les différences clés](/tools/budget-variance-calculator/#favorable-vs-unfavorable-variance)
+"cash-conversion-cycle-calculator":
+  "body": |
+    Le cycle de conversion de trésorerie (CCC) mesure combien de jours la
+    trésorerie d'une entreprise reste immobilisée dans l'exploitation, entre le
+    paiement des stocks ou des achats et l'encaissement des clients.
+
+    ## La formule du CCC
+
+    **CCC = DIO + DSO − DPO**
+
+    Où :
+    - **DIO** (rotation des stocks en jours) = stock moyen ÷ [coût des ventes](/glossary/#cogs) × 365
+    - **DSO** (délai moyen de paiement clients) = créances clients moyennes ÷ chiffre d'affaires × 365
+    - **DPO** (délai moyen de paiement fournisseurs) = dettes fournisseurs moyennes ÷ coût des ventes × 365
+
+    ## Exemple de calcul
+
+    Une entreprise avec :
+    - Stock moyen : 500 k$
+    - Coût des ventes annuel : 3 M$
+    - Créances clients moyennes : 400 k$
+    - Chiffre d'affaires annuel : 5 M$
+    - Dettes fournisseurs moyennes : 200 k$
+
+    - DIO = 500 k$ ÷ 3 M$ × 365 = 60,8 jours
+    - DSO = 400 k$ ÷ 5 M$ × 365 = 29,2 jours
+    - DPO = 200 k$ ÷ 3 M$ × 365 = 24,3 jours
+    - **CCC = 60,8 + 29,2 − 24,3 = 65,7 jours**
+
+    En moyenne, l'entreprise a 65,7 jours de trésorerie immobilisés dans son
+    fonds de roulement.
+
+    ## Un CCC négatif : le graal
+
+    Certaines entreprises, notamment les SaaS (les clients paient d'avance) et les
+    géants de la distribution (ils vendent avant de payer leurs fournisseurs),
+    atteignent un CCC négatif : elles encaissent avant de devoir payer leurs
+    fournisseurs.
+
+    Amazon a longtemps fonctionné avec un CCC négatif, utilisant de fait le crédit
+    fournisseur comme un fonds de roulement gratuit pour financer sa croissance.
+
+    ## Le CCC d'un SaaS
+
+    Un pur SaaS a généralement :
+    - DIO = 0 (pas de stock physique)
+    - DSO = selon les conditions de paiement (0 pour un abonnement mensuel, 30 à 60 pour des grands comptes facturés)
+    - DPO = selon les conditions fournisseurs (en général 30 à 60 jours)
+
+    Un SaaS facturé mensuellement par carte, avec des délais fournisseurs
+    standards, a souvent un CCC proche de 0 ou négatif.
+
+    ## Comment améliorer le CCC
+
+    **Réduire le DIO** : accélérer la rotation des stocks grâce à de meilleures
+    prévisions, moins de stock de sécurité ou des achats en flux tendu.
+
+    **Réduire le DSO** : proposer un escompte pour paiement anticipé, automatiser
+    les relances, raccourcir les délais des nouveaux clients, passer au
+    prélèvement automatique.
+
+    **Augmenter le DPO** : négocier des délais fournisseurs plus longs (60 à
+    90 jours au lieu de 30). Les grands groupes le font systématiquement.
+
+    ## Questions fréquentes
+
+    **Que fait ce calculateur ?**
+    Il calcule la rotation des stocks en jours (DIO), le délai de paiement clients
+    (DSO) et le délai de paiement fournisseurs (DPO), puis les combine en cycle de
+    conversion de trésorerie.
+"dso-calculator":
+  "body": |
+    ## Qu'est-ce que le délai moyen de paiement clients (DSO) ?
+
+    Le DSO (Days Sales Outstanding) mesure le nombre moyen de jours qu'il faut à
+    votre entreprise pour encaisser une vente. C'est l'un des indicateurs de
+    fonds de roulement les plus importants, car il chiffre directement la
+    trésorerie immobilisée dans les créances à un instant donné.
+
+    **DSO = (créances clients ÷ ventes à crédit totales) × nombre de jours**
+
+    Plus le DSO est bas, plus l'encaissement est rapide et moins il y a de
+    trésorerie bloquée dans des factures impayées. Un DSO qui monte est un signal
+    précoce de problèmes de recouvrement ou de tensions de trésorerie chez vos
+    clients.
+
+    ## Comment lire votre DSO
+
+    | DSO | Lecture |
+    |---|---|
+    | Moins de 30 jours | Excellent : les clients paient rapidement |
+    | 30–45 jours | Bon : conforme à un paiement à 30 jours |
+    | 45–60 jours | Acceptable : surveillez la tendance |
+    | 60–90 jours | Élevé : revoyez votre processus de recouvrement |
+    | Plus de 90 jours | Très élevé : fort impact sur le fonds de roulement |
+
+    ## Taux de rotation des créances clients
+
+    La rotation des créances est l'inverse du DSO :
+
+    **Rotation des créances = ventes à crédit totales ÷ créances clients moyennes**
+
+    Plus la rotation est élevée, plus vous encaissez vite. Elle complète le DSO :
+    une rotation de 12× correspond à un DSO moyen d'environ 30 jours.
+
+    ## Comment réduire le DSO
+
+    1. **Raccourcir les délais de paiement** : passer de 60 à 30 jours pour les nouveaux clients
+    2. **Proposer un escompte pour paiement anticipé** : « 2/10 net 30 » (2 % de remise si payé sous 10 jours)
+    3. **Automatiser les relances** : relancer à 7, 14 et 30 jours après l'échéance
+    4. **Demander un acompte** : pour les gros projets, encaisser 25 à 50 % d'avance
+    5. **Accepter plus de moyens de paiement** : réduire les frictions avec virement, prélèvement et carte
+
+    ## Impact sur le fonds de roulement
+
+    Chaque jour de DSO gagné libère une trésorerie égale à vos ventes
+    quotidiennes. Si vous réalisez 450 000 $ par trimestre et ramenez le DSO de
+    45 à 30 jours, vous libérez 15 × (450 000 $ ÷ 90) = **75 000 $ de trésorerie**
+    sans aucun changement de chiffre d'affaires.
+
+    ## Questions fréquentes
+
+    **Quel est un bon DSO pour un SaaS B2B ?**
+    Les SaaS B2B en abonnement mensuel ont souvent un DSO proche de zéro, car
+    l'abonnement est prélevé d'avance. Pour des contrats annuels facturés d'avance,
+    le DSO tourne généralement autour de 30 à 45 jours après facture. Si vous avez
+    à la fois des abonnements et des services, votre DSO combiné peut se situer
+    entre 35 et 55 jours.
+
+    **Quel est l'effet du DSO sur ma ligne de crédit ?**
+    Les prêteurs regardent le DSO pour les financements adossés aux actifs et
+    l'affacturage. Un DSO élevé ou en hausse peut signaler des difficultés de
+    recouvrement et réduire le taux d'avance sur vos créances. Un DSO sous
+    45 jours rend en général vos créances finançables aux taux d'avance standards
+    (souvent 80 à 85 %).
+"invoice-discount-calculator":
+  "body": |
+    ## Formule de l'escompte pour paiement anticipé
+
+    Pour une condition « 2/10 net 30 » (2 % de remise si payé sous 10 jours, sinon échéance à 30) :
+
+    $$\text{Coût annualisé} = \frac{\text{Remise \%}}{100 - \text{Remise \%}} \times \frac{365}{\text{Jours net} - \text{Jours d'escompte}}$$
+
+    **Exemple (2/10 net 30) :**
+
+    $$\frac{2}{98} \times \frac{365}{20} = 37.2\%$$
+
+    Renoncer à un escompte 2/10 net 30 revient à emprunter à 37,2 % de taux annuel : cela vaut presque toujours la peine de le prendre si vous avez la trésorerie.
+
+    ### Quand prendre l'escompte
+
+    Prenez l'escompte quand le **coût annualisé du renoncement** dépasse votre **coût du capital** (coût d'une ligne de crédit, coût d'opportunité de la trésorerie).
+
+    | Votre taux d'emprunt | Coût annualisé de l'escompte | Décision |
+    |--------------------|--------------------------|---------- |
+    | 8 % | 37,2 % | Prendre l'escompte |
+    | 8 % | 6 % | Refuser : emprunter coûte moins cher que perdre l'escompte |
+
+    ### Escompte dynamique
+
+    Certaines plateformes fournisseurs proposent un escompte dynamique : un taux variable selon le nombre de jours d'avance. Utilisez ce calculateur pour évaluer n'importe quelle offre en calculant son coût annualisé implicite.
+
+    ### Guides
+
+    - [Qu'est-ce qu'une condition de paiement 2/10 net 30 ?](/tools/invoice-discount-calculator/#what-is-2-10-net-30)
+    - [Quand prendre un escompte pour paiement anticipé ?](/tools/invoice-discount-calculator/#when-to-take-early-payment-discount)
+"operating-cash-flow-calculator":
+  "body": |
+    Le flux de trésorerie d'exploitation (OCF) mesure la trésorerie réellement
+    générée par l'activité principale de l'entreprise. Contrairement au résultat
+    net, il se prête mal aux choix comptables : l'argent est arrivé sur le compte
+    bancaire, ou pas.
+
+    ## La formule de la méthode indirecte
+
+    **OCF = résultat net + dotations aux amortissements + variation du besoin en fonds de roulement**
+
+    C'est la méthode la plus courante (méthode indirecte), car elle part du
+    résultat net, facile à obtenir, puis corrige les éléments non décaissés et les
+    décalages de calendrier.
+
+    ## Pourquoi l'OCF diffère du résultat net
+
+    **Les amortissements** réduisent le bénéfice comptable sans consommer de
+    trésorerie. Un serveur à 10 k$ amorti sur 5 ans réduit le résultat net de
+    2 k$ par an, mais il a été payé la première année. Réintégrer les
+    amortissements transforme le bénéfice comptable en bénéfice de trésorerie.
+
+    **La variation du besoin en fonds de roulement** reflète le décalage entre la
+    constatation du chiffre d'affaires et son encaissement :
+    - Créances clients **en hausse** → vous avez facturé mais pas encore encaissé → l'OCF est inférieur au résultat net
+    - Dettes fournisseurs **en hausse** → vous avez reçu les biens sans les payer encore → l'OCF est supérieur au résultat net
+
+    ## Flux de trésorerie disponible (FCF)
+
+    **FCF = OCF − dépenses d'investissement**
+
+    Le flux de trésorerie disponible est ce qui reste après avoir entretenu et
+    développé les actifs. C'est l'indicateur qu'utilisent les fonds de private
+    equity et les investisseurs avertis pour valoriser une entreprise, car il
+    représente la trésorerie réellement distribuable.
+
+    | OCF | Capex | FCF | Lecture |
+    |---|---|---|---|
+    | +100 k$ | 5 k$ | +95 k$ | Sain : l'entreprise génère du cash |
+    | +100 k$ | 50 k$ | +50 k$ | Acceptable : forts investissements en actifs |
+    | +100 k$ | 120 k$ | −20 k$ | Phase d'investissement de croissance |
+    | −50 k$ | 10 k$ | −60 k$ | Hémorragie de trésorerie : financement externe nécessaire |
+
+    ## Taux de conversion en trésorerie
+
+    **Taux de conversion en trésorerie = OCF ÷ résultat net**
+
+    Au-dessus de 1×, l'entreprise génère plus de trésorerie que de bénéfice
+    comptable (bon signe). En dessous de 1×, le bénéfice progresse plus vite que
+    les encaissements : surveillez les créances clients. Au-dessus de 1,5×, c'est
+    souvent le signe d'amortissements élevés par rapport au capex.
+
+    ## Questions fréquentes
+
+    **Que fait ce calculateur ?**
+    Il calcule le flux de trésorerie d'exploitation à partir du résultat net, des amortissements et de la variation du BFR, ainsi que le flux de trésorerie disponible et le taux de conversion en trésorerie.
+"working-capital-calculator":
+  "body": |
+    Le fonds de roulement est la différence entre l'actif circulant et le passif
+    circulant d'une entreprise. Il mesure la liquidité à court terme : le coussin
+    opérationnel qui permet de fonctionner au quotidien sans crise de trésorerie.
+
+    ## La formule
+
+    **Fonds de roulement = actif circulant − passif circulant**
+
+    Avec 500 k$ d'actif circulant et 200 k$ de passif circulant, le fonds de
+    roulement est de 300 k$. Ces 300 k$ constituent le coussin de trésorerie
+    opérationnel.
+
+    ## Ratio de liquidité générale
+
+    **Ratio de liquidité générale = actif circulant / passif circulant**
+
+    500 k$ / 200 k$ = 2,5x. Pour chaque dollar d'obligations à court terme,
+    l'entreprise dispose de 2,50 $ d'actifs liquides.
+
+    ## Ratio de liquidité réduite (test acide)
+
+    **Ratio de liquidité réduite = (actif circulant − stocks) / passif circulant**
+
+    Ce ratio exclut les stocks, car les transformer en trésorerie prend du temps.
+    C'est une mesure plus prudente de la liquidité immédiate.
+
+    ## Repères
+
+    | Liquidité générale | Lecture |
+    |---|---|
+    | > 2,0x | Solide : large coussin à court terme |
+    | 1,5–2,0x | Sain : liquidité confortable |
+    | 1,0–1,5x | Serré : peu de marge d'erreur |
+    | < 1,0x | Alerte : risque de liquidité possible |
+
+    ## Fonds de roulement négatif
+
+    Certaines entreprises, en particulier les SaaS et les modèles d'abonnement,
+    peuvent fonctionner avec un fonds de roulement négatif. Si les clients paient
+    l'année d'avance (ce qui crée des produits constatés d'avance, donc un passif
+    circulant), le fonds de roulement est négatif alors que l'entreprise est en
+    parfaite santé.
+
+    Amazon a longtemps fonctionné avec un fonds de roulement négatif : les clients
+    payaient immédiatement, et Amazon réglait ses fournisseurs à 30–45 jours.
+    L'écart finançait l'exploitation.
+
+    ## Fonds de roulement et cycle de conversion de trésorerie
+
+    Le fonds de roulement est un solde statique ; le [cycle de conversion de trésorerie](/tools/cash-conversion-cycle-calculator/)
+    est le flux dynamique. Une entreprise peut avoir un fonds de roulement positif
+    et un CCC désastreux si ses créances mettent plus de 90 jours à rentrer.
+    Suivez les deux ensemble.
+
+    ## Questions fréquentes
+
+    **Que fait ce calculateur ?**
+    Il calcule le fonds de roulement, le ratio de liquidité générale, le ratio de
+    liquidité réduite et le fonds de roulement en jours à partir de votre actif et
+    passif circulants.

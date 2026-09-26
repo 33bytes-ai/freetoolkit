@@ -1,0 +1,375 @@
+# slug -> {body}: translated tool bodies from content/tools.yaml.
+# Same markdown structure (headings, tables, FAQ bold questions) as English.
+
+"budget-variance-calculator":
+  "body": |
+    ## Formel der Budgetabweichung
+
+    $$\text{Abweichung} = \text{Ist} - \text{Budget}$$
+
+    $$\text{Abweichung \%} = \frac{\text{Ist} - \text{Budget}}{|\text{Budget}|} \times 100$$
+
+    ### Günstig oder ungünstig
+
+    Ob eine Abweichung „günstig“ ist, hängt von der Art der Position ab:
+
+    | Art der Position | Günstige Bedingung |
+    |-----------|---------------------|
+    | Umsatz | Ist > Budget (mehr eingenommen als geplant) |
+    | Kosten | Ist < Budget (weniger ausgegeben als geplant) |
+
+    ### Wesentlichkeitsschwellen
+
+    Die meisten Organisationen legen Wesentlichkeitsschwellen fest, ab denen Abweichungen untersucht werden. Übliche Regeln:
+    - Abweichungen > 5–10 % bei Budgetpositionen über 10.000 $ untersuchen
+    - Umsatzabweichungen > 10 % immer untersuchen
+    - Kumulierte Abweichungen melden, auch wenn jede einzelne Periode im Toleranzbereich liegt
+
+    ### Arten von Budgetabweichungen
+
+    - **Preisabweichung**: Der Stückpreis wich vom Budget ab
+    - **Mengenabweichung**: Verkaufte oder verbrauchte Menge wich ab
+    - **Effizienzabweichung**: Arbeits- oder Materialeinsatz pro Einheit wich ab
+    - **Mix-Abweichung**: Die Zusammensetzung der verkauften Produkte oder Leistungen wich vom geplanten Mix ab
+
+    Die Ursache einer Abweichung bestimmt die passende Gegenmaßnahme.
+
+    ### Ratgeber
+
+    - [Was ist eine Budgetabweichungsanalyse?](/tools/budget-variance-calculator/#what-is-budget-variance-analysis)
+    - [Günstige vs. ungünstige Abweichung: die wichtigsten Unterschiede](/tools/budget-variance-calculator/#favorable-vs-unfavorable-variance)
+"cash-conversion-cycle-calculator":
+  "body": |
+    Der Cash Conversion Cycle (CCC) misst, wie viele Tage das Cash eines
+    Unternehmens im operativen Geschäft gebunden ist: von der Bezahlung von
+    Lagerbestand oder Vorleistungen bis zum Zahlungseingang der Kunden.
+
+    ## Die CCC-Formel
+
+    **CCC = DIO + DSO − DPO**
+
+    Dabei gilt:
+    - **DIO** (Lagerreichweite in Tagen) = durchschnittlicher Lagerbestand ÷ [Herstellkosten](/glossary/#cogs) × 365
+    - **DSO** (Forderungslaufzeit) = durchschnittliche Forderungen ÷ Umsatz × 365
+    - **DPO** (Verbindlichkeitenlaufzeit) = durchschnittliche Verbindlichkeiten ÷ Herstellkosten × 365
+
+    ## Rechenbeispiel
+
+    Ein Unternehmen mit:
+    - Durchschnittlichem Lagerbestand: 500.000 $
+    - Jährlichen Herstellkosten: 3 Mio. $
+    - Durchschnittlichen Forderungen: 400.000 $
+    - Jahresumsatz: 5 Mio. $
+    - Durchschnittlichen Verbindlichkeiten: 200.000 $
+
+    - DIO = 500.000 $ ÷ 3 Mio. $ × 365 = 60,8 Tage
+    - DSO = 400.000 $ ÷ 5 Mio. $ × 365 = 29,2 Tage
+    - DPO = 200.000 $ ÷ 3 Mio. $ × 365 = 24,3 Tage
+    - **CCC = 60,8 + 29,2 − 24,3 = 65,7 Tage**
+
+    Im Schnitt sind 65,7 Tage Cash im Working Capital gebunden.
+
+    ## Negativer CCC: der heilige Gral
+
+    Manche Unternehmen, vor allem SaaS (Kunden zahlen im Voraus) und große
+    Händler (sie verkaufen, bevor sie Lieferanten bezahlen), erreichen einen
+    negativen CCC: Sie kassieren, bevor sie ihre Lieferanten bezahlen müssen.
+
+    Amazon arbeitete jahrelang mit negativem CCC und nutzte Lieferantenkredite
+    praktisch als kostenloses Working Capital zur Finanzierung des Wachstums.
+
+    ## Der CCC bei SaaS
+
+    Reine SaaS-Unternehmen haben typischerweise:
+    - DIO = 0 (kein physischer Lagerbestand)
+    - DSO = je nach Zahlungsbedingungen (0 bei Monatsabos, 30–60 bei Enterprise-Kunden auf Rechnung)
+    - DPO = je nach Lieferantenbedingungen (meist 30–60 Tage)
+
+    SaaS mit monatlicher Kartenabrechnung und üblichen Zahlungszielen hat oft
+    einen CCC nahe 0 oder negativ.
+
+    ## So verbesserst du den CCC
+
+    **DIO senken**: Lager schneller umschlagen durch bessere Bedarfsprognosen,
+    weniger Sicherheitsbestand oder Just-in-time-Beschaffung.
+
+    **DSO senken**: Skonto für frühe Zahlung anbieten, das Mahnwesen
+    automatisieren, Zahlungsziele für Neukunden verkürzen, automatische Abbuchung
+    einführen.
+
+    **DPO erhöhen**: längere Zahlungsziele mit Lieferanten verhandeln (60–90 statt
+    30 Tage). Große Unternehmen tun das systematisch.
+
+    ## Häufige Fragen
+
+    **Was macht dieser Rechner?**
+    Er berechnet Lagerreichweite (DIO), Forderungslaufzeit (DSO) und
+    Verbindlichkeitenlaufzeit (DPO) und fasst sie zum Cash Conversion Cycle
+    zusammen.
+"dso-calculator":
+  "body": |
+    ## Was ist die Forderungslaufzeit (DSO)?
+
+    Die Days Sales Outstanding (DSO) messen, wie viele Tage dein Unternehmen im
+    Schnitt braucht, um nach einem Verkauf das Geld einzunehmen. Sie gehören zu
+    den wichtigsten Working-Capital-Kennzahlen, weil sie direkt beziffern, wie
+    viel Cash jeweils in Forderungen gebunden ist.
+
+    **DSO = (Forderungen ÷ gesamte Kreditverkäufe) × Anzahl der Tage**
+
+    Eine niedrigere DSO bedeutet schnelleren Zahlungseingang und weniger Cash in
+    offenen Rechnungen. Eine steigende DSO ist ein frühes Warnsignal für
+    Inkassoprobleme oder Liquiditätsengpässe bei Kunden.
+
+    ## So liest du deine DSO
+
+    | DSO | Einordnung |
+    |---|---|
+    | Unter 30 Tage | Hervorragend: Kunden zahlen pünktlich |
+    | 30–45 Tage | Gut: passend zu üblichen 30 Tagen Zahlungsziel |
+    | 45–60 Tage | Akzeptabel: auf steigenden Trend achten |
+    | 60–90 Tage | Erhöht: Inkassoprozess überprüfen |
+    | Über 90 Tage | Hoch: deutliche Belastung des Working Capital |
+
+    ## Forderungsumschlag
+
+    Der Forderungsumschlag ist das Gegenstück zur DSO:
+
+    **Forderungsumschlag = gesamte Kreditverkäufe ÷ durchschnittliche Forderungen**
+
+    Ein höherer Umschlag heißt, du kassierst schneller. Er ergänzt die DSO: Ein
+    Umschlag von 12× entspricht einer durchschnittlichen DSO von etwa 30 Tagen.
+
+    ## So senkst du die DSO
+
+    1. **Zahlungsziele verkürzen**: für Neukunden von 60 auf 30 Tage
+    2. **Skonto anbieten**: „2/10 netto 30“ (2 % Nachlass bei Zahlung innerhalb von 10 Tagen)
+    3. **Erinnerungen automatisieren**: nach 7, 14 und 30 Tagen Verzug
+    4. **Anzahlungen verlangen**: bei großen Projekten 25–50 % im Voraus
+    5. **Mehr Zahlungsarten akzeptieren**: weniger Reibung mit Lastschrift, Karte und Überweisung
+
+    ## Wirkung auf das Working Capital
+
+    Jeder Tag weniger DSO setzt Cash in Höhe deines Tagesumsatzes frei. Bei
+    450.000 $ pro Quartal und einer Senkung der DSO von 45 auf 30 Tage setzt du
+    15 × (450.000 $ ÷ 90) = **75.000 $ Cash** frei, ohne dass sich der Umsatz
+    ändert.
+
+    ## Häufige Fragen
+
+    **Was ist eine gute DSO für ein B2B-SaaS-Unternehmen?**
+    B2B-SaaS mit Monatsabos hat oft eine DSO nahe null, weil im Voraus abgebucht
+    wird. Bei Jahresverträgen mit Vorabrechnung liegt die DSO meist bei 30–45
+    Tagen nach Rechnungsstellung. Mit Abo- und Dienstleistungsumsatz zusammen
+    kann die gemischte DSO bei 35–55 Tagen liegen.
+
+    **Wie wirkt sich die DSO auf meine Kreditlinie aus?**
+    Kreditgeber prüfen die DSO bei assetbasierten Krediten und
+    Forderungsfinanzierung. Eine hohe oder steigende DSO kann auf
+    Inkassoprobleme hindeuten und die Beleihungsquote deiner Forderungen senken.
+    Eine DSO unter 45 Tagen macht deine Forderungen meist zu üblichen Quoten
+    (oft 80–85 %) finanzierbar.
+"free-cash-flow-calculator":
+  "body": |
+    Der Free Cashflow (FCF) ist das Cash, das ein Unternehmen nach Abzug der
+    Investitionsausgaben erwirtschaftet. Er ist das ehrlichste Maß dafür, ob ein
+    Unternehmen Cash erzeugt: verlässlicher als der Gewinn (den
+    Bilanzierungsentscheidungen verzerren können) und aussagekräftiger als das
+    Umsatzwachstum allein.
+
+    ## Die Formel
+
+    **FCF = operativer Cashflow − Investitionsausgaben**
+
+    Ein Unternehmen mit 500.000 $ OCF und 80.000 $ Capex erzeugt **420.000 $ FCF**.
+
+    ## Warum der FCF mehr zählt als das EBITDA
+
+    Das EBITDA rechnet nicht zahlungswirksame Aufwendungen heraus, um Ergebnisse
+    über verschiedene Kapitalstrukturen vergleichbar zu machen. Der FCF geht
+    weiter: Er berücksichtigt die Reinvestitionen, die für den Fortbestand des
+    Geschäfts nötig sind. Ein Unternehmen mit hohen Ausgaben für Anlagen kann ein
+    starkes EBITDA und einen negativen FCF haben: Es behält tatsächlich kein Cash.
+
+    Bei SaaS ist der Abstand zwischen EBITDA und FCF meist klein (kaum Capex). In
+    Hardware, Industrie oder Infrastruktur kann der Capex 30–50 % des operativen
+    Cashflows verschlingen, und der FCF weicht deutlich vom EBITDA ab.
+
+    ## Richtwerte für die FCF-Marge
+
+    | Unternehmenstyp | FCF-Marge |
+    |---|---|
+    | Spitzen-SaaS (Shopify, Veeva) | 20–30 % |
+    | Typisches profitables SaaS | 10–20 % |
+    | SaaS in Früh- oder Wachstumsphase | 0–10 % |
+    | Capex-intensive Unternehmen | -10–+5 % |
+
+    ## FCF-Rendite für die Bewertung
+
+    FCF-Rendite = FCF / Marktkapitalisierung × 100
+
+    Eine FCF-Rendite von 5 % heißt, du zahlst das 20-Fache des FCF. 2 % heißt das
+    50-Fache. Faustregel: Über 4–5 % gilt als günstig, unter 1,5 % als teuer.
+    Berücksichtige die Wachstumserwartungen: Schnell wachsende Unternehmen
+    rechtfertigen niedrigere Renditen.
+
+    ## FCF vs. Free Cashflow to Equity (FCFE)
+
+    Der FCF ist die Cash-Erzeugung auf Unternehmensebene vor dem
+    Schuldendienst. Der FCFE zieht die Schuldenzahlungen ab: FCFE = FCF −
+    (Tilgung − neue Schulden). Für Eigenkapitalinvestoren, die ein verschuldetes
+    Unternehmen bewerten, ist der FCFE aussagekräftiger.
+
+    ## Häufige Fragen
+
+    **Was macht dieser Rechner?**
+    Er berechnet den Free Cashflow aus operativem Cashflow und Capex, dazu die
+    FCF-Marge und optional die FCF-Rendite als Bewertungskontext.
+"invoice-discount-calculator":
+  "body": |
+    ## Formel für Skonto bei früher Zahlung
+
+    Für die Bedingung „2/10 netto 30“ (2 % Skonto bei Zahlung innerhalb von 10 Tagen, sonst fällig nach 30):
+
+    $$\text{Annualisierte Kosten} = \frac{\text{Skonto \%}}{100 - \text{Skonto \%}} \times \frac{365}{\text{Netto-Tage} - \text{Skonto-Tage}}$$
+
+    **Beispiel (2/10 netto 30):**
+
+    $$\frac{2}{98} \times \frac{365}{20} = 37.2\%$$
+
+    Auf ein Skonto von 2/10 netto 30 zu verzichten, entspricht einem Kredit zu 37,2 % effektivem Jahreszins: Fast immer lohnt es sich, das Skonto zu nutzen, wenn du das Cash hast.
+
+    ### Wann du das Skonto nutzen solltest
+
+    Nutze das Skonto, wenn die **annualisierten Kosten des Verzichts** über deinen **Kapitalkosten** liegen (Kosten einer Kreditlinie, Opportunitätskosten des Cash).
+
+    | Dein Kreditzins | Annualisierte Skontokosten | Entscheidung |
+    |--------------------|--------------------------|---------- |
+    | 8 % | 37,2 % | Skonto nutzen |
+    | 8 % | 6 % | Verzichten: Kredit ist günstiger als das verlorene Skonto |
+
+    ### Dynamisches Skonto
+
+    Manche Kreditorenplattformen bieten dynamisches Skonto an: variable Sätze je nach Tagen früherer Zahlung. Mit diesem Rechner bewertest du jedes Angebot, indem du die implizierten annualisierten Kosten berechnest.
+
+    ### Ratgeber
+
+    - [Was bedeutet die Zahlungsbedingung 2/10 netto 30?](/tools/invoice-discount-calculator/#what-is-2-10-net-30)
+    - [Wann solltest du Skonto für frühe Zahlung nutzen?](/tools/invoice-discount-calculator/#when-to-take-early-payment-discount)
+"operating-cash-flow-calculator":
+  "body": |
+    Der operative Cashflow (OCF) misst das Cash, das dein Unternehmen tatsächlich
+    aus dem Kerngeschäft erwirtschaftet. Anders als der Jahresüberschuss lässt er
+    sich kaum durch Bilanzierungsentscheidungen beeinflussen: Entweder ist das
+    Geld auf dem Konto angekommen oder nicht.
+
+    ## Die Formel der indirekten Methode
+
+    **OCF = Jahresüberschuss + Abschreibungen + Veränderung des Working Capital**
+
+    Das ist die gängigste Methode (indirekte Methode), weil sie vom leicht
+    verfügbaren Jahresüberschuss ausgeht und nicht zahlungswirksame Posten sowie
+    zeitliche Verschiebungen korrigiert.
+
+    ## Warum der OCF vom Jahresüberschuss abweicht
+
+    **Abschreibungen** mindern den ausgewiesenen Gewinn, kosten aber kein Cash.
+    Ein Server für 10.000 $, über 5 Jahre abgeschrieben, senkt den
+    Jahresüberschuss um 2.000 $ pro Jahr, wurde aber im ersten Jahr bezahlt. Wer
+    die Abschreibungen wieder hinzurechnet, macht aus dem Buchgewinn einen
+    Cash-Gewinn.
+
+    **Veränderungen im Working Capital** spiegeln die zeitliche Lücke zwischen
+    Umsatzerfassung und Zahlungseingang:
+    - Forderungen **gestiegen** → du hast Kunden Rechnungen gestellt, aber noch nicht kassiert → der OCF liegt unter dem Jahresüberschuss
+    - Verbindlichkeiten **gestiegen** → du hast Ware erhalten, aber noch nicht bezahlt → der OCF liegt über dem Jahresüberschuss
+
+    ## Free Cashflow (FCF)
+
+    **FCF = OCF − Investitionsausgaben**
+
+    Der Free Cashflow ist das, was nach Erhalt und Ausbau der Vermögensbasis
+    übrig bleibt. Private-Equity-Firmen und erfahrene Investoren bewerten
+    Unternehmen damit, weil er das tatsächlich ausschüttbare Cash darstellt.
+
+    | OCF | Capex | FCF | Einordnung |
+    |---|---|---|---|
+    | +100.000 $ | 5.000 $ | +95.000 $ | Gesund: Das Unternehmen erzeugt Cash |
+    | +100.000 $ | 50.000 $ | +50.000 $ | Akzeptabel: hohe Investitionen in Anlagen |
+    | +100.000 $ | 120.000 $ | −20.000 $ | Investitionsphase für Wachstum |
+    | −50.000 $ | 10.000 $ | −60.000 $ | Cash-Abfluss: externe Finanzierung nötig |
+
+    ## Cash Conversion Ratio
+
+    **Cash Conversion Ratio = OCF ÷ Jahresüberschuss**
+
+    Über 1× erzeugt das Unternehmen mehr Cash als Buchgewinn (gut). Unter 1×
+    wächst der Gewinn schneller als die Zahlungseingänge: Behalte die Forderungen
+    im Blick. Über 1,5× deutet oft auf hohe Abschreibungen im Verhältnis zum
+    Capex hin.
+
+    ## Häufige Fragen
+
+    **Was macht dieser Rechner?**
+    Er berechnet den operativen Cashflow aus Jahresüberschuss, Abschreibungen und Veränderung des Working Capital, dazu Free Cashflow und Cash Conversion Ratio.
+"working-capital-calculator":
+  "body": |
+    Working Capital ist die Differenz zwischen Umlaufvermögen und kurzfristigen
+    Verbindlichkeiten eines Unternehmens. Es misst die kurzfristige Liquidität:
+    den operativen Puffer, der den Alltag ohne Cash-Krise am Laufen hält.
+
+    ## Die Formel
+
+    **Working Capital = Umlaufvermögen − kurzfristige Verbindlichkeiten**
+
+    Bei 500.000 $ Umlaufvermögen und 200.000 $ kurzfristigen Verbindlichkeiten
+    beträgt das Working Capital 300.000 $. Diese 300.000 $ sind der operative
+    Cash-Puffer.
+
+    ## Liquiditätsgrad (Current Ratio)
+
+    **Current Ratio = Umlaufvermögen / kurzfristige Verbindlichkeiten**
+
+    500.000 $ / 200.000 $ = 2,5x. Für jeden Dollar kurzfristiger Verpflichtungen
+    stehen 2,50 $ an liquiden Mitteln bereit.
+
+    ## Quick Ratio (Acid Test)
+
+    **Quick Ratio = (Umlaufvermögen − Vorräte) / kurzfristige Verbindlichkeiten**
+
+    Die Quick Ratio lässt die Vorräte weg, weil es dauert, Lagerbestand in Cash
+    zu verwandeln. Sie ist ein vorsichtigeres Maß der sofortigen Liquidität.
+
+    ## Richtwerte
+
+    | Current Ratio | Einordnung |
+    |---|---|
+    | > 2,0x | Stark: reichlich kurzfristiger Puffer |
+    | 1,5–2,0x | Gesund: komfortable Liquidität |
+    | 1,0–1,5x | Knapp: wenig Spielraum für Fehler |
+    | < 1,0x | Warnung: mögliches Liquiditätsrisiko |
+
+    ## Negatives Working Capital
+
+    Manche Unternehmen, vor allem SaaS- und Abo-Firmen, kommen mit negativem
+    Working Capital aus. Zahlen Kunden jährlich im Voraus (das erzeugt passive
+    Rechnungsabgrenzung, also eine kurzfristige Verbindlichkeit), ist das Working
+    Capital negativ, obwohl das Unternehmen kerngesund ist.
+
+    Amazon arbeitete jahrelang mit negativem Working Capital: Kunden zahlten
+    sofort, Amazon bezahlte Lieferanten nach 30–45 Tagen. Die Differenz
+    finanzierte den Betrieb.
+
+    ## Working Capital und Cash Conversion Cycle
+
+    Working Capital ist der statische Bestand, der [Cash Conversion Cycle](/tools/cash-conversion-cycle-calculator/)
+    der dynamische Fluss. Ein Unternehmen kann positives Working Capital und
+    trotzdem einen schlechten CCC haben, wenn Forderungen über 90 Tage brauchen.
+    Verfolge beide Kennzahlen gemeinsam.
+
+    ## Häufige Fragen
+
+    **Was macht dieser Rechner?**
+    Er berechnet Working Capital, Current Ratio, Quick Ratio und Working Capital
+    in Tagen aus deinem Umlaufvermögen und deinen kurzfristigen
+    Verbindlichkeiten.

@@ -1,0 +1,33 @@
+# category name -> {body}: translated category intros from content/categories.yaml.
+# Same markdown structure (headings, tables, FAQ bold questions) as English.
+
+"Cash Flow":
+  "body": |
+    Des entreprises rentables font faillite faute de trésorerie. Le bénéfice est un
+    résultat comptable ; la trésorerie est un solde bancaire, et c'est dans l'écart
+    entre les deux que se jouent la plupart des défaillances évitables. Ces
+    calculateurs mesurent cet écart.
+
+    ## Lequel choisir
+
+    **Flux de trésorerie d'exploitation** et **Flux de trésorerie disponible**
+    montrent ce que l'entreprise génère réellement une fois pris en compte le
+    besoin en fonds de roulement et les dépenses d'investissement ; le FCF est le
+    chiffre qui finance la croissance ou rembourse la dette. **Cycle de conversion
+    de trésorerie** et **DSO** mesurent combien de temps la trésorerie reste
+    bloquée entre le paiement des fournisseurs et l'encaissement des clients ;
+    raccourcir ce cycle libère du cash sans lever de fonds. **Fonds de roulement**
+    dimensionne le coussin dont l'entreprise a besoin pour fonctionner, **Escompte
+    sur facture** chiffre le coût d'un escompte pour paiement anticipé, et **Écart
+    budgétaire** compare le prévu au réalisé pour repérer un manque au deuxième
+    mois plutôt qu'au sixième.
+
+    ## Ce que disent les chiffres
+
+    Un DSO qui grimpe est l'un des premiers signaux d'alerte fiables dans une
+    petite entreprise : soit le recouvrement s'est relâché, soit les clients sont
+    eux-mêmes sous pression, et les deux s'aggravent sans bruit. Un cycle de
+    conversion négatif (encaisser les clients avant de payer les fournisseurs) est
+    un vrai avantage structurel : c'est en grande partie pour cela que les modèles
+    d'abonnement et les places de marché peuvent financer leur croissance par
+    l'exploitation, ce qu'un distributeur classique ne peut pas faire.
