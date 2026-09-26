@@ -1137,3 +1137,328 @@ free-cash-flow-calculator:
 
     **Que fait ce calculateur ?**
     Il calcule le coût employeur total, charges sociales (FICA, FUTA, SUTA) et avantages compris.
+
+"irr-calculator":
+  "body": |
+    Le taux de rendement interne (TRI) est le taux de rendement annualisé qui
+    annule la valeur actuelle nette (VAN) de l'ensemble des flux de trésorerie.
+    C'est l'un des indicateurs les plus utilisés en choix d'investissement et en
+    analyse financière.
+
+    ## Formule du TRI
+
+    Le TRI est la valeur de r qui vérifie :
+
+    **0 = CF₀ + CF₁/(1+r) + CF₂/(1+r)² + ... + CFₙ/(1+r)ⁿ**
+
+    Il n'existe pas de solution analytique : le TRI se calcule par itérations
+    (méthode de Newton-Raphson).
+
+    ## Règle de décision
+
+    - **TRI > CMPC (taux de rentabilité minimal)** : accepter le projet, il crée de la valeur
+    - **TRI < CMPC** : rejeter le projet, il détruit de la valeur
+    - **TRI = CMPC** : équilibre, indifférent
+
+    ## Limites du TRI
+
+    - **TRI multiples** : des flux qui changent de signe plus d'une fois peuvent donner plusieurs TRI
+    - **Insensibilité à la taille** : le TRI ignore la taille du projet ; 50 % de TRI sur 1 000 $ valent moins que 20 % sur 1 M$
+    - **Hypothèse de réinvestissement** : il suppose que les flux intermédiaires sont réinvestis au TRI, ce qui peut être irréaliste
+
+    C'est pourquoi on utilise souvent le TRI avec la VAN plutôt que seul.
+"mirr-calculator":
+  "body": |
+    Le TRIM (taux de rendement interne modifié) corrige un défaut majeur du TRI
+    classique : l'hypothèse que toutes les rentrées de trésorerie sont réinvesties
+    au TRI lui-même, ce qui est en général irréaliste.
+
+    ## Formule du TRIM
+
+    **TRIM = (VF des flux positifs au taux de réinvestissement / VA des flux négatifs au taux de financement) ^ (1/n) − 1**
+
+    Où n = nombre de périodes.
+
+    ## TRIM ou TRI
+
+    | Aspect | TRI | TRIM |
+    |--------|-----|------|
+    | Hypothèse de réinvestissement | Au TRI (souvent trop élevé) | Au taux de réinvestissement que vous choisissez |
+    | Problème des TRI multiples | Plusieurs solutions possibles | Toujours une seule solution |
+    | Résultat habituel | Plus élevé | Plus bas, plus réaliste |
+    | Usage | Premier tri rapide | Choix d'investissement plus rigoureux |
+
+    ## Quand utiliser le TRIM
+
+    Utilisez le TRIM quand :
+    - Les flux du projet alternent entre positifs et négatifs (problème des TRI multiples)
+    - Le taux de réinvestissement est très différent du TRI
+    - Vous devez comparer des projets de durées différentes
+    - Des prêteurs ou des investisseurs avertis l'exigent
+
+    Seuils de TRIM habituels : 15 % et plus pour le capital-risque et les
+    startups, 12 à 18 % pour le private equity, 8 à 12 % pour l'immobilier, 6 à
+    10 % pour les infrastructures.
+"npv-calculator":
+  "body": |
+    La valeur actuelle nette (VAN) indique si un investissement crée ou détruit de
+    la valeur, en comparant la valeur actuelle des flux futurs au coût initial.
+
+    ## La formule
+
+    **VAN = −investissement initial + Σ [flux de trésorerie_t / (1 + r)^t]**
+
+    Où r est le taux d'actualisation et t la période en années.
+
+    Pour un investissement de 100 k$ à 10 % d'actualisation, avec des flux annuels
+    de 30 k$, 35 k$, 40 k$, 40 k$ et 40 k$ :
+    VAN = −100k + 30k/1,1 + 35k/1,21 + 40k/1,331 + 40k/1,464 + 40k/1,611
+    VAN = −100k + 27,3k + 28,9k + 30,0k + 27,3k + 24,8k = **38,3 k$**
+
+    Une VAN positive signifie que l'investissement crée de la valeur au-delà du
+    rendement exigé.
+
+    ## Règles de décision
+
+    | VAN | Décision |
+    |---|---|
+    | Positive (VAN > 0) | Accepter : crée de la valeur au-delà du rendement exigé |
+    | Nulle (VAN = 0) | Équilibre : rapporte exactement le rendement exigé |
+    | Négative (VAN < 0) | Rejeter : détruit de la valeur à ce taux d'actualisation |
+
+    ## Indice de profitabilité (IP)
+
+    IP = (VAN + investissement initial) / investissement initial
+
+    L'IP mesure la valeur créée par dollar investi. IP > 1 = VAN positive. Il sert
+    à classer des projets concurrents quand le capital est limité : plus l'IP est
+    élevé, plus chaque dollar engagé crée de valeur.
+
+    | IP | Lecture |
+    |---|---|
+    | > 1,5 | Excellent rendement |
+    | 1,1–1,5 | Bon rendement |
+    | 1,0–1,1 | Rendement marginal |
+    | < 1,0 | Détruit de la valeur |
+
+    ## Choisir le bon taux d'actualisation
+
+    Le taux d'actualisation est la donnée la plus critique : de petits écarts ont
+    de gros effets.
+
+    **CMPC de l'entreprise** : moyenne pondérée du coût de la dette (après impôt)
+    et du coût des capitaux propres. Fourchette habituelle : 8 à 12 % pour une
+    entreprise établie.
+
+    **Capital-risque / startup** : des taux plus élevés (20 à 30 %) reflètent un
+    risque plus fort. Une startup peut exiger 25 % de rendement pour rémunérer les
+    investisseurs du risque d'échec.
+
+    **Taux de rentabilité minimal** : beaucoup d'entreprises fixent un TRI minimum
+    acceptable (15 à 20 %) pour que les projets se disputent l'allocation du
+    capital.
+
+    En cas de doute, calculez la VAN à plusieurs taux (analyse de sensibilité).
+
+    ## VAN ou TRI
+
+    Le TRI (taux de rendement interne) est le taux d'actualisation qui annule la
+    VAN. Les deux mesurent la valeur d'un projet ; on préfère en général la VAN
+    car :
+    - La VAN s'exprime en dollars (plus facile à interpréter)
+    - Le TRI peut donner plusieurs valeurs pour des flux non conventionnels
+    - La VAN gère correctement des taux d'actualisation variables dans le temps
+
+    ## Questions fréquentes
+
+    **Que fait ce calculateur ?**
+    Il calcule la VAN à partir d'un investissement initial et de 5 ans de flux au
+    maximum. Saisissez votre taux d'actualisation (coût du capital) et vos flux
+    annuels prévus.
+"payback-period-calculator":
+  "body": |
+    Le délai de récupération est le temps nécessaire pour qu'un investissement
+    génère assez de trésorerie pour couvrir son coût initial. C'est l'un des
+    indicateurs de choix d'investissement les plus utilisés, car il répond
+    directement à la question : « Quand est-ce que je récupère mon argent ? »
+
+    ## Formule du délai de récupération simple
+
+    **Délai de récupération (années) = investissement initial / flux net annuel**
+
+    Pour 200 k$ d'investissement et 80 k$ de flux net annuel : 200k / 80k = **2,5 ans**.
+
+    ## Délai de récupération actualisé
+
+    Le délai actualisé tient compte de la valeur temps de l'argent en actualisant
+    le flux de chaque année :
+
+    **VA du flux de l'année N = flux annuel / (1 + taux d'actualisation) ^ N**
+
+    Le délai actualisé est toujours plus long que le délai simple. À 10 %
+    d'actualisation, un investissement de 200 k$ avec 80 k$ par an, récupéré en
+    2,5 ans en simple, passe à environ 3,1 ans en actualisé.
+
+    ## Repères
+
+    | Délai de récupération | Lecture |
+    |---|---|
+    | < 6 mois | Exceptionnel : rare, surtout en logiciel/SaaS |
+    | 6–12 mois | Excellent : retour rapide sur capital |
+    | 1–2 ans | Bon : standard pour les investissements marketing |
+    | 2–4 ans | Acceptable : courant pour les équipements |
+    | > 4 ans | Long : exige des flux stables et prévisibles |
+
+    ## Les limites du délai de récupération
+
+    Le délai de récupération ignore les flux après le point mort. Un
+    investissement de 200 k$ récupéré en 2 ans qui rapporte ensuite 100 k$ par an
+    pendant 8 ans vaut bien plus qu'un autre qui rapporte exactement 80 k$ par an,
+    alors qu'ils affichent le même délai.
+
+    **Utilisez le délai de récupération avec le ROI et la VAN pour une analyse
+    d'investissement complète.**
+
+    ## Questions fréquentes
+
+    **Que fait ce calculateur ?**
+    Il calcule le délai de récupération simple et actualisé à partir de
+    l'investissement initial et des flux nets annuels, ainsi que le ROI à la fin
+    de votre période d'analyse.
+"roi-calculator":
+  "body": |
+    Le ROI (retour sur investissement) est la mesure la plus universelle de
+    l'efficacité d'un investissement. Il exprime le bénéfice en pourcentage du
+    capital engagé pour le générer.
+
+    ## La formule
+
+    **ROI = (bénéfice net / coût de l'investissement) × 100**
+
+    Où bénéfice net = chiffre d'affaires − coûts d'exploitation
+
+    Avec 150 k$ de chiffre d'affaires, 50 k$ de coûts et 100 k$ d'investissement :
+    - Bénéfice net = 100 k$
+    - ROI = (100 k$ / 100 k$) × 100 = **100 %**
+
+    ## ROI annualisé
+
+    **ROI annualisé = ((1 + ROI/100) ^ (1/années) − 1) × 100**
+
+    Le ROI annualisé permet de comparer des horizons différents. Un ROI de 50 % sur
+    2 ans équivaut à ~22,5 % par an, et non 25 %. La capitalisation compte.
+
+    ## Qu'est-ce qu'un bon ROI ?
+
+    Tout dépend du contexte :
+    - **Marketing** : un rapport de 5 pour 1 (5 $ de chiffre d'affaires par dollar dépensé) = 400 % de ROI, considéré comme bon
+    - **Immobilier** : 8 à 12 % de ROI annualisé, habituel
+    - **Moyenne du S&P 500** : ~10 % par an, la référence du capital placé passivement
+    - **Investissement SaaS** : viser plus de 30 % annualisé sous 3 ans
+
+    Tout ROI inférieur à votre coût du capital (en général 8 à 15 %) signifie que
+    l'investissement détruit de la valeur.
+
+    ## Le ROI et les autres indicateurs
+
+    | Indicateur | Mesure | Quand l'utiliser |
+    |---|---|---|
+    | ROI | Rendement total du capital | Comparer l'efficacité des investissements |
+    | ROAS | Chiffre d'affaires par dollar publicitaire | Spécifique au marketing |
+    | Délai de récupération | Mois pour récupérer l'investissement | Planification de trésorerie |
+    | VAN | Valeur actuelle des rendements futurs | Allocation du capital à long terme |
+
+    ## Questions fréquentes
+
+    **Que fait ce calculateur ?**
+    Il calcule le ROI, le ROI annualisé, le bénéfice net et le délai de
+    récupération à partir du chiffre d'affaires, des coûts et de l'investissement
+    initial.
+"rule-of-72-calculator":
+  "body": |
+    La règle de 72 est un raccourci de calcul mental pour estimer en combien de
+    temps les intérêts composés doublent un placement.
+
+    ## Formule
+
+    **Temps de doublement (années) ≈ 72 ÷ taux annuel (%)**
+
+    **Taux nécessaire ≈ 72 ÷ nombre d'années visé**
+
+    ## Pourquoi 72 ?
+
+    72 est divisible par 1, 2, 3, 4, 6, 8, 9, 12 et 24, ce qui facilite le calcul
+    mental. La formule exacte est **ln(2) ÷ ln(1 + r)**, mais 72/r est précis à 1 à
+    2 % près pour des taux compris entre 2 et 20 %.
+
+    ## Temps de doublement selon le taux
+
+    | Taux annuel | Temps de doublement |
+    |------------|--------------|
+    | 2 % | 36 ans |
+    | 4 % | 18 ans |
+    | 6 % | 12 ans |
+    | 8 % | 9 ans |
+    | 10 % | 7,2 ans |
+    | 12 % | 6 ans |
+    | 24 % | 3 ans |
+    | 72 % | 1 an |
+
+    ## La règle de 72 et l'inflation
+
+    La règle vaut aussi pour l'inflation. À 3 % d'inflation, le pouvoir d'achat
+    est divisé par deux en 24 ans. C'est pourquoi il est indispensable de gagner
+    plus que l'inflation pour préserver un patrimoine réel.
+
+    ## Applications à la croissance exponentielle
+
+    La règle de 72 fonctionne pour tout processus exponentiel :
+    - Taux de croissance de l'[ARR](/glossary/#arr) d'un SaaS → années pour doubler le chiffre d'affaires
+    - Croissance d'une population → temps de doublement
+    - Dette à un taux d'intérêt donné → années pour doubler ce que vous devez
+"wacc-calculator":
+  "body": |
+    Le CMPC (coût moyen pondéré du capital, ou WACC) est le rendement minimal
+    qu'une entreprise doit obtenir sur ses actifs pour satisfaire ses bailleurs de
+    fonds, actionnaires comme créanciers. Il sert de taux de rentabilité minimal
+    pour les décisions d'investissement et les valorisations par DCF.
+
+    ## Formule du CMPC
+
+    **CMPC = (E/V) × Rₑ + (D/V) × Rᵈ × (1 − Tᶜ)**
+
+    Où :
+    - **E** = valeur de marché des capitaux propres (capitalisation)
+    - **D** = valeur de marché de la dette
+    - **V** = E + D (capital total)
+    - **Rₑ** = coût des capitaux propres (%)
+    - **Rᵈ** = coût de la dette avant impôt (%)
+    - **Tᶜ** = taux d'impôt sur les sociétés (%)
+
+    Le coût des capitaux propres s'estime en général avec le MEDAF : taux sans
+    risque + bêta × prime de risque actions. Le bêta mesure la volatilité d'une
+    action par rapport au marché : un bêta de 1,5 signifie que l'action bouge en
+    général 50 % de plus que le marché dans un sens comme dans l'autre, ce pour
+    quoi les investisseurs exigent un rendement plus élevé.
+
+    ## Pourquoi le taux d'impôt compte
+
+    Les intérêts de la dette sont déductibles, ce qui crée un « bouclier fiscal ».
+    Le coût de la dette après impôt est Rᵈ × (1 − Tᶜ). Une entreprise avec 6 % de
+    coût de la dette et 25 % d'impôt a un coût effectif de la dette de 4,5 %.
+
+    ## Repères de CMPC
+
+    | Secteur | CMPC habituel |
+    |----------|-------------|
+    | SaaS / logiciel | 8–14 % |
+    | Biens de consommation | 6–10 % |
+    | Services publics | 4–8 % |
+    | Biotech | 12–20 % |
+
+    ## Le CMPC en pratique
+
+    - **Valorisation par DCF** : le CMPC est le taux d'actualisation appliqué aux flux de trésorerie disponibles futurs
+    - **Choix d'investissement** : n'accepter que les projets dont le TRI dépasse le CMPC
+    - **Structure du capital** : optimiser la répartition dette/capitaux propres pour minimiser le CMPC
+    - **Mesure de la performance** : un ROIC supérieur au CMPC signifie que l'entreprise crée de la valeur économique

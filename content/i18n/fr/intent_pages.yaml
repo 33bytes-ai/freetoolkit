@@ -3468,3 +3468,853 @@ how-to-improve-fcf-margin:
     Utilisez le [calculateur du coût de la paie](/tools/payroll-cost-calculator/)
     pour calculer le coût total exact de n'importe quel scénario de salaire et
     d'avantages.
+
+"irr-formula-excel":
+  "title": "Comment calculer le TRI dans Excel (formule et exemples)"
+  "description": "Un guide pas à pas pour utiliser la fonction TRI d'Excel : la formule, les données nécessaires, les erreurs courantes et quand utiliser TRI.PAIEMENTS à la place."
+  "body": |
+    La fonction `TRI` d'Excel (`IRR` dans la version anglaise) est le moyen le
+    plus rapide de calculer un taux de rendement interne pour des flux
+    conventionnels. Voici comment bien l'utiliser.
+
+    ## Syntaxe de TRI dans Excel
+
+    ```
+    =TRI(valeurs; [estimation])
+    ```
+
+    **valeurs** : une plage contenant les flux de trésorerie (au moins une valeur
+    négative et une positive). L'année 0 (investissement initial) doit être la
+    première cellule.
+
+    **estimation** : point de départ facultatif de l'itération (0,1 = 10 % par
+    défaut). Utile seulement si TRI renvoie `#NOMBRE!` ou si vous attendez un
+    résultat inhabituel.
+
+    ## Exemple
+
+    Dans les cellules A1:A5 : -100000, 25000, 30000, 35000, 40000
+    Formule : `=TRI(A1:A5)` → **10,48 %**
+
+    Si votre taux de rentabilité minimal est de 12 %, cet investissement doit être
+    rejeté (TRI < taux minimal).
+
+    ## TRI.PAIEMENTS ou TRI
+
+    Utilisez `TRI.PAIEMENTS` (`XIRR` en anglais) quand les flux ne tombent pas à
+    intervalles annuels réguliers :
+    ```
+    =TRI.PAIEMENTS(valeurs; dates)
+    ```
+
+    TRI.PAIEMENTS est plus précis pour les investissements réels aux flux
+    irréguliers (distributions trimestrielles, appels de fonds irréguliers).
+
+    ## Erreurs courantes
+
+    - **#NOMBRE!** : le TRI n'a pas convergé. Essayez une autre `estimation` ou
+      vérifiez s'il y a plusieurs changements de signe (utilisez alors le TRIM).
+    - **Oublier l'année 0** : si l'investissement initial n'apparaît pas en valeur
+      négative dans la première cellule, TRI renvoie un résultat faux.
+
+    Utilisez le [calculateur de TRI](/tools/irr-calculator/) en ligne pour un
+    calcul immédiat sans Excel.
+"irr-vs-npv-which-metric-to-use":
+  "title": "TRI ou VAN : quel indicateur utiliser ?"
+  "description": "Le TRI et la VAN peuvent ne pas classer deux projets dans le même ordre. Voici pourquoi, et lequel croire quand ils se contredisent."
+  "body": |
+    Le TRI et la VAN reposent sur les mêmes flux et s'accordent en général sur
+    l'intérêt d'un projet isolé. Mais pour comparer deux projets mutuellement
+    exclusifs, ils peuvent les classer en sens inverse, et savoir lequel croire
+    est essentiel.
+
+    ## Ce que mesure réellement chacun
+
+    La **VAN** répond à « quelle valeur, en dollars d'aujourd'hui, ce projet
+    crée-t-il ? » : un montant absolu.
+
+    Le **TRI** répond à « quel rendement annualisé ce projet génère-t-il ? » : un
+    pourcentage, indépendant de la taille du projet.
+
+    ## Pourquoi ils peuvent se contredire
+
+    Le TRI est aveugle à la taille. Un projet de 10 000 $ à 50 % de TRI crée bien
+    moins de valeur totale qu'un projet de 1 000 000 $ à 20 % de TRI, mais le TRI
+    seul jugerait le petit projet « meilleur ». La VAN, elle, mesure la valeur
+    réellement créée en dollars, ce qui compte en définitive pour une entreprise.
+
+    ## Une comparaison chiffrée
+
+    | Projet | Investissement | TRI | VAN (actualisation à 10 %) |
+    |---------|-----------|-----|------------------------------|
+    | A | 10 000 $ | 45 % | 4 200 $ |
+    | B | 500 000 $ | 22 % | 85 000 $ |
+
+    Le projet A « gagne » au TRI. Le projet B crée 20 fois plus de valeur réelle.
+    Si vous ne pouvez en choisir qu'un et disposez du capital, le projet B est très
+    probablement le bon choix malgré un TRI plus faible : c'est précisément le
+    piège d'une décision fondée sur le seul TRI.
+
+    ## Quand le TRI reste le bon indicateur principal
+
+    - **Tri sous contrainte de capital** : quand vous choisissez parmi de nombreux
+      petits projets et que le capital (et non une décision unique) est la
+      contrainte, classer par TRI pour maximiser le rendement par dollar engagé
+      peut être la bonne approche
+    - **Communication avec des interlocuteurs non financiers** : un pourcentage
+      est souvent plus parlant qu'une VAN en dollars, notamment face à un taux de
+      rentabilité minimal
+
+    ## La recommandation standard
+
+    Prenez la VAN comme critère principal pour comparer des projets mutuellement
+    exclusifs de tailles différentes : elle mesure directement la valeur créée.
+    Utilisez le TRI comme contrôle secondaire et pour communiquer le rendement
+    annualisé attendu, sans le laisser l'emporter sur la VAN quand les deux
+    classements divergent.
+
+    ## Questions fréquentes
+
+    **Et si un projet a plusieurs TRI ?**
+    Cela arrive quand les flux changent de signe plus d'une fois (par exemple une
+    grosse dépense en cours de projet). La VAN reste bien définie dans ce cas,
+    autre raison de s'y fier par défaut quand les deux divergent ou que le TRI
+    paraît instable.
+
+    **Le TRIM règle-t-il le désaccord entre TRI et VAN ?**
+    Le TRIM corrige l'hypothèse de réinvestissement irréaliste du TRI, mais pas
+    son insensibilité à la taille : pour classer des projets de tailles
+    différentes, c'est toujours la VAN qu'il faut croire.
+
+    Utilisez le [calculateur de TRI](/tools/irr-calculator/) avec votre propre
+    calcul de VAN pour voir les deux indicateurs sur la même série de flux avant de
+    choisir entre des projets.
+"what-is-a-good-irr-for-a-startup":
+  "title": "Quel est un bon TRI pour un investissement dans une startup ?"
+  "description": "Les repères de TRI pour les investissements en startup, le capital-risque et le private equity, et comment lire le TRI avec le multiple (MOIC) et le délai de récupération."
+  "body": |
+    Les repères de TRI (taux de rendement interne) varient selon le stade, le
+    secteur et la classe d'actifs. Voici ce que les investisseurs jugent « bon »
+    selon le contexte.
+
+    ## Repères de TRI selon le contexte
+
+    | Contexte | TRI minimum acceptable | TRI visé |
+    |---------|----------------------|------------|
+    | Business angel / pré-amorçage | 30 % | 50–100 % et plus |
+    | Série A / capital-risque | 25 % | 40–60 % |
+    | Capital-croissance | 20 % | 30–40 % |
+    | LBO (private equity) | 15 % | 20–30 % |
+    | Promotion immobilière | 12 % | 18–25 % |
+    | Seuil des marchés cotés | 8–12 % | — |
+
+    ## TRI ou MOIC
+
+    Le TRI dépend du temps : un rendement de 3 fois en 2 ans = ~73 % de TRI ; 3 fois
+    en 6 ans = ~20 % de TRI. Le MOIC (multiple du capital investi) ignore le temps,
+    donc les investisseurs utilisent les deux :
+    - **Le TRI** pour comparer des investissements aux durées de détention différentes
+    - **Le MOIC** pour communiquer l'ampleur du rendement aux souscripteurs (LP)
+
+    ## Quand le TRI induit en erreur
+
+    Le TRI suppose un réinvestissement au même taux. Pour des investissements aux
+    gros flux précoces (dividendes rapides, par exemple), il surestime le
+    rendement global. Utilisez le TRIM (TRI modifié) quand le taux de
+    réinvestissement diffère nettement du TRI du projet.
+
+    Utilisez le [calculateur de TRI](/tools/irr-calculator/) pour calculer le TRI
+    et la VAN de n'importe quelle série de flux.
+"mirr-excel-formula":
+  "title": "Le TRIM dans Excel : formule, exemples et erreurs courantes"
+  "description": "Comment calculer le TRIM dans Excel avec la fonction intégrée, avec des exemples, l'explication des arguments et les erreurs courantes à éviter."
+  "body": |
+    La fonction `TRIM` d'Excel (`MIRR` en anglais) rend le calcul simple, mais
+    quelques pièges méritent d'être connus avant de l'utiliser dans un modèle.
+
+    ## Syntaxe de TRIM dans Excel
+
+    ```
+    =TRIM(valeurs; taux_emprunt; taux_placement)
+    ```
+
+    **valeurs** : une plage de cellules contenant les flux de trésorerie (année 0 à
+    année N). La première valeur doit être négative (investissement initial).
+
+    **taux_emprunt** : le taux d'intérêt payé sur les flux négatifs (coût
+    d'emprunt). Utilisez votre CMPC ou votre coût de la dette.
+
+    **taux_placement** : le taux d'intérêt obtenu sur les flux positifs
+    réinvestis. Prenez un taux prudent : rendement des emprunts d'État, taux
+    d'épargne ou coût d'opportunité.
+
+    ## Exemple
+
+    Flux : année 0 = −100 000 $, années 1 à 4 = 30 000 $ chacune.
+    Taux d'emprunt = 10 %, taux de placement = 8 %.
+
+    ```
+    =TRIM(A1:A5; 10%; 8%)
+    = 7,83 %
+    ```
+
+    Avec le TRI classique : `=TRI(A1:A5)` = 7,71 %
+
+    Le TRIM est ici légèrement supérieur, car le taux de placement (8 %) dépasse
+    le TRI (7,71 %). Le TRIM se rapproche du taux de placement : quand celui-ci
+    est inférieur au TRI, le TRIM est plus bas que le TRI.
+
+    ## Erreurs courantes
+
+    1. **Oublier l'année 0** : la plage doit contenir la sortie initiale en
+       première position. Si vous commencez à l'année 1, le résultat est faux.
+    2. **Utiliser le même taux pour les deux arguments** : le TRIM devient alors
+       une simple approximation du TRI, ce qui lui ôte son intérêt.
+    3. **Mélanger les périodes** : le TRIM suppose des périodes annuelles, sauf
+       ajustement. Pour des flux mensuels, divisez les taux annuels par 12.
+
+    Utilisez le [calculateur de TRIM](/tools/mirr-calculator/) en ligne, sans
+    avoir besoin d'Excel.
+"mirr-vs-irr-which-to-use":
+  "title": "TRIM ou TRI : lequel utiliser pour les choix d'investissement ?"
+  "description": "Une comparaison pratique du TRIM et du TRI pour les décisions d'investissement : quand utiliser chacun et pourquoi le TRIM donne des résultats plus réalistes."
+  "body": |
+    Le TRI est plus répandu, mais le TRIM est plus réaliste. Voici quand et
+    pourquoi utiliser chacun.
+
+    ## Le problème du taux de réinvestissement du TRI
+
+    Le TRI suppose implicitement que tous les flux positifs peuvent être
+    réinvestis au TRI lui-même. Si un projet affiche 35 % de TRI, il suppose que
+    vous pouvez réinvestir chaque année vos gains à 35 %, ce qui est en général
+    impossible.
+
+    Le TRIM corrige cela en séparant le taux de financement (coût d'emprunt) du
+    taux de réinvestissement (vos opportunités réelles de réinvestissement).
+
+    ## Quand préférer le TRIM au TRI
+
+    1. **Plusieurs changements de signe dans les flux** : les projets qui exigent
+       des apports de capital en cours de route peuvent produire plusieurs TRI
+       mathématiquement valides. Le TRIM renvoie toujours une valeur unique.
+    2. **Comparer des projets de tailles différentes** : le TRIM convient mieux
+       pour comparer un projet de 500 k$ à un projet de 5 M$ aux profils de flux
+       différents.
+    3. **Des prêteurs ou administrateurs exigeants le demandent** : les fonds de
+       private equity et les investisseurs avertis préfèrent souvent le TRIM pour
+       une modélisation réaliste du rendement.
+
+    ## Quand le TRI suffit
+
+    Pour des flux simples et conventionnels (une sortie initiale suivie de
+    rentrées), TRI et TRIM donnent des résultats proches, et le TRI est plus
+    largement compris.
+
+    Utilisez le [calculateur de TRIM](/tools/mirr-calculator/) pour calculer le
+    TRIM avec vos propres taux de financement et de réinvestissement.
+"how-to-choose-discount-rate":
+  "title": "Comment choisir le bon taux d'actualisation pour calculer une VAN"
+  "description": "Le taux d'actualisation est la donnée la plus importante d'une analyse VAN. Comment calculer le CMPC, le taux de rentabilité minimal et le coût d'opportunité, et pourquoi un mauvais taux mène à de mauvaises décisions."
+  "body": |
+    Le taux d'actualisation est la donnée la plus critique d'une analyse de VAN.
+    Trop bas, vous accepterez de mauvais investissements. Trop haut, vous en
+    rejetterez de bons.
+
+    ## Le principe : le coût d'opportunité du capital
+
+    Le taux d'actualisation représente ce que vous pourriez gagner en plaçant
+    l'argent ailleurs à risque comparable. Si vous pouvez obtenir 10 % en bourse
+    pour un risque similaire, tout projet qui ne rapporte pas au moins 10 % détruit
+    de la valeur par rapport à cette alternative.
+
+    **Principe clé** : le taux d'actualisation doit refléter le risque du projet,
+    pas celui de l'investisseur ni celui des projets moyens de l'entreprise.
+
+    ## Méthode 1 : le CMPC (coût moyen pondéré du capital)
+
+    Pour une entreprise financée par dette et capitaux propres :
+
+    **CMPC = (E/V × Re) + (D/V × Rd × (1 − taux d'impôt))**
+
+    Où :
+    - E/V = poids des capitaux propres (capitaux propres / valeur totale)
+    - Re = coût des capitaux propres (par exemple 12 à 15 % pour une petite entreprise)
+    - D/V = poids de la dette
+    - Rd = coût de la dette (taux d'intérêt des emprunts)
+    - Taux d'impôt = taux d'impôt sur les sociétés (les intérêts sont déductibles)
+
+    **Exemple** : 60 % de capitaux propres à 14 % + 40 % de dette à 8 %, impôt à 25 % :
+    CMPC = (0,60 × 14 %) + (0,40 × 8 % × 0,75) = 8,4 % + 2,4 % = **10,8 %**
+
+    ## Méthode 2 : le taux de rentabilité minimal
+
+    Beaucoup d'entreprises fixent un TRI minimum acceptable pour leurs projets (le
+    « hurdle rate »). C'est une décision de politique, pas une formule. Taux
+    minimaux courants :
+    - Grands groupes : 12 à 15 %
+    - Entreprises de taille intermédiaire : 15 à 20 %
+    - Startups et projets à haut risque : 20 à 30 %
+    - Capital-risque : 30 à 40 %
+
+    ## Méthode 3 : le taux ajusté du risque
+
+    Pour des projets au profil de risque différent de votre cœur d'activité :
+    - Risque faible (économies de coûts, améliorations opérationnelles) : CMPC − 2 à 3 points
+    - Risque moyen (développement du cœur d'activité) : CMPC
+    - Risque élevé (nouveaux marchés, technologie non éprouvée) : CMPC + 5 à 10 points
+    - Spéculatif (projets très ambitieux) : 25 à 40 %
+
+    ## Erreurs courantes
+
+    **Ne retenir que le coût de la dette** : « Notre emprunt est à 7 %, donc on
+    prend 7 %. » Faux : cela ignore le coût des capitaux propres, nettement plus
+    élevé que celui de la dette.
+
+    **Un taux unique pour tous les projets** : un investissement industriel stable
+    n'a pas le même risque qu'une startup logicielle. Même entreprise, risque
+    différent, taux différent.
+
+    **Un taux nominal pour des flux réels** : si les flux sont exprimés hors
+    inflation (en termes réels), utilisez un taux réel. S'ils sont nominaux,
+    utilisez un taux nominal.
+
+    Pour la plupart des décisions, partez du CMPC et relevez-le pour les projets
+    plus risqués. En cas de doute, faites une analyse de sensibilité : calculez la
+    VAN à 8 %, 12 %, 16 % et 20 %.
+
+    Utilisez le [calculateur de VAN](/tools/npv-calculator/) pour modéliser
+    différents scénarios de taux.
+"npv-vs-irr":
+  "title": "VAN ou TRI : quel indicateur pour les décisions d'investissement ?"
+  "description": "La VAN et le TRI évaluent tous deux le rendement d'un investissement, mais répondent à des questions différentes. Quand utiliser chacun et pourquoi on préfère en général la VAN pour allouer le capital."
+  "body": |
+    La VAN et le TRI servent tous deux à évaluer le rendement d'un investissement,
+    mais ils répondent à des questions un peu différentes et peuvent parfois
+    envoyer des signaux contradictoires.
+
+    ## La VAN : une valeur en dollars
+
+    **VAN = −investissement + Σ [flux / (1 + r)^t]**
+
+    La VAN répond à : « À mon taux de rendement exigé, combien de dollars de valeur
+    cet investissement crée-t-il ? » Le résultat est un montant absolu.
+
+    La VAN est directement exploitable : acceptez tous les projets à VAN positive.
+    Entre deux projets, celui à la VAN la plus élevée crée le plus de richesse (à
+    taille égale).
+
+    ## Le TRI : le taux de rendement d'équilibre
+
+    Le TRI est le taux d'actualisation qui annule la VAN. Il répond à : « Quel
+    rendement cet investissement rapporte-t-il réellement ? » Il s'exprime en
+    pourcentage.
+
+    Pour le projet d'exemple (100 k$ d'investissement, 30 à 40 k$ de flux annuels
+    sur 5 ans), TRI ≈ 23,3 %. Le projet rapporte donc 23,3 % par an.
+
+    Si votre taux minimal est de 10 %, TRI > 10 % → accepter. S'il est de 25 %,
+    TRI < 25 % → rejeter.
+
+    ## Quand VAN et TRI concordent
+
+    Pour des investissements simples (une sortie, puis des rentrées), VAN et TRI
+    concordent toujours sur la décision d'accepter ou de rejeter :
+    - VAN positive ↔ TRI > taux d'actualisation
+    - VAN négative ↔ TRI < taux d'actualisation
+
+    ## Quand ils divergent : projets mutuellement exclusifs
+
+    Pour choisir entre deux projets concurrents, VAN et TRI peuvent donner des
+    classements différents.
+
+    **Exemple :**
+    - Projet A : 100 k$ d'investissement, TRI de 25 %, VAN de 20 k$ à 10 %
+    - Projet B : 500 k$ d'investissement, TRI de 20 %, VAN de 80 k$ à 10 %
+
+    Le TRI favorise le projet A (25 % > 20 %). La VAN favorise le projet B
+    (80 k$ > 20 k$).
+
+    Lequel a raison ? **La VAN.** Le projet B crée 80 k$ de richesse ; le projet A
+    seulement 20 k$. Le TRI induit en erreur car il ignore la taille.
+
+    ## Quand la VAN est toujours préférable
+
+    1. **Des tailles différentes** : le TRI ignore la taille du projet ; la VAN mesure une valeur absolue
+    2. **Des flux non conventionnels** : plusieurs changements de signe peuvent
+       produire plusieurs TRI ; la VAN n'a qu'une valeur
+    3. **Des taux d'actualisation variables** : si votre coût du capital change
+       d'une année à l'autre, seule la VAN le gère correctement (un taux par période)
+
+    ## Quand le TRI est utile
+
+    Le TRI est parlant pour communiquer : « Ce projet rapporte 23,3 % par an » est
+    plus facile à expliquer que « ce projet a une VAN de 38 k$ à 10 % ».
+
+    Il est aussi utile pour comparer les rendements d'investissements de tailles
+    différentes, en complément de la VAN.
+
+    **Bonne pratique** : calculez les deux. Décidez sur la VAN. Utilisez le TRI pour
+    le contexte et la communication.
+
+    Utilisez le [calculateur de VAN](/tools/npv-calculator/) pour votre analyse
+    d'investissement.
+"what-is-net-present-value":
+  "title": "Qu'est-ce que la valeur actuelle nette (VAN) ? Formule, exemples et règles de décision"
+  "description": "La VAN actualise les flux de trésorerie futurs et en soustrait l'investissement initial. La formule, quand l'utiliser et comment choisir le bon taux d'actualisation."
+  "body": |
+    La valeur actuelle nette (VAN) répond à la question la plus fondamentale de
+    l'allocation du capital : cet investissement crée-t-il ou détruit-il de la
+    valeur ?
+
+    **VAN = −investissement initial + Σ [flux_t / (1 + r)^t]**
+
+    Où r est le taux d'actualisation (coût du capital) et t l'année.
+
+    Une VAN positive signifie que l'investissement rapporte plus que le rendement
+    exigé. Une VAN négative, qu'il rapporte moins. La règle : accepter tous les
+    projets à VAN positive.
+
+    ## Pourquoi on actualise les flux
+
+    Un dollar aujourd'hui vaut plus qu'un dollar demain. Si vous pouvez gagner
+    10 % par an, 1 000 $ aujourd'hui deviennent 1 100 $ dans un an. Autrement dit,
+    1 100 $ dans un an valent 1 000 $ aujourd'hui à 10 % d'actualisation.
+
+    La VAN applique cette logique à tous les flux futurs d'un investissement :
+    - Le flux de l'année 1 est actualisé par (1 + r)^1
+    - Celui de l'année 2 par (1 + r)^2
+    - Et ainsi de suite...
+
+    La somme des flux actualisés, moins l'investissement initial, donne la VAN.
+
+    ## Un exemple chiffré
+
+    Investissement : 100 000 $
+    Flux : 30 k$, 35 k$, 40 k$, 40 k$, 40 k$ sur 5 ans
+    Taux d'actualisation : 10 %
+
+    | Année | Flux | Facteur d'actualisation | Valeur actuelle |
+    |---|---|---|---|
+    | 1 | 30 000 $ | 1/1,10 = 0,909 | 27 273 $ |
+    | 2 | 35 000 $ | 1/1,21 = 0,826 | 28 926 $ |
+    | 3 | 40 000 $ | 1/1,331 = 0,751 | 30 053 $ |
+    | 4 | 40 000 $ | 1/1,464 = 0,683 | 27 321 $ |
+    | 5 | 40 000 $ | 1/1,611 = 0,621 | 24 837 $ |
+    | **VA totale** | | | **138 410 $** |
+
+    **VAN = 138 410 $ − 100 000 $ = 38 410 $**
+
+    VAN positive → accepter. Cet investissement crée 38 410 $ de valeur au-delà du
+    rendement exigé de 10 %.
+
+    ## Règles de décision
+
+    | VAN | Lecture |
+    |---|---|
+    | Positive | L'investissement crée de la valeur : accepter |
+    | Nulle | L'investissement rapporte exactement le rendement exigé |
+    | Négative | L'investissement détruit de la valeur : rejeter |
+
+    Pour des projets concurrents avec un capital limité, classez-les par indice de
+    profitabilité (IP = VAN / investissement).
+
+    ## L'effet du taux d'actualisation
+
+    Le même investissement de 100 k$ à différents taux :
+    - Taux de 5 % → VAN = 59 120 $
+    - Taux de 10 % → VAN = 38 410 $
+    - Taux de 15 % → VAN = 21 610 $
+    - Taux de 20 % → VAN = 7 819 $
+    - Taux de 25 % → VAN = −3 629 $ (projet rejeté)
+
+    Le TRI (taux qui annule la VAN) est d'environ 23,3 %.
+
+    Calculez la VAN de votre investissement avec le [calculateur de VAN](/tools/npv-calculator/).
+"discounted-payback-period-explained":
+  "title": "Délai de récupération actualisé : formule, exemple et quand l'utiliser"
+  "description": "Le délai de récupération actualisé tient compte de la valeur temps de l'argent. La formule, un exemple chiffré et pourquoi il compte pour les décisions d'investissement à long terme."
+  "body": |
+    Le délai de récupération actualisé tient compte de la valeur temps de
+    l'argent : un dollar reçu dans 3 ans vaut moins qu'un dollar aujourd'hui. Cette
+    version est donc plus prudente, et plus juste pour les investissements à long
+    horizon.
+
+    ## La formule
+
+    Pour chaque année, actualisez le flux :
+    **VA de l'année N = flux annuel / (1 + taux d'actualisation)^N**
+
+    Puis cumulez les flux actualisés jusqu'à ce qu'ils dépassent l'investissement
+    initial.
+
+    ## Exemple chiffré
+
+    Investissement : 200 000 $. Flux annuel : 80 000 $. Taux d'actualisation : 10 %.
+
+    | Année | Flux | Facteur d'actualisation | VA | VA cumulée |
+    |---|---|---|---|---|
+    | 1 | 80 k$ | 0,909 | 72 727 $ | 72 727 $ |
+    | 2 | 80 k$ | 0,826 | 66 116 $ | 138 843 $ |
+    | 3 | 80 k$ | 0,751 | 60 105 $ | 198 948 $ |
+    | 4 | 80 k$ | 0,683 | 54 641 $ | 253 589 $ |
+
+    Le point mort tombe tout juste après la fin de l'année 3 (~198 948 $, à peine
+    sous les 200 000 $) : délai actualisé ≈ **3,02 ans**, contre 2,5 ans en simple.
+
+    ## Quand utiliser le délai actualisé
+
+    Utilisez le délai de récupération actualisé pour :
+    - Tout investissement dont le délai dépasse 2 ans
+    - Les gros investissements en capital, où l'inflation pèse
+    - Les décisions où le coût du capital est significatif (> 5 %)
+
+    Pour des décisions marketing rapides, le délai simple suffit en général.
+
+    Calculez les deux avec le [calculateur de délai de récupération](/tools/payback-period-calculator/).
+"payback-period-saas-investment":
+  "title": "Délai de récupération des investissements SaaS : le délai de récupération du CAC expliqué"
+  "description": "En SaaS, le délai de récupération désigne en général celui du CAC : combien de mois pour récupérer le coût d'acquisition d'un client. Repères et calcul."
+  "body": |
+    En SaaS, « délai de récupération » désigne presque toujours le **délai de
+    récupération du CAC** : le nombre de mois nécessaires pour récupérer le coût
+    d'acquisition d'un client grâce à la marge brute qu'il génère.
+
+    ## Formule du délai de récupération du CAC
+
+    **Délai de récupération du CAC (mois) = CAC / (ARPU mensuel × % de marge brute)**
+
+    Avec un CAC de 2 400 $, un ARPU de 200 $ par mois et 75 % de marge brute :
+    - Marge brute mensuelle par client = 200 $ × 75 % = 150 $
+    - Délai de récupération du CAC = 2 400 $ / 150 $ = **16 mois**
+
+    ## Repères
+
+    | Délai de récupération du CAC | Lecture |
+    |---|---|
+    | < 6 mois | Exceptionnel : product-led, peu d'accompagnement commercial |
+    | 6–12 mois | Excellent : vente efficace |
+    | 12–18 mois | Bon : typique d'un SaaS en série A |
+    | 18–24 mois | Limite : à améliorer avant d'accélérer |
+    | > 24 mois | Préoccupant : le CAC met trop longtemps à revenir |
+
+    ## Pourquoi c'est important en SaaS
+
+    Un délai de 24 mois signifie que vous financez 2 ans de coûts d'acquisition
+    avant de gagner de l'argent sur chaque client. Avec 5 % de churn mensuel,
+    ~70 % des clients seront partis avant que vous n'atteigniez l'équilibre.
+
+    Ramener le délai de récupération du CAC sous 12 mois améliore nettement
+    l'économie unitaire et réduit le capital nécessaire à la croissance d'un SaaS.
+
+    Calculez votre délai de récupération du CAC avec le [calculateur de CAC](/tools/cac-calculator/)
+    et le délai de récupération général avec le [calculateur de délai de récupération](/tools/payback-period-calculator/).
+"payback-period-vs-roi":
+  "title": "Délai de récupération ou ROI : quel indicateur d'investissement utiliser ?"
+  "description": "Le délai de récupération mesure quand vous atteignez l'équilibre ; le ROI mesure le rendement total. Quand utiliser chacun et comment ils se complètent pour les décisions d'investissement."
+  "body": |
+    Le délai de récupération et le ROI servent tous deux à évaluer un
+    investissement, mais ils répondent à des questions différentes et ont des
+    angles morts différents.
+
+    ## Délai de récupération : « Quand est-ce que je récupère mon argent ? »
+
+    **Délai de récupération = investissement / flux net annuel**
+
+    Le délai de récupération se concentre entièrement sur le point mort. Il est
+    simple, intuitif et utile pour évaluer le risque de liquidité : combien de
+    temps avant que votre capital ne soit plus exposé.
+
+    **Faiblesse** : il ignore tous les flux après le point mort. Un investissement
+    de 100 k$ récupéré en 1 an qui ne rapporte plus rien ensuite a le même délai
+    qu'un autre qui génère 100 k$ par an pendant 10 ans de plus.
+
+    ## ROI : « Quel est le rendement total ? »
+
+    **ROI = (rendements nets totaux − investissement) / investissement × 100**
+
+    Le ROI saisit la valeur totale de l'investissement sur toute la période, pas
+    seulement le moment du point mort.
+
+    **Faiblesse** : il ne tient compte ni de la valeur temps de l'argent ni du
+    risque de liquidité.
+
+    ## Quand utiliser chacun
+
+    - **Délai de récupération** : écarter les investissements risqués ; planifier la trésorerie
+    - **ROI** : comparer l'efficacité globale des investissements
+    - **Les deux ensemble** : pour des décisions d'allocation du capital complètes
+
+    Pour tout investissement de plus de 10 k$, calculez les deux avec :
+    - Le [calculateur de délai de récupération](/tools/payback-period-calculator/)
+    - Le [calculateur de ROI](/tools/roi-calculator/)
+"how-to-calculate-roi":
+  "title": "Comment calculer le ROI : formule, exemples et erreurs courantes"
+  "description": "La formule du ROI (bénéfice net / investissement × 100), des exemples chiffrés et les erreurs courantes qui rendent le calcul trompeur."
+  "body": |
+    ROI = (bénéfice net / investissement) × 100
+
+    Voilà la formule. Le plus difficile est de bien définir le « bénéfice net » et
+    l'« investissement ».
+
+    ## Le calcul du ROI pas à pas
+
+    **Étape 1** : calculer le bénéfice net
+    Bénéfice net = chiffre d'affaires total généré − coûts totaux liés à l'investissement
+
+    Les coûts comprennent : les coûts d'exploitation directs, le temps des
+    équipes, la part de frais généraux et le coût d'opportunité du capital.
+
+    **Étape 2** : diviser par l'investissement
+    ROI = bénéfice net / coût de l'investissement × 100
+
+    **Exemple** : vous dépensez 50 k$ dans une campagne de marketing de contenu.
+    En 12 mois, elle génère 200 k$ de pipeline attribué, qui se convertit à 25 %,
+    soit 50 k$ de chiffre d'affaires. La production de contenu a coûté 10 k$ de
+    plus en travail continu.
+
+    - Bénéfice net = 50 k$ − 10 k$ = 40 k$
+    - ROI = 40 k$ / 50 k$ × 100 = **80 %**
+
+    ## Erreurs courantes dans le calcul du ROI
+
+    **Erreur 1 : oublier les coûts indirects**
+    Le temps passé à gérer un investissement est un vrai coût. Un outil à 10 k$
+    qui demande 40 heures par mois de gestion coûte 2 400 $ de plus par mois à
+    60 $ de l'heure.
+
+    **Erreur 2 : prendre le chiffre d'affaires brut au lieu du bénéfice net**
+    Un ROI calculé sur le chiffre d'affaires brut ignore le coût des ventes. Si une
+    campagne génère 100 k$ de chiffre d'affaires pour 60 k$ de coût produit, la
+    contribution nette est de 40 k$, pas 100 k$.
+
+    **Erreur 3 : ne pas annualiser**
+    Un ROI de 50 % paraît excellent, mais sur 5 ans il ne représente que 8,4 % par
+    an. Comparez toujours des ROI sur le même horizon.
+
+    Calculez le vôtre avec le [calculateur de ROI](/tools/roi-calculator/).
+"marketing-roi-benchmarks":
+  "title": "Repères de ROI marketing par canal (2024)"
+  "description": "Les repères du secteur pour le ROI marketing par canal : e-mail, SEO, recherche payante, réseaux sociaux et marketing de contenu. Comparez vos campagnes."
+  "body": |
+    Le ROI marketing varie énormément selon le canal. Voici des repères courants
+    issus d'études sectorielles et de données de praticiens.
+
+    ## E-mail marketing
+
+    ROI moyen : **36 à 42 $ par dollar dépensé** (3 500 à 4 100 %)
+
+    L'e-mail arrive toujours en tête car le coût variable d'un envoi est quasi nul
+    une fois la liste constituée. Le coût d'acquisition de listes payantes ramène
+    le ROI sur la durée à 500–1 000 % pour la plupart des entreprises.
+
+    ## SEO (recherche naturelle)
+
+    ROI moyen : **300 à 2 000 % sur 3 ans**
+
+    Le ROI du SEO est élevé mais différé. Les mois 1 à 6 affichent souvent un ROI
+    négatif. Les mois 12 à 36 produisent des rendements cumulatifs à mesure que les
+    contenus se positionnent. Calculez un ROI annualisé sur les 3 ans pour comparer
+    équitablement avec les canaux payants.
+
+    ## Recherche payante (Google Ads)
+
+    ROAS moyen : **2:1 à 5:1 selon le secteur**
+    ROI moyen après marges : **10 à 30 %** dans les secteurs concurrentiels
+
+    La recherche payante est immédiate mais concurrentielle. Le ROI se dégrade à
+    mesure que le budget augmente (mots-clés de moindre qualité, enchères). Plafonnez
+    le budget payant tant que le ROI reste positif, puis investissez le surplus
+    dans des canaux à effet cumulatif.
+
+    ## Marketing de contenu
+
+    ROI moyen : **300 à 1 000 % sur 12 mois**
+
+    Il faut investir dans la qualité et la diffusion. Les meilleurs voient des
+    rendements cumulatifs à mesure que les contenus renforcent l'autorité du
+    domaine.
+
+    ## Réseaux sociaux (payants)
+
+    ROAS moyen : **1,5:1 à 3:1**
+
+    Le ROI le plus faible des grands canaux pour la plupart des entreprises B2B.
+    Mieux adapté à la notoriété (ROI difficile à mesurer) qu'à la réponse directe.
+
+    Suivez vos rendements réels avec le [calculateur de ROI](/tools/roi-calculator/).
+"roi-vs-roas":
+  "title": "ROI ou ROAS : quelle différence et quand utiliser chacun"
+  "description": "Le ROI mesure le rendement net d'un investissement total ; le ROAS mesure le chiffre d'affaires par dollar publicitaire. Quel indicateur utiliser pour vos décisions marketing et comment passer de l'un à l'autre."
+  "body": |
+    Le ROI et le ROAS mesurent tous deux l'efficacité marketing, mais ils ne
+    mesurent pas la même chose et mènent à des décisions différentes.
+
+    ## ROAS : chiffre d'affaires sur dépenses publicitaires
+
+    **ROAS = chiffre d'affaires attribué aux annonces / dépenses publicitaires**
+
+    Un ROAS de 4,0 signifie : 4 $ de chiffre d'affaires pour 1 $ de publicité.
+
+    Le ROAS ignore tous les coûts autres que la publicité. Une campagne à 5,0 de
+    ROAS paraît excellente, mais avec 20 % de marge produit, vous êtes à
+    l'équilibre.
+
+    ## ROI : rendement net de l'investissement
+
+    **ROI = (chiffre d'affaires − tous les coûts) / investissement × 100**
+
+    Le ROI inclut le coût des ventes, la logistique, le temps des équipes et
+    l'investissement lui-même.
+
+    Une campagne à 5,0 de ROAS avec 20 % de marge produit et 15 % de coût
+    logistique :
+    - Marge nette = 20 % − 15 % = 5 %
+    - Chiffre d'affaires : 500 k$. Net produit : 25 k$.
+    - Dépenses publicitaires : 100 k$.
+    - ROI = (25 k$ − 100 k$) / 100 k$ = **−75 %**
+
+    La même campagne qui semblait excellente à 5,0 de ROAS détruit en réalité de
+    la valeur.
+
+    ## Quand utiliser chacun
+
+    - **ROAS** : optimiser des campagnes publicitaires, tester des créations en A/B
+    - **ROI** : décisions d'investissement stratégiques, comparaison des canaux, allocation du budget
+
+    Le ROAS sert l'optimisation tactique. Le ROI sert les décisions stratégiques.
+
+    Calculez votre ROI avec le [calculateur de ROI](/tools/roi-calculator/).
+"how-to-use-rule-of-72":
+  "title": "Comment utiliser la règle de 72"
+  "description": "La règle de 72 expliquée avec des exemples : estimer le temps de doublement d'un placement, d'une dette ou d'une croissance de chiffre d'affaires par un simple calcul mental."
+  "body": |
+    La règle de 72 est un raccourci de calcul mental : divisez 72 par un taux
+    annuel pour estimer en combien d'années une quantité double.
+
+    ## Exemples
+
+    - **Placement à 8 % de rendement annuel** : 72 ÷ 8 = **9 ans** pour doubler
+    - **Carte de crédit à 24 % de TAEG** : 72 ÷ 24 = **3 ans** pour que la dette double
+    - **Inflation à 3 %** : 72 ÷ 3 = **24 ans** pour que les prix doublent
+    - **SaaS en croissance de 50 % par an** : 72 ÷ 50 = **~1,4 an** pour doubler l'ARR
+
+    ## Pourquoi ça marche ?
+
+    À un taux r, le temps de doublement exact est **ln(2) ÷ ln(1 + r)**.
+    Pour de petits taux, cela donne environ **0,693 / r**.
+    La règle utilise 72 plutôt que 69,3 car 72 se divise par davantage de taux
+    courants (2, 3, 4, 6, 8, 9, 12…).
+
+    ## Précision
+
+    La règle de 72 est la plus précise entre 6 et 10 % (moins de 1 % d'erreur).
+    Au-delà de 20 %, utilisez le [calculateur de la règle de 72](/tools/rule-of-72-calculator/),
+    qui affiche à la fois l'approximation et le temps de doublement exact.
+"rule-of-72-vs-exact-compound-interest":
+  "title": "Règle de 72 ou formule exacte des intérêts composés"
+  "description": "L'approximation de la règle de 72 comparée au temps de doublement exact des intérêts composés : quand utiliser chacune et quelle erreur introduit le raccourci."
+  "body": |
+    ## Les deux formules
+
+    **Règle de 72** : années ≈ 72 / taux annuel
+
+    **Formule exacte** : années = ln(2) / ln(1 + r), avec r le taux en décimal
+
+    ## Comparaison des erreurs
+
+    | Taux | Règle de 72 | Exact | Erreur |
+    |------|-----------|-------|-------|
+    | 2 % | 36 ans | 35,0 ans | +2,9 % |
+    | 4 % | 18 ans | 17,7 ans | +1,9 % |
+    | 8 % | 9 ans | 9,0 ans | 0,0 % |
+    | 12 % | 6 ans | 6,1 ans | −1,9 % |
+    | 20 % | 3,6 ans | 3,8 ans | −5,3 % |
+    | 50 % | 1,44 an | 1,71 an | −16 % |
+
+    Pour la plupart des décisions financières courantes à des taux inférieurs à
+    20 %, la règle de 72 est assez précise. Au-delà de 20 % (entreprises à forte
+    croissance, dettes à taux élevé), utilisez la formule exacte.
+
+    Le [calculateur de la règle de 72](/tools/rule-of-72-calculator/) affiche les
+    deux valeurs côte à côte pour voir l'écart à n'importe quel taux.
+"wacc-discount-rate-dcf":
+  "title": "Utiliser le CMPC comme taux d'actualisation d'un DCF : guide pratique"
+  "description": "Comment utiliser le CMPC comme taux d'actualisation dans une valorisation DCF, y compris pour estimer le coût des capitaux propres d'une jeune entreprise, et les erreurs courantes."
+  "body": |
+    Le CMPC (coût moyen pondéré du capital) est le taux d'actualisation de
+    référence des valorisations par DCF (actualisation des flux de trésorerie).
+    Voici comment bien l'utiliser, et que faire quand les données des manuels ne
+    sont pas disponibles.
+
+    ## Le CMPC dans un DCF : la mécanique
+
+    Dans un modèle DCF :
+    **Valeur = Σ (flux de trésorerie disponible_t / (1 + CMPC)^t) + valeur terminale / (1 + CMPC)^n**
+
+    Le CMPC représente le rendement exigé par l'ensemble de la structure du
+    capital, actionnaires comme créanciers. Actualiser au CMPC donne la valeur
+    d'entreprise ; retranchez la dette nette pour obtenir la valeur des capitaux
+    propres.
+
+    ## Estimer le CMPC d'une jeune entreprise
+
+    Les entreprises non cotées et les startups n'ont pas de données de marché pour
+    le coût des capitaux propres. Les approches possibles :
+
+    **Approche MEDAF** : coût des capitaux propres = taux sans risque + β × (prime de marché)
+    - Taux sans risque : rendement des obligations d'État américaines à 10 ans (~4,5 % en 2024)
+    - Prime de risque actions : 5 à 6 % (historique Damodaran)
+    - Bêta : prendre les bêtas d'entreprises cotées comparables (0,8 à 1,5 pour le SaaS)
+
+    **Approche du taux minimal des VC** : utiliser le TRI visé par le fonds (25 à
+    40 % en amorçage) comme coût des capitaux propres. Il reflète le rendement
+    réellement exigé par les investisseurs.
+
+    **Pas de dette (avant chiffre d'affaires)** : CMPC = coût des capitaux propres.
+    Pas de pondération de dette nécessaire.
+
+    ## Erreurs courantes sur le CMPC
+
+    1. **Prendre la valeur comptable au lieu de la valeur de marché** pour pondérer capitaux propres et dette
+    2. **Ne pas tenir compte de l'impôt** sur la composante coût de la dette
+    3. **Utiliser le CMPC pour des entreprises très endettées ou en difficulté** :
+       préférez la valeur actuelle ajustée (APV) quand le niveau d'endettement
+       change fortement dans le temps
+
+    Utilisez le [calculateur de CMPC](/tools/wacc-calculator/) pour calculer votre
+    coût moyen du capital pour une analyse DCF.
+"wacc-for-startup-valuation":
+  "title": "Le CMPC pour valoriser une startup : quel taux d'actualisation retenir"
+  "description": "Comment estimer le CMPC d'une startup en amorçage, là où comparables cotés, bêta et primes de risque ne s'appliquent pas comme pour une entreprise cotée."
+  "body": |
+    Le CMPC d'une startup relève plus de l'art que de la science, car ses données
+    (capitalisation, bêta, coût de la dette) sont indisponibles ou peu fiables.
+    Voici comment les praticiens s'y prennent.
+
+    ## Pourquoi le CMPC classique ne marche pas pour les startups
+
+    1. **Pas de capitalisation** : la valeur des capitaux propres est privée et très incertaine
+    2. **Pas de bêta** : impossible d'observer une volatilité historique du cours
+    3. **Peu ou pas de dette** : la structure du capital est surtout faite de capitaux propres
+    4. **Forte probabilité d'échec** : les modèles DCF saisissent mal les issues binaires
+
+    ## Comment les VC pensent le taux d'actualisation
+
+    Les VC utilisent rarement le CMPC explicitement. Ils appliquent plutôt un
+    **TRI visé** de 30 à 50 % et plus (reflet d'un objectif de rendement de 10 fois
+    le fonds, échecs compris). Cela revient à prendre un CMPC de 30 à 50 %, bien
+    au-dessus de ce que suggéreraient les modèles classiques.
+
+    ## Pour les modèles DCF
+
+    Pour construire le DCF d'une startup, les praticiens en général :
+    - Partent d'un **CMPC de groupe de pairs** tiré d'entreprises cotées comparables (souvent 8 à 15 % pour le SaaS)
+    - Ajoutent une **prime de taille** de 3 à 5 % pour une entreprise privée plus petite
+    - Ajoutent une **prime de risque spécifique** de 3 à 10 % pour le risque d'exécution
+
+    Taux d'actualisation effectif d'une startup : **14 à 30 %** selon le stade et
+    le secteur.
+
+    Utilisez le [calculateur de CMPC](/tools/wacc-calculator/) pour les
+    entreprises établies dont la valeur des capitaux propres et de la dette est
+    observable.

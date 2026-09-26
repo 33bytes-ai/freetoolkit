@@ -1117,3 +1117,326 @@
 
     **Was macht dieser Rechner?**
     Er berechnet die gesamten Arbeitgeberkosten inklusive Lohnabgaben (FICA, FUTA, SUTA) und Zusatzleistungen.
+
+"irr-calculator":
+  "body": |
+    Der interne Zinsfuß (IRR) ist die annualisierte Rendite, bei der der
+    Kapitalwert (NPV) aller Cashflows null ist. Er gehört zu den meistgenutzten
+    Kennzahlen in Investitionsrechnung und Investmentanalyse.
+
+    ## IRR-Formel
+
+    Die IRR ist der Wert von r, der erfüllt:
+
+    **0 = CF₀ + CF₁/(1+r) + CF₂/(1+r)² + ... + CFₙ/(1+r)ⁿ**
+
+    Es gibt keine geschlossene Lösung: Die IRR wird iterativ bestimmt
+    (Newton-Raphson-Verfahren).
+
+    ## Entscheidungsregel
+
+    - **IRR > WACC (Mindestrendite)**: Projekt annehmen, es schafft Wert
+    - **IRR < WACC**: Projekt ablehnen, es vernichtet Wert
+    - **IRR = WACC**: Gewinnschwelle, indifferent
+
+    ## Grenzen der IRR
+
+    - **Mehrere IRRs**: Cashflows, die mehr als einmal das Vorzeichen wechseln, können mehrere IRRs ergeben
+    - **Größenblindheit**: Die IRR ignoriert die Projektgröße; 50 % IRR auf 1.000 $ sind weniger wert als 20 % auf 1 Mio. $
+    - **Reinvestitionsannahme**: Sie unterstellt, dass Zwischen-Cashflows zur IRR reinvestiert werden, was unrealistisch sein kann
+
+    Deshalb wird die IRR meist zusammen mit dem Kapitalwert genutzt, nicht allein.
+"mirr-calculator":
+  "body": |
+    Die MIRR (modifizierter interner Zinsfuß) behebt eine zentrale Schwäche der
+    normalen IRR: die Annahme, dass alle Mittelzuflüsse zur IRR selbst reinvestiert
+    werden, was meist unrealistisch hoch ist.
+
+    ## MIRR-Formel
+
+    **MIRR = (Endwert der positiven Cashflows zum Reinvestitionssatz / Barwert der negativen Cashflows zum Finanzierungssatz) ^ (1/n) − 1**
+
+    Dabei ist n = Anzahl der Perioden.
+
+    ## MIRR und IRR im Vergleich
+
+    | Aspekt | IRR | MIRR |
+    |--------|-----|------|
+    | Reinvestitionsannahme | Zur IRR (oft zu hoch) | Zu deinem gewählten Reinvestitionssatz |
+    | Problem mehrerer IRRs | Mehrere Lösungen möglich | Immer genau eine Lösung |
+    | Typisches Ergebnis | Höher | Niedriger, realistischer |
+    | Einsatz | Schnelle Vorauswahl | Gründlichere Investitionsrechnung |
+
+    ## Wann du die MIRR nutzt
+
+    Nutze die MIRR, wenn:
+    - die Cashflows zwischen positiv und negativ wechseln (Problem mehrerer IRRs)
+    - der Reinvestitionssatz deutlich von der IRR abweicht
+    - du Projekte mit unterschiedlicher Laufzeit vergleichen musst
+    - Kreditgeber oder erfahrene Investoren sie verlangen
+
+    Übliche MIRR-Schwellen: 15 %+ für Startup- und VC-Investments, 12–18 % für
+    Private Equity, 8–12 % für Immobilien, 6–10 % für Infrastruktur.
+"npv-calculator":
+  "body": |
+    Der Kapitalwert (NPV, Net Present Value) zeigt, ob eine Investition Wert schafft
+    oder vernichtet, indem er den Barwert künftiger Cashflows mit den
+    Anfangskosten vergleicht.
+
+    ## Die Formel
+
+    **Kapitalwert = −Anfangsinvestition + Σ [Cashflow_t / (1 + r)^t]**
+
+    Dabei ist r der Diskontsatz und t die Periode in Jahren.
+
+    Für eine Investition von 100.000 $ bei 10 % Diskontsatz mit jährlichen
+    Cashflows von 30.000 $, 35.000 $, 40.000 $, 40.000 $ und 40.000 $:
+    Kapitalwert = −100k + 30k/1,1 + 35k/1,21 + 40k/1,331 + 40k/1,464 + 40k/1,611
+    Kapitalwert = −100k + 27,3k + 28,9k + 30,0k + 27,3k + 24,8k = **38.300 $**
+
+    Ein positiver Kapitalwert bedeutet, dass die Investition Wert über der
+    geforderten Rendite schafft.
+
+    ## Entscheidungsregeln
+
+    | Kapitalwert | Entscheidung |
+    |---|---|
+    | Positiv (> 0) | Annehmen: schafft Wert über der geforderten Rendite |
+    | Null (= 0) | Gewinnschwelle: erzielt genau die geforderte Rendite |
+    | Negativ (< 0) | Ablehnen: vernichtet bei diesem Diskontsatz Wert |
+
+    ## Rentabilitätsindex (PI)
+
+    PI = (Kapitalwert + Anfangsinvestition) / Anfangsinvestition
+
+    Der PI misst den geschaffenen Wert pro investiertem Dollar. PI > 1 = positiver
+    Kapitalwert. Nützlich, um konkurrierende Projekte bei knappem Kapital zu
+    reihen: Ein höherer PI heißt mehr Wert pro eingesetztem Dollar.
+
+    | PI | Einordnung |
+    |---|---|
+    | > 1,5 | Hervorragende Rendite |
+    | 1,1–1,5 | Gute Rendite |
+    | 1,0–1,1 | Knappe Rendite |
+    | < 1,0 | Vernichtet Wert |
+
+    ## Den richtigen Diskontsatz wählen
+
+    Der Diskontsatz ist die kritischste Eingabe: Kleine Änderungen haben große
+    Wirkung.
+
+    **WACC des Unternehmens**: gewichteter Durchschnitt aus Fremdkapitalkosten
+    (nach Steuern) und Eigenkapitalkosten. Übliche Spanne: 8–12 % für etablierte
+    Unternehmen.
+
+    **Venture / Startup**: Höhere Sätze (20–30 %) spiegeln höheres Risiko. Ein
+    Startup kann 25 % Rendite verlangen, um Investoren für das Ausfallrisiko zu
+    entschädigen.
+
+    **Mindestrendite (Hurdle Rate)**: Viele Unternehmen legen eine minimal
+    akzeptable IRR (15–20 %) fest, mit der Projekte um Kapital konkurrieren.
+
+    Im Zweifel rechne den Kapitalwert mit mehreren Sätzen
+    (Sensitivitätsanalyse).
+
+    ## Kapitalwert oder IRR
+
+    Die IRR (interner Zinsfuß) ist der Diskontsatz, bei dem der Kapitalwert null
+    ist. Beide messen den Projektwert; der Kapitalwert wird meist bevorzugt, weil:
+    - er in Dollar ausgedrückt ist (leichter zu deuten)
+    - die IRR bei unkonventionellen Cashflows mehrere Werte liefern kann
+    - der Kapitalwert über die Zeit wechselnde Diskontsätze korrekt abbildet
+
+    ## Häufige Fragen
+
+    **Was macht dieser Rechner?**
+    Er berechnet den Kapitalwert aus einer Anfangsinvestition und bis zu 5 Jahren
+    Cashflows. Gib deinen Diskontsatz (Kapitalkosten) und die erwarteten
+    jährlichen Cashflows ein.
+"payback-period-calculator":
+  "body": |
+    Die Amortisationsdauer ist die Zeit, die eine Investition braucht, um genug
+    Cashflow zur Deckung ihrer Anfangskosten zu erzeugen. Sie gehört zu den
+    meistgenutzten Kennzahlen der Investitionsrechnung, weil sie direkt beantwortet:
+    „Wann habe ich mein Geld zurück?“
+
+    ## Formel der einfachen Amortisationsdauer
+
+    **Amortisationsdauer (Jahre) = Anfangsinvestition / jährlicher Netto-Cashflow**
+
+    Bei 200.000 $ Investition und 80.000 $ jährlichem Netto-Cashflow: 200k / 80k = **2,5 Jahre**.
+
+    ## Dynamische Amortisationsdauer
+
+    Die dynamische Amortisationsdauer berücksichtigt den Zeitwert des Geldes, indem
+    sie den Cashflow jedes Jahres abzinst:
+
+    **Barwert des Cashflows in Jahr N = jährlicher Cashflow / (1 + Diskontsatz) ^ N**
+
+    Die dynamische Amortisationsdauer ist immer länger als die einfache. Bei 10 %
+    Diskontsatz wird aus 2,5 Jahren einfacher Amortisation (200.000 $ Investition,
+    80.000 $ pro Jahr) dynamisch etwa 3,1 Jahre.
+
+    ## Richtwerte
+
+    | Amortisationsdauer | Einordnung |
+    |---|---|
+    | < 6 Monate | Außergewöhnlich: selten, meist Software/SaaS |
+    | 6–12 Monate | Hervorragend: schneller Kapitalrückfluss |
+    | 1–2 Jahre | Gut: Standard für Marketinginvestitionen |
+    | 2–4 Jahre | Akzeptabel: typisch für Anlagegüter |
+    | > 4 Jahre | Lang: erfordert stabile, planbare Cashflows |
+
+    ## Grenzen der Amortisationsdauer
+
+    Die Amortisationsdauer ignoriert Cashflows nach der Gewinnschwelle. Eine
+    Investition über 200.000 $ mit 2 Jahren Amortisation, die danach 8 Jahre lang
+    100.000 $ pro Jahr bringt, ist einer mit genau 80.000 $ pro Jahr weit
+    überlegen, obwohl beide dieselbe Amortisationsdauer zeigen.
+
+    **Nutze die Amortisationsdauer zusammen mit ROI und Kapitalwert für eine
+    vollständige Investitionsanalyse.**
+
+    ## Häufige Fragen
+
+    **Was macht dieser Rechner?**
+    Er berechnet einfache und dynamische Amortisationsdauer aus Anfangsinvestition
+    und jährlichen Netto-Cashflows, dazu den ROI am Ende deines
+    Analysezeitraums.
+"roi-calculator":
+  "body": |
+    ROI (Return on Investment) ist das universellste Maß für die Effizienz einer
+    Investition. Er drückt den Gewinn als Prozentsatz des dafür eingesetzten
+    Kapitals aus.
+
+    ## Die Formel
+
+    **ROI = (Nettogewinn / Investitionskosten) × 100**
+
+    Dabei gilt: Nettogewinn = Umsatz − Betriebskosten
+
+    Bei 150.000 $ Umsatz, 50.000 $ Kosten und 100.000 $ Investition:
+    - Nettogewinn = 100.000 $
+    - ROI = (100.000 $ / 100.000 $) × 100 = **100 %**
+
+    ## Annualisierter ROI
+
+    **Annualisierter ROI = ((1 + ROI/100) ^ (1/Jahre) − 1) × 100**
+
+    Der annualisierte ROI macht unterschiedliche Zeithorizonte vergleichbar. 50 %
+    ROI über 2 Jahre entsprechen ~22,5 % pro Jahr, nicht 25 %. Der Zinseszins zählt.
+
+    ## Was ist ein guter ROI?
+
+    Es kommt auf den Kontext an:
+    - **Marketing**: 5:1 (5 $ Umsatz pro ausgegebenem Dollar) = 400 % ROI, gilt als gut
+    - **Immobilien**: 8–12 % annualisierter ROI, üblich
+    - **S&P-500-Durchschnitt**: ~10 % pro Jahr, der Maßstab für passiv angelegtes Kapital
+    - **SaaS-Investition**: Ziel über 30 % annualisiert innerhalb von 3 Jahren
+
+    Jeder ROI unter deinen Kapitalkosten (meist 8–15 %) bedeutet, dass die
+    Investition Wert vernichtet.
+
+    ## ROI und andere Kennzahlen
+
+    | Kennzahl | Misst | Wann nutzen |
+    |---|---|---|
+    | ROI | Gesamtrendite auf das Kapital | Effizienz von Investitionen vergleichen |
+    | ROAS | Umsatz pro Werbedollar | Speziell fürs Marketing |
+    | Amortisationsdauer | Monate bis zur Rückgewinnung der Investition | Liquiditätsplanung |
+    | Kapitalwert | Barwert künftiger Erträge | Langfristige Kapitalallokation |
+
+    ## Häufige Fragen
+
+    **Was macht dieser Rechner?**
+    Er berechnet ROI, annualisierten ROI, Nettogewinn und Amortisationszeit aus
+    Umsatz, Kosten und Anfangsinvestition.
+"rule-of-72-calculator":
+  "body": |
+    Die 72er-Regel ist eine Kopfrechen-Abkürzung, um abzuschätzen, wie lange der
+    Zinseszins braucht, um eine Anlage zu verdoppeln.
+
+    ## Formel
+
+    **Verdopplungszeit (Jahre) ≈ 72 ÷ Jahreszins (%)**
+
+    **Nötiger Zins ≈ 72 ÷ Zieljahre**
+
+    ## Warum 72?
+
+    72 ist durch 1, 2, 3, 4, 6, 8, 9, 12 und 24 teilbar, das erleichtert das
+    Kopfrechnen. Die exakte Formel lautet **ln(2) ÷ ln(1 + r)**, doch 72/r liegt
+    bei Zinssätzen zwischen 2 und 20 % auf 1–2 % genau.
+
+    ## Verdopplungszeit nach Zinssatz
+
+    | Jahreszins | Verdopplungszeit |
+    |------------|--------------|
+    | 2 % | 36 Jahre |
+    | 4 % | 18 Jahre |
+    | 6 % | 12 Jahre |
+    | 8 % | 9 Jahre |
+    | 10 % | 7,2 Jahre |
+    | 12 % | 6 Jahre |
+    | 24 % | 3 Jahre |
+    | 72 % | 1 Jahr |
+
+    ## Die 72er-Regel und Inflation
+
+    Auch für die Inflation gilt die Regel. Bei 3 % Inflation halbiert sich die
+    Kaufkraft in 24 Jahren. Deshalb ist eine Rendite über der Inflation für den
+    Erhalt realen Vermögens unverzichtbar.
+
+    ## Anwendungen auf exponentielles Wachstum
+
+    Die 72er-Regel funktioniert für jeden exponentiellen Prozess:
+    - [ARR](/glossary/#arr)-Wachstumsrate eines SaaS → Jahre bis zur Umsatzverdopplung
+    - Bevölkerungswachstum → Verdopplungszeit
+    - Schulden zu einem bestimmten Zinssatz → Jahre, bis sich deine Schuld verdoppelt
+"wacc-calculator":
+  "body": |
+    Der WACC (Weighted Average Cost of Capital, gewichtete Kapitalkosten) ist die
+    Mindestrendite, die ein Unternehmen auf seine Vermögenswerte erzielen muss, um
+    seine Kapitalgeber zufriedenzustellen, Eigen- wie Fremdkapitalgeber. Er dient
+    als Mindestrendite für Investitionsentscheidungen und DCF-Bewertungen.
+
+    ## WACC-Formel
+
+    **WACC = (E/V) × Rₑ + (D/V) × Rᵈ × (1 − Tᶜ)**
+
+    Dabei gilt:
+    - **E** = Marktwert des Eigenkapitals (Marktkapitalisierung)
+    - **D** = Marktwert des Fremdkapitals
+    - **V** = E + D (Gesamtkapital)
+    - **Rₑ** = Eigenkapitalkosten (%)
+    - **Rᵈ** = Fremdkapitalkosten vor Steuern (%)
+    - **Tᶜ** = Unternehmenssteuersatz (%)
+
+    Die Eigenkapitalkosten werden meist mit dem CAPM geschätzt: risikofreier Zins +
+    Beta × Marktrisikoprämie. Beta misst, wie volatil eine Aktie im Vergleich zum
+    Gesamtmarkt ist: Ein Beta von 1,5 heißt, die Aktie schwankt meist 50 % stärker
+    als der Markt in beide Richtungen, wofür Investoren eine höhere Rendite
+    verlangen.
+
+    ## Warum der Steuersatz zählt
+
+    Fremdkapitalzinsen sind steuerlich abzugsfähig, das schafft ein
+    „Steuerschild“. Die Fremdkapitalkosten nach Steuern betragen Rᵈ × (1 − Tᶜ). Bei
+    6 % Fremdkapitalkosten und 25 % Steuersatz liegen die effektiven
+    Fremdkapitalkosten bei 4,5 %.
+
+    ## WACC-Richtwerte
+
+    | Branche | Üblicher WACC |
+    |----------|-------------|
+    | SaaS / Software | 8–14 % |
+    | Konsumgüter | 6–10 % |
+    | Versorger | 4–8 % |
+    | Biotech | 12–20 % |
+
+    ## WACC in der Praxis
+
+    - **DCF-Bewertungen**: Der WACC ist der Diskontsatz für künftige Free Cashflows
+    - **Investitionsrechnung**: Nur Projekte mit IRR über dem WACC annehmen
+    - **Kapitalstruktur**: den Mix aus Eigen- und Fremdkapital so optimieren, dass der WACC minimal wird
+    - **Erfolgsmessung**: ROIC über WACC heißt, das Unternehmen schafft ökonomischen Wert

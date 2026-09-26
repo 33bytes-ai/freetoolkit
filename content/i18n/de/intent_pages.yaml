@@ -3418,3 +3418,848 @@
 
     Mit dem [Personalkosten-Rechner](/tools/payroll-cost-calculator/) berechnest du
     die genauen Gesamtkosten für jedes Gehalts- und Leistungsszenario.
+
+"irr-formula-excel":
+  "title": "So berechnest du die IRR in Excel (Formel und Beispiele)"
+  "description": "Schritt-für-Schritt-Anleitung zur Excel-Funktion IKV: Formel, nötige Eingaben, häufige Fehler und wann du stattdessen XINTZINSFUSS nutzt."
+  "body": |
+    Die Excel-Funktion `IKV` (in der englischen Version `IRR`) ist der schnellste
+    Weg, den internen Zinsfuß für konventionelle Cashflows zu berechnen. So nutzt
+    du sie richtig.
+
+    ## Syntax von IKV in Excel
+
+    ```
+    =IKV(Werte; [Schätzwert])
+    ```
+
+    **Werte**: ein Bereich mit den Cashflows (mindestens ein negativer und ein
+    positiver Wert). Jahr 0 (Anfangsinvestition) muss in der ersten Zelle stehen.
+
+    **Schätzwert**: optionaler Startwert für die Iteration (Standard 0,1 = 10 %).
+    Nur nötig, wenn IKV `#ZAHL!` liefert oder du ein ungewöhnliches Ergebnis
+    erwartest.
+
+    ## Beispiel
+
+    In den Zellen A1:A5: -100000, 25000, 30000, 35000, 40000
+    Formel: `=IKV(A1:A5)` → **10,48 %**
+
+    Liegt deine Mindestrendite bei 12 %, solltest du diese Investition ablehnen
+    (IRR < Mindestrendite).
+
+    ## XINTZINSFUSS oder IKV
+
+    Nutze `XINTZINSFUSS` (`XIRR` im Englischen), wenn Cashflows nicht in
+    regelmäßigen jährlichen Abständen anfallen:
+    ```
+    =XINTZINSFUSS(Werte; Zeitpkte)
+    ```
+
+    XINTZINSFUSS ist bei realen Investitionen mit unregelmäßigen Cashflows genauer
+    (z. B. vierteljährliche Ausschüttungen, unregelmäßige Kapitalabrufe).
+
+    ## Häufige Fehler
+
+    - **#ZAHL!**: Die IRR konnte nicht konvergieren. Probiere einen anderen
+      `Schätzwert` oder prüfe auf mehrere Vorzeichenwechsel (dann besser MIRR).
+    - **Jahr 0 vergessen**: Steht die Anfangsinvestition nicht als negativer Wert
+      in der ersten Zelle, liefert IKV falsche Ergebnisse.
+
+    Mit dem [IRR-Rechner](/tools/irr-calculator/) im Browser rechnest du sofort,
+    ganz ohne Excel.
+"irr-vs-npv-which-metric-to-use":
+  "title": "IRR oder Kapitalwert: Welche Kennzahl solltest du nutzen?"
+  "description": "IRR und Kapitalwert können sich uneinig sein, welches von zwei Projekten besser ist. Hier steht, warum, und welcher Kennzahl du dann trauen solltest."
+  "body": |
+    IRR und Kapitalwert beruhen auf denselben Cashflows und stimmen meist darin
+    überein, ob sich ein einzelnes Projekt lohnt. Beim Vergleich zweier sich
+    ausschließender Projekte können sie diese aber in umgekehrter Reihenfolge
+    reihen, und dann kommt es darauf an, welcher du traust.
+
+    ## Was jede Kennzahl tatsächlich misst
+
+    Der **Kapitalwert** beantwortet: „Wie viel Wert in heutigen Dollar schafft
+    dieses Projekt?“, ein absoluter Betrag.
+
+    Die **IRR** beantwortet: „Welche annualisierte Rendite erzielt dieses
+    Projekt?“, ein Prozentsatz, unabhängig von der Projektgröße.
+
+    ## Warum sie sich widersprechen können
+
+    Die IRR ist größenblind. Ein Projekt mit 10.000 $ Einsatz und 50 % IRR schafft
+    viel weniger Gesamtwert als eines mit 1.000.000 $ und 20 % IRR, doch nach der
+    IRR allein wäre das kleine Projekt „besser“. Der Kapitalwert erfasst dagegen
+    den tatsächlich geschaffenen Dollarwert, und darauf kommt es einem Unternehmen
+    letztlich an.
+
+    ## Ein Rechenbeispiel
+
+    | Projekt | Investition | IRR | Kapitalwert (10 % Diskontsatz) |
+    |---------|-----------|-----|------------------------------|
+    | A | 10.000 $ | 45 % | 4.200 $ |
+    | B | 500.000 $ | 22 % | 85.000 $ |
+
+    Projekt A „gewinnt“ bei der IRR. Projekt B schafft 20-mal mehr echten Wert.
+    Kannst du nur eines wählen und hast das Kapital, ist B trotz niedrigerer IRR
+    sehr wahrscheinlich die bessere Wahl. Genau das ist die Falle rein IRR-basierter
+    Entscheidungen.
+
+    ## Wann die IRR trotzdem die Hauptkennzahl ist
+
+    - **Auswahl bei knappem Kapital**: Wählst du aus vielen kleinen Projekten und
+      ist das Kapital (keine einzelne Ja/Nein-Entscheidung) die Engstelle, kann eine
+      Reihung nach IRR zur Maximierung der Rendite pro Dollar richtig sein
+    - **Kommunikation mit Nicht-Finanzleuten**: Ein Prozentsatz ist oft
+      greifbarer als ein Kapitalwert in Dollar, gerade im Vergleich zu einer
+      Mindestrendite
+
+    ## Die Standardempfehlung
+
+    Nutze den Kapitalwert als Hauptkriterium beim Vergleich sich ausschließender
+    Projekte unterschiedlicher Größe: Er misst direkt den geschaffenen Wert. Nutze
+    die IRR als zweiten Plausibilitätscheck und zur Kommunikation der erwarteten
+    Jahresrendite, aber lass sie den Kapitalwert nicht überstimmen, wenn beide
+    unterschiedlich reihen.
+
+    ## Häufige Fragen
+
+    **Was, wenn ein Projekt mehrere IRRs hat?**
+    Das passiert, wenn Cashflows mehr als einmal das Vorzeichen wechseln (z. B.
+    hohe Kosten mitten im Projekt). Der Kapitalwert bleibt dann eindeutig, ein
+    weiterer Grund, im Konfliktfall oder bei instabiler IRR auf ihn zu setzen.
+
+    **Löst die MIRR den Widerspruch zwischen IRR und Kapitalwert?**
+    Die MIRR behebt die unrealistische Reinvestitionsannahme der IRR, nicht aber
+    ihre Größenblindheit: Für die Reihung unterschiedlich großer Projekte bleibt
+    der Kapitalwert maßgeblich.
+
+    Nutze den [IRR-Rechner](/tools/irr-calculator/) zusammen mit deiner eigenen
+    Kapitalwertrechnung, um beide Kennzahlen für dieselbe Cashflow-Reihe zu sehen,
+    bevor du zwischen Projekten entscheidest.
+"what-is-a-good-irr-for-a-startup":
+  "title": "Was ist eine gute IRR für ein Startup-Investment?"
+  "description": "IRR-Richtwerte für Startup-Investments, Venture Capital und Private Equity und wie du die IRR zusammen mit MOIC und Amortisationsdauer liest."
+  "body": |
+    IRR-Richtwerte (interner Zinsfuß) unterscheiden sich nach Phase, Branche und
+    Anlageklasse. Hier siehst du, was Investoren in welchem Kontext als „gut“
+    ansehen.
+
+    ## IRR-Richtwerte nach Kontext
+
+    | Kontext | Minimal akzeptable IRR | Ziel-IRR |
+    |---------|----------------------|------------|
+    | Angel / Pre-Seed | 30 % | 50–100 %+ |
+    | Series A / VC | 25 % | 40–60 % |
+    | Growth Equity | 20 % | 30–40 % |
+    | Private-Equity-Buyout | 15 % | 20–30 % |
+    | Projektentwicklung Immobilien | 12 % | 18–25 % |
+    | Hürde am Kapitalmarkt | 8–12 % | — |
+
+    ## IRR und MOIC
+
+    Die IRR ist zeitabhängig: Das 3-Fache in 2 Jahren ≈ 73 % IRR, das 3-Fache in 6
+    Jahren ≈ 20 % IRR. Der MOIC (Multiple on Invested Capital) ignoriert die Zeit,
+    daher nutzen Investoren beides:
+    - **IRR**, um Investments mit unterschiedlicher Haltedauer zu vergleichen
+    - **MOIC**, um LPs die Größenordnung der Rendite zu vermitteln
+
+    ## Wann die IRR in die Irre führt
+
+    Die IRR unterstellt Reinvestition zum selben Satz. Bei Investments mit hohen
+    frühen Cashflows (z. B. schnelle Dividenden) überschätzt sie die
+    Gesamtrendite. Nutze die MIRR (modifizierte IRR), wenn der
+    Reinvestitionssatz deutlich von der Projekt-IRR abweicht.
+
+    Mit dem [IRR-Rechner](/tools/irr-calculator/) berechnest du IRR und
+    Kapitalwert für jede Cashflow-Reihe.
+"mirr-excel-formula":
+  "title": "MIRR in Excel: Formel, Beispiele und häufige Fehler"
+  "description": "So berechnest du die MIRR in Excel mit der eingebauten Funktion, mit Beispielen, Erklärung der Argumente und häufigen Fehlern, die du vermeiden solltest."
+  "body": |
+    Die Excel-Funktion `QIKV` (`MIRR` in der englischen Version) macht die
+    Berechnung einfach. Ein paar Stolperfallen solltest du aber kennen, bevor du
+    sie in einem Modell verwendest.
+
+    ## Syntax von QIKV in Excel
+
+    ```
+    =QIKV(Werte; Investition; Reinvestition)
+    ```
+
+    **Werte**: ein Zellbereich mit den Cashflows (Jahr 0 bis Jahr N). Der erste
+    Wert muss negativ sein (Anfangsinvestition).
+
+    **Investition**: der Zinssatz, den du auf negative Cashflows zahlst
+    (Finanzierungskosten). Nimm deinen WACC oder deine Fremdkapitalkosten.
+
+    **Reinvestition**: der Zinssatz, den du auf reinvestierte positive Cashflows
+    erzielst. Wähle einen vorsichtigen Satz: Rendite von Staatsanleihen,
+    Sparzins oder Opportunitätskosten.
+
+    ## Beispiel
+
+    Cashflows: Jahr 0 = −100.000 $, Jahre 1–4 = je 30.000 $.
+    Finanzierungssatz = 10 %, Reinvestitionssatz = 8 %.
+
+    ```
+    =QIKV(A1:A5; 10%; 8%)
+    = 7,83 %
+    ```
+
+    Mit der normalen IRR: `=IKV(A1:A5)` = 7,71 %
+
+    Die MIRR liegt hier etwas höher, weil der Reinvestitionssatz (8 %) über der
+    IRR (7,71 %) liegt. Die MIRR bewegt sich in Richtung Reinvestitionssatz: Liegt
+    dieser unter der IRR, fällt die MIRR niedriger aus als die IRR.
+
+    ## Häufige Fehler
+
+    1. **Jahr 0 vergessen**: Der Bereich muss die Anfangsauszahlung an erster
+       Stelle enthalten. Beginnst du bei Jahr 1, ist das Ergebnis falsch.
+    2. **Denselben Satz für beide Argumente**: Dann wird die MIRR zu einer bloßen
+       IRR-Näherung und verliert ihren Zweck.
+    3. **Perioden vermischen**: Die MIRR unterstellt jährliche Perioden, sofern du
+       nichts anpasst. Bei monatlichen Cashflows teilst du die Jahressätze durch 12.
+
+    Nutze den [MIRR-Rechner](/tools/mirr-calculator/) im Browser, ganz ohne Excel.
+"mirr-vs-irr-which-to-use":
+  "title": "MIRR oder IRR: Was nutzt du für die Investitionsrechnung?"
+  "description": "Ein praktischer Vergleich von MIRR und IRR für Investitionsentscheidungen: wann was passt und warum die MIRR realistischere Ergebnisse liefert."
+  "body": |
+    Die IRR ist verbreiteter, die MIRR realistischer. Hier steht, wann und warum du
+    welche nutzt.
+
+    ## Das Reinvestitionsproblem der IRR
+
+    Die IRR unterstellt stillschweigend, dass alle positiven Cashflows zur IRR
+    selbst reinvestiert werden können. Hat ein Projekt 35 % IRR, wird angenommen,
+    dass du die Erträge jedes Jahr zu 35 % reinvestieren kannst, was meist
+    unmöglich ist.
+
+    Die MIRR behebt das, indem sie den Finanzierungssatz (Kosten der
+    Kapitalaufnahme) vom Reinvestitionssatz (deinen tatsächlichen
+    Anlagemöglichkeiten) trennt.
+
+    ## Wann die MIRR besser ist als die IRR
+
+    1. **Mehrere Vorzeichenwechsel in den Cashflows**: Projekte mit
+       Kapitalspritzen zwischendurch können mehrere mathematisch gültige IRRs
+       liefern. Die MIRR liefert immer genau einen Wert.
+    2. **Projekte unterschiedlicher Größe vergleichen**: Die MIRR eignet sich
+       besser, um ein Projekt über 500.000 $ mit einem über 5 Mio. $ und anderem
+       Cashflow-Muster zu vergleichen.
+    3. **Anspruchsvolle Kreditgeber oder Aufsichtsräte verlangen sie**:
+       PE-Firmen und erfahrene Investoren bevorzugen oft die MIRR für realistische
+       Renditemodelle.
+
+    ## Wann die IRR genügt
+
+    Bei einfachen, konventionellen Cashflows (eine Anfangsauszahlung, danach
+    Zuflüsse) liefern IRR und MIRR ähnliche Ergebnisse, und die IRR ist
+    bekannter.
+
+    Mit dem [MIRR-Rechner](/tools/mirr-calculator/) berechnest du die MIRR mit
+    selbst gewählten Finanzierungs- und Reinvestitionssätzen.
+"how-to-choose-discount-rate":
+  "title": "So wählst du den richtigen Diskontsatz für die Kapitalwertberechnung"
+  "description": "Der Diskontsatz ist die wichtigste Eingabe der Kapitalwertanalyse. So berechnest du WACC, Mindestrendite und Opportunitätskosten, und warum der falsche Satz zu schlechten Entscheidungen führt."
+  "body": |
+    Der Diskontsatz ist die kritischste Eingabe der Kapitalwertanalyse. Zu
+    niedrig, und du nimmst schlechte Investitionen an. Zu hoch, und du lehnst gute
+    ab.
+
+    ## Das Prinzip: Opportunitätskosten des Kapitals
+
+    Der Diskontsatz steht für das, was du anderswo bei vergleichbarem Risiko
+    verdienen könntest. Bringt der Aktienmarkt bei ähnlichem Risiko 10 %, vernichtet
+    jedes Projekt unter 10 % im Vergleich zu dieser Alternative Wert.
+
+    **Grundprinzip**: Der Diskontsatz sollte das Risiko des Projekts
+    widerspiegeln, nicht das des Investors oder der durchschnittlichen Projekte des
+    Unternehmens.
+
+    ## Methode 1: WACC (gewichtete Kapitalkosten)
+
+    Für Unternehmen mit Fremd- und Eigenkapitalfinanzierung:
+
+    **WACC = (E/V × Re) + (D/V × Rd × (1 − Steuersatz))**
+
+    Dabei gilt:
+    - E/V = Eigenkapitalanteil (Eigenkapital / Gesamtwert)
+    - Re = Eigenkapitalkosten (z. B. 12–15 % für ein kleines Unternehmen)
+    - D/V = Fremdkapitalanteil
+    - Rd = Fremdkapitalkosten (Zinssatz der Kredite)
+    - Steuersatz = Unternehmenssteuersatz (Zinsen sind abzugsfähig)
+
+    **Beispiel**: 60 % Eigenkapital zu 14 % + 40 % Fremdkapital zu 8 %, Steuersatz 25 %:
+    WACC = (0,60 × 14 %) + (0,40 × 8 % × 0,75) = 8,4 % + 2,4 % = **10,8 %**
+
+    ## Methode 2: Mindestrendite (Hurdle Rate)
+
+    Viele Unternehmen legen eine minimal akzeptable IRR für Projekte fest. Das ist
+    eine Grundsatzentscheidung, keine Formel. Übliche Mindestrenditen:
+    - Großkonzerne: 12–15 %
+    - Mittelstand: 15–20 %
+    - Startups und Hochrisikoprojekte: 20–30 %
+    - Venture Capital: 30–40 %
+
+    ## Methode 3: risikoadjustierter Satz
+
+    Für Projekte mit anderem Risikoprofil als dein Kerngeschäft:
+    - Geringes Risiko (Kosteneinsparungen, operative Verbesserungen): WACC − 2–3 Punkte
+    - Durchschnittliches Risiko (Ausbau des Kerngeschäfts): WACC
+    - Hohes Risiko (neue Märkte, unerprobte Technik): WACC + 5–10 Punkte
+    - Spekulativ (Moonshot-Projekte): 25–40 %
+
+    ## Häufige Fehler
+
+    **Nur die Fremdkapitalkosten nehmen**: „Unser Kredit kostet 7 %, also nehmen
+    wir 7 %.“ Falsch: Das ignoriert die Eigenkapitalkosten, die deutlich höher
+    liegen.
+
+    **Ein fester Satz für alle Projekte**: Eine stabile Industrieinvestition hat
+    nicht dasselbe Risiko wie ein Software-Startup. Gleiches Unternehmen, anderes
+    Risiko, anderer Satz.
+
+    **Nominaler Satz für reale Cashflows**: Sind die Cashflows inflationsbereinigt
+    (real), nimm einen realen Diskontsatz. Sind sie nominal, einen nominalen.
+
+    Starte bei den meisten Entscheidungen mit dem WACC und erhöhe ihn für
+    riskantere Projekte. Im Zweifel mach eine Sensitivitätsanalyse: Kapitalwert bei
+    8 %, 12 %, 16 % und 20 %.
+
+    Modelliere mit dem [Kapitalwert-Rechner](/tools/npv-calculator/) verschiedene
+    Diskontsatz-Szenarien.
+"npv-vs-irr":
+  "title": "Kapitalwert oder IRR: Welche Kennzahl für Investitionsentscheidungen?"
+  "description": "Kapitalwert und IRR bewerten beide Investitionsrenditen, beantworten aber unterschiedliche Fragen. Wann welche passt und warum der Kapitalwert für die Kapitalallokation meist vorgezogen wird."
+  "body": |
+    Kapitalwert und IRR bewerten beide die Rendite einer Investition, beantworten
+    aber leicht unterschiedliche Fragen und können sich manchmal widersprechen.
+
+    ## Kapitalwert: Wert in Dollar
+
+    **Kapitalwert = −Investition + Σ [Cashflow / (1 + r)^t]**
+
+    Der Kapitalwert beantwortet: „Wie viele Dollar Wert schafft diese Investition
+    bei meiner geforderten Rendite?“ Das Ergebnis ist ein absoluter Betrag.
+
+    Der Kapitalwert ist direkt anwendbar: Nimm alle Projekte mit positivem
+    Kapitalwert an. Beim Vergleich zweier Projekte schafft das mit dem höheren
+    Kapitalwert mehr Vermögen (bei gleicher Größe).
+
+    ## IRR: die Rendite an der Gewinnschwelle
+
+    Die IRR ist der Diskontsatz, bei dem der Kapitalwert null ist. Sie beantwortet:
+    „Welche Rendite erzielt diese Investition tatsächlich?“ Sie wird in Prozent
+    angegeben.
+
+    Für das Beispielprojekt (100.000 $ Investition, 30.000–40.000 $ jährliche
+    Cashflows über 5 Jahre) liegt die IRR bei ≈ 23,3 %. Das Projekt erzielt also
+    23,3 % pro Jahr.
+
+    Liegt deine Mindestrendite bei 10 %: IRR > 10 % → annehmen. Liegt sie bei 25 %:
+    IRR < 25 % → ablehnen.
+
+    ## Wann Kapitalwert und IRR übereinstimmen
+
+    Bei einfachen Investitionen (eine Auszahlung, dann Einzahlungen) stimmen
+    Kapitalwert und IRR bei der Annahme- oder Ablehnungsentscheidung immer überein:
+    - Positiver Kapitalwert ↔ IRR > Diskontsatz
+    - Negativer Kapitalwert ↔ IRR < Diskontsatz
+
+    ## Wann sie sich widersprechen: sich ausschließende Projekte
+
+    Bei der Wahl zwischen zwei konkurrierenden Projekten können Kapitalwert und
+    IRR unterschiedlich reihen.
+
+    **Beispiel:**
+    - Projekt A: 100.000 $ Investition, IRR 25 %, Kapitalwert 20.000 $ bei 10 %
+    - Projekt B: 500.000 $ Investition, IRR 20 %, Kapitalwert 80.000 $ bei 10 %
+
+    Die IRR bevorzugt Projekt A (25 % > 20 %). Der Kapitalwert bevorzugt Projekt B
+    (80.000 $ > 20.000 $).
+
+    Was stimmt? **Der Kapitalwert.** Projekt B schafft 80.000 $ Vermögen, Projekt A
+    nur 20.000 $. Die IRR führt in die Irre, weil sie die Größe ignoriert.
+
+    ## Wann der Kapitalwert immer vorzuziehen ist
+
+    1. **Unterschiedliche Größen**: Die IRR ignoriert die Projektgröße, der Kapitalwert misst absoluten Wert
+    2. **Unkonventionelle Cashflows**: Mehrere Vorzeichenwechsel können mehrere IRRs
+       erzeugen, der Kapitalwert hat nur einen Wert
+    3. **Wechselnde Diskontsätze**: Ändern sich deine Kapitalkosten von Jahr zu
+       Jahr, bildet nur der Kapitalwert das korrekt ab (ein Satz pro Periode)
+
+    ## Wann die IRR nützlich ist
+
+    Die IRR ist in der Kommunikation eingängig: „Dieses Projekt bringt 23,3 % pro
+    Jahr“ lässt sich leichter erklären als „dieses Projekt hat 38.000 $ Kapitalwert
+    bei 10 % Diskontsatz“.
+
+    Zusammen mit der Kapitalwertanalyse hilft sie auch beim Vergleich von
+    Renditen unterschiedlich großer Investitionen.
+
+    **Best Practice**: Rechne beides. Entscheide nach dem Kapitalwert. Nutze die IRR
+    für Kontext und Kommunikation.
+
+    Nutze den [Kapitalwert-Rechner](/tools/npv-calculator/) für deine
+    Investitionsanalyse.
+"what-is-net-present-value":
+  "title": "Was ist der Kapitalwert (NPV)? Formel, Beispiele und Entscheidungsregeln"
+  "description": "Der Kapitalwert zinst künftige Cashflows auf ihren Barwert ab und zieht die Anfangsinvestition ab. Formel, Einsatzbereiche und wie du den richtigen Diskontsatz wählst."
+  "body": |
+    Der Kapitalwert (NPV, Net Present Value) beantwortet die grundlegendste Frage
+    der Kapitalallokation: Schafft diese Investition Wert oder vernichtet sie ihn?
+
+    **Kapitalwert = −Anfangsinvestition + Σ [Cashflow_t / (1 + r)^t]**
+
+    Dabei ist r der Diskontsatz (Kapitalkosten) und t das Jahr.
+
+    Ein positiver Kapitalwert heißt, die Investition bringt mehr als die
+    geforderte Rendite. Ein negativer, dass sie weniger bringt. Die Regel: Nimm
+    alle Projekte mit positivem Kapitalwert an.
+
+    ## Warum Cashflows abgezinst werden
+
+    Ein Dollar heute ist mehr wert als ein Dollar in der Zukunft. Kannst du 10 % pro
+    Jahr verdienen, werden aus 1.000 $ heute 1.100 $ in einem Jahr. Umgekehrt sind
+    1.100 $ in einem Jahr bei 10 % Diskontsatz heute 1.000 $ wert.
+
+    Der Kapitalwert wendet diese Logik auf alle künftigen Cashflows einer
+    Investition an:
+    - Der Cashflow in Jahr 1 wird mit (1 + r)^1 abgezinst
+    - Der in Jahr 2 mit (1 + r)^2
+    - Und so weiter...
+
+    Die Summe der abgezinsten Cashflows minus Anfangsinvestition ergibt den
+    Kapitalwert.
+
+    ## Ein Rechenbeispiel
+
+    Investition: 100.000 $
+    Cashflows: 30.000 $, 35.000 $, 40.000 $, 40.000 $, 40.000 $ über 5 Jahre
+    Diskontsatz: 10 %
+
+    | Jahr | Cashflow | Abzinsungsfaktor | Barwert |
+    |---|---|---|---|
+    | 1 | 30.000 $ | 1/1,10 = 0,909 | 27.273 $ |
+    | 2 | 35.000 $ | 1/1,21 = 0,826 | 28.926 $ |
+    | 3 | 40.000 $ | 1/1,331 = 0,751 | 30.053 $ |
+    | 4 | 40.000 $ | 1/1,464 = 0,683 | 27.321 $ |
+    | 5 | 40.000 $ | 1/1,611 = 0,621 | 24.837 $ |
+    | **Barwert gesamt** | | | **138.410 $** |
+
+    **Kapitalwert = 138.410 $ − 100.000 $ = 38.410 $**
+
+    Positiver Kapitalwert → annehmen. Diese Investition schafft 38.410 $ Wert über
+    der geforderten Rendite von 10 %.
+
+    ## Entscheidungsregeln
+
+    | Kapitalwert | Einordnung |
+    |---|---|
+    | Positiv | Die Investition schafft Wert: annehmen |
+    | Null | Die Investition erzielt genau die geforderte Rendite |
+    | Negativ | Die Investition vernichtet Wert: ablehnen |
+
+    Bei konkurrierenden Projekten mit begrenztem Kapital reihst du nach dem
+    Rentabilitätsindex (PI = Kapitalwert / Investition).
+
+    ## Die Wirkung des Diskontsatzes
+
+    Dieselbe Investition über 100.000 $ bei verschiedenen Diskontsätzen:
+    - 5 % → Kapitalwert = 59.120 $
+    - 10 % → Kapitalwert = 38.410 $
+    - 15 % → Kapitalwert = 21.610 $
+    - 20 % → Kapitalwert = 7.819 $
+    - 25 % → Kapitalwert = −3.629 $ (Projekt abgelehnt)
+
+    Die IRR (bei der der Kapitalwert null ist) liegt bei etwa 23,3 %.
+
+    Berechne den Kapitalwert deiner Investition mit dem [Kapitalwert-Rechner](/tools/npv-calculator/).
+"discounted-payback-period-explained":
+  "title": "Dynamische Amortisationsdauer: Formel, Beispiel und wann du sie nutzt"
+  "description": "Die dynamische Amortisationsdauer berücksichtigt den Zeitwert des Geldes. Formel, Rechenbeispiel und warum sie für langfristige Investitionsentscheidungen zählt."
+  "body": |
+    Die dynamische Amortisationsdauer berücksichtigt den Zeitwert des Geldes: Ein
+    Dollar in 3 Jahren ist weniger wert als ein Dollar heute. Diese Variante ist
+    deshalb vorsichtiger und bei langen Horizonten genauer.
+
+    ## Die Formel
+
+    Zinse den Cashflow jedes Jahres ab:
+    **Barwert von Jahr N = jährlicher Cashflow / (1 + Diskontsatz)^N**
+
+    Summiere dann die abgezinsten Cashflows, bis sie die Anfangsinvestition
+    übersteigen.
+
+    ## Rechenbeispiel
+
+    Investition: 200.000 $. Jährlicher Cashflow: 80.000 $. Diskontsatz: 10 %.
+
+    | Jahr | Cashflow | Abzinsungsfaktor | Barwert | Kumulierter Barwert |
+    |---|---|---|---|---|
+    | 1 | 80.000 $ | 0,909 | 72.727 $ | 72.727 $ |
+    | 2 | 80.000 $ | 0,826 | 66.116 $ | 138.843 $ |
+    | 3 | 80.000 $ | 0,751 | 60.105 $ | 198.948 $ |
+    | 4 | 80.000 $ | 0,683 | 54.641 $ | 253.589 $ |
+
+    Die Gewinnschwelle wird kurz nach Ende von Jahr 3 erreicht (~198.948 $, knapp
+    unter 200.000 $): dynamische Amortisation ≈ **3,02 Jahre** statt 2,5 Jahre
+    einfach.
+
+    ## Wann du die dynamische Amortisation nutzt
+
+    Nutze die dynamische Amortisationsdauer für:
+    - jede Investition mit mehr als 2 Jahren Amortisation
+    - hohe Kapitalinvestitionen, bei denen Inflation eine Rolle spielt
+    - Entscheidungen mit spürbaren Kapitalkosten (> 5 %)
+
+    Für schnelle Marketingentscheidungen reicht meist die einfache
+    Amortisationsdauer.
+
+    Berechne beide mit dem [Amortisationsrechner](/tools/payback-period-calculator/).
+"payback-period-saas-investment":
+  "title": "Amortisationsdauer bei SaaS-Investitionen: die CAC-Amortisation erklärt"
+  "description": "Bei SaaS meint Amortisationsdauer meist die CAC-Amortisation: wie viele Monate es dauert, die Kundenakquisitionskosten zurückzuholen. Richtwerte und Berechnung."
+  "body": |
+    Bei SaaS meint „Amortisationsdauer“ fast immer die **CAC-Amortisation**: die
+    Zahl der Monate, bis die Kosten der Kundengewinnung aus dem Rohertrag dieses
+    Kunden zurückgeflossen sind.
+
+    ## Formel der CAC-Amortisation
+
+    **CAC-Amortisation (Monate) = CAC / (monatlicher ARPU × Bruttomarge in %)**
+
+    Bei 2.400 $ CAC, 200 $ ARPU pro Monat und 75 % Bruttomarge:
+    - Monatlicher Rohertrag pro Kunde = 200 $ × 75 % = 150 $
+    - CAC-Amortisation = 2.400 $ / 150 $ = **16 Monate**
+
+    ## Richtwerte
+
+    | CAC-Amortisation | Einordnung |
+    |---|---|
+    | < 6 Monate | Außergewöhnlich: produktgetrieben, wenig Vertriebsaufwand |
+    | 6–12 Monate | Hervorragend: effizienter Vertrieb |
+    | 12–18 Monate | Gut: typisch für SaaS in der Series A |
+    | 18–24 Monate | Grenzwertig: vor dem Skalieren verbessern |
+    | > 24 Monate | Bedenklich: CAC fließt zu langsam zurück |
+
+    ## Warum das bei SaaS zählt
+
+    24 Monate CAC-Amortisation heißt, du finanzierst 2 Jahre Akquisekosten vor,
+    bevor du an einem Kunden verdienst. Bei 5 % monatlichem Churn sind ~70 % der
+    Kunden weg, bevor du die Gewinnschwelle erreichst.
+
+    Die CAC-Amortisation unter 12 Monate zu drücken, verbessert die Unit Economics
+    deutlich und senkt den Kapitalbedarf des SaaS-Wachstums.
+
+    Berechne deine CAC-Amortisation mit dem [CAC-Rechner](/tools/cac-calculator/)
+    und die allgemeine Amortisationsdauer mit dem [Amortisationsrechner](/tools/payback-period-calculator/).
+"payback-period-vs-roi":
+  "title": "Amortisationsdauer oder ROI: Welche Investitionskennzahl solltest du nutzen?"
+  "description": "Die Amortisationsdauer misst, wann du die Gewinnschwelle erreichst, der ROI die Gesamtrendite. Wann du welche nutzt und wie sie sich bei Kapitalentscheidungen ergänzen."
+  "body": |
+    Amortisationsdauer und ROI bewerten beide Investitionen, beantworten aber
+    unterschiedliche Fragen und haben unterschiedliche blinde Flecken.
+
+    ## Amortisationsdauer: „Wann habe ich mein Geld zurück?“
+
+    **Amortisationsdauer = Investition / jährlicher Netto-Cashflow**
+
+    Die Amortisationsdauer konzentriert sich ganz auf die Gewinnschwelle. Sie ist
+    einfach, eingängig und nützlich zur Einschätzung des Liquiditätsrisikos: Wie
+    lange ist dein Kapital noch im Risiko?
+
+    **Schwäche**: Sie ignoriert alle Cashflows nach der Gewinnschwelle. Eine
+    Investition über 100.000 $, die sich in 1 Jahr amortisiert und danach nichts
+    mehr bringt, hat dieselbe Amortisationsdauer wie eine, die noch 10 Jahre lang
+    100.000 $ pro Jahr erzeugt.
+
+    ## ROI: „Wie hoch ist die Gesamtrendite?“
+
+    **ROI = (gesamte Nettoerträge − Investition) / Investition × 100**
+
+    Der ROI erfasst den Gesamtwert der Investition über den ganzen Zeitraum, nicht
+    nur den Zeitpunkt der Gewinnschwelle.
+
+    **Schwäche**: Er berücksichtigt weder den Zeitwert des Geldes noch das
+    Liquiditätsrisiko.
+
+    ## Wann du welche nutzt
+
+    - **Amortisationsdauer**: riskante Investitionen aussortieren; Liquidität planen
+    - **ROI**: die Gesamteffizienz von Investitionen vergleichen
+    - **Beide zusammen**: vollständige Entscheidungen zur Kapitalallokation
+
+    Berechne bei jeder Investition über 10.000 $ beides mit:
+    - dem [Amortisationsrechner](/tools/payback-period-calculator/)
+    - dem [ROI-Rechner](/tools/roi-calculator/)
+"how-to-calculate-roi":
+  "title": "So berechnest du den ROI: Formel, Beispiele und häufige Fehler"
+  "description": "Die ROI-Formel (Nettogewinn / Investition × 100), Rechenbeispiele und die häufigen Fehler, die ROI-Berechnungen irreführend machen."
+  "body": |
+    ROI = (Nettogewinn / Investition) × 100
+
+    Das ist die Formel. Schwierig ist, „Nettogewinn“ und „Investition“ richtig zu
+    bestimmen.
+
+    ## ROI-Berechnung Schritt für Schritt
+
+    **Schritt 1**: Nettogewinn berechnen
+    Nettogewinn = gesamter Umsatz aus der Investition − gesamte damit verbundene Kosten
+
+    Zu den Kosten zählen: direkte Betriebskosten, Arbeitszeit, anteilige
+    Gemeinkosten und Opportunitätskosten des Kapitals.
+
+    **Schritt 2**: durch die Investition teilen
+    ROI = Nettogewinn / Investitionskosten × 100
+
+    **Beispiel**: Du gibst 50.000 $ für eine Content-Marketing-Kampagne aus. In 12
+    Monaten erzeugt sie 200.000 $ zugeordnete Pipeline, die zu 25 % abschließt:
+    50.000 $ Umsatz. Die Content-Produktion kostete zusätzlich 10.000 $ laufende
+    Arbeit.
+
+    - Nettogewinn = 50.000 $ − 10.000 $ = 40.000 $
+    - ROI = 40.000 $ / 50.000 $ × 100 = **80 %**
+
+    ## Häufige Fehler bei der ROI-Berechnung
+
+    **Fehler 1: indirekte Kosten vergessen**
+    Arbeitszeit für die Betreuung einer Investition ist echter Aufwand. Ein Tool
+    für 10.000 $, das 40 Stunden im Monat Betreuung braucht, kostet bei 60 $ pro
+    Stunde zusätzlich 2.400 $ im Monat.
+
+    **Fehler 2: Bruttoumsatz statt Nettogewinn verwenden**
+    Ein ROI auf den Bruttoumsatz ignoriert die Herstellkosten. Bringt eine
+    Kampagne 100.000 $ Umsatz bei 60.000 $ Produktkosten, liegt der
+    Nettobeitrag bei 40.000 $, nicht bei 100.000 $.
+
+    **Fehler 3: nicht annualisieren**
+    50 % ROI klingt toll, über 5 Jahre sind das aber nur 8,4 % pro Jahr. Vergleiche
+    ROI-Werte immer über denselben Zeithorizont.
+
+    Berechne deinen mit dem [ROI-Rechner](/tools/roi-calculator/).
+"marketing-roi-benchmarks":
+  "title": "Marketing-ROI-Richtwerte nach Kanal (2024)"
+  "description": "Branchenrichtwerte für den Marketing-ROI nach Kanal: E-Mail, SEO, bezahlte Suche, Social Media und Content-Marketing. Sieh, wo deine Kampagnen stehen."
+  "body": |
+    Der Marketing-ROI schwankt je nach Kanal enorm. Hier sind übliche Richtwerte
+    aus Branchenstudien und Praxisdaten.
+
+    ## E-Mail-Marketing
+
+    Durchschnittlicher ROI: **36–42 $ pro ausgegebenem Dollar** (3.500–4.100 %)
+
+    E-Mail führt ROI-Rankings regelmäßig an, weil die variablen Kosten pro Versand
+    nahe null liegen, sobald die Liste steht. Kosten für gekaufte Listen drücken
+    den ROI über die Lebensdauer bei den meisten Unternehmen auf 500–1.000 %.
+
+    ## SEO (organische Suche)
+
+    Durchschnittlicher ROI: **300–2.000 % über 3 Jahre**
+
+    Der SEO-ROI ist hoch, aber verzögert. Monate 1–6 zeigen oft negativen ROI.
+    Monate 12–36 bringen sich aufbauende Erträge, wenn Inhalte ranken. Rechne den
+    annualisierten ROI über die vollen 3 Jahre, um fair mit bezahlten Kanälen zu
+    vergleichen.
+
+    ## Bezahlte Suche (Google Ads)
+
+    Durchschnittlicher ROAS: **2:1–5:1 je nach Branche**
+    Durchschnittlicher ROI nach Margen: **10–30 %** in umkämpften Branchen
+
+    Bezahlte Suche wirkt sofort, ist aber umkämpft. Der ROI sinkt mit steigendem
+    Budget (schwächere Keywords, Gebotskonkurrenz). Begrenze das bezahlte Budget
+    auf den Bereich mit positivem ROI und investiere den Rest in Kanäle mit
+    Zinseszinseffekt.
+
+    ## Content-Marketing
+
+    Durchschnittlicher ROI: **300–1.000 % über 12 Monate**
+
+    Erfordert Investitionen in Qualität und Verbreitung. Die Besten erzielen sich
+    aufbauende Erträge, wenn Inhalte Domain-Autorität sammeln.
+
+    ## Social Media (bezahlt)
+
+    Durchschnittlicher ROAS: **1,5:1–3:1**
+
+    Für die meisten B2B-Unternehmen der niedrigste ROI der großen Kanäle. Besser
+    für Markenbekanntheit (schwer messbarer ROI) als für Direktreaktion.
+
+    Verfolge deine tatsächlichen Erträge mit dem [ROI-Rechner](/tools/roi-calculator/).
+"roi-vs-roas":
+  "title": "ROI oder ROAS: Was ist der Unterschied und wann nutzt du welche Kennzahl?"
+  "description": "Der ROI misst die Nettorendite auf die Gesamtinvestition, der ROAS den Umsatz pro Werbedollar. Welche Kennzahl du für Marketingentscheidungen nutzt und wie du umrechnest."
+  "body": |
+    ROI und ROAS messen beide die Marketingeffizienz, aber sie messen
+    Unterschiedliches und führen zu unterschiedlichen Entscheidungen.
+
+    ## ROAS: Umsatz pro Werbeausgabe
+
+    **ROAS = den Anzeigen zugeordneter Umsatz / Werbeausgaben**
+
+    Ein ROAS von 4,0 heißt: 4 $ Umsatz pro 1 $ Werbeausgabe.
+
+    Der ROAS ignoriert alle Kosten außer den Werbeausgaben. Eine Kampagne mit
+    5,0 ROAS klingt großartig, doch bei 20 % Produktmarge bist du bei null.
+
+    ## ROI: Nettorendite der Investition
+
+    **ROI = (Umsatz − alle Kosten) / Investition × 100**
+
+    Der ROI umfasst Herstellkosten, Fulfillment, Arbeitszeit und die Investition
+    selbst.
+
+    Eine Kampagne mit 5,0 ROAS, 20 % Produktmarge und 15 % Fulfillment-Kosten:
+    - Nettomarge = 20 % − 15 % = 5 %
+    - Umsatz: 500.000 $. Netto aus dem Produkt: 25.000 $.
+    - Werbeausgaben: 100.000 $.
+    - ROI = (25.000 $ − 100.000 $) / 100.000 $ = **−75 %**
+
+    Dieselbe Kampagne, die mit 5,0 ROAS glänzend aussah, vernichtet tatsächlich
+    Wert.
+
+    ## Wann du welche nutzt
+
+    - **ROAS**: einzelne Kampagnen optimieren, Creatives per A/B-Test prüfen
+    - **ROI**: strategische Investitionsentscheidungen, Kanäle vergleichen, Budget verteilen
+
+    Nutze den ROAS für die taktische Optimierung, den ROI für strategische
+    Entscheidungen.
+
+    Berechne deinen ROI mit dem [ROI-Rechner](/tools/roi-calculator/).
+"how-to-use-rule-of-72":
+  "title": "So nutzt du die 72er-Regel"
+  "description": "Die 72er-Regel mit Beispielen erklärt: So schätzt du per Kopfrechnen die Verdopplungszeit von Geldanlagen, Schulden und Umsatzwachstum."
+  "body": |
+    Die 72er-Regel ist eine Kopfrechen-Abkürzung: Teile 72 durch einen Jahressatz,
+    um abzuschätzen, in wie vielen Jahren sich eine Größe verdoppelt.
+
+    ## Beispiele
+
+    - **Anlage mit 8 % Jahresrendite**: 72 ÷ 8 = **9 Jahre** bis zur Verdopplung
+    - **Kreditkarte mit 24 % effektivem Jahreszins**: 72 ÷ 24 = **3 Jahre**, bis sich die Schuld verdoppelt
+    - **Inflation von 3 %**: 72 ÷ 3 = **24 Jahre**, bis sich die Preise verdoppeln
+    - **SaaS mit 50 % Wachstum pro Jahr**: 72 ÷ 50 = **~1,4 Jahre** bis zur Verdopplung des ARR
+
+    ## Warum funktioniert das?
+
+    Bei einem Satz r beträgt die exakte Verdopplungszeit **ln(2) ÷ ln(1 + r)**.
+    Bei kleinen Sätzen ergibt das etwa **0,693 / r**.
+    Die Regel nutzt 72 statt 69,3, weil 72 durch mehr gängige Zinssätze teilbar
+    ist (2, 3, 4, 6, 8, 9, 12 …).
+
+    ## Genauigkeit
+
+    Am genauesten ist die 72er-Regel bei Sätzen zwischen 6 und 10 % (unter 1 %
+    Fehler). Über 20 % nutzt du den [72er-Regel-Rechner](/tools/rule-of-72-calculator/),
+    der Näherung und exakte Verdopplungszeit zeigt.
+"rule-of-72-vs-exact-compound-interest":
+  "title": "72er-Regel oder exakte Zinseszinsformel"
+  "description": "Die Näherung der 72er-Regel im Vergleich zur exakten Verdopplungszeit mit Zinseszins: wann du was nutzt und wie groß der Fehler der Abkürzung ist."
+  "body": |
+    ## Die zwei Formeln
+
+    **72er-Regel**: Jahre ≈ 72 / Jahressatz
+
+    **Exakte Formel**: Jahre = ln(2) / ln(1 + r), mit r als Dezimalzahl
+
+    ## Fehlervergleich
+
+    | Satz | 72er-Regel | Exakt | Fehler |
+    |------|-----------|-------|-------|
+    | 2 % | 36 Jahre | 35,0 Jahre | +2,9 % |
+    | 4 % | 18 Jahre | 17,7 Jahre | +1,9 % |
+    | 8 % | 9 Jahre | 9,0 Jahre | 0,0 % |
+    | 12 % | 6 Jahre | 6,1 Jahre | −1,9 % |
+    | 20 % | 3,6 Jahre | 3,8 Jahre | −5,3 % |
+    | 50 % | 1,44 Jahre | 1,71 Jahre | −16 % |
+
+    Für die meisten Finanzentscheidungen bei Sätzen unter 20 % ist die 72er-Regel
+    genau genug. Über 20 % (stark wachsende Unternehmen, hochverzinste Schulden)
+    nutzt du die exakte Formel.
+
+    Der [72er-Regel-Rechner](/tools/rule-of-72-calculator/) zeigt beide Werte
+    nebeneinander, damit du den Unterschied bei jedem Satz siehst.
+"wacc-discount-rate-dcf":
+  "title": "WACC als Diskontsatz im DCF: ein Praxisleitfaden"
+  "description": "So nutzt du den WACC als Diskontsatz in einer DCF-Bewertung, einschließlich der Schätzung der Eigenkapitalkosten junger Unternehmen, und typische Fehler."
+  "body": |
+    Der WACC (gewichtete Kapitalkosten) ist der Standard-Diskontsatz in
+    DCF-Bewertungen (Discounted Cash Flow). So nutzt du ihn richtig und so gehst du
+    vor, wenn Lehrbuch-Eingaben fehlen.
+
+    ## WACC im DCF: die Mechanik
+
+    In einem DCF-Modell gilt:
+    **Wert = Σ (Free Cashflow_t / (1 + WACC)^t) + Endwert / (1 + WACC)^n**
+
+    Der WACC steht für die geforderte Rendite der gesamten Kapitalstruktur,
+    Eigen- wie Fremdkapitalgeber. Abzinsen mit dem WACC ergibt den
+    Unternehmenswert; ziehst du die Nettoverschuldung ab, erhältst du den
+    Eigenkapitalwert.
+
+    ## WACC für junge Unternehmen schätzen
+
+    Private Unternehmen und Startups haben keine Marktdaten für die
+    Eigenkapitalkosten. Mögliche Ansätze:
+
+    **CAPM-Ansatz**: Eigenkapitalkosten = risikofreier Zins + β × (Marktprämie)
+    - Risikofreier Zins: Rendite 10-jähriger US-Staatsanleihen (~4,5 % im Jahr 2024)
+    - Marktrisikoprämie: 5–6 % (historisch nach Damodaran)
+    - Beta: Betas vergleichbarer börsennotierter Unternehmen (0,8–1,5 für SaaS)
+
+    **VC-Hürden-Ansatz**: die Ziel-IRR des Fonds (25–40 % in der Frühphase) als
+    Eigenkapitalkosten ansetzen. Sie spiegelt die tatsächlich geforderte Rendite
+    der Eigenkapitalgeber.
+
+    **Keine Schulden (vor Umsatz)**: WACC = Eigenkapitalkosten. Keine Gewichtung von
+    Fremdkapital nötig.
+
+    ## Häufige WACC-Fehler
+
+    1. **Buchwerte statt Marktwerte** für die Gewichtung von Eigen- und Fremdkapital
+    2. **Steuern nicht berücksichtigt** beim Fremdkapitalkosten-Anteil
+    3. **WACC bei hoch verschuldeten oder notleidenden Unternehmen**: Nutze den
+       Adjusted Present Value (APV), wenn sich die Verschuldung über die Zeit stark
+       ändert
+
+    Mit dem [WACC-Rechner](/tools/wacc-calculator/) berechnest du deine
+    gewichteten Kapitalkosten für die DCF-Analyse.
+"wacc-for-startup-valuation":
+  "title": "WACC für die Startup-Bewertung: Welcher Diskontsatz?"
+  "description": "So schätzt du den WACC für Startups in der Frühphase, bei denen börsennotierte Vergleichswerte, Beta und Risikoprämien anders greifen als bei börsennotierten Unternehmen."
+  "body": |
+    Der WACC für Startups ist eher Kunst als Wissenschaft, weil die Eingaben
+    (Marktkapitalisierung, Beta, Fremdkapitalkosten) fehlen oder unzuverlässig
+    sind. So gehen Praktiker vor.
+
+    ## Warum der klassische WACC bei Startups versagt
+
+    1. **Keine Marktkapitalisierung**: Der Eigenkapitalwert ist privat und sehr unsicher
+    2. **Kein Beta**: Es gibt keine historische Kursvolatilität
+    3. **Kaum oder kein Fremdkapital**: Die Kapitalstruktur besteht fast nur aus Eigenkapital
+    4. **Hohe Ausfallwahrscheinlichkeit**: DCF-Modelle bilden Alles-oder-nichts-Ergebnisse schlecht ab
+
+    ## Wie VCs über Diskontsätze denken
+
+    VCs nutzen den WACC selten ausdrücklich. Stattdessen setzen sie eine
+    **Ziel-IRR** von 30–50 % und mehr an (entsprechend einem 10x-Fondsziel mit
+    einkalkulierten Ausfällen). Das entspricht einem WACC von 30–50 %, weit über
+    dem, was klassische WACC-Modelle nahelegen.
+
+    ## Für DCF-Modelle
+
+    Beim DCF für ein Startup gehen Praktiker meist so vor:
+    - Sie starten mit einem **Peer-Group-WACC** vergleichbarer börsennotierter Unternehmen (bei SaaS meist 8–15 %)
+    - Sie schlagen eine **Größenprämie** von 3–5 % für private, kleinere Unternehmen auf
+    - Sie schlagen eine **unternehmensspezifische Risikoprämie** von 3–10 % für das Umsetzungsrisiko auf
+
+    Effektiver Diskontsatz für Startups: **14–30 %** je nach Phase und Branche.
+
+    Nutze den [WACC-Rechner](/tools/wacc-calculator/) für etablierte Unternehmen
+    mit beobachtbaren Eigen- und Fremdkapitalwerten.

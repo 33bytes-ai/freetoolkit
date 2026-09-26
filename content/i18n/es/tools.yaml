@@ -1110,3 +1110,326 @@
 
     **¿Qué hace esta calculadora?**
     Calcula el coste total para el empleador, incluidas las cotizaciones (FICA, FUTA, SUTA) y los beneficios.
+
+"irr-calculator":
+  "body": |
+    La tasa interna de retorno (TIR) es la tasa de rentabilidad anualizada que hace
+    que el valor actual neto (VAN) de todos los flujos de caja sea cero. Es una de
+    las métricas más usadas en presupuestos de capital y análisis de inversiones.
+
+    ## Fórmula de la TIR
+
+    La TIR es el valor de r que cumple:
+
+    **0 = CF₀ + CF₁/(1+r) + CF₂/(1+r)² + ... + CFₙ/(1+r)ⁿ**
+
+    No tiene solución cerrada: la TIR se calcula por iteraciones (método de
+    Newton-Raphson).
+
+    ## Regla de decisión
+
+    - **TIR > WACC (tasa mínima exigida)**: aceptar el proyecto, crea valor
+    - **TIR < WACC**: rechazar el proyecto, destruye valor
+    - **TIR = WACC**: equilibrio, indiferente
+
+    ## Limitaciones de la TIR
+
+    - **Varias TIR**: flujos que cambian de signo más de una vez pueden dar varias TIR
+    - **Ceguera de escala**: la TIR ignora el tamaño del proyecto; un 50 % sobre $1.000 vale menos que un 20 % sobre $1M
+    - **Hipótesis de reinversión**: supone que los flujos intermedios se reinvierten a la TIR, lo que puede ser poco realista
+
+    Por eso la TIR suele usarse junto al VAN y no de forma aislada.
+"mirr-calculator":
+  "body": |
+    La TIRM (tasa interna de retorno modificada) corrige un fallo clave de la TIR
+    estándar: suponer que todas las entradas de caja se reinvierten a la propia
+    TIR, lo que suele ser demasiado optimista.
+
+    ## Fórmula de la TIRM
+
+    **TIRM = (VF de los flujos positivos a la tasa de reinversión / VA de los flujos negativos a la tasa de financiación) ^ (1/n) − 1**
+
+    Donde n = número de periodos.
+
+    ## TIRM frente a TIR
+
+    | Aspecto | TIR | TIRM |
+    |--------|-----|------|
+    | Hipótesis de reinversión | A la TIR (a menudo demasiado alta) | A la tasa de reinversión que indiques |
+    | Problema de varias TIR | Puede tener varias soluciones | Siempre una única solución |
+    | Resultado típico | Más alto | Más bajo y realista |
+    | Uso | Primer filtro rápido | Presupuesto de capital más riguroso |
+
+    ## Cuándo usar la TIRM
+
+    Usa la TIRM cuando:
+    - Los flujos del proyecto alternan entre positivos y negativos (problema de varias TIR)
+    - La tasa de reinversión es muy distinta de la TIR
+    - Necesitas comparar proyectos de distinta duración
+    - Los prestamistas o inversores sofisticados lo exigen
+
+    Umbrales habituales de TIRM: 15 % o más en inversiones de startups o capital
+    riesgo, 12–18 % en private equity, 8–12 % en inmobiliario y 6–10 % en
+    infraestructuras.
+"npv-calculator":
+  "body": |
+    El valor actual neto (VAN) te dice si una inversión crea o destruye valor,
+    comparando el valor actual de los flujos de caja futuros con el coste inicial.
+
+    ## La fórmula
+
+    **VAN = −inversión inicial + Σ [flujo de caja_t / (1 + r)^t]**
+
+    Donde r es la tasa de descuento y t el periodo en años.
+
+    Para una inversión de $100k con una tasa de descuento del 10 % y flujos anuales
+    de $30k, $35k, $40k, $40k y $40k:
+    VAN = −100k + 30k/1,1 + 35k/1,21 + 40k/1,331 + 40k/1,464 + 40k/1,611
+    VAN = −100k + 27,3k + 28,9k + 30,0k + 27,3k + 24,8k = **$38,3k**
+
+    Un VAN positivo significa que la inversión crea valor por encima de la
+    rentabilidad exigida.
+
+    ## Reglas de decisión
+
+    | VAN | Decisión |
+    |---|---|
+    | Positivo (VAN > 0) | Aceptar: crea valor por encima de la rentabilidad exigida |
+    | Cero (VAN = 0) | Equilibrio: rinde exactamente lo exigido |
+    | Negativo (VAN < 0) | Rechazar: destruye valor a esta tasa de descuento |
+
+    ## Índice de rentabilidad (IR)
+
+    IR = (VAN + inversión inicial) / inversión inicial
+
+    El IR mide el valor creado por cada dólar invertido. IR > 1 = VAN positivo.
+    Sirve para ordenar proyectos que compiten cuando el capital es limitado: a
+    mayor IR, más valor por dólar invertido.
+
+    | IR | Interpretación |
+    |---|---|
+    | > 1,5 | Rentabilidad excelente |
+    | 1,1–1,5 | Buena rentabilidad |
+    | 1,0–1,1 | Rentabilidad marginal |
+    | < 1,0 | Destruye valor |
+
+    ## Elegir la tasa de descuento adecuada
+
+    La tasa de descuento es el dato más crítico: pequeños cambios tienen grandes
+    efectos.
+
+    **WACC de la empresa**: media ponderada del coste de la deuda (después de
+    impuestos) y del coste del capital. Rango habitual: 8–12 % en empresas
+    consolidadas.
+
+    **Capital riesgo / startup**: tasas más altas (20–30 %) reflejan más riesgo.
+    Una startup puede exigir un 25 % para compensar a los inversores por el riesgo
+    de fracaso.
+
+    **Tasa mínima exigida**: muchas empresas fijan una TIR mínima aceptable
+    (15–20 %) para que los proyectos compitan por la asignación de capital.
+
+    Si tienes dudas, calcula el VAN con varias tasas (análisis de sensibilidad).
+
+    ## VAN frente a TIR
+
+    La TIR (tasa interna de retorno) es la tasa de descuento con la que el VAN es
+    cero. Ambos miden el valor de un proyecto; en general se prefiere el VAN
+    porque:
+    - El VAN está en dólares (más fácil de interpretar)
+    - La TIR puede dar varios valores con flujos no convencionales
+    - El VAN maneja bien tasas de descuento que cambian con el tiempo
+
+    ## Preguntas frecuentes
+
+    **¿Qué hace esta calculadora?**
+    Calcula el VAN a partir de una inversión inicial y hasta 5 años de flujos de
+    caja. Introduce tu tasa de descuento (coste de capital) y los flujos anuales
+    previstos.
+"payback-period-calculator":
+  "body": |
+    El periodo de recuperación es el tiempo que necesita una inversión para
+    generar los flujos de caja suficientes para recuperar su coste inicial. Es una
+    de las métricas de presupuesto de capital más usadas porque responde
+    directamente a: «¿Cuándo recupero mi dinero?»
+
+    ## Fórmula del periodo de recuperación simple
+
+    **Periodo de recuperación (años) = inversión inicial / flujo neto anual**
+
+    Con $200k de inversión y $80k de flujo neto anual: 200k / 80k = **2,5 años**.
+
+    ## Periodo de recuperación descontado
+
+    El periodo descontado tiene en cuenta el valor temporal del dinero
+    descontando el flujo de cada año:
+
+    **VA del flujo del año N = flujo anual / (1 + tasa de descuento) ^ N**
+
+    El periodo descontado siempre es más largo que el simple. Con un 10 % de
+    descuento, una inversión de $200k con $80k al año y recuperación simple de 2,5
+    años pasa a unos 3,1 años descontada.
+
+    ## Referencias
+
+    | Periodo de recuperación | Valoración |
+    |---|---|
+    | < 6 meses | Excepcional: raro, sobre todo en software/SaaS |
+    | 6–12 meses | Excelente: retorno rápido del capital |
+    | 1–2 años | Bueno: estándar en inversiones de marketing |
+    | 2–4 años | Aceptable: habitual en bienes de equipo |
+    | > 4 años | Largo: exige flujos estables y previsibles |
+
+    ## Limitaciones del periodo de recuperación
+
+    El periodo de recuperación ignora los flujos posteriores al punto de
+    equilibrio. Una inversión de $200k que se recupera en 2 años y luego genera
+    $100k al año durante 8 años más es muy superior a otra que genera exactamente
+    $80k al año, aunque ambas muestren el mismo periodo.
+
+    **Usa el periodo de recuperación junto al ROI y al VAN para un análisis de
+    inversión completo.**
+
+    ## Preguntas frecuentes
+
+    **¿Qué hace esta calculadora?**
+    Calcula el periodo de recuperación simple y descontado a partir de la
+    inversión inicial y los flujos netos anuales, además del ROI al final del
+    periodo de análisis.
+"roi-calculator":
+  "body": |
+    El ROI (retorno de la inversión) es la medida más universal de la eficiencia de
+    una inversión. Expresa el beneficio como porcentaje del capital empleado para
+    generarlo.
+
+    ## La fórmula
+
+    **ROI = (beneficio neto / coste de la inversión) × 100**
+
+    Donde beneficio neto = ingresos − costes operativos
+
+    Con $150k de ingresos, $50k de costes y $100k de inversión:
+    - Beneficio neto = $100k
+    - ROI = ($100k / $100k) × 100 = **100 %**
+
+    ## ROI anualizado
+
+    **ROI anualizado = ((1 + ROI/100) ^ (1/años) − 1) × 100**
+
+    El ROI anualizado permite comparar horizontes distintos. Un ROI del 50 % en 2
+    años equivale a ~22,5 % anual, no a un 25 %. La capitalización importa.
+
+    ## ¿Qué es un buen ROI?
+
+    Todo depende del contexto:
+    - **Marketing**: un retorno de 5 a 1 ($5 de ingresos por cada $1 gastado) = 400 % de ROI, se considera bueno
+    - **Inmobiliario**: un 8–12 % de ROI anualizado es lo habitual
+    - **Media del S&P 500**: ~10 % anual, la referencia del capital pasivo
+    - **Inversión SaaS**: apunta a más del 30 % anualizado en 3 años
+
+    Cualquier ROI por debajo de tu coste de capital (normalmente 8–15 %) significa
+    que la inversión destruye valor.
+
+    ## El ROI frente a otras métricas
+
+    | Métrica | Mide | Cuándo usarla |
+    |---|---|---|
+    | ROI | Rentabilidad total del capital | Comparar la eficiencia de inversiones |
+    | ROAS | Ingresos por dólar publicitario | Específica de marketing |
+    | Periodo de recuperación | Meses para recuperar la inversión | Planificación de caja |
+    | VAN | Valor actual de los retornos futuros | Asignación de capital a largo plazo |
+
+    ## Preguntas frecuentes
+
+    **¿Qué hace esta calculadora?**
+    Calcula el ROI, el ROI anualizado, el beneficio neto y el periodo de
+    recuperación a partir de ingresos, costes e inversión inicial.
+"rule-of-72-calculator":
+  "body": |
+    La regla del 72 es un atajo de cálculo mental para estimar cuánto tarda el
+    interés compuesto en duplicar una inversión.
+
+    ## Fórmula
+
+    **Tiempo para duplicar (años) ≈ 72 ÷ tasa anual (%)**
+
+    **Tasa necesaria ≈ 72 ÷ años objetivo**
+
+    ## ¿Por qué 72?
+
+    72 es divisible entre 1, 2, 3, 4, 6, 8, 9, 12 y 24, lo que facilita el cálculo
+    mental. La fórmula exacta es **ln(2) ÷ ln(1 + r)**, pero 72/r acierta con un
+    margen del 1–2 % para tasas entre el 2 % y el 20 %.
+
+    ## Tiempo para duplicar según la tasa
+
+    | Tasa anual | Tiempo para duplicar |
+    |------------|--------------|
+    | 2 % | 36 años |
+    | 4 % | 18 años |
+    | 6 % | 12 años |
+    | 8 % | 9 años |
+    | 10 % | 7,2 años |
+    | 12 % | 6 años |
+    | 24 % | 3 años |
+    | 72 % | 1 año |
+
+    ## La regla del 72 y la inflación
+
+    La inflación también sigue la regla. Con un 3 % de inflación, el poder
+    adquisitivo se reduce a la mitad en 24 años. Por eso ganar por encima de la
+    inflación es esencial para conservar el patrimonio real.
+
+    ## Aplicaciones al crecimiento exponencial
+
+    La regla del 72 funciona con cualquier proceso exponencial:
+    - Tasa de crecimiento del [ARR](/glossary/#arr) de una SaaS → años para duplicar ingresos
+    - Crecimiento de la población → tiempo para duplicarse
+    - Deuda a un tipo de interés dado → años para duplicar lo que debes
+"wacc-calculator":
+  "body": |
+    El WACC (coste medio ponderado del capital) es la rentabilidad mínima que una
+    empresa debe obtener de sus activos para satisfacer a quienes la financian,
+    tanto accionistas como acreedores. Sirve como tasa mínima exigida en las
+    decisiones de inversión y en las valoraciones por DCF.
+
+    ## Fórmula del WACC
+
+    **WACC = (E/V) × Rₑ + (D/V) × Rᵈ × (1 − Tᶜ)**
+
+    Donde:
+    - **E** = valor de mercado del capital (capitalización bursátil)
+    - **D** = valor de mercado de la deuda
+    - **V** = E + D (capital total)
+    - **Rₑ** = coste del capital propio (%)
+    - **Rᵈ** = coste de la deuda antes de impuestos (%)
+    - **Tᶜ** = tipo del impuesto de sociedades (%)
+
+    El coste del capital propio suele estimarse con el CAPM: tasa libre de riesgo +
+    beta × prima de riesgo de mercado. La beta mide la volatilidad de una acción
+    respecto al mercado: una beta de 1,5 significa que la acción suele moverse un
+    50 % más que el mercado en ambos sentidos, y por eso los inversores exigen más
+    rentabilidad para mantenerla.
+
+    ## ¿Por qué importa el tipo impositivo?
+
+    Los intereses de la deuda son deducibles, lo que crea un «escudo fiscal». El
+    coste de la deuda después de impuestos es Rᵈ × (1 − Tᶜ). Una empresa con un 6 %
+    de coste de la deuda y un 25 % de impuestos tiene un coste efectivo de la deuda
+    del 4,5 %.
+
+    ## Referencias de WACC
+
+    | Sector | WACC habitual |
+    |----------|-------------|
+    | SaaS / software | 8–14 % |
+    | Bienes de consumo | 6–10 % |
+    | Eléctricas y servicios públicos | 4–8 % |
+    | Biotecnología | 12–20 % |
+
+    ## El WACC en la práctica
+
+    - **Valoración por DCF**: el WACC es la tasa de descuento aplicada a los flujos de caja libres futuros
+    - **Presupuesto de capital**: aceptar solo proyectos con TIR superior al WACC
+    - **Estructura de capital**: optimizar la combinación de deuda y capital para minimizar el WACC
+    - **Medición del rendimiento**: un ROIC superior al WACC significa que la empresa crea valor económico

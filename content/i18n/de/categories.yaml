@@ -143,3 +143,34 @@
     der Weggang, den sie verhindern. Prüfe Provisionsmodelle gegen den
     Deckungsbeitrag statt gegen den Umsatz: Ein Plan, der auch bei rabattierten
     Deals gut zahlt, belohnt stillschweigend Rabatte.
+
+"Investment & Returns":
+  "body": |
+    Jede Investitionsentscheidung ist ein Vergleich mit den Alternativen,
+    einschließlich der, nichts zu tun. Diese Rechner geben diesem Vergleich eine
+    belastbare Zahl, statt sich auf das Gefühl zu verlassen, ein Projekt „lohne
+    sich wohl“.
+
+    ## Welcher Rechner passt
+
+    **ROI** ist die einfache, zeitblinde Variante: nützlich für schnelle
+    Vergleiche, irreführend bei langen Horizonten, weil ein Dollar in fünf Jahren
+    wie ein Dollar heute zählt. **Kapitalwert** und **IRR** korrigieren das, indem
+    sie künftige Cashflows abzinsen, und die **MIRR** behebt die optimistische
+    Annahme der IRR, dass Zwischen-Cashflows zur IRR selbst reinvestiert werden.
+    **WACC** liefert den Diskontsatz, den diese Modelle brauchen: die gemischten
+    Kosten von Fremd- und Eigenkapital, die das Unternehmen finanzieren. Die
+    **Amortisationsdauer** beantwortet die Frage nach dem Cash-Risiko statt nach
+    der Rendite: Wie lange dauert es, bis das Geld zurück ist? Die **72er-Regel**
+    ist die Faustformel dafür, wie lange ein Zinssatz braucht, um eine Summe zu
+    verdoppeln.
+
+    ## Was die Zahlen bedeuten
+
+    Kapitalwert und IRR können sich widersprechen. Dann gilt bei sich
+    ausschließenden Projekten der Kapitalwert, weil er geschaffenen Wert misst und
+    keinen Satz. Beide sind nur so gut wie die Cashflow-Prognose darunter, und
+    dort liegt die eigentliche Unsicherheit. Rechne jedes Modell mit einem
+    pessimistischen, einem erwarteten und einem optimistischen Szenario: Ein
+    Projekt, das die Hürde nur im optimistischen Fall nimmt, ist eine Wette, keine
+    Investition.

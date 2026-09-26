@@ -140,3 +140,32 @@
     que la salida que evita. En el diseño de comisiones, compara el plan con el
     margen de contribución y no con los ingresos: un plan que paga bien en una
     venta con descuento premia, sin que se note, el descuento.
+
+"Investment & Returns":
+  "body": |
+    Toda decisión de inversión es una comparación con las alternativas, incluida
+    la de no hacer nada. Estas calculadoras ponen una cifra defendible a esa
+    comparación en lugar de fiarse de la intuición de que un proyecto «parece que
+    merece la pena».
+
+    ## Cuál necesitas
+
+    El **ROI** es la versión simple, ciega al tiempo: útil para comparaciones
+    rápidas, engañosa en horizontes largos porque trata un dólar dentro de cinco
+    años igual que un dólar hoy. El **VAN** y la **TIR** lo corrigen descontando
+    los flujos futuros, y la **TIRM** corrige la hipótesis optimista de la TIR de
+    que la caja intermedia se reinvierte a la propia TIR. El **WACC** da la tasa de
+    descuento que necesitan esos modelos: el coste medio de la deuda y del capital
+    que financian el negocio. El **periodo de recuperación** responde a la
+    pregunta del riesgo de caja, no a la de la rentabilidad: cuánto tarda en
+    volver el dinero. La **regla del 72** es el atajo mental para saber cuánto
+    tarda una tasa en duplicar una cantidad.
+
+    ## Qué significan los números
+
+    El VAN y la TIR pueden contradecirse, y cuando pasa, en proyectos mutuamente
+    excluyentes hay que fiarse del VAN, porque mide el valor creado y no una tasa.
+    Ambos valen lo que valga la previsión de flujos que los sostiene, que es donde
+    está la incertidumbre real. Calcula cada modelo con un escenario pesimista,
+    uno esperado y uno optimista: un proyecto que solo supera el umbral en el
+    optimista es una apuesta, no una inversión.
