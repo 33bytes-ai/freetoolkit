@@ -3830,8 +3830,8 @@
     For a $250,000 loan at 7.5% APR over 60 months:
     r = 0.075/12 = 0.00625
     Monthly payment = $250,000 × (0.00625 × 1.00625^60) / (1.00625^60 − 1) = **$5,009/month**
-    Total paid = $300,553
-    Total interest = $50,553 (20.2% of principal)
+    Total paid = $300,569
+    Total interest = $50,569 (20.2% of principal)
 
     ## SBA loan benchmarks
 
@@ -3862,10 +3862,10 @@
 
     | $250k at 7.5% APR | Monthly payment | Total interest |
     |---|---|---|
-    | 36 months | $7,758 | $29,277 |
-    | 60 months | $5,009 | $50,553 |
-    | 84 months | $3,866 | $74,762 |
-    | 120 months | $2,978 | $107,336 |
+    | 36 months | $7,777 | $29,956 |
+    | 60 months | $5,009 | $50,569 |
+    | 84 months | $3,835 | $72,104 |
+    | 120 months | $2,968 | $106,105 |
 
     Longer terms lower monthly payments but significantly increase total interest. Choosing
     the right term depends on your cash flow needs and the cost of capital.
@@ -6477,7 +6477,7 @@
 
     $$\text{CAGR} = \left(\frac{\text{End Revenue}}{\text{Start Revenue}}\right)^{\frac{1}{n}} - 1$$
 
-    CAGR normalizes uneven growth across years. A company that grew 30%, then 10%, then 50% had a CAGR of ~27.5% — more informative than any single year.
+    CAGR normalizes uneven growth across years. A company that grew 30%, then 10%, then 50% had a CAGR of ~29% — more informative than any single year.
 
     ### Rule of 40
 

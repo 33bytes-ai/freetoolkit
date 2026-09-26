@@ -4926,7 +4926,7 @@
     - R&D payroll: $750,000
     - **EBITDA: $1,500,000 (30% margin)**
 
-    Compare that to a services company at $5M revenue with 60% cost structure:
+    Compare that to a services company at $5M revenue whose costs eat 90% of it:
     EBITDA of $500,000 (10% margin). Same revenue, very different profitability.
 
     ## When you have negative EBITDA
@@ -4993,7 +4993,7 @@
     **Rule of 40 Score = ARR Growth Rate % + EBITDA Margin %**
 
     A 60% ARR growth with -20% EBITDA margin scores 40. A 20% growth with 25%
-    EBITDA margin also scores 45. Both indicate a healthy business.
+    EBITDA margin scores 45. Both indicate a healthy business.
 
     Calculate your EBITDA margin with the [EBITDA Calculator](/tools/ebitda-calculator/).
 
@@ -6752,16 +6752,16 @@
     ## SBA 7(a) payment example
 
     Loan: $250,000 at 10.5% APR (Prime 7.5% + spread 3.0%) over 84 months:
-    Monthly payment: **$4,149/month**
-    Total interest: **$98,506** (39.4% of principal)
+    Monthly payment: **$4,215/month**
+    Total interest: **$104,074** (41.6% of principal)
 
     ## DSCR requirement
 
     SBA lenders require Debt Service Coverage Ratio ≥ 1.25:
     DSCR = Annual Net Operating Income / Annual Debt Payments
 
-    For a $4,149/month payment (=$49,788/year), you need minimum NOI of:
-    $49,788 × 1.25 = **$62,235/year** ($5,186/month)
+    For a $4,215/month payment (=$50,580/year), you need minimum NOI of:
+    $50,580 × 1.25 = **$63,225/year** ($5,269/month)
 
     If your business generates less NOI, SBA lenders will decline the application.
 
@@ -6836,7 +6836,7 @@
 
     ## Total cost comparison
 
-    $100k term loan at 8% over 36 months: total interest = **$12,740**
+    $100k term loan at 8% over 36 months: total interest = **$12,811**
     $100k line of credit at 11%, drawn 50% for 24 months: total interest = **$11,000**
 
     The line of credit can be cheaper if you don't use it fully — but if you draw the
@@ -6877,7 +6877,7 @@
     Maximum monthly payment = $80,000 / 12 = **$6,667**
 
     With a $6,667 monthly max at 8.5% APR over 84 months:
-    Maximum loan = **~$423,000** (per the amortization formula)
+    Maximum loan = **~$421,000** (per the amortization formula)
 
     This is the most reliable method for estimating maximum loan size.
 
@@ -11421,7 +11421,7 @@
 
     ## When They Diverge
 
-    A business with a 2.0× current ratio but 80% of assets in slow-moving inventory might have a quick ratio of 0.6× — technically insolvent on a quick basis. This is common in:
+    A business with a 2.0× current ratio but 80% of assets in slow-moving inventory might have a quick ratio of 0.4× — technically insolvent on a quick basis. This is common in:
     - Manufacturing with large raw material buffers
     - Retail with seasonal goods
     - Wholesale distribution
@@ -13706,12 +13706,13 @@
     overstocked, or receivables that are aging and uncollected rather than genuinely liquid.
     Context matters more than the raw number.
 
-    ## SaaS businesses often run higher ratios for a structural reason
+    ## Read a SaaS ratio with deferred revenue in mind
 
-    Annual prepaid subscriptions create deferred revenue — cash collected upfront for
-    service delivered over the coming year. That cash sits as a current asset, often pushing
-    SaaS current ratios higher than a comparably-sized services business without prepayment,
-    even though the "extra" cash is partly obligated to future service delivery.
+    Annual prepaid subscriptions bring cash in upfront for service delivered over the
+    coming year. The cash lands in current assets, and the same amount lands in current
+    liabilities as deferred revenue, so prepayment pulls the ratio toward 1.0× rather than
+    pushing it up. That understates real liquidity: deferred revenue is settled by
+    delivering the software, not by paying out cash.
 
     ## The current ratio vs the quick ratio
 
