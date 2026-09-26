@@ -2355,3 +2355,382 @@ how-to-improve-fcf-margin:
 
     Utilisez le [calculateur salaire en taux horaire](/tools/salary-to-hourly-calculator/)
     pour modéliser votre situation.
+
+"freelance-vs-w2-tax-comparison":
+  "title": "Impôts freelance ou salarié (W-2) : le vrai coût de l'indépendance"
+  "description": "Comment les impôts d'un freelance se comparent à ceux d'un salarié W-2 : les 15,3 % de SE tax expliqués, pourquoi mettre 25 à 30 % de côté, et quand cela vaut la peine."
+  "body": |
+    Quand on compare une mission freelance à 100 k$ à un salaire de 100 k$,
+    l'option freelance entraîne un coût fiscal nettement plus élevé, mais aussi
+    un revenu plus élevé avant déductions. Voici le tableau complet.
+
+    ## La différence clé : la SE tax
+
+    Un salarié W-2 à 100 k$ paie :
+    - Social Security (6,2 %) + Medicare (1,45 %) = **7,65 %** prélevés sur sa paie
+    - L'employeur paie 7,65 % de plus (invisibles pour le salarié)
+
+    Un freelance à 100 k$ de bénéfice net paie :
+    - Les deux parts : **15,3 %** de SE tax (15 300 $)
+    - Il peut en déduire la moitié (7 650 $) de son revenu imposable
+
+    L'indépendant paie donc ~7 650 $ de cotisations de plus que le salarié W-2 au
+    même niveau de revenu.
+
+    ## L'écart de taux
+
+    | Revenu | Salarié W-2 | Freelance |
+    |---|---|---|
+    | 60 000 $ | ~9 000 $ d'impôts au total | ~16 000 $ d'impôts au total |
+    | 100 000 $ | ~18 000 $ d'impôts au total | ~28 000 $ d'impôts au total |
+    | 150 000 $ | ~32 000 $ d'impôts au total | ~44 000 $ d'impôts au total |
+
+    *Estimations pour un célibataire, déduction forfaitaire, sans autre revenu.*
+
+    ## Pourquoi les freelances s'en sortent souvent mieux
+
+    1. **Des taux bruts plus élevés** : à travail équivalent, un prestataire gagne
+       en général 20 à 40 % de plus qu'un salarié (l'entreprise n'a pas
+       d'avantages à payer).
+    2. **Les déductions** : les frais professionnels ramènent le revenu imposable
+       sous l'équivalent W-2.
+    3. **Les comptes retraite** : SEP-IRA et Solo 401(k) permettent d'abriter bien
+       plus que le plafond 401(k) salarié de 23 000 $.
+    4. **La souplesse** : vous pouvez choisir quand constater un revenu, le reporter
+       sur une année moins imposée ou avancer des déductions sur une année forte.
+
+    ## Le point d'équilibre
+
+    Si un employeur propose 100 k$ en W-2 contre une mission freelance à 115 k$ :
+    - SE tax supplémentaire ≈ 7 650 $
+    - Revenu supplémentaire : 15 000 $
+    - Avantage net du freelance : ~7 350 $ avant déductions
+
+    Ajoutez les déductions (bureau à domicile, assurance santé, retraite) et
+    l'option freelance à 115 k$ est en général nettement devant les 100 k$ salariés.
+
+    Calculez vos impôts de freelance avec l'[estimateur d'impôts freelance](/tools/freelance-tax-estimator/).
+"quarterly-estimated-tax-dates":
+  "title": "Échéances des acomptes d'impôt trimestriels 2024–2025 (guide freelance)"
+  "description": "Quand verser les acomptes trimestriels ? Les dates exactes de l'IRS pour 2024 et 2025, les règles de « safe harbor » et ce qui se passe si vous manquez un paiement."
+  "body": |
+    L'IRS impose aux travailleurs indépendants de verser des acomptes d'impôt
+    quatre fois par an. Manquer une échéance déclenche des pénalités pour
+    sous-paiement, actuellement autour de 8 % par an sur le manque.
+
+    ## Échéances des acomptes 2024
+
+    | Trimestre | Période couverte | Échéance |
+    |---|---|---|
+    | T1 | 1er janv. – 31 mars | **15 avril 2024** |
+    | T2 | 1er avr. – 31 mai | **17 juin 2024** |
+    | T3 | 1er juin – 31 août | **16 septembre 2024** |
+    | T4 | 1er sept. – 31 déc. | **15 janvier 2025** |
+
+    ## Échéances des acomptes 2025
+
+    | Trimestre | Période couverte | Échéance |
+    |---|---|---|
+    | T1 | 1er janv. – 31 mars | **15 avril 2025** |
+    | T2 | 1er avr. – 31 mai | **16 juin 2025** |
+    | T3 | 1er juin – 31 août | **15 septembre 2025** |
+    | T4 | 1er sept. – 31 déc. | **15 janvier 2026** |
+
+    ## Les règles de « safe harbor »
+
+    Vous évitez les pénalités pour sous-paiement si vous versez :
+    - **Option A** : 90 % de l'impôt de l'année en cours, OU
+    - **Option B** : 100 % de l'impôt de l'année précédente (110 % si l'AGI dépasse 150 000 $)
+
+    L'option B est appréciée des freelances aux revenus irréguliers : versez ce que
+    vous deviez l'an dernier en quatre parts égales, sans devoir prévoir
+    précisément vos revenus de l'année.
+
+    ## Comment payer
+
+    Payez sur [IRS Direct Pay](https://www.irs.gov/payments/direct-pay) (gratuit,
+    sans inscription) ou via EFTPS (Electronic Federal Tax Payment System). La
+    plupart des États ont leurs propres acomptes avec des échéances similaires :
+    consultez le site de l'administration fiscale de votre État.
+
+    Estimez votre acompte avec l'[estimateur d'impôts freelance](/tools/freelance-tax-estimator/).
+"self-employment-tax-deductions":
+  "title": "Les principales déductions fiscales pour freelances et indépendants"
+  "description": "Les déductions les plus intéressantes pour un freelance : bureau à domicile, assurance santé, retraite, matériel, et la déduction de la moitié de la SE tax expliquée."
+  "body": |
+    Chaque déduction professionnelle légitime réduit votre bénéfice net, et donc à
+    la fois votre SE tax (15,3 %) et votre impôt sur le revenu. Une déduction de
+    10 000 $ à un taux combiné de 30 % fait économiser 3 000 $ d'impôts.
+
+    ## 1. La moitié de la SE tax
+
+    L'IRS vous permet de déduire 50 % de votre SE tax du revenu brut avant le calcul
+    de l'impôt sur le revenu. Si votre SE tax est de 12 240 $, vous déduisez
+    6 120 $. C'est automatique : pas besoin de justificatifs.
+
+    ## 2. Déduction pour bureau à domicile
+
+    **Méthode simplifiée** : 5 $ par pied carré d'espace de bureau dédié (1 500 $ max)
+    **Méthode des frais réels** : proratiser les dépenses du logement (prêt ou
+    loyer, énergie, assurance) selon la part du logement utilisée exclusivement
+    pour l'activité.
+
+    Le bureau doit servir *régulièrement et exclusivement* à l'activité : un bureau
+    dans un salon partagé ne compte pas.
+
+    ## 3. Primes d'assurance santé
+
+    Si vous payez votre propre assurance santé (pas via le contrat de l'employeur
+    de votre conjoint), 100 % des primes sont déductibles du revenu brut (et pas
+    seulement en déduction détaillée). Cela inclut les assurances dentaire et
+    optique.
+
+    ## 4. Épargne retraite
+
+    - **SEP-IRA** : jusqu'à 25 % des revenus nets d'indépendant, 69 000 $ max (2024)
+    - **Solo 401(k)** : 23 000 $ en part salarié + 25 % en part employeur
+    - **Roth IRA** : 7 000 $ de versement, non déductible mais à croissance exonérée
+
+    SEP-IRA et Solo 401(k) sont les déductions les plus puissantes pour un
+    freelance. À 100 k$ de bénéfice net, un SEP-IRA versé au maximum fait
+    économiser ~7 000 à 10 000 $ d'impôts.
+
+    ## 5. Matériel et logiciels
+
+    Ordinateurs, appareils photo, micros, abonnements logiciels, services cloud,
+    coworking, livres et formations professionnels : tout est déductible s'il sert
+    à l'activité. La section 179 permet de déduire le coût total dès la première
+    année au lieu de l'amortir.
+
+    ## 6. Services professionnels
+
+    Honoraires comptables et de tenue de livres, frais juridiques liés à
+    l'activité et primes d'assurance responsabilité civile professionnelle sont
+    entièrement déductibles.
+
+    Estimez votre impôt après déductions avec l'[estimateur d'impôts freelance](/tools/freelance-tax-estimator/).
+"employer-payroll-tax-guide-us":
+  "title": "Charges sociales patronales aux États-Unis : guide 2024"
+  "description": "Le guide complet des charges sociales fédérales de l'employeur américain (Social Security, Medicare, FUTA) avec les taux 2024, les plafonds et des exemples de calcul."
+  "body": |
+    Aux États-Unis, l'employeur paie des charges sociales en plus du salaire brut
+    de chaque salarié. Voici ce que vous devez et comment c'est calculé.
+
+    ## Charges sociales fédérales de l'employeur (2024)
+
+    ### Social Security (OASDI) : 6,2 %
+    Taux : 6,2 % sur les salaires jusqu'à 168 600 $ (plafond 2024, à vérifier pour l'année en cours)
+    Le salarié paie aussi 6,2 % ; la FICA totale fait 12,4 %, répartie à parts égales.
+
+    ### Medicare : 1,45 %
+    Taux : 1,45 % sur l'ensemble du salaire, sans plafond.
+    Le salarié paie aussi 1,45 % (+ 0,9 % de Medicare additionnel au-delà de 200 k$, à la charge du salarié seul).
+
+    ### FUTA (taxe chômage fédérale) : 0,6 %
+    Taux : 6,0 % sur les 7 000 premiers dollars de salaire de chaque salarié.
+    La plupart des employeurs bénéficient d'un crédit de 5,4 % pour le paiement de la taxe chômage de l'État (SUTA), ce qui ramène le taux effectif à **0,6 %**.
+
+    ## Exemple de calcul : salaire de 80 000 $
+
+    | Charge | Calcul | Coût employeur |
+    |-----|-------------|--------------|
+    | Social Security | 80 000 $ × 6,2 % | 4 960 $ |
+    | Medicare | 80 000 $ × 1,45 % | 1 160 $ |
+    | FUTA | 7 000 $ × 0,6 % | 42 $ |
+    | **Total** | | **6 162 $** |
+
+    Coût total de l'emploi = 80 000 $ + 6 162 $ = **86 162 $**
+
+    Les taux SUTA varient selon l'État (0,1 % à plus de 10 %) et l'historique de
+    licenciements. Modélisez toujours à part le taux de votre État.
+
+    Utilisez le [calculateur de charges sociales](/tools/payroll-tax-calculator/)
+    pour calculer le coût employeur de n'importe quel salaire.
+"suta-futa-payroll-taxes-explained":
+  "title": "SUTA et FUTA : les taxes chômage de l'État et fédérale expliquées"
+  "description": "Comment FUTA et SUTA se combinent dans les taxes chômage de l'employeur : taux, assiettes, mécanisme de crédit et ce qui déclenche un ajustement du taux d'expérience."
+  "body": |
+    La plupart des employeurs américains paient deux régimes de taxe chômage en
+    même temps : la FUTA (fédérale) et la SUTA (de l'État). Voici comment ils
+    s'articulent.
+
+    ## FUTA : taxe chômage fédérale
+
+    **Taux** : 6,0 % sur les 7 000 premiers dollars de salaire de chaque salarié.
+    **Taux effectif net** : 0,6 % pour la plupart des employeurs.
+    **Pourquoi plus bas** : les employeurs qui paient la SUTA à temps et en totalité
+    reçoivent un crédit de 5,4 %, ce qui ramène le taux effectif à 0,6 %.
+
+    La FUTA finance le système fédéral d'assurance chômage et les prêts aux
+    programmes des États.
+
+    ## SUTA : taxe chômage de l'État
+
+    Les taux varient selon l'État et le taux d'expérience de l'employeur :
+    - Nouveaux employeurs : en général 1 à 4 % (selon l'État)
+    - Employeurs établis : 0,1 % à plus de 10 % (selon l'historique des demandes)
+    - Assiettes : de 7 000 $ (minimum fédéral) à plus de 62 500 $ (État de Washington)
+
+    ## Le système du taux d'expérience
+
+    Votre taux SUTA est recalculé chaque année selon votre historique de
+    licenciements :
+    - **Peu de licenciements** → le taux baisse (« expérience négative »)
+    - **Beaucoup de licenciements** → le taux monte (« expérience positive » au sens fiscal)
+
+    Les employeurs qui licencient massivement peuvent perdre le crédit FUTA (États
+    à crédit réduit).
+
+    ## L'impact sur les décisions de recrutement
+
+    Avant de licencier, pensez-y : une seule demande d'allocation chômage peut
+    augmenter votre taux SUTA pendant 3 ans ou plus. Pour un salaire de 100 k$
+    avec 2 % de SUTA, une hausse d'un point = ~500 $ par an et par salarié sur
+    l'assiette.
+
+    Utilisez le [calculateur de charges sociales](/tools/payroll-tax-calculator/)
+    pour calculer vos charges fédérales d'employeur. Ajoutez la SUTA à part selon
+    le taux de votre État.
+"vat-on-digital-services":
+  "title": "TVA sur les services numériques : les règles pour le SaaS et le logiciel"
+  "description": "Comment la TVA s'applique aux abonnements SaaS, aux logiciels et aux produits numériques vendus à des clients britanniques et européens, seuil du guichet unique (OSS) compris."
+  "body": |
+    Si vous vendez du SaaS, des licences logicielles ou d'autres services
+    numériques, les règles de TVA sont nettement plus complexes que pour des biens
+    physiques. Voici l'essentiel.
+
+    ## TVA européenne sur les services numériques (« principe de destination »)
+
+    Depuis 2015, les services numériques vendus à des consommateurs européens sont
+    taxés là où se trouve le **client**, pas là où vous êtes établi. Concrètement :
+
+    - Un SaaS américain qui facture un particulier français doit appliquer la TVA française (20 %)
+    - Un SaaS britannique qui facture une entreprise allemande applique 0 % (autoliquidation B2B)
+    - Un développeur australien qui vend une application à des particuliers italiens doit appliquer la TVA italienne (22 %)
+
+    **Seuil OSS de l'UE** : si vos ventes numériques totales aux consommateurs
+    européens dépassent 10 000 € par an, vous devez vous immatriculer à la TVA
+    (localement ou via le guichet unique OSS de l'UE). En dessous, vous pouvez
+    appliquer le taux de votre propre pays.
+
+    ## B2B ou B2C : la distinction cruciale
+
+    Les règles ci-dessus concernent le **B2C** (vente aux particuliers). En **B2B**
+    (vente à d'autres entreprises assujetties), c'est l'autoliquidation qui
+    s'applique :
+    - Vous facturez 0 % (ou sans TVA)
+    - Le client professionnel déclare lui-même la TVA dans son pays
+    - Vous devez obtenir et vérifier son numéro de TVA
+
+    ## Les règles britanniques après le Brexit
+
+    Le Royaume-Uni applique son propre régime de TVA sur les services numériques.
+    Les entreprises non britanniques dont les ventes numériques au Royaume-Uni
+    dépassent 8 818 £ par an doivent s'immatriculer à la TVA britannique
+    (actuellement 20 %) et déposer des déclarations distinctes de celles de l'UE.
+
+    Utilisez notre [calculateur de TVA](/tools/vat-calculator/) pour calculer le
+    bon montant à n'importe quel taux, et vérifiez les seuils en vigueur sur le
+    site de l'administration fiscale de votre pays.
+"vat-rates-by-country-2024":
+  "title": "Taux de TVA par pays en 2024 : Royaume-Uni, UE, Australie, Canada"
+  "description": "La liste complète des taux normaux de TVA/GST par pays en 2024, avec les taux réduits pour les produits essentiels et les règles sur les services numériques."
+  "body": |
+    La TVA, la GST (taxe sur les produits et services) et la sales tax sont toutes
+    des taxes à la consommation, mais leurs taux, règles et noms varient selon les
+    pays. Voici les taux normaux des destinations commerciales les plus courantes.
+
+    ## Taux normaux de TVA/GST en 2024
+
+    | Pays | Taux normal | Taux réduit | Remarques |
+    |---------|--------------|--------------|-------|
+    | Royaume-Uni | 20 % | 5 % | 0 % sur l'alimentation et les articles pour enfants |
+    | Allemagne | 19 % | 7 % | |
+    | France | 20 % | 5,5 % / 10 % | |
+    | Italie | 22 % | 10 % / 5 % | |
+    | Espagne | 21 % | 10 % | |
+    | Pays-Bas | 21 % | 9 % | |
+    | Suède | 25 % | 6 % / 12 % | Le plus élevé de l'UE |
+    | Norvège | 25 % | 15 % | Hors UE |
+    | Australie | GST 10 % | N/A | Taux unique |
+    | Canada | GST 5 % | N/A | Plus la PST provinciale |
+    | Nouvelle-Zélande | GST 15 % | N/A | |
+    | Inde | GST 18 % | 5 % / 12 % | Plusieurs tranches |
+    | États-Unis | 0 % (fédéral) | — | Sales tax des États uniquement |
+
+    ## Règles de TVA sur les services numériques
+
+    Si vous vendez des produits numériques (logiciels, livres numériques,
+    abonnements SaaS) à des consommateurs européens, vous devez appliquer la TVA
+    au taux du pays du client, pas à celui de votre pays, même si vous êtes établi
+    hors de l'UE. Le guichet unique OSS de l'UE simplifie les choses en permettant
+    de déposer une seule déclaration de TVA européenne.
+
+    Le Royaume-Uni a des règles similaires depuis le Brexit : les entreprises non
+    britanniques qui vendent des services numériques à des consommateurs
+    britanniques doivent s'immatriculer à la TVA britannique si leurs ventes
+    dépassent 8 818 £ par an.
+
+    Utilisez notre [calculateur de TVA](/tools/vat-calculator/) pour ajouter ou
+    retirer la TVA à n'importe quel taux.
+"vat-reverse-charge-b2b-eu-explained":
+  "title": "L'autoliquidation de la TVA pour les ventes B2B dans l'UE, expliquée"
+  "description": "Comment fonctionne l'autoliquidation de la TVA européenne pour les ventes B2B transfrontalières, quand elle s'applique et ce qui doit figurer sur la facture."
+  "body": |
+    Si vous vendez des services numériques ou des biens en B2B à des clients
+    d'autres pays de l'UE, vous avez sans doute vu « autoliquidation » sur un
+    modèle de facture : c'est l'un des points les plus mal compris de la TVA
+    européenne pour les vendeurs hors UE.
+
+    ## Ce que signifie vraiment l'autoliquidation
+
+    Normalement, le vendeur facture la TVA et la reverse à l'administration
+    fiscale. Avec l'autoliquidation, c'est l'**acheteur** qui déclare lui-même la
+    TVA : il l'inscrit sur sa propre déclaration à la fois comme TVA due et (en
+    général) comme TVA déductible, ce qui donne zéro pour une entreprise
+    entièrement assujettie. Le vendeur facture **0 % de TVA**.
+
+    ## Quand elle s'applique
+
+    - La vente est **B2B** (l'acheteur est immatriculé à la TVA dans un autre pays de l'UE)
+    - L'acheteur fournit un **numéro de TVA valide** que vous vérifiez (via le système VIES de l'UE)
+    - Elle ne s'applique **pas** aux ventes B2C, qui suivent les règles européennes
+      de TVA sur les services numériques (taux du pays de l'acheteur)
+
+    ## Ce qui doit figurer sur la facture
+
+    - Les numéros de TVA des deux parties
+    - La mention « Autoliquidation » ou « Autoliquidation de la TVA, article 196 de la directive TVA de l'UE »
+    - Aucun montant de TVA facturé (0 %)
+
+    ## Pourquoi ce mécanisme existe
+
+    L'autoliquidation évite à un vendeur étranger de s'immatriculer à la TVA dans
+    chaque pays acheteur pour ses ventes B2B. Sans elle, un SaaS américain ou
+    britannique vendant à des entreprises dans les 27 États membres aurait besoin
+    de dizaines d'immatriculations locales. La charge de conformité passe à
+    l'acheteur, qui a déjà un numéro de TVA et est le mieux placé pour
+    s'autoliquider correctement.
+
+    ## Ce qui peut mal tourner
+
+    Facturer la TVA alors que l'autoliquidation aurait dû s'appliquer empêche
+    l'acheteur de la récupérer normalement, et vous avez collecté une taxe que
+    vous n'auriez pas dû. À l'inverse, appliquer l'autoliquidation sans vérifier le
+    numéro de TVA de l'acheteur (numéro invalide, acheteur pas réellement
+    immatriculé) peut vous rendre redevable de la TVA que vous auriez dû facturer.
+
+    ## Questions fréquentes
+
+    **Faut-il vérifier le numéro de TVA à chaque fois ?**
+    Oui : utilisez l'outil VIES de l'UE avant chaque nouveau client B2B, et
+    conservez une trace de la vérification dans votre dossier de conformité.
+
+    **Et les ventes depuis le Royaume-Uni après le Brexit ?**
+    Les ventes B2B du Royaume-Uni vers l'UE bénéficient en général toujours d'un
+    traitement à taux zéro similaire, mais les règles britanniques ont divergé du
+    cadre européen : consultez les consignes actuelles du HMRC plutôt que de
+    supposer que les règles de l'UE s'appliquent telles quelles.
+
+    Utilisez le [calculateur de TVA](/tools/vat-calculator/) pour les calculs HT/TTC
+    standards sur les transactions où la TVA s'applique.

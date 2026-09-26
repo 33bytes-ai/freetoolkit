@@ -89,3 +89,29 @@
     Steuern und Ausgaben, nicht die 52 $, die eine naive Division durch 2.080
     Stunden nahelegt. Kalkulierst du mit der ersten Zahl, trägt sich das Geschäft;
     mit der zweiten geht es langsam ein.
+
+"Tax & Compliance":
+  "body": |
+    Steuern sind die Kosten, die bei Preisentscheidungen am häufigsten vergessen
+    werden und am ehesten als unangenehme Überraschung kommen. Diese Rechner
+    liefern Planungsschätzungen, damit das Geld zurückgelegt wird, bevor es
+    ausgegeben ist.
+
+    ## Welcher Rechner passt
+
+    **MwSt.** schlägt die Mehrwertsteuer zu jedem Satz auf oder rechnet sie
+    heraus, auch rückwärts von einem Bruttobetrag. Genau das bringt die meisten
+    durcheinander: 20 % MwSt. herauszurechnen heißt, durch 1,2 zu teilen, nicht
+    20 % abzuziehen. **Freelance-Steuern** schätzt, was Selbstständige von jeder
+    Rechnung zurücklegen sollten. **Lohnabgaben** deckt die Arbeitgeberseite ab,
+    die Erst-Arbeitgeber am meisten überrascht.
+
+    ## Was die Zahlen bedeuten
+
+    Die nützlichste Gewohnheit, die sie fördern: Steuern beim Zahlungseingang
+    zurücklegen, nicht erst bei der Erklärung. Wer als Freelancer 25–30 % jeder
+    Zahlung am Tag des Eingangs auf ein separates Konto überweist, steht nie vor
+    einer Quartalszahlung, die er nicht begleichen kann. Sätze, Schwellen und
+    Freibeträge ändern sich je nach Land und Steuerjahr, und diese Rechner dienen
+    der Planung, nicht der Steuererklärung: Prüf die aktuellen Werte beim
+    Finanzamt oder mit deiner Steuerberatung, bevor du etwas einreichst.

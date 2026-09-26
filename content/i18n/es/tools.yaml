@@ -759,3 +759,139 @@
     Porque la parte de cotizaciones del empleador, los beneficios, el equipo, la
     gestión y el riesgo de huecos de ingresos los asume el freelance y no la
     empresa. Consulta la calculadora de tarifa freelance para el desglose completo.
+
+"freelance-tax-estimator":
+  "body": |
+    Como freelance o contratista independiente en EE. UU., pagas tanto la parte
+    del empleado COMO la del empleador de las cotizaciones de Social Security y
+    Medicare, llamadas en conjunto **self-employment tax (SE tax)**: un 15,3 % del
+    beneficio neto.
+
+    A diferencia de los empleados W-2, nadie te retiene impuestos de tus cobros.
+    Debes hacer pagos estimados trimestrales (15 de abril, 16 de junio, 15 de
+    septiembre y 15 de enero) para evitar las penalizaciones del IRS por pago
+    insuficiente.
+
+    ## Cómo se calculan los impuestos de un freelance
+
+    **Paso 1: beneficio neto** = ingresos brutos − gastos del negocio
+
+    **Paso 2: SE tax** = beneficio neto × 15,3 %
+    (Social Security 12,4 % hasta $168.600 + Medicare 2,9 %, sin límite)
+
+    **Paso 3: deducción de la SE tax** = SE tax × 50 %
+    (Puedes deducir la mitad de la SE tax de la base imponible)
+
+    **Paso 4: base imponible** = beneficio neto − deducción SE + otros ingresos
+
+    **Paso 5: impuesto federal sobre la renta** = tramos marginales de 2024 aplicados a la base imponible
+
+    **Paso 6: pago trimestral** = (SE tax + impuesto federal) ÷ 4
+
+    ## Deducciones clave que reducen la factura
+
+    - **Gastos del negocio**: software, equipos, formación, despacho en casa
+    - **Primas del seguro médico**: totalmente deducibles si pagas tu propia póliza
+    - **Aportaciones a la jubilación**: SEP-IRA (hasta el 25 % del beneficio neto, máx. $69k),
+      Solo 401(k) (hasta $23k como empleado + 25 % como empleador) o Roth IRA ($7k)
+    - **La mitad de la SE tax**: se calcula y deduce automáticamente
+
+    ## La opción de tributar como S-Corp
+
+    A partir de unos $80.000 de beneficio neto, algunos freelancers ahorran
+    eligiendo el estatus de S-Corp. Te pagas un «salario razonable» (sujeto a SE
+    tax) y te llevas el resto como distribución (no sujeta a SE tax). El ahorro
+    puede superar los $5.000 al año, pero exige gestionar nóminas y presentar una
+    declaración adicional. Consulta con un asesor (CPA) antes de decidir.
+
+    ## Preguntas frecuentes
+
+    **¿Cuándo tengo que hacer pagos estimados trimestrales?**
+    Si esperas deber $1.000 o más de impuestos en el año, el IRS exige pagos
+    estimados trimestrales. Los vencimientos son el 15 de abril, 15 de junio,
+    15 de septiembre y 15 de enero. No pagar o pagar de menos conlleva una
+    penalización (actualmente ~8 % anual sobre el importe no pagado).
+
+    **¿Qué gastos puedo deducir como freelance?**
+    Cualquier gasto de negocio ordinario y necesario: despacho en casa (espacio
+    dedicado), software y suscripciones del negocio, formación, equipos, internet
+    (parte profesional), seguro de responsabilidad profesional, honorarios
+    contables y legales, y viajes de negocio.
+"payroll-tax-calculator":
+  "body": |
+    Las cotizaciones del empleador suman aproximadamente un 8–12 % al coste de
+    cada empleado, además de su salario base. Para un empleado de $75.000, eso
+    supone $6.000–$9.000 al año en impuestos obligatorios adicionales.
+
+    ## Cotizaciones del empleador en EE. UU. (2024)
+
+    | Impuesto | Tipo | Base |
+    |----|------|-----------|
+    | Social Security (empleador) | 6,2 % | Primeros $160.200 |
+    | Medicare (empleador) | 1,45 % | Sin límite |
+    | FUTA (desempleo federal) | 0,6 %* | Primeros $7.000 |
+
+    *Después del crédito por el impuesto estatal de desempleo. El tipo FUTA real
+    es del 6 %, reducido con un crédito de hasta el 5,4 %.
+
+    ## Impuestos estatales no incluidos
+
+    Esta calculadora solo cubre las cotizaciones federales. La mayoría de estados
+    tienen además un impuesto estatal de desempleo (SUTA) con tipos del 0,1 % a
+    más del 10 % según el historial del empleador.
+
+    ## Coste total de un empleado
+
+    El coste completo de un empleado incluye:
+    - Salario base
+    - Cotizaciones del empleador (~8–10 %)
+    - Aportación al seguro médico ($5.000–$15.000 al año)
+    - Aportación al 401(k) (3–5 % del salario)
+    - Equipo, software, oficina
+
+    Para presupuestar, calcula **1,25–1,40× el salario base** como coste total.
+"vat-calculator":
+  "body": |
+    Cuando facturas a un cliente de un país con IVA (Reino Unido, UE, Australia,
+    etc.), necesitas saber si tu precio es sin IVA (neto) o con IVA (bruto) y
+    calcular el otro. Equivocarte de sentido significa cobrar de menos al cliente
+    o asumir el impuesto sin querer.
+
+    Esta calculadora funciona en los dos sentidos:
+
+    **Añadir el impuesto:** precio neto × (1 + tipo) = precio bruto
+    **Quitar el impuesto:** precio bruto ÷ (1 + tipo) = precio neto
+
+    Los tipos estándar vienen precargados para las regiones habituales (Reino
+    Unido: 20 %, UE por defecto: 20 %/23 %, GST de Australia: 10 %, GST de Canadá:
+    5 %, EE. UU.: personalizado). También puedes introducir cualquier tipo.
+
+    ## Conceptos clave
+
+    **Precio neto (sin IVA / sin impuestos):** el precio antes de impuestos. Es lo
+    que ingresas como facturación. El IVA que paga el cliente va a Hacienda, no a
+    ti.
+
+    **Precio bruto (con IVA):** el total que paga el cliente, impuestos incluidos.
+
+    **Umbral de registro de IVA / GST:** en Reino Unido, debes registrarte a
+    efectos de IVA cuando tu facturación sujeta de los últimos 12 meses supera las
+    £90.000 (en 2024). Por debajo, no cobras IVA ni tienes que ingresarlo. El
+    impuesto sobre ventas de EE. UU. no tiene umbral federal y varía según el
+    estado.
+
+    ## Preguntas frecuentes
+
+    **¿Cobro IVA en productos digitales a clientes extranjeros?**
+    Las normas de la UE exigen cobrar el IVA al tipo del país del comprador en las
+    ventas B2C de productos digitales a clientes de la UE (las normas de
+    «servicios digitales» de la UE). Plataformas como Stripe Tax, Paddle y Lemon
+    Squeezy lo gestionan automáticamente como «merchant of record». Las ventas B2B
+    dentro de la UE suelen usar la inversión del sujeto pasivo (el cliente declara
+    el IVA).
+
+    **¿Qué diferencia hay entre IVA e impuesto sobre ventas?**
+    El IVA se recauda en cada fase de la producción y los clientes empresa pueden
+    recuperarlo. El impuesto sobre ventas de EE. UU. solo se cobra en la venta
+    final al por menor y las empresas no pueden recuperarlo. El consumidor final
+    soporta ambos; lo que cambia es la mecánica para las empresas.

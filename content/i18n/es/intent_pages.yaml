@@ -2312,3 +2312,374 @@
 
     Usa la [calculadora de salario a tarifa por hora](/tools/salary-to-hourly-calculator/)
     para modelar tu situación.
+
+"freelance-vs-w2-tax-comparison":
+  "title": "Impuestos freelance frente a empleado W-2: el coste real de ser autónomo"
+  "description": "Cómo se comparan los impuestos de un freelance con los de un empleado W-2: la SE tax del 15,3 % explicada, por qué apartar un 25–30 % y cuándo compensa."
+  "body": |
+    Al comparar un contrato freelance de $100k con un salario de $100k, la opción
+    freelance tiene un coste fiscal bastante mayor, pero también más ingresos antes
+    de deducciones. Esta es la imagen completa.
+
+    ## La diferencia clave: la SE tax
+
+    Un empleado W-2 con $100k paga:
+    - Social Security (6,2 %) + Medicare (1,45 %) = **7,65 %** de su nómina
+    - La empresa paga otro 7,65 % (invisible para el empleado)
+
+    Un freelance con $100k de beneficio neto paga:
+    - Las dos partes: **15,3 %** de SE tax ($15.300)
+    - Puede deducir la mitad ($7.650) de su base imponible
+
+    Así que el autónomo paga ~$7.650 más en cotizaciones que el empleado W-2 con
+    los mismos ingresos.
+
+    ## La diferencia de tipos
+
+    | Ingresos | Empleado W-2 | Freelance |
+    |---|---|---|
+    | $60.000 | ~$9.000 de impuestos en total | ~$16.000 de impuestos en total |
+    | $100.000 | ~$18.000 de impuestos en total | ~$28.000 de impuestos en total |
+    | $150.000 | ~$32.000 de impuestos en total | ~$44.000 de impuestos en total |
+
+    *Estimaciones para declarante individual, deducción estándar y sin otros ingresos.*
+
+    ## Por qué los freelancers suelen salir ganando
+
+    1. **Tarifas brutas más altas**: los contratistas suelen ganar un 20–40 % más
+       que los empleados por un trabajo equivalente (la empresa no paga beneficios).
+    2. **Deducciones**: los gastos del negocio reducen la base imponible por
+       debajo del equivalente W-2.
+    3. **Planes de jubilación**: SEP-IRA y Solo 401(k) permiten proteger mucho más
+       que el límite de $23.000 del 401(k) de un empleado.
+    4. **Flexibilidad**: puedes elegir cuándo reconocer ingresos, diferirlos a años
+       con menos ingresos o adelantar deducciones a años altos.
+
+    ## El análisis de equilibrio
+
+    Si una empresa ofrece $100k en W-2 frente a un contrato freelance de $115k:
+    - SE tax extra ≈ $7.650
+    - Ingresos extra: $15.000
+    - Ventaja neta del freelance: ~$7.350 antes de deducciones
+
+    Suma las deducciones (despacho en casa, seguro médico, jubilación) y la opción
+    freelance de $115k suele quedar bastante por delante de los $100k.
+
+    Calcula tus impuestos de freelance con el [estimador de impuestos freelance](/tools/freelance-tax-estimator/).
+"quarterly-estimated-tax-dates":
+  "title": "Fechas de los pagos trimestrales de impuestos estimados 2024–2025 (guía freelance)"
+  "description": "¿Cuándo vencen los pagos trimestrales de impuestos estimados? Plazos exactos del IRS para 2024 y 2025, reglas de «safe harbor» y qué pasa si te saltas un pago."
+  "body": |
+    El IRS exige a los trabajadores autónomos pagar impuestos estimados cuatro
+    veces al año. Saltarse un plazo conlleva penalizaciones por pago insuficiente,
+    ahora mismo de alrededor del 8 % anual sobre lo que falta.
+
+    ## Vencimientos de 2024
+
+    | Trimestre | Periodo cubierto | Vencimiento |
+    |---|---|---|
+    | T1 | 1 ene – 31 mar | **15 de abril de 2024** |
+    | T2 | 1 abr – 31 may | **17 de junio de 2024** |
+    | T3 | 1 jun – 31 ago | **16 de septiembre de 2024** |
+    | T4 | 1 sep – 31 dic | **15 de enero de 2025** |
+
+    ## Vencimientos de 2025
+
+    | Trimestre | Periodo cubierto | Vencimiento |
+    |---|---|---|
+    | T1 | 1 ene – 31 mar | **15 de abril de 2025** |
+    | T2 | 1 abr – 31 may | **16 de junio de 2025** |
+    | T3 | 1 jun – 31 ago | **15 de septiembre de 2025** |
+    | T4 | 1 sep – 31 dic | **15 de enero de 2026** |
+
+    ## Reglas de «safe harbor»
+
+    Evitas las penalizaciones si pagas:
+    - **Opción A**: el 90 % del impuesto del año en curso, O
+    - **Opción B**: el 100 % del impuesto del año anterior (110 % si tu AGI supera $150.000)
+
+    La opción B es popular entre freelancers con ingresos variables: pagas lo que
+    debiste el año pasado en cuatro plazos iguales, sin tener que prever con
+    precisión los ingresos del año.
+
+    ## Cómo pagar
+
+    Paga en [IRS Direct Pay](https://www.irs.gov/payments/direct-pay) (gratis, sin
+    registro) o mediante EFTPS (Electronic Federal Tax Payment System). La mayoría
+    de estados tienen sus propios pagos estimados con plazos parecidos: consulta la
+    web de la agencia tributaria de tu estado.
+
+    Estima tu pago con el [estimador de impuestos freelance](/tools/freelance-tax-estimator/).
+"self-employment-tax-deductions":
+  "title": "Las principales deducciones fiscales para freelancers y autónomos"
+  "description": "Las deducciones fiscales más valiosas para freelancers: despacho en casa, seguro médico, jubilación, equipos y la deducción de la mitad de la SE tax explicada."
+  "body": |
+    Cada deducción legítima del negocio reduce tu beneficio neto y, con él, tanto
+    tu SE tax (15,3 %) como tu impuesto sobre la renta. Una deducción de $10.000 a
+    un tipo combinado del 30 % ahorra $3.000 en impuestos.
+
+    ## 1. La mitad de la SE tax
+
+    El IRS te permite deducir el 50 % de tu SE tax de los ingresos brutos antes de
+    calcular el impuesto sobre la renta. Si tu SE tax es de $12.240, deduces
+    $6.120. Es automático: no necesitas justificantes.
+
+    ## 2. Deducción por despacho en casa
+
+    **Método simplificado**: $5 por pie cuadrado de espacio de oficina dedicado (máximo $1.500)
+    **Método de gastos reales**: prorratear los gastos de la vivienda (hipoteca o
+    alquiler, suministros, seguro) según el porcentaje de la casa usado
+    exclusivamente para el negocio.
+
+    La oficina debe usarse *de forma regular y exclusiva* para el negocio: un
+    escritorio en un salón compartido no cuenta.
+
+    ## 3. Primas del seguro médico
+
+    Si pagas tu propio seguro médico (no a través del plan de empresa de tu
+    pareja), el 100 % de las primas se deduce de los ingresos brutos (no solo como
+    deducción detallada). Incluye seguros dental y de visión.
+
+    ## 4. Aportaciones a la jubilación
+
+    - **SEP-IRA**: hasta el 25 % de los ingresos netos como autónomo, máximo $69.000 (2024)
+    - **Solo 401(k)**: $23.000 como empleado + 25 % como empleador
+    - **Roth IRA**: $7.000 de aportación; no deducible, pero crece libre de impuestos
+
+    SEP-IRA y Solo 401(k) son las deducciones con más impacto para un freelance.
+    Con $100k de beneficio neto, un SEP-IRA al máximo ahorra ~$7.000–$10.000 en
+    impuestos.
+
+    ## 5. Equipos y software del negocio
+
+    Ordenadores, cámaras, micrófonos, suscripciones de software, servicios cloud,
+    coworking, libros y cursos profesionales: todo es deducible si se usa para el
+    negocio. La sección 179 permite deducir el coste completo el primer año en
+    lugar de amortizarlo.
+
+    ## 6. Servicios profesionales
+
+    Los honorarios de contabilidad, los gastos legales del negocio y las primas
+    del seguro de responsabilidad profesional son totalmente deducibles.
+
+    Estima tus impuestos después de deducciones con el [estimador de impuestos freelance](/tools/freelance-tax-estimator/).
+"employer-payroll-tax-guide-us":
+  "title": "Cotizaciones del empleador en EE. UU.: guía 2024"
+  "description": "Guía completa de las cotizaciones federales del empleador en EE. UU. (Social Security, Medicare, FUTA) con tipos, bases de 2024 y ejemplos de cálculo."
+  "body": |
+    Como empleador en EE. UU., pagas cotizaciones además del salario bruto de cada
+    empleado. Esto es lo que debes y cómo se calcula.
+
+    ## Cotizaciones federales del empleador (2024)
+
+    ### Social Security (OASDI): 6,2 %
+    Tipo: 6,2 % sobre salarios hasta $168.600 (base de 2024; confirma la del año en curso)
+    El empleado también paga un 6,2 %; la FICA total es del 12,4 %, a partes iguales.
+
+    ### Medicare: 1,45 %
+    Tipo: 1,45 % sobre todo el salario, sin límite.
+    El empleado también paga un 1,45 % (+ 0,9 % de Medicare adicional sobre salarios de más de $200k, solo a cargo del empleado).
+
+    ### FUTA (impuesto federal de desempleo): 0,6 %
+    Tipo: 6,0 % sobre los primeros $7.000 del salario de cada empleado.
+    La mayoría de empleadores reciben un crédito del 5,4 % por pagar el impuesto estatal de desempleo (SUTA), lo que reduce el tipo efectivo al **0,6 %**.
+
+    ## Ejemplo de cálculo: salario de $80.000
+
+    | Impuesto | Cálculo | Coste para el empleador |
+    |-----|-------------|--------------|
+    | Social Security | $80.000 × 6,2 % | $4.960 |
+    | Medicare | $80.000 × 1,45 % | $1.160 |
+    | FUTA | $7.000 × 0,6 % | $42 |
+    | **Total** | | **$6.162** |
+
+    Coste laboral total = $80.000 + $6.162 = **$86.162**
+
+    Los tipos SUTA varían según el estado (0,1 %–más del 10 %) y el historial de
+    despidos. Modela siempre aparte el tipo de tu estado.
+
+    Usa la [calculadora de cotizaciones del empleador](/tools/payroll-tax-calculator/)
+    para calcular el coste de cualquier salario.
+"suta-futa-payroll-taxes-explained":
+  "title": "SUTA y FUTA: los impuestos de desempleo estatal y federal explicados"
+  "description": "Cómo se combinan FUTA y SUTA en los impuestos de desempleo del empleador: tipos, bases, mecánica del crédito y qué provoca un ajuste por historial."
+  "body": |
+    La mayoría de empleadores en EE. UU. pagan dos sistemas de impuestos de
+    desempleo a la vez: FUTA (federal) y SUTA (estatal). Así interactúan.
+
+    ## FUTA: impuesto federal de desempleo
+
+    **Tipo**: 6,0 % sobre los primeros $7.000 del salario de cada empleado.
+    **Tipo efectivo neto**: 0,6 % para la mayoría de empleadores.
+    **Por qué es más bajo**: los empleadores que pagan la SUTA a tiempo y completa
+    reciben un crédito del 5,4 %, que reduce el tipo efectivo al 0,6 %.
+
+    La FUTA financia el sistema federal de seguro de desempleo y los préstamos a
+    los programas estatales.
+
+    ## SUTA: impuesto estatal de desempleo
+
+    Los tipos varían según el estado y el historial del empleador:
+    - Empleadores nuevos: normalmente 1–4 % (según el estado)
+    - Empleadores consolidados: del 0,1 % a más del 10 % (según el historial de prestaciones)
+    - Bases salariales: desde $7.000 (mínimo federal) hasta más de $62.500 (estado de Washington)
+
+    ## El sistema de calificación por historial
+
+    Tu tipo SUTA se recalcula cada año según tu historial de despidos:
+    - **Pocos despidos** → el tipo baja («experiencia negativa»)
+    - **Muchos despidos** → el tipo sube («experiencia positiva» en sentido fiscal)
+
+    Los empleadores con despidos masivos pueden perder el crédito FUTA (estados con
+    reducción de crédito).
+
+    ## Impacto en las decisiones de contratación
+
+    Antes de despedir, ten en cuenta que una sola solicitud de prestación puede
+    subir tu tipo SUTA durante 3 años o más. Con un salario de $100k y un 2 % de
+    SUTA, subir un punto = ~$500 al año por empleado sobre la base.
+
+    Usa la [calculadora de cotizaciones del empleador](/tools/payroll-tax-calculator/)
+    para calcular tus cotizaciones federales. Añade la SUTA aparte según el tipo
+    de tu estado.
+"vat-on-digital-services":
+  "title": "IVA en servicios digitales: normas para SaaS y empresas de software"
+  "description": "Cómo se aplica el IVA a las suscripciones SaaS, el software y los productos digitales vendidos a clientes de Reino Unido y la UE, incluido el umbral de la ventanilla única (OSS)."
+  "body": |
+    Si vendes SaaS, licencias de software u otros servicios digitales, las normas
+    de IVA son bastante más complejas que con bienes físicos. Esto es lo que
+    necesitas saber.
+
+    ## IVA de la UE en servicios digitales (el «principio de destino»)
+
+    Desde 2015, los servicios digitales vendidos a consumidores de la UE tributan
+    donde está el **cliente**, no donde estás tú. Esto significa que:
+
+    - Una SaaS estadounidense que cobra a un consumidor francés debe aplicar el IVA francés (20 %)
+    - Una SaaS británica que cobra a una empresa alemana aplica el 0 % (inversión del sujeto pasivo B2B)
+    - Un desarrollador australiano que vende una app a consumidores italianos debe aplicar el IVA italiano (22 %)
+
+    **Umbral OSS de la UE**: si tus ventas digitales totales a consumidores de la
+    UE superan los 10.000 € al año, debes registrarte a efectos de IVA (en cada
+    país o mediante la ventanilla única OSS de la UE). Por debajo, puedes aplicar
+    el tipo de tu propio país.
+
+    ## B2B o B2C: la distinción clave
+
+    Las normas anteriores se aplican al **B2C** (venta a consumidores). En **B2B**
+    (venta a otras empresas registradas a efectos de IVA) se aplica la inversión
+    del sujeto pasivo:
+    - Facturas al 0 % (o sin IVA)
+    - El cliente empresa declara el IVA en su propio país
+    - Debes obtener y verificar su número de IVA
+
+    ## Normas de Reino Unido tras el Brexit
+
+    Reino Unido tiene su propio régimen de IVA para servicios digitales. Las
+    empresas no británicas con ventas digitales en Reino Unido de más de £8.818 al
+    año deben registrarse en el IVA británico (actualmente del 20 %) y presentar
+    declaraciones separadas de las de la UE.
+
+    Usa nuestra [calculadora de IVA](/tools/vat-calculator/) para calcular el
+    importe correcto a cualquier tipo, y consulta los umbrales vigentes en la web
+    de la administración tributaria de tu país.
+"vat-rates-by-country-2024":
+  "title": "Tipos de IVA por país en 2024: Reino Unido, UE, Australia, Canadá"
+  "description": "Lista completa de tipos generales de IVA/GST por país en 2024, con los tipos reducidos para bienes esenciales y las normas de servicios digitales."
+  "body": |
+    El IVA, el GST (impuesto sobre bienes y servicios) y el impuesto sobre ventas
+    son impuestos al consumo, pero sus tipos, normas y nombres cambian según el
+    país. Estos son los tipos generales de los destinos comerciales más habituales.
+
+    ## Tipos generales de IVA/GST en 2024
+
+    | País | Tipo general | Tipo reducido | Notas |
+    |---------|--------------|--------------|-------|
+    | Reino Unido | 20 % | 5 % | 0 % en alimentación y artículos infantiles |
+    | Alemania | 19 % | 7 % | |
+    | Francia | 20 % | 5,5 % / 10 % | |
+    | Italia | 22 % | 10 % / 5 % | |
+    | España | 21 % | 10 % | |
+    | Países Bajos | 21 % | 9 % | |
+    | Suecia | 25 % | 6 % / 12 % | El más alto de la UE |
+    | Noruega | 25 % | 15 % | Fuera de la UE |
+    | Australia | GST 10 % | N/A | Tipo único |
+    | Canadá | GST 5 % | N/A | Más el PST provincial |
+    | Nueva Zelanda | GST 15 % | N/A | |
+    | India | GST 18 % | 5 % / 12 % | Varios tramos |
+    | Estados Unidos | 0 % (federal) | — | Solo impuesto estatal sobre ventas |
+
+    ## Normas de IVA para servicios digitales
+
+    Si vendes productos digitales (software, ebooks, suscripciones SaaS) a
+    consumidores de la UE, debes aplicar el IVA al tipo del país del cliente, no
+    al de tu país, aunque estés fuera de la UE. La ventanilla única OSS de la UE lo
+    simplifica permitiendo presentar una sola declaración de IVA europea.
+
+    Reino Unido tiene normas parecidas desde el Brexit: las empresas no británicas
+    que venden servicios digitales a consumidores británicos deben registrarse en
+    el IVA británico si sus ventas superan £8.818 al año.
+
+    Usa nuestra [calculadora de IVA](/tools/vat-calculator/) para añadir o quitar el
+    IVA a cualquier tipo.
+"vat-reverse-charge-b2b-eu-explained":
+  "title": "La inversión del sujeto pasivo del IVA en ventas B2B en la UE, explicada"
+  "description": "Cómo funciona la inversión del sujeto pasivo del IVA europeo en ventas B2B transfronterizas, cuándo se aplica y qué debe aparecer en la factura."
+  "body": |
+    Si vendes servicios digitales o bienes B2B a clientes de otros países de la UE,
+    seguramente has visto «inversión del sujeto pasivo» en una plantilla de
+    factura: es una de las partes del IVA europeo que peor entienden los
+    vendedores de fuera de la UE.
+
+    ## Qué significa realmente la inversión del sujeto pasivo
+
+    Normalmente, el vendedor cobra el IVA y lo ingresa en Hacienda. Con la
+    inversión del sujeto pasivo, es el **comprador** quien autoliquida el IVA: lo
+    declara en su propia declaración como IVA devengado y (normalmente) como IVA
+    soportado totalmente deducible, lo que da cero para una empresa con plena
+    deducción. El vendedor factura con **0 % de IVA**.
+
+    ## Cuándo se aplica
+
+    - La venta es **B2B** (el comprador está registrado a efectos de IVA en otro país de la UE)
+    - El comprador facilita un **número de IVA válido** que tú verificas (con el sistema VIES de la UE)
+    - **No** se aplica a las ventas B2C, que siguen las normas de IVA de la UE para
+      servicios digitales (tipo del país del comprador)
+
+    ## Qué debe aparecer en la factura
+
+    - Los números de IVA de ambas partes
+    - La mención «Inversión del sujeto pasivo» o «Inversión del sujeto pasivo, artículo 196 de la Directiva del IVA de la UE»
+    - Ningún importe de IVA (0 %)
+
+    ## Por qué existe
+
+    La inversión del sujeto pasivo evita que un vendedor extranjero tenga que
+    registrarse en el IVA de cada país comprador en sus ventas B2B: sin ella, una
+    SaaS estadounidense o británica que vende a empresas de los 27 Estados
+    miembros necesitaría decenas de registros locales. Traslada la carga de
+    cumplimiento al comprador, que ya tiene registro de IVA y es quien mejor puede
+    autoliquidarlo correctamente.
+
+    ## Qué puede salir mal
+
+    Cobrar IVA cuando debía aplicarse la inversión impide que el comprador lo
+    recupere por la vía normal y supone haber cobrado un impuesto que no tocaba. Y
+    al revés: aplicar la inversión sin verificar el número de IVA del comprador
+    (porque es inválido o el comprador no está realmente registrado) puede dejarte
+    como responsable del IVA que deberías haber cobrado.
+
+    ## Preguntas frecuentes
+
+    **¿Tengo que verificar el número de IVA cada vez?**
+    Sí: usa la herramienta VIES de la UE antes de cada nuevo cliente B2B y guarda
+    constancia de la verificación en tu expediente de cumplimiento.
+
+    **¿Y las ventas desde Reino Unido tras el Brexit?**
+    Las ventas B2B de Reino Unido a la UE suelen seguir teniendo un tratamiento
+    similar a tipo cero, pero las normas británicas se han separado del marco
+    europeo: consulta las indicaciones actuales de HMRC en lugar de dar por hecho
+    que las normas de la UE se aplican sin cambios.
+
+    Usa la [calculadora de IVA](/tools/vat-calculator/) para los cálculos habituales
+    con y sin IVA en las operaciones en las que sí se aplica.
