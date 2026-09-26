@@ -1897,3 +1897,461 @@ how-to-improve-fcf-margin:
 "stripe-fees-uk":
   "title": "Frais Stripe au Royaume-Uni : tarifs, exemples et net versé"
   "description": "Les frais Stripe exacts pour les entreprises au Royaume-Uni : 1,5 % + 0,20 £ pour les cartes émises au Royaume-Uni et dans l'EEE, avec des exemples chiffrés."
+
+"fixed-price-vs-time-and-materials-quoting":
+  "title": "Forfait ou régie : comment choisir"
+  "description": "Les compromis entre devis au forfait et facturation en régie pour un freelance, qui porte le risque dans chaque modèle, et comment choisir le bon pour chaque projet."
+  "body": |
+    Les deux grands modèles de tarification freelance placent le risque à des
+    endroits différents. Choisir le mauvais pour un projet donné, c'est soit
+    laisser de l'argent sur la table, soit travailler des heures supplémentaires
+    non payées.
+
+    ## Le compromis de fond
+
+    **Forfait** : vous annoncez un prix unique pour des livrables définis. Si le
+    projet prend plus de temps que prévu, vous absorbez le surplus. S'il en prend
+    moins, vous gardez la différence.
+
+    **Régie (temps passé)** : vous facturez les heures réellement travaillées à
+    votre taux. Le client porte le risque d'un périmètre qui prend plus de temps
+    que prévu ; vous êtes payé pour chaque heure, quel que soit l'écart entre
+    estimation et réalité.
+
+    ## Quand le forfait fonctionne bien
+
+    - Le périmètre est clairement défini et peu susceptible de changer
+    - Vous avez déjà mené des projets similaires et disposez de données fiables pour estimer
+    - Le client veut une certitude budgétaire et accepte de la payer
+    - Vous pouvez intégrer une marge pour imprévus (généralement 20 à 30 %) pour absorber un dépassement raisonnable
+
+    ## Quand la régie est préférable
+
+    - Les besoins évoluent encore ou sont réellement inconnus au départ (phases de
+      cadrage, R&D, nouveaux domaines)
+    - La collaboration est continue, façon abonnement, plutôt qu'un livrable ponctuel
+    - Le client a besoin de souplesse pour changer de cap sans renégocier le
+      contrat à chaque fois
+
+    ## L'approche hybride
+
+    Beaucoup de freelances chiffrent au forfait une phase bien définie (le cadrage
+    ou la construction d'un MVP, par exemple) puis passent en régie pour la suite
+    une fois les besoins stabilisés. Le risque du forfait se limite ainsi à la
+    partie du projet que l'on sait vraiment estimer.
+
+    ## La psychologie du prix compte aussi
+
+    Certains clients préfèrent fermement le forfait quels que soient les
+    compromis, parce qu'il correspond à leur façon de budgéter en interne : une
+    proposition en régie bien argumentée peut perdre face à un concurrent au
+    forfait pour cette seule raison. Tenez compte de la préférence du client, pas
+    seulement du type de projet, pour choisir le modèle à mettre en avant.
+
+    ## Questions fréquentes
+
+    **Puis-je passer d'une régie à un forfait plus tard ?**
+    Oui : une fois que vous connaissez assez bien un client, son périmètre
+    habituel et sa façon de demander des changements, vous pouvez chiffrer les
+    phases suivantes avec bien plus d'assurance qu'au début.
+
+    **Comment gérer la dérive du périmètre sur un projet au forfait ?**
+    Définissez explicitement les livrables dans le contrat et traitez tout ce qui
+    en sort comme un avenant chiffré à part. Convenez de ce processus avant de
+    commencer, pas une fois la dérive installée.
+
+    Utilisez le [calculateur de devis freelance](/tools/freelance-project-estimate/)
+    pour construire un devis au forfait à partir de votre taux horaire, de vos
+    heures estimées et d'une marge pour imprévus.
+"freelance-hourly-rate-calculator-guide":
+  "title": "Fixer son taux horaire freelance : combien facturer en 2024"
+  "description": "Comment calculer un taux horaire freelance durable qui couvre impôts, protection sociale, temps administratif non payé et laisse de la place pour l'épargne, selon le métier et le marché."
+  "body": |
+    L'erreur de tarification freelance la plus courante consiste à partir d'une
+    comparaison avec un salaire. Voici une méthode qui prend en compte tout ce
+    qu'un salaire ne couvre pas.
+
+    ## Le vrai coût du freelance par rapport au salariat
+
+    En freelance, vous ne bénéficiez plus :
+    - Des charges sociales patronales (~8 %)
+    - De l'assurance santé (500 à 1 500 $ par mois)
+    - Des congés payés et jours de maladie (10 à 20 jours par an, soit 4 à 8 % du temps)
+    - De l'abondement retraite 401(k) (3 à 5 % du salaire)
+    - Du bureau et du matériel (variable)
+
+    Ajoutez-les à votre revenu net souhaité pour obtenir le chiffre d'affaires
+    brut nécessaire.
+
+    ## Formule du taux freelance
+
+    **Chiffre d'affaires annuel nécessaire = (revenu net souhaité + impôts + protection sociale + compensation des congés + frais généraux)**
+    **Taux horaire = chiffre d'affaires annuel nécessaire ÷ heures facturables**
+
+    Où heures facturables = heures travaillées × 65–75 % (pour tenir compte de
+    l'administratif, de la prospection et du travail non payé)
+
+    ## Exemple : objectif de 100 k$ net
+
+    | Poste | Montant |
+    |------|--------|
+    | Revenu net souhaité | 100 000 $ |
+    | Cotisations d'indépendant (15,3 %) | 20 000 $ |
+    | Impôt fédéral/État (25 %) | 30 000 $ |
+    | Assurance santé | 12 000 $ |
+    | Congés (3 semaines) | 6 000 $ |
+    | Chiffre d'affaires brut nécessaire | 168 000 $ |
+    | Heures facturables (1 600 h × 70 %) | 1 120 |
+    | **Taux horaire minimum** | **150 $/h** |
+
+    À 150 $ de l'heure et 1 120 heures facturables, vous réalisez 168 k$ de chiffre
+    d'affaires et gardez ~100 k$ net.
+
+    Utilisez le [calculateur de devis freelance](/tools/freelance-project-estimate/)
+    pour construire vos devis à partir de ce taux horaire.
+"how-to-quote-a-freelance-project":
+  "title": "Comment chiffrer un projet freelance : le guide complet"
+  "description": "Un guide pas à pas pour construire un devis freelance qui couvre votre temps, protège votre marge et convainc le client."
+  "body": |
+    Chiffrer précisément un projet freelance est l'une des compétences les plus
+    difficiles à acquérir. Sous-estimez et vous finissez par détester la mission.
+    Surestimez et vous perdez le client. Voici une méthode qui mène à chaque fois à
+    un chiffre défendable et rentable.
+
+    ## Étape 1 : cadrer avant de chiffrer
+
+    N'estimez jamais un temps sans périmètre écrit. Le « site simple » d'un client
+    peut désigner un site statique de 5 pages comme une boutique en ligne de
+    60 pages. Avant d'annoncer le moindre chiffre, notez les livrables, le nombre
+    de tours de révision et ce qui est explicitement hors périmètre.
+
+    ## Étape 2 : estimer les heures, puis multiplier par 1,3 à 1,5
+
+    Mesurez vos heures sur vos projets passés pendant 30 jours. Vous verrez que
+    vous sous-estimez systématiquement de 30 à 50 %. Intégrez cette marge à chaque
+    devis.
+
+    ## Étape 3 : appliquer votre taux
+
+    Votre taux doit couvrir : le revenu net souhaité, les impôts (25 à 35 %), la
+    protection sociale, le temps administratif non payé (20 à 30 % des heures
+    travaillées) et le risque de périodes creuses.
+
+    **Taux freelance minimum = (objectif de revenu annuel + impôts + frais) / heures facturables**
+
+    ## Étape 4 : ajouter des frais de gestion de projet
+
+    Ajoutez 10 à 15 % de gestion de projet en plus du temps de production.
+    Réunions, e-mails, révisions et appels clients sont du vrai travail, même s'ils
+    ressemblent à des frais généraux.
+
+    Utilisez le [calculateur de devis freelance](/tools/freelance-project-estimate/)
+    pour construire votre devis poste par poste.
+"freelance-rate-by-experience":
+  "title": "Taux freelance par niveau d'expérience et par technologie"
+  "description": "Les taux horaires du marché pour les développeurs, designers et consultants freelances, du junior au senior, et comment calculer votre taux minimum viable."
+  "body": |
+    Les taux du marché pour les freelances varient énormément selon la
+    compétence, l'expérience, la technologie et la géographie. Les chiffres
+    ci-dessous proviennent de données agrégées de plateformes freelance,
+    d'enquêtes et de retours directs de praticiens en 2024. Servez-vous-en pour
+    situer votre taux, puis utilisez le calculateur ci-dessus pour trouver le taux
+    minimum qui atteint vos objectifs de revenu.
+
+    ## Taux des développeurs (USD, à distance)
+
+    | Niveau | Dev généraliste | React/Node | Python/ML | Blockchain/Web3 |
+    |-------|------------|-----------|----------|----------------|
+    | Junior (0–2 ans) | 35–60 $ | 45–75 $ | 50–80 $ | 60–100 $ |
+    | Confirmé (2–5 ans) | 60–100 $ | 75–130 $ | 90–150 $ | 100–180 $ |
+    | Senior (5–10 ans) | 100–180 $ | 120–200 $ | 140–220 $ | 180–300 $ |
+    | Principal/Staff | 180–300 $+ | 200–350 $+ | 200–350 $+ | 300–500 $+ |
+
+    ## Taux des designers (USD, à distance)
+
+    | Niveau | Design UI/UX | Marque/Identité | Motion/3D |
+    |-------|-------------|--------------|----------|
+    | Junior | 40–65 $ | 45–70 $ | 50–80 $ |
+    | Confirmé | 70–110 $ | 80–130 $ | 90–150 $ |
+    | Senior | 120–180 $ | 130–200 $ | 150–250 $ |
+
+    ## Taux des consultants / stratégie (USD)
+
+    Les consultants indépendants en stratégie, produit et croissance obtiennent des
+    taux nettement plus élevés en raison de l'impact direct de leur travail sur
+    l'activité :
+
+    | Spécialité | Fourchette horaire |
+    |-----------|------------|
+    | Stratégie produit | 150–350 $ |
+    | Croissance / acquisition payante | 100–250 $ |
+    | Data / analytics | 100–200 $ |
+    | CTO / conseiller technique | 150–400 $ |
+    | DAF à temps partagé | 150–400 $ |
+
+    ## Pourquoi votre taux minimum ne doit pas ancrer votre taux réel
+
+    Le calculateur donne le plancher, le taux en dessous duquel vous perdez de
+    l'argent. Votre taux réel doit refléter les taux du marché ci-dessus, plus la
+    prime liée à votre spécialisation. Si le taux du marché pour vos compétences
+    est bien supérieur à votre minimum calculé, facturez le taux du marché. Le
+    calcul du minimum sert à ne jamais sous-facturer, pas à fixer votre plafond.
+"freelance-rate-vs-salary":
+  "title": "Faut-il passer freelance ? Comparer taux freelance et salaire"
+  "description": "La vraie comparaison entre revenu freelance et salaire, en tenant compte des impôts, de la protection sociale, du temps non facturable et de la stabilité des revenus."
+  "body": |
+    La question « faut-il passer freelance ? » est presque toujours mal posée,
+    sous la forme d'une comparaison entre votre salaire actuel et un taux horaire
+    cible. La vraie comparaison est bien plus nuancée.
+
+    ## Ce que votre employeur paie réellement pour vous
+
+    Un salaire de 100 k$ coûte à l'employeur environ 130 à 145 k$ au total :
+
+    | Poste | Coût |
+    |-----------|------|
+    | Salaire | 100 000 $ |
+    | Charges sociales (part patronale, ~7,65 %) | 7 650 $ |
+    | Assurance santé (part employeur) | 8 000–15 000 $ |
+    | Abondement 401k (3–6 %) | 3 000–6 000 $ |
+    | Matériel, bureaux | 3 000–8 000 $ |
+    | Recrutement, intégration, encadrement | 5 000–15 000 $ |
+    | **Coût total employeur** | **~127–152 k$** |
+
+    En freelance, vous supportez vous-même tous ces coûts. Un chiffre d'affaires
+    freelance de 100 k$, avant de les déduire, vaut nettement moins en revenu net
+    qu'un salaire de 100 k$.
+
+    ## Le multiplicateur du temps non facturable
+
+    Un freelance facture en général 50 à 70 % de ses heures travaillées. Les 30 à
+    50 % restants partent en développement commercial, administratif, facturation
+    et périodes creuses entre deux projets. Si vous travaillez 2 000 heures par an
+    et en facturez 65 %, vous disposez de 1 300 heures facturables pour couvrir
+    l'ensemble de vos coûts annuels.
+
+    Utilisez le calculateur de taux freelance ci-dessus pour faire ces calculs
+    dans votre situation : le bon taux dépend de votre objectif de revenu, de
+    votre taux d'imposition et de votre part de temps facturable.
+
+    ## Quand le freelance est financièrement intéressant
+
+    Le freelance bat le salariat financièrement quand :
+    - Votre taux facturable vaut 2,5 à 3 fois le taux horaire salarié équivalent
+    - Vous tenez plus de 60 % de temps facturable toute l'année
+    - Vous accédez à une assurance santé équivalente à un coût raisonnable
+    - Votre travail mobilise des compétences à forte valeur horaire (prime de spécialisation)
+"how-to-raise-your-freelance-rate-with-existing-clients":
+  "title": "Comment augmenter son taux freelance auprès de clients existants"
+  "description": "Une démarche concrète pour augmenter votre taux auprès de clients avec qui vous travaillez déjà, sans perdre la relation : calendrier, formulation et réponse aux objections."
+  "body": |
+    Augmenter votre taux avec un nouveau client est simple : vous annoncez un prix
+    plus élevé. L'augmenter avec quelqu'un avec qui vous travaillez depuis un an
+    est une autre conversation, que la plupart des freelances repoussent bien
+    trop longtemps.
+
+    ## Pourquoi les freelances augmentent trop peu leurs clients existants
+
+    L'aversion à la perte est plus forte que l'inconfort de sous-facturer : perdre
+    un client connu et fiable semble plus risqué que le coût lent et invisible
+    d'être sous-payé mois après mois. Pourtant, un client satisfait de votre
+    travail au taux actuel restera très probablement après une hausse
+    raisonnable ; la peur de le perdre dépasse généralement le risque réel.
+
+    ## Une démarche simple
+
+    1. **Prévenez 60 à 90 jours à l'avance** : le client a le temps de le budgéter,
+       ce qui supprime totalement l'objection « on me l'impose d'un coup »
+    2. **Appuyez-vous sur la valeur, pas sur le coût de la vie** : « mon taux passe
+       à X » passe mieux que « je dois augmenter car mes coûts ont monté », qui
+       ouvre une négociation sur vos dépenses personnelles plutôt que sur la
+       valeur que vous apportez
+    3. **Annoncez, ne demandez pas la permission** : « Mon taux sera de X à partir
+       du [date] » est un fait sur la façon dont vous gérez votre activité, pas une
+       demande que le client peut refuser
+    4. **Tenez bon** : la plupart des clients qui protestent puis restent au
+       nouveau taux respectent ensuite davantage votre temps et vos délais
+
+    ## De combien augmenter, et à quelle fréquence
+
+    Une hausse de 10 à 20 % une ou deux fois par an se défend et fait rarement
+    partir un client à elle seule. Des hausses plus fortes (30 % et plus) se
+    justifient plus facilement avec une nette augmentation du périmètre, de
+    l'expérience ou des résultats démontrés depuis le dernier ajustement.
+
+    ## Répondre aux objections
+
+    Si un client ne peut pas suivre le nouveau taux, c'est une information utile :
+    il a peut-être atteint le plafond de ce qu'il peut vous payer. C'est le signal
+    qu'il faut investir davantage dans des clients capables d'accompagner la
+    hausse de votre taux, plutôt que de rester sous-payé pour garder toutes vos
+    relations existantes.
+
+    ## Questions fréquentes
+
+    **Faut-il augmenter tous les clients en même temps ?**
+    Pas forcément : échelonnez selon les dates de renouvellement des contrats et
+    testez d'abord la hausse avec votre relation la plus solide pour prendre
+    confiance dans la démarche.
+
+    **Et si un client dit qu'un concurrent est moins cher ?**
+    Demandez ce dont il a précisément besoin à ce prix. Souvent, cela montre que
+    la comparaison ne porte pas sur la même chose, ou cela ouvre une discussion
+    sur un périmètre réduit plutôt que sur la fin de la relation.
+
+    Utilisez le [calculateur de taux freelance](/tools/freelance-rate-calculator/)
+    pour vérifier que votre nouveau taux dépasse toujours votre objectif de revenu
+    minimum après impôts et frais.
+"freelance-invoice-best-practices":
+  "title": "Bonnes pratiques de facturation freelance : les mentions à inclure et comment être payé plus vite"
+  "description": "Ce que doit contenir toute facture freelance (mentions obligatoires, conditions de paiement, pénalités de retard) et les techniques éprouvées pour réduire le délai de paiement."
+  "body": |
+    Une facture bien structurée fait deux choses : elle documente clairement ce
+    que vous avez livré, et elle rend le paiement aussi simple que possible pour
+    votre client.
+
+    ## Mentions obligatoires
+
+    Chaque facture doit comporter :
+    - Le nom et l'adresse de votre entreprise (ou votre nom légal si vous êtes entrepreneur individuel)
+    - Le nom et l'adresse de facturation du client
+    - Un numéro de facture (séquentiel, jamais réutilisé)
+    - La date de facture et la date d'échéance
+    - Des lignes détaillées avec quantité, prix unitaire et total de ligne
+    - Le sous-total, la remise éventuelle, la taxe et le total dû
+    - Les instructions de paiement (coordonnées bancaires, PayPal, lien Stripe)
+    - Les pénalités de retard (« 1,5 % par mois sur les sommes impayées »)
+
+    ## Des conditions de paiement qui réduisent les retards
+
+    Le paiement standard à 30 jours est trop lent pour un freelance. Plus efficace :
+    - **14 jours** pour les clients établis qui paient bien
+    - **50 % à la commande, 50 % à la livraison** pour les nouveaux clients ou les gros projets
+    - **7 jours avec 2 % d'escompte pour paiement anticipé** : les clients qui auraient payé en retard paient en avance
+    - **Prélèvement carte avec nouvelle tentative automatique** (via Stripe) pour les clients au forfait récurrent
+
+    ## Les leviers psychologiques qui marchent
+
+    1. **Utilisez des chiffres ronds** pour votre taux et arrondissez aux 5 $ près :
+       plus simple à traiter pour les services comptables
+    2. **Ajoutez un bouton « Payer maintenant »** qui mène à un lien de paiement :
+       vous supprimez une friction
+    3. **Envoyez la facture dans les 24 heures suivant la livraison** : plus c'est
+       récent, plus le paiement est rapide
+    4. **Relancez 7 jours avant l'échéance** : un rappel aimable, pas une traque
+
+    Utilisez le [calculateur de facture](/tools/invoice-total-calculator/) pour
+    calculer votre total avec remises et taxes correctement appliquées.
+"how-to-calculate-invoice-total":
+  "title": "Comment calculer le total d'une facture avec taxes et remises"
+  "description": "Un guide pas à pas pour calculer correctement le total d'une facture : lignes, remises, taxes et pénalités de retard."
+  "body": |
+    Calculer correctement le total d'une facture évite les litiges, garantit que
+    vous encaissez ce qui vous est dû et garde vos créances clients propres.
+
+    ## Formule du total de facture
+
+    **Sous-total** = somme de toutes les lignes (quantité × prix unitaire)
+    **Après remise** = sous-total × (1 − % de remise)
+    **Taxe** = montant après remise × taux de taxe
+    **Total** = montant après remise + taxe
+
+    ## Remise avant ou après taxe ?
+
+    Appliquez toujours la remise au montant hors taxe. La taxe se calcule sur le
+    prix remisé, pas sur le prix d'origine. Certaines juridictions l'exigent
+    explicitement ; appliquer la taxe avant la remise est incorrect et fait payer
+    trop cher votre client.
+
+    ## Quand ajouter des pénalités de retard
+
+    Indiquez les conditions de paiement sur chaque facture (par exemple « 30 jours,
+    pénalité de 1,5 % par mois »). Pénalité = solde impayé × taux mensuel × mois de
+    retard. Une facture de 5 000 $ en retard de 60 jours à 1,5 % par mois =
+    5 000 $ × 1,5 % × 2 = 150 $ de pénalité.
+
+    ## Bonnes pratiques de numérotation
+
+    Utilisez des numéros séquentiels (INV-001, INV-002…) ou préfixés par l'année
+    (2024-INV-001). Ne réutilisez jamais un numéro : cela sème la confusion en
+    comptabilité et peut attirer l'attention en cas de contrôle fiscal.
+
+    Construisez votre facture avec le [calculateur de facture](/tools/invoice-total-calculator/).
+"contractor-vs-employee-hourly-rate":
+  "title": "Prestataire ou salarié : le vrai taux horaire comparé"
+  "description": "Comment comparer à égalité le taux journalier d'un prestataire et le salaire d'un employé : le détail complet du taux horaire, avantages et impôts compris."
+  "body": |
+    Comparer le taux journalier d'un prestataire à un poste salarié revient à
+    comparer des pommes et des poires, sauf si l'on corrige toutes les différences
+    cachées de rémunération totale.
+
+    ## Ce que les salariés ont et pas les prestataires
+
+    | Avantage | Valeur annuelle (estimation) |
+    |---------|------------------------|
+    | Assurance santé payée par l'employeur | 6 000–14 000 $ |
+    | Abondement 401(k) de l'employeur (4 %) sur 75 k$ | 3 000 $ |
+    | Congés payés (15 jours) | ~4 300 $ sur 75 k$ |
+    | Charges sociales (part patronale FICA) | 7,65 % du salaire |
+    | Congés maladie, congé parental | 1 000–5 000 $ |
+
+    L'ensemble des avantages ajoute en général **25 à 40 % au salaire de base**.
+
+    ## Convertir un taux journalier en salaire équivalent
+
+    Un prestataire qui facture 220 jours à 500 $ par jour gagne 110 000 $ bruts. Après :
+    - Cotisations d'indépendant : ~15 000 $
+    - Absence d'avantages employeur : −20 000 $ par rapport au salariat
+    - 20 % de marge pour l'administratif et les périodes creuses
+
+    Valeur salariale équivalente : environ **75 000 à 85 000 $**.
+
+    ## La règle empirique
+
+    **Taux horaire du prestataire ≈ taux horaire salarié équivalent × 1,5 à 2**
+
+    Un salarié à 75 k$ coûte ~36 $ de l'heure en salaire. Un prestataire qui fait
+    un travail équivalent doit facturer 55 à 72 $ de l'heure pour être rémunéré
+    autant, une fois tous les impôts et coûts payés.
+
+    Modélisez vos chiffres exacts avec le [calculateur salaire en taux horaire](/tools/salary-to-hourly-calculator/).
+"salary-to-hourly-conversion-guide":
+  "title": "Salaire en taux horaire : comment bien convertir"
+  "description": "Un guide pas à pas pour convertir un salaire annuel en taux horaire : temps partiel, heures supplémentaires et taux horaire effectif après impôt."
+  "body": |
+    Convertir un salaire annuel en taux horaire paraît simple : on divise par
+    2 080 heures (52 semaines × 40 heures). Mais on obtient un chiffre brut qui
+    ignore congés, jours fériés, coût des avantages et charges sociales. Voici le
+    tableau complet.
+
+    ## Formule de base : salaire ÷ 2 080
+
+    Un salaire de 75 000 $ ÷ 2 080 heures travaillées = **36,06 $ de l'heure brut**.
+
+    C'est le taux qu'un employeur utilise pour calculer les heures supplémentaires
+    et celui qui figure sur la plupart des fiches de paie. Mais ce n'est pas ce que
+    vous gagnez réellement par heure travaillée.
+
+    ## Tenir compte des congés payés
+
+    Avec 15 jours de congés + 10 jours fériés fédéraux = 25 jours non travaillés =
+    200 heures. Vous travaillez 2 080 − 200 = 1 880 heures par an. Votre taux
+    horaire effectif : 75 000 $ ÷ 1 880 = **39,89 $ de l'heure**. Vous êtes aussi
+    payé pour le temps où vous ne travaillez pas, mais si vous voulez savoir ce que
+    vous coûtez par heure productive, c'est ce chiffre qu'il faut prendre.
+
+    ## Taux horaire après impôt
+
+    Avec un taux effectif d'impôt fédéral de 22 % et 6,2 % de FICA :
+    - Salaire net : 75 000 $ × (1 − 0,22 − 0,062) = ~53 850 $
+    - Net horaire (÷ 2 080) : **25,89 $ de l'heure net**
+
+    ## Taux freelance et taux salarié
+
+    Un freelance doit ajouter les cotisations d'indépendant (15,3 %), la
+    protection sociale, le temps administratif non payé et le risque de périodes
+    creuses. Un freelance qui vise l'équivalent de 75 k$ doit en général facturer
+    **55 à 70 $ de l'heure** pour égaler la rémunération totale d'un salarié.
+
+    Utilisez le [calculateur salaire en taux horaire](/tools/salary-to-hourly-calculator/)
+    pour modéliser votre situation.

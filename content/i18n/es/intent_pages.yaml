@@ -1859,3 +1859,456 @@
 "stripe-fees-uk":
   "title": "Comisiones de Stripe en Reino Unido: tarifas, ejemplos y neto recibido"
   "description": "Las comisiones exactas de Stripe para empresas en Reino Unido: 1,5 % + £0,20 para tarjetas emitidas en Reino Unido y el EEE, con ejemplos con números."
+
+"fixed-price-vs-time-and-materials-quoting":
+  "title": "Precio cerrado o por horas: cómo elegir"
+  "description": "Las ventajas e inconvenientes de presupuestar a precio cerrado o por horas como freelance, quién asume el riesgo en cada modelo y cómo elegir el adecuado en cada proyecto."
+  "body": |
+    Los dos modelos de precio freelance más habituales colocan el riesgo en sitios
+    distintos. Elegir el equivocado para un proyecto significa dejar dinero sobre
+    la mesa o trabajar horas extra sin cobrar.
+
+    ## La disyuntiva de fondo
+
+    **Precio cerrado**: presupuestas una cifra para unos entregables definidos. Si
+    el proyecto lleva más tiempo del estimado, absorbes las horas extra. Si lleva
+    menos, te quedas la diferencia.
+
+    **Por horas (tiempo y materiales)**: facturas las horas reales a tu tarifa. El
+    cliente asume el riesgo de que el trabajo lleve más de lo previsto; cobras cada
+    hora, sea cual sea la diferencia entre estimación y realidad.
+
+    ## Cuándo funciona bien el precio cerrado
+
+    - El alcance está bien definido y es poco probable que cambie
+    - Has hecho proyectos parecidos y tienes datos fiables para estimar
+    - El cliente quiere certeza de presupuesto y está dispuesto a pagarla
+    - Puedes incluir un colchón de imprevistos (normalmente del 20–30 %) para absorber desviaciones razonables
+
+    ## Cuándo es mejor por horas
+
+    - Los requisitos aún cambian o son realmente desconocidos al principio (fases
+      de descubrimiento, I+D, ámbitos nuevos)
+    - La colaboración es continua, tipo iguala, más que un entregable concreto
+    - El cliente necesita flexibilidad para cambiar de rumbo sin renegociar el
+      contrato cada vez
+
+    ## El enfoque híbrido
+
+    Muchos freelancers presupuestan a precio cerrado una fase bien definida (por
+    ejemplo, el descubrimiento o la construcción de un MVP) y pasan a facturar por
+    horas el trabajo continuo cuando los requisitos se estabilizan. Así limitan el
+    riesgo del precio cerrado a la parte del proyecto que pueden estimar con
+    confianza.
+
+    ## La psicología del precio también cuenta
+
+    Algunos clientes prefieren el precio cerrado por encima de todo porque encaja
+    con cómo presupuestan internamente: incluso una propuesta por horas bien
+    argumentada puede perder frente a un competidor con precio cerrado solo por
+    eso. Ten en cuenta la preferencia del cliente, no solo el tipo de proyecto,
+    para decidir con qué modelo abrir.
+
+    ## Preguntas frecuentes
+
+    **¿Puedo pasar de por horas a precio cerrado más adelante?**
+    Sí: cuando llevas tiempo suficiente con un cliente para conocer su alcance
+    habitual y su forma de pedir cambios, puedes presupuestar las fases
+    siguientes con mucha más seguridad que al principio.
+
+    **¿Cómo gestiono la ampliación de alcance en un proyecto de precio cerrado?**
+    Define los entregables de forma explícita en el contrato y trata todo lo que
+    quede fuera como una orden de cambio presupuestada aparte. Acordad ese proceso
+    antes de empezar, no cuando el alcance ya haya crecido.
+
+    Usa la [calculadora de presupuesto freelance](/tools/freelance-project-estimate/)
+    para crear un presupuesto de precio cerrado a partir de tu tarifa por hora,
+    tus horas estimadas y un colchón de imprevistos.
+"freelance-hourly-rate-calculator-guide":
+  "title": "Cómo fijar tu tarifa freelance por hora: cuánto cobrar en 2024"
+  "description": "Cómo calcular una tarifa freelance por hora sostenible que cubra impuestos, beneficios, tiempo administrativo no pagado y deje margen para ahorrar, según el puesto y el mercado."
+  "body": |
+    El error de precio más común en freelance es partir de una comparación con un
+    salario. Este es un método que tiene en cuenta todo lo que un salario no
+    cubre.
+
+    ## El coste real de ser freelance frente a ser empleado
+
+    Como freelance dejas de recibir:
+    - Cotizaciones a cargo del empleador (~8 %)
+    - Seguro médico ($500–$1.500 al mes)
+    - Vacaciones y bajas pagadas (10–20 días al año = 4–8 % del tiempo)
+    - Aportación al plan de pensiones 401(k) (3–5 % del salario)
+    - Oficina y equipo (variable)
+
+    Súmalos a los ingresos netos que quieres para obtener la facturación bruta
+    necesaria.
+
+    ## Fórmula de la tarifa freelance
+
+    **Facturación anual necesaria = (ingresos netos deseados + impuestos + beneficios + compensación de vacaciones + gastos generales)**
+    **Tarifa por hora = facturación anual necesaria ÷ horas facturables**
+
+    Donde horas facturables = horas de trabajo × 65–75 % (para cubrir
+    administración, ventas y trabajo no pagado)
+
+    ## Ejemplo: objetivo de $100k netos
+
+    | Concepto | Importe |
+    |------|--------|
+    | Ingresos netos deseados | $100.000 |
+    | Cotizaciones de autónomo (15,3 %) | $20.000 |
+    | Impuesto federal/estatal (25 %) | $30.000 |
+    | Seguro médico | $12.000 |
+    | Vacaciones (3 semanas) | $6.000 |
+    | Facturación bruta necesaria | $168.000 |
+    | Horas facturables (1.600 h × 70 %) | 1.120 |
+    | **Tarifa mínima por hora** | **$150/h** |
+
+    A $150 la hora y 1.120 horas facturables, facturas $168k y te quedan ~$100k
+    netos.
+
+    Usa la [calculadora de presupuesto freelance](/tools/freelance-project-estimate/)
+    para construir presupuestos a partir de esta tarifa por hora.
+"how-to-quote-a-freelance-project":
+  "title": "Cómo presupuestar un proyecto freelance: guía completa"
+  "description": "Guía paso a paso para crear un presupuesto freelance que cubra tu tiempo, proteja tu margen y convenza al cliente."
+  "body": |
+    Presupuestar bien un proyecto freelance es una de las habilidades más difíciles
+    de desarrollar. Si te quedas corto, acabas odiando el trabajo. Si te pasas,
+    pierdes al cliente. Este es un método que te lleva siempre a una cifra
+    defendible y rentable.
+
+    ## Paso 1: define el alcance antes del precio
+
+    Nunca estimes tiempos sin un alcance por escrito. La «web sencilla» de un
+    cliente puede ser una web estática de 5 páginas o una tienda online de 60.
+    Antes de decir ninguna cifra, apunta los entregables, las rondas de revisión y
+    lo que queda explícitamente fuera.
+
+    ## Paso 2: estima las horas y multiplica por 1,3–1,5
+
+    Registra tus horas en proyectos durante 30 días. Verás que subestimas de forma
+    sistemática un 30–50 %. Incluye ese margen en cada presupuesto.
+
+    ## Paso 3: aplica tu tarifa
+
+    Tu tarifa debe cubrir: los ingresos netos que quieres, los impuestos (25–35 %),
+    los beneficios sociales, el tiempo administrativo no pagado (20–30 % de las
+    horas de trabajo) y el riesgo de periodos sin clientes.
+
+    **Tarifa freelance mínima = (objetivo de ingresos anuales + impuestos + costes) / horas facturables**
+
+    ## Paso 4: añade una tarifa de gestión de proyecto
+
+    Suma un 10–15 % de gestión de proyecto al tiempo de producción. Reuniones,
+    emails, revisiones y llamadas con el cliente son trabajo real aunque parezcan
+    gastos generales.
+
+    Usa la [calculadora de presupuesto freelance](/tools/freelance-project-estimate/)
+    para construir tu presupuesto por componentes.
+"freelance-rate-by-experience":
+  "title": "Tarifas freelance por nivel de experiencia y tecnología"
+  "description": "Tarifas por hora de mercado para desarrolladores, diseñadores y consultores freelance en niveles junior, medio y senior, y cómo calcular tu tarifa mínima viable."
+  "body": |
+    Las tarifas de mercado de los freelancers varían muchísimo según la
+    habilidad, la experiencia, la tecnología y la geografía. Las cifras de abajo
+    se basan en datos agregados de plataformas freelance, encuestas e información
+    directa de profesionales en 2024. Úsalas como referencia y después usa la
+    calculadora de arriba para encontrar la tarifa mínima que cumple tus objetivos
+    de ingresos.
+
+    ## Tarifas de desarrolladores (USD, en remoto)
+
+    | Nivel | Desarrollo general | React/Node | Python/ML | Blockchain/Web3 |
+    |-------|------------|-----------|----------|----------------|
+    | Junior (0–2 años) | $35–60 | $45–75 | $50–80 | $60–100 |
+    | Medio (2–5 años) | $60–100 | $75–130 | $90–150 | $100–180 |
+    | Senior (5–10 años) | $100–180 | $120–200 | $140–220 | $180–300 |
+    | Principal/Staff | $180–300+ | $200–350+ | $200–350+ | $300–500+ |
+
+    ## Tarifas de diseñadores (USD, en remoto)
+
+    | Nivel | Diseño UI/UX | Marca/Identidad | Motion/3D |
+    |-------|-------------|--------------|----------|
+    | Junior | $40–65 | $45–70 | $50–80 |
+    | Medio | $70–110 | $80–130 | $90–150 |
+    | Senior | $120–180 | $130–200 | $150–250 |
+
+    ## Tarifas de consultoría y estrategia (USD)
+
+    Los consultores independientes de estrategia, producto y crecimiento cobran
+    tarifas bastante más altas por el impacto directo de su trabajo en el negocio:
+
+    | Especialidad | Rango por hora |
+    |-----------|------------|
+    | Estrategia de producto | $150–350 |
+    | Crecimiento / adquisición de pago | $100–250 |
+    | Datos / analítica | $100–200 |
+    | CTO / asesor técnico | $150–400 |
+    | CFO a tiempo parcial | $150–400 |
+
+    ## Por qué tu tarifa mínima no debe anclar tu tarifa real
+
+    La calculadora da el suelo, la tarifa por debajo de la cual pierdes dinero. Tu
+    tarifa real debe reflejar las tarifas de mercado de arriba más la prima por tu
+    especialización. Si la tarifa de mercado para tus habilidades está muy por
+    encima de tu mínimo calculado, cobra la de mercado. El cálculo del mínimo
+    sirve para no cobrar nunca de menos, no para fijar tu techo.
+"freelance-rate-vs-salary":
+  "title": "¿Me hago freelance? Comparar tarifas freelance con el salario de empleado"
+  "description": "La comparación real entre ingresos freelance y salario, teniendo en cuenta impuestos, beneficios, tiempo no facturable y estabilidad de ingresos."
+  "body": |
+    La pregunta «¿me hago freelance?» casi siempre se plantea mal, como una
+    comparación entre tu salario actual y una tarifa por hora objetivo. La
+    comparación real tiene muchos más matices.
+
+    ## Lo que tu empresa paga realmente por ti
+
+    Un salario de $100k le cuesta al empleador unos $130–145k en total:
+
+    | Concepto | Coste |
+    |-----------|------|
+    | Salario | $100.000 |
+    | Cotizaciones (parte del empleador, ~7,65 %) | $7.650 |
+    | Seguro médico (aportación del empleador) | $8.000–15.000 |
+    | Aportación al 401k (3–6 %) | $3.000–6.000 |
+    | Equipo, oficina | $3.000–8.000 |
+    | Selección, incorporación, gestión | $5.000–15.000 |
+    | **Coste total para el empleador** | **~$127–152k** |
+
+    Como freelance asumes todos esos costes tú mismo. Una facturación freelance
+    de $100k, antes de descontarlos, vale bastante menos en ingresos netos que un
+    salario de $100k.
+
+    ## El multiplicador del tiempo no facturable
+
+    Los freelancers suelen facturar el 50–70 % de sus horas de trabajo. El otro
+    30–50 % se va en captar clientes, administración, facturación y tiempos
+    muertos entre proyectos. Si trabajas 2.000 horas al año y facturas el 65 %,
+    tienes 1.300 horas facturables para cubrir todo tu coste anual.
+
+    Usa la calculadora de tarifa freelance de arriba para hacer estas cuentas con
+    tu situación: la tarifa adecuada depende de tu objetivo de ingresos, tu tipo
+    impositivo y tu ocupación facturable.
+
+    ## Cuándo compensa económicamente ser freelance
+
+    Ser freelance supera al empleo en lo económico cuando:
+    - Tu tarifa facturable es 2,5–3 veces tu tarifa por hora equivalente como empleado
+    - Puedes mantener más del 60 % de ocupación facturable todo el año
+    - Accedes a un seguro médico equivalente a un coste razonable
+    - Tu trabajo requiere habilidades con alto valor por hora (prima de especialización)
+"how-to-raise-your-freelance-rate-with-existing-clients":
+  "title": "Cómo subir tu tarifa freelance a clientes actuales"
+  "description": "Un proceso práctico para subir tu tarifa a clientes con los que ya trabajas sin perder la relación: momento, forma de plantearlo y cómo responder a las objeciones."
+  "body": |
+    Subir la tarifa a un cliente nuevo es fácil: simplemente presupuestas más
+    alto. Subírsela a alguien con quien llevas un año trabajando es otra
+    conversación, y la mayoría de freelancers la aplazan mucho más de lo que
+    deberían.
+
+    ## Por qué los freelancers suben poco la tarifa a clientes actuales
+
+    La aversión a la pérdida pesa más que la incomodidad de cobrar de menos:
+    perder a un cliente conocido y fiable parece más arriesgado que el coste lento
+    e invisible de cobrar poco mes tras mes. Pero un cliente contento con tu
+    trabajo a la tarifa actual muy probablemente se quedará tras una subida
+    razonable; el miedo a perderlo suele ser mayor que el riesgo real.
+
+    ## Un proceso sencillo
+
+    1. **Avisa con 60–90 días** — tiempo suficiente para que el cliente lo
+       presupueste, lo que elimina por completo la objeción de «me lo sueltas de
+       golpe»
+    2. **Apóyate en el valor, no en el coste de la vida** — «mi tarifa sube a X»
+       funciona mejor que «necesito subir porque han subido los costes», que
+       invita a negociar tus gastos personales en vez del valor que aportas
+    3. **Comunícalo, no pidas permiso** — «Mi tarifa será X a partir de [fecha]»
+       es un hecho sobre cómo gestionas tu negocio, no una petición que el cliente
+       pueda vetar
+    4. **Mantente firme** — la mayoría de clientes que protestan y luego se quedan
+       con la nueva tarifa respetan más tu tiempo y tus plazos a partir de
+       entonces
+
+    ## Cuánto subir y cada cuánto
+
+    Una subida del 10–20 % una o dos veces al año es defendible y rara vez hace
+    perder un cliente por sí sola. Los saltos mayores (30 % o más) se justifican
+    mejor si van acompañados de un aumento claro de alcance, de seniority o de
+    resultados demostrados desde la última actualización.
+
+    ## Cómo responder a las objeciones
+
+    Si un cliente no puede asumir la nueva tarifa, es información útil: quizá haya
+    llegado al techo de lo que puede pagarte. Es una señal para dedicar más
+    energía a clientes que puedan crecer con tu tarifa, en vez de seguir cobrando
+    poco para conservar todas tus relaciones actuales.
+
+    ## Preguntas frecuentes
+
+    **¿Subo la tarifa a todos los clientes a la vez?**
+    No necesariamente: escalónalo según la fecha de renovación de cada contrato y
+    prueba primero con tu relación más sólida para ganar confianza en el proceso.
+
+    **¿Y si un cliente dice que un competidor cobra menos?**
+    Pregúntale qué necesita exactamente a ese precio. A menudo queda claro que no
+    se comparan cosas equivalentes, o se abre una conversación sobre reducir el
+    alcance en lugar de perder la relación.
+
+    Usa la [calculadora de tarifa freelance](/tools/freelance-rate-calculator/)
+    para confirmar que tu nueva tarifa sigue superando tu objetivo de ingresos
+    mínimos después de impuestos y gastos.
+"freelance-invoice-best-practices":
+  "title": "Buenas prácticas de facturación freelance: qué incluir y cómo cobrar antes"
+  "description": "Lo que debe incluir toda factura freelance (datos obligatorios, condiciones de pago, recargos por demora) y técnicas probadas para reducir los días hasta el cobro."
+  "body": |
+    Una factura bien estructurada hace dos cosas: documenta con claridad lo que
+    entregaste y hace que pagar sea lo más fácil posible para tu cliente.
+
+    ## Datos obligatorios de la factura
+
+    Toda factura debe incluir:
+    - El nombre y la dirección de tu negocio (o tu nombre legal si eres autónomo)
+    - El nombre y la dirección de facturación del cliente
+    - Número de factura (correlativo, nunca repetido)
+    - Fecha de emisión y fecha de vencimiento
+    - Líneas detalladas con cantidad, precio y total de cada línea
+    - Subtotal, descuento (si lo hay), impuestos e importe total a pagar
+    - Instrucciones de pago (datos bancarios, PayPal, enlace de Stripe)
+    - Política de recargos por demora («1,5 % mensual sobre saldos vencidos»)
+
+    ## Condiciones de pago que reducen los retrasos
+
+    El pago estándar a 30 días es demasiado lento para un freelance. Más eficaz:
+    - **14 días** para clientes consolidados con buen historial de pago
+    - **50 % al inicio y 50 % a la entrega** para clientes nuevos o proyectos grandes
+    - **7 días con un 2 % de descuento por pronto pago**: los clientes que pagarían tarde pagan antes
+    - **Cobro con tarjeta con reintento automático** (con Stripe) para clientes con iguala mensual
+
+    ## Trucos psicológicos que funcionan
+
+    1. **Usa cifras redondas** en tu tarifa y redondea a múltiplos de $5: es más
+       fácil de procesar para los departamentos de cuentas por pagar
+    2. **Incluye un botón «Pagar ahora»** que lleve a un enlace de pago: eliminas
+       fricción
+    3. **Envía la factura en las 24 horas siguientes a la entrega**: cuanto más
+       reciente, antes se paga
+    4. **Haz seguimiento 7 días antes del vencimiento**: un recordatorio amable, no
+       una persecución
+
+    Usa la [calculadora de factura](/tools/invoice-total-calculator/) para calcular
+    el total con descuentos e impuestos bien aplicados.
+"how-to-calculate-invoice-total":
+  "title": "Cómo calcular el total de una factura con impuestos y descuentos"
+  "description": "Guía paso a paso para calcular bien el total de una factura: líneas, descuentos, impuestos y recargos por demora."
+  "body": |
+    Calcular bien el total de una factura evita disputas, asegura que cobras lo
+    que te deben y mantiene limpias tus cuentas por cobrar.
+
+    ## Fórmula del total de la factura
+
+    **Subtotal** = suma de todas las líneas (cantidad × precio unitario)
+    **Tras descuento** = subtotal × (1 − % de descuento)
+    **Impuesto** = importe tras descuento × tipo impositivo
+    **Total** = importe tras descuento + impuesto
+
+    ## ¿Descuento antes o después de impuestos?
+
+    Aplica siempre el descuento sobre la base imponible. El impuesto se calcula
+    sobre el precio con descuento, no sobre el original. Algunas jurisdicciones lo
+    exigen expresamente; aplicar el impuesto antes del descuento es incorrecto y
+    cobra de más a tu cliente.
+
+    ## Cuándo añadir recargos por demora
+
+    Indica las condiciones de pago en cada factura (por ejemplo, «30 días, recargo
+    del 1,5 % mensual»). Recargo = saldo pendiente × tipo mensual × meses de
+    retraso. Una factura de $5.000 con 60 días de retraso al 1,5 % mensual =
+    $5.000 × 1,5 % × 2 = $150 de recargo.
+
+    ## Buenas prácticas de numeración
+
+    Usa números correlativos (INV-001, INV-002…) o con prefijo de año
+    (2024-INV-001). Nunca reutilices un número: crea confusión contable y puede
+    llamar la atención en una inspección fiscal.
+
+    Calcula tu factura con la [calculadora de factura](/tools/invoice-total-calculator/).
+"contractor-vs-employee-hourly-rate":
+  "title": "Contratista o empleado: comparación de la tarifa por hora real"
+  "description": "Cómo comparar en igualdad la tarifa diaria de un contratista y el salario de un empleado: desglose completo de la tarifa por hora con beneficios e impuestos."
+  "body": |
+    Comparar la tarifa diaria de un contratista con un puesto asalariado es como
+    comparar peras con manzanas, salvo que ajustes todas las diferencias ocultas
+    de la retribución total.
+
+    ## Lo que tienen los empleados y no los contratistas
+
+    | Beneficio | Valor anual (estimado) |
+    |---------|------------------------|
+    | Seguro médico pagado por la empresa | $6.000–$14.000 |
+    | Aportación al 401(k) de la empresa (4 %) sobre $75k | $3.000 |
+    | Vacaciones pagadas (15 días) | ~$4.300 sobre $75k |
+    | Cotizaciones (FICA del empleador) | 7,65 % del salario |
+    | Bajas por enfermedad y parentales | $1.000–$5.000 |
+
+    El conjunto de beneficios suele añadir **un 25–40 % sobre el salario base**.
+
+    ## Convertir una tarifa diaria en salario equivalente
+
+    Un contratista que factura 220 días a $500 al día gana $110.000 brutos. Después de:
+    - Cotizaciones de autónomo: ~$15.000
+    - Sin beneficios de empresa: −$20.000 frente a ser empleado
+    - Un 20 % de colchón para administración y periodos sin clientes
+
+    Valor salarial equivalente: aproximadamente **$75.000–$85.000**.
+
+    ## La regla práctica
+
+    **Tarifa por hora del contratista ≈ tarifa por hora equivalente de empleado × 1,5–2**
+
+    Un empleado de $75k cuesta ~$36 la hora en salario. Un contratista que hace un
+    trabajo equivalente necesita cobrar $55–$72 la hora para estar igual de
+    retribuido tras impuestos y costes.
+
+    Modela tus cifras exactas con la [calculadora de salario a tarifa por hora](/tools/salary-to-hourly-calculator/).
+"salary-to-hourly-conversion-guide":
+  "title": "De salario a tarifa por hora: cómo convertirlo bien"
+  "description": "Guía paso a paso para convertir un salario anual en tarifa por hora, incluido el tiempo parcial, las horas extra y la tarifa efectiva después de impuestos."
+  "body": |
+    Convertir un salario anual en tarifa por hora parece sencillo: se divide entre
+    2.080 horas (52 semanas × 40 horas). Pero eso da una cifra bruta que ignora
+    vacaciones, festivos, coste de los beneficios y cotizaciones. Esta es la
+    imagen completa.
+
+    ## Fórmula básica: salario ÷ 2.080
+
+    Un salario de $75.000 ÷ 2.080 horas de trabajo = **$36,06 la hora bruta**.
+
+    Es la tarifa que usa el empleador para calcular las horas extra y la que
+    aparece en la mayoría de nóminas. Pero no es lo que ganas realmente por hora
+    trabajada.
+
+    ## Tener en cuenta las vacaciones pagadas
+
+    Con 15 días de vacaciones + 10 festivos federales = 25 días libres = 200 horas.
+    Trabajas 2.080 − 200 = 1.880 horas al año. Tu tarifa por hora efectiva:
+    $75.000 ÷ 1.880 = **$39,89 la hora**. También te pagan por el tiempo que no
+    trabajas, pero si quieres saber cuánto cuestas por hora productiva, usa esta
+    cifra.
+
+    ## Tarifa por hora después de impuestos
+
+    Con un tipo federal efectivo del 22 % y un 6,2 % de FICA:
+    - Salario neto: $75.000 × (1 − 0,22 − 0,062) = ~$53.850
+    - Neto por hora (÷ 2.080): **$25,89 la hora netos**
+
+    ## Tarifa freelance frente a tarifa de empleado
+
+    Un freelance debe sumar las cotizaciones de autónomo (15,3 %), los
+    beneficios, el tiempo administrativo no pagado y el riesgo de periodos sin
+    clientes. Un freelance que quiere el equivalente a $75k suele tener que cobrar
+    **$55–$70 la hora** para igualar la retribución total de un empleado.
+
+    Usa la [calculadora de salario a tarifa por hora](/tools/salary-to-hourly-calculator/)
+    para modelar tu situación.
