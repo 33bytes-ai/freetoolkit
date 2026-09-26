@@ -126,7 +126,7 @@ def _render_math_expression(expr: str) -> str:
     \\left/\\right — the small subset the content team writes formulas in)
     into plain, readable text. There's no MathJax/KaTeX on this site, so raw
     LaTeX source was rendering verbatim on every tool page with a formula."""
-    expr = expr.replace(r"\%", "%")
+    expr = expr.replace(r"\%", "%").replace(r"\$", "$").replace(r"\&", "&").replace("{,}", ",")
     expr = MATH_TEXT_RE.sub(r"\1", expr)
 
     def frac_repl(m: re.Match) -> str:

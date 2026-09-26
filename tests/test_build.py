@@ -2761,3 +2761,12 @@ def test_widget_tooltips_hold_no_markup():
     for path in sorted((ROOT / "templates" / "widgets").glob("*.html")):
         for tip in re.findall(r'data-tooltip="([^"]*)"', path.read_text()):
             assert not re.search(r"</?[A-Za-z]", tip), f"{path.name}: {tip[:60]}"
+
+
+def test_formulas_render_without_latex_escapes():
+    """Formulas are rendered to plain text (no MathJax), so an escaped \\$ or
+    \\& left in a $$ block showed up literally, e.g. "EV = \\$500M"."""
+    run_build()
+    for page in (DIST / "tools").glob("*/index.html"):
+        for formula in re.findall(r'<div class="ftk-formula">([^<]*)</div>', page.read_text()):
+            assert "\\" not in formula, f"{page.parent.name}: {formula}"
