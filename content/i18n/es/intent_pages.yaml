@@ -2683,3 +2683,731 @@
 
     Usa la [calculadora de IVA](/tools/vat-calculator/) para los cálculos habituales
     con y sin IVA en las operaciones en las que sí se aplica.
+
+"commission-accelerators-explained":
+  "title": "Los aceleradores de comisiones de ventas, explicados"
+  "description": "Cómo funcionan los tramos de aceleradores en los planes de comisiones, por qué existen y cómo modelar la retribución total con distintos niveles de cumplimiento."
+  "body": |
+    Un acelerador es una tasa de comisión más alta que se activa cuando un
+    comercial supera el 100 % de su cuota: es el mecanismo que premia el
+    sobrecumplimiento en lugar de poner techo a las ganancias al alcanzar el
+    objetivo.
+
+    ## Una estructura de aceleradores típica
+
+    | Cumplimiento | Tasa de comisión |
+    |-----------|------------------|
+    | 0–100 % de la cuota | Tasa base (por ejemplo, 10 %) |
+    | 100–150 % de la cuota | 1,5 × la tasa base (15 %) |
+    | Más del 150 % de la cuota | 2 × la tasa base (20 %) |
+
+    Un comercial que cierra justo en su cuota cobra la tasa base sobre todos los
+    ingresos. Uno que cierra al 160 % cobra la tasa base hasta el 100 %, la tasa
+    acelerada en el tramo 100–150 % y la tasa máxima en todo lo que supera el
+    150 %: cada tramo se calcula por separado, sin aplicarse de forma retroactiva
+    al total.
+
+    ## Por qué usar aceleradores en lugar de una tasa fija
+
+    Una tasa fija crea un techo natural a la ambición: una vez alcanzada la cuota,
+    el incentivo marginal para seguir empujando cae mucho si justo después viene
+    otra cuota. Los aceleradores mantienen vivo durante todo el periodo el
+    incentivo de cerrar «una venta más», justo el comportamiento que genera
+    trimestres excepcionales.
+
+    ## La otra cara: los deceleradores
+
+    Algunos planes incluyen lo contrario: una tasa reducida por debajo de un
+    cumplimiento mínimo (por ejemplo, menos del 50 % de la cuota), para evitar que
+    los comerciales aplacen ventas al periodo siguiente cuando saben que no
+    llegarán en el actual. Los deceleradores son menos habituales que los
+    aceleradores y más polémicos, porque también pueden castigar a comerciales por
+    circunstancias ajenas a ellos.
+
+    ## Modelar la retribución total con aceleradores
+
+    Para estimar las ganancias anuales, no multipliques sin más el cumplimiento
+    esperado por la tasa base: calcula la comisión tramo a tramo según el
+    porcentaje de cumplimiento. Un comercial que cierra siempre al 120 % gana
+    bastante más de 1,2 veces la comisión a tasa base cuando se tienen en cuenta
+    los aceleradores.
+
+    ## Preguntas frecuentes
+
+    **¿Los aceleradores se aplican por venta o por periodo?**
+    Casi siempre por periodo (mensual, trimestral o anual) según el cumplimiento
+    acumulado, no por venta individual.
+
+    **¿Son habituales los aceleradores para SDR además de AE?**
+    Menos en SDR, cuya retribución suele depender del pipeline generado y no de los
+    ingresos cerrados, pero cada vez más empresas los usan para premiar a sus
+    mejores SDR igual que a los AE.
+
+    Usa la [calculadora de comisiones](/tools/commission-calculator/) para modelar
+    tu retribución total y tu cumplimiento del OTE con un nivel de ingresos dado.
+"how-to-structure-sales-commission-plan":
+  "title": "Cómo estructurar un plan de comisiones de ventas"
+  "description": "Un buen plan de comisiones alinea los incentivos de los comerciales con los objetivos de ingresos. Sus componentes clave son el OTE, el diseño de la cuota, el calendario de pagos, los aceleradores y las cláusulas de devolución."
+  "body": |
+    Un plan de comisiones que los comerciales entienden y en el que confían es una
+    de las herramientas de crecimiento más potentes. Un plan que los confunde o
+    frustra genera rotación.
+
+    ## Los 5 componentes clave
+
+    **1. OTE y reparto**: define la retribución total al 100 % de la cuota y el reparto fijo/variable. La mayoría de planes de AE en SaaS apuntan a 50/50 en mid-market y 60/40 en enterprise.
+
+    **2. Cuota**: la cuota anual debe ser 4–7 veces el OTE para que el negocio mantenga una economía unitaria sana. Un comercial con $150k de OTE necesita una cuota de $600k–$1M de ARR.
+
+    **3. Calendario de pagos**: pagar a la firma del contrato, a la facturación o al cobro. Los planes a la firma son más sencillos; los planes al cobro protegen frente a malas ventas.
+
+    **4. Aceleradores**: tasas de comisión escalonadas por encima del 100 % de la cuota. Imprescindibles para atraer y retener a los mejores.
+
+    **5. Devoluciones (clawbacks)**: la comisión se devuelve si el cliente se da de baja en 90–180 días. Protege frente a ventas forzadas e incentivos mal alineados.
+
+    ## Errores habituales
+
+    - **Poner techo a las ganancias**: los techos desmotivan a los mejores, que dejan de empujar al alcanzarlo. Los aceleradores funcionan mejor.
+    - **Mecánicas demasiado complejas**: si un comercial no puede calcular su comisión de cabeza, el plan es demasiado complejo.
+    - **Cambios frecuentes**: cambiar la estructura del plan a mitad de año erosiona la confianza. Haz cambios solo al inicio del ejercicio.
+"what-is-on-target-earnings":
+  "title": "¿Qué es el OTE (On-Target Earnings)?"
+  "description": "El OTE (On-Target Earnings) es la retribución anual total de un comercial exactamente al 100 % de su cuota, sumando salario fijo y comisión variable. Es la referencia para diseñar planes de retribución comercial."
+  "body": |
+    El **OTE (On-Target Earnings)** define la retribución total al 100 % de la cuota. Es la cifra que citan los reclutadores y a la que apuntan los comerciales.
+
+    $$\text{OTE} = \text{Salario fijo} + \text{Comisión al 100 \% de la cuota}$$
+
+    ## Repartos del OTE
+
+    La proporción entre fijo y variable en el OTE:
+
+    | Puesto | Reparto habitual | Motivo |
+    |------|--------------|-----------|
+    | SDR / BDR | 70/30 | Se centra en la actividad, no en ingresos cerrados |
+    | Account Executive | 50/50 | Incentivo equilibrado para cerrar |
+    | AE enterprise | 60/40 | Ciclos más largos; más fijo para cubrir huecos |
+    | Responsable de ventas | 60/40 | Premia el rendimiento del equipo |
+
+    ## Aceleradores
+
+    La mayoría de planes bien diseñados incluyen aceleradores por encima del 100 % del OTE: tasas de comisión más altas para los ingresos por encima de la cuota. Estructura habitual:
+    - 0–50 %: 50 % de la tasa estándar
+    - 50–100 %: 100 % de la tasa estándar
+    - 100–125 %: 150 % de la tasa estándar
+    - Más del 125 %: 200 % de la tasa estándar
+
+    Este diseño premia de forma más que proporcional a quienes superan objetivos y retiene a los mejores.
+
+    ## Por qué importa el OTE
+
+    Un comercial que conoce su OTE puede calcular los ingresos necesarios para alcanzar cualquier objetivo de retribución. Usa la calculadora de comisiones para modelar distintos escenarios de cumplimiento antes de aceptar un nuevo puesto.
+"contractor-vs-employee-cost":
+  "title": "Coste de un contratista frente a un empleado: cuándo tiene sentido cada uno"
+  "description": "Un marco financiero para decidir entre contratar a un contratista o a un empleado: comparación del coste completo, cálculo ajustado al riesgo y análisis del punto de equilibrio."
+  "body": |
+    La idea habitual («los contratistas son caros, los empleados salen más baratos
+    a largo plazo») suele ser cierta, pero exige hacer bien las cuentas. Así se
+    compara.
+
+    ## La ecuación de coste básica
+
+    **Coste total del empleado** = salario × 1,25–1,40 (cotizaciones + beneficios)
+
+    **Coste del contratista** = tarifa por hora × horas trabajadas
+
+    Con una tarifa de $100 durante 2.080 horas (jornada completa): $208.000 al año
+
+    Empleado equivalente con $120k de salario, todo incluido: $156.000 al año
+
+    En este caso el empleado sale claramente más barato, pero solo si necesitas a
+    alguien a jornada completa, todo el año y con las mismas habilidades.
+
+    ## Cuándo salen más baratos los contratistas
+
+    1. **Necesidad a tiempo parcial**: menos de 20 horas a la semana (menos de
+       1.040 horas al año); el sobrecoste del empleado se desperdicia en capacidad
+       ociosa.
+
+    2. **Proyecto corto**: 3–6 meses; evitas costes de selección, indemnizaciones
+       y alta de beneficios para un encargo limitado.
+
+    3. **Habilidades especializadas**: un especialista a $200 la hora durante
+       40 horas ($8.000) cuesta menos que contratar a un especialista de $150k al
+       año para un trabajo puntual.
+
+    4. **Rapidez**: un contratista puede empezar en días; un empleado lleva 30–90
+       días de búsqueda e incorporación.
+
+    ## Costes ocultos de empleados y contratistas
+
+    | Factor | Empleado | Contratista |
+    |---|---|---|
+    | Coste de selección | $5k–$30k | Mínimo |
+    | Tiempo de incorporación | 2–6 meses | Días |
+    | Riesgo de indemnización | Sí | No |
+    | Coste de beneficios | $15k–$25k al año | Ninguno |
+    | Carga de gestión | Mayor | Menor |
+    | Cesión de propiedad intelectual | Clara | Requiere contrato |
+    | Riesgo de cumplimiento | Menor (W-2) | Riesgo de clasificación errónea |
+
+    ## La fórmula del punto de equilibrio
+
+    ¿A qué tarifa se iguala un contratista con un empleado?
+
+    **Tarifa de equilibrio del contratista** = (salario × 1,30) ÷ horas necesarias
+
+    Para un empleado de $100k que se necesita 1.040 horas al año: ($130k ÷ 1.040) = **$125 la hora**
+
+    Si el contratista cobra más de $125 la hora por 1.040 horas, el empleado sale
+    más barato en el margen. Si cobra menos, sale más barato el contratista.
+
+    Haz tus cuentas con la [calculadora de coste de un empleado](/tools/employee-cost-calculator/).
+"employee-cost-calculator/employer-payroll-taxes-explained":
+  "title": "Cotizaciones del empleador explicadas: FICA, FUTA y SUTA"
+  "description": "¿Qué son las cotizaciones del empleador en EE. UU.? Tipos y bases de FICA, FUTA y SUTA, y cómo calcular lo que debes como empleador."
+  "body": |
+    Como empleador, pagas tres grandes categorías de cotizaciones sobre el
+    salario de cada empleado. Son aparte de lo que debe el empleado y salen
+    directamente de tu presupuesto.
+
+    ## FICA: Social Security y Medicare
+
+    **Social Security**: 6,2 % sobre salarios hasta $168.600 (base de 2024)
+    **Medicare**: 1,45 % sobre todo el salario (sin límite)
+    **Medicare adicional**: 0,9 % sobre salarios de más de $200.000, pero es la
+    parte del *empleado*, no del empleador
+
+    **FICA total del empleador**: **7,65 %** sobre salarios hasta $168.600 y
+    **1,45 %** por encima.
+
+    Con $100k de salario: FICA = $7.650
+    Con $200k de salario: FICA = ($168.600 × 7,65 %) + ($31.400 × 1,45 %) = $12.898 + $455 = $13.353
+
+    ## FUTA: impuesto federal de desempleo
+
+    **Tipo**: 6 % sobre los primeros $7.000, reducido a un **0,6 % efectivo** para
+    empleadores de estados al corriente con el fondo federal de desempleo (todos
+    salvo unos pocos)
+
+    **Máximo por empleado**: $7.000 × 0,6 % = **$42 al año**
+
+    La FUTA es un coste menor ($42 por empleado), pero hay que declararla cada
+    trimestre y cada año.
+
+    ## SUTA: impuesto estatal de desempleo
+
+    Cada estado fija su base y su tipo:
+    - **California**: 3,4 % sobre los primeros $7.000 (tipo de empleador nuevo)
+    - **Nueva York**: 3,4 % sobre los primeros $12.500
+    - **Texas**: 2,7 % sobre los primeros $9.000
+    - **Florida**: 2,7 % sobre los primeros $7.000
+
+    Los tipos cambian según tu «calificación por historial»: los empleadores con
+    pocos despidos consiguen tipos más bajos con el tiempo.
+
+    ## Referencia rápida: coste para el empleador con salarios habituales
+
+    | Salario | FICA | FUTA | SUTA (media 2,7 %) | Total |
+    |---|---|---|---|---|
+    | $60.000 | $4.590 | $42 | $189 | $4.821 |
+    | $100.000 | $7.650 | $42 | $189 | $7.881 |
+    | $150.000 | $11.475 | $42 | $189 | $11.706 |
+
+    Calcula el coste total de un empleado con la [calculadora de coste de un empleado](/tools/employee-cost-calculator/).
+"true-cost-of-hiring-an-employee":
+  "title": "El coste real de contratar a un empleado: más allá del salario base"
+  "description": "El desglose completo de lo que cuesta de verdad un empleado: cotizaciones, seguro médico, 401k y cómo usar la regla del 1,3x para presupuestar plantilla."
+  "body": |
+    Cuando un candidato pide $120.000 de salario, el coste real para tu empresa
+    está entre $150.000 y $175.000 al año. Aquí tienes el porqué y cómo
+    presupuestarlo.
+
+    ## Todos los costes de un empleado
+
+    ### 1. Salario base
+    La base. Todo lo demás se calcula encima.
+
+    ### 2. Cotizaciones del empleador (7,65–8,5 %)
+
+    - **FICA**: 6,2 % de Social Security (con límite de $168.600 en 2024) + 1,45 % de Medicare (sin límite)
+    - **FUTA**: 0,6 % sobre los primeros $7.000 ≈ $42 por empleado al año
+    - **SUTA**: según el estado y el historial, ~2,7 % de media sobre los primeros $7.000–$56.500
+
+    Con $120k de salario: cotizaciones ≈ $9.640
+
+    ### 3. Seguro médico (la mayor variable)
+
+    Según la encuesta 2024 de la Kaiser Family Foundation:
+    - Cobertura individual: **$8.435 al año** de media a cargo de la empresa
+    - Cobertura familiar: **$17.393 al año** de media a cargo de la empresa
+
+    En una startup que ofrece cobertura individual a toda la plantilla: +$8.435 por empleado
+
+    ### 4. Jubilación
+
+    - Aportación del 4 % al 401(k) sobre $120k = **$4.800 al año**
+    - Algunas empresas ofrecen planes Safe Harbor (3 % no condicionado) = **$3.600 al año**
+
+    ### 5. Otros beneficios
+
+    - Seguro de vida e invalidez: $300–$800 al año
+    - Aportación de la empresa a FSA/HSA: $500–$1.500 al año
+    - Presupuesto de formación: $500–$3.000 al año
+    - Stock options o RSU: muy variable
+
+    ## Las cuentas completas
+
+    | Componente | Importe |
+    |---|---|
+    | Salario base | $120.000 |
+    | Cotizaciones | $9.640 |
+    | Seguro médico (individual) | $8.435 |
+    | Aportación 401(k) (4 %) | $4.800 |
+    | Otros beneficios | $1.000 |
+    | **Total (sin bonus)** | **$143.875** |
+
+    Multiplicador: 1,20x sin bonus, 1,30–1,35x con un bonus del 10–15 %.
+
+    Usa la [calculadora de coste de un empleado](/tools/employee-cost-calculator/)
+    para modelar tus cifras concretas.
+"how-to-calculate-employee-turnover-rate":
+  "title": "Cómo calcular la tasa de rotación de empleados"
+  "description": "La fórmula paso a paso de la tasa de rotación, cómo calcular bien la plantilla media y los errores de cálculo habituales que conviene evitar."
+  "body": |
+    La tasa de rotación es una de las métricas de RR. HH. más fáciles de calcular,
+    y una de las más fáciles de desvirtuar usando la plantilla equivocada como
+    denominador.
+
+    ## La fórmula
+
+    $$\text{Tasa de rotación} = \frac{\text{Bajas}}{\text{Plantilla media}} \times 100$$
+
+    $$\text{Plantilla media} = \frac{\text{Plantilla inicial} + \text{Plantilla final}}{2}$$
+
+    ## Un ejemplo con números
+
+    Empiezas el año con 80 empleados, lo terminas con 100 y 15 personas se
+    marcharon durante el año (bajas voluntarias e involuntarias juntas).
+
+    Plantilla media = (80 + 100) ÷ 2 = 90
+    Tasa de rotación = 15 ÷ 90 × 100 = **16,7 %**
+
+    No es 15 ÷ 100 (plantilla final) ni 15 ÷ 80 (plantilla inicial): usar la media
+    es el método estándar de la SHRM, y pesa más cuanto más rápido creces o te
+    reduces.
+
+    ## Rotación mensual o anual
+
+    Calcular la rotación mensual y multiplicarla por 12 sobrestima la anual,
+    porque no tiene en cuenta el efecto acumulado: el mismo empleado no puede irse
+    dos veces. Para una cifra anual precisa, suma las bajas reales de los 12 meses
+    y divídelas entre la plantilla media de esos 12 meses, en lugar de anualizar la
+    tasa de un solo mes.
+
+    ## Rotación voluntaria e involuntaria
+
+    La tasa total mezcla bajas voluntarias (dimisiones) e involuntarias
+    (despidos, ceses). Síguelas por separado: un pico de bajas voluntarias indica
+    un problema de retención; uno de involuntarias, un problema de selección o de
+    gestión del rendimiento. Mezclarlas oculta qué palanca tocar.
+
+    ## Preguntas frecuentes
+
+    **¿Las jubilaciones cuentan como rotación?**
+    La mayoría de equipos de RR. HH. las cuentan como bajas voluntarias en la tasa
+    bruta, pero las separan en el análisis, porque rara vez se pueden evitar y no
+    indican insatisfacción.
+
+    **¿Qué cuenta como «baja»? ¿Incluye los traslados internos?**
+    No. Los traslados y ascensos internos no son rotación; solo cuentan las
+    personas que dejan la organización por completo.
+
+    Usa la [calculadora de rotación de empleados](/tools/employee-turnover-calculator/)
+    para calcular tu tasa automáticamente a partir de las bajas y la plantilla.
+"employee-turnover-calculator/true-cost-of-employee-turnover":
+  "title": "El coste real de la rotación de empleados"
+  "description": "Por qué sustituir a un empleado cuesta entre el 33 % y el 200 % de su salario anual, qué impulsa ese coste y cómo estimar el impacto financiero total de tu tasa de rotación."
+  "body": |
+    La mayoría de responsables subestiman el coste de la rotación porque solo miran
+    las partidas visibles (portales de empleo, comisiones de agencias) e ignoran
+    los costes ocultos, mucho mayores, de la productividad perdida y la curva de
+    aprendizaje.
+
+    ## Qué compone realmente el coste
+
+    - **Coste de la vacante**: la producción perdida mientras el puesto está vacío,
+      más la carga para los compañeros que cubren el hueco
+    - **Coste de selección**: anuncios, honorarios de agencias (normalmente un
+      15–25 % del salario del primer año con reclutadores externos) y tiempo de
+      entrevistas interno
+    - **Incorporación y formación**: programas de formación y el tiempo que
+      mandos y compañeros dedican a que la nueva persona sea productiva
+    - **Pérdida de productividad en la curva**: una nueva incorporación suele rendir
+      por debajo de su nivel pleno durante 3–6 meses, a veces más en puestos
+      especializados o senior
+
+    ## Las referencias de la SHRM
+
+    La SHRM (Society for Human Resource Management) sitúa el coste total de
+    sustitución en **un 33 % del salario anual en puestos de nivel inicial**, hasta
+    **un 150–200 % en puestos senior o muy especializados**. En un puesto de
+    $70.000, eso son $23.000–$140.000 por salida según la antigüedad.
+
+    ## Por qué esta cifra sorprende a la mayoría de directivos
+
+    La diferencia entre el coste «evidente» (honorarios de selección, quizá
+    $5.000–$10.000) y el real (que incluye meses de productividad por debajo del
+    máximo y el trastorno para el equipo) suele ser de 5 a 10 veces. El coste de la
+    rotación es casi invisible en una cuenta de resultados normal porque se reparte
+    en la masa salarial en lugar de figurar como partida propia.
+
+    ## Convertir la cifra en un caso de negocio para retener talento
+
+    Con una rotación anual del 20 % en un equipo de 50 personas con un salario
+    medio de $80.000, son 10 salidas al año a, siendo prudentes, el 75 % del
+    salario: $600.000 al año. Una iniciativa de retención (mejor incorporación,
+    formación de mandos, revisiones salariales) que baje la rotación al 15 % ahorra
+    $150.000 al año, lo que financia de sobra la mayoría de programas.
+
+    ## Preguntas frecuentes
+
+    **¿Esta estimación incluye las indemnizaciones?**
+    No directamente: la calculadora se centra en el coste de sustitución
+    (selección, vacante, incorporación). Suma aparte las indemnizaciones y la
+    continuidad de beneficios en las salidas involuntarias.
+
+    **¿Es distinto el coste en puestos en remoto?**
+    Los costes de vacante y de curva son parecidos; la selección puede salir más
+    barata (más candidatos, sin reubicación), pero la incorporación suele tardar
+    más sin acompañamiento presencial.
+
+    Usa la [calculadora de rotación de empleados](/tools/employee-turnover-calculator/)
+    para estimar el coste total de la rotación a partir del salario, la plantilla y
+    la tasa de rotación.
+"employee-benefits-cost-calculator":
+  "title": "Coste total de un empleado: beneficios, cotizaciones y costes ocultos que paga la empresa"
+  "description": "Desglose del coste completo de un empleado para la empresa, más allá del salario base: cotizaciones, beneficios, equipo y gastos generales."
+  "body": |
+    El salario base es solo una parte de lo que cuesta un empleado. Para
+    presupuestar y decidir contrataciones necesitas el coste completo.
+
+    ## Componentes del coste para el empleador
+
+    **Costes obligatorios** (por ley):
+    - Social Security: 6,2 % sobre los primeros $168.600
+    - Medicare: 1,45 % (sin límite)
+    - FUTA: 0,6 % sobre los primeros $7.000
+    - Desempleo estatal (SUTA): 0,5–10 % según el estado y el historial
+    - Seguro de accidentes laborales: 0,1–10 % según el sector y el estado
+
+    **Beneficios voluntarios** (empleador típico en EE. UU.):
+    - Seguro médico: $5.000–$15.000 al año por empleado (aportación de la empresa)
+    - Dental/visión: $500–$1.500 al año
+    - Aportación al 401(k): 3–5 % del salario
+    - Seguro de vida: $300–$600 al año
+    - Aportación a HSA: $0–$2.000 al año
+
+    **Equipo y gastos generales**:
+    - Portátil y periféricos: $1.500–$3.500 (anualizado)
+    - Licencias de software (Slack, Zoom, herramientas): $1.000–$3.000 al año
+    - Puesto y oficina: $3.000–$8.000 al año en presencial; ~$0 en remoto
+
+    ## Regla práctica para presupuestar
+
+    Coste total para el empleador = salario base × 1,25–1,45
+
+    Para un salario de $100k: presupuesta $125k–$145k con todo incluido.
+
+    ## La rotación se suma
+
+    Si ese empleado se va, añade un 50–75 % del salario anual como coste de
+    sustitución. Un empleado de $100k que se marcha cuesta otros $50k–$75k
+    sustituirlo.
+
+    Usa la [calculadora del coste de la rotación](/tools/employee-turnover-cost-calculator/)
+    para modelar lo que te cuesta de verdad cada salida.
+"employee-turnover-cost-calculator/true-cost-of-employee-turnover":
+  "title": "El coste real de la rotación de empleados (y cómo reducirlo)"
+  "description": "Desglose basado en estudios de lo que cuesta realmente la rotación: salida, vacante, selección, incorporación y curva de productividad."
+  "body": |
+    Perder a un empleado cuesta entre el 50 % y el 200 % de su salario anual. El
+    rango es tan amplio porque la mayoría de organizaciones solo cuentan los
+    honorarios de selección y se olvidan de todo lo demás.
+
+    ## Los cinco componentes del coste
+
+    **1. Costes de salida** (~4 % del salario)
+    Entrevistas de salida, gestión de RR. HH., finiquito, aumento de la cotización
+    por desempleo.
+
+    **2. Costes de vacante** (coste diario × días hasta cubrir el puesto)
+    El trabajo no se hace (producción perdida) o se reparte entre los compañeros
+    (impuesto oculto sobre la productividad). Tiempo medio para cubrir un puesto:
+    42 días en general; 84 días en puestos senior o especializados.
+
+    **3. Costes de selección** (~15 % del salario)
+    Los honorarios de agencia son del 15–25 % en puestos cualificados. La
+    selección interna supone de media 80–100 horas por contratación, contando
+    búsqueda, criba, entrevistas y ofertas.
+
+    **4. Costes de incorporación** (~12 % del salario)
+    Formación, documentación, tiempo del responsable, alta en sistemas y formación
+    de cumplimiento.
+
+    **5. Curva hasta la productividad** (~25 % del salario)
+    Una nueva incorporación suele alcanzar el 80 % de productividad a los 3–6
+    meses. La diferencia entre el 100 % y el 80 % durante ese periodo es un coste
+    real en tu cuenta de resultados.
+
+    **Total: ~56–60 % del salario anual en un puesto de nivel medio**
+    En puestos senior (dirección y superiores), multiplica por 1,5–2.
+
+    Usa la [calculadora del coste de la rotación](/tools/employee-turnover-cost-calculator/)
+    para modelar lo que te cuesta de verdad cada salida.
+"voluntary-vs-involuntary-turnover-cost":
+  "title": "Rotación voluntaria frente a involuntaria: diferencias de coste"
+  "description": "Por qué la rotación voluntaria y la involuntaria tienen perfiles de coste distintos, y por qué seguirlas por separado cambia lo que conviene arreglar."
+  "body": |
+    El coste total de la rotación sirve como cifra global, pero las salidas
+    voluntarias e involuntarias tienen perfiles de coste bastante distintos y, sobre
+    todo, apuntan a causas de fondo completamente diferentes.
+
+    ## Por qué difiere el perfil de coste
+
+    La **rotación voluntaria** (dimisiones) casi siempre cuesta más por salida. Es
+    más difícil de prever, así que hay menos tiempo para planificar la transición,
+    el traspaso de conocimiento suele ser apresurado o incompleto, y el efecto en la
+    moral del equipo tiende a ser mayor: las salidas voluntarias, sobre todo de
+    buenos profesionales, pueden provocar otras («contagio de la rotación»).
+
+    La **rotación involuntaria** (despidos, ERE) es más previsible y planificable:
+    la organización suele controlar el momento, puede preparar con antelación la
+    transición y el traspaso, y el efecto en la moral puede ser menor si la salida
+    se debió claramente al rendimiento o a la eliminación del puesto.
+
+    ## Qué indica cada tipo
+
+    | Tipo | Causas habituales | Qué arreglar |
+    |------|---------------------|-------------|
+    | Voluntaria | Brecha salarial, mala gestión, falta de carrera, encaje cultural | Programas de retención, formación de mandos, comparación salarial |
+    | Involuntaria | Errores de selección, fallos en la gestión del rendimiento, reestructuración | Proceso de selección, incorporación, claridad del puesto |
+
+    Una tasa voluntaria alta apunta hacia dentro: algo del día a día está echando
+    a la gente. Una tasa involuntaria alta apunta al embudo de selección: se
+    contrata a personas que no encajan con el puesto o las expectativas no se
+    fijaron con claridad desde el principio.
+
+    ## Rotación voluntaria lamentable y no lamentable
+
+    No toda la rotación voluntaria cuesta lo mismo. Perder a un buen profesional
+    («lamentable») supone el coste completo de sustitución más la pérdida de
+    conocimiento e impulso. Perder a alguien de bajo rendimiento que probablemente
+    habría salido de todos modos («no lamentable») tiene un perfil de coste mucho
+    más cercano a una salida involuntaria planificada. Registra esta división si
+    quieres saber cuánto daña de verdad la rotación al negocio.
+
+    ## Preguntas frecuentes
+
+    **¿Los despidos colectivos cuentan igual que los individuales?**
+    Síguelos por separado: los despidos colectivos responden a la estrategia del
+    negocio (reducción de costes, reestructuración) y no al rendimiento individual
+    ni a la calidad de la selección, así que no deben mezclarse en un análisis de
+    errores de contratación.
+
+    **¿Las indemnizaciones cambian la comparación?**
+    Sí: las salidas involuntarias suelen conllevar indemnizaciones que las
+    voluntarias no tienen, lo que compensa en parte los mayores costes indirectos
+    (contagio, traspaso apresurado) típicos de las voluntarias.
+
+    Usa la [calculadora del coste de la rotación](/tools/employee-turnover-cost-calculator/)
+    para estimar el coste total y registra por separado la rotación voluntaria e
+    involuntaria para analizar sus causas.
+"employee-vs-contractor-cost-comparison":
+  "title": "Coste de un empleado frente a un contratista: las cuentas reales"
+  "description": "Comparación financiera entre contratar a un empleado a jornada completa y a un contratista 1099, con el cálculo del punto de equilibrio y los casos en que cada uno sale más barato."
+  "body": |
+    La decisión entre empleado y contratista va más allá de comparar tarifas por
+    hora. Sobre el papel, el empleado cuesta más por hora (cargas del empleador),
+    pero el contratista factura más por hora. El equilibrio depende del puesto, la
+    duración y el coste de los beneficios.
+
+    ## El modelo de coste de un empleado
+
+    Empleado a jornada completa con $120.000 de salario:
+    - Salario: $120.000
+    - Cotizaciones del empleador: ~$9.500
+    - Seguro médico: ~$12.000 (aportación de la empresa)
+    - Aportación al 401k (4 %): $4.800
+    - Otros beneficios: ~$2.000
+    - **Total: ~$148.300 al año = $71,30 la hora** (sobre 2.080 horas)
+
+    Pero las horas de trabajo efectivas son menos. Con 15 días de vacaciones + 10
+    festivos:
+    - 2.080 horas − 200 de vacaciones/festivos = 1.880 horas efectivas
+    - **Coste efectivo: ~$78,90 por hora de trabajo productivo**
+
+    ## El modelo de coste de un contratista
+
+    Contratista 1099 a $95 la hora:
+    - Sin cotizaciones (ahorro de ~8 % frente al empleado)
+    - Sin beneficios
+    - Sin vacaciones pagadas
+    - Sin acciones
+    - **$95 × 2.000 horas = $190.000 al año** (equivalente a jornada completa)
+
+    ## El cálculo del punto de equilibrio
+
+    Tarifa de equilibrio = coste total del empleado / horas trabajadas
+
+    Con $148.300 en total y 2.000 horas facturables: equilibrio = $74,15 la hora.
+
+    Si un contratista cobra más de $74 la hora, el empleado sale más barato (a
+    largo plazo y a jornada completa). Si cobra menos, sale más barato el
+    contratista.
+
+    ## Cuándo es mejor un contratista
+
+    1. **Duración corta** (menos de 12–18 meses): los costes de alta de un
+    empleado (selección, incorporación, indemnización) no compensan en encargos
+    cortos.
+
+    2. **Proyecto concreto**: un rediseño web de 3 meses no necesita una
+    contratación fija.
+
+    3. **Habilidades especializadas**: conocimiento de nicho que usarás durante un
+    periodo definido.
+
+    4. **Trabajo internacional**: contratistas en países con costes más bajos
+    pueden entregar alta calidad con un coste completo bastante menor.
+
+    ## Cuándo es mejor un empleado
+
+    1. **Puesto continuo**: si vas a necesitar a alguien de forma continua durante
+    más de 2 años, el empleo resulta más eficiente en costes.
+
+    2. **Trabajo sobre propiedad intelectual clave**: los empleados ceden
+    automáticamente la PI a la empresa. Los contratistas necesitan cláusulas de
+    cesión explícitas.
+
+    3. **Cultura y gestión**: los empleados están más integrados y son más fáciles
+    de gestionar.
+
+    Usa la [calculadora de coste de nómina](/tools/payroll-cost-calculator/) para
+    calcular el coste exacto para el empleador en cualquier escenario salarial.
+"payroll-cost-calculator/employer-payroll-taxes-explained":
+  "title": "Cotizaciones del empleador explicadas: FICA, FUTA y SUTA"
+  "description": "Guía clara de las cotizaciones que pagan los empleadores en EE. UU. (FICA, FUTA y SUTA), con tipos, bases y cómo minimizar las obligaciones legales."
+  "body": |
+    Todo empleador en EE. UU. paga tres categorías de cotizaciones además del
+    salario del empleado. Son obligatorias, distintas de la retención del impuesto
+    sobre la renta y las paga íntegramente el empleador (no se descuentan de la
+    nómina del empleado).
+
+    ## FICA (Federal Insurance Contributions Act)
+
+    La FICA financia la Social Security y Medicare.
+
+    | Cotización | Tipo del empleador | Base |
+    |---|---|---|
+    | Social Security | 6,2 % | Primeros $168.600 (2024) |
+    | Medicare | 1,45 % | Todo el salario |
+    | **FICA total** | **7,65 %** | |
+
+    Con un salario de $120.000: 7,65 % × $120.000 = **$9.180 al año** de FICA del empleador.
+
+    Nota: el empleado también paga un 7,65 % de FICA (igual que el empleador). Con un
+    empleado de $120k, la FICA total (ambas partes) es de $18.360 al año.
+
+    ## FUTA (Federal Unemployment Tax Act)
+
+    La FUTA financia el seguro federal de desempleo.
+    - Tipo legal: 6,0 % sobre los primeros $7.000 del salario de cada empleado
+    - Tras el crédito por desempleo estatal: 0,6 % efectivo
+    - Máximo por empleado: $7.000 × 0,6 % = **$42 al año**
+
+    La mayoría de empleadores pagan el tipo efectivo del 0,6 %. El crédito se
+    pierde si te retrasas con el impuesto estatal de desempleo.
+
+    ## SUTA (State Unemployment Tax Act)
+
+    La SUTA es el impuesto de desempleo estatal. Los tipos varían mucho:
+
+    | Estado | Tipo de empleador nuevo | Base |
+    |---|---|---|
+    | California | 3,4 % | $7.000 |
+    | Nueva York | 3,6 % | $12.500 |
+    | Texas | 2,7 % | $9.000 |
+    | Florida | 2,7 % | $7.000 |
+    | Washington | 1,0–5,7 % | $67.600 |
+
+    Los tipos cambian según tu «calificación por historial»: los empleadores con
+    menos solicitudes de prestación consiguen tipos más bajos tras 3 o más años de
+    actividad.
+
+    ## Ejemplo de cotizaciones totales
+
+    Empleado en California con $120.000 de salario, empleador nuevo:
+    - FICA: $9.180
+    - FUTA: $42
+    - SUTA: $7.000 × 3,4 % = $238
+    - **Total de cotizaciones del empleador: $9.460** (7,9 % del salario)
+
+    Usa la [calculadora de coste de nómina](/tools/payroll-cost-calculator/) para
+    calcular las cotizaciones totales y el coste para el empleador con cualquier
+    salario y estado.
+"true-cost-of-an-employee":
+  "title": "El coste real de un empleado: lo que pagan de verdad los empleadores"
+  "description": "Desglose completo de lo que cuesta contratar a un empleado a jornada completa en EE. UU. (salario, cotizaciones, beneficios, gastos generales) y la regla práctica de 1,25–1,4x."
+  "body": |
+    Cuando un fundador dice «no puedo permitirme contratar», suele estar
+    comparando el salario con su caja. Pero el coste real de un empleado es un
+    25–40 % mayor que el salario. Esta guía detalla de dónde sale ese coste extra.
+
+    ## Los componentes del coste total para el empleador
+
+    **1. Salario base**: la cifra de la carta de oferta
+
+    **2. Cotizaciones** (obligatorias):
+    - FICA Social Security: 6,2 % del salario (hasta la base máxima)
+    - FICA Medicare: 1,45 % de todo el salario
+    - FUTA: ~$42 por empleado al año tras el crédito estatal
+    - SUTA: del 0,5 % a más del 5 % del salario hasta la base estatal
+
+    **3. Beneficios** (esperados a jornada completa):
+    - Seguro médico: $500–$2.000 al mes de aportación de la empresa
+    - Aportación al 401(k): normalmente un 3–5 % del salario
+    - Dental + visión: $50–$150 al mes
+    - Vacaciones pagadas: coste implícito del tiempo no trabajado (15–25 días al año)
+
+    **4. Gastos generales** (no siempre se calculan explícitamente):
+    - Equipo: $1.500–$5.000 en portátil y accesorios
+    - Licencias de software: $50–$500 al mes por empleado
+    - Oficina: $500–$3.000 al mes por puesto (si aplica)
+    - Selección: normalmente un 15–25 % del salario del primer año (puntual)
+
+    ## La regla de 1,25–1,40× para la mayoría de empleados en EE. UU.
+
+    La mayoría de empleadores usan un multiplicador de 1,25–1,40× para
+    presupuestar.
+
+    | Salario | 1,25× | 1,35× |
+    |---|---|---|
+    | $80.000 | $100.000 | $108.000 |
+    | $120.000 | $150.000 | $162.000 |
+    | $160.000 | $200.000 | $216.000 |
+
+    El rango de 1,35–1,40× es más realista en puestos con paquetes de beneficios
+    completos.
+
+    ## Coste de un contratista frente a un empleado
+
+    Los contratistas 1099 no generan cotizaciones ni obligaciones de beneficios.
+    Pero suelen cobrar un 40–60 % más por hora para compensarlo.
+
+    Regla práctica: si necesitas a alguien menos de 18 meses, un contratista puede
+    salir más barato. Si es más tiempo, un empleado a jornada completa suele ganar
+    en eficiencia de costes.
+
+    Usa la [calculadora de coste de nómina](/tools/payroll-cost-calculator/) para
+    calcular el coste total exacto en cualquier escenario de salario y beneficios.

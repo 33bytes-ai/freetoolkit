@@ -902,3 +902,218 @@
     sie als Vorsteuer zurückholen. Die US-Sales-Tax wird nur beim Endverkauf
     erhoben und ist für Unternehmen nicht erstattungsfähig. Beide trägt der
     Endverbraucher; die Mechanik für Unternehmen ist verschieden.
+
+"commission-calculator":
+  "body": |
+    ## Was ist eine Vertriebsprovision?
+
+    Eine Vertriebsprovision ist eine variable Vergütung, die als Prozentsatz des erzielten Umsatzes gezahlt wird. Sie richtet die Anreize der Vertriebler an den Umsatzzielen des Unternehmens aus.
+
+    $$\text{Provision} = \text{Umsatz} \times \text{Provisionssatz}$$
+
+    ### OTE-Zielerreichung
+
+    Die OTE (On-Target Earnings, Zielvergütung) ist die Gesamtvergütung eines Vertrieblers bei 100 % Quote:
+
+    $$\text{Zielerreichung} = \frac{\text{Gesamtvergütung}}{\text{OTE}} \times 100$$
+
+    ### Übliche Provisionsmodelle im B2B-SaaS
+
+    | Rolle | Üblicher Provisionssatz | OTE-Aufteilung |
+    |------|------------------------|-----------|
+    | Account Executive | 8–12 % des [ARR](/glossary/#arr) | 50/50 fix/variabel |
+    | SDR/BDR (Sales/Business Development Representative) | 4–8 % auf Pipeline | 70/30 fix/variabel |
+    | Vertriebsleitung | 2–4 % auf das Team | 60/40 fix/variabel |
+    | CSM (Customer Success Manager) / Account Manager | 5–10 % auf Expansion | 70/30 fix/variabel |
+
+    ### Akzeleratoren
+
+    Die meisten Pläne haben Akzeleratoren über 100 % OTE: Für Umsatz über der Quote steigt der Provisionssatz. Das belohnt Übererfüllung und hält die besten Vertriebler.
+
+    ### Ratgeber
+
+    - [Was ist OTE (On-Target Earnings)?](/tools/commission-calculator/#what-is-on-target-earnings)
+    - [So strukturierst du einen Provisionsplan für den Vertrieb](/tools/commission-calculator/#how-to-structure-sales-commission-plan)
+"employee-cost-calculator":
+  "body": |
+    Der häufigste Fehler bei der Personalplanung: das Grundgehalt als Kosten
+    anzusetzen. Die echten Arbeitgeberkosten liegen für die meisten
+    US-Wissensarbeiter bei **Grundgehalt × 1,25 bis 1,45**, getrieben durch
+    Pflicht-Lohnabgaben und Zusatzleistungen.
+
+    ## Woraus sich die Gesamtkosten zusammensetzen
+
+    **1. Arbeitgeber-Lohnabgaben (~7,65 %)**
+    - FICA: 6,2 % Social Security (auf die ersten 168.600 $) + 1,45 % Medicare (ohne Obergrenze)
+    - FUTA: effektiv 0,6 % Bundes-Arbeitslosenabgabe (auf die ersten 7.000 $ Lohn)
+    - SUTA: im Schnitt ~2,7 % bundesstaatliche Arbeitslosenabgabe (auf die ersten 7.000–56.500 $, je nach Bundesstaat)
+
+    **2. Krankenversicherung**
+    - Durchschnittliche Arbeitgeberkosten: 8.000–18.000 $ pro Jahr und Angestelltem (KFF-Daten 2024)
+    - Familienversicherung: 14.000–22.000 $ pro Jahr
+    - Einzelversicherung: 7.000–10.000 $ pro Jahr
+
+    **3. Altersvorsorge (optional)**
+    - 401(k)-Zuschuss: meist 3–6 % des Gehalts
+    - Bei 100.000 $ Gehalt und 4 % Zuschuss: 4.000 $ pro Jahr
+
+    **4. Bonus und Beteiligungen**
+    - Zielbonus für Wissensarbeiter: 10–20 % des Fixgehalts
+    - Aktienzuteilungen (RSUs, Restricted Stock Units): 5.000–50.000 $ pro Jahr je nach Level
+
+    ## Die Faustregel 1,25x bis 1,4x
+
+    Ein schnelles Denkmodell: Multipliziere jedes Gehalt mit **1,3**, um die
+    Vollkosten zu schätzen (Abgaben + Krankenversicherung + 401k-Zuschuss, ohne
+    Bonus). Für bonusberechtigte Rollen kommen 15–20 % hinzu.
+
+    | Gehalt | Abgaben (~8 %) | Leistungen (~12 %) | Gesamt (1,2x) | + 10 % Bonus (1,3x) |
+    |---|---|---|---|---|
+    | 80.000 $ | 6.120 $ | 9.600 $ | 95.720 $ | 103.720 $ |
+    | 120.000 $ | 9.180 $ | 14.400 $ | 143.580 $ | 155.580 $ |
+    | 150.000 $ | 11.475 $ | 18.000 $ | 179.475 $ | 194.475 $ |
+
+    ## Auftragnehmer oder Angestellte
+
+    Vergleichst du eine W-2-Einstellung mit einem Auftragnehmer, denk daran, dass
+    dessen Satz eigene Steuern und Leistungen enthält. Ein Auftragnehmer für
+    75 $ pro Stunde ist nicht 1,3-mal teurer als ein Angestellter: Er zahlt seine
+    15,3 % SE Tax und seine Leistungen selbst. Für einen echten Vergleich rechnest
+    du erst die Beschäftigungsnebenkosten auf das Gehalt.
+
+    ## Häufige Fragen
+
+    **Welche Lohnabgaben zahlt der Arbeitgeber?**
+    Arbeitgeber zahlen FICA (7,65 %: 6,2 % Social Security + 1,45 % Medicare),
+    FUTA (effektiv 0,6 % auf die ersten 7.000 $ Lohn) und SUTA
+    (bundesstaatliche Arbeitslosenabgabe, 0,6 % bis 8,5 % je nach Bundesstaat und
+    Einstufung).
+
+    **Was kostet die Krankenversicherung den Arbeitgeber?**
+    Laut der Umfrage 2024 der Kaiser Family Foundation zahlen Arbeitgeber im
+    Schnitt 8.435 $ pro Jahr für eine Einzel- und 17.393 $ pro Jahr für eine
+    Familienversicherung. Nach den Lohnabgaben ist das die größte Variable im
+    Kostenmultiplikator.
+"employee-turnover-calculator":
+  "body": |
+    ## Formel der Fluktuationsrate
+
+    $$\text{Fluktuationsrate} = \frac{\text{Abgänge}}{\text{Durchschnittliche Belegschaft}} \times 100$$
+
+    $$\text{Durchschnittliche Belegschaft} = \frac{\text{Anfangsbestand} + \text{Endbestand}}{2}$$
+
+    ### Branchenrichtwerte
+
+    | Branche | Durchschnittliche jährliche Fluktuation |
+    |----------|------------------------|
+    | Tech / Software | 10–15 % |
+    | Finanzen / Versicherung | 10–15 % |
+    | Gesundheitswesen | 15–25 % |
+    | Einzelhandel | 25–60 % |
+    | Gastronomie & Hotellerie | 50–75 % |
+    | Personaldienstleister | 100 %+ |
+
+    ### Die echten Kosten der Fluktuation
+
+    Die SHRM (Society for Human Resource Management) schätzt die Ersatzkosten je nach Rolle auf 33 % bis 200 % des Jahresgehalts:
+
+    | Rolle | Ersatzkosten |
+    |------|-----------------|
+    | Einstieg / Stundenlohn | 33–50 % des Gehalts |
+    | Fachkraft mittlerer Ebene | 50–100 % des Gehalts |
+    | Senior / spezialisiert | 100–150 % des Gehalts |
+    | Führung / C-Level | 150–200 %+ des Gehalts |
+
+    Dazu zählen: Stellenanzeigen, Personalberater, Interviewzeit, Produktivitätsverlust während der Vakanz, Einarbeitung und Anlaufzeit der neuen Kraft.
+
+    ### Ratgeber
+
+    - [So berechnest du die Fluktuationsrate](/tools/employee-turnover-calculator/#how-to-calculate-employee-turnover-rate)
+    - [Die echten Kosten der Mitarbeiterfluktuation](/tools/employee-turnover-calculator/#true-cost-of-employee-turnover)
+"employee-turnover-cost-calculator":
+  "body": |
+    Mitarbeiterfluktuation gehört zu den am stärksten unterschätzten Kosten im
+    Unternehmen. Studien der SHRM (Society for Human Resource Management) und von
+    Gallup beziffern die echten Ersatzkosten übereinstimmend auf **6–9
+    Monatsgehälter** bei typischen Rollen und bis zu **200 %** bei Senior- oder
+    hochspezialisierten Positionen.
+
+    ## Bestandteile der Fluktuationskosten
+
+    | Bestandteil | Übliche Kosten |
+    |-----------|-------------|
+    | Austritt (HR-Verwaltung, Austrittsgespräch, Abfindung) | 3–5 % des Jahresgehalts |
+    | Vakanz (verlorene Produktivität, solange die Stelle offen ist) | 50–150 % des Tageslohns × Tage |
+    | Recruiting (Jobbörsen, Agenturhonorare, Interviewzeit) | 5–30 % des Jahresgehalts |
+    | Einarbeitung und Schulung | 10–20 % des Jahresgehalts |
+    | Anlaufzeit bis zur vollen Produktivität | 25–50 % des Jahresgehalts × Anlaufmonate |
+
+    ## SHRM-Richtwerte
+
+    - **Einstieg / Stundenlohn**: ~50 % des Jahresgehalts
+    - **Technisch / Fachkraft**: 100–150 % des Jahresgehalts
+    - **Senior / Führung**: 200–400 % des Jahresgehalts
+
+    ## Fluktuationskosten senken
+
+    Hebel mit großer Wirkung: strukturiertes Onboarding (halbiert die Anlaufzeit),
+    Training für Führungskräfte (der wichtigste Grund für freiwillige Kündigungen),
+    marktgerechte Vergütung und Bleibegespräche statt Austrittsgespräche.
+"payroll-cost-calculator":
+  "body": |
+    Einen Mitarbeiter einzustellen kostet deutlich mehr als das angebotene Gehalt.
+    Arbeitgeber zahlen Lohnabgaben, finanzieren Zusatzleistungen und tragen
+    Gemeinkosten, die 20–40 % auf das Grundgehalt aufschlagen. Dieser Rechner
+    beziffert die echten Gesamtkosten.
+
+    ## Was Arbeitgeber an Lohnabgaben zahlen (USA)
+
+    **FICA (Federal Insurance Contributions Act)**
+    - Social Security: 6,2 % des Lohns (auf die ersten 168.600 $ im Jahr 2024)
+    - Medicare: 1,45 % des gesamten Lohns (plus 0,9 % zusätzliche Medicare über 200.000 $)
+    - FICA gesamt: 7,65 % des Lohns
+
+    **FUTA (Bundes-Arbeitslosenabgabe)**
+    - 6,0 % auf die ersten 7.000 $ Lohn, nach Anrechnung der bundesstaatlichen Abgabe 0,6 %
+    - Effektiv: meist 42 $ pro Angestelltem und Jahr nach Anrechnung
+
+    **SUTA (bundesstaatliche Arbeitslosenabgabe)**
+    - Je nach Bundesstaat 0,2 % bis über 8 % auf eine eigene Bemessungsgrundlage (meist die ersten 10.000–40.000 $)
+    - Der Standardsatz für neue Arbeitgeber liegt oft bei 2,7 %
+
+    ## Was Zusatzleistungen Arbeitgeber typischerweise kosten
+
+    | Leistung | Übliche Arbeitgeberkosten |
+    |---|---|
+    | Krankenversicherung (einzeln) | 7.000–15.000 $ pro Jahr |
+    | Krankenversicherung (Familie) | 18.000–28.000 $ pro Jahr |
+    | 401(k)-Zuschuss (3–5 % des Gehalts) | 3.600–6.000 $ bei 120.000 $ Gehalt |
+    | Zahn + Sehen | 600–1.500 $ pro Jahr |
+    | Lebensversicherung | 200–500 $ pro Jahr |
+    | Bezahlter Urlaub (15 Tage) | ~5,8 % des Gehalts an Kosten |
+
+    ## Die Faustregel 1,25–1,40×
+
+    Eine oft zitierte Regel: Gesamtkosten des Arbeitgebers = 1,25–1,40× des
+    Jahresgehalts für US-Vollzeitangestellte mit Standardleistungen. Bei 120.000 $
+    Gehalt:
+    - 1,25×: 150.000 $ Gesamtkosten pro Jahr
+    - 1,35×: 162.000 $ Gesamtkosten pro Jahr
+
+    Höher bei Senior-Angestellten mit umfassenden Leistungen, niedriger bei
+    Auftragnehmern (keine Lohnabgaben bei korrekter Einstufung als 1099).
+
+    ## Kostenvergleich Angestellter und Auftragnehmer
+
+    Auftragnehmer (1099) kosten pro Stunde mehr, verursachen aber keine
+    Lohnabgaben oder Leistungen. Bei 40 Stunden pro Woche liegt die Schwelle hier:
+    - Angestellter mit 120.000 $ = ~58 $ effektive Kosten pro Stunde
+    - Ein Auftragnehmer für 75–90 $ pro Stunde kann mehr kosten, erfordert aber keine langfristige Bindung
+
+    Nutze diesen Rechner zusammen mit dem Freelance-Stundensatz-Rechner, um die
+    Optionen zu vergleichen.
+
+    ## Häufige Fragen
+
+    **Was macht dieser Rechner?**
+    Er berechnet die gesamten Arbeitgeberkosten inklusive Lohnabgaben (FICA, FUTA, SUTA) und Zusatzleistungen.

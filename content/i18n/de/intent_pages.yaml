@@ -2692,3 +2692,729 @@
 
     Nutze den [MwSt.-Rechner](/tools/vat-calculator/) für übliche Brutto-/Netto-
     Rechnungen bei Geschäften, bei denen MwSt. anfällt.
+
+"commission-accelerators-explained":
+  "title": "Provisions-Akzeleratoren im Vertrieb, erklärt"
+  "description": "Wie Akzeleratorstufen in Provisionsplänen funktionieren, warum es sie gibt und wie du die Gesamtvergütung bei verschiedenen Zielerreichungen modellierst."
+  "body": |
+    Ein Akzelerator ist ein höherer Provisionssatz, der greift, sobald ein
+    Vertriebler 100 % seiner Quote übertrifft. Er belohnt Übererfüllung, statt den
+    Verdienst nach Erreichen des Ziels zu deckeln.
+
+    ## Eine typische Akzeleratorstruktur
+
+    | Zielerreichung | Provisionssatz |
+    |-----------|------------------|
+    | 0–100 % der Quote | Basissatz (z. B. 10 %) |
+    | 100–150 % der Quote | 1,5 × Basissatz (15 %) |
+    | Über 150 % der Quote | 2 × Basissatz (20 %) |
+
+    Wer genau die Quote erreicht, bekommt den Basissatz auf den gesamten Umsatz.
+    Wer 160 % erreicht, bekommt den Basissatz bis 100 %, den erhöhten Satz auf das
+    Band 100–150 % und den Höchstsatz auf alles über 150 %. Jedes Band wird separat
+    berechnet und nicht rückwirkend auf die Gesamtsumme angewendet.
+
+    ## Warum Akzeleratoren statt eines festen Satzes
+
+    Ein fester Satz setzt dem Ehrgeiz eine natürliche Grenze: Ist die Quote
+    erreicht, sinkt der Anreiz weiterzumachen deutlich, wenn gleich die nächste
+    Quote ansteht. Akzeleratoren halten den Anreiz für „noch einen Abschluss“ bis
+    zum Periodenende wach, genau das Verhalten, das herausragende Quartale
+    ausmacht.
+
+    ## Die Kehrseite: Dezeleratoren
+
+    Manche Pläne enthalten das Gegenteil: einen reduzierten Satz unterhalb einer
+    Mindestzielerreichung (z. B. unter 50 % der Quote), damit Vertriebler Deals
+    nicht in die nächste Periode schieben, wenn sie die laufende ohnehin verfehlen.
+    Dezeleratoren sind seltener als Akzeleratoren und umstrittener, weil sie auch
+    für Umstände bestrafen können, die der Vertriebler nicht beeinflusst.
+
+    ## Gesamtvergütung mit Akzeleratoren modellieren
+
+    Um den Jahresverdienst zu schätzen, multipliziere nicht einfach die erwartete
+    Zielerreichung mit dem Basissatz, sondern rechne die Provision Band für Band
+    anhand der Zielerreichung. Wer konstant 120 % erreicht, verdient mit
+    Akzeleratoren deutlich mehr als das 1,2-Fache der Basisprovision.
+
+    ## Häufige Fragen
+
+    **Gelten Akzeleratoren pro Deal oder pro Periode?**
+    Fast immer pro Periode (monatlich, vierteljährlich oder jährlich) auf Basis der
+    kumulierten Zielerreichung, nicht pro einzelnem Deal.
+
+    **Sind Akzeleratoren für SDRs so üblich wie für AEs?**
+    Bei SDRs seltener, weil ihre Vergütung meist an generierte Pipeline statt an
+    abgeschlossenen Umsatz gekoppelt ist. Sie werden aber beliebter, weil
+    Unternehmen ihre besten SDRs ähnlich wie AEs belohnen wollen.
+
+    Mit dem [Provisionsrechner](/tools/commission-calculator/) modellierst du deine
+    Gesamtvergütung und OTE-Zielerreichung bei einem bestimmten Umsatz.
+"how-to-structure-sales-commission-plan":
+  "title": "So strukturierst du einen Provisionsplan für den Vertrieb"
+  "description": "Ein gut gestalteter Provisionsplan richtet die Anreize der Vertriebler an den Umsatzzielen aus. Die Kernbestandteile: OTE, Quotendesign, Auszahlungszeitpunkt, Akzeleratoren und Rückforderungsklauseln."
+  "body": |
+    Ein Provisionsplan, den Vertriebler verstehen und dem sie vertrauen, ist einer
+    der stärksten Hebel für Umsatzwachstum. Ein Plan, der verwirrt oder frustriert,
+    erzeugt Fluktuation.
+
+    ## Die 5 Kernbestandteile
+
+    **1. OTE und Aufteilung**: Lege die Gesamtvergütung bei Zielerreichung und die Aufteilung fix/variabel fest. Die meisten SaaS-AE-Pläne zielen auf 50/50 im Mid-Market und 60/40 im Enterprise.
+
+    **2. Quote**: Die Jahresquote sollte das 4- bis 7-Fache der OTE betragen, damit die Unit Economics gesund bleiben. Ein Vertriebler mit 150.000 $ OTE braucht eine Quote von 600.000 $ bis 1 Mio. $ ARR.
+
+    **3. Auszahlungszeitpunkt**: bei Vertragsabschluss, bei Rechnungsstellung oder bei Zahlungseingang. Abschlussbasierte Pläne sind einfacher, zahlungsbasierte schützen vor schlechten Deals.
+
+    **4. Akzeleratoren**: gestaffelte Provisionssätze über 100 % der Quote. Nötig, um Top-Performer zu gewinnen und zu halten.
+
+    **5. Rückforderungen (Clawbacks)**: Die Provision wird zurückgezahlt, wenn ein Kunde innerhalb von 90–180 Tagen kündigt. Das schützt vor erzwungenen Deals und falschen Anreizen.
+
+    ## Häufige Fehler
+
+    - **Verdienstobergrenze**: Deckel demotivieren die Besten, die nach Erreichen des Deckels aufhören. Akzeleratoren sind besser.
+    - **Zu komplexe Mechanik**: Kann ein Vertriebler seine Provision nicht im Kopf ausrechnen, ist der Plan zu kompliziert.
+    - **Häufige Planänderungen**: Strukturänderungen mitten im Jahr zerstören Vertrauen. Ändere nur zu Beginn des Geschäftsjahres.
+"what-is-on-target-earnings":
+  "title": "Was ist OTE (On-Target Earnings)?"
+  "description": "OTE (On-Target Earnings) ist die jährliche Gesamtvergütung eines Vertrieblers bei genau 100 % Zielerreichung, aus Fixgehalt und variabler Provision. Sie ist der Maßstab für die Gestaltung von Vertriebsvergütungsplänen."
+  "body": |
+    **On-Target Earnings (OTE)** bezeichnet die Gesamtvergütung bei 100 % Quote. Es ist die Zahl, die Recruiter nennen und auf die Vertriebler hinarbeiten.
+
+    $$\text{OTE} = \text{Fixgehalt} + \text{Provision bei 100 \% Quote}$$
+
+    ## OTE-Aufteilungen
+
+    Das Verhältnis von Fix- zu variabler Vergütung in der OTE:
+
+    | Rolle | Übliche Aufteilung | Begründung |
+    |------|--------------|-----------|
+    | SDR / BDR | 70/30 | Fokus auf Aktivität, nicht auf abgeschlossenen Umsatz |
+    | Account Executive | 50/50 | Ausgewogener Anreiz zum Abschluss |
+    | Enterprise-AE | 60/40 | Längere Zyklen; mehr Fixgehalt überbrückt Lücken |
+    | Vertriebsleitung | 60/40 | Belohnt die Teamleistung |
+
+    ## Akzeleratoren
+
+    Die meisten gut gestalteten Vergütungspläne haben Akzeleratoren über 100 % OTE: höhere Provisionssätze für Umsatz über der Quote. Übliche Struktur:
+    - 0–50 %: 50 % des Standardsatzes
+    - 50–100 %: 100 % des Standardsatzes
+    - 100–125 %: 150 % des Standardsatzes
+    - Über 125 %: 200 % des Standardsatzes
+
+    So werden Übererfüller überproportional belohnt und Top-Performer gehalten.
+
+    ## Warum die OTE zählt
+
+    Wer seine OTE kennt, kann den Umsatz berechnen, der für jedes Einkommensziel nötig ist. Modelliere mit dem Provisionsrechner verschiedene Szenarien der Zielerreichung, bevor du eine neue Stelle annimmst.
+"contractor-vs-employee-cost":
+  "title": "Kosten von Auftragnehmer und Angestelltem: Wann sich was rechnet"
+  "description": "Ein finanzieller Rahmen für die Wahl zwischen Auftragnehmer und Angestelltem: Vollkostenvergleich, risikobereinigte Rechnung und Gewinnschwellenanalyse."
+  "body": |
+    Die übliche Sicht („Auftragnehmer sind teuer, Angestellte langfristig
+    günstiger“) stimmt oft, verlangt aber saubere Rechnung. So vergleichst du.
+
+    ## Die Grundgleichung der Kosten
+
+    **Gesamtkosten Angestellter** = Gehalt × 1,25–1,40 (Abgaben + Leistungen)
+
+    **Kosten Auftragnehmer** = Stundensatz × gearbeitete Stunden
+
+    Bei 100 $ pro Stunde für 2.080 Stunden (Vollzeit): 208.000 $ pro Jahr
+
+    Vergleichbarer Angestellter mit 120.000 $ Gehalt, alles inklusive: 156.000 $ pro Jahr
+
+    Hier ist der Angestellte klar günstiger, aber nur, wenn du jemanden Vollzeit,
+    ganzjährig und mit denselben Fähigkeiten brauchst.
+
+    ## Wann Auftragnehmer günstiger sind
+
+    1. **Teilzeitbedarf**: unter 20 Stunden pro Woche (unter 1.040 Stunden pro
+       Jahr); die Nebenkosten eines Angestellten verpuffen in ungenutzter
+       Kapazität.
+
+    2. **Kurzes Projekt**: 3–6 Monate; du sparst Recruiting, Abfindung und die
+       Einrichtung von Leistungen für einen begrenzten Einsatz.
+
+    3. **Spezialwissen**: Ein Spezialist für 200 $ pro Stunde über 40 Stunden
+       (8.000 $) ist günstiger, als für eine einmalige Aufgabe einen
+       spezialisierten Angestellten für 150.000 $ im Jahr einzustellen.
+
+    4. **Tempo**: Auftragnehmer können in Tagen starten; Angestellte brauchen
+       30–90 Tage für Suche und Einarbeitung.
+
+    ## Versteckte Kosten von Angestellten und Auftragnehmern
+
+    | Faktor | Angestellter | Auftragnehmer |
+    |---|---|---|
+    | Recruitingkosten | 5.000–30.000 $ | Minimal |
+    | Einarbeitungszeit | 2–6 Monate | Tage |
+    | Abfindungsrisiko | Ja | Nein |
+    | Kosten für Leistungen | 15.000–25.000 $ pro Jahr | Keine |
+    | Führungsaufwand | Höher | Niedriger |
+    | Übertragung geistigen Eigentums | Klar geregelt | Erfordert Vertrag |
+    | Compliance-Risiko | Geringer (W-2) | Risiko der Scheinselbstständigkeit |
+
+    ## Die Formel für die Gewinnschwelle
+
+    Ab welchem Satz ist ein Auftragnehmer gleich teuer wie ein Angestellter?
+
+    **Schwellensatz Auftragnehmer** = (Gehalt × 1,30) ÷ benötigte Stunden
+
+    Für einen Angestellten mit 100.000 $, der 1.040 Stunden pro Jahr gebraucht wird: (130.000 $ ÷ 1.040) = **125 $ pro Stunde**
+
+    Verlangt der Auftragnehmer mehr als 125 $ pro Stunde für 1.040 Stunden, ist der
+    Angestellte an der Grenze günstiger. Verlangt er weniger, ist der
+    Auftragnehmer günstiger.
+
+    Rechne deine Zahlen mit dem [Mitarbeiterkosten-Rechner](/tools/employee-cost-calculator/) durch.
+"employee-cost-calculator/employer-payroll-taxes-explained":
+  "title": "Arbeitgeber-Lohnabgaben erklärt: FICA, FUTA und SUTA"
+  "description": "Was sind Arbeitgeber-Lohnabgaben in den USA? Sätze und Bemessungsgrenzen von FICA, FUTA und SUTA und wie du berechnest, was du als Arbeitgeber schuldest."
+  "body": |
+    Als Arbeitgeber zahlst du auf den Lohn jedes Angestellten drei Hauptarten von
+    Abgaben. Sie kommen zu dem hinzu, was der Angestellte schuldet, und gehen
+    direkt von deinem Budget ab.
+
+    ## FICA: Social Security und Medicare
+
+    **Social Security**: 6,2 % auf Löhne bis 168.600 $ (Bemessungsgrenze 2024)
+    **Medicare**: 1,45 % auf den gesamten Lohn (ohne Obergrenze)
+    **Zusätzliche Medicare**: 0,9 % auf Löhne über 200.000 $, aber das ist der
+    Anteil des *Angestellten*, nicht des Arbeitgebers
+
+    **Arbeitgeber-FICA gesamt**: **7,65 %** auf Löhne bis 168.600 $, darüber
+    **1,45 %**.
+
+    Bei 100.000 $ Gehalt: FICA = 7.650 $
+    Bei 200.000 $ Gehalt: FICA = (168.600 $ × 7,65 %) + (31.400 $ × 1,45 %) = 12.898 $ + 455 $ = 13.353 $
+
+    ## FUTA: Bundes-Arbeitslosenabgabe
+
+    **Satz**: 6 % auf die ersten 7.000 $ Lohn, reduziert auf **effektiv 0,6 %** für
+    Arbeitgeber in Bundesstaaten ohne Rückstände beim Bundes-Arbeitslosenfonds
+    (alle bis auf wenige)
+
+    **Maximum pro Angestelltem**: 7.000 $ × 0,6 % = **42 $ pro Jahr**
+
+    FUTA ist ein kleiner Posten (42 $ pro Angestelltem), muss aber vierteljährlich
+    und jährlich gemeldet werden.
+
+    ## SUTA: bundesstaatliche Arbeitslosenabgabe
+
+    Jeder Bundesstaat legt Bemessungsgrenze und Satz selbst fest:
+    - **Kalifornien**: 3,4 % auf die ersten 7.000 $ (Satz für neue Arbeitgeber)
+    - **New York**: 3,4 % auf die ersten 12.500 $
+    - **Texas**: 2,7 % auf die ersten 9.000 $
+    - **Florida**: 2,7 % auf die ersten 7.000 $
+
+    Die Sätze ändern sich mit deiner „Einstufung“: Arbeitgeber mit wenigen
+    Entlassungen bekommen mit der Zeit niedrigere Sätze.
+
+    ## Schnellübersicht: Arbeitgeberkosten bei üblichen Gehältern
+
+    | Gehalt | FICA | FUTA | SUTA (Ø 2,7 %) | Gesamt |
+    |---|---|---|---|---|
+    | 60.000 $ | 4.590 $ | 42 $ | 189 $ | 4.821 $ |
+    | 100.000 $ | 7.650 $ | 42 $ | 189 $ | 7.881 $ |
+    | 150.000 $ | 11.475 $ | 42 $ | 189 $ | 11.706 $ |
+
+    Berechne die Gesamtkosten eines Angestellten mit dem [Mitarbeiterkosten-Rechner](/tools/employee-cost-calculator/).
+"true-cost-of-hiring-an-employee":
+  "title": "Die echten Kosten einer Einstellung: mehr als das Grundgehalt"
+  "description": "Die vollständige Aufschlüsselung, was ein Angestellter wirklich kostet: Lohnabgaben, Krankenversicherung, 401k und wie du die 1,3x-Regel für die Personalplanung nutzt."
+  "body": |
+    Verlangt ein Kandidat 120.000 $ Gehalt, kostet er dein Unternehmen tatsächlich
+    150.000 bis 175.000 $ pro Jahr. Hier ist der Grund, und wie du dafür planst.
+
+    ## Alle Kosten eines Angestellten
+
+    ### 1. Grundgehalt
+    Die Basis. Alles andere wird obendrauf gerechnet.
+
+    ### 2. Arbeitgeber-Lohnabgaben (7,65–8,5 %)
+
+    - **FICA**: 6,2 % Social Security (gedeckelt bei 168.600 $ im Jahr 2024) + 1,45 % Medicare (ohne Obergrenze)
+    - **FUTA**: 0,6 % auf die ersten 7.000 $ ≈ 42 $ pro Angestelltem und Jahr
+    - **SUTA**: je nach Bundesstaat und Einstufung, im Schnitt ~2,7 % auf die ersten 7.000–56.500 $
+
+    Bei 120.000 $ Gehalt: Lohnabgaben ≈ 9.640 $
+
+    ### 3. Krankenversicherung (die größte Variable)
+
+    Laut der Umfrage 2024 der Kaiser Family Foundation:
+    - Einzelversicherung: im Schnitt **8.435 $ pro Jahr** Arbeitgeberanteil
+    - Familienversicherung: im Schnitt **17.393 $ pro Jahr** Arbeitgeberanteil
+
+    Bei einem Startup, das allen eine Einzelversicherung bietet: +8.435 $ pro Angestelltem
+
+    ### 4. Altersvorsorge
+
+    - 4 % 401(k)-Zuschuss auf 120.000 $ Gehalt = **4.800 $ pro Jahr**
+    - Manche Unternehmen bieten Safe-Harbor-Pläne (3 % unabhängig vom Eigenbeitrag) = **3.600 $ pro Jahr**
+
+    ### 5. Weitere Leistungen
+
+    - Lebens- und Berufsunfähigkeitsversicherung: 300–800 $ pro Jahr
+    - Arbeitgeberbeitrag zu FSA/HSA: 500–1.500 $ pro Jahr
+    - Weiterbildungsbudget: 500–3.000 $ pro Jahr
+    - Aktienoptionen oder RSUs: sehr unterschiedlich
+
+    ## Die vollständige Rechnung
+
+    | Bestandteil | Betrag |
+    |---|---|
+    | Grundgehalt | 120.000 $ |
+    | Lohnabgaben | 9.640 $ |
+    | Krankenversicherung (einzeln) | 8.435 $ |
+    | 401(k)-Zuschuss (4 %) | 4.800 $ |
+    | Weitere Leistungen | 1.000 $ |
+    | **Gesamt (ohne Bonus)** | **143.875 $** |
+
+    Multiplikator: 1,20x ohne Bonus, 1,30–1,35x mit 10–15 % Bonus.
+
+    Modelliere deine eigenen Zahlen mit dem [Mitarbeiterkosten-Rechner](/tools/employee-cost-calculator/).
+"how-to-calculate-employee-turnover-rate":
+  "title": "So berechnest du die Fluktuationsrate"
+  "description": "Die Formel der Fluktuationsrate Schritt für Schritt, wie du die durchschnittliche Belegschaft richtig berechnest, und typische Rechenfehler, die du vermeiden solltest."
+  "body": |
+    Die Fluktuationsrate gehört zu den einfachsten HR-Kennzahlen und lässt sich
+    trotzdem leicht verfälschen, wenn man die falsche Belegschaftszahl als Nenner
+    nimmt.
+
+    ## Die Formel
+
+    $$\text{Fluktuationsrate} = \frac{\text{Abgänge}}{\text{Durchschnittliche Belegschaft}} \times 100$$
+
+    $$\text{Durchschnittliche Belegschaft} = \frac{\text{Anfangsbestand} + \text{Endbestand}}{2}$$
+
+    ## Ein Rechenbeispiel
+
+    Du startest das Jahr mit 80 Angestellten, beendest es mit 100, und 15 Personen
+    sind im Laufe des Jahres gegangen (freiwillig und unfreiwillig zusammen).
+
+    Durchschnittliche Belegschaft = (80 + 100) ÷ 2 = 90
+    Fluktuationsrate = 15 ÷ 90 × 100 = **16,7 %**
+
+    Das ist weder 15 ÷ 100 (Endbestand) noch 15 ÷ 80 (Anfangsbestand): Der
+    Durchschnitt ist die SHRM-Standardmethode und wird umso wichtiger, je schneller
+    du wächst oder schrumpfst.
+
+    ## Monatliche oder jährliche Fluktuation
+
+    Die Monatsfluktuation mal 12 überschätzt die Jahresfluktuation, weil sie den
+    kumulativen Effekt ignoriert: Dieselbe Person kann nicht zweimal gehen. Für
+    einen genauen Jahreswert summierst du die tatsächlichen Abgänge über 12 Monate
+    und teilst durch die durchschnittliche Belegschaft dieser 12 Monate, statt die
+    Rate eines einzelnen Monats hochzurechnen.
+
+    ## Freiwillige und unfreiwillige Fluktuation
+
+    Die Gesamtrate vermischt freiwillige Abgänge (Kündigungen durch Angestellte)
+    und unfreiwillige (Entlassungen, Kündigungen durch den Arbeitgeber). Verfolge
+    sie getrennt: Ein Anstieg freiwilliger Abgänge deutet auf ein Bindungsproblem,
+    ein Anstieg unfreiwilliger auf ein Problem bei Einstellung oder
+    Leistungsmanagement. Vermischt siehst du nicht, welchen Hebel du ziehen musst.
+
+    ## Häufige Fragen
+
+    **Zählen Renteneintritte zur Fluktuation?**
+    Die meisten HR-Teams zählen sie in der Rohquote als freiwillige Abgänge,
+    weisen sie in der Analyse aber getrennt aus, weil sie selten vermeidbar sind
+    und keine Unzufriedenheit signalisieren.
+
+    **Was zählt als „Abgang“? Auch interne Wechsel?**
+    Nein. Interne Wechsel und Beförderungen sind keine Fluktuation; nur wer die
+    Organisation ganz verlässt, zählt als Abgang.
+
+    Mit dem [Fluktuationsrechner](/tools/employee-turnover-calculator/) berechnest
+    du deine Rate automatisch aus Abgängen und Belegschaft.
+"employee-turnover-calculator/true-cost-of-employee-turnover":
+  "title": "Die echten Kosten der Mitarbeiterfluktuation"
+  "description": "Warum der Ersatz eines Angestellten 33–200 % seines Jahresgehalts kostet, was diese Kosten treibt und wie du die finanziellen Folgen deiner Fluktuationsrate abschätzt."
+  "body": |
+    Die meisten Führungskräfte unterschätzen Fluktuationskosten, weil sie nur auf
+    die sichtbaren Posten schauen (Jobbörsen, Agenturprovisionen) und die viel
+    größeren versteckten Kosten von Produktivitätsverlust und Anlaufzeit
+    übersehen.
+
+    ## Woraus die Kosten wirklich bestehen
+
+    - **Vakanzkosten**: verlorene Leistung, solange die Stelle leer ist, plus die
+      Mehrbelastung der Kollegen, die die Lücke füllen
+    - **Recruitingkosten**: Stellenanzeigen, Agenturhonorare (bei externen
+      Personalberatern meist 15–25 % des ersten Jahresgehalts) und interne
+      Interviewzeit
+    - **Einarbeitung und Schulung**: formale Trainings plus die Zeit, die
+      Führungskräfte und Kollegen investieren, bis die neue Kraft produktiv ist
+    - **Produktivitätsverlust in der Anlaufphase**: Neue Mitarbeitende arbeiten
+      typischerweise 3–6 Monate unter voller Leistung, bei spezialisierten oder
+      Senior-Rollen auch länger
+
+    ## Die SHRM-Richtwerte
+
+    Die SHRM (Society for Human Resource Management) beziffert die gesamten
+    Ersatzkosten auf **33 % des Jahresgehalts bei Einstiegsrollen** bis hin zu
+    **150–200 % bei Senior- oder hochspezialisierten Positionen**. Bei einer Stelle
+    mit 70.000 $ sind das je nach Seniorität 23.000–140.000 $ pro Abgang.
+
+    ## Warum diese Zahl die meisten Führungskräfte überrascht
+
+    Die Lücke zwischen den „offensichtlichen“ Kosten (Recruitinghonorare, vielleicht
+    5.000–10.000 $) und den echten (inklusive monatelanger geringerer Leistung und
+    Unruhe im Team) beträgt meist das 5- bis 10-Fache. In einer normalen GuV sind
+    Fluktuationskosten kaum sichtbar, weil sie sich über die Personalkosten
+    verteilen statt als eigener Posten verbucht zu werden.
+
+    ## Aus der Zahl ein Argument für Mitarbeiterbindung machen
+
+    Bei 20 % Jahresfluktuation in einem 50-köpfigen Team mit durchschnittlich
+    80.000 $ Gehalt sind das 10 Abgänge pro Jahr zu vorsichtig geschätzt 75 % des
+    Gehalts = 600.000 $ pro Jahr. Eine Bindungsmaßnahme (besseres Onboarding,
+    Führungskräftetraining, marktgerechte Gehaltsrunden), die die Fluktuation auf
+    15 % senkt, spart 150.000 $ pro Jahr und finanziert damit die meisten
+    Programme mühelos.
+
+    ## Häufige Fragen
+
+    **Enthält diese Schätzung Abfindungen?**
+    Nicht direkt: Der Rechner konzentriert sich auf Ersatzkosten (Recruiting,
+    Vakanz, Einarbeitung). Abfindungen und fortgeführte Leistungen bei
+    unfreiwilligen Abgängen rechnest du separat hinzu.
+
+    **Sind die Kosten bei Remote-Stellen anders?**
+    Vakanz- und Anlaufkosten sind ähnlich. Recruiting kann günstiger sein (größerer
+    Bewerberpool, kein Umzug), das Onboarding dauert ohne persönliche Begleitung
+    aber oft länger.
+
+    Mit dem [Fluktuationsrechner](/tools/employee-turnover-calculator/) schätzt du
+    die gesamten Fluktuationskosten aus Gehalt, Belegschaft und Fluktuationsrate.
+"employee-benefits-cost-calculator":
+  "title": "Gesamtkosten eines Angestellten: Leistungen, Abgaben und versteckte Kosten"
+  "description": "Die vollen Arbeitgeberkosten eines Angestellten über das Grundgehalt hinaus: Lohnabgaben, Zusatzleistungen, Ausstattung und Gemeinkosten."
+  "body": |
+    Das Grundgehalt ist nur ein Teil dessen, was ein Angestellter kostet. Für
+    Budget- und Einstellungsentscheidungen brauchst du die Vollkosten.
+
+    ## Bestandteile der Arbeitgeberkosten
+
+    **Pflichtkosten** (gesetzlich vorgeschrieben):
+    - Social Security: 6,2 % auf die ersten 168.600 $ Lohn
+    - Medicare: 1,45 % (ohne Obergrenze)
+    - FUTA: 0,6 % auf die ersten 7.000 $
+    - Bundesstaatliche Arbeitslosenabgabe (SUTA): 0,5–10 % je nach Bundesstaat und Einstufung
+    - Unfallversicherung: 0,1–10 % je nach Branche und Bundesstaat
+
+    **Freiwillige Leistungen** (typischer US-Arbeitgeber):
+    - Krankenversicherung: 5.000–15.000 $ pro Jahr und Angestelltem (Arbeitgeberanteil)
+    - Zahn/Sehen: 500–1.500 $ pro Jahr
+    - 401(k)-Zuschuss: 3–5 % des Gehalts
+    - Lebensversicherung: 300–600 $ pro Jahr
+    - HSA-Beitrag: 0–2.000 $ pro Jahr
+
+    **Ausstattung und Gemeinkosten**:
+    - Laptop und Zubehör: 1.500–3.500 $ (auf das Jahr umgelegt)
+    - Softwarelizenzen (Slack, Zoom, Tools): 1.000–3.000 $ pro Jahr
+    - Arbeitsplatz und Büro: 3.000–8.000 $ pro Jahr im Büro; ~0 $ remote
+
+    ## Faustregel fürs Budget
+
+    Gesamtkosten Arbeitgeber = Grundgehalt × 1,25–1,45
+
+    Bei 100.000 $ Gehalt: plane 125.000–145.000 $ inklusive aller Kosten ein.
+
+    ## Fluktuation kommt obendrauf
+
+    Geht dieser Angestellte, kommen 50–75 % des Jahresgehalts als Ersatzkosten
+    hinzu. Ein Angestellter mit 100.000 $, der geht, kostet weitere
+    50.000–75.000 $ für den Ersatz.
+
+    Modelliere mit dem [Fluktuationskosten-Rechner](/tools/employee-turnover-cost-calculator/),
+    was jeder Abgang dein Unternehmen tatsächlich kostet.
+"employee-turnover-cost-calculator/true-cost-of-employee-turnover":
+  "title": "Die echten Kosten der Mitarbeiterfluktuation (und wie du sie senkst)"
+  "description": "Forschungsbasierte Aufschlüsselung, was Fluktuation wirklich kostet: Austritt, Vakanz, Recruiting, Einarbeitung und Anlaufzeit bis zur vollen Produktivität."
+  "body": |
+    Einen Mitarbeiter zu verlieren kostet zwischen 50 % und 200 % seines
+    Jahresgehalts. Die Spanne entsteht, weil die meisten Organisationen nur das
+    Recruitinghonorar zählen und alles andere übersehen.
+
+    ## Die fünf Kostenbestandteile
+
+    **1. Austrittskosten** (~4 % des Gehalts)
+    Austrittsgespräche, HR-Bearbeitung, Schlussabrechnung, höhere
+    Arbeitslosenversicherung.
+
+    **2. Vakanzkosten** (Tagessatz × Tage bis zur Besetzung)
+    Die Arbeit bleibt liegen (verlorene Leistung) oder wird auf Kollegen verteilt
+    (versteckte Produktivitätssteuer). Durchschnittliche Besetzungsdauer: 42 Tage
+    über alle Rollen, 84 Tage bei Senior- oder Spezialrollen.
+
+    **3. Recruitingkosten** (~15 % des Gehalts)
+    Agenturhonorare liegen bei Fachrollen bei 15–25 %. Internes Recruiting kostet
+    im Schnitt 80–100 Stunden pro Einstellung, inklusive Sourcing, Vorauswahl,
+    Interviews und Angebot.
+
+    **4. Einarbeitungskosten** (~12 % des Gehalts)
+    Schulungen, Dokumentation, Zeit der Führungskraft, IT-Einrichtung,
+    Compliance-Trainings.
+
+    **5. Anlaufzeit bis zur Produktivität** (~25 % des Gehalts)
+    Neue Mitarbeitende erreichen meist nach 3–6 Monaten 80 % Produktivität. Die
+    Lücke zwischen 100 % und 80 % in dieser Zeit ist ein echter Kostenposten in
+    deiner GuV.
+
+    **Gesamt: ~56–60 % des Jahresgehalts bei einer Rolle mittlerer Ebene**
+    Bei Senior-Rollen (ab Direktorenebene) multiplizierst du mit 1,5–2.
+
+    Modelliere mit dem [Fluktuationskosten-Rechner](/tools/employee-turnover-cost-calculator/),
+    was jeder Abgang dein Unternehmen tatsächlich kostet.
+"voluntary-vs-involuntary-turnover-cost":
+  "title": "Freiwillige und unfreiwillige Fluktuation: Kostenunterschiede"
+  "description": "Warum freiwillige und unfreiwillige Fluktuation unterschiedliche Kostenprofile haben und warum die getrennte Erfassung verändert, was du angehen solltest."
+  "body": |
+    Die gesamten Fluktuationskosten sind als Überblickszahl nützlich, doch
+    freiwillige und unfreiwillige Abgänge haben deutlich verschiedene
+    Kostenprofile und, wichtiger noch, völlig unterschiedliche Ursachen.
+
+    ## Warum sich das Kostenprofil unterscheidet
+
+    **Freiwillige Fluktuation** (Kündigungen durch Angestellte) ist pro Abgang fast
+    immer teurer. Sie ist schwerer vorherzusehen, also bleibt weniger Zeit für die
+    Übergabe, der Wissenstransfer ist oft hektisch oder lückenhaft, und die Wirkung
+    auf die Stimmung im Team ist meist größer: Freiwillige Abgänge, vor allem von
+    Leistungsträgern, können weitere nach sich ziehen („Fluktuationsansteckung“).
+
+    **Unfreiwillige Fluktuation** (Kündigungen, Entlassungen) ist planbarer: Die
+    Organisation bestimmt meist den Zeitpunkt, kann Übergabe und Wissenstransfer
+    vorbereiten, und die Stimmung leidet womöglich weniger, wenn der Abgang klar mit
+    Leistung oder dem Wegfall der Stelle zusammenhing.
+
+    ## Was jede Art signalisiert
+
+    | Art | Häufige Ursachen | Was zu tun ist |
+    |------|---------------------|-------------|
+    | Freiwillig | Vergütungslücken, schlechte Führung, fehlende Entwicklung, kultureller Fit | Bindungsprogramme, Führungskräftetraining, Vergütungsvergleich |
+    | Unfreiwillig | Fehlbesetzungen, Lücken im Leistungsmanagement, Umstrukturierung | Einstellungsprozess, Onboarding, klare Rollen |
+
+    Eine hohe freiwillige Quote zeigt nach innen: Etwas im Arbeitsalltag treibt
+    Menschen hinaus. Eine hohe unfreiwillige Quote zeigt auf den
+    Einstellungsprozess: Es werden die falschen Leute für die Rolle eingestellt,
+    oder die Erwartungen wurden anfangs nicht klar gesetzt.
+
+    ## Bedauerliche und nicht bedauerliche freiwillige Abgänge
+
+    Nicht jeder freiwillige Abgang kostet gleich viel. Einen Leistungsträger zu
+    verlieren („bedauerlich“) bringt die vollen Ersatzkosten plus verlorenes Wissen
+    und Schwung. Einen schwachen Performer zu verlieren, der ohnehin wohl gegangen
+    wäre („nicht bedauerlich“), ähnelt im Kostenprofil eher einem geplanten
+    unfreiwilligen Abgang. Erfasse diese Unterscheidung, wenn du genau wissen
+    willst, wie sehr Fluktuation dem Geschäft wirklich schadet.
+
+    ## Häufige Fragen
+
+    **Zählen Massenentlassungen wie einzelne Kündigungen?**
+    Erfasse sie getrennt: Massenentlassungen folgen der Unternehmensstrategie
+    (Kostensenkung, Umstrukturierung), nicht der individuellen Leistung oder
+    Einstellungsqualität, und gehören nicht in eine Ursachenanalyse zu
+    Fehlbesetzungen.
+
+    **Ändern Abfindungen den Kostenvergleich?**
+    Ja: Unfreiwillige Abgänge verursachen oft Abfindungen, die bei freiwilligen
+    fehlen. Das gleicht die höheren indirekten Kosten freiwilliger Abgänge
+    (Ansteckung, hektische Übergabe) teilweise aus.
+
+    Schätze mit dem [Fluktuationskosten-Rechner](/tools/employee-turnover-cost-calculator/)
+    die Gesamtkosten und erfasse freiwillige und unfreiwillige Abgänge in deinen
+    eigenen Daten getrennt, um Ursachen zu analysieren.
+"employee-vs-contractor-cost-comparison":
+  "title": "Kosten von Angestelltem und Auftragnehmer im Vergleich: die echte Rechnung"
+  "description": "Ein finanzieller Vergleich zwischen Vollzeitanstellung und 1099-Auftragnehmer, mit Gewinnschwellenrechnung und Szenarien, in denen jeweils das eine günstiger ist."
+  "body": |
+    Die Entscheidung zwischen Angestelltem und Auftragnehmer ist mehr als ein
+    Stundensatzvergleich. Angestellte kosten auf dem Papier mehr pro Stunde
+    (Arbeitgebernebenkosten), Auftragnehmer rechnen aber mehr pro Stunde ab. Die
+    Gewinnschwelle hängt von Rolle, Dauer und Kosten der Zusatzleistungen ab.
+
+    ## Das Kostenmodell für Angestellte
+
+    Vollzeitangestellter mit 120.000 $ Gehalt:
+    - Gehalt: 120.000 $
+    - Arbeitgeber-Lohnabgaben: ~9.500 $
+    - Krankenversicherung: ~12.000 $ (Arbeitgeberanteil)
+    - 401k-Zuschuss (4 %): 4.800 $
+    - Weitere Leistungen: ~2.000 $
+    - **Gesamt: ~148.300 $ pro Jahr = 71,30 $ pro Stunde** (bei 2.080 Arbeitsstunden)
+
+    Die tatsächlich gearbeiteten Stunden sind aber weniger. Mit 15 Urlaubstagen +
+    10 Feiertagen:
+    - 2.080 Stunden − 200 Stunden Urlaub/Feiertage = 1.880 effektive Arbeitsstunden
+    - **Effektive Kosten: ~78,90 $ pro produktiver Arbeitsstunde**
+
+    ## Das Kostenmodell für Auftragnehmer
+
+    1099-Auftragnehmer für 95 $ pro Stunde:
+    - Keine Lohnabgaben (spart ~8 % gegenüber Angestellten)
+    - Keine Zusatzleistungen
+    - Kein bezahlter Urlaub
+    - Keine Aktienbeteiligung
+    - **95 $ × 2.000 Stunden = 190.000 $ pro Jahr** (Vollzeitäquivalent)
+
+    ## Die Gewinnschwellenrechnung
+
+    Schwellen-Stundensatz = Gesamtkosten Angestellter / gearbeitete Stunden
+
+    Bei 148.300 $ Gesamtkosten und 2.000 abrechenbaren Stunden: Schwelle = 74,15 $ pro Stunde.
+
+    Verlangt ein Auftragnehmer mehr als 74 $ pro Stunde, ist der Angestellte
+    günstiger (langfristig, in Vollzeit). Verlangt er weniger, ist der
+    Auftragnehmer günstiger.
+
+    ## Wann Auftragnehmer die bessere Wahl sind
+
+    1. **Kurze Dauer** (unter 12–18 Monaten): Die Anlaufkosten einer Anstellung
+    (Recruiting, Einarbeitung, Abfindung) lohnen sich bei kurzen Einsätzen nicht.
+
+    2. **Konkretes Projekt**: Ein Website-Redesign über 3 Monate braucht keine
+    Festanstellung.
+
+    3. **Spezialwissen**: Nischenkompetenz, die du für einen begrenzten Zeitraum
+    brauchst.
+
+    4. **Internationale Arbeit**: Auftragnehmer in günstigeren Ländern liefern hohe
+    Qualität zu deutlich niedrigeren Vollkosten.
+
+    ## Wann Angestellte die bessere Wahl sind
+
+    1. **Dauerhafte Rolle**: Brauchst du jemanden kontinuierlich über 2+ Jahre, wird
+    die Anstellung kosteneffizienter.
+
+    2. **Arbeit am Kern-IP**: Angestellte übertragen geistiges Eigentum automatisch
+    an den Arbeitgeber. Auftragnehmer brauchen ausdrückliche
+    Übertragungsklauseln.
+
+    3. **Kultur und Führung**: Angestellte sind besser integriert und leichter zu
+    führen.
+
+    Mit dem [Personalkosten-Rechner](/tools/payroll-cost-calculator/) berechnest du
+    die genauen Arbeitgeberkosten für jedes Gehaltsszenario.
+"payroll-cost-calculator/employer-payroll-taxes-explained":
+  "title": "Arbeitgeber-Lohnabgaben erklärt: FICA, FUTA und SUTA"
+  "description": "Ein verständlicher Leitfaden zu den Lohnabgaben, die US-Arbeitgeber zahlen (FICA, FUTA und SUTA), mit Sätzen, Bemessungsgrenzen und wie du gesetzliche Pflichten minimierst."
+  "body": |
+    Jeder US-Arbeitgeber zahlt zusätzlich zum Lohn drei Kategorien von
+    Lohnabgaben. Sie sind Pflicht, unabhängig vom Lohnsteuerabzug und werden
+    vollständig vom Arbeitgeber getragen (nicht vom Gehalt des Angestellten
+    abgezogen).
+
+    ## FICA (Federal Insurance Contributions Act)
+
+    FICA finanziert Social Security und Medicare.
+
+    | Abgabe | Arbeitgebersatz | Bemessungsgrenze |
+    |---|---|---|
+    | Social Security | 6,2 % | Erste 168.600 $ (2024) |
+    | Medicare | 1,45 % | Gesamter Lohn |
+    | **FICA gesamt** | **7,65 %** | |
+
+    Bei 120.000 $ Gehalt: 7,65 % × 120.000 $ = **9.180 $ pro Jahr** Arbeitgeber-FICA.
+
+    Hinweis: Auch der Angestellte zahlt 7,65 % FICA (spiegelbildlich zum
+    Arbeitgeber). Bei 120.000 $ beträgt die gesamte FICA (beide Seiten) 18.360 $
+    pro Jahr.
+
+    ## FUTA (Federal Unemployment Tax Act)
+
+    FUTA finanziert die Bundes-Arbeitslosenversicherung.
+    - Gesetzlicher Satz: 6,0 % auf die ersten 7.000 $ Lohn je Angestelltem
+    - Nach Anrechnung der bundesstaatlichen Abgabe: effektiv 0,6 %
+    - Maximum pro Angestelltem: 7.000 $ × 0,6 % = **42 $ pro Jahr**
+
+    Die meisten Arbeitgeber zahlen den effektiven Satz von 0,6 %. Die Anrechnung
+    entfällt, wenn du mit der bundesstaatlichen Arbeitslosenabgabe im Rückstand
+    bist.
+
+    ## SUTA (State Unemployment Tax Act)
+
+    SUTA ist die Arbeitslosenabgabe auf Ebene der Bundesstaaten. Die Sätze
+    schwanken stark:
+
+    | Bundesstaat | Satz für neue Arbeitgeber | Bemessungsgrenze |
+    |---|---|---|
+    | Kalifornien | 3,4 % | 7.000 $ |
+    | New York | 3,6 % | 12.500 $ |
+    | Texas | 2,7 % | 9.000 $ |
+    | Florida | 2,7 % | 7.000 $ |
+    | Washington | 1,0–5,7 % | 67.600 $ |
+
+    Die Sätze ändern sich mit deiner „Einstufung“: Arbeitgeber mit weniger
+    Leistungsanträgen erhalten nach 3+ Jahren Geschäftstätigkeit niedrigere
+    Sätze.
+
+    ## Beispiel für die gesamten Lohnabgaben
+
+    Angestellter in Kalifornien mit 120.000 $ Gehalt, neuer Arbeitgeber:
+    - FICA: 9.180 $
+    - FUTA: 42 $
+    - SUTA: 7.000 $ × 3,4 % = 238 $
+    - **Gesamte Arbeitgeber-Lohnabgaben: 9.460 $** (7,9 % des Gehalts)
+
+    Mit dem [Personalkosten-Rechner](/tools/payroll-cost-calculator/) berechnest du
+    die gesamten Lohnabgaben und Arbeitgeberkosten für jedes Gehalt und jeden
+    Bundesstaat.
+"true-cost-of-an-employee":
+  "title": "Die echten Kosten eines Angestellten: Was Arbeitgeber tatsächlich zahlen"
+  "description": "Vollständige Aufschlüsselung, was eine Vollzeitkraft in den USA kostet (Gehalt, Lohnabgaben, Zusatzleistungen, Gemeinkosten), und die Faustregel 1,25–1,4x."
+  "body": |
+    Wenn ein Gründer sagt „Ich kann mir keine Einstellung leisten“, vergleicht er
+    oft das Gehalt mit seinem Kontostand. Die echten Kosten eines Angestellten
+    liegen aber 25–40 % über dem Gehalt. Dieser Ratgeber zeigt, woher die
+    Zusatzkosten kommen.
+
+    ## Bestandteile der gesamten Arbeitgeberkosten
+
+    **1. Grundgehalt**: die Zahl im Angebotsschreiben
+
+    **2. Lohnabgaben** (Pflicht):
+    - FICA Social Security: 6,2 % des Lohns (bis zur Bemessungsgrenze)
+    - FICA Medicare: 1,45 % des gesamten Lohns
+    - FUTA: effektiv ~42 $ pro Angestelltem und Jahr nach Anrechnung
+    - SUTA: 0,5 % bis über 5 % des Lohns bis zur bundesstaatlichen Grenze
+
+    **3. Zusatzleistungen** (bei Vollzeit erwartet):
+    - Krankenversicherung: 500–2.000 $ Arbeitgeberanteil pro Monat
+    - 401(k)-Zuschuss: meist 3–5 % des Gehalts
+    - Zahn + Sehen: 50–150 $ pro Monat
+    - Bezahlter Urlaub: implizite Kosten nicht gearbeiteter Zeit (15–25 Tage pro Jahr)
+
+    **4. Gemeinkosten** (nicht immer ausdrücklich gerechnet):
+    - Ausstattung: 1.500–5.000 $ für Laptop und Zubehör
+    - Softwarelizenzen: 50–500 $ pro Monat und Angestelltem
+    - Büro: 500–3.000 $ pro Monat und Arbeitsplatz (falls zutreffend)
+    - Recruiting: meist 15–25 % des ersten Jahresgehalts (einmalig)
+
+    ## Die Regel 1,25–1,40× für die meisten US-Angestellten
+
+    Die meisten Arbeitgeber rechnen fürs Budget mit einem Multiplikator von
+    1,25–1,40×.
+
+    | Gehalt | 1,25× | 1,35× |
+    |---|---|---|
+    | 80.000 $ | 100.000 $ | 108.000 $ |
+    | 120.000 $ | 150.000 $ | 162.000 $ |
+    | 160.000 $ | 200.000 $ | 216.000 $ |
+
+    Die Spanne 1,35–1,40× ist bei Rollen mit umfassenden Leistungspaketen
+    realistischer.
+
+    ## Kosten von Auftragnehmer und Angestelltem
+
+    1099-Auftragnehmer lösen weder Lohnabgaben noch Leistungspflichten aus.
+    Dafür verlangen sie meist 40–60 % mehr pro Stunde.
+
+    Faustregel: Brauchst du jemanden für weniger als 18 Monate, kann ein
+    Auftragnehmer günstiger sein. Bei längerer Dauer gewinnt meist die
+    Vollzeitanstellung.
+
+    Mit dem [Personalkosten-Rechner](/tools/payroll-cost-calculator/) berechnest du
+    die genauen Gesamtkosten für jedes Gehalts- und Leistungsszenario.

@@ -921,3 +921,219 @@ free-cash-flow-calculator:
     qu'à la vente finale au détail et les entreprises ne peuvent pas la récupérer.
     Le consommateur final supporte les deux ; seule la mécanique pour les
     entreprises diffère.
+
+"commission-calculator":
+  "body": |
+    ## Qu'est-ce qu'une commission commerciale ?
+
+    Une commission commerciale est une rémunération variable versée en pourcentage du chiffre d'affaires généré. Elle aligne les intérêts du commercial sur les objectifs de chiffre d'affaires de l'entreprise.
+
+    $$\text{Commission} = \text{Chiffre d'affaires} \times \text{Taux de commission}$$
+
+    ### Atteinte de l'OTE
+
+    L'OTE (On-Target Earnings, rémunération cible) est la rémunération totale d'un commercial à 100 % de son quota :
+
+    $$\text{Atteinte} = \frac{\text{Rémunération totale}}{\text{OTE}} \times 100$$
+
+    ### Structures de commission courantes en SaaS B2B
+
+    | Poste | Taux de commission habituel | Répartition de l'OTE |
+    |------|------------------------|-----------|
+    | Account Executive | 8–12 % de l'[ARR](/glossary/#arr) | 50/50 fixe/variable |
+    | SDR/BDR (développement commercial) | 4–8 % sur le pipeline | 70/30 fixe/variable |
+    | Responsable commercial | 2–4 % sur l'équipe | 60/40 fixe/variable |
+    | CSM (Customer Success Manager) / Account Manager | 5–10 % sur l'expansion | 70/30 fixe/variable |
+
+    ### Accélérateurs
+
+    La plupart des plans prévoient des accélérateurs au-delà de 100 % de l'OTE : le taux de commission augmente pour le chiffre d'affaires au-delà du quota. Cela récompense la surperformance et retient les meilleurs commerciaux.
+
+    ### Guides
+
+    - [Qu'est-ce que l'OTE (rémunération cible) ?](/tools/commission-calculator/#what-is-on-target-earnings)
+    - [Comment structurer un plan de commissions commerciales](/tools/commission-calculator/#how-to-structure-sales-commission-plan)
+"employee-cost-calculator":
+  "body": |
+    L'erreur la plus courante quand on budgète des recrutements est de retenir le
+    salaire de base comme coût. Le vrai coût employeur d'un salarié est de
+    **salaire de base × 1,25 à 1,45** pour la plupart des cadres américains, sous
+    l'effet des charges sociales obligatoires et des avantages.
+
+    ## Ce qui compose le coût total d'un salarié
+
+    **1. Charges sociales patronales (~7,65 %)**
+    - FICA : 6,2 % de Social Security (sur les 168 600 premiers dollars) + 1,45 % de Medicare (sans plafond)
+    - FUTA : 0,6 % effectif de taxe chômage fédérale (sur les 7 000 premiers dollars de salaire)
+    - SUTA : ~2,7 % en moyenne de taxe chômage de l'État (sur les 7 000 à 56 500 premiers dollars, selon l'État)
+
+    **2. Assurance santé**
+    - Coût moyen pour l'employeur : 8 000 à 18 000 $ par an et par salarié (données KFF 2024)
+    - Couverture familiale : 14 000 à 22 000 $ par an
+    - Couverture individuelle : 7 000 à 10 000 $ par an
+
+    **3. Épargne retraite (facultative)**
+    - Abondement 401(k) : en général 3 à 6 % du salaire
+    - Pour 100 k$ de salaire avec 4 % d'abondement : 4 000 $ par an
+
+    **4. Primes et actions**
+    - Prime cible des cadres : 10 à 20 % du fixe
+    - Attributions d'actions (RSU, actions gratuites) : 5 000 à 50 000 $ par an selon le niveau
+
+    ## La règle empirique de 1,25 à 1,4
+
+    Un modèle mental rapide : multipliez n'importe quel salaire par **1,3** pour
+    estimer le coût complet (charges + assurance santé + abondement 401k, sans
+    prime). Ajoutez 15 à 20 % pour les postes éligibles à une prime.
+
+    | Salaire | Charges (~8 %) | Avantages (~12 %) | Total (1,2x) | + 10 % de prime (1,3x) |
+    |---|---|---|---|---|
+    | 80 000 $ | 6 120 $ | 9 600 $ | 95 720 $ | 103 720 $ |
+    | 120 000 $ | 9 180 $ | 14 400 $ | 143 580 $ | 155 580 $ |
+    | 150 000 $ | 11 475 $ | 18 000 $ | 179 475 $ | 194 475 $ |
+
+    ## Prestataires ou salariés
+
+    Quand vous comparez une embauche W-2 à un prestataire, rappelez-vous que le
+    taux du prestataire inclut ses propres impôts et sa protection sociale. Un
+    prestataire à 75 $ de l'heure n'est pas 1,3 fois plus cher qu'un salarié : il
+    paie lui-même ses 15,3 % de SE tax et ses avantages. Pour une vraie
+    comparaison, ajoutez d'abord au salaire le coût complet de l'emploi.
+
+    ## Questions fréquentes
+
+    **Quelles charges sociales l'employeur paie-t-il ?**
+    L'employeur paie la FICA (7,65 % : 6,2 % de Social Security + 1,45 % de
+    Medicare), la FUTA (0,6 % effectif sur les 7 000 premiers dollars de salaire)
+    et la SUTA (taxe chômage de l'État, de 0,6 % à 8,5 % selon l'État et
+    l'historique).
+
+    **Combien l'assurance santé coûte-t-elle à l'employeur ?**
+    Selon l'enquête 2024 de la Kaiser Family Foundation, les employeurs paient en
+    moyenne 8 435 $ par an pour une couverture individuelle et 17 393 $ par an pour
+    une couverture familiale. C'est la plus grosse variable du multiplicateur de
+    coût après les charges sociales.
+"employee-turnover-calculator":
+  "body": |
+    ## Formule du taux de turnover
+
+    $$\text{Taux de turnover} = \frac{\text{Départs}}{\text{Effectif moyen}} \times 100$$
+
+    $$\text{Effectif moyen} = \frac{\text{Effectif initial} + \text{Effectif final}}{2}$$
+
+    ### Repères par secteur
+
+    | Secteur | Turnover annuel moyen |
+    |----------|------------------------|
+    | Tech / logiciel | 10–15 % |
+    | Finance / assurance | 10–15 % |
+    | Santé | 15–25 % |
+    | Commerce de détail | 25–60 % |
+    | Restauration et hôtellerie | 50–75 % |
+    | Agences d'intérim | 100 % et plus |
+
+    ### Le vrai coût du turnover
+
+    La SHRM (Society for Human Resource Management) estime le coût de remplacement entre 33 % et 200 % du salaire annuel selon le poste :
+
+    | Poste | Coût de remplacement |
+    |------|-----------------|
+    | Débutant / horaire | 33–50 % du salaire |
+    | Contributeur confirmé | 50–100 % du salaire |
+    | Senior / spécialisé | 100–150 % du salaire |
+    | Direction / comité exécutif | 150–200 % du salaire et plus |
+
+    Ces coûts comprennent : annonces, honoraires de recruteurs, temps d'entretien, perte de productivité pendant la vacance, intégration et montée en compétence du nouvel arrivant.
+
+    ### Guides
+
+    - [Comment calculer le taux de turnover](/tools/employee-turnover-calculator/#how-to-calculate-employee-turnover-rate)
+    - [Le vrai coût du turnover](/tools/employee-turnover-calculator/#true-cost-of-employee-turnover)
+"employee-turnover-cost-calculator":
+  "body": |
+    Le turnover est l'un des coûts les plus sous-estimés en entreprise. Les études
+    de la SHRM (Society for Human Resource Management) et de Gallup situent
+    systématiquement le vrai coût de remplacement à **6 à 9 mois de salaire
+    annuel** pour les postes courants, et jusqu'à **200 %** pour les postes seniors
+    ou très spécialisés.
+
+    ## Les composantes du coût du turnover
+
+    | Composante | Coût habituel |
+    |-----------|-------------|
+    | Départ (administratif RH, entretien de sortie, indemnités) | 3–5 % du salaire annuel |
+    | Vacance (productivité perdue tant que le poste est ouvert) | 50–150 % du salaire journalier × jours |
+    | Recrutement (annonces, cabinets, temps d'entretien) | 5–30 % du salaire annuel |
+    | Intégration et formation | 10–20 % du salaire annuel |
+    | Montée en compétence jusqu'à la pleine productivité | 25–50 % du salaire annuel × mois de montée |
+
+    ## Repères SHRM
+
+    - **Débutant / horaire** : ~50 % du salaire annuel
+    - **Technique / professionnel** : 100–150 % du salaire annuel
+    - **Senior / direction** : 200–400 % du salaire annuel
+
+    ## Réduire le coût du turnover
+
+    Les leviers les plus efficaces : une intégration structurée (qui divise par
+    deux le temps de montée en compétence), la formation des managers (premier
+    facteur de départ volontaire), un alignement des salaires sur le marché, et
+    des entretiens de maintien plutôt que des entretiens de sortie.
+"payroll-cost-calculator":
+  "body": |
+    Embaucher un salarié coûte nettement plus que le salaire proposé. L'employeur
+    paie des charges sociales, finance des avantages et supporte des frais
+    généraux qui ajoutent 20 à 40 % au salaire de base. Ce calculateur chiffre le
+    coût réel total.
+
+    ## Les charges sociales payées par l'employeur (États-Unis)
+
+    **FICA (Federal Insurance Contributions Act)**
+    - Social Security : 6,2 % du salaire (sur les 168 600 premiers dollars en 2024)
+    - Medicare : 1,45 % de l'ensemble du salaire (plus 0,9 % de Medicare additionnel au-delà de 200 k$)
+    - FICA totale : 7,65 % du salaire
+
+    **FUTA (taxe chômage fédérale)**
+    - 6,0 % sur les 7 000 premiers dollars de salaire, ramenés à 0,6 % après le crédit pour taxe chômage de l'État
+    - Taux effectif : en général 42 $ par salarié et par an après crédit
+
+    **SUTA (taxe chômage de l'État)**
+    - Variable selon l'État : 0,2 % à plus de 8 % sur une assiette propre à l'État (en général les 10 000 à 40 000 premiers dollars)
+    - Le taux par défaut d'un nouvel employeur est souvent de 2,7 %
+
+    ## Ce que les avantages coûtent en général à l'employeur
+
+    | Avantage | Coût employeur habituel |
+    |---|---|
+    | Assurance santé (individuelle) | 7 000–15 000 $ par an |
+    | Assurance santé (famille) | 18 000–28 000 $ par an |
+    | Abondement 401(k) (3–5 % du salaire) | 3 600–6 000 $ sur un salaire de 120 k$ |
+    | Dentaire + optique | 600–1 500 $ par an |
+    | Assurance décès | 200–500 $ par an |
+    | Congés payés (15 jours) | ~5,8 % du salaire en coût |
+
+    ## La règle empirique de 1,25 à 1,40
+
+    Règle souvent citée : coût employeur total = 1,25 à 1,40 fois le salaire
+    annuel pour un salarié américain à temps plein avec des avantages standards.
+    Pour un salaire de 120 k$ :
+    - 1,25x : 150 000 $ de coût total par an
+    - 1,35x : 162 000 $ de coût total par an
+
+    Plus élevé pour les seniors avec des avantages complets ; plus bas pour les
+    prestataires (pas de charges sociales s'ils sont correctement classés en 1099).
+
+    ## Salarié ou prestataire : la comparaison des coûts
+
+    Les prestataires (1099) coûtent plus cher à l'heure mais sans charges ni
+    avantages. Pour une mission à 40 heures par semaine, le point d'équilibre :
+    - Salarié à 120 k$ = ~58 $ de l'heure en coût effectif
+    - Un prestataire à 75–90 $ de l'heure peut coûter plus, mais sans engagement de long terme
+
+    Utilisez ce calculateur avec le calculateur de taux freelance pour comparer
+    les options.
+
+    ## Questions fréquentes
+
+    **Que fait ce calculateur ?**
+    Il calcule le coût employeur total, charges sociales (FICA, FUTA, SUTA) et avantages compris.
