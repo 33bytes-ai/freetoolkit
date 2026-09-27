@@ -10865,7 +10865,7 @@
     **Example**: a SaaS company with $1M revenue, $100k hosting (COGS), $50k support
     (COGS), and $200k fixed salaries:
     - Gross margin = ($1M − $150k) / $1M = 85%
-    - Contribution margin = ($1M − $100k variable hosting) / $1M = 90% (salaries excluded)
+    - Contribution margin = ($1M − $100k variable hosting) / $1M = 90% (the support team is salaried, so it counts as fixed)
 
     ## Why contribution margin matters more for decisions
 
@@ -14336,7 +14336,7 @@
     $$\text{Gross Margin \%} = \frac{\text{Revenue} - \text{COGS}}{\text{Revenue}} \times 100$$
 
     Margin improves by raising the price, lowering COGS, shifting mix toward
-    higher-margin products, or some combination of the three.
+    higher-margin products, dropping low-margin work, or a combination of these.
 
     ## 1. Pricing (usually the fastest lever)
 

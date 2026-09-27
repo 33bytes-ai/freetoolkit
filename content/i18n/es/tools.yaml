@@ -2249,3 +2249,655 @@
     Calcula la velocidad de ventas (ingresos al día) a partir del tamaño del
     pipeline, la tasa de cierre, el valor medio de contrato y la duración del ciclo
     de ventas.
+
+"business-loan-calculator":
+  "body": |
+    Una calculadora de préstamos empresariales te ayuda a entender el coste real
+    de endeudarte: no solo el tipo de interés, sino la cuota mensual real, el total
+    de intereses pagados y qué parte de cada cuota va a capital y cuál a intereses.
+
+    ## La fórmula de amortización
+
+    **Cuota mensual = P × [r(1+r)^n] / [(1+r)^n − 1]**
+
+    Donde:
+    - P = principal (importe del préstamo)
+    - r = tipo de interés mensual (TAE / 12 / 100)
+    - n = número de cuotas mensuales (plazo en meses)
+
+    Para un préstamo de $250.000 al 7,5 % TAE a 60 meses:
+    r = 0,075/12 = 0,00625
+    Cuota mensual = $250.000 × (0,00625 × 1,00625^60) / (1,00625^60 − 1) = **$5.009/mes**
+    Total pagado = $300.569
+    Total de intereses = $50.569 (20,2 % del principal)
+
+    ## Referencias de préstamos SBA
+
+    La SBA (Small Business Administration) garantiza parte de los préstamos a
+    pequeñas empresas en Estados Unidos.
+
+    | Tipo de préstamo | Tipo habitual | Plazo máx. | Uso |
+    |---|---|---|---|
+    | SBA 7(a) | Prime + 2,25–4,75 % | 10 años | Capital circulante, equipos |
+    | SBA 7(a) inmobiliario | Prime + 1,5–2,75 % | 25 años | Inmuebles comerciales |
+    | SBA 504 | ~6–7 % fijo | 10–25 años | Inmuebles + equipos |
+    | SBA Microloan | 8–13 % | 6 años | Pequeñas empresas, < $50k |
+
+    Nota: los préstamos SBA exigen aval personal y buen historial crediticio
+    (FICO de 650 o más, normalmente).
+
+    ## Ratio de cobertura del servicio de la deuda (DSCR)
+
+    Los prestamistas evalúan tu capacidad de devolución con el DSCR:
+    **DSCR = ingreso operativo neto anual / servicio anual de la deuda**
+
+    La mayoría exige un DSCR ≥ 1,25: por cada $1 de pagos anuales de deuda, generas
+    $1,25 de ingreso operativo neto. Un DSCR por debajo de 1,0 significa que el
+    negocio no puede cubrir el servicio de la deuda con sus operaciones.
+
+    Para calcular el DSCR: toma tu resultado anual antes de pagos de deuda y
+    divídelo por el total anual de cuotas (la cuota mensual de esta calculadora ×
+    12).
+
+    ## Comparación del coste de intereses
+
+    El plazo cambia mucho el total de intereses pagados:
+
+    | $250k al 7,5 % TAE | Cuota mensual | Total de intereses |
+    |---|---|---|
+    | 36 meses | $7.777 | $29.956 |
+    | 60 meses | $5.009 | $50.569 |
+    | 84 meses | $3.835 | $72.104 |
+    | 120 meses | $2.968 | $106.105 |
+
+    Los plazos más largos bajan la cuota pero aumentan mucho el total de intereses.
+    El plazo adecuado depende de tus necesidades de caja y del coste del capital.
+
+    ## Preguntas frecuentes
+
+    **¿Qué hace esta calculadora?**
+    Calcula la cuota mensual, el total pagado y el total de intereses de cualquier
+    préstamo empresarial con la fórmula de amortización estándar. Introduce el
+    importe, la TAE y el plazo en meses.
+"cogs-calculator":
+  "body": |
+    ## ¿Qué es el coste de ventas?
+
+    El coste de ventas (COGS, Cost of Goods Sold) es el coste directo de producir
+    los bienes que una empresa vendió en un periodo.
+
+    $$\text{Coste de ventas} = \text{Inventario inicial} + \text{Compras} - \text{Inventario final}$$
+
+    ### ¿Qué incluye el coste de ventas?
+
+    **Incluido:**
+    - Materias primas y componentes
+    - Mano de obra directa (en fabricación)
+    - Gastos generales de fabricación (costes de planta ligados a la producción)
+    - Portes de compra (transporte para recibir inventario)
+
+    **No incluido (gastos operativos):**
+    - Costes de ventas y marketing
+    - Salarios administrativos
+    - Gastos de I+D
+    - Intereses e impuestos
+
+    ### Coste de ventas y margen bruto
+
+    $$\text{Margen bruto} = \frac{\text{Ingresos} - \text{Coste de ventas}}{\text{Ingresos}} \times 100$$
+
+    El margen bruto es el principal indicador del poder de fijación de precios y de
+    la eficiencia del modelo de negocio. Compáralo entre periodos y con
+    competidores del mismo sector.
+
+    ### Coste de ventas en empresas de servicios
+
+    Las empresas de servicios no tienen inventario físico, pero sí coste de ventas:
+    se llama coste de ingresos o coste del servicio. Incluye las horas de mano de
+    obra directa facturadas a clientes, los costes de colaboradores externos y el
+    alojamiento o la infraestructura en el caso del SaaS.
+
+    ### Guías
+
+    - [¿Qué es el coste de ventas (COGS)?](/tools/cogs-calculator/#what-is-cost-of-goods-sold)
+    - [Coste de ventas o gastos operativos: ¿en qué se diferencian?](/tools/cogs-calculator/#cogs-vs-operating-expenses)
+"current-ratio-calculator":
+  "body": |
+    ## ¿Qué es el ratio de liquidez?
+
+    El ratio de liquidez (current ratio) mide la capacidad de una empresa para
+    pagar sus obligaciones a corto plazo con sus activos a corto plazo.
+
+    $$\text{Ratio de liquidez} = \frac{\text{Activo corriente}}{\text{Pasivo corriente}}$$
+
+    ### Los tres ratios de liquidez
+
+    | Ratio | Fórmula | Objetivo |
+    |-------|---------|--------|
+    | Liquidez general | Activo corriente ÷ pasivo corriente | 1,5–2,0× |
+    | Prueba ácida (quick ratio) | (Activo corriente − inventario) ÷ pasivo corriente | ≥ 1,0× |
+    | Ratio de caja | Efectivo y equivalentes ÷ pasivo corriente | 0,1–0,5× |
+
+    La prueba ácida es más conservadora: excluye el inventario, que puede tardar
+    semanas o meses en venderse. El ratio de caja es el más estricto: solo cuenta
+    el efectivo disponible.
+
+    ### ¿Qué es el fondo de maniobra?
+
+    Fondo de maniobra = activo corriente − pasivo corriente. Un fondo de maniobra
+    positivo significa que la empresa puede cubrir todas sus obligaciones a corto
+    plazo y aún le quedan activos líquidos.
+
+    ### Guías
+
+    - [¿Qué es el ratio de liquidez?](/tools/current-ratio-calculator/#what-is-the-current-ratio)
+    - [Ratio de liquidez o prueba ácida: diferencias clave](/tools/current-ratio-calculator/#current-ratio-vs-quick-ratio)
+"debt-to-equity-calculator":
+  "body": |
+    ## ¿Qué es el ratio de deuda sobre patrimonio?
+
+    El ratio de deuda sobre patrimonio (D/E) mide cuánta deuda usa una empresa en
+    relación con sus fondos propios: un indicador básico de apalancamiento
+    financiero y riesgo.
+
+    $$\text{Ratio D/E} = \frac{\text{Deuda total}}{\text{Patrimonio neto}}$$
+
+    ### Referencias de D/E por sector
+
+    | Sector | Ratio D/E habitual |
+    |----------|------------------|
+    | Tecnología / SaaS | 0,2–0,8× |
+    | Bienes de consumo | 0,5–1,5× |
+    | Industria | 0,8–2,0× |
+    | Inmobiliario | 1,0–3,0× |
+    | Servicios públicos | 1,5–3,0× |
+    | Banca | 5–15× (apalancamiento regulado) |
+
+    ### Ratio D/E y ROE
+
+    Un apalancamiento alto amplifica el ROE a través del multiplicador de
+    apalancamiento financiero:
+
+    $$\text{ROE} = \text{ROA} \times \text{Apalancamiento financiero}$$
+
+    Una empresa con un ROA del 10 % y un apalancamiento de 3× tiene un ROE del 30 %.
+    Pero el mismo apalancamiento amplifica las pérdidas cuando el ROA es negativo.
+
+    ### Guías
+
+    - [¿Qué es el ratio de deuda sobre patrimonio?](/tools/debt-to-equity-calculator/#what-is-debt-to-equity-ratio)
+    - [Ratio de deuda sobre patrimonio por sector](/tools/debt-to-equity-calculator/#debt-to-equity-ratio-by-industry)
+"dscr-calculator":
+  "body": |
+    ## ¿Qué es el DSCR?
+
+    El ratio de cobertura del servicio de la deuda (DSCR, Debt Service Coverage
+    Ratio) mide cuántas veces tu ingreso operativo neto cubre los pagos anuales de
+    deuda. Es la principal métrica que usan los prestamistas para aprobar préstamos
+    empresariales y financiación inmobiliaria.
+
+    $$\text{DSCR} = \frac{\text{Ingreso operativo neto}}{\text{Servicio anual de la deuda}}$$
+
+    ### Referencias de DSCR
+
+    | DSCR | Interpretación |
+    |------|----------------|
+    | ≥ 1,50 | Sólido: cumple sin problema con la mayoría de prestamistas |
+    | 1,25–1,49 | Aceptable: estándar SBA y bancario |
+    | 1,00–1,24 | Justo: pocas opciones de financiación |
+    | < 1,00 | Sin cobertura: la caja no puede atender la deuda |
+
+    ### ¿Qué cuenta como ingreso operativo neto?
+
+    Ingreso operativo neto (NOI) = ingresos − gastos operativos (sin intereses,
+    impuestos, depreciación ni amortización). En inmobiliario, son los alquileres
+    menos la desocupación y los costes operativos.
+
+    ### Préstamo máximo según el DSCR
+
+    Con un DSCR mínimo exigido, el servicio anual máximo de la deuda que soporta tu
+    caja es:
+
+    $$\text{Servicio de la deuda máx.} = \frac{\text{NOI}}{\text{DSCR mínimo}}$$
+
+    Aplica después la amortización estándar para convertir ese servicio máximo en
+    el principal máximo a tu tipo y plazo.
+
+    ### Guías
+
+    - [¿Qué es el ratio de cobertura del servicio de la deuda?](/tools/dscr-calculator/#what-is-debt-service-coverage-ratio)
+    - [Requisitos de DSCR según el tipo de prestamista](/tools/dscr-calculator/#dscr-requirements-by-lender)
+"ebitda-calculator":
+  "body": |
+    El EBITDA (beneficio antes de intereses, impuestos, depreciación y
+    amortización) es la métrica más usada para comparar la rentabilidad operativa
+    entre empresas con estructuras de capital distintas.
+
+    ## La fórmula del EBITDA
+
+    **EBITDA = ingresos − coste de ventas − gastos operativos − gastos de venta, generales y administrativos − I+D**
+
+    O, de forma equivalente: **EBITDA = beneficio neto + intereses + impuestos + depreciación + amortización**
+
+    Con $5M de ingresos, $750k de coste de ventas, $1,5M de gastos operativos,
+    $500k de gastos de venta, generales y administrativos y $750k de I+D:
+    - EBITDA = $5M − $750k − $1,5M − $500k − $750k = **$1,5M**
+    - Margen EBITDA = $1,5M ÷ $5M = **30 %**
+
+    ## EBITDA, EBIT o beneficio neto
+
+    | Métrica | Incluye | Excluye |
+    |---|---|---|
+    | EBITDA | Todos los costes operativos | Intereses, impuestos, D&A |
+    | EBIT | EBITDA menos D&A | Intereses, impuestos |
+    | Beneficio neto | Todo | Nada |
+
+    El EBITDA es popular porque elimina la distorsión de:
+    - la estructura de capital (los intereses dependen de cuánta deuda se tiene)
+    - la jurisdicción fiscal (los tipos varían por país y estructura)
+    - la intensidad de capital (la depreciación depende de los activos, no de la operación)
+
+    Así es más fácil comparar una empresa de software (poca D&A) con una industrial
+    (mucha D&A) en igualdad de condiciones operativas.
+
+    ## Referencias de margen EBITDA
+
+    | Sector | Margen EBITDA habitual |
+    |---|---|
+    | Software / SaaS | 15–40 % |
+    | Servicios B2B | 10–20 % |
+    | E-commerce | 5–15 % |
+    | Salud | 10–25 % |
+    | Industria | 8–15 % |
+    | Comercio minorista | 3–8 % |
+
+    Los SaaS de alto margen a escala pueden superar el 30–40 % de margen EBITDA.
+    Los SaaS en fase inicial suelen tener EBITDA negativo mientras invierten en
+    crecer.
+
+    ## Múltiplos de EBITDA y valoración
+
+    El valor empresa (EV) se expresa a menudo como múltiplo del EBITDA:
+
+    **Valor empresa = EBITDA × múltiplo del sector**
+
+    Múltiplos habituales:
+    - SaaS de alto crecimiento: 8–20× EBITDA
+    - Software rentable: 6–12× EBITDA
+    - Servicios profesionales: 4–8× EBITDA
+    - Industria: 3–6× EBITDA
+    - Comercio minorista: 2–5× EBITDA
+
+    Una empresa con $1,5M de EBITDA y un múltiplo de 10× tiene un EV implícito de
+    $15M.
+
+    ## Limitaciones del EBITDA
+
+    El EBITDA puede inducir a error cuando:
+    - el CapEx es alto (se excluye la D&A, pero el gasto real de capital sigue ahí)
+    - el capital circulante es negativo (habitual en empresas en crecimiento)
+    - hay partidas no recurrentes escondidas en los gastos operativos
+
+    Warren Buffett criticó los «beneficios EBITDA» como una herramienta de la
+    dirección para ocultar la economía real. Úsalo para comparar y situarte, no
+    como sustituto del análisis de flujos de caja.
+
+    ## Preguntas frecuentes
+
+    **¿Qué hace esta calculadora?**
+    Calcula el EBITDA, el margen EBITDA, el EBIT tras depreciación y amortización y
+    el valor empresa implícito a partir de los ingresos y las partidas de coste.
+"financial-ratios-calculator":
+  "body": |
+    ## Panel de ratios financieros
+
+    Esta calculadora obtiene seis ratios clave de cuatro categorías en una sola
+    vista, para evaluar la salud financiera completa de una empresa con un único
+    conjunto de datos.
+
+    ### Ratios de rentabilidad
+
+    **Margen bruto** = (ingresos − coste de ventas) ÷ ingresos
+    Mide la eficiencia productiva y el poder de fijación de precios. Compáralo con
+    empresas del sector.
+
+    **Margen neto** = beneficio neto ÷ ingresos
+    El porcentaje final que conservan los accionistas de cada dólar de ingresos.
+
+    ### Ratios de rentabilidad sobre capital
+
+    **ROE (rentabilidad sobre el patrimonio)** = beneficio neto ÷ patrimonio neto
+    Mide cómo genera la dirección rentabilidad para los accionistas. Media del
+    S&P 500: ~15 %.
+
+    **ROA (rentabilidad sobre activos)** = beneficio neto ÷ activo total
+    Eficiencia en el uso de los activos. Los negocios con pocos activos (SaaS,
+    consultoría) puntúan mucho más alto que los intensivos en activos (industria,
+    servicios públicos).
+
+    ### Ratios de apalancamiento
+
+    **Deuda sobre patrimonio** = deuda total ÷ patrimonio neto
+    Indicador de riesgo financiero. Un D/E superior a 2 suele indicar un
+    apalancamiento importante; varía mucho según el sector.
+
+    ### Ratios de liquidez
+
+    **Ratio de liquidez** = activo corriente ÷ pasivo corriente
+    Solvencia a corto plazo. Un ratio inferior a 1,0 significa que el pasivo
+    corriente supera al activo corriente: una señal de alerta de liquidez.
+
+    ### Usar los ratios en conjunto
+
+    Ningún ratio cuenta toda la historia. Un ROE alto con un D/E muy alto puede
+    indicar que el apalancamiento infla la rentabilidad. Buenos márgenes con un
+    ratio de liquidez débil pueden indicar problemas de caja. Usa los seis juntos
+    para una evaluación equilibrada.
+
+    ### Guías
+
+    - [Los ratios financieros clave que todo empresario debería conocer](/tools/financial-ratios-calculator/#key-financial-ratios-guide)
+    - [Cómo leer un balance con ratios](/tools/financial-ratios-calculator/#how-to-read-balance-sheet-ratios)
+"gross-profit-margin-calculator":
+  "body": |
+    El margen bruto es la primera métrica de rentabilidad que miran inversores y
+    directivos. Mide cuánto de los ingresos queda tras los costes directos de
+    producción, antes de ventas, marketing, gastos generales y otros gastos
+    operativos.
+
+    ## Fórmulas del beneficio bruto
+
+    **Beneficio bruto = ingresos − coste de ventas**
+    **Margen bruto % = beneficio bruto / ingresos × 100**
+    **Markup % = beneficio bruto / coste de ventas × 100**
+
+    Ojo: margen bruto y markup son distintos. Un markup del 50 % significa vender
+    a 1,5× el coste, lo que da un margen bruto del 33 %, no del 50 %.
+
+    ## Referencias de margen bruto por sector
+
+    | Sector | Margen bruto habitual |
+    |----------|---------------------|
+    | SaaS / software | 70–85 % |
+    | Servicios profesionales | 60–75 % |
+    | E-commerce / comercio minorista | 20–50 % |
+    | Alimentación y bebidas | 30–50 % |
+    | Industria | 20–40 % |
+    | Construcción | 15–25 % |
+
+    ## Por qué importa el margen bruto en un SaaS
+
+    Los inversores lo usan para valorar la escalabilidad. Un SaaS con un 80 % de
+    margen bruto puede financiar ventas y marketing con su beneficio bruto; con un
+    50 %, le cuesta llegar a la [regla del 40](/glossary/#rule-of-40) sin una
+    disciplina de costes estricta.
+
+    ## Margen bruto o margen neto
+
+    El margen bruto excluye los gastos operativos (ventas, marketing, I+D, gastos
+    generales). El margen neto es después de todos los gastos e impuestos. Una
+    empresa puede tener un margen bruto alto y un margen neto negativo si sus
+    gastos operativos son excesivos.
+"net-profit-calculator":
+  "body": |
+    ## ¿Qué es el beneficio neto?
+
+    El beneficio neto (también llamado resultado neto o «última línea») es lo que
+    queda tras restar todos los costes a los ingresos:
+
+    $$\text{Beneficio neto} = \text{Ingresos} - \text{Coste de ventas} - \text{Gastos operativos} - \text{Intereses} - \text{Impuestos}$$
+
+    ### La cascada de la cuenta de resultados
+
+    | Línea | Fórmula |
+    |------|---------|
+    | **Ingresos** | Ventas totales |
+    | **Beneficio bruto** | Ingresos − coste de ventas |
+    | **Resultado operativo (EBIT)** | Beneficio bruto − gastos operativos |
+    | **Beneficio antes de impuestos** | Resultado operativo − intereses |
+    | **Beneficio neto** | Beneficio antes de impuestos − impuestos |
+
+    ### Referencias de margen neto
+
+    | Sector | Margen neto habitual |
+    |----------|--------------------|
+    | SaaS | 15–30 % |
+    | Consultoría | 15–25 % |
+    | Comercio minorista | 2–5 % |
+    | Restauración | 3–9 % |
+    | Industria | 5–10 % |
+    | Salud | 4–8 % |
+
+    ### Margen bruto, operativo o neto
+
+    - El **margen bruto** muestra la eficiencia productiva: ¿es rentable el producto principal?
+    - El **margen operativo** muestra la eficiencia del modelo: ¿puedes dirigir la empresa con beneficio?
+    - El **margen neto** muestra el rendimiento final para los propietarios, tras financiación e impuestos.
+
+    Si los tres márgenes se comprimen a la vez, el problema es sistémico. Un margen
+    neto a la baja con un margen bruto estable suele apuntar a más gastos de venta,
+    generales y administrativos o a más intereses.
+
+    ### Guías
+
+    - [Cómo calcular el margen de beneficio neto](/tools/net-profit-calculator/#how-to-calculate-net-profit-margin)
+    - [Beneficio bruto o beneficio neto: diferencias clave](/tools/net-profit-calculator/#gross-profit-vs-net-profit)
+"operating-leverage-calculator":
+  "body": |
+    El apalancamiento operativo mide la sensibilidad de tu resultado operativo a
+    los cambios de ingresos. Un apalancamiento operativo alto es un arma de doble
+    filo: el crecimiento de ingresos amplifica los beneficios, pero su caída
+    amplifica las pérdidas.
+
+    ## Fórmula del grado de apalancamiento operativo (GAO)
+
+    **GAO = margen de contribución / resultado operativo**
+    **GAO = (ingresos − costes variables) / (ingresos − costes variables − costes fijos)**
+
+    Un GAO de 4 significa que cada cambio del 1 % en los ingresos produce un cambio
+    del 4 % en el resultado operativo.
+
+    ## Por qué el SaaS tiene un apalancamiento operativo alto
+
+    Las empresas SaaS tienen costes fijos altos (ingeniería, infraestructura,
+    gastos generales) y costes variables bajos (alojamiento, procesamiento de
+    pagos, soporte a escala). Una vez cubiertos los costes fijos, los ingresos
+    adicionales van casi todos al resultado operativo.
+
+    Por eso los márgenes de los SaaS se amplían tanto al crecer: el modelo tiene un
+    apalancamiento operativo intrínseco una vez superado el umbral de costes fijos.
+
+    ## Apalancamiento operativo por sector
+
+    | Sector | GAO habitual | Motivo |
+    |----------|------------|--------|
+    | SaaS (a escala) | 3–8 | Fijos altos, variables bajos |
+    | Aerolíneas | 4–8 | Fijos altos (aviones, tripulación) |
+    | Industria | 2–4 | Costes fijos de equipos |
+    | Comercio minorista | 1,5–3 | Coste de ventas alto (variable) |
+    | Servicios | 1,5–2,5 | La mano de obra crece con los ingresos |
+
+    ## Apalancamiento operativo o financiero
+
+    El apalancamiento operativo amplifica los cambios del resultado operativo a
+    través de los costes fijos. El apalancamiento financiero amplifica los cambios
+    del beneficio neto a través de los intereses de la deuda. Combinado
+    (apalancamiento total) = GAO × GAF (grado de apalancamiento financiero).
+"revenue-growth-rate-calculator":
+  "body": |
+    ## Fórmula de la tasa de crecimiento de ingresos
+
+    $$\text{Tasa de crecimiento} = \frac{\text{Ingresos actuales} - \text{Ingresos anteriores}}{\text{Ingresos anteriores}} \times 100$$
+
+    ### Referencias de crecimiento
+
+    | Crecimiento | Categoría |
+    |--------|---------- |
+    | 100 % o más | Hipercrecimiento |
+    | 50–100 % | Alto crecimiento (SaaS en fase inicial) |
+    | 20–50 % | Crecimiento fuerte |
+    | 10–20 % | Crecimiento moderado |
+    | 0–10 % | Crecimiento lento / madurez |
+    | Negativo | Declive |
+
+    ### La CAGR para análisis de varios años
+
+    $$\text{CAGR} = \left(\frac{\text{Ingresos finales}}{\text{Ingresos iniciales}}\right)^{\frac{1}{n}} - 1$$
+
+    La tasa de crecimiento anual compuesta (CAGR) suaviza un crecimiento irregular.
+    Una empresa que creció un 30 %, luego un 10 % y luego un 50 % tuvo una CAGR de
+    ~29 %, más informativa que cualquier año aislado.
+
+    ### La regla del 40
+
+    La regla del 40 es la principal referencia de salud de un SaaS:
+
+    $$\text{Regla del 40} = \text{Tasa de crecimiento} + \text{Margen neto}$$
+
+    Una puntuación ≥ 40 indica un SaaS equilibrado y sostenible. Una empresa que
+    crece al 60 % puede operar con un margen del −20 % y sacar 40. Una que crece al
+    10 % necesita un margen del 30 % o más para aprobar.
+
+    ### Guías
+
+    - [Cómo calcular la tasa de crecimiento de ingresos](/tools/revenue-growth-rate-calculator/#how-to-calculate-revenue-growth-rate)
+    - [¿Qué es la regla del 40 en SaaS?](/tools/revenue-growth-rate-calculator/#what-is-rule-of-40)
+"roa-calculator":
+  "body": |
+    ## ¿Qué es la rentabilidad sobre activos (ROA)?
+
+    La rentabilidad sobre activos (ROA, Return on Assets) mide la eficiencia con la
+    que una empresa usa sus activos para generar beneficio.
+
+    $$\text{ROA} = \frac{\text{Beneficio neto}}{\text{Activo total}} \times 100$$
+
+    ### Referencias de ROA por sector
+
+    | Sector | ROA habitual |
+    |----------|-------------|
+    | Tecnología / SaaS | 10–25 % |
+    | Bienes de consumo | 5–15 % |
+    | Industria | 3–8 % |
+    | Comercio minorista | 4–10 % |
+    | Banca / finanzas | 1–2 % |
+    | Inmobiliario | 1–3 % |
+
+    ### La descomposición DuPont
+
+    El ROA se descompone en dos motores:
+
+    $$\text{ROA} = \text{Margen neto} \times \text{Rotación de activos}$$
+
+    Es útil para el diagnóstico: un ROA bajo puede venir de márgenes estrechos, de
+    una rotación lenta de activos o de ambos. Mejorar cualquiera de los dos mejora
+    el ROA.
+
+    ### Guías
+
+    - [¿Qué es la rentabilidad sobre activos (ROA)?](/tools/roa-calculator/#what-is-return-on-assets)
+    - [ROA o ROE: ¿en qué se diferencian?](/tools/roa-calculator/#roa-vs-roe-difference)
+"roe-calculator":
+  "body": |
+    ## ¿Qué es la rentabilidad sobre el patrimonio (ROE)?
+
+    La rentabilidad sobre el patrimonio (ROE, Return on Equity) mide cuánto
+    beneficio genera una empresa por cada dólar de patrimonio neto. Es la medida
+    más usada de la eficiencia de la dirección para rentabilizar el capital.
+
+    **ROE = beneficio neto ÷ patrimonio neto × 100**
+
+    Un ROE del 20 % significa que la empresa genera $0,20 de beneficio por cada
+    $1,00 de capital propio, equivalente a un rendimiento anual del 20 % para los
+    accionistas si todos los beneficios se retienen y reinvierten.
+
+    ## ¿Qué es un buen ROE?
+
+    | Rango de ROE | Interpretación |
+    |---|---|
+    | 20 % o más | Excelente: cuartil superior |
+    | 15–20 % | Bueno: por encima de la media de la mayoría de sectores |
+    | 10–15 % | Aceptable: en la media del mercado |
+    | 5–10 % | Por debajo de la media: hay que mejorar |
+    | Menos del 5 % | Débil: puede estar destruyendo valor para el accionista |
+
+    El ROE medio a largo plazo del S&P 500 ronda el 14 %. Las tecnológicas suelen
+    alcanzar el 20–40 %, los minoristas el 10–15 % y los servicios públicos el
+    8–12 %.
+
+    ## Análisis DuPont: descomponer el ROE
+
+    La fórmula DuPont divide el ROE en tres motores:
+
+    **ROE = margen neto × rotación de activos × multiplicador del patrimonio**
+
+    - **Margen neto** = beneficio neto ÷ ingresos (beneficio por dólar vendido)
+    - **Rotación de activos** = ingresos ÷ activo total (eficiencia de los activos para generar ventas)
+    - **Multiplicador del patrimonio** = activo total ÷ patrimonio neto (apalancamiento financiero)
+
+    Un ROE alto que viene de márgenes y eficiencia de activos es más sostenible que
+    uno impulsado solo por el apalancamiento. El ROE sobreapalancado se hunde
+    rápido cuando empeora el entorno.
+
+    ## ROE y tasa de crecimiento sostenible
+
+    La tasa de crecimiento sostenible es el ritmo máximo al que puede crecer una
+    empresa sin financiación externa de capital:
+
+    **Tasa de crecimiento sostenible = ROE × (1 − tasa de reparto (el % del beneficio que se paga a los accionistas en vez de retenerse))**
+
+    Con un ROE del 20 % y un reparto del 0 % (todo retenido): 20 % de crecimiento
+    sostenible.
+    Con un ROE del 20 % y un reparto del 50 %: 10 % de crecimiento sostenible.
+
+    ## Preguntas frecuentes
+
+    **¿En qué se diferencia el ROE del ROA?**
+    Rentabilidad sobre activos (ROA) = beneficio neto ÷ activo total. El ROA mide la
+    eficiencia sobre todo el capital (deuda + patrimonio). El ROE solo mide la
+    rentabilidad del capital propio. La diferencia entre ROE y ROA refleja el
+    apalancamiento financiero: ROE = ROA × multiplicador del patrimonio. Una
+    empresa con el mismo ROA pero más deuda mostrará un ROE mayor, lo que puede
+    engañar si el apalancamiento es excesivo.
+
+    **¿Cuándo engaña un ROE alto?**
+    Un ROE muy alto puede deberse a: (1) un apalancamiento financiero alto que infla
+    la rentabilidad, (2) recompras de acciones que dejan el patrimonio cerca de
+    cero, o (3) grandes pérdidas acumuladas que reducen el patrimonio contable.
+    Comprueba siempre si el ROE alto viene de márgenes y eficiencia de activos
+    (sano) o de ingeniería financiera (arriesgado).
+"times-interest-earned-calculator":
+  "body": |
+    ## ¿Qué es el ratio de cobertura de intereses?
+
+    El ratio de cobertura de intereses (TIE, Times Interest Earned) mide cuántas
+    veces el EBIT de una empresa puede pagar sus intereses:
+
+    $$\text{TIE} = \frac{\text{EBIT}}{\text{Gasto por intereses}}$$
+
+    ### Referencias de TIE
+
+    | TIE | Valoración |
+    |----|------------|
+    | ≥ 5× | Cobertura sólida: deuda atendible con holgura |
+    | 3–5× | Adecuado: aceptable para la mayoría de préstamos |
+    | 1,5–3× | Ajustado: cerca de los límites de los covenants |
+    | 1–1,5× | Mínimo: un mal trimestre te pone en riesgo |
+    | < 1× | No se pueden cubrir los intereses con la operación |
+
+    ### Por qué les importa a los prestamistas
+
+    El TIE es un covenant habitual en los préstamos. La mayoría de prestamistas
+    sénior exigen un TIE ≥ 1,25–1,5×. Un TIE de 3× significa que el EBIT tendría que
+    caer un 67 % antes de que los intereses dejaran de poder pagarse.
+
+    ### TIE o DSCR
+
+    El TIE solo cubre intereses, no la devolución del principal. Para la cobertura
+    completa del servicio de la deuda, principal incluido, usa la [calculadora de
+    DSCR](/tools/dscr-calculator/). El DSCR es más estricto y más usado en
+    inmobiliario y financiación de proyectos.
+
+    ### Guías
+
+    - [¿Qué es el ratio de cobertura de intereses?](/tools/times-interest-earned-calculator/#what-is-times-interest-earned-ratio)
+    - [TIE o DSCR: ¿en qué se diferencian?](/tools/times-interest-earned-calculator/#tie-ratio-vs-dscr)

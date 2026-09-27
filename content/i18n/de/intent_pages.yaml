@@ -6618,3 +6618,1730 @@
     Velocity Pipeline-Probleme 60–90 Tage, bevor sie den Umsatz treffen.
 
     Berechne deine mit dem [Sales-Velocity-Rechner](/tools/sales-velocity-calculator/).
+
+"business-loan-vs-line-of-credit":
+  "title": "Geschäftskredit oder Kreditlinie: Was passt zu deinem Unternehmen?"
+  "description": "Ratenkredite und Kreditlinien lösen unterschiedliche Probleme. Wann welches Produkt passt, wie groß der Kostenunterschied ist und wie du die gesamten Kapitalkosten vergleichst."
+  "body": |
+    Ob ein Ratenkredit oder eine Kreditlinie passt, hängt davon ab, was du
+    finanzierst. Das falsche Produkt kostet mehr und kann Liquiditätsprobleme
+    verursachen.
+
+    ## Ratenkredit: was er ist und wann er passt
+
+    Ein Ratenkredit zahlt einen Betrag auf einmal aus, den du mit festen
+    Monatsraten über eine feste Laufzeit (1–10 Jahre) zurückzahlst. Zinsen laufen
+    vom ersten Tag an auf den vollen Betrag.
+
+    **Geeignet für:**
+    - Anschaffung von Ausrüstung
+    - Mieterausbauten
+    - Übernahmen
+    - Konkrete Projekte mit feststehenden Kosten
+
+    **Vorteile:**
+    - Planbare feste Rate
+    - Niedrigerer Zins als ein revolvierender Kredit
+    - Keine Versuchung, erneut Geld aufzunehmen
+
+    **Nachteile:**
+    - Du zahlst ab dem ersten Tag Zinsen auf den vollen Betrag, auch wenn du noch nicht alles brauchst
+    - Vorfälligkeitsentschädigung bei manchen Krediten
+
+    ## Kreditlinie: was sie ist und wann sie passt
+
+    Eine Kreditlinie ist ein revolvierender Kreditrahmen. Du ziehst, was du
+    brauchst, zahlst zurück und ziehst erneut. Zinsen fallen nur auf den offenen
+    Betrag an.
+
+    **Geeignet für:**
+    - Lücken im Working Capital (Warten auf Kundenzahlungen)
+    - Saisonalen Lagerbedarf
+    - Überbrückung zwischen Rechnungen
+    - Notfallpuffer für den Betrieb
+
+    **Vorteile:**
+    - Zinsen nur auf das, was du nutzt
+    - Flexible Ziehungen und Rückzahlungen
+    - Wiederverwendbar: zurückzahlen und neu ziehen ohne neuen Antrag
+
+    **Nachteile:**
+    - Höherer Zins als bei Ratenkrediten (meist 1–3 Prozentpunkte mehr)
+    - Oft ist eine jährliche „Glattstellung“ nötig (30+ Tage mit Saldo 0 $)
+    - Versuchung, sie als dauerhaftes Kapital zu behandeln (riskant)
+
+    ## Gesamtkosten im Vergleich
+
+    Ratenkredit über 100.000 $ zu 8 % über 36 Monate: gesamte Zinsen = **12.811 $**
+    Kreditlinie über 100.000 $ zu 11 %, 24 Monate zu 50 % gezogen: gesamte Zinsen = **11.000 $**
+
+    Die Kreditlinie kann günstiger sein, wenn du sie nicht voll nutzt; ziehst du
+    aber dauerhaft den vollen Betrag, ist der Ratenkredit deutlich günstiger.
+
+    ## Was du wählen solltest: Entscheidungsmatrix
+
+    | Einsatz | Beste Wahl |
+    |---|---|
+    | Ausrüstung, Fahrzeuge, Ausbauten | Ratenkredit |
+    | Saisonaler Lageraufbau | Kreditlinie |
+    | Konkrete Übernahme | Ratenkredit |
+    | Lücken beim Forderungseingang glätten | Kreditlinie |
+    | Langfristiges Working Capital | Ratenkredit |
+    | Notfallpuffer | Kreditlinie |
+
+    Berechne die Monatsraten eines Ratenkredits mit dem [Geschäftskredit-Rechner](/tools/business-loan-calculator/).
+"how-much-can-i-borrow-for-my-business":
+  "title": "Wie viel Kredit bekommt mein Unternehmen? Leitfaden zur Kredithöhe"
+  "description": "Kreditgeber bestimmen die mögliche Kredithöhe mit Umsatzmultiples, DSCR und Sicherheitendeckung. Die Formeln, mit denen Kreditgeber deinen Kredit bemessen."
+  "body": |
+    Kreditgeber prüfen Kreditanfragen mit einer Kombination aus Cashflow-Deckung,
+    Sicherheiten und Umsatz-Richtwerten. Wer diese Formeln versteht, geht mit einer
+    realistischen Summe in den Kreditantrag.
+
+    ## Die DSCR-Methode (die wichtigste)
+
+    Kreditgeber beginnen mit deiner Rückzahlungsfähigkeit. Die zentrale Kennzahl:
+
+    **DSCR = jährliches NOI / jährlicher Schuldendienst ≥ 1,25**
+
+    Jährliches NOI = Nettogewinn + Abschreibungen + Zinsen (vor dem neuen Kredit).
+
+    Rückwärts gerechnet: Beträgt dein jährliches NOI 100.000 $ und verlangt der
+    Kreditgeber einen DSCR von 1,25:
+    Maximaler jährlicher Schuldendienst = 100.000 $ / 1,25 = **80.000 $**
+    Maximale Monatsrate = 80.000 $ / 12 = **6.667 $**
+
+    Bei maximal 6.667 $ im Monat zu 8,5 % Effektivzins über 84 Monate:
+    Maximaler Kredit = **~421.000 $** (nach der Annuitätenformel)
+
+    Das ist die zuverlässigste Methode, um die maximale Kredithöhe zu schätzen.
+
+    ## Umsatzmultiples (schnelle Schätzung)
+
+    Kreditgeber nutzen den Jahresumsatz oft als schnelle Plausibilitätsprüfung:
+
+    | Kreditart | Übliches Maximum |
+    |---|---|
+    | Betriebsmittelkredit | 8–15 % des Jahresumsatzes |
+    | Ausrüstungskredit | Bis zum Wert der Ausrüstung |
+    | SBA 7(a) | Bis 5 Mio. $, begrenzt durch den DSCR |
+    | Geschäftliche Kreditlinie | 10–25 % des Jahresumsatzes |
+
+    Für ein Unternehmen mit 2 Mio. $ Jahresumsatz: Betriebsmittelkredit bis
+    200.000–300.000 $, Kreditlinie bis 200.000–500.000 $.
+
+    ## Sicherheitendeckung
+
+    Sicherheiten senken das Risiko des Kreditgebers und können höhere Beträge
+    ermöglichen:
+
+    **Forderungen**: Kreditgeber beleihen 70–85 % der berechtigten Forderungen (Rechnungen unter 90 Tagen).
+    **Ausrüstung**: 50–80 % des Schätzwerts.
+    **Immobilien**: 70–80 % Beleihungsauslauf (LTV).
+    **Vorräte**: 25–50 % des Schätzwerts.
+
+    Hinweis: Für die meisten Kreditgeber sind Sicherheiten zweitrangig. Die
+    DSCR-Deckung steht an erster Stelle. Nimm nicht zu viel Kredit auf, nur weil du
+    Sicherheiten hast.
+
+    ## Worauf Kreditgeber jenseits der Zahlen achten
+
+    **Branchenrisiko**: Gastronomie, Einzelhandel und Saisongeschäfte werden
+    strenger geprüft. SaaS und professionelle Dienstleistungen erhalten meist
+    bessere Konditionen.
+
+    **Unternehmensalter**: Unter 2 Jahren sind die Optionen stark eingeschränkt.
+    Plane zu warten oder nutze alternative Finanzierung (umsatzbasierte
+    Finanzierung, Business Angels).
+
+    **Bonität des Inhabers**: Dein persönlicher FICO-Score beeinflusst Zins und
+    Zusage stark. Ab 700 gibt es meist die besten Konditionen, 650–699 ist machbar,
+    unter 650 bleiben dir SBA oder alternative Kreditgeber.
+
+    Mit dem [Geschäftskredit-Rechner](/tools/business-loan-calculator/) leitest du
+    aus der maximal tragbaren Monatsrate die Kredithöhe ab.
+"sba-loan-calculator":
+  "title": "SBA-Kreditrechner: Monatsrate und Gesamtkosten eines SBA-7(a)-Kredits"
+  "description": "Berechne die Raten eines SBA-7(a)-Kredits mit der aktuellen Prime Rate. Verstehe Monatsrate, gesamte Zinsen und DSCR-Anforderungen, bevor du den Antrag stellst."
+  "body": |
+    Das SBA-7(a)-Programm ist in den USA der häufigste staatlich verbürgte Kredit
+    für kleine Unternehmen. Mit der Bürgschaft der Small Business Administration
+    können Banken auch Unternehmen Kredit geben, die für eine klassische
+    Finanzierung nicht infrage kämen.
+
+    ## Aktuelle SBA-7(a)-Zinsen
+
+    SBA-7(a)-Zinsen sind variabel und an die Prime Rate des Wall Street Journal
+    gekoppelt. Stand 2026:
+
+    | Kreditbetrag | Maximaler variabler Zins |
+    |---|---|
+    | ≤ 25.000 $ | Prime + 4,25 % |
+    | 25.001–50.000 $ | Prime + 3,25 % |
+    | > 50.000 $ (Laufzeit 7+ Jahre) | Prime + 2,75 % |
+    | > 50.000 $ (Laufzeit < 7 Jahre) | Prime + 2,25 % |
+
+    Die aktuelle Prime Rate findest du auf wsj.com. Addiere den SBA-Aufschlag, um
+    deinen Höchstzins zu erhalten (dein tatsächlicher Zins kann je nach Bonität
+    niedriger sein).
+
+    ## Beispielrate für einen SBA-7(a)-Kredit
+
+    Kredit: 250.000 $ zu 10,5 % Effektivzins (Prime 7,5 % + Aufschlag 3,0 %) über 84 Monate:
+    Monatsrate: **4.215 $/Monat**
+    Gesamte Zinsen: **104.074 $** (41,6 % des Kreditbetrags)
+
+    ## DSCR-Anforderung
+
+    SBA-Kreditgeber verlangen einen Schuldendienstdeckungsgrad ≥ 1,25:
+    DSCR = jährliches Netto-Betriebsergebnis / jährliche Kreditzahlungen
+
+    Für eine Rate von 4.215 $/Monat (= 50.580 $/Jahr) brauchst du mindestens ein NOI von:
+    50.580 $ × 1,25 = **63.225 $/Jahr** (5.269 $/Monat)
+
+    Erzielt dein Geschäft weniger NOI, lehnen SBA-Kreditgeber den Antrag ab.
+
+    ## So erfüllst du die Voraussetzungen für einen SBA-Kredit
+
+    **Bonität**: Die meisten SBA-Kreditgeber verlangen einen persönlichen FICO-Score
+    ab 650. Manche bevorzugten SBA-Kreditgeber akzeptieren ab 620. Auch die
+    Unternehmensbonität (Dun & Bradstreet, Experian Business) zählt.
+
+    **Unternehmensalter**: Die meisten Kreditgeber verlangen 2+ Jahre. SBA
+    Microloans und einige Community-Advantage-Programme akzeptieren Startups.
+
+    **Umsatz**: Die SBA setzt kein Minimum, aber Kreditgeber wollen einen DSCR ≥ 1,25
+    sehen.
+
+    **Persönliche Bürgschaft**: Pflicht für alle Eigentümer mit 20 %+ Anteil. Du
+    haftest persönlich, auch wenn das Unternehmen scheitert.
+
+    **Sicherheiten**: Die SBA verpflichtet Kreditgeber, verfügbare Sicherheiten zu
+    nehmen, lehnt aber nicht allein wegen unzureichender Sicherheiten ab. Bei
+    größeren Krediten dient oft das Eigenkapital in deinem Eigenheim als
+    Sicherheit.
+
+    Berechne die Rate deines SBA-Kredits mit dem [Geschäftskredit-Rechner](/tools/business-loan-calculator/).
+"cogs-for-saas-cost-of-revenue-explained":
+  "title": "COGS bei SaaS: Was zu den Umsatzkosten zählt"
+  "description": "SaaS-Unternehmen haben keinen Lagerbestand, aber trotzdem ein COGS-Äquivalent: die Umsatzkosten. Was genau dazugehört und was nicht."
+  "body": |
+    SaaS-Unternehmen stellen keine physischen Waren her, deshalb wirkt „Kosten der
+    verkauften Waren“ wie der falsche Begriff: Die meisten SaaS-GuVs sprechen von
+    **Umsatzkosten** (Cost of Revenue), also den direkten Kosten, um die Software an
+    Kunden zu liefern.
+
+    ## Was zu den Umsatzkosten eines SaaS gehört
+
+    - **Hosting und Infrastruktur**: Cloud-Rechenleistung, Speicher und Bandbreite,
+      die direkt mit dem Betrieb des Produkts für Kunden zusammenhängen
+    - **APIs von Drittanbietern und lizenzierte Daten**: jede nutzungs- oder
+      platzbezogene Gebühr eines Anbieters, von dem dein Produkt abhängt
+    - **Kundensupport**: Support- und Customer-Success-Teams, wenn ihre Aufgabe
+      die Lieferung des Produkts ist, nicht der Verkauf
+    - **Zahlungsgebühren**: Stripe-/PayPal-Gebühren auf Abo-Abbuchungen
+    - **Implementierung und Onboarding**: bei Produkten mit begleiteter
+      Einrichtung die direkten Kosten, einen Kunden live zu bringen
+
+    ## Was NICHT zu den Umsatzkosten gehört
+
+    - Gehälter und Ausgaben für Vertrieb und Marketing
+    - F&E und Produktentwicklung (neue Funktionen, nicht der Betrieb bestehender)
+    - Verwaltung: Finanzen, HR, Recht, Gehälter der Geschäftsführung
+    - Vertriebsprovisionen
+
+    Ein häufiger Fehler: die gesamte Entwicklung in die Umsatzkosten zu buchen. Dort
+    gehört nur der Teil hin, der direkt mit dem Betrieb des Live-Produkts für
+    bestehende Kunden zusammenhängt. Die Entwicklung neuer Funktionen ist F&E, eine
+    Betriebsausgabe unterhalb der Bruttomargen-Zeile.
+
+    ## Warum der Bruttomargen-Richtwert bei SaaS so hoch ist
+
+    Weil die Umsatzkosten von Software vor allem Hosting und Support sind, in der
+    Größe ein kleiner Bruchteil des Umsatzes, sind SaaS-Bruttomargen von 70–85 %
+    normal, gegenüber 20–50 % bei Unternehmen mit physischen Herstellungskosten. Das
+    ist der mechanische Grund, warum SaaS-Bewertungsmultiples meist höher liegen als
+    bei Produktunternehmen: Von jedem neuen Umsatzdollar fließt mehr in den
+    Bruttogewinn.
+
+    ## Häufige Fragen
+
+    **Zählt Customer Success zu den Umsatzkosten oder zu Vertrieb und Marketing?**
+    Das hängt von der Rolle ab. Success-Teams mit Fokus auf Verlängerung und
+    Ausbau werden oft Vertrieb und Marketing zugeordnet, solche mit Fokus auf
+    Onboarding und Support den Umsatzkosten. Manche Unternehmen teilen die Kosten
+    einer CSM-Stelle anteilig auf.
+
+    **Wie werden KI- und Inferenzkosten bei KI-Produkten eingeordnet?**
+    Als Umsatzkosten: Inferenzkosten wachsen direkt mit der Nutzung, genau wie
+    Hosting, und sind direkte Kosten der Produktlieferung pro Kundeninteraktion.
+
+    Nutze den [COGS-Rechner](/tools/cogs-calculator/), um Bruttogewinn und Marge zu
+    berechnen, sobald du deine Umsatzkosten richtig zugeordnet hast.
+"cogs-vs-operating-expenses":
+  "title": "Herstellungskosten vs. Betriebsausgaben: Was ist der Unterschied?"
+  "description": "Herstellungskosten (COGS) umfassen die direkten Produktionskosten, Betriebsausgaben die indirekten Kosten wie Vertrieb, Marketing und Verwaltung. Beide mindern den Gewinn, aber COGS werden zuerst abgezogen, um den Bruttogewinn zu zeigen."
+  "body": |
+    Die Trennung zwischen Herstellungskosten und Betriebsausgaben (OpEx) prägt,
+    wie Investoren die Unit Economics eines Unternehmens bewerten.
+
+    ## Wo beides in der GuV steht
+
+    ```
+    Umsatz                          1.000.000 $
+    - COGS                          (400.000 $)   ← Direkte Produktionskosten
+    = Bruttogewinn                    600.000 $   ← Bruttomarge: 60 %
+
+    - F&E                           (100.000 $)
+    - Vertrieb und Marketing        (200.000 $)   ← Betriebsausgaben (OpEx)
+    - Allgemeine Verwaltung          (80.000 $)
+    = Betriebsergebnis (EBIT)         220.000 $   ← Betriebsmarge: 22 %
+    ```
+
+    ## Was wohin gehört
+
+    | Kosten | COGS oder OpEx? | Warum |
+    |------|--------------|-----|
+    | Rohstoffe | COGS | Direkt im Produkt |
+    | Löhne der Produktionsmitarbeiter | COGS | Direkte Fertigungsarbeit |
+    | Gehalt eines Vertriebsmitarbeiters | OpEx | Indirekt: ermöglicht den Verkauf, nicht die Produktion |
+    | Kundensupport | Kommt darauf an | Vor dem Kauf oder allgemein: OpEx. Nach dem Kauf bei SaaS: COGS |
+    | Cloud-Hosting (SaaS) | COGS | Kosten pro bedientem Kunden |
+    | F&E | OpEx | Künftiges Produkt, nicht aktuelle Lieferung |
+
+    ## Warum die Unterscheidung für Investoren zählt
+
+    Eine hohe Bruttomarge (niedriger COGS-Anteil) signalisiert Preissetzungsmacht
+    und skalierbare Unit Economics. Betriebsausgaben lassen sich in einem Abschwung
+    kürzen; Herstellungskosten sind schwerer zu senken, ohne Qualität oder Menge zu
+    opfern. Investoren vergleichen zuerst die Bruttomarge, dann die Betriebsmarge.
+"what-is-cost-of-goods-sold":
+  "title": "Was sind Herstellungskosten (COGS)?"
+  "description": "Herstellungskosten (COGS) sind die direkten Kosten, um die in einer Periode verkauften Waren herzustellen. Sie entsprechen Anfangsbestand plus Einkäufe minus Endbestand und werden vom Umsatz abgezogen, um den Bruttogewinn zu ermitteln."
+  "body": |
+    **Herstellungskosten der verkauften Waren (COGS, Cost of Goods Sold)** sind die
+    direkten Kosten, die den in einer bestimmten Periode verkauften Waren
+    zuzurechnen sind.
+
+    $$\text{COGS} = \text{Anfangsbestand} + \text{Einkäufe} - \text{Endbestand}$$
+
+    ## Was zu den Herstellungskosten gehört
+
+    **Unternehmen mit physischen Waren:**
+    - Rohstoffe
+    - Verpackung
+    - Direkte Arbeitskosten (Mitarbeiter, die die Waren direkt herstellen)
+    - Fertigungsgemeinkosten (Abschreibung der Produktionsanlagen, Energie im Werk)
+    - Eingangsfracht
+
+    **SaaS und Software (hier Umsatzkosten genannt):**
+    - Cloud-Hosting und Infrastruktur
+    - Supportteam, das Kunden direkt betreut
+    - API-Kosten von Drittanbietern pro Transaktion
+    - Implementierungs- und Onboarding-Kosten
+
+    ## Herstellungskosten in der GuV
+
+    Die Herstellungskosten stehen direkt unter dem Umsatz:
+
+    ```
+    Umsatz                1.500.000 $
+    - COGS                 (870.000 $)
+    = Bruttogewinn          630.000 $ (42 % Marge)
+    - Betriebsausgaben      ...
+    = Betriebsergebnis      ...
+    ```
+
+    ## Warum genaue Herstellungskosten wichtig sind
+
+    Werden Betriebsausgaben (etwa Vertriebsgehälter) als COGS gebucht, verzerrt
+    das die Bruttomarge und verdeckt den operativen Hebel. Investoren und Käufer
+    prüfen die Zusammensetzung der Herstellungskosten genau, besonders bei SaaS:
+    Eine überhöhte Bruttomarge ist ein häufiges Warnsignal in der
+    M&A-Due-Diligence.
+"current-ratio-benchmarks-by-industry":
+  "title": "Richtwerte für den Liquiditätsgrad nach Branche"
+  "description": "Was als gesunder Liquiditätsgrad gilt, variiert stark nach Branche: typische Spannen für SaaS, Einzelhandel, Fertigung und Dienstleistungen."
+  "body": |
+    Die Lehrbuchregel „1,5–2,0× ist gesund“ ist ein vernünftiger Ausgangspunkt,
+    aber das richtige Ziel hängt stark davon ab, wie ein Unternehmen tatsächlich
+    arbeitet.
+
+    ## Üblicher Liquiditätsgrad nach Branche
+
+    | Branche | Üblicher Liquiditätsgrad | Warum |
+    |----------|------------------------|-----|
+    | SaaS / Software | 1,5–3,0× | Wenig Vorräte, oft viel Cash durch vorausbezahlte Jahrespläne |
+    | Einzelhandel | 1,0–1,5× | Hoher Lagerumschlag, dünnere Cash-Puffer |
+    | Fertigung | 1,3–2,0× | Vorräte und Forderungen binden Working Capital |
+    | Bau | 1,1–1,5× | Lange Forderungszyklen, Abrechnung nach Baufortschritt |
+    | Professionelle Dienstleistungen | 1,2–2,0× | Kaum Vorräte, von Forderungen geprägt |
+
+    ## Warum „je höher, desto besser“ falsch ist
+
+    Ein Liquiditätsgrad weit über dem Richtwert, etwa 4 oder 5×, ist nicht
+    unbedingt gesund. Er kann heißen, dass Cash brachliegt statt ins Wachstum zu
+    fließen, dass zu viel auf Lager liegt oder dass Forderungen altern und nicht
+    eingetrieben werden, statt wirklich liquide zu sein. Der Kontext zählt mehr als
+    die nackte Zahl.
+
+    ## Den Liquiditätsgrad eines SaaS mit Blick auf passive Rechnungsabgrenzung lesen
+
+    Vorausbezahlte Jahresabos bringen Cash im Voraus für Leistungen im
+    kommenden Jahr. Das Cash landet im Umlaufvermögen, und derselbe Betrag landet
+    als passive Rechnungsabgrenzung (Deferred Revenue) in den kurzfristigen
+    Verbindlichkeiten. Die Vorauszahlung zieht den Liquiditätsgrad also in
+    Richtung 1,0×, statt ihn zu erhöhen. Das unterschätzt die echte Liquidität:
+    Diese Abgrenzung wird durch die Lieferung der Software erfüllt, nicht durch
+    eine Auszahlung.
+
+    ## Current Ratio vs. Quick Ratio
+
+    Branchen mit großen Vorräten (Einzelhandel, Fertigung) sollten Current Ratio
+    und Quick Ratio (ohne Vorräte) gemeinsam betrachten: Eine gesund wirkende
+    Current Ratio kann eine deutlich schwächere Quick Ratio verdecken, wenn ein
+    großer Teil des Umlaufvermögens langsam drehende Vorräte sind.
+
+    ## Häufige Fragen
+
+    **Was gilt als gefährlich niedrig?**
+    Unter 1,0× übersteigen die kurzfristigen Verbindlichkeiten das
+    Umlaufvermögen: Das Unternehmen kann seine kurzfristigen Verpflichtungen ohne
+    Außenfinanzierung womöglich nicht erfüllen, unabhängig von der Branche.
+
+    **Brauchen Saisongeschäfte einen anderen Richtwert?**
+    Verfolge die Kennzahl über den ganzen Saisonzyklus, nicht nur als
+    Momentaufnahme: Der Liquiditätsgrad eines Händlers sinkt vor einer großen
+    Verkaufssaison natürlich, weil Vorräte aufgebaut werden, und erholt sich, wenn
+    sie abverkauft sind.
+
+    Berechne mit dem [Liquiditätsgrad-Rechner](/tools/current-ratio-calculator/)
+    deinen eigenen Wert und vergleiche ihn mit der Branchentabelle oben.
+"current-ratio-vs-quick-ratio":
+  "title": "Current Ratio vs. Quick Ratio: die wichtigsten Unterschiede"
+  "description": "Die Quick Ratio (Acid-Test) ist vorsichtiger als die Current Ratio, weil sie Vorräte ausschließt. Ein Unternehmen kann eine gesunde Current Ratio haben und trotzdem Liquiditätsprobleme, wenn die Vorräte langsam drehen."
+  "body": |
+    Current Ratio und Quick Ratio messen beide die kurzfristige Liquidität, sind
+    sich aber über die Qualität des „Umlaufvermögens“ uneinig.
+
+    ## Der Kernunterschied
+
+    Die **Quick Ratio** nimmt die Vorräte aus dem Umlaufvermögen heraus:
+
+    $$\text{Quick Ratio} = \frac{\text{Umlaufvermögen} - \text{Vorräte}}{\text{Kurzfristige Verbindlichkeiten}}$$
+
+    Das ist wichtig, weil Vorräte Wochen oder Monate bis zum Verkauf brauchen oder
+    nie zum vollen Preis verkauft werden. In einer Liquiditätskrise kannst du
+    Lieferanten nicht mit Ware im Regal bezahlen.
+
+    ## Wann sie auseinanderlaufen
+
+    Ein Unternehmen mit 2,0× Current Ratio, bei dem 80 % des Umlaufvermögens langsam
+    drehende Vorräte sind, kann eine Quick Ratio von 0,4× haben: auf Quick-Basis
+    zahlungsunfähig. Das ist häufig:
+    - in der Fertigung mit großen Rohstoffpuffern
+    - im Einzelhandel mit Saisonware
+    - im Großhandel
+
+    ## Welche Kennzahl zählt mehr?
+
+    Nutze **beide**. Liegen sie nah beieinander, besteht das Umlaufvermögen vor
+    allem aus Cash und Forderungen: gute Qualität. Eine große Lücke zeigt, dass
+    Vorräte einen erheblichen Teil der kurzfristigen Liquidität ausmachen.
+
+    Kreditgeber schauen bei Covenants meist auf die Quick Ratio. Operative Teams
+    beobachten oft die Current Ratio für die Planung des Working Capital.
+"what-is-the-current-ratio":
+  "title": "Was ist der Liquiditätsgrad (Current Ratio)?"
+  "description": "Der Liquiditätsgrad misst, ob ein Unternehmen kurzfristige Verbindlichkeiten mit kurzfristigem Vermögen decken kann. Ein Wert von 1,5–2,0× gilt in den meisten Branchen als gesund."
+  "body": |
+    Der **Liquiditätsgrad** (Current Ratio) ist eine der meistgenutzten
+    Liquiditätskennzahlen in der Finanzanalyse. Er beantwortet eine einfache
+    Frage: Wären heute alle kurzfristigen Schulden fällig, könnte das Unternehmen
+    sie allein mit seinem Umlaufvermögen bezahlen?
+
+    $$\text{Current Ratio} = \frac{\text{Umlaufvermögen}}{\text{Kurzfristige Verbindlichkeiten}}$$
+
+    ## Was zählt zum Umlaufvermögen?
+
+    Umlaufvermögen sind Vermögenswerte, die voraussichtlich innerhalb von 12
+    Monaten zu Cash werden:
+    - Zahlungsmittel und Zahlungsmitteläquivalente
+    - Kurzfristige Anlagen (marktgängige Wertpapiere)
+    - Forderungen aus Lieferungen und Leistungen
+    - Vorräte
+    - Aktive Rechnungsabgrenzung
+
+    ## Was zählt zu den kurzfristigen Verbindlichkeiten?
+
+    Kurzfristige Verbindlichkeiten sind Verpflichtungen, die innerhalb von 12
+    Monaten fällig werden:
+    - Verbindlichkeiten aus Lieferungen und Leistungen
+    - Kurzfristige Schulden und der kurzfristige Teil langfristiger Schulden
+    - Rückstellungen und aufgelaufene Kosten
+    - Passive Rechnungsabgrenzung (kurzfristiger Teil)
+    - Steuerverbindlichkeiten
+
+    ## Richtwerte für den Liquiditätsgrad
+
+    | Wert | Einordnung |
+    |-------|----------------|
+    | > 2,0× | Stark: kann auf ungenutztes Cash hindeuten |
+    | 1,5–2,0× | Gesund: übliches Ziel der meisten Unternehmen |
+    | 1,0–1,5× | Ausreichend: wenig Puffer für Störungen |
+    | < 1,0× | Liquiditätsrisiko: Verbindlichkeiten übersteigen das Umlaufvermögen |
+
+    ## Unterschiede nach Branche
+
+    Einzelhändler halten meist mehr Vorräte (Umlaufvermögen geringerer Qualität)
+    und brauchen zum Ausgleich einen höheren Liquiditätsgrad. SaaS-Unternehmen mit
+    Abo-Abrechnung und kaum Vorräten können sicher mit einem Wert unter 1,5×
+    arbeiten.
+"debt-to-equity-ratio-by-industry":
+  "title": "Verschuldungsgrad nach Branche (Richtwerte)"
+  "description": "Der Verschuldungsgrad reicht je nach Branche von fast null bei anlagenleichter Technologie bis 5–15× bei Banken. Wer sinnvoll vergleichen will, muss die Branchennormen kennen."
+  "body": |
+    Der „richtige“ Verschuldungsgrad ist branchenabhängig. Den D/E eines SaaS mit dem
+    eines Versorgers zu vergleichen, ist sinnlos: Vermögensstruktur und
+    Cashflow-Profil sind völlig verschieden.
+
+    ## D/E-Richtwerte nach Sektor (2024)
+
+    | Sektor | Übliche D/E-Spanne | Warum |
+    |--------|------------------|-----|
+    | Technologie / SaaS | 0,1–0,5× | Anlagenleicht, starker FCF, wenig Bedarf an Schulden |
+    | Pharma | 0,3–1,0× | F&E über Eigenkapital finanziert; etwas Fremdkapital nach Markteinführung |
+    | Basiskonsumgüter | 0,5–1,5× | Stabile Cashflows tragen moderaten Hebel |
+    | Fertigung | 0,8–2,0× | Anlagenintensiv; Ausrüstung über Kredite finanziert |
+    | Fluggesellschaften | 2,0–6,0× | Flottenfinanzierung treibt den Hebel stark nach oben |
+    | Versorger | 1,5–3,0× | Regulierte Renditen ermöglichen planbaren Schuldendienst |
+    | Immobilien (REITs) | 1,0–3,0× | Immobilien dienen als Sicherheit |
+    | Banken | 5–15× | Stark regulierter Hebel; Einlagen sind „Schulden“ |
+
+    ## Schwellen der Kreditgeber
+
+    Die meisten gewerblichen Kreditgeber bevorzugen:
+    - einen D/E unter 3,0× bei operativ tätigen Unternehmen
+    - einen D/E unter 1,5× bei unbesicherten Kreditlinien
+    - einen D/E unter 1,0× bei SBA-Krediten (in einigen Programmen)
+
+    Ein hoher D/E schließt eine Finanzierung nicht aus: Er verteuert das
+    Fremdkapital und führt zu strengeren Covenants.
+"debt-to-equity-ratio-for-small-business-loans":
+  "title": "Verschuldungsgrad und Kreditwürdigkeit kleiner Unternehmen"
+  "description": "Welchen Verschuldungsgrad Kreditgeber kleiner Unternehmen sehen wollen, wie er im Kreditantrag mit dem DSCR zusammenspielt und wie du ihn vor dem Antrag verbesserst."
+  "body": |
+    Kreditgeber lesen deinen Verschuldungsgrad als Maß für das Polster, das
+    existiert, bevor Gläubiger und nicht nur die Eigentümer das Risiko einer
+    schwächeren Geschäftsentwicklung tragen.
+
+    ## Was Kreditgeber meist sehen wollen
+
+    $$\text{D/E} = \frac{\text{Gesamtverschuldung}}{\text{Eigenkapital}}$$
+
+    | D/E | Sicht des Kreditgebers |
+    |-----------|-------------|
+    | Unter 1,0× | Stark: das Eigenkapitalpolster übersteigt die Schulden |
+    | 1,0–2,0× | Für die meisten klassischen und SBA-Kreditgeber akzeptabel |
+    | 2,0–3,0× | Erfordert starken Cashflow (DSCR), um das Hebelrisiko auszugleichen |
+    | Über 3,0× | Ohne Sicherheiten oder Bürgen schwer zu bekommen |
+
+    Die meisten klassischen Kreditgeber für kleine Unternehmen bevorzugen einen D/E
+    unter 2,0×, die genaue Schwelle hängt aber von Kreditgeber, Branche und
+    Kreditart ab: Anlagenintensive Branchen wie Immobilien bekommen regelmäßig bei
+    höheren Werten Kredit als ein Dienstleister.
+
+    ## D/E und DSCR wirken im Antrag zusammen
+
+    Der D/E zeigt dem Kreditgeber, wie stark du bereits gehebelt bist; der DSCR
+    zeigt, ob dein Cashflow *zusätzliche* Schulden bedienen kann. Ein Unternehmen
+    mit hohem D/E, aber sehr starkem DSCR (reichlich Cashflow im Verhältnis zu den
+    Raten) kann trotzdem Kredit bekommen: Kreditgeber wägen beides ab, statt allein
+    wegen des D/E abzulehnen.
+
+    ## So verbesserst du den D/E vor dem Antrag
+
+    - **Bestehende Schulden abbauen**, bevor du den Antrag stellst: Schon eine
+      moderate Reduzierung verschiebt die Kennzahl in einer kleinen Bilanz spürbar
+    - **Gewinne einbehalten**, statt sie vor einem Kreditantrag auszuschütten:
+      Einbehaltene Gewinne erhöhen direkt das Eigenkapital
+    - **Keine neuen Schulden** in den Monaten davor, auch keine
+      Ausrüstungsfinanzierung oder Kreditlinie, die bis nach dem Kreditabschluss
+      warten könnte
+
+    ## Häufige Fragen
+
+    **Zählen persönlich verbürgte Schulden zum D/E des Unternehmens?**
+    In der Regel nicht: Der D/E des Unternehmens wird aus seiner eigenen Bilanz
+    berechnet. Persönliche Bürgschaften sind ein separater Risikofaktor, den
+    Kreditgeber prüfen, kein Teil der Kennzahl.
+
+    **Wird ein sehr niedriger D/E immer positiv gesehen?**
+    Für die Kreditwürdigkeit meist ja, auch wenn ein ungewöhnlich niedriger D/E bei
+    schwachem Wachstum darauf hindeuten kann, dass ein Unternehmen Fremdkapital zu
+    wenig für seine Expansion nutzt: eine andere Frage als die Bonität.
+
+    Prüfe mit dem [Verschuldungsgrad-Rechner](/tools/debt-to-equity-calculator/)
+    deinen aktuellen Wert, bevor du einen Kreditantrag einreichst.
+"what-is-debt-to-equity-ratio":
+  "title": "Was ist der Verschuldungsgrad?"
+  "description": "Der Verschuldungsgrad (D/E) misst die finanzielle Hebelwirkung: wie viel Fremdkapital ein Unternehmen im Verhältnis zum Eigenkapital einsetzt. Ein höherer D/E verstärkt Renditen in guten Zeiten und Verluste im Abschwung."
+  "body": |
+    Der **Verschuldungsgrad** ist eine der wichtigsten Solvenzkennzahlen der
+    Finanzanalyse. Er beziffert das Verhältnis zwischen Finanzierung durch
+    Gläubiger (Fremdkapital) und durch Eigentümer (Eigenkapital).
+
+    $$\text{D/E} = \frac{\text{Gesamtverschuldung}}{\text{Eigenkapital}}$$
+
+    ## Was zählt zur Gesamtverschuldung?
+
+    Für den D/E umfasst die Gesamtverschuldung meist:
+    - Kurzfristige Kredite und den kurzfristigen Teil langfristiger Schulden
+    - Langfristige Schulden (Anleihen, Ratenkredite)
+    - Verbindlichkeiten aus Finanzierungsleasing
+
+    Manche Analysten nehmen statt der verzinslichen Schulden die breiteren
+    „Gesamtverbindlichkeiten“. Der Rechner verwendet für den Standard-D/E die
+    verzinslichen Schulden.
+
+    ## Die Kennzahl deuten
+
+    Ein D/E von 1,0 bedeutet gleich viel Fremd- wie Eigenkapital. Unter 1,0
+    überwiegt das Eigenkapital, über 1,0 das Fremdkapital.
+
+    Keines ist an sich besser; der richtige Wert hängt ab von:
+    - **Stabilität der Vermögenswerte**: Wertstabile Vermögenswerte tragen mehr Schulden (Immobilien, Versorger)
+    - **Planbarkeit des Cashflows**: Ein planbarer FCF trägt den Schuldendienst
+    - **Zinsumfeld**: Niedrige Zinsen machen Fremdkapital attraktiver
+    - **Wachstumsphase**: Junge Unternehmen bekommen oft keinen Kredit und haben einen D/E nahe null
+
+    ## Die Eigenkapitalquote
+
+    Die Eigenkapitalquote (Eigenkapital ÷ Bilanzsumme) wird oft zusammen mit dem
+    D/E genutzt:
+
+    $$\text{Eigenkapitalquote} = \frac{\text{Eigenkapital}}{\text{Bilanzsumme}} \times 100$$
+
+    Eine Eigenkapitalquote von 40 % heißt, dass 40 Cent jedes Vermögensdollars von
+    den Eigentümern finanziert sind.
+"dscr-requirements-by-lender":
+  "title": "DSCR-Anforderungen nach Kreditgeber"
+  "description": "Jeder Kreditgeber setzt eigene DSCR-Mindestwerte. SBA-Kredite verlangen 1,25×, klassische gewerbliche Kreditgeber meist 1,20–1,35×, und Hard-Money-Kreditgeber akzeptieren teils 1,0×."
+  "body": |
+    Die DSCR-Anforderungen hängen von Kreditart, Risikobereitschaft des
+    Kreditgebers und Qualität der Sicherheiten ab. Wer diese Schwellen kennt, kann
+    seine Kreditfähigkeit einschätzen, bevor er Kreditgeber anspricht.
+
+    ## DSCR-Anforderungen nach Kreditprogramm
+
+    | Kreditart | Mindest-DSCR | Hinweise |
+    |-----------|----------|-------|
+    | SBA 7(a) | 1,25 | Globaler Cashflow (alle Verpflichtungen des Unternehmens) |
+    | SBA 504 | 1,25 | Immobilie und Unternehmen zusammen |
+    | Klassische Gewerbeimmobilie | 1,20–1,30 | Je nach Objektart |
+    | USDA B&I | 1,25 | Förderung ländlicher Unternehmen |
+    | Kredit einer Regionalbank | 1,25–1,40 | Vorsichtigere Kreditprüfung |
+    | Hard Money / Überbrückungskredit | 1,00–1,10 | Vermögensbasiert; kürzere Laufzeiten |
+    | CMBS-Kredit | 1,25 | Standardisierte Prüfkriterien |
+
+    ## Globaler DSCR vs. Objekt-DSCR
+
+    Für Unternehmer, denen auch die Immobilie gehört:
+    - **Objekt-DSCR**: NOI der Immobilie ÷ nur der Schuldendienst der Immobilie
+    - **Globaler DSCR**: gesamter Cashflow des Unternehmens ÷ alle Schulden (privat + geschäftlich)
+
+    SBA-Kreditgeber verlangen, dass der globale DSCR 1,25 erreicht, auch wenn der
+    Objekt-DSCR allein über der Schwelle liegt.
+
+    ## Saisongeschäfte
+
+    Bei saisonalem Umsatz mitteln Kreditgeber oft das NOI über 3 Jahre, statt das
+    letzte Jahr zu nehmen. Nutze in deiner DSCR-Rechnung ein durchschnittliches NOI
+    der letzten 3 Jahre, um deine Kreditfähigkeit genauer einzuschätzen.
+"how-to-improve-your-dscr-before-applying-for-a-loan":
+  "title": "So verbesserst du deinen DSCR vor dem Kreditantrag"
+  "description": "Praktische, kurzfristige Wege, deinen Schuldendienstdeckungsgrad vor einem Antrag auf Geschäftskredit oder Gewerbeimmobilienfinanzierung zu erhöhen."
+  "body": |
+    Der DSCR ist eine der ersten Zahlen, die ein Kreditprüfer ansieht, und anders als
+    bei manchen Bonitätskennzahlen gibt es konkrete Hebel, die du in den Monaten
+    vor dem Antrag ziehen kannst, um ihn zu deinen Gunsten zu verschieben.
+
+    ## Die zwei Seiten der Kennzahl
+
+    $$\text{DSCR} = \frac{\text{Netto-Betriebsergebnis}}{\text{Jährlicher Schuldendienst}}$$
+
+    Du verbesserst den DSCR, indem du das NOI erhöhst, den jährlichen
+    Schuldendienst senkst oder beides.
+
+    ## So erhöhst du das NOI vor dem Antrag
+
+    - **Aufschiebbare Ausgaben verschieben**, die das ausgewiesene NOI senken, aber
+      kurzfristig nicht nötig sind (manche Anschaffungen, optionales Marketing)
+    - **Einmalige oder außerordentliche Aufwendungen hinzurechnen**, sauber
+      belegt: Legitime Korrekturen (ein einmaliger Rechtsvergleich, ein einzelner
+      Forderungsausfall) geben dem Prüfer ein treffenderes Bild des laufenden NOI
+    - **Alte Forderungen eintreiben**, bevor der Antragszeitraum beginnt, damit aus
+      Buchumsatz nachweisbarer Cashflow wird
+
+    ## So senkst du den jährlichen Schuldendienst
+
+    - **Bestehende Schulden mit hohen Raten abbauen oder bündeln**, auch teilweise
+    - **Einen bestehenden Kredit auf längere Laufzeit umschulden**, wenn eine
+      ungewöhnlich kurze Tilgung die jährlichen Zahlungen hochtreibt
+    - **Keine neuen Schulden** in den Monaten unmittelbar davor: Ein neuer
+      Ausrüstungskredit oder eine Kreditlinie erhöht den Nenner genau dann, wenn er
+      am niedrigsten sein soll
+
+    ## Das Timing zählt
+
+    Die meisten Kreditgeber betrachten die letzten 12 Monate oder das letzte
+    Geschäftsjahr. Verbesserungen kurz vor dem Antrag tauchen im geprüften Zeitraum
+    womöglich noch nicht auf: Plane DSCR-Verbesserungen mindestens eine volle
+    Berichtsperiode vor dem geplanten Antrag.
+
+    ## Was tun, wenn der DSCR unter dem Minimum bleibt
+
+    Manche Kreditgeber genehmigen trotz niedrigerem DSCR, wenn du zusätzliche
+    Sicherheiten, eine persönliche Bürgschaft oder einen Mitunterzeichner bietest:
+    Frag direkt, welche ausgleichenden Faktoren sie akzeptieren, statt einen DSCR
+    unter der Schwelle als automatische Absage zu werten.
+
+    ## Häufige Fragen
+
+    **Nutzen alle Kreditgeber denselben Mindest-DSCR?**
+    Nein: SBA und klassische Kreditgeber verlangen oft 1,25×, aber das Minimum
+    variiert nach Kreditgeber, Kreditart und Risikoprofil der Branche. Erfrage die
+    Schwelle deines Kreditgebers früh.
+
+    **Zählt eine DSCR-Verbesserung mehr als der Verschuldungsgrad?**
+    Beides zählt, aber bei cashflowbasierten Kreditentscheidungen wiegt der DSCR
+    oft schwerer, weil er direkt beantwortet: „Kann sich dieses Unternehmen die Rate
+    leisten?“
+
+    Mit dem [DSCR-Rechner](/tools/dscr-calculator/) siehst du deinen aktuellen Wert
+    und den maximalen Kredit, den dein Cashflow derzeit trägt.
+"what-is-debt-service-coverage-ratio":
+  "title": "Was ist der Schuldendienstdeckungsgrad (DSCR)?"
+  "description": "Der DSCR misst, wie oft das Netto-Betriebsergebnis eines Unternehmens seine jährlichen Kreditzahlungen deckt. Kreditgeber verlangen einen Mindest-DSCR, meist 1,20–1,35, bevor sie gewerbliche Kredite genehmigen."
+  "body": |
+    Der **Schuldendienstdeckungsgrad (DSCR)** ist die wichtigste Kennzahl, mit der
+    gewerbliche Kreditgeber prüfen, ob ein Unternehmen oder eine Immobilie genug
+    Cashflow erzeugt, um seine Schulden zu bedienen.
+
+    $$\text{DSCR} = \frac{\text{Netto-Betriebsergebnis (NOI)}}{\text{Jährlicher Schuldendienst}}$$
+
+    Ein DSCR von 1,25 heißt: Das Unternehmen erzielt 1,25 $ Betriebsergebnis je 1,00 $
+    jährlicher Kreditzahlungen, ein Polster von 25 %.
+
+    ## Was zählt zum Schuldendienst?
+
+    Jährlicher Schuldendienst = alle Tilgungen + alle im Jahr fälligen Zinsen.
+    Berücksichtige jeden Kredit, jede Kreditlinie und jede Ausrüstungsfinanzierung.
+
+    ## Was zählt zum NOI?
+
+    NOI = Umsatz − Betriebsausgaben. Die Betriebsausgaben enthalten nicht:
+    - Zinsen (sie sind das, was gedeckt werden soll)
+    - Ertragsteuern (nicht operativ)
+    - Abschreibungen (nicht zahlungswirksam)
+
+    Bei Immobilien: NOI = Brutto-Mieteinnahmen − Leerstand − Betriebskosten.
+
+    ## Mindest-DSCR nach Kreditgeber
+
+    | Kreditgeber | Üblicher Mindest-DSCR |
+    |--------|---------------------|
+    | SBA-7(a)-Kredit | 1,25 |
+    | Klassischer Gewerbekredit | 1,20–1,35 |
+    | USDA-B&I-Kredit | 1,25 |
+    | Gewerbeimmobilien | 1,20–1,30 |
+    | Hard Money / Überbrückung | 1,00–1,10 |
+
+    ## Den DSCR verbessern
+
+    - NOI steigern durch höhere Preise oder niedrigere Betriebskosten
+    - Laufzeit verlängern, um die jährliche Tilgung zu senken
+    - Zu einem niedrigeren Zins umschulden, um den Zinsanteil zu senken
+    - Schulden abbauen, um die Restschuld zu verringern
+"ebitda-explained-startup-founders":
+  "title": "EBITDA verständlich erklärt: ein Leitfaden für Startup-Gründer"
+  "description": "Das EBITDA ist die Finanzkennzahl, mit der Investoren die Rentabilität eines Unternehmens am häufigsten beurteilen. Was es ist, wie du es berechnest und welche EBITDA-Marge du anpeilen solltest."
+  "body": |
+    EBITDA gehört zu den Finanzkürzeln, die einschüchternd klingen, aber einfach
+    sind, sobald man sie zerlegt.
+
+    **EBITDA = Umsatz − Betriebskosten (vor Zinsen, Steuern und Abschreibungen)**
+
+    Es ist das Geld, das dein Unternehmen aus dem laufenden Betrieb erwirtschaftet,
+    vor Finanzierungskosten, Steuern und nicht zahlungswirksamen Buchungen.
+
+    ## Warum Investoren auf das EBITDA achten
+
+    Investoren vergleichen mit dem EBITDA Unternehmen, die womöglich:
+    - unterschiedlich viele Schulden haben (was die Zinsen beeinflusst)
+    - unterschiedlich besteuert werden (was den Nettogewinn beeinflusst)
+    - unterschiedliche Anlagen haben (was die Abschreibungen beeinflusst)
+
+    Rechnet man das heraus, wird die operative Leistung klarer sichtbar.
+
+    ## Ein einfaches Beispiel
+
+    Ein Softwareunternehmen mit 5 Mio. $ ARR:
+    - Umsatz: 5.000.000 $
+    - Herstellungskosten (Hosting, Support): 750.000 $
+    - Personal Vertrieb und Marketing: 1.500.000 $
+    - Verwaltung: 500.000 $
+    - Personal F&E: 750.000 $
+    - **EBITDA: 1.500.000 $ (30 % Marge)**
+
+    Vergleiche das mit einem Dienstleister mit 5 Mio. $ Umsatz, dessen Kosten 90 %
+    davon auffressen: EBITDA von 500.000 $ (10 % Marge). Gleicher Umsatz, ganz
+    andere Rentabilität.
+
+    ## Wenn das EBITDA negativ ist
+
+    Ein negatives EBITDA ist für Startups nicht unbedingt schlecht. Die meisten
+    wagniskapitalfinanzierten SaaS-Unternehmen haben in den ersten Jahren ein
+    negatives EBITDA, weil sie stark in Wachstum investieren. Investoren bewerten
+    den *Weg* zur Profitabilität.
+
+    Die Frage ist nicht „Ist das EBITDA positiv?“, sondern „Kann dieses Unternehmen
+    in der Größe profitabel werden, und wann?“
+
+    Modelliere deine Zahlen mit dem [EBITDA-Rechner](/tools/ebitda-calculator/).
+"ebitda-margin-by-industry":
+  "title": "Richtwerte für die EBITDA-Marge nach Branche (2024–2025)"
+  "description": "Richtwerte für die EBITDA-Marge in Software, Dienstleistungen, E-Commerce, Gesundheitswesen und Fertigung. Ordne dein Unternehmen ein und verstehe, was Investoren erwarten."
+  "body": |
+    Richtwerte für die EBITDA-Marge unterscheiden sich stark nach Branche. 15 %
+    EBITDA-Marge sind für einen Händler hervorragend, für ein reifes SaaS aber
+    mittelmäßig.
+
+    ## SaaS und Software
+
+    | Phase | Spanne der EBITDA-Marge |
+    |---|---|
+    | Vor Umsatz / Frühphase | Negativ (Investitionen in Wachstum) |
+    | 1–10 Mio. $ ARR | −20 % bis +10 % |
+    | 10–50 Mio. $ ARR | 0 % bis 20 % |
+    | 50–200 Mio. $ ARR | 15 % bis 30 % |
+    | Über 200 Mio. $ ARR (reif) | 25 % bis 40 % |
+
+    Die „Rule of 40“ besagt, dass Wachstumsrate + EBITDA-Marge bei einem gesunden
+    SaaS mindestens 40 ergeben sollten.
+
+    ## Professionelle Dienstleistungen und Beratung
+
+    Übliche Spanne: 10–25 % EBITDA-Marge.
+
+    Reine Beratung (geringe Fixkosten) erreicht 20–30 %. Agenturmodelle mit viel
+    Personal und Gemeinkosten landen meist bei 10–15 %.
+
+    ## E-Commerce
+
+    Übliche Spanne: 5–15 % EBITDA-Marge.
+
+    Die Bruttomargen sind niedriger (30–50 % bei Marken-E-Commerce), die
+    Marketingausgaben hoch. Marken mit starker Direktbeziehung und niedrigem CAC
+    erreichen den oberen Bereich.
+
+    ## Gesundheitswesen
+
+    Übliche Spanne: 8–25 % je nach Teilbereich. Gesundheits-IT (elektronische
+    Patientenakte, Praxissoftware) erreicht 15–30 %. Praxen und Kliniken liegen
+    bei 8–15 %.
+
+    ## Fertigung
+
+    Übliche Spanne: 5–15 %. Kapitalintensiv. Höhere Margen bei Premiummarken mit
+    eigenen Produkten, niedrigere bei Massenfertigung.
+
+    ## Die Rule of 40 für SaaS
+
+    Speziell bei SaaS nutzen Investoren oft:
+
+    **Rule-of-40-Wert = ARR-Wachstum % + EBITDA-Marge %**
+
+    60 % ARR-Wachstum bei −20 % EBITDA-Marge ergibt 40. 20 % Wachstum bei 25 %
+    EBITDA-Marge ergibt 45. Beides deutet auf ein gesundes Unternehmen hin.
+
+    Berechne deine EBITDA-Marge mit dem [EBITDA-Rechner](/tools/ebitda-calculator/).
+"ebitda-multiple-valuation-saas":
+  "title": "EBITDA-Multiples in der SaaS-Bewertung: was die Zahlen bedeuten"
+  "description": "Wie EBITDA-Multiples in der SaaS-Bewertung eingesetzt werden, welche Multiples bei welchem Wachstum und welcher Marge zu erwarten sind und wie du aus deinem EBITDA den Unternehmenswert schätzt."
+  "body": |
+    Der Unternehmenswert (EV) ist der Gesamtwert eines Unternehmens: das, was ein
+    Käufer zahlen würde. Bei reifen Unternehmen wird er oft als Vielfaches des
+    EBITDA ausgedrückt.
+
+    **Unternehmenswert = EBITDA × Multiple**
+
+    ## Warum SaaS ARR-Multiples statt EBITDA-Multiples nutzt
+
+    SaaS in der Frühphase hat meist ein negatives oder nahezu null EBITDA. Ein
+    Startup mit 2 Mio. $ ARR mit dem 10-Fachen eines EBITDA von −500.000 $ zu
+    bewerten, ergäbe eine negative Bewertung: offensichtlich falsch.
+
+    Frühphasen-SaaS nutzt deshalb **ARR-Multiples**: üblicherweise das 5- bis
+    15-Fache des ARR für Unternehmen in der Wachstumsphase.
+
+    Sobald ein Unternehmen profitabel ist (EBITDA > 0), wechseln Käufer und
+    Spätphasen-Investoren zu EBITDA-Multiples.
+
+    ## EBITDA-Multiples nach Profil
+
+    | Unternehmensprofil | EBITDA-Multiple |
+    |---|---|
+    | Wachstumsstarkes SaaS (40 %+ ARR-Wachstum) | 15–25× EBITDA |
+    | Wachsendes SaaS (20–40 % ARR-Wachstum) | 8–15× EBITDA |
+    | Profitables SaaS (< 20 % Wachstum) | 5–10× EBITDA |
+    | Professionelle Dienstleistungen | 4–8× EBITDA |
+    | B2B-Dienstleistungen / Beratung | 3–6× EBITDA |
+    | Fertigung | 3–5× EBITDA |
+
+    ## Was ein höheres Multiple begründet
+
+    - **Umsatzwachstum**: Schnelleres Wachstum bringt ein höheres Multiple.
+    - **NRR > 110 %**: Starke Bindung und Expansion zeigen eine dauerhafte Wirtschaftlichkeit.
+    - **Bruttomarge > 70 %**: Software-Margen rechtfertigen Software-Multiples.
+    - **Marktgröße**: Größerer TAM = mehr Wachstumsspielraum = höheres Multiple.
+    - **Wettbewerbsvorteil**: Wechselkosten, Netzwerkeffekte, geistiges Eigentum.
+
+    ## So nutzt du das für die Planung
+
+    Peilst du in 3 Jahren einen Exit bei 20 Mio. $ EV an, rechne rückwärts:
+    - Bei 8× EBITDA: 2,5 Mio. $ EBITDA nötig
+    - Bei 10 % EBITDA-Marge: 25 Mio. $ Umsatz nötig
+    - Bei deinem aktuellen Wachstum: Sind 25 Mio. $ Umsatz in 3 Jahren erreichbar?
+
+    Modelliere mit dem [EBITDA-Rechner](/tools/ebitda-calculator/) dein aktuelles
+    EBITDA und die implizite Bewertungsspanne.
+"financial-ratios-for-loan-applications":
+  "title": "Welche Finanzkennzahlen beim Kreditantrag am meisten zählen"
+  "description": "Kreditgeber gewichten nicht jede Kennzahl gleich. Welche bei der Kreditprüfung kleiner Unternehmen am meisten zählen und welche Schwellen du anpeilen solltest."
+  "body": |
+    Eine vollständige Kennzahlenanalyse umfasst ein Dutzend oder mehr Werte, doch
+    Kreditgeber für kleine Unternehmen prüfen meist einen viel kleineren Kern. Wer
+    weiß, welche am meisten zählen, bereitet vor dem Antrag die richtige
+    Argumentation vor.
+
+    ## Die Kennzahlen, die Kreditgeber zuerst prüfen
+
+    | Kennzahl | Was sie dem Kreditgeber sagt | Übliches Minimum |
+    |-------|---------------------------|------------------|
+    | DSCR | Deckt der Cashflow die neue Rate? | 1,25× |
+    | Verschuldungsgrad | Wie stark ist das Unternehmen schon gehebelt? | Möglichst unter 2,0× |
+    | Liquiditätsgrad | Können kurzfristige Verpflichtungen erfüllt werden? | 1,2–1,5× |
+    | Brutto-/Nettomarge | Ist das Geschäftsmodell solide? | Je nach Branche |
+
+    Der DSCR ist meist die wichtigste Einzelzahl der Entscheidung: Er beantwortet
+    direkt, ob sich das Unternehmen die neue Rate leisten kann. Die anderen liefern
+    Kontext zur finanziellen Gesamtlage und zum Risiko.
+
+    ## Warum Kreditgeber Trends statt Momentaufnahmen betrachten
+
+    Eine Kennzahl, die sich Quartal für Quartal verbessert, auch von einem
+    schwachen Ausgangspunkt, erzählt eine andere Geschichte als dieselbe Kennzahl,
+    die stagniert oder sinkt. Bring mindestens 2–3 Jahre Trenddaten mit: Ein
+    einzelnes starkes Jahr nach zwei schwachen liest sich ganz anders als drei Jahre
+    stetiger Verbesserung.
+
+    ## Kennzahlen, die bei bestimmten Kreditarten mehr zählen
+
+    - **Immobilien / vermögensbasierte Kredite**: DSCR und Beleihungsauslauf dominieren
+    - **Betriebsmittel-Kreditlinien**: Liquiditätsgrad und Quick Ratio zählen
+      mehr, weil der Kreditgeber gezielt die kurzfristige Liquidität prüft
+    - **Ausrüstungsfinanzierung**: oft stärker sicherheitenbasiert, die
+      Kennzahlen stehen hinter dem Wert des finanzierten Guts zurück
+
+    ## Deine Kennzahlen vor dem Antrag vorbereiten
+
+    Mach deine eigene Kennzahlenanalyse, bevor der Kreditgeber es tut, mit
+    denselben 2–3 Jahren Abschlüssen, die er anfordern wird. Liegt eine Kennzahl
+    unter den üblichen Schwellen, erkläre die Ursache (eine einmalige Ausgabe, eine
+    bewusste Wachstumsinvestition), statt die Zahl für sich sprechen zu lassen.
+
+    ## Häufige Fragen
+
+    **Berücksichtigen Kreditgeber die persönliche Bonität neben den Unternehmenskennzahlen?**
+    Bei kleinen Unternehmen ja, besonders bei jungen ohne lange Finanzhistorie:
+    Dort wiegen die persönliche Bonität des Inhabers und jede persönliche Bürgschaft
+    neben den Unternehmenskennzahlen schwer.
+
+    **Kann eine einzelne Kennzahl einen Antrag scheitern lassen?**
+    Ein DSCR unter dem Minimum des Kreditgebers ist der häufigste einzelne
+    Ablehnungsgrund, weil er direkt beantwortet, ob der Kredit tragbar ist; die
+    übrigen Kennzahlen werden meist gemeinsam abgewogen statt als harte Grenzen
+    genutzt.
+
+    Berechne mit dem [Finanzkennzahlen-Rechner](/tools/financial-ratios-calculator/)
+    vor einem Kreditantrag deinen DSCR, Verschuldungsgrad, Liquiditätsgrad und
+    deine Margen.
+"how-to-read-balance-sheet-ratios":
+  "title": "So liest du eine Bilanz mit Finanzkennzahlen"
+  "description": "Wie du Finanzkennzahlen aus Bilanz und Gewinn- und Verlustrechnung ableitest, um die finanzielle Lage eines Unternehmens zu beurteilen."
+  "body": |
+    ## Finanzkennzahlen aus der Bilanz lesen
+
+    Eine Bilanz hat drei Teile: Vermögen, Verbindlichkeiten und Eigenkapital.
+    Finanzkennzahlen verknüpfen sie mit Daten der Gewinn- und Verlustrechnung und
+    ergeben so das vollständige Bild.
+
+    ## Aufbau der Bilanz
+
+    ```
+    AKTIVA                          PASSIVA
+    Umlaufvermögen                  Kurzfristige Verbindlichkeiten
+      Liquide Mittel                  Verbindlichkeiten aus L+L
+      Forderungen aus L+L             Kurzfristige Schulden
+      Vorräte                       Langfristige Verbindlichkeiten
+    Anlagevermögen                    Langfristige Schulden
+      Sachanlagen                   Eigenkapital
+      Immaterielle Werte              Gezeichnetes Kapital
+                                      Gewinnrücklagen
+    ```
+
+    ## Kennzahlen aus Bilanzdaten
+
+    | Kennzahl | Verwendete Bilanzposten |
+    |-------|--------------------------|
+    | Liquiditätsgrad | Umlaufvermögen ÷ kurzfristige Verbindlichkeiten |
+    | D/E | Gesamtverschuldung ÷ Eigenkapital |
+    | Eigenkapitalquote | Eigenkapital ÷ Bilanzsumme |
+
+    ## Kennzahlen aus Bilanz und GuV
+
+    | Kennzahl | GuV-Posten | Bilanzposten |
+    |-------|-----------------------|--------------------|
+    | ROA | Nettogewinn | Bilanzsumme |
+    | ROE | Nettogewinn | Eigenkapital |
+    | Kapitalumschlag | Umsatz | Bilanzsumme |
+
+    ## Warnsignale
+
+    - **Liquiditätsgrad < 1,0**: mehr kurzfristige Verpflichtungen als kurzfristige Mittel
+    - **D/E > 3**: hoher Hebel im Verhältnis zum Eigenkapital
+    - **ROA sinkt von Jahr zu Jahr**: Vermögen wächst schneller als Gewinne
+    - **Schrumpfendes Eigenkapital**: Verluste oder hohe Ausschüttungen zehren es auf
+
+    Gib eine beliebige Bilanz und GuV in den [Finanzkennzahlen-Rechner](/tools/financial-ratios-calculator/) ein, um alle sechs Kennzahlen sofort zu berechnen.
+"key-financial-ratios-guide":
+  "title": "Die wichtigsten Finanzkennzahlen für Unternehmer"
+  "description": "Ein praktischer Leitfaden zu den sechs wichtigsten Finanzkennzahlen für die Beurteilung eines Unternehmens, mit Formeln und Richtwerten."
+  "body": |
+    ## Die sechs Finanzkennzahlen, die am meisten zählen
+
+    Finanzkennzahlen machen aus den Rohzahlen der Abschlüsse vergleichbare Werte.
+    Diese sechs sollte jeder Unternehmer und Analyst verfolgen.
+
+    ### 1. Bruttomarge
+    **Formel:** (Umsatz − Herstellungskosten) ÷ Umsatz × 100
+
+    Misst Preissetzungsmacht und Produktionseffizienz. SaaS-Unternehmen peilen
+    70–80 % an, Hersteller 25–45 %.
+
+    ### 2. Nettomarge
+    **Formel:** Nettogewinn ÷ Umsatz × 100
+
+    Die Bottom Line: welcher Anteil des Umsatzes nach allen Ausgaben zu Gewinn
+    wird.
+
+    ### 3. Eigenkapitalrendite (ROE)
+    **Formel:** Nettogewinn ÷ Eigenkapital × 100
+
+    Wie wirksam das Management das Eigenkapital für Renditen einsetzt. Der
+    Durchschnitt des S&P 500 liegt bei ~15 %.
+
+    ### 4. Gesamtkapitalrendite (ROA)
+    **Formel:** Nettogewinn ÷ Bilanzsumme × 100
+
+    Effizienz der Vermögensnutzung. Anlagenleichte Geschäfte (Software, Beratung)
+    erreichen 10–25 %, kapitalintensive (Versorger, Fertigung) oft 2–6 %.
+
+    ### 5. Verschuldungsgrad
+    **Formel:** Gesamtverschuldung ÷ Eigenkapital
+
+    Finanzieller Hebel. Ein D/E über 2,0 deutet meist auf ein erhebliches
+    Hebelrisiko hin, auch wenn kapitalintensive Branchen wie Immobilien und
+    Versorger naturgemäß höher liegen.
+
+    ### 6. Liquiditätsgrad
+    **Formel:** Umlaufvermögen ÷ kurzfristige Verbindlichkeiten
+
+    Kurzfristige Liquidität. Unter 1,0 = mögliches Cashflow-Problem; 1,5–2,5 =
+    gesunder Bereich.
+
+    ## Kennzahlen gemeinsam nutzen
+
+    Keine Kennzahl funktioniert isoliert. Ein hoher ROE bei hohem D/E kann heißen,
+    dass der Hebel die Rendite künstlich aufbläht. Gute Margen bei schwachem
+    Liquiditätsgrad können trotz Profitabilität auf einen Liquiditätsengpass
+    hindeuten.
+
+    Berechne mit dem [Finanzkennzahlen-Rechner](/tools/financial-ratios-calculator/)
+    alle sechs auf einmal für ein vollständiges Bild.
+"gross-margin-benchmarks-by-industry":
+  "title": "Richtwerte für die Bruttomarge nach Branche (2024)"
+  "description": "Richtwerte für die Bruttomarge in über 15 Branchen, von SaaS über Einzelhandel bis Fertigung, mit dem, was erreichbar und was hervorragend ist."
+  "body": |
+    Richtwerte für die Bruttomarge unterscheiden sich enorm nach Branche. 25 %
+    Bruttomarge sind für ein Restaurant hervorragend, für ein SaaS dagegen
+    alarmierend. Hier die Richtwerte 2024 für die häufigsten Branchen.
+
+    ## Bruttomargen nach Branche
+
+    | Branche | Niedrig | Durchschnitt | Hervorragend |
+    |----------|-----|---------|-----------|
+    | SaaS / Cloud-Software | 60 % | 72 % | 80 %+ |
+    | Professionelle Dienstleistungen | 45 % | 62 % | 75 %+ |
+    | E-Commerce (Eigenmarke) | 35 % | 48 % | 60 %+ |
+    | E-Commerce (Wiederverkäufer) | 15 % | 25 % | 35 %+ |
+    | Mobile / Consumer-Apps | 65 % | 75 % | 85 %+ |
+    | Finanzdienstleistungen | 50 % | 68 % | 80 %+ |
+    | Gesundheit / Life Sciences | 40 % | 58 % | 70 %+ |
+    | Fertigung | 15 % | 28 % | 40 %+ |
+    | Lebensmittel und Getränke | 20 % | 35 % | 50 %+ |
+    | Fachhandel | 20 % | 38 % | 55 %+ |
+    | Bau | 10 % | 20 % | 30 %+ |
+    | Medien / Verlage | 45 % | 62 % | 75 %+ |
+
+    ## Warum die Bruttomarge bei SaaS am meisten zählt
+
+    Bei SaaS bestimmt die Bruttomarge das langfristige Gewinnpotenzial.
+    Börsennotierte SaaS-Unternehmen in der Größe (über 100 Mio. $ ARR) haben im
+    Schnitt ~72 % Bruttomarge. Unter 60 % erreicht ein Unternehmen meist nicht die
+    20–25 % EBIT-Marge, die für Premium-Multiples am Kapitalmarkt nötig sind.
+
+    ## Die Kostenbestandteile, die die Marge drücken
+
+    Bei SaaS: Hosting und Infrastruktur, Kundensupport (falls in den
+    Herstellungskosten), API-Kosten von Drittanbietern und Zahlungsgebühren.
+    Im Einzelhandel: Produktkosten, Eingangsfracht und Verpackung.
+    Bei Dienstleistungen: direkte Arbeitszeit von Beratern oder Mitarbeitern.
+
+    Vergleiche deine Marge mit diesen Richtwerten über den
+    [Bruttomargen-Rechner](/tools/gross-profit-margin-calculator/).
+"gross-margin-vs-net-margin-explained":
+  "title": "Bruttomarge vs. Nettomarge: Was ist der Unterschied?"
+  "description": "Eine klare Gegenüberstellung von Bruttomarge und Nettomarge: was jede misst, warum sie auseinanderliegen und welche Investoren am wichtigsten ist."
+  "body": |
+    Bruttomarge und Nettomarge sind beides Rentabilitätskennzahlen, messen aber
+    sehr Verschiedenes. Sie zu verwechseln, ist einer der häufigsten Fehler in der
+    Finanzanalyse.
+
+    ## Bruttomarge
+
+    **Bruttomarge = (Umsatz − Herstellungskosten) / Umsatz × 100**
+
+    Die Bruttomarge zieht nur die direkten Kosten für die Herstellung deiner Waren
+    oder Leistungen ab (Material, direkte Arbeit, Fertigungsgemeinkosten). Alle
+    Betriebsausgaben bleiben außen vor.
+
+    Eine hohe Bruttomarge sagt dir: „Von jedem Umsatzdollar steht dieser Teil zur
+    Verfügung, um Gemeinkosten zu decken und Gewinn zu erzielen.“
+
+    ## Nettomarge
+
+    **Nettomarge = Nettogewinn / Umsatz × 100**
+
+    Die Nettomarge zieht alles ab: Herstellungskosten, Betriebsausgaben (Vertrieb,
+    Marketing, F&E, Verwaltung), Zinsen und Steuern. Sie ist das endgültige
+    Rentabilitätsmaß.
+
+    ## Warum sie auseinanderlaufen
+
+    Ein Unternehmen kann 75 % Bruttomarge und −20 % Nettomarge haben, wenn es für
+    Wachstumsinvestitionen Geld verbrennt. Das ist bei SaaS in der Frühphase häufig.
+
+    Umgekehrt kann ein Händler mit 25 % Bruttomarge durch sehr schlanke Abläufe 10 %
+    Nettomarge erreichen.
+
+    ## Welche ist Investoren wichtiger?
+
+    Bei SaaS: die Bruttomarge. Investoren modellieren damit den langfristigen
+    operativen Hebel: Kann das Unternehmen irgendwann 25–30 %+ EBIT-Marge erreichen?
+
+    Bei reifen Unternehmen zählen Nettomarge und EBITDA mehr, weil die
+    Wachstumsinvestitionsphase hinter ihnen liegt.
+
+    Berechne mit dem [Bruttomargen-Rechner](/tools/gross-profit-margin-calculator/)
+    Bruttogewinn und Aufschlag aus Umsatz und Herstellungskosten.
+"how-to-improve-gross-profit-margin":
+  "title": "So verbesserst du die Bruttomarge"
+  "description": "Konkrete Hebel für eine höhere Bruttomarge (Preise, geringere Herstellungskosten, Produktmix, Nachverhandlung mit Lieferanten), geordnet nach der üblichen Geschwindigkeit ihrer Wirkung."
+  "body": |
+    Die Bruttomarge ist eine der Zahlen mit dem größten Hebel im Unternehmen, weil
+    jeder Punkt Verbesserung direkt in den Gewinn fließt, ohne dass sich der Umsatz
+    ändern muss.
+
+    ## Die vier Hebel
+
+    $$\text{Bruttomarge \%} = \frac{\text{Umsatz} - \text{COGS}}{\text{Umsatz}} \times 100$$
+
+    Die Marge steigt, wenn du den Preis erhöhst, die Herstellungskosten senkst, den
+    Mix zu margenstärkeren Produkten verschiebst, margenschwache Arbeit aufgibst
+    oder diese Hebel kombinierst.
+
+    ## 1. Preise (meist der schnellste Hebel)
+
+    Eine Preiserhöhung fließt fast vollständig in die Bruttomarge, weil sie die
+    Herstellungskosten gar nicht verändert. Schon moderate 3–5 % können die Marge
+    spürbar bewegen, besonders wenn der Preis über die Zeit hinter dem gelieferten
+    Wert zurückgeblieben ist. Prüfe vorher mit einem Preiswirkungs-Rechner, wie viel
+    Kundenverlust eine bestimmte Erhöhung verkraftet.
+
+    ## 2. Herstellungskosten senken
+
+    - **Mit Lieferanten nachverhandeln**: Verträge jährlich prüfen; wachsende
+      Mengen berechtigen oft zu besseren Konditionen, nach denen du nie gefragt hast
+    - **Prozesseffizienz**: Weniger Ausschuss, Nacharbeit oder manuelle Schritte
+      senken die direkten Kosten pro Einheit oder Kunde
+    - **Infrastruktur optimieren** (bei Software): richtig dimensionierte
+      Cloud-Ausgaben, Caching und effiziente Architektur senken die Hostingkosten
+      pro Kunde in der Größe deutlich
+
+    ## 3. Produkt- und Kundenmix verschieben
+
+    Nicht jeder Umsatz hat dieselbe Marge. Wer den Anteil der margenstärksten
+    Produkte oder Kundensegmente gezielt ausbaut, hebt die Durchschnittsmarge, auch
+    wenn sich die Marge keines einzelnen Produkts ändert.
+
+    ## 4. Margenschwache Arbeit streichen
+
+    Manchmal ist die schnellste Verbesserung eine Subtraktion: Eine dauerhaft
+    margenschwache Produktlinie oder Leistung aufzugeben, kann die Gesamtmarge
+    heben und Kapazität für margenstärkere Arbeit freimachen, selbst wenn der
+    Gesamtumsatz sinkt.
+
+    ## Welcher Hebel am schnellsten wirkt
+
+    Preisänderungen zeigen sich innerhalb eines Abrechnungszyklus. Nachverhandlungen
+    bei den Herstellungskosten brauchen meist ein Quartal oder länger bis zur
+    Wirkung. Die Mixverschiebung ist am langsamsten, weil Vertrieb und Marketing die
+    Nachfrage erst nach und nach ins Zielsegment lenken müssen.
+
+    ## Häufige Fragen
+
+    **Kann das Senken der Herstellungskosten nach hinten losgehen?**
+    Ja: Wer bei Qualität oder Support spart, um Kosten zu senken, kann den Churn
+    erhöhen, und der kostet mehr Umsatz, als der Margengewinn bringt. Jede Senkung
+    der Herstellungskosten sollte gegen ihre Wirkung auf die Kundenbindung geprüft
+    werden.
+
+    **Wie viel Margenverbesserung ist in einem Jahr realistisch?**
+    3–8 Punkte durch eine Kombination dieser Hebel sind üblich für ein Unternehmen,
+    das sich bisher nicht auf die Marge konzentriert hat; größere Sprünge erfordern
+    meist einen größeren strukturellen Schritt (etwa einen Hostingwechsel oder die
+    Neuverhandlung eines großen Lieferantenvertrags).
+
+    Modelliere mit dem [Bruttomargen-Rechner](/tools/gross-profit-margin-calculator/)
+    die Wirkung einer Preis- oder Kostenänderung, bevor du sie umsetzt.
+"gross-profit-vs-net-profit":
+  "title": "Bruttogewinn vs. Nettogewinn: die wichtigsten Unterschiede"
+  "description": "Verstehe den Unterschied zwischen Bruttogewinn und Nettogewinn, wann welche Kennzahl zählt und was sie über die Lage des Unternehmens verraten."
+  "body": |
+    ## Bruttogewinn vs. Nettogewinn
+
+    Beides sind Rentabilitätskennzahlen, sie messen aber Verschiedenes:
+
+    | Kennzahl | Formel | Was sie dir sagt |
+    |--------|---------|-----------|
+    | **Bruttogewinn** | Umsatz − COGS | Unit Economics des Produkts oder der Leistung |
+    | **Betriebsergebnis** | Bruttogewinn − Betriebsausgaben | Effizienz des Geschäftsmodells |
+    | **Nettogewinn** | Betriebsergebnis − Zinsen − Steuern | Rendite der Eigentümer |
+
+    ## Wann du welche nutzt
+
+    Die **Bruttomarge** eignet sich am besten für:
+    - den Vergleich von Produkten oder Artikeln
+    - den Vergleich mit direkten Wettbewerbern
+    - Unit Economics und Preisentscheidungen
+
+    Die **Nettomarge** eignet sich am besten für:
+    - die Beurteilung der Gesamtlage des Unternehmens
+    - Berichte an Investoren und Kreditgeber
+    - den Vergleich der Leistung von Jahr zu Jahr
+
+    ## Häufige Irrtümer
+
+    Eine hohe Bruttomarge heißt nicht, dass das Unternehmen profitabel ist. Viele
+    wachstumsstarke Unternehmen haben über 70 % Bruttomarge, aber eine negative
+    Nettomarge, weil sie viel für Vertrieb, Marketing und F&E ausgeben. Die
+    Bruttomarge zeigt das Potenzial, die Nettomarge die Realität.
+
+    Mit dem [Nettogewinn-Rechner](/tools/net-profit-calculator/) gehst du den
+    ganzen GuV-Wasserfall durch.
+"how-to-calculate-net-profit-margin":
+  "title": "So berechnest du die Nettomarge"
+  "description": "Schritt-für-Schritt-Anleitung zur Nettomarge mit Formel, Beispiel und Richtwerten nach Branche."
+  "body": |
+    ## Formel der Nettomarge
+
+    $$\text{Nettomarge} = \frac{\text{Nettogewinn}}{\text{Umsatz}} \times 100$$
+
+    Der Nettogewinn ist der Umsatz abzüglich aller Kosten: Herstellungskosten,
+    Betriebsausgaben, Zinsen und Steuern.
+
+    ## Beispielrechnung
+
+    Ein Unternehmen mit 2 Mio. $ Umsatz, 800.000 $ Herstellungskosten, 600.000 $
+    Betriebsausgaben, 40.000 $ Zinsen und 140.000 $ Steuern:
+
+    - Bruttogewinn: 1.200.000 $
+    - Betriebsergebnis: 600.000 $
+    - Nettogewinn: 420.000 $
+    - **Nettomarge: 21 %**
+
+    ## Richtwerte nach Branche
+
+    | Branche | Spanne der Nettomarge |
+    |----------|-----------------|
+    | Software / SaaS | 15–30 % |
+    | Beratung | 15–25 % |
+    | Gesundheitsdienstleistungen | 4–8 % |
+    | Einzelhandel | 2–5 % |
+    | Gastronomie | 3–9 % |
+    | Fertigung | 5–10 % |
+
+    ## Warum sie wichtig ist
+
+    Die Nettomarge ist die ultimative Effizienzkennzahl: Sie zeigt, welcher Anteil
+    jedes Umsatzdollars tatsächlich bei den Eigentümern ankommt. Ein Unternehmen mit
+    40 % Bruttomarge, aber 2 % Nettomarge verliert irgendwo in seiner
+    Kostenstruktur an Effizienz.
+
+    Finde mit dem [Nettogewinn-Rechner](/tools/net-profit-calculator/) genau
+    heraus, wo im GuV-Wasserfall Marge verloren geht.
+"operating-leverage-calculator/contribution-margin-vs-gross-margin":
+  "title": "Deckungsbeitrag vs. Bruttomarge: die wichtigsten Unterschiede"
+  "description": "Deckungsbeitrag und Bruttomarge werden oft verwechselt. Was beide messen, wann du welche nutzt und warum der Deckungsbeitrag für operative Entscheidungen besser ist."
+  "body": |
+    Deckungsbeitrag und Bruttomarge sind beides Rentabilitätskennzahlen, dienen
+    aber unterschiedlichen Analysen.
+
+    ## Bruttomarge
+
+    **Bruttomarge = (Umsatz − Herstellungskosten) / Umsatz**
+
+    Die Herstellungskosten umfassen alle Kosten, die direkt der Lieferung des
+    Produkts zugeordnet sind: Material, direkte Arbeit, Hosting, Customer Success
+    (falls den Herstellungskosten zugerechnet). Die Bruttomarge ist eine übliche
+    Rechnungslegungskennzahl aus der GuV.
+
+    ## Deckungsbeitrag
+
+    **Deckungsbeitragsquote = (Umsatz − variable Kosten) / Umsatz**
+
+    Variable Kosten ändern sich mit jeder verkauften Einheit: Vertriebsprovisionen,
+    Zahlungsabwicklung, nutzungsabhängiges Hosting, variable Supportkosten.
+    Fixkosten (Gehälter, Miete, Software-Abos) bleiben außen vor.
+
+    ## Wann sie sich unterscheiden
+
+    Der Unterschied liegt darin, wie Fix- und variable Kosten eingeordnet werden.
+
+    **Beispiel**: ein SaaS mit 1 Mio. $ Umsatz, 100.000 $ Hosting (COGS), 50.000 $
+    Support (COGS) und 200.000 $ fixen Gehältern:
+    - Bruttomarge = (1 Mio. $ − 150.000 $) / 1 Mio. $ = 85 %
+    - Deckungsbeitragsquote = (1 Mio. $ − 100.000 $ variables Hosting) / 1 Mio. $ = 90 % (das Supportteam ist angestellt und zählt daher zu den Fixkosten)
+
+    ## Warum der Deckungsbeitrag für Entscheidungen mehr zählt
+
+    Nutze den Deckungsbeitrag, um:
+    - den operativen Hebel zu berechnen (DOL = Deckungsbeitrag / Betriebsergebnis)
+    - über einen Zusatzauftrag zu entscheiden (annehmen, wenn der Deckungsbeitrag > 0 ist)
+    - Preisentscheidungen an der Grenze zu bewerten
+
+    Nutze die Bruttomarge für Investorenvergleiche, Benchmarks und die
+    Finanzberichterstattung.
+
+    Berechne mit dem [Rechner für den operativen Hebel](/tools/operating-leverage-calculator/)
+    Deckungsbeitragsquote und operativen Hebel.
+"saas-operating-leverage-explained":
+  "title": "Warum SaaS einen hohen operativen Hebel hat (und was das für dich bedeutet)"
+  "description": "Wie der operative Hebel bei SaaS funktioniert: warum die Margen mit der Größe wachsen, was die Rule of 40 damit zu tun hat und wie du deinen eigenen DOL modellierst."
+  "body": |
+    Der operative Hebel ist der Motor der Gewinnausweitung bei SaaS. Wer ihn
+    versteht, weiß, wann das eigene Unternehmen deutlich profitabler wird.
+
+    ## Warum SaaS strukturell einen hohen Hebel hat
+
+    Die Kostenstruktur von SaaS ist überwiegend fix: Entwicklergehälter,
+    Infrastruktur, Verwaltung und Vertriebsgehälter ändern sich kaum, wenn Kunden
+    dazukommen. Variable Kosten (Hosting pro Kunde, Support, Zahlungsabwicklung)
+    liegen meist bei 5–15 % des Umsatzes.
+
+    Das heißt: Sind die Fixkosten gedeckt, bringt jeder zusätzliche Umsatzdollar
+    85–95 Cent Deckungsbeitrag. Je mehr Umsatz über der Gewinnschwelle hinzukommt,
+    desto schneller wächst das Betriebsergebnis.
+
+    ## Die Rechnung: ein SaaS überschreitet die Gewinnschwelle
+
+    Fixkosten: 3 Mio. $/Jahr. Anteil variabler Kosten: 15 %.
+
+    Bei 4 Mio. $ ARR: Deckungsbeitrag = 3,4 Mio. $, Betriebsergebnis = 400.000 $ (10 % Marge)
+    Bei 6 Mio. $ ARR: Deckungsbeitrag = 5,1 Mio. $, Betriebsergebnis = 2,1 Mio. $ (35 % Marge)
+    Bei 10 Mio. $ ARR: Deckungsbeitrag = 8,5 Mio. $, Betriebsergebnis = 5,5 Mio. $ (55 % Marge)
+
+    Der Umsatz wuchs um das 2,5-Fache, das Betriebsergebnis um das 13,75-Fache. So
+    wirkt der operative Hebel.
+
+    ## Folgen für die Preisgestaltung
+
+    Ein hoher operativer Hebel heißt, dass die Grenzkosten für einen weiteren
+    Kunden sehr niedrig sind. Deshalb sollten SaaS-Preise am Wert ansetzen, nicht an
+    Kosten plus Aufschlag. Der „richtige“ Preis eines SaaS-Tools ergibt sich aus
+    der Zahlungsbereitschaft des Käufers, nicht aus deinen Infrastrukturkosten.
+
+    Modelliere mit dem [Rechner für den operativen Hebel](/tools/operating-leverage-calculator/)
+    deinen eigenen DOL und sieh, wann sich die Margenausweitung beschleunigt.
+"how-to-calculate-revenue-growth-rate":
+  "title": "So berechnest du die Umsatzwachstumsrate"
+  "description": "Schritt-für-Schritt-Anleitung zur Umsatzwachstumsrate mit Formeln, Beispielen und Richtwerten."
+  "body": |
+    ## Formel der Umsatzwachstumsrate
+
+    $$\text{Umsatzwachstumsrate} = \frac{\text{Aktueller Umsatz} - \text{Vorheriger Umsatz}}{\text{Vorheriger Umsatz}} \times 100$$
+
+    ## Beispielrechnung
+
+    Ein Unternehmen mit 800.000 $ im ersten und 1 Mio. $ im zweiten Quartal:
+
+    $$\frac{1.000.000 - 800.000}{800.000} \times 100 = 25\%$$
+
+    ## Wachstumsrate nach Zeitraum
+
+    Wähle den Zeitraum danach, was du messen willst:
+
+    - **Monat zu Monat (MoM)**: junge Unternehmen, die schnelles Wachstum verfolgen
+    - **Quartal zu Quartal (QoQ)**: Saisongeschäfte; glättet Schwankungen
+    - **Jahr zu Jahr (YoY)**: Standardkennzahl der Geschäftsentwicklung; blendet Saisonalität aus
+
+    ## Richtwerte nach Phase
+
+    | Phase | Erwartetes Wachstum |
+    |-------|----------------|
+    | Pre-Seed / Seed | 20–50 %+ pro Monat |
+    | Series A | 3–5× pro Jahr |
+    | Wachstumsphase | 50–100 % pro Jahr |
+    | Etabliert | 10–30 % pro Jahr |
+    | Reif / börsennotiert | 5–15 % pro Jahr |
+
+    Berechne mit dem [Umsatzwachstums-Rechner](/tools/revenue-growth-rate-calculator/) Wachstum, CAGR und Rule of 40 in einem Schritt.
+"what-is-rule-of-40":
+  "title": "Was ist die Rule of 40 bei SaaS?"
+  "description": "Die Rule of 40 erklärt: Formel, Richtwerte, wie Investoren sie nutzen und warum sie für die Gesundheit eines SaaS-Unternehmens zählt."
+  "body": |
+    ## Die Rule of 40
+
+    Die Rule of 40 ist ein Maßstab für die Gesundheit von SaaS-Unternehmen:
+
+    $$\text{Rule-of-40-Wert} = \text{Umsatzwachstum (\%)} + \text{Gewinnmarge (\%)}$$
+
+    Ein Wert von **40 oder mehr** gilt als gesund.
+
+    ## Warum sie zählt
+
+    Die Rule of 40 bildet den grundlegenden Zielkonflikt von SaaS ab: Wachstum
+    gegen Profitabilität. Junge Unternehmen stellen Wachstum vor Marge, reife
+    Unternehmen Marge vor Wachstum. Laut Rule of 40 ist beides in Ordnung, solange
+    die Summe 40+ ergibt.
+
+    **Beispiele:**
+    - 60 % Wachstum, −20 % Marge = Wert: 40 ✓
+    - 20 % Wachstum, 25 % Marge = Wert: 45 ✓
+    - 15 % Wachstum, 5 % Marge = Wert: 20 ✗
+
+    ## Welche Gewinnmarge?
+
+    Praktiker nutzen unterschiedliche Gewinnkennzahlen:
+    - **EBITDA-Marge**: am häufigsten vor dem Börsengang
+    - **Free-Cashflow-Marge**: von Börseninvestoren bevorzugt
+    - **Nettomarge**: am vorsichtigsten
+
+    ## Grenzen
+
+    Die Rule of 40 funktioniert am besten bei Unternehmen mit mehr als 10 Mio. $
+    ARR. Bei sehr jungen Startups zählt das Wachstum allein mehr. Bei großen
+    börsennotierten Unternehmen ist die Free-Cashflow-Marge oft die bessere
+    Rentabilitätsgröße.
+
+    Berechne deinen Rule-of-40-Wert mit dem [Umsatzwachstums-Rechner](/tools/revenue-growth-rate-calculator/).
+"roa-vs-roe-difference":
+  "title": "ROA vs. ROE: Was ist der Unterschied?"
+  "description": "Der ROA misst den Gewinn im Verhältnis zur Bilanzsumme, der ROE im Verhältnis zum Eigenkapital. Der Unterschied ist der finanzielle Hebel: ROE = ROA × (Bilanzsumme ÷ Eigenkapital)."
+  "body": |
+    ROA und ROE messen beide die Rentabilität, aber mit unterschiedlichem Nenner.
+
+    | Kennzahl | Formel | Nenner |
+    |--------|---------|-------------|
+    | ROA | Nettogewinn ÷ Bilanzsumme | Gesamtes Kapital (Fremd- + Eigenkapital) |
+    | ROE | Nettogewinn ÷ Eigenkapital | Nur Eigenkapital |
+
+    ## Der Zusammenhang über den Hebel
+
+    $$\text{ROE} = \text{ROA} \times \frac{\text{Bilanzsumme}}{\text{Eigenkapital}}$$
+
+    Der Multiplikator (Bilanzsumme ÷ Eigenkapital) ist der Finanzhebel. Ein
+    Unternehmen mit 10 % ROA und 3× Hebel erreicht 30 % ROE.
+
+    ## Wann der Hebel hilft und wann er schadet
+
+    **Er hilft**: Ein Unternehmen mit 15 % ROA und 2× Hebel erreicht 30 % ROE. Die
+    Eigentümer erhalten eine gehebelte Rendite, ohne anteilig Eigenkapital
+    einzubringen.
+
+    **Er schadet**: Fällt der ROA bei gleichem Hebel von 2× auf 2 %, beträgt der ROE
+    nur noch 4 %. Und wird der ROA negativ, vervielfacht der Hebel den Verlust: Mit
+    Schulden finanziertes Vermögen muss trotzdem zurückgezahlt werden.
+
+    ## Welche Kennzahl zählt mehr?
+
+    - Der **ROA** eignet sich besser, um die operative Effizienz von Unternehmen mit unterschiedlicher Kapitalstruktur zu vergleichen
+    - Der **ROE** ist für Eigenkapitalgeber relevanter, die die Rendite auf ihr investiertes Kapital messen
+"what-is-return-on-assets":
+  "title": "Was ist die Gesamtkapitalrendite (ROA)?"
+  "description": "Die Gesamtkapitalrendite (ROA) misst, wie effizient ein Unternehmen aus seinem gesamten Vermögen Gewinn erzielt. Sie ist der Nettogewinn geteilt durch die Bilanzsumme, in Prozent."
+  "body": |
+    Die **Gesamtkapitalrendite (ROA)** beantwortet: Wie viel Nettogewinn erzielt das
+    Unternehmen pro eingesetztem Vermögensdollar?
+
+    $$\text{ROA} = \frac{\text{Nettogewinn}}{\text{Bilanzsumme}} \times 100$$
+
+    ## Was zählt zur Bilanzsumme?
+
+    Bilanzsumme = Umlaufvermögen + Anlagevermögen:
+    - Umlaufvermögen: liquide Mittel, Forderungen, Vorräte, aktive Rechnungsabgrenzung
+    - Anlagevermögen: Sachanlagen, immaterielle Werte, Finanzanlagen
+
+    ## Durchschnittliches Vermögen verwenden
+
+    Genauer wird es mit der durchschnittlichen Bilanzsumme:
+
+    $$\text{Bilanzsumme (Ø)} = \frac{\text{Anfangsbestand} + \text{Endbestand}}{2}$$
+
+    Das glättet saisonale Verzerrungen und Anschaffungen im Laufe des Jahres.
+
+    ## Was ist ein guter ROA?
+
+    Der ROA schwankt enorm mit der Kapitalintensität. Ein Softwareunternehmen mit
+    2 Mio. $ Vermögen und 1 Mio. $ Nettogewinn hat 50 % ROA. Ein Stahlhersteller mit
+    500 Mio. $ Vermögen und 25 Mio. $ Gewinn hat 5 % ROA, was in seiner Branche
+    trotzdem wettbewerbsfähig sein kann.
+
+    Vergleiche den ROA innerhalb deiner Branche, nicht über Branchen hinweg.
+"dupont-analysis-roe":
+  "title": "DuPont-Analyse: die Eigenkapitalrendite in ihre drei Treiber zerlegen"
+  "description": "Wie du mit der DuPont-Formel den ROE in Gewinnmarge, Kapitalumschlag und Hebel zerlegst und welchen Hebel du für höhere Renditen ziehst."
+  "body": |
+    ## Was ist die DuPont-Analyse?
+
+    Die DuPont-Analyse (in den 1920er-Jahren vom Unternehmen DuPont entwickelt)
+    zerlegt die Eigenkapitalrendite in drei multiplikative Bestandteile:
+
+    **ROE = Nettomarge × Kapitalumschlag × Eigenkapitalmultiplikator**
+
+    Jeder Bestandteil steht für einen anderen strategischen Hebel:
+
+    | Bestandteil | Formel | Was er misst |
+    |---|---|---|
+    | Nettomarge | Nettogewinn ÷ Umsatz | Preissetzungsmacht und Kosteneffizienz |
+    | Kapitalumschlag | Umsatz ÷ Bilanzsumme | Operative Effizienz des Vermögens |
+    | Eigenkapitalmultiplikator | Bilanzsumme ÷ Eigenkapital | Finanzieller Hebel |
+
+    ## Warum die DuPont-Analyse zählt
+
+    Zwei Unternehmen mit demselben ROE von 20 % können völlig unterschiedliche
+    Profile haben:
+
+    - **Unternehmen A**: 20 % Marge × 0,5× Umschlag × 2× Hebel = 20 % ROE
+    - **Unternehmen B**: 5 % Marge × 2× Umschlag × 2× Hebel = 20 % ROE
+
+    Unternehmen A (Software) und Unternehmen B (Einzelhandel) haben denselben ROE,
+    aber sehr unterschiedliche Risikoprofile. Der ROE von A ist nachhaltiger, weil
+    er aus der Marge kommt; B hängt von Vermögenseffizienz und Hebel zugleich ab.
+
+    ## So verbesserst du jeden Treiber
+
+    ### Nettomarge verbessern
+    - Preise bei stark nachgefragten Produkten erhöhen
+    - Herstellungskosten durch Lieferantenverhandlungen oder Produktredesign senken
+    - Fixe Gemeinkosten reduzieren (Personal, Immobilien)
+    - Den Umsatzmix zu margenstärkeren Produkten verschieben
+
+    ### Kapitalumschlag verbessern
+    - Wenig genutzte Vermögenswerte verkaufen
+    - Lagerbestände senken (Just-in-time-Beschaffung)
+    - Den Cash Conversion Cycle beschleunigen (DSO senken)
+    - Kapazitäten besser auslasten, bevor neue Anlagen dazukommen
+
+    ### Den Eigenkapitalmultiplikator steuern
+    - Mit Bedacht Fremdkapital aufnehmen, wenn der ROA über den Fremdkapitalkosten liegt
+    - Aktien zurückkaufen, wenn sie unterbewertet sind und der Cashflow stabil ist
+    - Übermäßigen Hebel vermeiden, der im Abschwung das Ausfallrisiko erhöht
+
+    Berechne deinen ROE mit dem
+    [Eigenkapitalrendite-Rechner](/tools/roe-calculator/).
+"roe-by-industry-benchmarks":
+  "title": "Richtwerte für die Eigenkapitalrendite nach Branche (2024–2025)"
+  "description": "Branchendurchschnitte des ROE für Technologie, SaaS, Fertigung, Einzelhandel, Finanzen und Gesundheitswesen, mit Erklärungen, warum sie sich unterscheiden."
+  "body": |
+    ## Warum der ROE je nach Branche schwankt
+
+    Der ROE hängt von Kapitalintensität, Geschäftsmodell und Wettbewerbsdynamik ab.
+    Anlagenleichte Geschäfte (Software, Finanzdienstleistungen) erzielen
+    naturgemäß einen höheren ROE. Kapitalintensive Geschäfte (Fertigung, Versorger)
+    haben einen strukturell niedrigeren ROE, vernichten aber nicht zwingend Wert,
+    wenn auch ihre Eigenkapitalkosten niedriger sind.
+
+    ## ROE-Richtwerte nach Branche (2024–2025)
+
+    | Branche | Median-ROE | Hinweise |
+    |---|---|---|
+    | Software / SaaS | 18–35 % | Anlagenleicht, hohe Margen |
+    | Finanzdienstleistungen | 10–18 % | Hebelgetriebener ROE |
+    | Gesundheit / Pharma | 12–22 % | Margen durch geistiges Eigentum |
+    | Konsumgüter | 15–25 % | Markenstärke + Volumen |
+    | Technologie-Hardware | 15–25 % | Mischung aus Marge und Umschlag |
+    | Einzelhandel | 10–20 % | Dünne Margen, hoher Umschlag |
+    | Fertigung | 8–15 % | Kapitalintensiv |
+    | Immobilien | 5–12 % | Anlagenintensiv |
+    | Versorger | 8–12 % | Reguliert, stabil |
+    | Startups in der Frühphase | Negativ bzw. nicht anwendbar | Noch ohne Gewinn |
+
+    ## So nutzt du Branchenrichtwerte
+
+    12 % ROE sind für ein Softwareunternehmen schwach, für einen Versorger stark.
+    Setze deinen ROE immer in Bezug zu:
+
+    1. dem Median-ROE deiner Branche
+    2. deinen Eigenkapitalkosten (Schätzung nach CAPM)
+    3. dem historischen Trend deines ROE (steigend oder fallend?)
+    4. dem ROE deiner Wettbewerber (liegst du darüber oder darunter?)
+
+    Ein Unternehmen, dessen ROE über den Eigenkapitalkosten liegt, schafft Wert.
+    Liegt der ROE darunter, vernichtet es Wert für die Eigentümer, auch wenn es
+    nominell „profitabel“ ist.
+
+    Berechne deinen ROE und vergleiche ihn mit diesen Richtwerten im
+    [Eigenkapitalrendite-Rechner](/tools/roe-calculator/).
+"sustainable-growth-rate-calculator":
+  "title": "Nachhaltige Wachstumsrate: wie der ROE bestimmt, wie schnell du wachsen kannst"
+  "description": "Wie Eigenkapitalrendite und Ausschüttungsquote deine nachhaltige Wachstumsrate bestimmen, also das maximale Wachstum ohne externe Eigenkapitalfinanzierung."
+  "body": |
+    ## Was ist die nachhaltige Wachstumsrate?
+
+    Die nachhaltige Wachstumsrate (SGR) ist das höchste Umsatzwachstum, das ein
+    Unternehmen allein mit einbehaltenen Gewinnen erreichen kann, ohne das
+    Eigenkapital durch neue Aktien zu verwässern.
+
+    **SGR = ROE × (1 − Ausschüttungsquote)**
+
+    Für Unternehmen ohne Dividende (Ausschüttungsquote = 0 %):
+    **SGR = ROE**
+
+    ## Warum die SGR zählt
+
+    Wer schneller als seine SGR wächst, braucht Außenfinanzierung, also Kredite
+    oder neues Eigenkapital. Praktisch heißt das:
+
+    - **Wachstum = SGR**: selbstfinanziertes Wachstum ohne Verwässerung, dauerhaft tragbar
+    - **Wachstum > SGR**: Kapital muss von außen kommen, sonst wird die Liquidität knapp
+    - **Wachstum < SGR**: überschüssiges Cash sammelt sich an (Kapital wird nicht genutzt)
+
+    ## Rechenbeispiele zur SGR
+
+    | ROE | Ausschüttungsquote | Nachhaltige Wachstumsrate |
+    |---|---|---|
+    | 20 % | 0 % (alles reinvestiert) | 20 % |
+    | 20 % | 50 % | 10 % |
+    | 15 % | 0 % | 15 % |
+    | 15 % | 33 % | 10 % |
+    | 10 % | 0 % | 10 % |
+
+    ## Folgen für Startups
+
+    Die meisten wachstumsstarken Startups haben einen negativen ROE (sie arbeiten mit
+    Verlust) und brauchen ohnehin externes Kapital. Strategisch wichtig wird die SGR,
+    sobald ein Unternehmen profitabel ist:
+
+    - Ein eigenfinanziertes SaaS mit 20 % ROE kann 20 % Jahreswachstum selbst finanzieren
+    - Für schnelleres Wachstum (50–100 %+) braucht es Kapital von außen
+    - Die Entscheidungsfrage: Ist externes Kapital die Verwässerung und den Aufwand wert?
+
+    Für eigenfinanzierte Gründer heißt den ROE maximieren, das selbst
+    finanzierbare Wachstum zu maximieren.
+
+    Berechne deinen ROE mit dem
+    [Eigenkapitalrendite-Rechner](/tools/roe-calculator/).
+"tie-ratio-vs-dscr":
+  "title": "TIE vs. DSCR: Was ist der Unterschied?"
+  "description": "Zinsdeckungsgrad und Schuldendienstdeckungsgrad im direkten Vergleich: wann du welche Kennzahl nutzt und was Kreditgeber bevorzugen."
+  "body": |
+    ## TIE vs. DSCR: die wichtigsten Unterschiede
+
+    Beide Kennzahlen messen die Schuldendienstfähigkeit, decken aber
+    unterschiedliche Verpflichtungen ab:
+
+    | | TIE | DSCR |
+    |-|-----|------|
+    | **Zähler** | EBIT | Netto-Betriebsergebnis (NOI) oder EBITDA |
+    | **Nenner** | Nur Zinsen | Zinsen + Tilgung |
+    | **Strenge** | Weniger streng | Strenger |
+    | **Übliche Nutzung** | Unternehmensfinanzierung | Immobilien, SBA-Kredite, Projektfinanzierung |
+
+    ## Wann welche Kennzahl relevanter ist
+
+    **Nutze den TIE, wenn du:**
+    - die Schuldenlast eines Unternehmens schnell prüfen willst
+    - den Hebel bei Unternehmensanleihen vergleichst
+    - mit revolvierenden Kreditlinien arbeitest (ohne festen Tilgungsplan)
+
+    **Nutze den DSCR, wenn du:**
+    - einen Gewerbeimmobilienkredit analysierst
+    - einen SBA-7(a)- oder 504-Kreditantrag prüfst
+    - es mit einem Kredit mit festem Tilgungsplan zu tun hast
+
+    ## Der entscheidende Unterschied
+
+    Ein Unternehmen mit TIE = 4× kann trotzdem einen DSCR unter 1,0 haben, wenn eine
+    große Endfälligkeit ansteht oder viel getilgt werden muss. Prüfe immer beide,
+    wenn es um den vollen Schuldendienst geht.
+
+    Berechne den TIE mit dem [TIE-Rechner](/tools/times-interest-earned-calculator/) und die volle Schuldendienstdeckung mit dem [DSCR-Rechner](/tools/dscr-calculator/).
+"what-is-times-interest-earned-ratio":
+  "title": "Was ist der Zinsdeckungsgrad (TIE)?"
+  "description": "Der vollständige Leitfaden zum Zinsdeckungsgrad: Formel, Richtwerte und wie Kreditgeber damit die Bonität beurteilen."
+  "body": |
+    ## Der Zinsdeckungsgrad (TIE)
+
+    Der Zinsdeckungsgrad (TIE, Times Interest Earned, auch Interest Coverage Ratio)
+    misst, wie oft das operative Ergebnis (EBIT) eines Unternehmens seine jährlichen
+    Zinszahlungen deckt.
+
+    $$\text{TIE} = \frac{\text{EBIT}}{\text{Zinsaufwand}}$$
+
+    Ein TIE von 3 heißt, das Unternehmen erwirtschaftet das Dreifache des
+    Betriebsergebnisses, das es für seine Zinsen braucht.
+
+    ## Warum Kreditgeber den TIE nutzen
+
+    Der TIE ist ein üblicher Covenant in gewerblichen Kreditverträgen. Kreditgeber
+    prüfen damit, ob ein Kreditnehmer genug operatives Polster hat, um
+    Ergebnisschwankungen aufzufangen und trotzdem seine Schulden zu bedienen.
+
+    **Übliche Schwellen:**
+    - Die meisten gewerblichen Kreditgeber: TIE ≥ 1,5×
+    - Investment-Grade-Bonität: TIE ≥ 3×
+    - Konservative Bilanzen: TIE ≥ 5×
+
+    ## TIE im Vergleich zu anderen Deckungskennzahlen
+
+    | Kennzahl | Was sie abdeckt | Wann nutzen |
+    |--------|---------------|-------------|
+    | **TIE** | Nur Zinsen | Schnelle Solvenzprüfung |
+    | **DSCR** | Zinsen + Tilgung | Immobilien, Projektfinanzierung |
+    | **Fixkostendeckung** | Zinsen + Leasing-/Mietzahlungen | Einzelhandel, mietintensive Geschäfte |
+
+    Berechne mit dem [TIE-Rechner](/tools/times-interest-earned-calculator/) deinen
+    Deckungsgrad und dein Sicherheitspolster.
