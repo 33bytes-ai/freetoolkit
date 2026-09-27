@@ -2253,3 +2253,659 @@
     Er berechnet die Sales Velocity (Umsatz pro Tag) aus Pipelinegröße,
     Abschlussquote, durchschnittlichem Vertragswert und Länge des
     Vertriebszyklus.
+
+"business-loan-calculator":
+  "body": |
+    Ein Rechner für Geschäftskredite hilft dir, die wahren Kosten eines Kredits zu
+    verstehen: nicht nur den Zinssatz, sondern die tatsächliche Monatsrate, die
+    gesamten Zinsen und wie viel jeder Rate in Tilgung statt in Zinsen fließt.
+
+    ## Die Annuitätenformel
+
+    **Monatsrate = P × [r(1+r)^n] / [(1+r)^n − 1]**
+
+    Dabei gilt:
+    - P = Kreditbetrag
+    - r = monatlicher Zinssatz (Effektivzins / 12 / 100)
+    - n = Anzahl der Monatsraten (Laufzeit in Monaten)
+
+    Für einen Kredit über 250.000 $ zu 7,5 % Effektivzins über 60 Monate:
+    r = 0,075/12 = 0,00625
+    Monatsrate = 250.000 $ × (0,00625 × 1,00625^60) / (1,00625^60 − 1) = **5.009 $/Monat**
+    Gesamt gezahlt = 300.569 $
+    Gesamte Zinsen = 50.569 $ (20,2 % des Kreditbetrags)
+
+    ## Richtwerte für SBA-Kredite
+
+    Die SBA (Small Business Administration) verbürgt in den USA einen Teil der
+    Kredite an kleine Unternehmen.
+
+    | Kreditart | Üblicher Zins | Max. Laufzeit | Einsatz |
+    |---|---|---|---|
+    | SBA 7(a) | Prime + 2,25–4,75 % | 10 Jahre | Betriebsmittel, Ausrüstung |
+    | SBA 7(a) Immobilien | Prime + 1,5–2,75 % | 25 Jahre | Gewerbeimmobilien |
+    | SBA 504 | ~6–7 % fest | 10–25 Jahre | Immobilien + Ausrüstung |
+    | SBA Microloan | 8–13 % | 6 Jahre | Kleine Unternehmen, < 50.000 $ |
+
+    Hinweis: SBA-Kredite verlangen eine persönliche Bürgschaft und gute Bonität
+    (typischerweise FICO-Score ab 650).
+
+    ## Schuldendienstdeckungsgrad (DSCR)
+
+    Kreditgeber prüfen deine Rückzahlungsfähigkeit mit dem DSCR:
+    **DSCR = jährliches Netto-Betriebsergebnis / jährlicher Schuldendienst**
+
+    Die meisten verlangen einen DSCR ≥ 1,25: Auf jeden Dollar jährlicher
+    Kreditzahlungen kommen 1,25 $ Netto-Betriebsergebnis. Ein DSCR unter 1,0
+    bedeutet, dass das Geschäft den Schuldendienst nicht aus dem laufenden Betrieb
+    decken kann.
+
+    So berechnest du den DSCR: Nimm dein Jahresergebnis vor Kreditzahlungen und
+    teile es durch die gesamten jährlichen Raten (Monatsrate dieses Rechners × 12).
+
+    ## Zinskosten im Vergleich
+
+    Die Laufzeit verändert die gesamten Zinsen erheblich:
+
+    | 250.000 $ zu 7,5 % Effektivzins | Monatsrate | Gesamte Zinsen |
+    |---|---|---|
+    | 36 Monate | 7.777 $ | 29.956 $ |
+    | 60 Monate | 5.009 $ | 50.569 $ |
+    | 84 Monate | 3.835 $ | 72.104 $ |
+    | 120 Monate | 2.968 $ | 106.105 $ |
+
+    Längere Laufzeiten senken die Monatsrate, erhöhen aber die gesamten Zinsen
+    deutlich. Die richtige Laufzeit hängt von deinem Liquiditätsbedarf und den
+    Kapitalkosten ab.
+
+    ## Häufige Fragen
+
+    **Was macht dieser Rechner?**
+    Er berechnet Monatsrate, Gesamtzahlung und gesamte Zinsen für jeden
+    Geschäftskredit mit der üblichen Annuitätenformel. Gib Kreditbetrag,
+    Effektivzins und Laufzeit in Monaten ein.
+"cogs-calculator":
+  "body": |
+    ## Was sind Herstellungskosten (COGS)?
+
+    Die Herstellungskosten der verkauften Waren (COGS, Cost of Goods Sold) sind die
+    direkten Kosten, um die in einer Periode verkauften Waren herzustellen.
+
+    $$\text{COGS} = \text{Anfangsbestand} + \text{Einkäufe} - \text{Endbestand}$$
+
+    ### Was gehört zu den Herstellungskosten?
+
+    **Enthalten:**
+    - Rohstoffe und Komponenten
+    - Direkte Arbeitskosten (in der Fertigung)
+    - Fertigungsgemeinkosten (direkt produktionsbezogene Werkskosten)
+    - Eingangsfracht (Transport für eingehende Ware)
+
+    **Nicht enthalten (Betriebsausgaben):**
+    - Vertriebs- und Marketingkosten
+    - Verwaltungsgehälter
+    - F&E-Ausgaben
+    - Zinsen und Steuern
+
+    ### Herstellungskosten und Bruttomarge
+
+    $$\text{Bruttomarge} = \frac{\text{Umsatz} - \text{COGS}}{\text{Umsatz}} \times 100$$
+
+    Die Bruttomarge ist der wichtigste Indikator für Preissetzungsmacht und die
+    Effizienz des Geschäftsmodells. Vergleiche sie über Perioden hinweg und mit
+    Wettbewerbern derselben Branche.
+
+    ### Herstellungskosten bei Dienstleistern
+
+    Dienstleister haben keinen physischen Lagerbestand, aber trotzdem
+    Herstellungskosten, hier Umsatzkosten oder Leistungskosten genannt. Dazu
+    gehören an Kunden abgerechnete direkte Arbeitsstunden, Kosten für
+    Freiberufler und bei SaaS Hosting bzw. Infrastruktur.
+
+    ### Ratgeber
+
+    - [Was sind Herstellungskosten (COGS)?](/tools/cogs-calculator/#what-is-cost-of-goods-sold)
+    - [Herstellungskosten vs. Betriebsausgaben: Was ist der Unterschied?](/tools/cogs-calculator/#cogs-vs-operating-expenses)
+"current-ratio-calculator":
+  "body": |
+    ## Was ist der Liquiditätsgrad?
+
+    Der Liquiditätsgrad (Current Ratio, auch Liquidität 3. Grades) misst, ob ein
+    Unternehmen seine kurzfristigen Verbindlichkeiten mit seinem
+    Umlaufvermögen bezahlen kann.
+
+    $$\text{Liquiditätsgrad} = \frac{\text{Umlaufvermögen}}{\text{Kurzfristige Verbindlichkeiten}}$$
+
+    ### Die drei Liquiditätskennzahlen
+
+    | Kennzahl | Formel | Ziel |
+    |-------|---------|--------|
+    | Current Ratio | Umlaufvermögen ÷ kurzfristige Verbindlichkeiten | 1,5–2,0× |
+    | Quick Ratio | (Umlaufvermögen − Vorräte) ÷ kurzfristige Verbindlichkeiten | ≥ 1,0× |
+    | Cash Ratio | Liquide Mittel ÷ kurzfristige Verbindlichkeiten | 0,1–0,5× |
+
+    Die Quick Ratio (auch Acid-Test) ist vorsichtiger: Sie lässt die Vorräte weg,
+    deren Verkauf Wochen oder Monate dauern kann. Die Cash Ratio ist am
+    strengsten und zählt nur vorhandene liquide Mittel.
+
+    ### Was ist das Nettoumlaufvermögen?
+
+    Nettoumlaufvermögen = Umlaufvermögen − kurzfristige Verbindlichkeiten. Ist es
+    positiv, kann das Unternehmen alle kurzfristigen Verpflichtungen decken und
+    behält noch liquide Mittel übrig.
+
+    ### Ratgeber
+
+    - [Was ist der Liquiditätsgrad?](/tools/current-ratio-calculator/#what-is-the-current-ratio)
+    - [Current Ratio vs. Quick Ratio: die wichtigsten Unterschiede](/tools/current-ratio-calculator/#current-ratio-vs-quick-ratio)
+"debt-to-equity-calculator":
+  "body": |
+    ## Was ist der Verschuldungsgrad?
+
+    Der Verschuldungsgrad (Debt-to-Equity, D/E) misst, wie viel Fremdkapital ein
+    Unternehmen im Verhältnis zum Eigenkapital einsetzt: ein grundlegender
+    Indikator für finanzielle Hebelwirkung und Risiko.
+
+    $$\text{D/E} = \frac{\text{Gesamtverschuldung}}{\text{Eigenkapital}}$$
+
+    ### D/E-Richtwerte nach Branche
+
+    | Branche | Üblicher D/E |
+    |----------|------------------|
+    | Technologie / SaaS | 0,2–0,8× |
+    | Konsumgüter | 0,5–1,5× |
+    | Fertigung | 0,8–2,0× |
+    | Immobilien | 1,0–3,0× |
+    | Versorger | 1,5–3,0× |
+    | Banken | 5–15× (regulierter Hebel) |
+
+    ### Verschuldungsgrad und ROE
+
+    Hoher Hebel steigert den ROE über den Finanzhebel-Multiplikator:
+
+    $$\text{ROE} = \text{ROA} \times \text{Finanzhebel}$$
+
+    Ein Unternehmen mit 10 % ROA und 3× Hebel hat 30 % ROE. Derselbe Hebel verstärkt
+    aber auch Verluste, wenn der ROA negativ ist.
+
+    ### Ratgeber
+
+    - [Was ist der Verschuldungsgrad?](/tools/debt-to-equity-calculator/#what-is-debt-to-equity-ratio)
+    - [Verschuldungsgrad nach Branche](/tools/debt-to-equity-calculator/#debt-to-equity-ratio-by-industry)
+"dscr-calculator":
+  "body": |
+    ## Was ist der DSCR?
+
+    Der Schuldendienstdeckungsgrad (DSCR, Debt Service Coverage Ratio) misst, wie
+    oft dein Netto-Betriebsergebnis deine jährlichen Kreditzahlungen deckt. Er ist
+    die wichtigste Kennzahl, mit der Kreditgeber Geschäftskredite und
+    Gewerbeimmobilienfinanzierungen genehmigen.
+
+    $$\text{DSCR} = \frac{\text{Netto-Betriebsergebnis}}{\text{Jährlicher Schuldendienst}}$$
+
+    ### DSCR-Richtwerte
+
+    | DSCR | Einordnung |
+    |------|----------------|
+    | ≥ 1,50 | Stark: erfüllt die Anforderungen der meisten Kreditgeber leicht |
+    | 1,25–1,49 | Akzeptabel: SBA- und Bankstandard |
+    | 1,00–1,24 | Grenzwertig: wenige Kreditgeber kommen infrage |
+    | < 1,00 | Unterdeckung: der Cashflow kann die Schulden nicht bedienen |
+
+    ### Was zählt als Netto-Betriebsergebnis?
+
+    Netto-Betriebsergebnis (NOI) = Umsatz − Betriebsausgaben (ohne Zinsen, Steuern
+    und Abschreibungen). Bei Immobilien sind es Mieteinnahmen abzüglich Leerstand
+    und Betriebskosten.
+
+    ### Maximaler Kredit laut DSCR
+
+    Bei einem geforderten Mindest-DSCR ist der maximale jährliche Schuldendienst,
+    den dein Cashflow trägt:
+
+    $$\text{Max. Schuldendienst} = \frac{\text{NOI}}{\text{Mindest-DSCR}}$$
+
+    Mit der üblichen Annuitätenrechnung wandelst du diesen maximalen
+    Schuldendienst in den maximalen Kreditbetrag bei deinem Zins und deiner
+    Laufzeit um.
+
+    ### Ratgeber
+
+    - [Was ist der Schuldendienstdeckungsgrad?](/tools/dscr-calculator/#what-is-debt-service-coverage-ratio)
+    - [DSCR-Anforderungen nach Kreditgeber](/tools/dscr-calculator/#dscr-requirements-by-lender)
+"ebitda-calculator":
+  "body": |
+    Das EBITDA (Ergebnis vor Zinsen, Steuern und Abschreibungen) ist die am
+    häufigsten genutzte Kennzahl, um die operative Rentabilität von Unternehmen
+    mit unterschiedlicher Kapitalstruktur zu vergleichen.
+
+    ## Die EBITDA-Formel
+
+    **EBITDA = Umsatz − Herstellungskosten − Betriebsausgaben − Vertriebs- und Verwaltungskosten − F&E**
+
+    Oder gleichwertig: **EBITDA = Nettogewinn + Zinsen + Steuern + Abschreibungen auf Sachanlagen + Abschreibungen auf immaterielle Werte**
+
+    Bei 5 Mio. $ Umsatz, 750.000 $ Herstellungskosten, 1,5 Mio. $
+    Betriebsausgaben, 500.000 $ Vertriebs- und Verwaltungskosten und 750.000 $ F&E:
+    - EBITDA = 5 Mio. $ − 750.000 $ − 1,5 Mio. $ − 500.000 $ − 750.000 $ = **1,5 Mio. $**
+    - EBITDA-Marge = 1,5 Mio. $ ÷ 5 Mio. $ = **30 %**
+
+    ## EBITDA vs. EBIT vs. Nettogewinn
+
+    | Kennzahl | Enthält | Ohne |
+    |---|---|---|
+    | EBITDA | Alle Betriebskosten | Zinsen, Steuern, Abschreibungen |
+    | EBIT | EBITDA minus Abschreibungen | Zinsen, Steuern |
+    | Nettogewinn | Alles | Nichts |
+
+    Das EBITDA ist beliebt, weil es Verzerrungen herausrechnet durch:
+    - die Kapitalstruktur (Zinsen hängen von der Verschuldung ab)
+    - den Steuerstandort (Steuersätze variieren nach Land und Struktur)
+    - die Kapitalintensität (Abschreibungen hängen von der Anlagenbasis ab, nicht vom Betrieb)
+
+    So lässt sich ein Softwareunternehmen (geringe Abschreibungen) mit einem
+    Industriebetrieb (hohe Abschreibungen) operativ vergleichen.
+
+    ## Richtwerte für die EBITDA-Marge
+
+    | Branche | Übliche EBITDA-Marge |
+    |---|---|
+    | Software / SaaS | 15–40 % |
+    | B2B-Dienstleistungen | 10–20 % |
+    | E-Commerce | 5–15 % |
+    | Gesundheitswesen | 10–25 % |
+    | Fertigung | 8–15 % |
+    | Einzelhandel | 3–8 % |
+
+    Margenstarke SaaS-Unternehmen erreichen in der Größe 30–40 % und mehr
+    EBITDA-Marge. SaaS in der Frühphase hat meist ein negatives EBITDA, solange
+    es in Wachstum investiert.
+
+    ## EBITDA-Multiples und Bewertung
+
+    Der Unternehmenswert (EV) wird oft als Vielfaches des EBITDA ausgedrückt:
+
+    **Unternehmenswert = EBITDA × Branchen-Multiple**
+
+    Übliche Multiples:
+    - Wachstarkes SaaS: 8–20× EBITDA
+    - Profitable Software: 6–12× EBITDA
+    - Professionelle Dienstleistungen: 4–8× EBITDA
+    - Fertigung: 3–6× EBITDA
+    - Einzelhandel: 2–5× EBITDA
+
+    Ein Unternehmen mit 1,5 Mio. $ EBITDA bei einem Multiple von 10× hat einen
+    impliziten EV von 15 Mio. $.
+
+    ## Grenzen des EBITDA
+
+    Das EBITDA kann täuschen, wenn:
+    - die Investitionen hoch sind (Abschreibungen fallen weg, echte Investitionen bleiben)
+    - das Working Capital negativ ist (bei Wachstumsunternehmen häufig)
+    - einmalige Posten in den Betriebsausgaben versteckt sind
+
+    Warren Buffett kritisierte „EBITDA-Gewinne“ als Managementwerkzeug, das die
+    echte Wirtschaftlichkeit verschleiert. Nutze es zum Vergleichen und Einordnen,
+    nicht als Ersatz für eine Cashflow-Analyse.
+
+    ## Häufige Fragen
+
+    **Was macht dieser Rechner?**
+    Er berechnet EBITDA, EBITDA-Marge, EBIT nach Abschreibungen und den
+    impliziten Unternehmenswert aus Umsatz und Kostenpositionen.
+"financial-ratios-calculator":
+  "body": |
+    ## Dashboard für Finanzkennzahlen
+
+    Dieser Rechner ermittelt sechs zentrale Kennzahlen aus vier Kategorien in einer
+    Ansicht, sodass du die gesamte finanzielle Lage eines Unternehmens aus einem
+    Satz Eingaben beurteilst.
+
+    ### Rentabilitätskennzahlen
+
+    **Bruttomarge** = (Umsatz − Herstellungskosten) ÷ Umsatz
+    Misst Produktionseffizienz und Preissetzungsmacht. Mit Wettbewerbern der
+    Branche vergleichen.
+
+    **Nettomarge** = Nettogewinn ÷ Umsatz
+    Der Anteil jedes Umsatzdollars, der am Ende bei den Eigentümern bleibt.
+
+    ### Renditekennzahlen
+
+    **ROE (Eigenkapitalrendite)** = Nettogewinn ÷ Eigenkapital
+    Misst, wie gut das Management Renditen für die Eigentümer erwirtschaftet.
+    Durchschnitt des S&P 500: ~15 %.
+
+    **ROA (Gesamtkapitalrendite)** = Nettogewinn ÷ Bilanzsumme
+    Effizienz der Vermögensnutzung. Anlagenleichte Geschäfte (SaaS, Beratung)
+    schneiden deutlich besser ab als anlagenintensive (Fertigung, Versorger).
+
+    ### Verschuldungskennzahlen
+
+    **Verschuldungsgrad** = Gesamtverschuldung ÷ Eigenkapital
+    Indikator für finanzielles Risiko. Ein D/E über 2 deutet meist auf starken
+    Hebel hin; die Normen unterscheiden sich stark nach Branche.
+
+    ### Liquiditätskennzahlen
+
+    **Liquiditätsgrad** = Umlaufvermögen ÷ kurzfristige Verbindlichkeiten
+    Kurzfristige Zahlungsfähigkeit. Ein Wert unter 1,0 bedeutet, dass die
+    kurzfristigen Verbindlichkeiten das Umlaufvermögen übersteigen: ein
+    Warnsignal für die Liquidität.
+
+    ### Kennzahlen gemeinsam nutzen
+
+    Keine Kennzahl erzählt die ganze Geschichte. Ein hoher ROE bei sehr hohem D/E
+    kann heißen, dass der Hebel die Rendite aufbläht. Gute Margen bei schwachem
+    Liquiditätsgrad können auf Cashflow-Probleme hinweisen. Nutze alle sechs
+    zusammen für ein ausgewogenes Bild.
+
+    ### Ratgeber
+
+    - [Die wichtigsten Finanzkennzahlen für Unternehmer](/tools/financial-ratios-calculator/#key-financial-ratios-guide)
+    - [So liest du eine Bilanz mit Kennzahlen](/tools/financial-ratios-calculator/#how-to-read-balance-sheet-ratios)
+"gross-profit-margin-calculator":
+  "body": |
+    Die Bruttomarge ist die erste Rentabilitätskennzahl, auf die Investoren und
+    Geschäftsführer schauen. Sie misst, wie viel Umsatz nach den direkten
+    Herstellungskosten übrig bleibt, vor Vertrieb, Marketing, Verwaltung und
+    sonstigen Betriebsausgaben.
+
+    ## Formeln zum Bruttogewinn
+
+    **Bruttogewinn = Umsatz − Herstellungskosten**
+    **Bruttomarge % = Bruttogewinn / Umsatz × 100**
+    **Aufschlag % = Bruttogewinn / Herstellungskosten × 100**
+
+    Achtung: Bruttomarge und Aufschlag sind verschieden. Ein Aufschlag von 50 %
+    heißt, du verkaufst zum 1,5-Fachen der Kosten, das ergibt 33 % Bruttomarge,
+    nicht 50 %.
+
+    ## Bruttomargen nach Branche
+
+    | Branche | Übliche Bruttomarge |
+    |----------|---------------------|
+    | SaaS / Software | 70–85 % |
+    | Professionelle Dienstleistungen | 60–75 % |
+    | E-Commerce / Einzelhandel | 20–50 % |
+    | Lebensmittel und Getränke | 30–50 % |
+    | Fertigung | 20–40 % |
+    | Bau | 15–25 % |
+
+    ## Warum die Bruttomarge bei SaaS zählt
+
+    Investoren beurteilen damit die Skalierbarkeit. Ein SaaS mit 80 % Bruttomarge
+    kann Vertrieb und Marketing aus dem Bruttogewinn finanzieren; mit 50 %
+    Bruttomarge erreicht es die [Rule of 40](/glossary/#rule-of-40) nur mit
+    strikter Kostendisziplin.
+
+    ## Bruttomarge vs. Nettomarge
+
+    Die Bruttomarge lässt Betriebsausgaben (Vertrieb, Marketing, F&E, Verwaltung)
+    außen vor. Die Nettomarge gilt nach allen Ausgaben und Steuern. Ein
+    Unternehmen kann eine hohe Bruttomarge und eine negative Nettomarge haben,
+    wenn die Betriebskosten zu hoch sind.
+"net-profit-calculator":
+  "body": |
+    ## Was ist der Nettogewinn?
+
+    Der Nettogewinn (auch Jahresüberschuss oder „Bottom Line“) ist das, was nach
+    Abzug aller Kosten vom Umsatz übrig bleibt:
+
+    $$\text{Nettogewinn} = \text{Umsatz} - \text{COGS} - \text{Betriebsausgaben} - \text{Zinsen} - \text{Steuern}$$
+
+    ### Der Wasserfall der Gewinn- und Verlustrechnung
+
+    | Zeile | Formel |
+    |------|---------|
+    | **Umsatz** | Gesamtverkäufe |
+    | **Bruttogewinn** | Umsatz − COGS |
+    | **Betriebsergebnis (EBIT)** | Bruttogewinn − Betriebsausgaben |
+    | **Ergebnis vor Steuern (EBT)** | Betriebsergebnis − Zinsen |
+    | **Nettogewinn** | EBT − Steuern |
+
+    ### Richtwerte für die Nettomarge
+
+    | Branche | Übliche Nettomarge |
+    |----------|--------------------|
+    | SaaS | 15–30 % |
+    | Beratung | 15–25 % |
+    | Einzelhandel | 2–5 % |
+    | Gastronomie | 3–9 % |
+    | Fertigung | 5–10 % |
+    | Gesundheitswesen | 4–8 % |
+
+    ### Brutto-, Betriebs- oder Nettomarge
+
+    - Die **Bruttomarge** zeigt die Produktionseffizienz: Ist das Kernprodukt profitabel?
+    - Die **Betriebsmarge** zeigt die Effizienz des Geschäftsmodells: Lässt sich das Unternehmen profitabel führen?
+    - Die **Nettomarge** zeigt die endgültige Rendite der Eigentümer nach Finanzierung und Steuern.
+
+    Schrumpfen alle drei Margen gemeinsam, liegt ein systemisches Problem vor. Eine
+    sinkende Nettomarge bei stabiler Bruttomarge deutet oft auf steigende
+    Vertriebs-, Verwaltungs- und Gemeinkosten oder höhere Zinsen hin.
+
+    ### Ratgeber
+
+    - [So berechnest du die Nettomarge](/tools/net-profit-calculator/#how-to-calculate-net-profit-margin)
+    - [Bruttogewinn vs. Nettogewinn: die wichtigsten Unterschiede](/tools/net-profit-calculator/#gross-profit-vs-net-profit)
+"operating-leverage-calculator":
+  "body": |
+    Der operative Hebel misst, wie empfindlich dein Betriebsergebnis auf
+    Umsatzänderungen reagiert. Ein hoher operativer Hebel ist ein zweischneidiges
+    Schwert: Umsatzwachstum verstärkt die Gewinne, Umsatzrückgang die Verluste.
+
+    ## Formel für den Grad des operativen Hebels (DOL)
+
+    **DOL = Deckungsbeitrag / Betriebsergebnis**
+    **DOL = (Umsatz − variable Kosten) / (Umsatz − variable Kosten − Fixkosten)**
+
+    Ein DOL von 4 heißt: Jede Umsatzänderung um 1 % bewirkt eine Änderung des
+    Betriebsergebnisses um 4 %.
+
+    ## Warum SaaS einen hohen operativen Hebel hat
+
+    SaaS-Unternehmen haben hohe Fixkosten (Entwicklung, Infrastruktur, Verwaltung)
+    und niedrige variable Kosten (Hosting, Zahlungsabwicklung, Support in der
+    Größe). Sind die Fixkosten gedeckt, fließt zusätzlicher Umsatz größtenteils
+    ins Betriebsergebnis.
+
+    Deshalb wachsen die Margen von SaaS mit der Größe so stark: Das Modell hat
+    einen eingebauten operativen Hebel, sobald die Fixkostenschwelle überschritten
+    ist.
+
+    ## Operativer Hebel nach Branche
+
+    | Branche | Üblicher DOL | Grund |
+    |----------|------------|--------|
+    | SaaS (in der Größe) | 3–8 | Hohe Fix-, niedrige variable Kosten |
+    | Fluggesellschaften | 4–8 | Hohe Fixkosten (Flugzeuge, Crews) |
+    | Fertigung | 2–4 | Fixkosten der Anlagen |
+    | Einzelhandel | 1,5–3 | Hohe Herstellungskosten (variabel) |
+    | Dienstleistungen | 1,5–2,5 | Personal wächst mit dem Umsatz |
+
+    ## Operativer vs. finanzieller Hebel
+
+    Der operative Hebel verstärkt Änderungen des Betriebsergebnisses über
+    Fixkosten. Der finanzielle Hebel verstärkt Änderungen des Nettogewinns über
+    Schuldzinsen. Kombiniert (Gesamthebel) = DOL × DFL (Grad des finanziellen
+    Hebels).
+"revenue-growth-rate-calculator":
+  "body": |
+    ## Formel der Umsatzwachstumsrate
+
+    $$\text{Wachstumsrate} = \frac{\text{Aktueller Umsatz} - \text{Vorheriger Umsatz}}{\text{Vorheriger Umsatz}} \times 100$$
+
+    ### Richtwerte für Wachstum
+
+    | Wachstum | Kategorie |
+    |--------|---------- |
+    | 100 %+ | Hyperwachstum |
+    | 50–100 % | Starkes Wachstum (SaaS in der Frühphase) |
+    | 20–50 % | Kräftiges Wachstum |
+    | 10–20 % | Moderates Wachstum |
+    | 0–10 % | Langsames Wachstum / Reife |
+    | Negativ | Rückgang |
+
+    ### CAGR für mehrjährige Analysen
+
+    $$\text{CAGR} = \left(\frac{\text{Endumsatz}}{\text{Anfangsumsatz}}\right)^{\frac{1}{n}} - 1$$
+
+    Die durchschnittliche jährliche Wachstumsrate (CAGR) glättet ungleichmäßiges
+    Wachstum. Ein Unternehmen, das um 30 %, dann 10 %, dann 50 % wuchs, hatte eine
+    CAGR von ~29 %, aussagekräftiger als jedes einzelne Jahr.
+
+    ### Rule of 40
+
+    Die Rule of 40 ist der wichtigste Gesundheitsmaßstab für SaaS:
+
+    $$\text{Rule of 40} = \text{Wachstumsrate} + \text{Nettomarge}$$
+
+    Ein Wert ≥ 40 zeigt ein ausgewogenes, nachhaltiges SaaS-Geschäft. Ein
+    Unternehmen mit 60 % Wachstum kann mit −20 % Marge arbeiten und kommt trotzdem
+    auf 40. Wer nur 10 % wächst, braucht mindestens 30 % Marge.
+
+    ### Ratgeber
+
+    - [So berechnest du die Umsatzwachstumsrate](/tools/revenue-growth-rate-calculator/#how-to-calculate-revenue-growth-rate)
+    - [Was ist die Rule of 40 bei SaaS?](/tools/revenue-growth-rate-calculator/#what-is-rule-of-40)
+"roa-calculator":
+  "body": |
+    ## Was ist die Gesamtkapitalrendite (ROA)?
+
+    Die Gesamtkapitalrendite (ROA, Return on Assets) misst, wie effizient ein
+    Unternehmen seine Vermögenswerte nutzt, um Gewinn zu erzielen.
+
+    $$\text{ROA} = \frac{\text{Nettogewinn}}{\text{Bilanzsumme}} \times 100$$
+
+    ### ROA-Richtwerte nach Branche
+
+    | Branche | Üblicher ROA |
+    |----------|-------------|
+    | Technologie / SaaS | 10–25 % |
+    | Konsumgüter | 5–15 % |
+    | Fertigung | 3–8 % |
+    | Einzelhandel | 4–10 % |
+    | Banken / Finanzen | 1–2 % |
+    | Immobilien | 1–3 % |
+
+    ### Die DuPont-Zerlegung
+
+    Der ROA lässt sich in zwei Treiber zerlegen:
+
+    $$\text{ROA} = \text{Nettomarge} \times \text{Kapitalumschlag}$$
+
+    Das hilft bei der Diagnose: Ein niedriger ROA kann von dünnen Margen, langsamem
+    Kapitalumschlag oder beidem kommen. Wer einen der beiden Treiber verbessert,
+    verbessert den ROA.
+
+    ### Ratgeber
+
+    - [Was ist die Gesamtkapitalrendite (ROA)?](/tools/roa-calculator/#what-is-return-on-assets)
+    - [ROA vs. ROE: Was ist der Unterschied?](/tools/roa-calculator/#roa-vs-roe-difference)
+"roe-calculator":
+  "body": |
+    ## Was ist die Eigenkapitalrendite (ROE)?
+
+    Die Eigenkapitalrendite (ROE, Return on Equity) misst, wie viel Gewinn ein
+    Unternehmen pro Dollar Eigenkapital erzielt. Sie ist das meistgenutzte Maß
+    dafür, wie effizient das Management Renditen auf das Kapital erwirtschaftet.
+
+    **ROE = Nettogewinn ÷ Eigenkapital × 100**
+
+    Ein ROE von 20 % bedeutet 0,20 $ Gewinn pro 1,00 $ Eigenkapital, also eine
+    jährliche Rendite von 20 % für die Eigentümer, wenn alle Gewinne einbehalten
+    und reinvestiert werden.
+
+    ## Was ist ein guter ROE?
+
+    | ROE-Spanne | Einordnung |
+    |---|---|
+    | 20 %+ | Hervorragend: oberstes Quartil |
+    | 15–20 % | Gut: über dem Durchschnitt der meisten Branchen |
+    | 10–15 % | Akzeptabel: im Marktdurchschnitt |
+    | 5–10 % | Unterdurchschnittlich: verbesserungsbedürftig |
+    | Unter 5 % | Schwach: vernichtet womöglich Eigenkapitalwert |
+
+    Der langfristige durchschnittliche ROE des S&P 500 liegt bei etwa 14 %.
+    Technologieunternehmen erreichen oft 20–40 %, Händler 10–15 %, Versorger
+    8–12 %.
+
+    ## DuPont-Analyse: den ROE zerlegen
+
+    Die DuPont-Formel zerlegt den ROE in drei Treiber:
+
+    **ROE = Nettomarge × Kapitalumschlag × Eigenkapitalmultiplikator**
+
+    - **Nettomarge** = Nettogewinn ÷ Umsatz (Gewinn pro Umsatzdollar)
+    - **Kapitalumschlag** = Umsatz ÷ Bilanzsumme (wie effizient das Vermögen Umsatz erzeugt)
+    - **Eigenkapitalmultiplikator** = Bilanzsumme ÷ Eigenkapital (finanzieller Hebel)
+
+    Ein hoher ROE aus guten Margen und effizientem Vermögenseinsatz ist
+    nachhaltiger als einer, der nur auf Hebel beruht. Ein überhebelter ROE bricht
+    schnell ein, wenn sich das Umfeld verschlechtert.
+
+    ## ROE und nachhaltige Wachstumsrate
+
+    Die nachhaltige Wachstumsrate ist das höchste Wachstum, das ein Unternehmen
+    ohne externe Eigenkapitalfinanzierung erreichen kann:
+
+    **Nachhaltige Wachstumsrate = ROE × (1 − Ausschüttungsquote (der Anteil des Gewinns, der an die Eigentümer ausgezahlt statt einbehalten wird))**
+
+    Bei 20 % ROE und 0 % Ausschüttung (alles einbehalten): 20 % nachhaltiges
+    Wachstum.
+    Bei 20 % ROE und 50 % Ausschüttung: 10 % nachhaltiges Wachstum.
+
+    ## Häufige Fragen
+
+    **Wie unterscheidet sich der ROE vom ROA?**
+    Gesamtkapitalrendite (ROA) = Nettogewinn ÷ Bilanzsumme. Der ROA misst die
+    Effizienz über das gesamte Kapital (Fremd- + Eigenkapital), der ROE nur die
+    Rendite auf das Eigenkapital. Die Differenz spiegelt den finanziellen Hebel:
+    ROE = ROA × Eigenkapitalmultiplikator. Ein Unternehmen mit gleichem ROA, aber
+    mehr Schulden zeigt einen höheren ROE, was bei übermäßigem Hebel täuschen kann.
+
+    **Wann täuscht ein hoher ROE?**
+    Ein sehr hoher ROE kann entstehen durch: (1) hohen finanziellen Hebel, der die
+    Rendite aufbläht, (2) Aktienrückkäufe, die das Eigenkapital gegen null
+    drücken, oder (3) hohe aufgelaufene Verluste, die das bilanzielle
+    Eigenkapital verringern. Prüfe immer, ob ein hoher ROE aus Margen und
+    Vermögenseffizienz (gut) oder aus Financial Engineering (riskant) kommt.
+"times-interest-earned-calculator":
+  "body": |
+    ## Was ist der Zinsdeckungsgrad?
+
+    Der Zinsdeckungsgrad (TIE, Times Interest Earned, auch Interest Coverage Ratio)
+    misst, wie oft das EBIT eines Unternehmens seine Zinsverpflichtungen decken
+    kann:
+
+    $$\text{TIE} = \frac{\text{EBIT}}{\text{Zinsaufwand}}$$
+
+    ### TIE-Richtwerte
+
+    | TIE | Einschätzung |
+    |----|------------|
+    | ≥ 5× | Starke Deckung: bequem bedienbar |
+    | 3–5× | Ausreichend: für die meisten Kredite akzeptabel |
+    | 1,5–3× | Knapp: nahe an den Covenant-Grenzen |
+    | 1–1,5× | Minimal: ein schlechtes Quartal wird zum Risiko |
+    | < 1× | Zinsen nicht aus dem Betrieb deckbar |
+
+    ### Warum Kreditgeber darauf achten
+
+    Der TIE ist eine übliche Covenant-Kennzahl in Kreditverträgen. Die meisten
+    vorrangigen Kreditgeber verlangen einen TIE ≥ 1,25–1,5×. Ein TIE von 3× heißt,
+    das EBIT müsste um 67 % fallen, bevor die Zinsen nicht mehr bedient werden
+    können.
+
+    ### TIE vs. DSCR
+
+    Der TIE deckt nur Zinsen ab, nicht die Tilgung. Für die volle
+    Schuldendienstdeckung inklusive Tilgung nutze den
+    [DSCR-Rechner](/tools/dscr-calculator/). Der DSCR ist strenger und wird häufiger
+    bei Immobilien- und Projektfinanzierungen verwendet.
+
+    ### Ratgeber
+
+    - [Was ist der Zinsdeckungsgrad?](/tools/times-interest-earned-calculator/#what-is-times-interest-earned-ratio)
+    - [TIE vs. DSCR: Was ist der Unterschied?](/tools/times-interest-earned-calculator/#tie-ratio-vs-dscr)

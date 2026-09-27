@@ -2287,3 +2287,662 @@ free-cash-flow-calculator:
     Il calcule la vélocité des ventes (chiffre d'affaires par jour) à partir de la
     taille du pipeline, du taux de signature, de la valeur moyenne des contrats et
     de la durée du cycle de vente.
+
+"business-loan-calculator":
+  "body": |
+    Un calculateur de prêt professionnel vous aide à comprendre le vrai coût de
+    l'emprunt : pas seulement le taux d'intérêt, mais la mensualité réelle, le total
+    des intérêts payés et la part de chaque échéance qui rembourse le capital
+    plutôt que les intérêts.
+
+    ## La formule d'amortissement
+
+    **Mensualité = P × [r(1+r)^n] / [(1+r)^n − 1]**
+
+    Où :
+    - P = capital (montant emprunté)
+    - r = taux d'intérêt mensuel (TAEG / 12 / 100)
+    - n = nombre de mensualités (durée en mois)
+
+    Pour un prêt de 250 000 $ à 7,5 % de TAEG sur 60 mois :
+    r = 0,075/12 = 0,00625
+    Mensualité = 250 000 $ × (0,00625 × 1,00625^60) / (1,00625^60 − 1) = **5 009 $/mois**
+    Total payé = 300 569 $
+    Total des intérêts = 50 569 $ (20,2 % du capital)
+
+    ## Repères des prêts SBA
+
+    La SBA (Small Business Administration) garantit une partie des prêts aux
+    petites entreprises américaines.
+
+    | Type de prêt | Taux habituel | Durée max. | Usage |
+    |---|---|---|---|
+    | SBA 7(a) | Prime + 2,25–4,75 % | 10 ans | Fonds de roulement, équipement |
+    | SBA 7(a) immobilier | Prime + 1,5–2,75 % | 25 ans | Immobilier professionnel |
+    | SBA 504 | ~6–7 % fixe | 10–25 ans | Immobilier + équipement |
+    | SBA Microloan | 8–13 % | 6 ans | Petites entreprises, < 50 k$ |
+
+    Remarque : les prêts SBA exigent une caution personnelle et un bon historique
+    de crédit (score FICO de 650 ou plus en général).
+
+    ## Taux de couverture du service de la dette (DSCR)
+
+    Les prêteurs évaluent votre capacité de remboursement avec le DSCR :
+    **DSCR = résultat net d'exploitation annuel / service de la dette annuel**
+
+    La plupart des prêteurs exigent un DSCR ≥ 1,25 : pour chaque dollar de
+    remboursement annuel, vous dégagez 1,25 $ de résultat net d'exploitation. Un
+    DSCR inférieur à 1,0 signifie que l'activité ne peut pas couvrir le service de
+    la dette par ses opérations.
+
+    Pour calculer le DSCR : prenez votre résultat annuel avant remboursements et
+    divisez-le par le total annuel des échéances (la mensualité de ce calculateur ×
+    12).
+
+    ## Comparaison du coût des intérêts
+
+    La durée du prêt change fortement le total des intérêts payés :
+
+    | 250 k$ à 7,5 % de TAEG | Mensualité | Total des intérêts |
+    |---|---|---|
+    | 36 mois | 7 777 $ | 29 956 $ |
+    | 60 mois | 5 009 $ | 50 569 $ |
+    | 84 mois | 3 835 $ | 72 104 $ |
+    | 120 mois | 2 968 $ | 106 105 $ |
+
+    Une durée plus longue baisse la mensualité mais augmente nettement le total des
+    intérêts. Le bon choix dépend de vos besoins de trésorerie et du coût du
+    capital.
+
+    ## Questions fréquentes
+
+    **Que fait ce calculateur ?**
+    Il calcule la mensualité, le total payé et le total des intérêts de n'importe
+    quel prêt professionnel avec la formule d'amortissement standard. Saisissez le
+    montant, le TAEG et la durée en mois.
+"cogs-calculator":
+  "body": |
+    ## Qu'est-ce que le coût des ventes ?
+
+    Le coût des ventes (COGS, Cost of Goods Sold) est le coût direct de production
+    des biens vendus par une entreprise sur une période.
+
+    $$\text{Coût des ventes} = \text{Stock initial} + \text{Achats} - \text{Stock final}$$
+
+    ### Que comprend le coût des ventes ?
+
+    **Inclus :**
+    - Matières premières et composants
+    - Main-d'œuvre directe (en production)
+    - Frais généraux de production (coûts d'usine directement liés à la production)
+    - Frais de transport sur achats (réception du stock)
+
+    **Non inclus (charges d'exploitation) :**
+    - Coûts commerciaux et marketing
+    - Salaires administratifs
+    - Dépenses de R&D
+    - Intérêts et impôts
+
+    ### Coût des ventes et marge brute
+
+    $$\text{Marge brute} = \frac{\text{Chiffre d'affaires} - \text{Coût des ventes}}{\text{Chiffre d'affaires}} \times 100$$
+
+    La marge brute est le premier indicateur du pouvoir de fixation des prix et de
+    l'efficacité du modèle économique. Comparez-la d'une période à l'autre et avec
+    les concurrents du même secteur.
+
+    ### Coût des ventes des activités de services
+
+    Les activités de services n'ont pas de stock physique mais ont bien un coût des
+    ventes, appelé coût du chiffre d'affaires ou coût du service. Il comprend les
+    heures de main-d'œuvre directe facturées aux clients, le coût des prestataires
+    et l'hébergement ou l'infrastructure pour le SaaS.
+
+    ### Guides
+
+    - [Qu'est-ce que le coût des ventes (COGS) ?](/tools/cogs-calculator/#what-is-cost-of-goods-sold)
+    - [Coût des ventes ou charges d'exploitation : quelle différence ?](/tools/cogs-calculator/#cogs-vs-operating-expenses)
+"current-ratio-calculator":
+  "body": |
+    ## Qu'est-ce que le ratio de liquidité générale ?
+
+    Le ratio de liquidité générale mesure la capacité d'une entreprise à payer ses
+    dettes à court terme avec ses actifs à court terme.
+
+    $$\text{Liquidité générale} = \frac{\text{Actifs courants}}{\text{Passifs courants}}$$
+
+    ### Les trois ratios de liquidité
+
+    | Ratio | Formule | Cible |
+    |-------|---------|--------|
+    | Liquidité générale | Actifs courants ÷ passifs courants | 1,5–2,0× |
+    | Liquidité réduite (quick ratio) | (Actifs courants − stocks) ÷ passifs courants | ≥ 1,0× |
+    | Liquidité immédiate | Trésorerie et équivalents ÷ passifs courants | 0,1–0,5× |
+
+    Le ratio de liquidité réduite (aussi appelé acid-test) est plus prudent : il
+    exclut les stocks, qui peuvent mettre des semaines ou des mois à se vendre. Le
+    ratio de liquidité immédiate est le plus strict : il ne compte que la
+    trésorerie disponible.
+
+    ### Qu'est-ce que le fonds de roulement net ?
+
+    Fonds de roulement net = actifs courants − passifs courants. Un fonds de
+    roulement net positif signifie que l'entreprise peut couvrir toutes ses dettes à
+    court terme et garder encore des actifs liquides.
+
+    ### Guides
+
+    - [Qu'est-ce que le ratio de liquidité générale ?](/tools/current-ratio-calculator/#what-is-the-current-ratio)
+    - [Liquidité générale ou liquidité réduite : les différences clés](/tools/current-ratio-calculator/#current-ratio-vs-quick-ratio)
+"debt-to-equity-calculator":
+  "body": |
+    ## Qu'est-ce que le ratio d'endettement ?
+
+    Le ratio d'endettement (dette / capitaux propres, D/E) mesure la part de dette
+    qu'utilise une entreprise par rapport à ses capitaux propres : un indicateur
+    fondamental du levier financier et du risque.
+
+    $$\text{Ratio D/E} = \frac{\text{Dette totale}}{\text{Capitaux propres}}$$
+
+    ### Repères D/E par secteur
+
+    | Secteur | Ratio D/E habituel |
+    |----------|------------------|
+    | Technologie / SaaS | 0,2–0,8× |
+    | Biens de consommation | 0,5–1,5× |
+    | Industrie | 0,8–2,0× |
+    | Immobilier | 1,0–3,0× |
+    | Services publics | 1,5–3,0× |
+    | Banque | 5–15× (levier réglementé) |
+
+    ### Ratio D/E et ROE
+
+    Un fort levier amplifie le ROE par le multiplicateur de levier financier :
+
+    $$\text{ROE} = \text{ROA} \times \text{Levier financier}$$
+
+    Une entreprise avec 10 % de ROA et un levier de 3× a un ROE de 30 %. Mais le même
+    levier amplifie les pertes quand le ROA est négatif.
+
+    ### Guides
+
+    - [Qu'est-ce que le ratio d'endettement ?](/tools/debt-to-equity-calculator/#what-is-debt-to-equity-ratio)
+    - [Ratio d'endettement par secteur](/tools/debt-to-equity-calculator/#debt-to-equity-ratio-by-industry)
+"dscr-calculator":
+  "body": |
+    ## Qu'est-ce que le DSCR ?
+
+    Le taux de couverture du service de la dette (DSCR, Debt Service Coverage
+    Ratio) mesure combien de fois votre résultat net d'exploitation couvre vos
+    remboursements annuels. C'est le principal indicateur qu'utilisent les
+    prêteurs pour accorder un prêt professionnel ou un financement immobilier.
+
+    $$\text{DSCR} = \frac{\text{Résultat net d'exploitation}}{\text{Service annuel de la dette}}$$
+
+    ### Repères de DSCR
+
+    | DSCR | Lecture |
+    |------|----------------|
+    | ≥ 1,50 | Solide : passe facilement chez la plupart des prêteurs |
+    | 1,25–1,49 | Acceptable : norme SBA et bancaire classique |
+    | 1,00–1,24 | Limite : peu de prêteurs possibles |
+    | < 1,00 | Couverture insuffisante : la trésorerie ne peut pas servir la dette |
+
+    ### Qu'est-ce qui compte comme résultat net d'exploitation ?
+
+    Résultat net d'exploitation (NOI) = chiffre d'affaires − charges d'exploitation
+    (hors intérêts, impôts et dotations aux amortissements). En immobilier, ce sont
+    les loyers moins la vacance et les charges d'exploitation.
+
+    ### Prêt maximum selon le DSCR
+
+    Pour un DSCR minimum exigé, le service annuel maximum de la dette que votre
+    trésorerie peut supporter est :
+
+    $$\text{Service de la dette max.} = \frac{\text{NOI}}{\text{DSCR minimum}}$$
+
+    Appliquez ensuite l'amortissement standard pour convertir ce service maximum en
+    capital maximum empruntable à votre taux et votre durée.
+
+    ### Guides
+
+    - [Qu'est-ce que le taux de couverture du service de la dette ?](/tools/dscr-calculator/#what-is-debt-service-coverage-ratio)
+    - [Exigences de DSCR selon le type de prêteur](/tools/dscr-calculator/#dscr-requirements-by-lender)
+"ebitda-calculator":
+  "body": |
+    L'EBITDA (résultat avant intérêts, impôts, dépréciation et amortissement) est
+    l'indicateur le plus utilisé pour comparer la rentabilité opérationnelle
+    d'entreprises aux structures de capital différentes.
+
+    ## La formule de l'EBITDA
+
+    **EBITDA = chiffre d'affaires − coût des ventes − charges d'exploitation − frais commerciaux et généraux − R&D**
+
+    Ou, de façon équivalente : **EBITDA = résultat net + intérêts + impôts + dépréciation + amortissement**
+
+    Avec 5 M$ de chiffre d'affaires, 750 k$ de coût des ventes, 1,5 M$ de charges
+    d'exploitation, 500 k$ de frais commerciaux et généraux et 750 k$ de R&D :
+    - EBITDA = 5 M$ − 750 k$ − 1,5 M$ − 500 k$ − 750 k$ = **1,5 M$**
+    - Marge d'EBITDA = 1,5 M$ ÷ 5 M$ = **30 %**
+
+    ## EBITDA, EBIT ou résultat net
+
+    | Indicateur | Inclut | Exclut |
+    |---|---|---|
+    | EBITDA | Tous les coûts d'exploitation | Intérêts, impôts, D&A |
+    | EBIT | EBITDA moins D&A | Intérêts, impôts |
+    | Résultat net | Tout | Rien |
+
+    L'EBITDA est apprécié parce qu'il retire les distorsions dues :
+    - à la structure du capital (les intérêts dépendent de l'endettement)
+    - à la fiscalité (les taux varient selon le pays et la structure)
+    - à l'intensité capitalistique (la dépréciation dépend des actifs, pas de l'exploitation)
+
+    On peut ainsi comparer un éditeur de logiciel (faibles D&A) et un industriel
+    (fortes D&A) sur une base opérationnelle équivalente.
+
+    ## Repères de marge d'EBITDA
+
+    | Secteur | Marge d'EBITDA habituelle |
+    |---|---|
+    | Logiciel / SaaS | 15–40 % |
+    | Services B2B | 10–20 % |
+    | E-commerce | 5–15 % |
+    | Santé | 10–25 % |
+    | Industrie | 8–15 % |
+    | Commerce de détail | 3–8 % |
+
+    Les SaaS à forte marge et à grande échelle peuvent dépasser 30–40 % de marge
+    d'EBITDA. Les SaaS en phase de démarrage ont en général un EBITDA négatif
+    tant qu'ils investissent dans la croissance.
+
+    ## Multiples d'EBITDA et valorisation
+
+    La valeur d'entreprise (VE) s'exprime souvent en multiple de l'EBITDA :
+
+    **Valeur d'entreprise = EBITDA × multiple du secteur**
+
+    Multiples habituels :
+    - SaaS à forte croissance : 8–20× l'EBITDA
+    - Logiciel rentable : 6–12× l'EBITDA
+    - Services professionnels : 4–8× l'EBITDA
+    - Industrie : 3–6× l'EBITDA
+    - Commerce de détail : 2–5× l'EBITDA
+
+    Une entreprise avec 1,5 M$ d'EBITDA et un multiple de 10× a une VE implicite de
+    15 M$.
+
+    ## Limites de l'EBITDA
+
+    L'EBITDA peut tromper quand :
+    - les investissements sont élevés (les D&A sont exclues, mais la dépense réelle demeure)
+    - le besoin en fonds de roulement est négatif (fréquent dans les entreprises en croissance)
+    - des éléments non récurrents sont noyés dans les charges d'exploitation
+
+    Warren Buffett a critiqué les « bénéfices EBITDA » comme un outil de direction
+    qui masque l'économie réelle. Utilisez-le pour comparer et vous situer, pas en
+    remplacement d'une analyse des flux de trésorerie.
+
+    ## Questions fréquentes
+
+    **Que fait ce calculateur ?**
+    Il calcule l'EBITDA, la marge d'EBITDA, l'EBIT après dépréciation et
+    amortissement, et la valeur d'entreprise implicite à partir du chiffre
+    d'affaires et des postes de coûts.
+"financial-ratios-calculator":
+  "body": |
+    ## Tableau de bord des ratios financiers
+
+    Ce calculateur donne six ratios clés répartis en quatre familles dans une seule
+    vue : vous évaluez la santé financière complète d'une entreprise à partir d'un
+    seul jeu de données.
+
+    ### Ratios de rentabilité
+
+    **Marge brute** = (chiffre d'affaires − coût des ventes) ÷ chiffre d'affaires
+    Mesure l'efficacité de production et le pouvoir de fixation des prix. À
+    comparer aux concurrents du secteur.
+
+    **Marge nette** = résultat net ÷ chiffre d'affaires
+    Le pourcentage final que conservent les actionnaires sur chaque dollar de
+    chiffre d'affaires.
+
+    ### Ratios de rendement
+
+    **ROE (rentabilité des capitaux propres)** = résultat net ÷ capitaux propres
+    Mesure la capacité de la direction à rémunérer les actionnaires. Moyenne du
+    S&P 500 : ~15 %.
+
+    **ROA (rentabilité des actifs)** = résultat net ÷ total de l'actif
+    Efficacité d'utilisation des actifs. Les activités peu capitalistiques (SaaS,
+    conseil) obtiennent des scores bien plus élevés que les activités lourdes
+    (industrie, services publics).
+
+    ### Ratios de levier
+
+    **Ratio d'endettement** = dette totale ÷ capitaux propres
+    Indicateur de risque financier. Un D/E supérieur à 2 traduit en général un
+    levier important ; la norme varie beaucoup selon le secteur.
+
+    ### Ratios de liquidité
+
+    **Liquidité générale** = actifs courants ÷ passifs courants
+    Solvabilité à court terme. Un ratio inférieur à 1,0 signifie que les passifs
+    courants dépassent les actifs courants : un signal d'alerte de liquidité.
+
+    ### Utiliser les ratios ensemble
+
+    Aucun ratio ne dit tout. Un ROE élevé avec un D/E très élevé peut signifier que
+    le levier gonfle les rendements. De bonnes marges avec une liquidité générale
+    faible peuvent signaler des problèmes de trésorerie. Utilisez les six ensemble
+    pour une évaluation équilibrée.
+
+    ### Guides
+
+    - [Les ratios financiers clés que tout dirigeant devrait connaître](/tools/financial-ratios-calculator/#key-financial-ratios-guide)
+    - [Lire un bilan avec les ratios](/tools/financial-ratios-calculator/#how-to-read-balance-sheet-ratios)
+"gross-profit-margin-calculator":
+  "body": |
+    La marge brute est le premier indicateur de rentabilité que regardent
+    investisseurs et dirigeants. Elle mesure la part du chiffre d'affaires qui
+    reste après les coûts directs de production, avant les frais commerciaux, le
+    marketing, les frais généraux et les autres charges d'exploitation.
+
+    ## Formules de la marge brute
+
+    **Marge brute = chiffre d'affaires − coût des ventes**
+    **Taux de marge brute = marge brute / chiffre d'affaires × 100**
+    **Taux de marque (markup) = marge brute / coût des ventes × 100**
+
+    Attention : taux de marge et markup sont différents. Un markup de 50 % signifie
+    que vous vendez à 1,5× le coût, soit une marge brute de 33 %, pas de 50 %.
+
+    ## Repères de marge brute par secteur
+
+    | Secteur | Marge brute habituelle |
+    |----------|---------------------|
+    | SaaS / logiciel | 70–85 % |
+    | Services professionnels | 60–75 % |
+    | E-commerce / commerce de détail | 20–50 % |
+    | Alimentation et boissons | 30–50 % |
+    | Industrie | 20–40 % |
+    | BTP | 15–25 % |
+
+    ## Pourquoi la marge brute compte pour un SaaS
+
+    Les investisseurs s'en servent pour juger la capacité à passer à l'échelle. Un
+    SaaS à 80 % de marge brute peut financer ses ventes et son marketing par sa
+    marge brute ; à 50 %, il peine à atteindre la [règle des 40](/glossary/#rule-of-40)
+    sans une stricte discipline de coûts.
+
+    ## Marge brute ou marge nette
+
+    La marge brute exclut les charges d'exploitation (ventes, marketing, R&D, frais
+    généraux). La marge nette se calcule après toutes les charges et les impôts.
+    Une entreprise peut avoir une marge brute élevée et une marge nette négative si
+    ses charges d'exploitation sont excessives.
+"net-profit-calculator":
+  "body": |
+    ## Qu'est-ce que le résultat net ?
+
+    Le résultat net (aussi appelé bénéfice net ou « dernière ligne ») est ce qui
+    reste une fois tous les coûts retranchés du chiffre d'affaires :
+
+    $$\text{Résultat net} = \text{CA} - \text{Coût des ventes} - \text{Charges d'exploitation} - \text{Intérêts} - \text{Impôts}$$
+
+    ### La cascade du compte de résultat
+
+    | Ligne | Formule |
+    |------|---------|
+    | **Chiffre d'affaires** | Ventes totales |
+    | **Marge brute** | CA − coût des ventes |
+    | **Résultat d'exploitation (EBIT)** | Marge brute − charges d'exploitation |
+    | **Résultat avant impôt** | Résultat d'exploitation − intérêts |
+    | **Résultat net** | Résultat avant impôt − impôts |
+
+    ### Repères de marge nette
+
+    | Secteur | Marge nette habituelle |
+    |----------|--------------------|
+    | SaaS | 15–30 % |
+    | Conseil | 15–25 % |
+    | Commerce de détail | 2–5 % |
+    | Restauration | 3–9 % |
+    | Industrie | 5–10 % |
+    | Santé | 4–8 % |
+
+    ### Marge brute, d'exploitation ou nette
+
+    - La **marge brute** montre l'efficacité de production : le produit de base est-il rentable ?
+    - La **marge d'exploitation** montre l'efficacité du modèle : pouvez-vous faire tourner l'entreprise de façon rentable ?
+    - La **marge nette** montre le rendement final pour les propriétaires, après financement et impôts.
+
+    Si les trois marges se contractent ensemble, le problème est systémique. Une
+    marge nette en baisse avec une marge brute stable indique souvent une hausse des
+    frais commerciaux, généraux et administratifs ou des charges d'intérêts.
+
+    ### Guides
+
+    - [Comment calculer la marge nette](/tools/net-profit-calculator/#how-to-calculate-net-profit-margin)
+    - [Marge brute ou résultat net : les différences clés](/tools/net-profit-calculator/#gross-profit-vs-net-profit)
+"operating-leverage-calculator":
+  "body": |
+    Le levier opérationnel mesure la sensibilité de votre résultat d'exploitation
+    aux variations du chiffre d'affaires. Un levier opérationnel élevé est une arme
+    à double tranchant : la croissance du chiffre d'affaires amplifie les bénéfices,
+    mais sa baisse amplifie les pertes.
+
+    ## Formule du degré de levier opérationnel (DOL)
+
+    **DOL = marge sur coûts variables / résultat d'exploitation**
+    **DOL = (CA − coûts variables) / (CA − coûts variables − coûts fixes)**
+
+    Un DOL de 4 signifie que chaque variation de 1 % du chiffre d'affaires produit
+    une variation de 4 % du résultat d'exploitation.
+
+    ## Pourquoi le SaaS a un fort levier opérationnel
+
+    Les SaaS ont des coûts fixes élevés (ingénierie, infrastructure, frais
+    généraux) et des coûts variables faibles (hébergement, frais de paiement,
+    support à grande échelle). Une fois les coûts fixes couverts, le chiffre
+    d'affaires supplémentaire va surtout au résultat d'exploitation.
+
+    C'est pourquoi les marges des SaaS s'élargissent fortement avec la taille : le
+    modèle a un levier opérationnel intrinsèque une fois le seuil des coûts fixes
+    dépassé.
+
+    ## Levier opérationnel par secteur
+
+    | Secteur | DOL habituel | Raison |
+    |----------|------------|--------|
+    | SaaS (à l'échelle) | 3–8 | Fixes élevés, variables faibles |
+    | Compagnies aériennes | 4–8 | Fixes élevés (avions, équipages) |
+    | Industrie | 2–4 | Coûts fixes des équipements |
+    | Commerce de détail | 1,5–3 | Coût des ventes élevé (variable) |
+    | Services | 1,5–2,5 | La main-d'œuvre suit le chiffre d'affaires |
+
+    ## Levier opérationnel ou levier financier
+
+    Le levier opérationnel amplifie les variations du résultat d'exploitation via
+    les coûts fixes. Le levier financier amplifie les variations du résultat net
+    via les intérêts de la dette. Levier combiné (levier total) = DOL × DFL (degré
+    de levier financier).
+"revenue-growth-rate-calculator":
+  "body": |
+    ## Formule du taux de croissance du chiffre d'affaires
+
+    $$\text{Taux de croissance} = \frac{\text{CA actuel} - \text{CA précédent}}{\text{CA précédent}} \times 100$$
+
+    ### Repères de croissance
+
+    | Croissance | Catégorie |
+    |--------|---------- |
+    | 100 % et plus | Hypercroissance |
+    | 50–100 % | Forte croissance (SaaS en démarrage) |
+    | 20–50 % | Croissance soutenue |
+    | 10–20 % | Croissance modérée |
+    | 0–10 % | Croissance lente / maturité |
+    | Négative | Déclin |
+
+    ### Le TCAC pour une analyse sur plusieurs années
+
+    $$\text{TCAC} = \left(\frac{\text{CA final}}{\text{CA initial}}\right)^{\frac{1}{n}} - 1$$
+
+    Le taux de croissance annuel composé (TCAC, ou CAGR) lisse une croissance
+    irrégulière. Une entreprise qui a crû de 30 %, puis 10 %, puis 50 % a un TCAC
+    d'environ 29 %, plus parlant qu'une année isolée.
+
+    ### La règle des 40
+
+    La règle des 40 est le principal repère de santé d'un SaaS :
+
+    $$\text{Règle des 40} = \text{Taux de croissance} + \text{Marge nette}$$
+
+    Un score ≥ 40 indique un SaaS équilibré et durable. Une entreprise qui croît de
+    60 % peut fonctionner à −20 % de marge et obtenir 40. Une entreprise à 10 % de
+    croissance a besoin de 30 % de marge ou plus pour passer.
+
+    ### Guides
+
+    - [Comment calculer le taux de croissance du chiffre d'affaires](/tools/revenue-growth-rate-calculator/#how-to-calculate-revenue-growth-rate)
+    - [Qu'est-ce que la règle des 40 pour un SaaS ?](/tools/revenue-growth-rate-calculator/#what-is-rule-of-40)
+"roa-calculator":
+  "body": |
+    ## Qu'est-ce que la rentabilité des actifs (ROA) ?
+
+    La rentabilité des actifs (ROA, Return on Assets) mesure l'efficacité avec
+    laquelle une entreprise utilise ses actifs pour dégager un bénéfice.
+
+    $$\text{ROA} = \frac{\text{Résultat net}}{\text{Total de l'actif}} \times 100$$
+
+    ### Repères de ROA par secteur
+
+    | Secteur | ROA habituel |
+    |----------|-------------|
+    | Technologie / SaaS | 10–25 % |
+    | Biens de consommation | 5–15 % |
+    | Industrie | 3–8 % |
+    | Commerce de détail | 4–10 % |
+    | Banque / finance | 1–2 % |
+    | Immobilier | 1–3 % |
+
+    ### La décomposition DuPont
+
+    Le ROA se décompose en deux moteurs :
+
+    $$\text{ROA} = \text{Marge nette} \times \text{Rotation des actifs}$$
+
+    C'est utile pour le diagnostic : un ROA faible peut venir de marges minces,
+    d'une rotation lente des actifs, ou des deux. Améliorer l'un ou l'autre
+    améliore le ROA.
+
+    ### Guides
+
+    - [Qu'est-ce que la rentabilité des actifs (ROA) ?](/tools/roa-calculator/#what-is-return-on-assets)
+    - [ROA ou ROE : quelle différence ?](/tools/roa-calculator/#roa-vs-roe-difference)
+"roe-calculator":
+  "body": |
+    ## Qu'est-ce que la rentabilité des capitaux propres (ROE) ?
+
+    La rentabilité des capitaux propres (ROE, Return on Equity) mesure le bénéfice
+    que dégage une entreprise pour chaque dollar de capitaux propres. C'est la
+    mesure la plus utilisée de l'efficacité de la direction à rentabiliser le
+    capital.
+
+    **ROE = résultat net ÷ capitaux propres × 100**
+
+    Un ROE de 20 % signifie que l'entreprise dégage 0,20 $ de bénéfice pour chaque
+    dollar de capitaux propres, soit un rendement annuel de 20 % pour les
+    actionnaires si tous les bénéfices sont conservés et réinvestis.
+
+    ## Qu'est-ce qu'un bon ROE ?
+
+    | Fourchette de ROE | Lecture |
+    |---|---|
+    | 20 % et plus | Excellent : premier quartile |
+    | 15–20 % | Bon : au-dessus de la moyenne de la plupart des secteurs |
+    | 10–15 % | Acceptable : dans la moyenne du marché |
+    | 5–10 % | Sous la moyenne : à améliorer |
+    | Moins de 5 % | Faible : peut détruire de la valeur pour les actionnaires |
+
+    Le ROE moyen de long terme du S&P 500 est d'environ 14 %. Les entreprises
+    technologiques atteignent souvent 20–40 %, les distributeurs 10–15 %, les
+    services publics 8–12 %.
+
+    ## Analyse DuPont : décomposer le ROE
+
+    La formule DuPont décompose le ROE en trois moteurs :
+
+    **ROE = marge nette × rotation des actifs × multiplicateur de capitaux propres**
+
+    - **Marge nette** = résultat net ÷ chiffre d'affaires (bénéfice par dollar de ventes)
+    - **Rotation des actifs** = chiffre d'affaires ÷ total de l'actif (efficacité des actifs à générer des ventes)
+    - **Multiplicateur de capitaux propres** = total de l'actif ÷ capitaux propres (levier financier)
+
+    Un ROE élevé qui vient des marges et de l'efficacité des actifs est plus durable
+    qu'un ROE élevé porté uniquement par le levier. Un ROE surendetté s'effondre
+    vite quand la conjoncture se dégrade.
+
+    ## ROE et taux de croissance soutenable
+
+    Le taux de croissance soutenable est la croissance maximale possible sans
+    nouvel apport en capitaux propres :
+
+    **Taux de croissance soutenable = ROE × (1 − taux de distribution (la part des bénéfices versée aux actionnaires au lieu d'être conservée))**
+
+    Avec 20 % de ROE et 0 % de distribution (tout est conservé) : 20 % de
+    croissance soutenable.
+    Avec 20 % de ROE et 50 % de distribution : 10 % de croissance soutenable.
+
+    ## Questions fréquentes
+
+    **En quoi le ROE diffère-t-il du ROA ?**
+    Rentabilité des actifs (ROA) = résultat net ÷ total de l'actif. Le ROA mesure
+    l'efficacité sur l'ensemble du capital (dette + capitaux propres). Le ROE ne
+    mesure que le rendement des capitaux propres. L'écart entre ROE et ROA traduit
+    le levier financier : ROE = ROA × multiplicateur de capitaux propres. Une
+    entreprise au même ROA mais plus endettée affichera un ROE plus élevé, ce qui
+    peut tromper si le levier est excessif.
+
+    **Quand un ROE élevé est-il trompeur ?**
+    Un ROE très élevé peut venir : (1) d'un fort levier financier qui gonfle les
+    rendements, (2) de rachats d'actions qui ramènent les capitaux propres près de
+    zéro, ou (3) de pertes accumulées importantes qui réduisent les capitaux propres
+    comptables. Vérifiez toujours si le ROE élevé vient des marges et de
+    l'efficacité des actifs (sain) ou d'ingénierie financière (risqué).
+"times-interest-earned-calculator":
+  "body": |
+    ## Qu'est-ce que le taux de couverture des intérêts ?
+
+    Le taux de couverture des intérêts (TIE, Times Interest Earned) mesure combien
+    de fois l'EBIT d'une entreprise peut payer ses charges d'intérêts :
+
+    $$\text{TIE} = \frac{\text{EBIT}}{\text{Charges d'intérêts}}$$
+
+    ### Repères de TIE
+
+    | TIE | Évaluation |
+    |----|------------|
+    | ≥ 5× | Couverture solide : service de la dette confortable |
+    | 3–5× | Suffisant : acceptable pour la plupart des prêts |
+    | 1,5–3× | Tendu : proche des seuils des covenants |
+    | 1–1,5× | Minimal : un mauvais trimestre vous met en risque |
+    | < 1× | Les intérêts ne peuvent pas être couverts par l'exploitation |
+
+    ### Pourquoi les prêteurs y tiennent
+
+    Le TIE est un covenant bancaire classique. La plupart des prêteurs seniors
+    exigent un TIE ≥ 1,25–1,5×. Un TIE de 3× signifie que l'EBIT devrait chuter de
+    67 % avant que les intérêts ne puissent plus être payés.
+
+    ### TIE ou DSCR
+
+    Le TIE ne couvre que les intérêts, pas le remboursement du capital. Pour une
+    couverture complète du service de la dette, capital compris, utilisez le
+    [calculateur de DSCR](/tools/dscr-calculator/). Le DSCR est plus strict et plus
+    utilisé en immobilier et en financement de projet.
+
+    ### Guides
+
+    - [Qu'est-ce que le taux de couverture des intérêts ?](/tools/times-interest-earned-calculator/#what-is-times-interest-earned-ratio)
+    - [TIE ou DSCR : quelle différence ?](/tools/times-interest-earned-calculator/#tie-ratio-vs-dscr)

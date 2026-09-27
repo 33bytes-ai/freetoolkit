@@ -232,3 +232,32 @@
     Gemeinkosten gerade die Gewinnschwelle. Bewerte Kampagnen nach dem
     Deckungsbeitrag nach Herstellkosten und am Kundenwert statt am Erstkauf, sonst
     schaltest du genau die Kanäle ab, die dir die treuesten Kunden bringen.
+
+"Finance":
+  "body": |
+    Das sind die Kennzahlen, zu denen ein Kreditgeber, ein Käufer oder ein
+    erfahrenes Beiratsmitglied zuerst greift. Sie lesen ein Unternehmen wie ein
+    Kreditanalyst: Kann es seine Verpflichtungen bedienen, wie hart arbeitet seine
+    Bilanz, und wie viel seines Gewinns übersteht seine Kostenstruktur?
+
+    ## Welcher Rechner der richtige ist
+
+    **EBITDA** und **Bruttogewinn** zeigen das operative Ergebnis, bevor
+    Finanzierungs- und Bilanzierungsentscheidungen das Bild verzerren. **DSCR**,
+    **Liquiditätsgrad**, **Verschuldungsgrad** und **Zinsdeckungsgrad** bilden das
+    Set für Solvenz und Liquidität: An diesen Zahlen prüft eine Bank einen
+    Kreditantrag, und der **Geschäftskredit**-Rechner zeigt, was der daraus
+    folgende Tilgungsplan kostet. **ROE**, **ROA** und **Finanzkennzahlen** messen,
+    wie effizient Kapital eingesetzt wird, und der **Operative Hebel** erklärt,
+    warum eine kleine Umsatzänderung in einem fixkostenlastigen Geschäft einen
+    großen Gewinnausschlag auslösen kann.
+
+    ## Was die Zahlen bedeuten
+
+    Kennzahlen sind Vergleiche, keine Urteile. Ein Liquiditätsgrad von 1,2 ist für
+    ein Abo-Geschäft, das monatlich im Voraus kassiert, komfortabel, für einen
+    Hersteller mit langen Lagerzyklen dagegen alarmierend. Die meisten
+    Kreditgeber wollen einen DSCR von mindestens 1,25 und lesen den
+    Verschuldungsgrad an Branchennormen statt an einer absoluten Schwelle.
+    Betrachte sie als Trend über mehrere Perioden: Die Richtung sagt mehr als der
+    Wert eines einzelnen Quartals.

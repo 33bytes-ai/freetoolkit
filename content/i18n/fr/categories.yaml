@@ -236,3 +236,34 @@
     après coût des ventes, et face à la valeur vie client plutôt qu'au premier
     achat, sinon vous couperez les canaux qui vous apportent vos clients les plus
     durables.
+
+"Finance":
+  "body": |
+    Ce sont les ratios qu'un prêteur, un acquéreur ou un administrateur
+    expérimenté regarde en premier. Ils lisent une entreprise comme le fait un
+    analyste crédit : peut-elle faire face à ses engagements, son bilan
+    travaille-t-il assez, et quelle part de son bénéfice survit à sa structure de
+    coûts ?
+
+    ## Lequel choisir
+
+    L'**EBITDA** et la **Marge brute** établissent le résultat d'exploitation avant
+    que les choix de financement et comptables ne brouillent l'image. Le **DSCR**,
+    le **Ratio de liquidité générale**, le **Ratio d'endettement** et le **Taux de
+    couverture des intérêts** forment le bloc solvabilité et liquidité : ce sont les
+    chiffres sur lesquels une banque teste une demande de prêt, et le calculateur
+    de **Prêt professionnel** montre ce que coûte l'échéancier qui en découle. Le
+    **ROE**, le **ROA** et les **Ratios financiers** mesurent l'efficacité de
+    l'emploi du capital, et le **Levier opérationnel** explique pourquoi une petite
+    variation du chiffre d'affaires peut provoquer une forte variation du bénéfice
+    dans une activité lourde en coûts fixes.
+
+    ## Ce que disent les chiffres
+
+    Un ratio est une comparaison, pas un verdict. Un ratio de liquidité générale de
+    1,2 est confortable pour une activité par abonnement encaissée chaque mois
+    d'avance, et alarmant pour un industriel aux longs cycles de stock. La plupart
+    des prêteurs veulent un DSCR d'au moins 1,25 et lisent le ratio d'endettement
+    face aux normes du secteur plutôt qu'à un seuil absolu. Calculez-les en
+    tendance sur plusieurs périodes : la direction prise en dit plus que la valeur
+    d'un seul trimestre.
