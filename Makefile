@@ -1,4 +1,4 @@
-.PHONY: build test-js test-py test check-perf serve serve-network deploy setup gsc-auth gsc gsc-push clean i18n-coverage i18n-crawl help
+.PHONY: social-draft build test-js test-py test check-perf serve serve-network deploy setup gsc-auth gsc gsc-push clean i18n-coverage i18n-crawl help
 
 PYTHON := .venv/bin/python
 PYTEST  := .venv/bin/pytest
@@ -14,6 +14,7 @@ help:
 	@echo "serve           Serve dist/ at http://localhost:8080"
 	@echo "serve-network   Serve dist/ on all interfaces (LAN access)"
 	@echo "deploy          Build and publish to Cloudflare Pages by hand (CI does it on merge)"
+	@echo "social-draft    Draft, check and queue tomorrow's X post (needs ANTHROPIC_API_KEY)"
 	@echo "setup           Open the setup wizard: every step only a human can do"
 	@echo "gsc-auth        Authorize Google Search Console (once)"
 	@echo "gsc             Search Console: sitemaps, performance, what Google still indexes"
@@ -27,7 +28,7 @@ test-js:
 	node --test tests/test_tools.js
 
 test-py: .venv
-	$(PYTEST) tests/test_build.py tests/test_setup_wizard.py -v
+	$(PYTEST) tests/test_build.py tests/test_setup_wizard.py tests/test_social_gate.py -v
 
 test: test-js test-py
 
@@ -51,6 +52,9 @@ deploy: test build
 
 setup: .venv
 	$(PYTHON) scripts/setup_wizard.py
+
+social-draft: .venv
+	$(PYTHON) scripts/social/draft.py
 
 gsc-auth: .venv
 	$(PYTHON) scripts/search_console.py auth
