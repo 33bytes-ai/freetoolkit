@@ -7,7 +7,7 @@ site:
     Stripe fees, MRR, LTV/CAC, runway, profit margin, freelance rates and more.
     All math runs in your browser. No sign-up, no uploads, no tracking.
   base_url: "https://foundercalc.dev"
-  twitter: ""
+  twitter: "foundercalc"
 
   # On during the AdSense site review: Google expects to find the ad code and a
   # reachable /ads.txt on the site it is reviewing, so the snippet, the Funding
