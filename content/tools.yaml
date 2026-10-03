@@ -570,7 +570,7 @@
 
     **Break-Even Revenue** = Break-Even Units × Price per Unit
 
-    Or equivalently: Fixed Costs ÷ Gross Margin %
+    Or equivalently: Fixed Costs ÷ Contribution Margin %
 
     ## Applications for different business types
 
@@ -2088,7 +2088,7 @@
     ## Why gross margin is the most important metric at early stage
 
     Gross margin determines whether your business model works. Operating expenses —
-    headcount, rent, marketing — are variable costs you control. Gross margin is structural.
+    headcount, rent, marketing — are costs you choose and can cut. Gross margin is structural.
     A business with 20% gross margin can't reach 20% net margin even at infinite scale.
 
     ## What is COGS for a SaaS business?
@@ -2216,11 +2216,11 @@
 
     | Elasticity | Type | Revenue effect of price increase |
     |---|---|---|
-    | |E| < 0.5 | Highly inelastic | Revenue increases significantly |
-    | 0.5 < |E| < 1 | Inelastic | Revenue increases |
-    | |E| = 1 | Unit elastic | Revenue unchanged |
-    | 1 < |E| < 2 | Elastic | Revenue decreases |
-    | |E| > 2 | Highly elastic | Revenue decreases sharply |
+    | \|E\| < 0.5 | Highly inelastic | Revenue increases significantly |
+    | 0.5 < \|E\| < 1 | Inelastic | Revenue increases |
+    | \|E\| = 1 | Unit elastic | Revenue unchanged |
+    | 1 < \|E\| < 2 | Elastic | Revenue decreases |
+    | \|E\| > 2 | Highly elastic | Revenue decreases sharply |
 
     ## Typical elasticity values by market
 

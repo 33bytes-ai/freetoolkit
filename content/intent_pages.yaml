@@ -1021,7 +1021,7 @@
     |--------------------|--------------------|----------------|
     | $2,000 | 43 | $2,107 |
     | $5,000 | 107 | $5,243 |
-    | $15,000 | 319 | $15,631 |
+    | $15,000 | 320 | $15,680 |
     | $50,000 | 1,064 | $52,136 |
 
     ## What counts as fixed cost?
@@ -1068,10 +1068,10 @@
 
     | Gross Margin | Break-even at $8k fixed costs ($30 product) |
     |-------------|---------------------------------------------|
-    | 60% ($18) | 444 orders / $13,320 revenue |
+    | 60% ($18) | 445 orders / $13,350 revenue |
     | 46% ($13.80) | 580 orders / $17,400 revenue |
     | 33% ($10) | 800 orders / $24,000 revenue |
-    | 20% ($6) | 1,333 orders / $40,000 revenue |
+    | 20% ($6) | 1,334 orders / $40,020 revenue |
 
     ## Contribution margin vs gross margin
 
@@ -1105,7 +1105,7 @@
     At $38, you cover costs exactly (zero profit). Add your target margin on top:
 
     - For 20% profit margin: price = $38 ÷ (1 − 0.20) = **$47.50**
-    - For 30% profit margin: price = $38 ÷ (1 − 0.30) = **$54.30**
+    - For 30% profit margin: price = $38 ÷ (1 − 0.30) = **$54.29**
 
     ## Why this matters for product pricing
 
@@ -4033,17 +4033,17 @@
 
     Monthly customers can churn any month. Annual customers can only churn at renewal.
 
-    If monthly churn is 3% (36% annual):
-    - Monthly cohort: out of 100 customers, expect 36 annual cancellations
+    If monthly churn is 3% (about 31% over a year, since 0.97^12 ≈ 0.69):
+    - Monthly cohort: out of 100 customers, expect about 31 cancellations in a year
     - Annual plan cohort: same customers, but churn is measured at 12-month renewal
-    - Typical result: annual plan customers churn at 5–15% vs 36% for monthly
+    - Typical result: annual plan customers churn at 5–15% vs about 31% for monthly
 
     The effective churn reduction alone justifies the 15–20% discount in most models.
 
     ## How to position annual plans
 
     Don't hide annual plans. Position them prominently:
-    - Lead with "Save 20% / 2 months free" on the pricing page
+    - Lead with "Save 17% / 2 months free" on the pricing page
     - Default the pricing toggle to "Annual" (monthly billing requires clicking)
     - Show monthly equivalent price: "$82/month billed annually"
     - Add "most popular" badge to annual plan
@@ -4183,7 +4183,7 @@
     ## Why founders use break-even analysis
 
     **Before raising prices**: Understand whether a price increase moves break-even
-    significantly. A 10% price increase at 70% margin reduces break-even by 12.5%.
+    significantly. A 10% price increase at 70% margin lifts it to 72.7% and cuts break-even by about 4%.
 
     **Before hiring**: Every new full-time hire adds $8,000–$15,000/month in fixed costs.
     Break-even analysis shows the revenue growth needed to justify the hire without
@@ -7113,7 +7113,7 @@
     4. Set a target to improve turnover by 1–2× within 12 months.
 
     For e-commerce businesses: aim for the top quartile of your category.
-    Every 1× improvement in turnover at $500k average inventory frees ~$83k in cash.
+    Going from 5× to 6× turnover on $500k of average inventory frees ~$83k in cash.
 
     Use the [Inventory Turnover Calculator](/tools/inventory-turnover-calculator/) to
     track your ratio over time and benchmark your progress.
@@ -8008,12 +8008,12 @@
     ## 1. Raise Prices (More Powerful Than You Think)
 
     A 10% price increase on a product with a 40% CM ratio lifts the CM ratio to
-    approximately 46% — a 15% improvement in unit economics. This is the
+    about 45% and the contribution per unit by 25% (from $40 to $50 on a $100 product). This is the
     highest-leverage action because variable costs don't change.
 
     The objection is always "we'll lose customers." Model it: at what churn rate
     does the price increase stop being net positive? At a 40% CM ratio, you can
-    afford to lose more than 20% of customers and still come out ahead.
+    afford to lose up to 20% of customers and still come out ahead.
 
     ## 2. Reduce Variable Costs
 
