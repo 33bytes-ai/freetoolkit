@@ -22,6 +22,7 @@ import time
 import urllib.parse
 import urllib.request
 from datetime import date
+from functools import partial
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
@@ -37,7 +38,7 @@ def oauth_header(method: str, url: str, keys: dict, *, nonce: str | None = None,
     params = {"oauth_consumer_key": keys["X_API_KEY"], "oauth_token": keys["X_ACCESS_TOKEN"],
               "oauth_nonce": nonce or secrets.token_hex(16), "oauth_timestamp": timestamp or str(int(time.time())),
               "oauth_signature_method": "HMAC-SHA1", "oauth_version": "1.0"}
-    quote = lambda v: urllib.parse.quote(v, safe="~")  # noqa: E731
+    quote = partial(urllib.parse.quote, safe="~")
     base = "&".join([method, quote(url), quote("&".join(f"{quote(k)}={quote(v)}" for k, v in sorted(params.items())))])
     key = f"{quote(keys['X_API_SECRET'])}&{quote(keys['X_ACCESS_SECRET'])}"
     params["oauth_signature"] = base64.b64encode(hmac.new(key.encode(), base.encode(), hashlib.sha1).digest()).decode()

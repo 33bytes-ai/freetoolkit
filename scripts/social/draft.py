@@ -100,10 +100,11 @@ def main() -> int:
             else pick_tool(tools, history))
     affiliate_page = any(a.get("affiliate") for a in affiliates.get(tool["slug"], []))
 
+    exports = exports_of(tool["js"])
     feedback = ""
     for attempt in range(1, ATTEMPTS + 1):
         draft = ask(PROMPT.format(title=tool["title"], short=tool["short"],
-                                  body=tool["body"][:6000], exports=exports_of(tool["js"]),
+                                  body=tool["body"][:6000], exports=exports,
                                   feedback=feedback))
         post = {"tool": tool["slug"], "date": args.date, **draft}
         problems = gate.check(post, tool, history, affiliate_page=affiliate_page)
