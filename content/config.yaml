@@ -14,6 +14,15 @@ site:
   # changed URLs (scripts/indexnow.py).
   indexnow_key: "f1830adcba844c2c807e86fcbeefb0c5"
 
+  # Short-video accounts, without @ (setup wizard, gate « audience »). Each one
+  # set is declared with the X account as sameAs in the Organization JSON-LD,
+  # which is also what the wizard checks on the served site.
+  social:
+    youtube: ""
+    instagram: ""
+    tiktok: ""
+    snapchat: ""
+
   # false: social-draft.yml opens a PR per post and merging it approves the post.
   # true (after ~2 weeks of reading the drafts): it commits straight to main.
   social_auto_approve: false

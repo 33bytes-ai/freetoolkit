@@ -319,6 +319,22 @@ def test_x_publishing_comes_after_the_twitter_account():
     assert "twitter" in step.prerequisites and step.optional and step.check in checks.CHECKS
 
 
+def test_a_video_account_is_proven_by_the_sameas_the_site_serves(site, repo):
+    path = repo / "content" / "config.yaml"
+    ctx = context(repo, "video_tiktok")
+    site["/"] = checks.Response(200, "<html></html>")
+    assert not checks.check_social_profile(ctx).ok
+
+    contentfile.set_config_values(path, {"site.social.tiktok": "@foundercalc"},
+                                  backup_dir=repo / "b")
+    unpublished = checks.check_social_profile(ctx)
+    assert not unpublished.ok and unpublished.remedy == checks.PUBLISH_REMEDY
+
+    site["/"] = checks.Response(200, '"sameAs":["https://www.tiktok.com/@foundercalc"]')
+    assert checks.check_social_profile(ctx).ok
+    assert not checks.check_social_profile(context(repo, "video_youtube")).ok
+
+
 @pytest.fixture
 def google(monkeypatch, tmp_path: Path):
     """What the fake Google answers: a site list, and a verdict per inspected URL."""

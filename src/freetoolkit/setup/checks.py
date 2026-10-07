@@ -389,6 +389,29 @@ def check_twitter(ctx: Context) -> CheckOutcome:
     return CheckOutcome.passed(f"les pages déclarent @{handle}")
 
 
+#: Where each platform's profile lives; the handle is appended.
+PROFILE_URLS = {
+    "youtube": "https://www.youtube.com/@",
+    "instagram": "https://www.instagram.com/",
+    "tiktok": "https://www.tiktok.com/@",
+    "snapchat": "https://www.snapchat.com/add/",
+}
+
+
+def check_social_profile(ctx: Context) -> CheckOutcome:
+    platform = ctx.step.subject
+    handle = str(contentfile.config_value(ctx.config, f"site.social.{platform}") or "").lstrip("@")
+    if not re.fullmatch(r"[A-Za-z0-9._-]{2,30}", handle):
+        return CheckOutcome.failed("le nom de compte est absent ou invalide",
+                                   remedy="Le nom tel qu'il apparaît dans l'URL du profil, "
+                                          "sans @.")
+    url = PROFILE_URLS[platform] + handle
+    if f'"{url}"' not in fetch(BASE_URL + "/").text:
+        return CheckOutcome.failed(f"{url} n'est pas encore déclaré sur le site",
+                                   remedy=PUBLISH_REMEDY)
+    return CheckOutcome.passed(f"le site déclare {url}")
+
+
 def check_x_publishing(ctx: Context) -> CheckOutcome:
     # The workflows end green when their secrets are missing, so a successful run
     # proves nothing. A file in social/posted/ on main exists only after X answered.
@@ -428,6 +451,7 @@ CHECKS: dict[str, Callable[[Context], CheckOutcome]] = {
     "stripe_pro": check_stripe_pro,
     "formspree": check_formspree,
     "twitter": check_twitter,
+    "social_profile": check_social_profile,
     "x_publishing": check_x_publishing,
     "uptime_workflow": check_uptime_workflow,
 }

@@ -98,6 +98,15 @@
     }
   }
   </script>
+  {% set same_as = [] %}
+  {% for prefix, handle in [("https://x.com/", site.twitter), ("https://www.youtube.com/@", site.social.youtube), ("https://www.instagram.com/", site.social.instagram), ("https://www.tiktok.com/@", site.social.tiktok), ("https://www.snapchat.com/add/", site.social.snapchat)] if handle %}
+  {% set _ = same_as.append(prefix ~ handle | replace('@', '')) %}
+  {% endfor %}
+  {% if same_as %}
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","name":"{{ site.name }}","url":"{{ site.base_url }}","sameAs":{{ same_as | tojson }}}
+  </script>
+  {% endif %}
   <script type="application/ld+json">
   [{% for tool in tools %}{"@context":"https://schema.org","@type":"SiteNavigationElement","name":"{{ tool.nav_title | replace('"', '\\"') }}","url":"{{ site.base_url }}/tools/{{ tool.slug }}/"}{% if not loop.last %},{% endif %}{% endfor %}]
   </script>
