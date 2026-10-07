@@ -1074,6 +1074,23 @@ def test_stylesheet_has_dark_mode_palette():
         assert var in dark_block, f"Dark mode media query missing override for {var}"
 
 
+def test_os_dark_mode_rules_yield_to_the_light_toggle():
+    # An unscoped rule here paints dark table headers behind the light theme's
+    # dark text when the OS is dark and the visitor picked light: invisible headers.
+    css = (ROOT / "static" / "css" / "style.css").read_text()
+    for block in css.split("@media (prefers-color-scheme: dark) {")[1:]:
+        depth, body = 1, ""
+        for ch in block:
+            depth += {"{": 1, "}": -1}.get(ch, 0)
+            if depth == 0:
+                break
+            body += ch
+        selectors = re.findall(r"([^{};]+)\{", body)
+        for group in selectors:
+            for selector in group.split(","):
+                assert ':not([data-theme="light"])' in selector, selector.strip()
+
+
 def test_rss_has_docs():
     """RSS feed should have <docs> channel element."""
     run_build()
