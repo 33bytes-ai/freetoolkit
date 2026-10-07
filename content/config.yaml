@@ -9,6 +9,10 @@ site:
   base_url: "https://foundercalc.dev"
   twitter: "foundercalc"
 
+  # false: social-draft.yml opens a PR per post and merging it approves the post.
+  # true (after ~2 weeks of reading the drafts): it commits straight to main.
+  social_auto_approve: false
+
   # On during the AdSense site review: Google expects to find the ad code and a
   # reachable /ads.txt on the site it is reviewing, so the snippet, the Funding
   # Choices consent banner and the named slots all have to render (see

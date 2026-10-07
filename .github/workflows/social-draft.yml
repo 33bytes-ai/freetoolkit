@@ -1,0 +1,89 @@
+# Drafts tomorrow's X post (scripts/social/draft.py), checks it with the gate,
+# and queues it as social/queue/<date>.json.
+#
+# Approval is a merge: with site.social_auto_approve false (content/config.yaml)
+# the file arrives in a PR and nothing is published until it is merged. Once
+# the drafts have been read for a couple of weeks, set it to true and the file
+# is committed straight to main.
+#
+# Self-activating, same as deploy.yml: without ANTHROPIC_API_KEY the job says
+# what is missing instead of failing. Opening PRs needs Settings -> Actions ->
+# General -> "Allow GitHub Actions to create and approve pull requests".
+name: Social draft
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch: {}
+
+concurrency:
+  group: social-draft
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Check for the Anthropic key
+        id: creds
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -n "$ANTHROPIC_API_KEY" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "Skipping: ANTHROPIC_API_KEY is not set (Settings -> Secrets and variables -> Actions)."
+          fi
+
+      - uses: actions/setup-python@v7
+        if: steps.creds.outputs.ready == 'true'
+        with:
+          python-version: "3.11"
+
+      - uses: actions/setup-node@v7
+        if: steps.creds.outputs.ready == 'true'
+        with:
+          node-version: "20"
+
+      - name: Draft tomorrow's post
+        if: steps.creds.outputs.ready == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          pip install -q pyyaml
+          python scripts/social/draft.py
+
+      - name: Queue it
+        if: steps.creds.outputs.ready == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -z "$(git status --porcelain -uall social)" ]; then
+            echo "Nothing new to queue."
+            exit 0
+          fi
+          FILE="$(git status --porcelain -uall social | awk '{print $2}' | head -n1)"
+          DAY="$(basename "$FILE" .json)"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          AUTO="$(python3 -c "import yaml; print(yaml.safe_load(open('content/config.yaml'))['site'].get('social_auto_approve', False))")"
+          if [ "$AUTO" = "True" ]; then
+            git add social
+            git commit -m "social: queue the post for $DAY"
+            git push origin HEAD:main
+          else
+            git checkout -b "social/$DAY"
+            git add social
+            git commit -m "social: queue the post for $DAY"
+            git push origin "social/$DAY"
+            gh pr create --base main --head "social/$DAY" \
+              --title "X post for $DAY" \
+              --body "Merge to approve: social-publish.yml posts it on $DAY. Close to skip the day."
+          fi
