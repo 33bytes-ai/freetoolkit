@@ -96,6 +96,7 @@ scripts/
   new_tool.py        Scaffold a new tool (adds entry + JS stub)
   setup_wizard.py    Entry point of `make setup`
   search_console.py  Entry point of `make gsc`, `gsc-auth`, `gsc-push`
+  indexnow.py        deploy.yml: ping Bing/IndexNow with the URLs a release changed
   check_perf.py      Size budgets, meta coverage, sitemap, og:images
   uptime_check.sh    What .github/workflows/uptime.yml runs
 ```
@@ -144,6 +145,21 @@ talks to the API instead — standard library, installed-app OAuth on
   `robots.txt` (a test holds that) and submitted through the API only. Remove it
   once the check passes — see the backlog entry.
 - URL Inspection allows 2,000 calls a day per property; a full `make gsc` spends ~460.
+
+## Bing, IndexNow and AI search
+
+ChatGPT Search and Copilot ground their answers on Bing's index, and Bing
+Webmaster Tools → **AI Performance** counts how often Copilot cites the site.
+It cites us more often than Bing search shows us (see `HUMAN_INPUTS.md` § A3).
+
+- `dist/llms.txt` (llmstxt.org) lists every indexable tool by category, built
+  from `tools.yaml`. A tool with `canonical_to` stays out of it, as it stays
+  out of the sitemap.
+- `dist/<indexnow_key>.txt` proves ownership of `site.indexnow_key`.
+- `deploy.yml` runs `scripts/indexnow.py changed` **before** publishing (the
+  live sitemap is still the previous release) and `submit` after it. "Changed"
+  means new, or a moved `<lastmod>`: bump a tool's `updated` when its content
+  changes, or IndexNow won't hear about it. The ping is `continue-on-error`.
 
 ## Adding a new tool
 ```bash

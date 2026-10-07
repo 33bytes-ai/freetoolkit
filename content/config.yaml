@@ -9,6 +9,11 @@ site:
   base_url: "https://foundercalc.dev"
   twitter: "foundercalc"
 
+  # IndexNow key, served at /<key>.txt to prove the site owns it. Not a secret:
+  # anyone can read it there. deploy.yml pings Bing/Yandex with each release's
+  # changed URLs (scripts/indexnow.py).
+  indexnow_key: "f1830adcba844c2c807e86fcbeefb0c5"
+
   # false: social-draft.yml opens a PR per post and merging it approves the post.
   # true (after ~2 weeks of reading the drafts): it commits straight to main.
   social_auto_approve: false
