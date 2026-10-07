@@ -42,9 +42,9 @@ Exported calculator functions (name and parameters), run by the real site code:
 Write a post a founder would bookmark:
 - hook: one first line that stops the scroll (a surprising number or a sharp question), no hashtags, no emoji.
 - value: 1-3 short lines with one concrete worked example. Every number you write must come from the page text or from the result of your computation.
-- cta_text: one short line inviting them to try the calculator. Do not include a URL.
+- cta_text: one short line naming the calculator and saying the link is in the bio (no URL, the post never carries one).
 - computation: {{"fn": <one exported function>, "args": [<numbers or strings>]}} that produces the numbers in your example.
-hook + blank line + value must be at most 280 characters. Be useful, not salesy.
+hook, value and cta_text, separated by blank lines, must be at most 280 characters together. Be useful, not salesy.
 
 Answer with a JSON object with exactly the keys hook, value, cta_text, computation. Nothing else.
 {feedback}"""
@@ -94,7 +94,6 @@ def main() -> int:
         return 0
 
     tools = yaml.safe_load((ROOT / "content" / "tools.yaml").read_text())
-    config = yaml.safe_load((ROOT / "content" / "config.yaml").read_text())
     affiliates = yaml.safe_load((ROOT / "content" / "affiliates.yaml").read_text()) or {}
     history = load_history()
     tool = (next(t for t in tools if t["slug"] == args.tool) if args.tool
@@ -107,8 +106,7 @@ def main() -> int:
                                   body=tool["body"][:6000], exports=exports_of(tool["js"]),
                                   feedback=feedback))
         post = {"tool": tool["slug"], "date": args.date, **draft}
-        problems = gate.check(post, tool, history, base_url=config["site"]["base_url"],
-                              affiliate_page=affiliate_page)
+        problems = gate.check(post, tool, history, affiliate_page=affiliate_page)
         if not problems:
             out.parent.mkdir(parents=True, exist_ok=True)
             out.write_text(json.dumps(post, indent=2, ensure_ascii=False) + "\n")

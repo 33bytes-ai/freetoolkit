@@ -11,21 +11,19 @@ import gate  # noqa: E402
 
 TOOL = next(t for t in yaml.safe_load((ROOT / "content" / "tools.yaml").read_text())
             if t["slug"] == "stripe-fee-calculator")
-BASE = "https://foundercalc.dev"
 
 
 def post(**over):
     base = {"tool": TOOL["slug"], "date": "2026-10-10",
             "hook": "Stripe takes more than 2.9% of a $100 sale.",
             "value": "On $100 the fee is $3.20, so you keep $96.80.",
-            "cta_text": "Try your own amount.",
+            "cta_text": "Free Stripe fee calculator, link in bio.",
             "computation": {"fn": "calculateFee", "args": [100, 0.029, 0.30]}}
     return {**base, **over}
 
 
 def check(p, history=(), affiliate=False):
-    return gate.check(p, TOOL, list(history), base_url=BASE, affiliate_page=affiliate,
-                      today=date(2026, 10, 10))
+    return gate.check(p, TOOL, list(history), affiliate_page=affiliate, today=date(2026, 10, 10))
 
 
 def test_a_correct_post_passes():
@@ -58,10 +56,8 @@ def test_a_recently_covered_tool_is_refused():
 
 def test_an_affiliate_page_needs_a_disclosure_in_the_cta():
     assert any("affiliate" in p for p in check(post(), affiliate=True))
-    assert check(post(cta_text="Try it (page has affiliate links)."), affiliate=True) == []
+    assert check(post(cta_text="Calculator in bio (site has affiliate links)."), affiliate=True) == []
 
 
-def test_the_link_is_tracked():
-    assert gate.utm_link(BASE, post()) == (
-        "https://foundercalc.dev/tools/stripe-fee-calculator/?utm_source=x&utm_medium=social"
-        "&utm_campaign=2026-10-10-stripe-fee-calculator")
+def test_the_cta_must_point_to_the_bio():
+    assert any("bio" in p for p in check(post(cta_text="Try it now.")))

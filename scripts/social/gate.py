@@ -16,22 +16,12 @@ ROOT = Path(__file__).resolve().parents[2]
 TOOLS_JS = ROOT / "static" / "js" / "tools"
 
 POST_MAX = 280
-LINK_LEN = 23  # X counts every URL as 23 characters
 TOOL_COOLDOWN_DAYS = 30
 NUMBER = re.compile(r"\d[\d,]*(?:\.\d+)?")
 
 
 def post_text(post: dict) -> str:
-    return f"{post['hook'].strip()}\n\n{post['value'].strip()}"
-
-
-def reply_text(post: dict, link: str) -> str:
-    return f"{post['cta_text'].strip()} {link}"
-
-
-def utm_link(base_url: str, post: dict) -> str:
-    return (f"{base_url.rstrip('/')}/tools/{post['tool']}/?utm_source=x&utm_medium=social"
-            f"&utm_campaign={post['date']}-{post['tool']}")
+    return f"{post['hook'].strip()}\n\n{post['value'].strip()}\n\n{post['cta_text'].strip()}"
 
 
 def numbers(text: str) -> list[float]:
@@ -68,15 +58,13 @@ def allowed_numbers(tool: dict, args: list, result: object) -> list[float]:
     return base + [n * 100 for n in base]  # a rate of 0.029 is quoted as 2.9%
 
 
-def check(post: dict, tool: dict, history: list[dict], *, base_url: str,
-          affiliate_page: bool, today: date | None = None) -> list[str]:
+def check(post: dict, tool: dict, history: list[dict], *, affiliate_page: bool, today: date | None = None) -> list[str]:
     problems: list[str] = []
     text = post_text(post)
     if len(text) > POST_MAX:
         problems.append(f"post is {len(text)} characters, max {POST_MAX}")
-    reply = reply_text(post, "x" * LINK_LEN)
-    if len(reply) > POST_MAX:
-        problems.append(f"reply is {len(reply)} characters, max {POST_MAX}")
+    if "bio" not in post["cta_text"].lower():
+        problems.append("the CTA must point to the link in the bio")
     if affiliate_page and "affiliate" not in post["cta_text"].lower():
         problems.append("the page carries affiliate links and the CTA does not say so")
 
