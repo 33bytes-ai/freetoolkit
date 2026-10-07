@@ -116,6 +116,14 @@ entry point `scripts/setup_wizard.py`, tests in `tests/test_setup_wizard.py`.
   `content/` does nothing until merged. The wizard never commits or publishes.
 - Standard library plus Jinja2 only, and `build.py` never imports it.
 
+## Daily X post
+
+`scripts/social/` drafts one post a day from a real tool, gates it (numbers
+recomputed by the tool's own JS, 280 characters, no repeats), and publishes it
+through the official X API with the link in the bio, never in the post (a post
+with a URL costs 13x more). Approval is a merge. Details and the choices not to
+undo: `docs/SOCIAL.md`; the human steps: wizard step `x_publishing`.
+
 ## Search Console
 
 The web report "Indexation des pages" lags by days (it sat on 2026-09-04 for

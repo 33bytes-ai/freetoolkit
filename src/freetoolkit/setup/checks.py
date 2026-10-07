@@ -389,6 +389,18 @@ def check_twitter(ctx: Context) -> CheckOutcome:
     return CheckOutcome.passed(f"les pages déclarent @{handle}")
 
 
+def check_x_publishing(ctx: Context) -> CheckOutcome:
+    # The workflows end green when their secrets are missing, so a successful run
+    # proves nothing. A file in social/posted/ on main exists only after X answered.
+    posted = _github("contents/social/posted?ref=main")
+    if not posted:
+        return CheckOutcome.failed("aucun post publié : social/posted/ est absent de main",
+                                   remedy="Merge le brouillon du jour puis lance « Social "
+                                          "publish » dans l'onglet Actions. Un message "
+                                          "« Skipping » dans ses logs nomme le secret manquant.")
+    return CheckOutcome.passed(f"{len(posted)} post(s) publié(s) sur X")
+
+
 def check_uptime_workflow(ctx: Context) -> CheckOutcome:
     run = _latest_run("uptime.yml")
     if run is None:
@@ -416,6 +428,7 @@ CHECKS: dict[str, Callable[[Context], CheckOutcome]] = {
     "stripe_pro": check_stripe_pro,
     "formspree": check_formspree,
     "twitter": check_twitter,
+    "x_publishing": check_x_publishing,
     "uptime_workflow": check_uptime_workflow,
 }
 

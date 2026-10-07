@@ -304,6 +304,21 @@ def test_an_undeployed_main_is_not_a_working_pipeline(monkeypatch, repo):
     assert not outcome.ok and "pas encore déployé" in outcome.summary
 
 
+def test_x_publishing_is_proven_by_a_posted_file_not_a_green_workflow(monkeypatch, repo):
+    ctx = context(repo, "x_publishing")
+    monkeypatch.setattr(checks, "_github", lambda path: None)
+    outcome = checks.check_x_publishing(ctx)
+    assert not outcome.ok and "Skipping" in outcome.remedy
+
+    monkeypatch.setattr(checks, "_github", lambda path: [{"name": "2026-10-10.json"}])
+    assert checks.check_x_publishing(ctx).ok
+
+
+def test_x_publishing_comes_after_the_twitter_account():
+    step = catalogue.BY_ID["x_publishing"]
+    assert "twitter" in step.prerequisites and step.optional and step.check in checks.CHECKS
+
+
 @pytest.fixture
 def google(monkeypatch, tmp_path: Path):
     """What the fake Google answers: a site list, and a verdict per inspected URL."""

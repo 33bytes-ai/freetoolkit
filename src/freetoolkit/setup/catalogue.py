@@ -560,6 +560,62 @@ TWITTER = Step(
     unlocks="Les cartes de partage X portent le compte du site.",
 )
 
+X_PUBLISHING = Step(
+    id="x_publishing",
+    gate=4,
+    title="Un post X par jour, tout seul",
+    why="Sans clés X et sans clé Anthropic, social-draft.yml et social-publish.yml "
+        "s'arrêtent d'eux-mêmes : aucun post ne part.",
+    cost="X facture à l'usage : 0,015 $ par post sans lien, soit environ 0,45 $ par mois "
+         "(le lien est dans la bio, un post avec URL coûte 0,20 $). Un numéro de téléphone "
+         "vérifié est exigé pour acheter des crédits. Dix-quinze minutes.",
+    instructions=(
+        Instruction(text="Ouvre la console développeur X, connecte-toi avec le compte du "
+                         "site et accepte l'accord développeur.",
+                    url="https://console.x.com"),
+        Instruction(text="Crée une application (New App), donne-lui un nom et une "
+                         "description.", ),
+        Instruction(text="Avant de générer quoi que ce soit : dans les réglages de "
+                         "l'application, passe l'authentification OAuth 1.0a sur "
+                         "« Read and write » et enregistre.",
+                    warning="Changer les permissions après coup invalide les jetons déjà "
+                            "générés : il faut les régénérer."),
+        Instruction(text="Génère l'API Key & Secret puis l'Access Token & Secret du compte. "
+                         "X ne les affiche qu'une fois : garde la page ouverte jusqu'à la "
+                         "fin de l'étape suivante."),
+        Instruction(text="Achète des crédits (10 $ suffisent pour des mois) et règle une "
+                         "limite de dépense par cycle dans la console, par exemple 5 $."),
+        Instruction(text="Enregistre les cinq secrets dans le repo, une commande chacune ; "
+                         "gh te demande la valeur, elle ne reste pas dans l'historique "
+                         "du shell.",
+                    paste=f"for k in X_API_KEY X_API_SECRET X_ACCESS_TOKEN X_ACCESS_SECRET "
+                          f"ANTHROPIC_API_KEY; do gh secret set $k --repo {REPO}; done",
+                    note="ANTHROPIC_API_KEY sert à rédiger le post, les quatre autres à le "
+                         "publier."),
+        Instruction(text="GitHub → Settings → Actions → General → coche « Allow GitHub "
+                         "Actions to create and approve pull requests », sinon le brouillon "
+                         "du jour ne peut pas s'ouvrir en PR.",
+                    url=f"https://github.com/{REPO}/settings/actions"),
+        Instruction(text="Merge le code (workflows social-*.yml), puis lance Social draft "
+                         "à la main : un PR « X post for <date> » s'ouvre. Relis-le, "
+                         "merge-le, puis lance Social publish à la main.",
+                    url=f"https://github.com/{REPO}/actions"),
+    ),
+    prerequisites=("twitter", "deploy_pipeline"),
+    acknowledgements=(
+        "Le profil du compte X affiche le label « Automated » et dit dans la bio que "
+        "c'est un compte automatisé, avec son exploitant (règle X).",
+        "Le lien de la bio pointe vers foundercalc.dev?utm_source=x&utm_medium=social"
+        "&utm_campaign=bio.",
+        "Une limite de dépense est réglée dans la console X.",
+    ),
+    check="x_publishing",
+    optional=True,
+    unlocks="Un post original par jour, relu par PR pendant deux semaines, puis automatique "
+            "(site.social_auto_approve dans content/config.yaml).",
+    docs=("docs/SOCIAL.md",),
+)
+
 UPTIME_ALERTS = Step(
     id="uptime_alerts",
     gate=4,
@@ -635,7 +691,7 @@ STEPS: tuple[Step, ...] = (
     STRIPE_PRO,
     SEARCH_CONSOLE_API, SEARCH_CONSOLE, ADSENSE_REVIEW, ADSENSE_SLOTS, ADSENSE_PAYMENT,
     AFFILIATE_BAREMETRICS, AFFILIATE_PADDLE, AFFILIATE_FRESHBOOKS, GUSTO_PAYOUTS,
-    FORMSPREE, TWITTER, UPTIME_ALERTS, BING,
+    FORMSPREE, TWITTER, X_PUBLISHING, UPTIME_ALERTS, BING,
     URSSAF,
 )
 BY_ID = {step.id: step for step in STEPS}

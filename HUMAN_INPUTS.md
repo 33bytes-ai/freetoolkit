@@ -214,6 +214,8 @@ modèle.
 3. Me le transmettre — je le mets dans `formspree_id` (`content/config.yaml`)
 
 ### D2. Présence Twitter/X (optionnel, gratuit)
+Pour un post par jour automatique (clés X, secrets GitHub, label « Automated ») : étape `x_publishing` du wizard, détails dans `docs/SOCIAL.md`.
+
 1. Créer un compte dédié au projet si tu veux ce canal de distribution
 2. Me transmettre le handle — je le mets dans `content/config.yaml` (`twitter`)
 3. **Décision stratégique déjà actée :** pas de publicité payante au lancement — miser sur Twitter/IndieHackers/Reddit (gratuit) plutôt que du paid ads, tant que le RPM réel n'est pas connu
