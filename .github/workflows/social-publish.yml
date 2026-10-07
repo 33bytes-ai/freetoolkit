@@ -1,0 +1,71 @@
+# Publishes today's queued X post (scripts/social/publish.py) through the
+# official API, then moves it from social/queue/ to social/posted/.
+#
+# Nothing queued for today is a normal day, not a failure: a post that was not
+# approved simply does not go out.
+#
+# Self-activating, same as deploy.yml: without the four X secrets the job says
+# what is missing instead of failing. Needs the secrets X_API_KEY, X_API_SECRET,
+# X_ACCESS_TOKEN and X_ACCESS_SECRET (Settings -> Secrets and variables ->
+# Actions). It pushes social/posted/ to main, so branch protection on main must
+# let github-actions[bot] push.
+name: Social publish
+
+on:
+  schedule:
+    - cron: "0 9 * * *"
+  workflow_dispatch: {}
+
+concurrency:
+  group: social-publish
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Check for the X credentials
+        id: creds
+        env:
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_SECRET: ${{ secrets.X_ACCESS_SECRET }}
+        run: |
+          if [ -n "$X_API_KEY" ] && [ -n "$X_API_SECRET" ] && [ -n "$X_ACCESS_TOKEN" ] && [ -n "$X_ACCESS_SECRET" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "Skipping: one of X_API_KEY, X_API_SECRET, X_ACCESS_TOKEN, X_ACCESS_SECRET is not set."
+          fi
+
+      - uses: actions/setup-python@v7
+        if: steps.creds.outputs.ready == 'true'
+        with:
+          python-version: "3.11"
+
+      - name: Publish today's post
+        if: steps.creds.outputs.ready == 'true'
+        env:
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_SECRET: ${{ secrets.X_ACCESS_SECRET }}
+        run: python scripts/social/publish.py --live
+
+      - name: Record it
+        if: steps.creds.outputs.ready == 'true'
+        run: |
+          if [ -z "$(git status --porcelain -uall social)" ]; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add social
+          git commit -m "social: posted $(date -u +%F)"
+          git push origin HEAD:main
