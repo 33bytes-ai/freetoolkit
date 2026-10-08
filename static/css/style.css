@@ -2102,63 +2102,63 @@ body[data-ads="on"] {
     background: var(--surface);
   }
 
-  input[type="number"],
-  input[type="text"],
-  input[type="email"],
-  select,
-  textarea {
+  :where(:root:not([data-theme="light"])) input[type="number"],
+  :where(:root:not([data-theme="light"])) input[type="text"],
+  :where(:root:not([data-theme="light"])) input[type="email"],
+  :where(:root:not([data-theme="light"])) select,
+  :where(:root:not([data-theme="light"])) textarea {
     background: #0f1512;
     color: var(--text);
     border-color: var(--border);
   }
 
-  .calc-table {
+  :where(:root:not([data-theme="light"])) .calc-table {
     background: var(--surface);
   }
 
-  .calc-table th {
+  :where(:root:not([data-theme="light"])) .calc-table th {
     background: #17201b;
     color: var(--text-muted);
   }
 
-  .calc-table td {
+  :where(:root:not([data-theme="light"])) .calc-table td {
     border-color: var(--border);
   }
 
-  .output-box {
+  :where(:root:not([data-theme="light"])) .output-box {
     background: var(--surface-soft);
   }
 
-  .stat {
+  :where(:root:not([data-theme="light"])) .stat {
     background: var(--surface-soft);
   }
 
-  .affiliate-card {
+  :where(:root:not([data-theme="light"])) .affiliate-card {
     background: var(--surface);
     border-color: var(--border);
   }
 
-  .tool-body table th {
+  :where(:root:not([data-theme="light"])) .tool-body table th {
     background: #17201b;
   }
 
-  .tool-body table td {
+  :where(:root:not([data-theme="light"])) .tool-body table td {
     border-color: var(--border);
   }
 
-  .dash-fab {
+  :where(:root:not([data-theme="light"])) .dash-fab {
     background: var(--surface);
     border-color: var(--border);
     color: var(--text-muted);
   }
 
-  .calc-insight--warning { background: rgba(217,119,6,0.1);   border-color: rgba(217,119,6,0.25);   color: #fcd34d; }
-  .calc-insight--danger  { background: rgba(220,38,38,0.1);   border-color: rgba(220,38,38,0.25);   color: #fca5a5; }
-  .calc-insight--success { background: rgba(22,163,74,0.1);   border-color: rgba(22,163,74,0.25);   color: #86efac; }
-  .field--error input,
-  .field--error select,
-  .field--error textarea { border-color: #f97066; box-shadow: 0 0 0 3px rgba(249,112,102,0.18); }
-  .field__error-msg { color: #f97066; }
+  :where(:root:not([data-theme="light"])) .calc-insight--warning { background: rgba(217,119,6,0.1);   border-color: rgba(217,119,6,0.25);   color: #fcd34d; }
+  :where(:root:not([data-theme="light"])) .calc-insight--danger  { background: rgba(220,38,38,0.1);   border-color: rgba(220,38,38,0.25);   color: #fca5a5; }
+  :where(:root:not([data-theme="light"])) .calc-insight--success { background: rgba(22,163,74,0.1);   border-color: rgba(22,163,74,0.25);   color: #86efac; }
+  :where(:root:not([data-theme="light"])) .field--error input,
+  :where(:root:not([data-theme="light"])) .field--error select,
+  :where(:root:not([data-theme="light"])) .field--error textarea { border-color: #f97066; box-shadow: 0 0 0 3px rgba(249,112,102,0.18); }
+  :where(:root:not([data-theme="light"])) .field__error-msg { color: #f97066; }
 }
 
 /* Manual dark mode override (data-theme="dark" on <html>) */
@@ -2399,7 +2399,7 @@ body[data-ads="on"] {
 }
 
 @media (prefers-color-scheme: dark) {
-  .newsletter-form input[type="email"] {
+  :where(:root:not([data-theme="light"])) .newsletter-form input[type="email"] {
     background: var(--surface);
     border-color: var(--border);
   }
