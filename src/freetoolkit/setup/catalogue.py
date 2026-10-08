@@ -616,6 +616,119 @@ X_PUBLISHING = Step(
     docs=("docs/SOCIAL.md",),
 )
 
+def _video_step(platform: str, name: str, *, signup: tuple[Instruction, ...],
+                link: Instruction, api: str, placeholder: str = "foundercalc") -> Step:
+    bio = f"{BASE_URL}/?utm_source={platform}&utm_medium=social&utm_campaign=bio"
+    return Step(
+        id=f"video_{platform}",
+        gate=4,
+        title=f"Compte {name} pour les vidéos courtes",
+        why=f"Sans compte, aucune vidéo courte ne part sur {name}. L'ouvrir maintenant, en "
+            "compte professionnel, réserve le nom et prépare la publication automatique "
+            f"qui en a besoin : {api}",
+        cost="Gratuit. Dix à quinze minutes. Une adresse email (hello@foundercalc.dev) et "
+             "parfois un numéro de téléphone.",
+        instructions=(
+            *signup,
+            Instruction(text="Photo de profil : la même que sur X. Nom affiché : FounderCalc. "
+                             "Bio, en une ligne :",
+                        paste="Free business calculators for founders. One real number per "
+                              "video. All calculators: link below."),
+            link,
+            Instruction(text="Active la double authentification dans les réglages de "
+                             "sécurité du compte."),
+            Instruction(text="Colle ci-dessous le nom du compte tel qu'il apparaît dans "
+                             "l'URL du profil, sans @."),
+            PUBLISH,
+        ),
+        prerequisites=("deploy_pipeline",),
+        fields=(Field(f"config:site.social.{platform}", "Nom du compte",
+                      placeholder=placeholder),),
+        acknowledgements=(
+            f"Le lien du profil pointe vers {bio}",
+            "La double authentification est active.",
+        ),
+        check="social_profile",
+        subject=platform,
+        optional=True,
+        unlocks=f"Le site déclare le compte {name} (sameAs) et les vidéos courtes ont où "
+                "partir.",
+        docs=("docs/SOCIAL.md § Vidéos courtes",),
+    )
+
+
+VIDEO_YOUTUBE = _video_step(
+    "youtube", "YouTube Shorts",
+    signup=(
+        Instruction(text="Connecte-toi à YouTube avec le compte Google de hello@foundercalc.dev "
+                         "(ou ton compte, la chaîne sera séparée). Ouvre la page des chaînes "
+                         "et clique « Créer une chaîne » : c'est un compte de marque, "
+                         "transférable plus tard.",
+                    url="https://www.youtube.com/account"),
+        Instruction(text="Nom : FounderCalc. Identifiant : @foundercalc s'il est libre. "
+                         "Réussi quand youtube.com/@<identifiant> affiche la chaîne vide."),
+    ),
+    link=Instruction(text="YouTube Studio → Personnalisation → Informations générales → "
+                          "Liens → Ajouter un lien, puis Publier en haut à droite.",
+                     paste=f"{BASE_URL}/?utm_source=youtube&utm_medium=social&utm_campaign=bio",
+                     url="https://studio.youtube.com"),
+    api="l'API YouTube Data publie en privé tant que le projet Google Cloud n'a pas passé "
+        "l'audit, ce qui prend des semaines.",
+)
+
+VIDEO_INSTAGRAM = _video_step(
+    "instagram", "Instagram Reels",
+    signup=(
+        Instruction(text="Crée le compte avec hello@foundercalc.dev, nom d'utilisateur "
+                         "foundercalc s'il est libre.",
+                    url="https://www.instagram.com/accounts/emailsignup/"),
+        Instruction(text="Réglages → Type de compte et outils → Passer à un compte "
+                         "professionnel → Entreprise, catégorie « Logiciel ». L'API de "
+                         "publication n'accepte que les comptes professionnels.",
+                    note="Réussi quand le profil affiche le bouton « Tableau de bord "
+                         "professionnel »."),
+    ),
+    link=Instruction(text="Modifier le profil → Liens → Ajouter un lien externe.",
+                     paste=f"{BASE_URL}/?utm_source=instagram&utm_medium=social&utm_campaign=bio"),
+    api="l'API Instagram ne publie que depuis un compte professionnel.",
+)
+
+VIDEO_TIKTOK = _video_step(
+    "tiktok", "TikTok",
+    signup=(
+        Instruction(text="Crée le compte avec hello@foundercalc.dev.",
+                    url="https://www.tiktok.com/signup"),
+        Instruction(text="Profil → ☰ → Paramètres et confidentialité → Compte → Passer à un "
+                         "compte Entreprise, catégorie « Logiciels et applications ». "
+                         "Puis Modifier le profil → Nom d'utilisateur : foundercalc s'il "
+                         "est libre."),
+    ),
+    link=Instruction(text="Modifier le profil → Site web.",
+                     paste=f"{BASE_URL}/?utm_source=tiktok&utm_medium=social&utm_campaign=bio",
+                     note="Si le champ Site web n'apparaît pas, TikTok ne l'ouvre pas encore "
+                          "à ce compte : écris « foundercalc.dev » dans la bio et reviens "
+                          "cocher la confirmation quand le champ apparaît."),
+    api="l'API Content Posting publie en privé tant que l'application n'a pas passé "
+        "l'audit TikTok.",
+)
+
+VIDEO_SNAPCHAT = _video_step(
+    "snapchat", "Snapchat Spotlight",
+    signup=(
+        Instruction(text="Crée le compte avec hello@foundercalc.dev, nom d'utilisateur "
+                         "foundercalc s'il est libre (non modifiable ensuite).",
+                    url="https://accounts.snapchat.com/accounts/v2/signup"),
+        Instruction(text="Dans l'app : ta photo de profil en haut à gauche → Créer un profil "
+                         "public. Spotlight, le fil de vidéos courtes, publie depuis ce "
+                         "profil.",
+                    note="Réussi quand snapchat.com/add/<nom> affiche le profil public."),
+    ),
+    link=Instruction(text="Profil public → Modifier le profil → Site web.",
+                     paste=f"{BASE_URL}/?utm_source=snapchat&utm_medium=social&utm_campaign=bio"),
+    api="Snapchat n'a pas d'API publique de publication sur Spotlight à ce jour : la "
+        "publication y restera manuelle, depuis l'app.",
+)
+
 UPTIME_ALERTS = Step(
     id="uptime_alerts",
     gate=4,
@@ -691,7 +804,9 @@ STEPS: tuple[Step, ...] = (
     STRIPE_PRO,
     SEARCH_CONSOLE_API, SEARCH_CONSOLE, ADSENSE_REVIEW, ADSENSE_SLOTS, ADSENSE_PAYMENT,
     AFFILIATE_BAREMETRICS, AFFILIATE_PADDLE, AFFILIATE_FRESHBOOKS, GUSTO_PAYOUTS,
-    FORMSPREE, TWITTER, X_PUBLISHING, UPTIME_ALERTS, BING,
+    FORMSPREE, TWITTER, X_PUBLISHING,
+    VIDEO_YOUTUBE, VIDEO_INSTAGRAM, VIDEO_TIKTOK, VIDEO_SNAPCHAT,
+    UPTIME_ALERTS, BING,
     URSSAF,
 )
 BY_ID = {step.id: step for step in STEPS}
