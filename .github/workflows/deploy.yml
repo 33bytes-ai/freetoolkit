@@ -70,6 +70,11 @@ jobs:
         if: steps.creds.outputs.ready == 'true'
         run: make build
 
+      # Before the publish, while the live sitemap is still the previous release's.
+      - name: List URLs this release changes (IndexNow)
+        if: steps.creds.outputs.ready == 'true' && github.ref_name == 'main'
+        run: .venv/bin/python scripts/indexnow.py changed > indexnow-urls.txt
+
       - name: Publish to Cloudflare Pages
         if: steps.creds.outputs.ready == 'true'
         env:
@@ -84,6 +89,13 @@ jobs:
           npx --yes wrangler@4 pages deploy dist \
             --project-name=foundercalc \
             --branch="${{ github.ref_name }}"
+
+      # A refused ping must not mark a successful release as failed; the job
+      # still shows the warning.
+      - name: Ping IndexNow (Bing, Yandex, Seznam)
+        if: steps.creds.outputs.ready == 'true' && github.ref_name == 'main'
+        continue-on-error: true
+        run: .venv/bin/python scripts/indexnow.py submit < indexnow-urls.txt
 
       - name: Say which deployment this was
         if: steps.creds.outputs.ready == 'true'

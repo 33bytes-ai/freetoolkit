@@ -775,6 +775,27 @@ def write_robots(config: dict) -> None:
     )
 
 
+def write_indexnow_key(config: dict) -> None:
+    key = config["site"]["indexnow_key"]
+    (DIST_DIR / f"{key}.txt").write_text(key, encoding="utf-8")
+
+
+def write_llms_txt(config: dict, tools_by_category: dict[str, list[dict]]) -> None:
+    # llmstxt.org format: what AI search engines read to know which page answers what.
+    site = config["site"]
+    base = site["base_url"].rstrip("/")
+    lines = [f"# {site['name']}", "", f"> {site['tagline']}", "", " ".join(site["description"].split()), ""]
+    for category in config["categories"]:
+        tools = [t for t in tools_by_category.get(category, []) if not t.get("canonical_to")]
+        if not tools:
+            continue
+        lines += [f"## {category}", ""]
+        lines += [f"- [{t['title']}]({base}/tools/{t['slug']}/): {t['short']}" for t in tools]
+        lines.append("")
+    lines += ["## Optional", "", f"- [Glossary]({base}/glossary/): plain-language definitions of the finance and SaaS terms the calculators use", ""]
+    (DIST_DIR / "llms.txt").write_text("\n".join(lines), encoding="utf-8")
+
+
 BUNDLED_FONT = STATIC_DIR / "fonts" / "Aileron-Regular.ttf"
 
 
@@ -1137,6 +1158,8 @@ def build() -> Path:
     write_sitemap_news(config, tools)
     write_sitemap_index(config)
     write_robots(config)
+    write_llms_txt(config, tools_by_category)
+    write_indexnow_key(config)
     write_manifest(config)
     write_ads_txt(config)
     write_rss(config, tools)

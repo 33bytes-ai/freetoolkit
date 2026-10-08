@@ -95,6 +95,33 @@ def test_robots_contains_sitemap_reference():
     assert "sitemap.xml" in robots
 
 
+def test_llms_txt_lists_every_indexable_tool():
+    run_build()
+    llms = (DIST / "llms.txt").read_text()
+    assert llms.startswith("# FounderCalc\n\n> ")
+    for tool in yaml.safe_load((ROOT / "content" / "tools.yaml").read_text()):
+        listed = f"/tools/{tool['slug']}/)" in llms
+        assert listed != bool(tool.get("canonical_to")), tool["slug"]
+
+
+def test_indexnow_key_is_served_and_only_changed_urls_are_submitted():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("indexnow", ROOT / "scripts" / "indexnow.py")
+    indexnow = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(indexnow)
+
+    run_build()
+    key = yaml.safe_load((ROOT / "content" / "config.yaml").read_text())["site"]["indexnow_key"]
+    assert (DIST / f"{key}.txt").read_text() == key
+
+    built = (DIST / "sitemap.xml").read_text()
+    assert indexnow.changed(built, built) == []
+    assert len(indexnow.changed(built, "")) == built.count("<loc>")
+    first = indexnow.URL_RE.search(built)
+    moved = built.replace(first.group(0), first.group(0).replace(first.group(2), "1999-01-01"))
+    assert indexnow.changed(built, moved) == [first.group(1)]
+
+
 def test_tool_pages_reference_correct_js():
     run_build()
     for slug in TOOL_SLUGS:

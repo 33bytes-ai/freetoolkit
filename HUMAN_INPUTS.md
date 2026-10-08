@@ -69,8 +69,25 @@ Console » :
 3. `install -Dm600 ~/.config/foundercalc-mail/client_secret.json ~/.config/freetoolkit/client_secret.json`
 4. `make gsc-auth`, puis `make gsc-push` (soumet les sitemaps, retire ceux qui répondent 404)
 
-[Bing Webmaster Tools](https://www.bing.com/webmasters) : import depuis Search
-Console (étape wizard optionnelle).
+[Bing Webmaster Tools](https://www.bing.com/webmasters) : ✅ fait (import
+depuis Search Console, coché dans le wizard le 2026-09-25). Vérifié dans le
+dashboard le 2026-10-07 : `sitemap_index.xml` (145 URL, dernier crawl 5 oct.)
+et `sitemap_retired.xml` (329 URL), zéro erreur. Recherche Bing sur 10
+semaines : 1,1 k impressions, 9 clics.
+
+**AI Performance (bêta)** — onglet à suivre : citations de foundercalc.dev
+par Copilot et partenaires. **1,3 k citations** sur la même période, soit plus
+que les impressions de recherche, presque toutes sur le taux d'actualisation
+de la VAN (`discount rate for npv` : 105, `what discount rate to use for npv` :
+85, `npv discount rate` : 78), puis élasticité des prix, marge mixte et
+comparaison des frais de paiement. Pic à 169/jour le 22 sept., retombé à
+0-20/jour depuis le 26 sept.
+
+IndexNow est automatique : chaque déploiement sur `main` envoie à Bing (et
+Yandex, Seznam) les URL dont le `lastmod` a bougé (`scripts/indexnow.py`). La
+clé est servie à `/f1830adcba844c2c807e86fcbeefb0c5.txt`. Rien à configurer
+dans Bing : il découvre la clé au premier ping. Les URL reçues apparaissent
+dans l'onglet **IndexNow** du dashboard.
 
 ### A4. Monitoring d'uptime (optionnel, ~10 min, gratuit)
 Un healthcheck externe tourne déjà automatiquement dès que A1 est fait (voir
@@ -101,7 +118,7 @@ Embeds and Pro), l'envoyer à l'acheteur sous 1 jour ouvré.
 
 ## Catégorie B — Monétisation : AdSense
 
-### B1. ⚠️ Candidature refusée le 7 août 2026 — correctif déployé, réexamen à demander
+### B1. ⚠️ Candidature refusée le 7 août 2026 — correctif déployé, réexamen demandé le 3 oct. 2026 (en attente)
 
 Motif Google : *« Contenu à faible valeur informative »*, plus `ads.txt`
 signalé *Introuvable*.
@@ -142,7 +159,8 @@ sous 7 jours et ses 320 URL redirigent toutes en 301 — sans conséquence.
    ⚠️ Les impressions chutent dans l'onglet Performances (~1 500 → ~600/jour
    dès le 1er septembre) — c'est mécanique, 329 URL quittent les résultats.
    Ce n'est pas un signal d'alarme.
-2. **Demander le réexamen** depuis AdSense → Sites → foundercalc.dev.
+2. **Réexamen demandé le 2026-10-03 à 18:17** (AdSense → Sites → foundercalc.dev).
+   Délai annoncé : quelques jours, parfois 2 à 4 semaines. Rien à faire d'ici là.
 3. **Astuce approbation :** 15-20 visiteurs organiques réels/jour aide la
    review — partager le site sur IndieHackers/Reddit/Twitter entre-temps, un
    canal à la fois (le post simultané partout se fait sanctionner comme spam).
@@ -180,9 +198,9 @@ Comptes à créer toi-même (infos personnelles/IBAN requises, non déléguables
 | Programme | Pages concernées | État |
 |---|---|---|
 | **Gusto** | 3 | ✅ approuvé 2026-08-04, accord signé, lien `gusto.com/go/bd/foundercalc` câblé. **Reste : Stripe Connect pour les versements** |
-| **FreshBooks** (via PartnerStack) | 4 | ⏳ 1re candidature refusée le 2026-09-21 (compte PartnerStack jamais créé). Compte créé et nouvelle candidature envoyée le 2026-09-25 (canal Editorial / Reviews, audience petites entreprises, exemple `/tools/invoice-total-calculator/`) — réponse attendue sur `hello@foundercalc.dev` |
+| **FreshBooks** (via PartnerStack) | 4 | ⏳ 1re candidature refusée le 2026-09-21 (compte PartnerStack jamais créé). 2e candidature (2026-09-25, canal Editorial / Reviews, audience petites entreprises, portée déclarée <1 000/mois, exemple `/tools/invoice-total-calculator/`) **refusée le 2026-10-04**, sans motif (ni dans l'email ni dans PartnerStack → Messages, vérifié le 2026-10-07). Probables : portée <1 000, éditeur hors US/CA sur le programme `freshbooksusa`, QuickBooks cité. Ne pas re-postuler à l'identique |
 | **Baremetrics** | 21 | ✅ lien `https://baremetrics.com?via=guillaume` câblé sur les 21 cartes le 2026-09-25 (étape wizard vérifiée). Versements PayPal sur `hello@foundercalc.dev` — **reste : compléter le profil PayPal (identité, numéro fiscal, IBAN) avant le premier retrait** |
-| **Paddle** | 8 | ⏳ demande envoyée 2026-09-25 via le formulaire [paddle.com/partners](https://www.paddle.com/partners) (Referral Partner) — réponse attendue sur `hello@foundercalc.dev` |
+| **Paddle** | 8 | ⏳ demande envoyée 2026-09-25 via le formulaire [paddle.com/partners](https://www.paddle.com/partners) (Referral Partner) — **aucune réponse au 2026-10-07**, pas même un accusé de réception. Ce formulaire est un « Get in touch » générique, pas un programme d'affiliation en libre-service |
 | Lemon Squeezy | — | ❌ écarté : commission par marchand individuel, pas de parrainage plateforme |
 | ChartMogul | — | ❌ écarté 2026-09-24 : plus de programme d'affiliation public (`/partners/` en 404), cartes retirées du site |
 | Chargebee | — | ❌ écarté 2026-09-24 : le « Solution Partner Program » vise agences et intégrateurs, pas un site éditorial ; cartes retirées du site |
