@@ -44,8 +44,9 @@ redirect + test churn. Not done.
 
 The real signal is the CTR: Google shows the site, nobody clicks. Top
 impressions: price-per-unit (2 760), IRR (2 247), payback period (1 667), WACC
-(1 573) — all 0 clicks. Titles/meta descriptions on those pages are the
-cheapest lever for real visitors.
+(1 573) — all 0 clicks. Not a title problem: average position is **50** (price-per-unit 34, IRR 41,
+WACC 74) and only 194 of 47 826 impressions are on page 1. Rewriting titles
+won't produce clicks; ranking has to move first (backlinks, AI-search citations).
 
 (`make gsc` URL inspection timed out twice on Google's side; this uses the
 Performance API instead.)
