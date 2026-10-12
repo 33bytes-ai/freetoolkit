@@ -2,14 +2,14 @@
 {% block og_image %}<meta property="og:image" content="{{ site.base_url }}/static/img/og-{{ tool.slug }}.png"><meta property="og:image:secure_url" content="{{ site.base_url }}/static/img/og-{{ tool.slug }}.png"><meta property="og:image:alt" content="{{ tool.title }} — {{ site.name }}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png">{% endblock %}
 {% block twitter_image %}<meta name="twitter:image" content="{{ site.base_url }}/static/img/og-{{ tool.slug }}.png">{% endblock %}
 {% block twitter_extra %}<meta name="twitter:label1" content="Category"><meta name="twitter:data1" content="{{ tool.category }}"><meta name="twitter:label2" content="Free tool"><meta name="twitter:data2" content="Yes, no sign-up"><meta property="article:section" content="{{ tool.category }}"><meta property="og:locale:alternate" content="en_GB"><meta property="og:locale:alternate" content="en_AU">{% endblock %}
-{% block og_type %}<meta property="og:type" content="website">{% if tool.date_added %}<meta property="og:updated_time" content="{{ tool.date_added }}T00:00:00Z">{% endif %}{% endblock %}
+{% block og_type %}<meta property="og:type" content="website">{% if tool.date_added %}<meta property="og:updated_time" content="{{ tool.updated or tool.date_added }}T00:00:00Z">{% endif %}{% endblock %}
 {% block head_extra %}
 <meta name="robots" content="index, follow">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 {% if tool.keywords %}<meta name="keywords" content="{{ tool.keywords | join(', ') }}">{% endif %}
 <meta name="classification" content="{{ tool.category }}">
 <meta name="thumbnail" content="{{ site.base_url }}/static/img/og-{{ tool.slug }}.png">
-{% if tool.date_added %}<meta name="dcterms.created" content="{{ tool.date_added }}"><meta name="dcterms.modified" content="{{ tool.date_added }}">{% endif %}
+{% if tool.date_added %}<meta name="dcterms.created" content="{{ tool.date_added }}"><meta name="dcterms.modified" content="{{ tool.updated or tool.date_added }}">{% endif %}
 <meta name="DC.title" content="{{ tool.title }}">
 <meta name="DC.description" content="{{ tool.short }}">
 <meta name="DC.language" content="en">
@@ -47,7 +47,7 @@
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
   "publisher": { "@type": "Organization", "name": "{{ site.name }}", "url": "{{ site.base_url }}" }{% if tool.date_added %},
   "datePublished": "{{ tool.date_added }}",
-  "dateModified": "{{ tool.date_added }}"{% endif %}
+  "dateModified": "{{ tool.updated or tool.date_added }}"{% endif %}
 }
 </script>
 <script type="application/ld+json">
@@ -103,7 +103,7 @@
   </nav>
 
   <h1 itemprop="name">{{ tool.title }}</h1>
-  {% if tool.date_added %}<p class="tool-meta">Added <time itemprop="datePublished" datetime="{{ tool.date_added }}">{{ tool.date_added | humandate }}</time></p>{% endif %}
+  {% if tool.date_added %}<p class="tool-meta">Added <time itemprop="datePublished" datetime="{{ tool.date_added }}">{{ tool.date_added | humandate }}</time>{% if tool.updated and tool.updated != tool.date_added %} · Updated <time itemprop="dateModified" datetime="{{ tool.updated }}">{{ tool.updated | humandate }}</time>{% endif %}</p>{% endif %}
 
   <p id="tool-short-desc" class="tool-short">{{ tool.short }}</p>
   <div id="calculator" class="tool-widget" data-tool="{{ tool.slug }}" aria-label="{{ tool.title }} calculator" aria-describedby="tool-short-desc">
