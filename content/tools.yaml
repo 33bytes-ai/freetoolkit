@@ -3317,6 +3317,7 @@
   short: "Calculate return on investment (ROI), annualized ROI, net profit, and break-even period for any business investment, marketing campaign, or capital allocation decision."
   new: true
   date_added: "2026-06-17"
+  updated: "2026-10-12"
   category: "Investment & Returns"
   js: roi-calculator.js
   keywords: ["roi calculator", "return on investment calculator", "annualized roi calculator", "investment return calculator", "roi formula business"]
@@ -3371,6 +3372,9 @@
     | Payback period | Months to recoup investment | Cash flow planning |
     | NPV | Present value of future returns | Long-term capital allocation |
 
+
+    ROI ignores timing; for multi-year investments use the [IRR calculator](/tools/irr-calculator/) to get an annualised return.
+
     ## Frequently asked questions
 
     **What does this calculator do?**
@@ -3383,6 +3387,7 @@
   short: "Calculate payback period in years and months — simple and discounted — to determine how long until an investment breaks even and starts generating net returns."
   new: true
   date_added: "2026-06-17"
+  updated: "2026-10-12"
   category: "Investment & Returns"
   js: payback-period-calculator.js
   keywords: ["payback period calculator", "investment payback period", "discounted payback period", "break even investment calculator", "payback period formula"]
@@ -3437,6 +3442,9 @@
     payback periods.
 
     **Use payback period alongside ROI and NPV for complete capital budgeting analysis.**
+
+
+    Payback ignores what happens after break-even; the [IRR calculator](/tools/irr-calculator/) measures the return on the full series of cash flows.
 
     ## Frequently asked questions
 
@@ -3969,6 +3977,7 @@
   short: "Calculate net present value from an initial investment and up to 5 years of cash flows — includes profitability index and simple payback period."
   new: true
   date_added: "2026-06-17"
+  updated: "2026-10-12"
   category: "Investment & Returns"
   js: npv-calculator.js
   keywords: ["npv calculator", "net present value calculator", "npv formula", "discounted cash flow calculator", "investment npv calculator"]
@@ -4041,6 +4050,9 @@
     - NPV is in dollar terms (easier to interpret)
     - IRR can give multiple values for unconventional cash flows
     - NPV correctly handles varying discount rates over time
+
+
+    NPV needs a discount rate you choose; the [IRR calculator](/tools/irr-calculator/) solves for the rate that makes NPV zero.
 
     ## Frequently asked questions
 
@@ -4890,6 +4902,7 @@
   nav_title: "WACC Calculator"
   short: "Calculate Weighted Average Cost of Capital — the blended rate a company must earn on its assets to satisfy all capital providers, equity and debt."
   date_added: "2026-06-18"
+  updated: "2026-10-12"
   new: true
   category: "Investment & Returns"
   js: wacc-calculator.js
@@ -4947,6 +4960,8 @@
     - **Capital structure decisions**: optimise the mix of equity and debt to minimise WACC
     - **Performance measurement**: ROIC > WACC means the company creates economic value
 
+    Once you have your WACC, compare it with a project's return using the [IRR calculator](/tools/irr-calculator/): accept the project when its IRR is above WACC.
+
 - slug: employee-turnover-cost-calculator
   title: "Employee Turnover Cost Calculator"
   nav_title: "Turnover Cost"
@@ -4997,6 +5012,7 @@
   nav_title: "IRR Calculator"
   short: "Calculate the Internal Rate of Return (IRR) for any series of cash flows — evaluates the profitability of investments, projects, and business decisions."
   date_added: "2026-06-18"
+  updated: "2026-10-12"
   new: true
   category: "Investment & Returns"
   js: irr-calculator.js
@@ -5011,6 +5027,10 @@
     - name: "Interpret vs. WACC"
       text: "Enter your cost of capital (WACC) to see whether the project is value-accretive. IRR > WACC = accept the project."
   body: |
+    To calculate IRR, enter the upfront investment as a negative number followed by the
+    cash flow of each period: the calculator returns the discount rate at which the
+    investment's NPV is zero. Free, instant, runs in your browser.
+
     The Internal Rate of Return (IRR) is the annualised rate of return that makes the
     Net Present Value (NPV) of all cash flows equal to zero. It is one of the most
     widely used metrics in capital budgeting and investment analysis.
@@ -5036,6 +5056,32 @@
     - **Reinvestment assumption**: assumes interim cash flows are reinvested at the IRR rate, which may be unrealistic
 
     For these reasons, IRR is often used alongside NPV rather than in isolation.
+
+    ## Worked example
+
+    You invest $10,000 today and expect $3,000, $4,000, $5,000 and $3,000 over the next
+    four years. Enter -10000, 3000, 4000, 5000, 3000: the IRR is **18.03%**.
+
+    Check it against a hurdle rate. At a 10% discount rate the same cash flows have an
+    NPV of about **+$1,839**, so the project clears the bar. At 20% the NPV turns
+    negative (about -$382), which is why the IRR sits between the two.
+
+    ## Frequently asked questions
+
+    **How do you calculate IRR?**
+    Find the rate r that makes the sum of discounted cash flows equal to zero. There is no closed formula, so it is solved by iteration (trial and error, or Newton-Raphson). In a spreadsheet, use =IRR(range); this calculator does the iteration for you.
+
+    **What is a good IRR?**
+    One that is above your cost of capital or hurdle rate. For a business project that is usually the WACC; early-stage investors often look for 20-30% or more because of the risk.
+
+    **What is the difference between IRR and NPV?**
+    NPV gives a dollar amount at a chosen discount rate; IRR gives the rate at which that amount is zero. Use IRR to compare rates of return and NPV to compare absolute value created.
+
+    **Can IRR be negative?**
+    Yes. A negative IRR means the cash flows never repay the initial investment, even without discounting.
+
+    **When does IRR fail?**
+    With cash flows that change sign more than once, there can be several IRRs or none. Use the MIRR calculator in that case.
 
 - slug: payroll-tax-calculator
   title: "Payroll Tax Calculator"
@@ -5195,6 +5241,7 @@
   nav_title: "MIRR Calculator"
   short: "Calculate Modified Internal Rate of Return — a more accurate investment return metric that corrects IRR's reinvestment rate assumption."
   date_added: "2026-06-18"
+  updated: "2026-10-12"
   new: true
   category: "Investment & Returns"
   js: mirr-calculator.js
@@ -5238,6 +5285,8 @@
 
     Typical MIRR thresholds: 15%+ for startup/VC investments, 12–18% for PE,
     8–12% for real estate, 6–10% for infrastructure.
+
+    For ordinary cash flows with a single sign change, the plain [IRR calculator](/tools/irr-calculator/) gives the same ranking with fewer assumptions.
 
 - slug: cash-burn-by-department
   title: "Cash Burn by Department Calculator"
