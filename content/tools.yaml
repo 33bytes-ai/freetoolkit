@@ -5012,9 +5012,22 @@
     - name: "Read the WACC result"
       text: "WACC is the minimum return your assets must generate to create value. A project IRR above WACC creates value; below destroys it."
   body: |
-    WACC (Weighted Average Cost of Capital) is the minimum return a company must earn
-    on its existing assets to satisfy its capital providers — both equity holders and
-    debt holders. It serves as the hurdle rate for investment decisions and DCF valuations.
+    WACC (Weighted Average Cost of Capital) is the average rate a company pays to fund
+    its assets, weighting the cost of equity and the after-tax cost of debt by their share
+    of total capital. It is the minimum return a project must earn to satisfy investors,
+    so it serves as the discount rate for DCF valuations and the hurdle rate for new investments.
+
+    ## Worked example
+
+    A company has $700,000 of equity and $300,000 of debt, a 10% cost of equity, a 6%
+    pre-tax cost of debt and a 25% tax rate.
+
+    - Weights: equity 700,000 / 1,000,000 = **70%**, debt **30%**
+    - After-tax cost of debt: 6% × (1 − 0.25) = **4.5%**
+    - WACC = 0.70 × 10% + 0.30 × 4.5% = 7.00% + 1.35% = **8.35%**
+
+    Any project with an expected return above 8.35% adds value; anything below destroys it.
+    Enter the same five numbers above to check the result.
 
     ## WACC formula
 
@@ -5048,6 +5061,15 @@
     | Utilities | 4–8% |
     | Biotech | 12–20% |
 
+    ## Cost of equity vs cost of debt
+
+    | | Cost of equity | Cost of debt |
+    |---|---|---|
+    | What it is | Return shareholders require | Interest rate lenders charge |
+    | How to estimate | CAPM: risk-free rate + beta × equity risk premium | Average interest rate on borrowings |
+    | Tax treatment | Not deductible | Interest is deductible, so cost × (1 − tax rate) |
+    | Typical level | Higher (8–15%) | Lower (3–8% before tax) |
+
     ## WACC in practice
 
     - **DCF valuations**: WACC is the discount rate applied to future free cash flows
@@ -5055,7 +5077,36 @@
     - **Capital structure decisions**: optimise the mix of equity and debt to minimise WACC
     - **Performance measurement**: ROIC > WACC means the company creates economic value
 
-    Once you have your WACC, compare it with a project's return using the [IRR calculator](/tools/irr-calculator/): accept the project when its IRR is above WACC.
+    Use WACC as the discount rate in the [DCF calculator](/tools/dcf-calculator/) or the
+    [NPV calculator](/tools/npv-calculator/), and compare it with the result of the
+    [IRR calculator](/tools/irr-calculator/). Heavy borrowing is covered by the
+    [debt-to-equity calculator](/tools/debt-to-equity-calculator/).
+
+    ## Frequently asked questions
+
+    **What is a good WACC?**
+    There is no universal good WACC: lower means cheaper funding, but the right level
+    depends on risk. Utilities sit around 4–8%, software companies 8–14% and biotech
+    12–20%. What matters is that returns on new projects exceed the company's own WACC.
+
+    **How do you calculate WACC?**
+    Multiply the cost of equity by equity's share of total capital, add the after-tax cost
+    of debt times debt's share, and sum the two. With 70% equity at 10% and 30% debt at
+    6% pre-tax with a 25% tax rate, WACC = 0.70 × 10% + 0.30 × 4.5% = 8.35%.
+
+    **Why is debt cheaper than equity in WACC?**
+    Lenders are paid first and interest is tax-deductible, so debt carries less risk and a
+    tax shield. Shareholders sit behind lenders and demand a higher return, so adding
+    cheap debt lowers WACC until financial distress risk starts to push both costs up.
+
+    **Is WACC the same as the discount rate?**
+    For a DCF of the whole company, yes: WACC is the standard discount rate for free cash
+    flows to the firm. For a single project with a different risk profile, use a rate
+    that reflects that project's risk rather than the company-wide WACC.
+
+    **Should WACC use book or market values?**
+    Market values. Use the market capitalisation for equity and, where available, the
+    market value of debt; book debt is an acceptable proxy when the debt is not traded.
 
 - slug: employee-turnover-cost-calculator
   title: "Employee Turnover Cost Calculator"
@@ -5447,6 +5498,7 @@
   nav_title: "DCF Calculator"
   short: "Calculate the present value of future cash flows using your discount rate — get intrinsic value, NPV, and terminal value in seconds."
   date_added: "2026-06-18"
+  updated: "2026-10-12"
   new: true
   category: Valuation
   js: dcf-calculator.js
@@ -5461,9 +5513,23 @@
     - name: "Read the intrinsic value"
       text: "The calculator returns the present value of forecast cash flows plus terminal value — the intrinsic enterprise value."
   body: |
-    A DCF (Discounted Cash Flow) model values a business or investment by summing the
-    present value of all expected future cash flows. It is the foundational valuation
-    methodology in corporate finance.
+    A discounted cash flow (DCF) calculation values a business or investment by forecasting
+    its future free cash flows and discounting each one back to today at a rate that reflects
+    risk, usually the WACC. The sum of those present values, plus a discounted terminal value,
+    is the intrinsic value of the business.
+
+    ## Worked example
+
+    Five years of free cash flow of $100, $110, $120, $130 and $140 (in thousands), a 10%
+    discount rate and 3% terminal growth.
+
+    - Present value of the five cash flows: **$447.7k**
+    - Terminal value in year 5: 140 × 1.03 / (0.10 − 0.03) = **$2,060k**
+    - Present value of terminal value: 2,060 / 1.10⁵ = **$1,279.1k**
+    - Enterprise value: 447.7 + 1,279.1 = **$1,726.8k**
+
+    The terminal value is 74% of the total, which is typical. Changing terminal growth to 2%
+    gives $1,556k and 4% gives $1,954k, so test a range rather than one number.
 
     ## The DCF formula
 
@@ -5500,6 +5566,41 @@
 
     It is least reliable for: pre-revenue companies, highly cyclical businesses, and
     companies where intangible value dominates.
+
+    ## DCF vs NPV
+
+    | | DCF valuation | NPV |
+    |---|---|---|
+    | Question answered | What is this business worth today? | Does this project create value after its cost? |
+    | Includes upfront cost | No, result is a value | Yes, subtracted from the present value |
+    | Terminal value | Usually, 60–90% of the total | Rarely, projects have a finite life |
+    | Calculator | This page | [NPV calculator](/tools/npv-calculator/) |
+
+    To find the discount rate, use the [WACC calculator](/tools/wacc-calculator/). To compare a
+    project's return with that rate, use the [IRR calculator](/tools/irr-calculator/).
+
+    ## Frequently asked questions
+
+    **What is a DCF calculator?**
+    A DCF calculator discounts projected free cash flows and a terminal value to present
+    value at a chosen discount rate. The total is the intrinsic enterprise value, which you
+    compare with the market price or an offer to judge whether it is cheap or expensive.
+
+    **What discount rate should I use in a DCF?**
+    Use the company's WACC. Large public companies typically land at 8–10%, mid-caps at
+    10–14%, private growth companies at 15–25% and early-stage startups at 25–40% or more.
+
+    **What terminal growth rate is reasonable?**
+    Use 2–4%, at or below long-run GDP and inflation. The rate must be lower than the
+    discount rate, or the Gordon Growth formula returns no valid value.
+
+    **How many years should a DCF forecast?**
+    Five to ten years. Shorter forecasts push more value into the terminal value, longer
+    ones rely on projections that become less certain with each year.
+
+    **Is DCF value the same as equity value?**
+    No. The result is enterprise value. Subtract net debt (debt minus cash) to get equity
+    value, then divide by shares outstanding for a per-share value.
 
 - slug: operating-leverage-calculator
   title: "Operating Leverage Calculator"
@@ -5561,6 +5662,7 @@
   nav_title: "Rule of 72"
   short: "Use the Rule of 72 to estimate how long it takes to double your money at a given annual return rate — and find the rate needed to double by a target date."
   date_added: "2026-06-18"
+  updated: "2026-10-12"
   new: true
   category: "Investment & Returns"
   js: rule-of-72-calculator.js
@@ -5575,8 +5677,18 @@
     - name: "Compare exact vs approximation"
       text: "The exact doubling time uses logarithms — the Rule of 72 approximation is within 1–2% for rates between 2–20%."
   body: |
-    The Rule of 72 is a quick mental math shortcut for estimating how long compound
-    interest takes to double an investment.
+    The Rule of 72 is a shortcut for estimating how long an investment takes to double:
+    divide 72 by the annual rate of return as a percentage. At 8% a year, 72 ÷ 8 = 9 years.
+    To go the other way, divide 72 by the years you have to find the annual return you need.
+
+    ## How to calculate the Rule of 72
+
+    1. Take the annual rate as a whole number, such as 8 for 8%.
+    2. Divide 72 by that number: 72 ÷ 8 = 9.
+    3. The answer is the approximate years to double, here 9 years.
+
+    **Worked example:** $10,000 at 8% a year doubles in about 9 years. The exact figure is
+    ln(2) ÷ ln(1.08) = 9.006 years, and $10,000 × 1.08⁹ = $19,990, almost exactly double.
 
     ## Formula
 
@@ -5603,6 +5715,19 @@
     | 24% | 3 years |
     | 72% | 1 year |
 
+    ## Rule of 72 vs exact doubling time
+
+    | Annual rate | Rule of 72 | Exact | Error |
+    |------------|-----------|-------|-------|
+    | 3% | 24.0 years | 23.45 years | +2.4% |
+    | 6% | 12.0 years | 11.90 years | +0.9% |
+    | 8% | 9.0 years | 9.01 years | −0.1% |
+    | 10% | 7.2 years | 7.27 years | −1.0% |
+    | 15% | 4.8 years | 4.96 years | −3.2% |
+
+    The rule is most accurate near 8%. For rates far above 20% the approximation drifts, so
+    use the exact formula.
+
     ## The Rule of 72 and inflation
 
     Inflation uses the rule too. At 3% inflation, purchasing power halves in 24 years.
@@ -5614,6 +5739,31 @@
     - SaaS [ARR](/glossary/#arr) growth rate → years to double revenue
     - Population growth → doubling time
     - Debt at given interest rate → years to double what you owe
+
+    To measure the return itself, use the [ROI calculator](/tools/roi-calculator/). To value
+    a stream of future cash flows, use the [DCF calculator](/tools/dcf-calculator/).
+
+    ## Frequently asked questions
+
+    **How do you calculate the Rule of 72?**
+    Divide 72 by the annual interest or growth rate as a percentage. The result is the
+    number of years for the money to double. At 6% it takes 72 ÷ 6 = 12 years; at 12% it
+    takes 6 years.
+
+    **Why is the Rule of 72 used instead of 69.3 or 70?**
+    The exact constant is about 69.3 for continuous compounding. 72 is used because it
+    divides evenly by 2, 3, 4, 6, 8, 9 and 12, and it is accurate for the common 6–10% range.
+
+    **How accurate is the Rule of 72?**
+    It is within about 1% of the exact answer between 6% and 10%, and within roughly 3% from
+    2% to 15%. It becomes less accurate at very low or very high rates.
+
+    **Can the Rule of 72 work for inflation or debt?**
+    Yes. At 3% inflation, prices double in 72 ÷ 3 = 24 years, halving purchasing power. A
+    balance growing at 18% a year doubles in 4 years.
+
+    **How do I find the return needed to double my money?**
+    Divide 72 by the number of years. To double in 6 years you need about 72 ÷ 6 = 12% a year.
 
 - slug: cac-payback-calculator
   title: "CAC Payback Period Calculator"
