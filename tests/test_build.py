@@ -585,7 +585,7 @@ def test_sitemap_has_per_tool_date_added_lastmod():
     """sitemap.xml tool URLs should use each tool's date_added as lastmod, not a blanket today."""
     run_build()
     tools = yaml.safe_load((ROOT / "content" / "tools.yaml").read_text())
-    tools_with_date = [t for t in tools if t.get("date_added")]
+    tools_with_date = [t for t in tools if t.get("date_added") and not t.get("updated")]
     sitemap = (DIST / "sitemap.xml").read_text()
     for tool in tools_with_date[:5]:
         assert (

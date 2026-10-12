@@ -194,6 +194,7 @@
   nav_title: "LTV & CAC"
   short: "The fastest way to get your LTV:CAC ratio — enter ARPU, margin, churn, and spend once and get both LTV and CAC together, without filling in two separate calculators."
   date_added: "2026-05-04"
+  updated: "2026-10-12"
   category: SaaS Retention Metrics
   js: ltv-cac-calculator.js
   keywords: ["ltv cac calculator", "customer lifetime value calculator", "cac payback period", "ltv cac ratio saas"]
@@ -236,6 +237,8 @@
     1. Enter your Average Revenue Per User (monthly), gross margin %, and monthly churn rate.
     2. Enter your total sales and marketing spend and new customers acquired for the same period.
     3. The calculator shows LTV, CAC, the ratio, and the payback period.
+
+    Healthy unit economics matter most in a market big enough to scale; size yours with the [TAM SAM SOM calculator](/tools/tam-sam-som-calculator/).
 
     ## Frequently asked questions
 
@@ -819,6 +822,7 @@
   nav_title: "Rule of 40"
   short: "Calculate your SaaS Rule of 40 score — the sum of revenue growth rate and profit margin that investors use to benchmark health."
   date_added: "2026-05-17"
+  updated: "2026-10-12"
   category: SaaS Growth Metrics
   js: rule-of-40-calculator.js
   keywords: ["rule of 40 calculator", "saas rule of 40", "rule of 40 saas benchmark", "growth plus margin saas"]
@@ -864,6 +868,8 @@
     expected to be profitable. At $50M+ ARR, the Rule of 40 becomes a hard benchmark for
     premium valuation multiples.
 
+    The growth half of the Rule of 40 can come from the [ARR growth rate calculator](/tools/arr-growth-rate-calculator/).
+
     ## Frequently asked questions
 
     **Which profit margin metric should I use?**
@@ -880,6 +886,7 @@
   nav_title: "Price Impact"
   short: "See how a price increase affects your MRR and calculate the minimum retention rate needed to break even on a pricing change."
   date_added: "2026-05-18"
+  updated: "2026-10-12"
   category: "Pricing & Margins"
   js: price-impact-calculator.js
   keywords: ["price increase calculator", "pricing impact calculator", "how much can i raise prices", "price elasticity saas"]
@@ -919,6 +926,8 @@
     2. **Announce 60–90 days in advance** with a value-focused message
     3. **Apply immediately to new customers** — test the new price with no risk
     4. **Track conversion rates** after the change — lower conversion may signal positioning issues
+
+    To work out the size of a price change itself, the [percentage change calculator](/tools/percentage-change-calculator/) gives the percent and absolute difference between old and new price.
 
     ## Frequently asked questions
 
@@ -1165,10 +1174,13 @@
   nav_title: "Sales Quota"
   short: "Calculate how many deals, leads, and pipeline you need to hit your annual revenue target based on ACV and close rate."
   date_added: "2026-05-25"
+  updated: "2026-10-12"
   category: Marketing
   js: sales-quota-calculator.js
   keywords: ["sales quota calculator", "how many deals to hit quota", "sales pipeline calculator", "sales target calculator"]
   body: |
+    To set a sales quota, divide the revenue target by the average contract value to get the deals needed, then divide by the close rate to get the leads needed: a $2,000,000 target at a $40,000 ACV and a 25% close rate needs 50 deals and 200 qualified leads. Enter your own numbers below.
+
     Building a sales plan starts with reverse-engineering from your revenue target. Given
     an annual revenue goal, average contract value (ACV), and close rate, this calculator
     shows exactly how many deals, leads, and pipeline you need to generate — by month
@@ -1201,7 +1213,23 @@
     - **ACV**: doubling ACV halves the number of deals required
     - **Sales cycle**: shorter cycles mean more pipeline turns per year and better capital efficiency
 
+    ## Worked example
+
+    Annual target $2,000,000, ACV $40,000, close rate 25%, sales cycle 90 days:
+
+    - Deals needed: 2,000,000 / 40,000 = **50**
+    - Leads needed: 50 / 0.25 = **200**
+    - Pipeline needed: **$8,000,000**, 4x the target
+    - Per month: about **4.2 deals** and **16.7 leads**
+    - Pipeline turns about **4 times** a year
+
     ## Frequently asked questions
+
+    **How do you calculate a sales quota?**
+    Divide the revenue target by ACV to get deals, then divide deals by the close rate to get the qualified leads needed. Divide both by 12 for a monthly quota.
+
+    **How much pipeline do I need to hit quota?**
+    Target divided by close rate. At a 25% close rate that is 4x the target in pipeline value.
 
     **What close rate should I use?**
     Track close rate from qualified lead (discovery call booked) to closed-won.
@@ -1402,6 +1430,7 @@
   short: "Calculate your Annual Recurring Revenue growth rate, T2D3 trajectory, and years to reach your ARR target."
   new: true
   date_added: "2026-06-11"
+  updated: "2026-10-12"
   category: SaaS Growth Metrics
   js: arr-growth-rate-calculator.js
   keywords: ["arr growth rate calculator", "annual recurring revenue growth", "saas arr growth rate", "t2d3 growth calculator"]
@@ -1415,6 +1444,8 @@
     - name: "Read your growth metrics"
       text: "The calculator shows your YoY growth rate, net new ARR, 3- and 5-year ARR projections, and years to your target."
   body: |
+    ARR growth rate is current ARR minus ARR twelve months ago, divided by ARR twelve months ago, times 100: growing from $1.0M to $1.8M is 80% year-over-year growth. Enter both figures below to see your growth rate, projections and the years needed to reach a target.
+
     Annual Recurring Revenue (ARR) growth rate is the single most important metric for
     SaaS fundraising and benchmarking. Investors, analysts, and buyers all start with this
     number — how fast are you growing your predictable annual revenue?
@@ -1463,6 +1494,27 @@
     YoY growth rate, 3- and 5-year projections if you maintain this rate, and the number
     of years to reach any target ARR you set.
 
+    ## Worked example
+
+    ARR was $1,000,000 a year ago and is $1,800,000 today: growth is **80%** and net new ARR is $800,000. To reach $10,000,000 at a steady 80%, you need about **2.9 years**; at 100% growth it takes about **2.5 years**.
+
+    ## Frequently asked questions
+
+    **How do you calculate ARR growth rate?**
+    Subtract ARR from twelve months ago from current ARR, divide by the earlier figure and multiply by 100.
+
+    **What is a good ARR growth rate?**
+    It depends on scale: 100% or more below $1M ARR, 80 to 150% between $1M and $5M, and 25 to 50% above $50M. Growth slows as the base gets larger.
+
+    **Is ARR growth the same as revenue growth?**
+    No. ARR measures contracted recurring revenue at a point in time; recognized revenue includes one-off items and lags behind ARR.
+
+    **How long to reach a target ARR?**
+    Take the log of target over current ARR and divide by the log of one plus the growth rate. The calculator does this when you set a target.
+
+    **What is T2D3?**
+    A benchmark path of tripling ARR twice and then doubling it three times, starting from about $1M.
+
     **What does this calculator do?**
     Calculate your Annual Recurring Revenue growth rate, T2D3 trajectory, and years to reach your ARR target.
 
@@ -1472,6 +1524,7 @@
   short: "Calculate optimal SaaS pricing tiers based on your costs, target margin, and willingness-to-pay — with monthly and annual plan analysis."
   new: true
   date_added: "2026-06-12"
+  updated: "2026-10-12"
   category: Pricing & Margins
   js: saas-pricing-calculator.js
   keywords: ["saas pricing calculator", "saas pricing strategy", "how to price saas product", "saas pricing tiers"]
@@ -1533,6 +1586,8 @@
 
     **What does this calculator do?**
     Calculate optimal SaaS pricing tiers based on your costs, target margin, and willingness-to-pay — with monthly and annual plan analysis.
+
+    Price multiplied by the number of reachable customers is your market size; the [TAM SAM SOM calculator](/tools/tam-sam-som-calculator/) does that sizing.
 
 - slug: customer-health-score
   title: "Customer Health Score Calculator"
@@ -1610,6 +1665,7 @@
   nav_title: "Unit Economics"
   short: "The complete SaaS unit economics dashboard: CAC payback, LTV:CAC ratio, gross margin, and magic number in one place, for a full efficiency review."
   date_added: "2026-06-16"
+  updated: "2026-10-12"
   new: true
   category: SaaS Growth Metrics
   js: unit-economics-calculator.js
@@ -1661,6 +1717,8 @@
     CAC payback of 36 months will run out of cash before the cohorts become profitable.
     Investors and acquirers both underwrite businesses based on unit economics — your
     growth rate only matters if the underlying economics are sound.
+
+    To check the market is large enough for those unit economics, use the [TAM SAM SOM calculator](/tools/tam-sam-som-calculator/).
 
     ## Frequently asked questions
 
@@ -2341,6 +2399,7 @@
   short: "Calculate sale price, discount amount, or reverse-calculate the discount percentage from any original price — plus margin impact after discount."
   new: true
   date_added: "2026-06-17"
+  updated: "2026-10-12"
   category: "Pricing & Margins"
   js: discount-calculator.js
   keywords: ["discount calculator", "sale price calculator", "percentage discount calculator", "how much is 20 percent off", "discount percentage formula"]
@@ -2393,6 +2452,8 @@
     | BOGO | Buy one get one | Volume without lowering price signal |
     | Annual plan discount | 15–20% off monthly × 12 | SaaS annual commitment |
     | Early bird | First N customers get lower price | Launch pricing |
+
+    To find the percentage between an original and a sale price, use the [percentage change calculator](/tools/percentage-change-calculator/).
 
     ## Frequently asked questions
 
@@ -2595,6 +2656,7 @@
   short: "Benchmark your ARR per FTE against SaaS industry quartiles — and calculate the revenue or headcount needed to hit a target efficiency ratio."
   new: true
   date_added: "2026-06-17"
+  updated: "2026-10-12"
   category: SaaS Growth Metrics
   js: revenue-per-employee-calculator.js
   keywords: ["revenue per employee", "ARR per employee", "revenue per headcount", "SaaS efficiency ratio", "employee productivity calculator", "revenue productivity benchmark"]
@@ -2663,6 +2725,8 @@
     - For board reporting: track RPE quarterly as a headline efficiency metric
       alongside ARR growth and net revenue retention.
 
+    Revenue per employee is hard to hold up if people keep leaving; track attrition with the [employee turnover calculator](/tools/employee-turnover-calculator/).
+
     ## Frequently asked questions
 
     **What does this calculator do?**
@@ -2675,6 +2739,7 @@
   short: "Calculate Net Revenue Retention and Gross Revenue Retention from starting MRR, expansion, contraction, and churn — the core SaaS retention health metric."
   new: true
   date_added: "2026-06-17"
+  updated: "2026-10-12"
   category: SaaS Retention Metrics
   js: nrr-calculator.js
   keywords: ["NRR calculator", "net revenue retention", "gross revenue retention", "GRR calculator", "SaaS retention metrics", "expansion MRR calculator", "churn MRR calculator"]
@@ -2745,6 +2810,8 @@
     - **Customer success outreach**: proactive expansion signals = more upsells
     - **Annual vs monthly**: annual customers expand more and churn less
 
+    Net revenue retention is one driver of growth; the [ARR growth rate calculator](/tools/arr-growth-rate-calculator/) shows the total year-over-year result.
+
     ## Frequently asked questions
 
     **What does this calculator do?**
@@ -2757,6 +2824,7 @@
   short: "Convert MRR to Annual Recurring Revenue, calculate YoY growth against last year's ARR, and project ARR 12 and 24 months out at a given monthly growth rate."
   new: true
   date_added: "2026-06-17"
+  updated: "2026-10-12"
   category: SaaS Growth Metrics
   js: arr-calculator.js
   keywords: ["ARR calculator", "annual recurring revenue calculator", "MRR to ARR", "ARR growth calculator", "SaaS ARR", "ARR projection calculator"]
@@ -2827,6 +2895,8 @@
     At $1M ARR growing 8%/month:
     - 12 months: $1M × (1.08)^12 = **$2.52M**
     - 24 months: $1M × (1.08)^24 = **$6.34M**
+
+    Once you know your ARR, the [ARR growth rate calculator](/tools/arr-growth-rate-calculator/) turns two readings into a year-over-year growth rate and a time to target.
 
     ## Frequently asked questions
 
@@ -3240,6 +3310,7 @@
   short: "Calculate working capital, current ratio, and quick ratio from your balance sheet — the core liquidity metrics for measuring a business's short-term financial health."
   new: true
   date_added: "2026-06-17"
+  updated: "2026-10-12"
   category: "Cash Flow"
   js: working-capital-calculator.js
   keywords: ["working capital calculator", "current ratio calculator", "quick ratio calculator", "working capital formula", "liquidity ratio calculator"]
@@ -3304,6 +3375,8 @@
     Working capital is the static balance; the [Cash Conversion Cycle](/tools/cash-conversion-cycle-calculator/)
     is the dynamic flow. A business might have positive working capital but a terrible CCC
     if receivables take 90+ days to collect. Track both metrics together.
+
+    Working capital in ratio form is the [current ratio](/tools/current-ratio-calculator/), which also adds the quick and cash ratios.
 
     ## Frequently asked questions
 
@@ -3589,6 +3662,7 @@
   short: "Calculate sales velocity — the revenue your pipeline generates per day — from opportunities, win rate, ACV, and sales cycle length."
   new: true
   date_added: "2026-06-17"
+  updated: "2026-10-12"
   category: Marketing
   js: sales-velocity-calculator.js
   keywords: ["sales velocity calculator", "sales velocity formula", "pipeline velocity", "sales velocity metric", "revenue per day calculator"]
@@ -3646,6 +3720,8 @@
 
     **Decent velocity with long cycle**: Shortening the sales cycle has outsized
     impact because it appears in the denominator.
+
+    To work backwards from a revenue target to the deals and leads you need, use the [sales quota calculator](/tools/sales-quota-calculator/).
 
     ## Frequently asked questions
 
@@ -4197,6 +4273,7 @@
   short: "Calculate Total Addressable Market (TAM), Serviceable Addressable Market (SAM), and Serviceable Obtainable Market (SOM) for investor presentations and market sizing."
   new: true
   date_added: "2026-06-17"
+  updated: "2026-10-12"
   category: Valuation
   js: tam-sam-som-calculator.js
   keywords: ["tam sam som calculator", "total addressable market calculator", "market size calculator", "tam calculator", "serviceable addressable market calculator"]
@@ -4210,6 +4287,8 @@
     - name: "Enter target market share %"
       text: "What share of the SAM can you realistically capture in 5–7 years? For early-stage companies, 2–5% of SAM is credible. Top-3 players in mature markets hold 20–40% SAM share. Be conservative — investors scrutinize optimistic market share projections."
   body: |
+    TAM is the number of target customers times their average annual spend, SAM is the share of TAM you can actually serve, and SOM is the share of SAM you can realistically win: 50,000 companies spending $6,000 a year is a $300M TAM. Enter your own figures below to size all three.
+
     TAM, SAM, and SOM define your market opportunity at three levels of specificity.
     Every investor deck needs these numbers, and how you define them signals whether
     you understand your market.
@@ -4260,7 +4339,20 @@
     **Unrealistic SOM**: "We'll capture 10% of the market in year 3." Without
     showing the GTM math (headcount, channels, CAC), this is unbelievable.
 
+    ## Worked example
+
+    50,000 target companies at $6,000 a year each: TAM = **$300,000,000**. You can serve 30% of them with your product and reach: SAM = **$90,000,000**. A 2% share of SAM is a SOM of **$1,800,000** a year. The calculator rates a $300M TAM as a medium market, fundable if SOM reaches $10M+.
+
     ## Frequently asked questions
+
+    **How do you calculate TAM, SAM and SOM?**
+    TAM is customers times annual spend. SAM is TAM multiplied by the percentage you can serve. SOM is SAM multiplied by the share you expect to capture.
+
+    **What is a realistic SOM?**
+    For an early-stage company, 2 to 5% of SAM over five to seven years is credible. Show the go-to-market math behind it.
+
+    **How big should TAM be for investors?**
+    The table above shows typical minimums: about $500M for seed, $1B+ for Series A and $5B+ for later rounds.
 
     **What does this calculator do?**
     Calculate TAM (total customers × spend), SAM (filtered by your reach), and SOM
@@ -4419,6 +4511,7 @@
   nav_title: "Employee Cost"
   short: "Calculate the true total cost of an employee — salary plus payroll taxes, benefits, and bonus — and see the cost multiplier over base pay."
   date_added: "2026-06-17"
+  updated: "2026-10-12"
   category: HR & People
   js: employee-cost-calculator.js
   keywords: ["employee cost calculator", "true cost of an employee", "employer payroll taxes calculator", "cost multiplier salary", "total compensation cost"]
@@ -4475,6 +4568,8 @@
     more expensive than an employee — the contractor is paying their own 15.3% SE
     tax and benefits. The true cost comparison requires adding the employee burden
     to the salary before comparing.
+
+    Attrition adds to the cost of an employee; the [employee turnover calculator](/tools/employee-turnover-calculator/) shows your turnover rate and what it costs per year.
 
     ## Frequently asked questions
 
@@ -4967,6 +5062,7 @@
   nav_title: "Turnover Cost"
   short: "Estimate the true cost of employee turnover — separation, vacancy, recruitment, and onboarding — as a total and as a percentage of payroll."
   date_added: "2026-06-18"
+  updated: "2026-10-12"
   new: true
   category: HR & People
   js: employee-turnover-cost-calculator.js
@@ -5006,6 +5102,8 @@
     High-impact levers: structured onboarding (cuts ramp time by 50%), manager effectiveness
     training (the #1 driver of voluntary attrition), competitive compensation benchmarking,
     and stay interviews rather than exit interviews.
+
+    To get the turnover rate itself from headcount and separations, use the [employee turnover calculator](/tools/employee-turnover-calculator/).
 
 - slug: irr-calculator
   title: "IRR Calculator — Internal Rate of Return"
@@ -5576,6 +5674,7 @@
   nav_title: Sales Funnel
   short: Model your full sales funnel — from leads to closed revenue — and find your weakest conversion stage.
   date_added: "2026-06-18"
+  updated: "2026-10-12"
   new: true
   category: Marketing
   js: sales-funnel-calculator.js
@@ -5624,6 +5723,8 @@
     $$\text{Monthly Revenue} = \text{New Customers} \times \text{ACV}$$
 
     Model multiple scenarios: optimistic (improve one stage by 10%), base, and pessimistic (leads drop 20%) to stress-test your pipeline.
+
+    Once you know your stage conversion rates, the [sales quota calculator](/tools/sales-quota-calculator/) shows how many deals and leads an annual target requires.
 
     ### Intent Pages
 
@@ -5747,6 +5848,7 @@
   nav_title: Current Ratio
   short: Calculate current ratio, quick ratio, and cash ratio to measure your business's short-term liquidity.
   date_added: "2026-06-18"
+  updated: "2026-10-12"
   new: true
   category: Finance
   js: current-ratio-calculator.js
@@ -5766,6 +5868,8 @@
     - name: "Review all three ratios"
       text: "Compare your current, quick, and cash ratios against industry benchmarks to assess liquidity strength."
   body: |
+    The current ratio is current assets divided by current liabilities: $500,000 of current assets against $250,000 of current liabilities gives a ratio of 2.0, meaning the business holds $2 of short-term assets for every $1 it owes within a year. Enter your balance sheet figures below for the current, quick and cash ratios.
+
     ## What Is the Current Ratio?
 
     The current ratio measures a company's ability to pay short-term obligations using its short-term assets.
@@ -5790,6 +5894,33 @@
 
     - [What Is the Current Ratio?](/tools/current-ratio-calculator/#what-is-the-current-ratio)
     - [Current Ratio vs Quick Ratio: Key Differences](/tools/current-ratio-calculator/#current-ratio-vs-quick-ratio)
+
+    ## Worked example
+
+    Current assets of $500,000, current liabilities of $250,000, inventory of $150,000 and cash of $100,000 give:
+
+    - Current ratio: 500,000 / 250,000 = **2.00** (rated Strong)
+    - Quick ratio: (500,000 - 150,000) / 250,000 = **1.40**
+    - Cash ratio: 100,000 / 250,000 = **0.40**
+    - Net working capital: **$250,000**
+
+    ## Frequently asked questions
+
+    **How do you calculate the current ratio?**
+    Divide total current assets by total current liabilities. Both come straight from the balance sheet.
+
+    **What is a good current ratio?**
+    This calculator rates 2.0 or more as Strong, 1.5 to 2.0 as Healthy, 1.0 to 1.5 as Adequate, and anything below 1.0 as a liquidity risk. The right level varies by industry.
+
+    **Can a current ratio be too high?**
+    Yes. A very high ratio can mean idle cash, slow-collecting receivables or excess inventory rather than strong liquidity.
+
+    **What does a current ratio below 1 mean?**
+    Short-term liabilities exceed short-term assets, so the business cannot cover everything due within a year from current assets alone. It is a warning sign, not automatic insolvency.
+
+    **What is the difference between the current ratio and the quick ratio?**
+    The quick ratio removes inventory from current assets, since stock can take weeks or months to turn into cash.
+
 
 - slug: markup-calculator
   title: Markup Calculator
@@ -5913,6 +6044,7 @@
   nav_title: Commission
   short: Calculate sales commission earned, total compensation, and OTE attainment from revenue and commission rate.
   date_added: "2026-06-18"
+  updated: "2026-10-12"
   new: true
   category: "HR & People"
   js: commission-calculator.js
@@ -5956,6 +6088,8 @@
     ### Accelerators
 
     Most plans include accelerators above 100% OTE — the commission rate increases for revenue above quota. This rewards overperformance and retains top reps.
+
+    Commission plans start from a quota; the [sales quota calculator](/tools/sales-quota-calculator/) works out the deals and pipeline behind one.
 
     ### Intent Pages
 
@@ -6021,6 +6155,7 @@
   nav_title: Debt-to-Equity
   short: Calculate debt-to-equity ratio, equity ratio, and financial leverage from your balance sheet figures.
   date_added: "2026-06-18"
+  updated: "2026-10-12"
   new: true
   category: Finance
   js: debt-to-equity-calculator.js
@@ -6064,6 +6199,8 @@
     $$\text{ROE} = \text{ROA} \times \text{Financial Leverage}$$
 
     A business with 10% ROA and 3× leverage has 30% ROE. But the same leverage amplifies losses when ROA is negative.
+
+    Leverage is only half the picture; the [current ratio calculator](/tools/current-ratio-calculator/) measures whether short-term assets cover short-term debts.
 
     ### Intent Pages
 
@@ -6138,6 +6275,7 @@
   nav_title: "% Change"
   short: Calculate percentage change, absolute change, and CAGR between any two values.
   date_added: "2026-06-18"
+  updated: "2026-10-12"
   new: true
   category: "Pricing & Margins"
   js: percentage-change-calculator.js
@@ -6157,6 +6295,8 @@
     - name: "Read the multiplier"
       text: "The multiplier shows how many times the new value is relative to the original. A 2.5× multiplier = 150% increase."
   body: |
+    To calculate percentage change, subtract the old value from the new value, divide by the old value and multiply by 100: going from 80 to 100 is a 25% increase. Enter both values below, and add a number of years to get the compound annual growth rate too.
+
     ## What Is Percentage Change?
 
     Percentage change measures how much a value has increased or decreased relative to its original:
@@ -6183,6 +6323,28 @@
 
     - [Percentage Change Formula and Examples](/tools/percentage-change-calculator/#percentage-change-formula)
     - [What Is CAGR (Compound Annual Growth Rate)?](/tools/percentage-change-calculator/#what-is-cagr)
+
+    ## Worked example
+
+    Revenue goes from 80 to 100: (100 - 80) / 80 x 100 = **+25%**, an absolute change of 20. Going back from 100 to 80 is **-20%**, not -25%, because the base is now 100. Over 3 years, a rise from 100 to 150 is a 50% total change but a **14.47% CAGR**. To apply a known change, 200 plus 15% is **230**.
+
+    ## Frequently asked questions
+
+    **How do you calculate percentage change?**
+    Subtract the old value from the new value, divide the result by the absolute value of the old value, and multiply by 100. A positive result is an increase and a negative one a decrease.
+
+    **Why is a 25% increase not cancelled by a 25% decrease?**
+    Each percentage is measured from a different base. 80 up 25% is 100, but 100 down 25% is 75; it takes a 20% decrease to get back to 80.
+
+    **What is the difference between percentage change and percentage points?**
+    Percentage points are the plain gap between two percentages: a conversion rate moving from 4% to 5% is up 1 percentage point, which is a 25% percentage change.
+
+    **How do you find the new value after a percentage increase?**
+    Multiply the old value by 1 plus the change as a decimal: 200 x 1.15 = 230 for a 15% increase.
+
+    **Can you calculate percentage change from zero?**
+    No. Dividing by a starting value of zero is undefined, so the calculator returns no result; use the absolute change instead.
+
 
 - slug: cogs-calculator
   title: COGS Calculator
@@ -6313,6 +6475,7 @@
   nav_title: Financial Ratios
   short: Calculate six key financial ratios in one dashboard — profitability, liquidity, leverage, and efficiency from a single balance sheet and income statement.
   date_added: "2026-06-18"
+  updated: "2026-10-12"
   new: true
   category: Finance
   js: financial-ratios-calculator.js
@@ -6366,6 +6529,8 @@
     ### Using Ratios Together
 
     No single ratio tells the whole story. High ROE with very high D/E may mean leverage is inflating returns. Strong margins with a weak current ratio may indicate cash flow problems. Use all six together for a balanced assessment.
+
+    For a deeper look at liquidity, the [current ratio calculator](/tools/current-ratio-calculator/) adds the quick ratio, cash ratio and net working capital.
 
     ### Intent Pages
 
@@ -6488,6 +6653,7 @@
   nav_title: Revenue Growth Rate
   short: Calculate year-over-year revenue growth rate, multi-year CAGR, and Rule of 40 score for SaaS and business performance tracking.
   date_added: "2026-06-18"
+  updated: "2026-10-12"
   new: true
   category: Finance
   js: revenue-growth-rate-calculator.js
@@ -6535,6 +6701,8 @@
     $$\text{Rule of 40} = \text{Growth Rate} + \text{Net Margin}$$
 
     A score ≥ 40 indicates a balanced, sustainable SaaS business. A company growing at 60% can operate at −20% margin and still score 40. A slow-grower at 10% needs a 30%+ margin to pass.
+
+    To compare any two values rather than revenue, use the [percentage change calculator](/tools/percentage-change-calculator/), which also returns the CAGR.
 
     ### Intent Pages
 
@@ -6775,6 +6943,7 @@
   nav_title: Employee Turnover
   short: Calculate annual employee turnover rate, retention rate, and total cost of turnover including replacement costs.
   date_added: "2026-06-18"
+  updated: "2026-10-12"
   new: true
   category: HR & People
   js: employee-turnover-calculator.js
@@ -6792,6 +6961,8 @@
     - name: "Add salary and replacement cost for dollar impact"
       text: "Enter average salary and replacement cost percentage to calculate the total cost of turnover. SHRM estimates 33–50% for entry-level roles, up to 200% for senior positions."
   body: |
+    Employee turnover rate is the number of employees who left during a period divided by the average headcount, times 100: 18 departures from an average headcount of 100 is an 18% annual turnover rate. Enter separations and start and end headcount below; add salary to see what turnover costs.
+
     ## Employee Turnover Rate Formula
 
     $$\text{Turnover Rate} = \frac{\text{Employees Separated}}{\text{Average Headcount}} \times 100$$
@@ -6826,6 +6997,28 @@
 
     - [How to Calculate Employee Turnover Rate](/tools/employee-turnover-calculator/#how-to-calculate-employee-turnover-rate)
     - [True Cost of Employee Turnover](/tools/employee-turnover-calculator/#true-cost-of-employee-turnover)
+
+    ## Worked example
+
+    A company starts the year with 110 employees, ends it with 90, and 18 people leave. Average headcount is (110 + 90) / 2 = 100, so turnover is 18 / 100 = **18%** (rated High, above average) and retention is **82%**. With an average salary of $60,000 and a 50% replacement cost, each departure costs $30,000, so turnover costs **$540,000** a year.
+
+    ## Frequently asked questions
+
+    **How do you calculate employee turnover rate?**
+    Divide the number of employees who left in the period by the average headcount (start plus end, divided by two) and multiply by 100.
+
+    **What is a good employee turnover rate?**
+    This calculator treats 10% or less as low, 10 to 15% as average and above 25% as critical. Benchmarks differ widely by industry: tech sits around 10 to 15%, retail 25 to 60%.
+
+    **Does turnover include layoffs and retirements?**
+    It can include any separation. Many teams track voluntary turnover (resignations) separately, because it is the part you can influence.
+
+    **How do you annualize monthly turnover?**
+    Add up the separations over twelve months and divide by the average headcount for the year; multiplying a single month's rate by 12 is only a rough shortcut.
+
+    **What does turnover cost?**
+    Replacement cost is commonly estimated at 33% to 200% of annual salary depending on seniority, covering recruiting, vacancy, onboarding and ramp-up.
+
 
 - slug: budget-variance-calculator
   title: Budget Variance Calculator
