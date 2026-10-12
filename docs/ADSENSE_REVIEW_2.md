@@ -34,8 +34,21 @@ page. Eight pairs overlap in intent and compete with each other:
 | employee-cost-calculator | employee-turnover-cost-calculator |
 | break-even-calculator | break-even-revenue-calculator |
 
-Not merged here: each merge needs a `_redirects` rule and a decision on which
-page keeps the ranking (check `make gsc` impressions first).
+Search Console, 90 days to 2026-10-09: **47 826 impressions, 44 clicks** (CTR 0.09 %)
+over 346 pages. The eight pairs total ~0 clicks, so merging costs no traffic —
+but it gains little either: only `gross-profit-margin` → `gross-margin` and
+`break-even-revenue` → `break-even` are the same calculation; the other six
+pairs compute different things (CAC vs plain payback, FCF vs operating cash
+flow, MRR vs ARR conversion…). Merges would take 131 → 129 URLs: not worth a
+redirect + test churn. Not done.
+
+The real signal is the CTR: Google shows the site, nobody clicks. Top
+impressions: price-per-unit (2 760), IRR (2 247), payback period (1 667), WACC
+(1 573) — all 0 clicks. Titles/meta descriptions on those pages are the
+cheapest lever for real visitors.
+
+(`make gsc` URL inspection timed out twice on Google's side; this uses the
+Performance API instead.)
 
 ## Plan, in order of expected effect
 
