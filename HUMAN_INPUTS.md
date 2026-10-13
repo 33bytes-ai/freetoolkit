@@ -294,6 +294,16 @@ que Cloudflare Web Analytics compte.
    **Visits** → bouton **Path**. Compte les chemins `/go/…`.
 3. Baremetrics : impact.com → rapports → clics sur `?via=guillaume`.
 
+**Automatique :** deux timers systemd utilisateur (`foundercalc-control-1.timer`
+le 2026-11-03 à 09:00, `foundercalc-control-2.timer` le 2026-11-24 à 09:00,
+`Persistent=true`) lancent `scripts/scheduled_control.sh` (copie installée dans
+`~/.local/share/foundercalc/`). Il pilote le navigateur Playwright connecté en
+lecture seule et écrit `reports/control-<n>-<date>.md` avec les chiffres et le
+verdict PASS/FAIL ; il ne modifie ni ne merge rien. Il faut que WSL tourne ce
+jour-là (sinon il se lance au prochain démarrage). Si Bing ou Cloudflare
+demande une connexion, le rapport le dit au lieu de conclure. Le baromètre
+Baremetrics (impact.com) reste à lire par toi.
+
 Si l'étape 1 réussit, l'agent restaure les guides les plus cités par lots
 (voir `backlog.json`).
 
