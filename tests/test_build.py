@@ -1388,6 +1388,11 @@ def test_pages_have_robots_max_snippet():
     assert "max-snippet" in html, "Page missing robots max-snippet meta"
 
 
+# Guides deliberately served as their own URL, with a real 200, because AI search
+# cites them by that URL (see test_most_cited_guide_is_a_standalone_url_not_a_redirect).
+STANDALONE_GUIDES = {("npv-calculator", "how-to-choose-discount-rate")}
+
+
 def test_tools_yaml_guide_links_all_resolve():
     """Every /tools/<parent>/#<section> link in a tool body must name a real
     merged section, and no body may still link to a retired page URL.
@@ -1404,7 +1409,7 @@ def test_tools_yaml_guide_links_all_resolve():
     missing = sorted(anchored - existing)
     assert not missing, f"tools.yaml links to guide sections that don't exist: {missing}"
 
-    stale = sorted(set(re.findall(r"\]\(/tools/([a-z0-9-]+)/([a-z0-9-]+)/\)", tools_text)))
+    stale = sorted(set(re.findall(r"\]\(/tools/([a-z0-9-]+)/([a-z0-9-]+)/\)", tools_text)) - STANDALONE_GUIDES)
     assert not stale, f"tools.yaml still links to retired page URLs: {stale}"
 
 
@@ -2493,7 +2498,10 @@ def test_no_standalone_intent_or_country_pages_are_built():
     for slug in COUNTRY_PAGE_SLUGS:
         assert not (DIST / "tools" / "stripe-fee-calculator" / slug).exists()
     # Only /tools/index.html and /tools/<slug>/index.html should exist now.
-    nested = list(DIST.glob("tools/*/*/index.html"))
+    nested = [
+        p for p in DIST.glob("tools/*/*/index.html")
+        if (p.parent.parent.name, p.parent.name) not in STANDALONE_GUIDES
+    ]
     assert not nested, f"unexpected nested tool pages: {nested[:5]}"
 
 
@@ -2828,9 +2836,8 @@ def test_outbound_partner_links_go_through_the_counted_redirect():
     assert "https://www.causal.app" not in html.split('class="affiliate-section"')[0], \
         "no direct partner href may remain above the Recommended tools block"
 
-    section = html[html.index('id="how-to-choose-discount-rate"'):]
-    assert 'class="deep-dive-cta"' in section[: section.index("</article>")], \
-        "the most-cited guide section must carry its own next-step link"
+    assert 'class="deep-dive-cta"' in html[html.index('class="deep-dive'):], \
+        "guide sections must carry their own next-step link"
 
     affiliates = yaml.safe_load((ROOT / "content" / "affiliates.yaml").read_text())
     for slug, entries in affiliates.items():
@@ -2844,3 +2851,25 @@ def test_outbound_partner_links_go_through_the_counted_redirect():
 
     assert "/go/" not in (DIST / "sitemap.xml").read_text()
     assert "X-Robots-Tag: noindex" in (DIST / "_headers").read_text().split("/go/*")[1].split("\n\n")[0]
+
+
+def test_most_cited_guide_is_a_standalone_url_not_a_redirect():
+    """Bing's AI engine cited /tools/npv-calculator/how-to-choose-discount-rate/
+    ~720 times in 90 days; the 2026-08-22 consolidation 301'd it into a section
+    of the parent page, and citations collapsed (169/day on 2026-09-21 to ~10/day)
+    once Bing recrawled it as a redirect. It must stay a 200 page of its own."""
+    run_build()
+    url = "/tools/npv-calculator/how-to-choose-discount-rate/"
+    page = DIST / url.strip("/") / "index.html"
+    assert page.exists()
+    html = page.read_text()
+    assert "<h1" in html and "discount rate" in html.lower()
+    assert 'noindex' not in html
+    assert url not in (DIST / "_redirects").read_text()
+    assert url in (DIST / "sitemap.xml").read_text()
+    assert 'id="how-to-choose-discount-rate"' not in (DIST / "tools" / "npv-calculator" / "index.html").read_text(), \
+        "the same text must not also sit on the parent page (duplicate content)"
+    assert f'href="{url}"' in (DIST / "tools" / "npv-calculator" / "index.html").read_text()
+    for go in re.findall(r'href="(/go/[^"]+)"', html):
+        assert (DIST / go.strip("/") / "index.html").exists(), f"dead partner link {go}"
+    assert _visible_words(html) >= 400

@@ -426,5 +426,32 @@
     "risk": 1,
     "status": "pending",
     "human_input_needed": true
+  },
+  {
+    "title": "Contrôle 2026-11-03 : citations Bing du guide NPV restauré (≥ 40/jour en moyenne 7 j, sinon maintenance)",
+    "description": "Lire Bing Webmaster → AI Performance → Pages (Playwright, profil connecté) pour /tools/npv-calculator/how-to-choose-discount-rate/. Moyenne des 7 derniers jours ≥ 40 : passer au lot suivant. Sinon : mettre le site en maintenance (HUMAN_INPUTS § F), plus de contenu ni d'AdSense. Remplace la règle du 2026-11-10 qui mesurait un signal détruit par la redirection.",
+    "impact": 8,
+    "effort": 1,
+    "risk": 1,
+    "status": "pending",
+    "human_input_needed": false
+  },
+  {
+    "title": "Si les citations reviennent : restaurer par lots les guides les plus cités (1 PR par lot de 5)",
+    "description": "Classer les URL de Bing AI Performance → Pages par citations, ne garder que les guides (how-to-…, …-by-industry, A-vs-B) ≥ 400 mots. Même mécanique que le guide NPV : content/pages/<slug>.md avec slug tools/<parent>/<guide>, retrait de intent_pages.yaml et des 3 traductions i18n, STANDALONE_GUIDES dans tests. Un lot, puis attendre 2 semaines de données avant le suivant.",
+    "impact": 7,
+    "effort": 3,
+    "risk": 2,
+    "status": "pending",
+    "human_input_needed": false
+  },
+  {
+    "title": "Contrôle 2026-11-24 : le trafic des guides restaurés clique-t-il ? (≥ 5 visites /go/* ou 1 clic Baremetrics, sinon maintenance)",
+    "description": "Cloudflare Web Analytics → Visits → Path (/go/…) et impact.com pour les clics ?via=guillaume. Seulement si le contrôle du 2026-11-03 est passé.",
+    "impact": 7,
+    "effort": 1,
+    "risk": 1,
+    "status": "pending",
+    "human_input_needed": true
   }
 ]

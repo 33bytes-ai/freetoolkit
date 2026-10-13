@@ -3,6 +3,8 @@
 | Score | Titre | Impact | Effort | Risk | Statut |
 |---|---|---|---|---|---|
 | 72.00 | CI : setup-node échouait avant le premier test | 8 | 1 | 1 | done |
+| 72.00 | Contrôle 2026-11-03 : citations Bing du guide NPV restauré (≥ 40/jour en moyenne 7 j, sinon maintenance) | 8 | 1 | 1 | pending |
+| 63.00 | Contrôle 2026-11-24 : le trafic des guides restaurés clique-t-il ? (≥ 5 visites /go/* ou 1 clic Baremetrics, sinon maintenance) | 7 | 1 | 1 | pending |
 | 45.00 | Respect du DNT dans tracker.js | 5 | 1 | 1 | done |
 | 45.00 | Validation widget manquant au build — erreur explicite | 5 | 1 | 1 | done |
 | 45.00 | CI : Lighthouse recevait des URLs invalides | 5 | 1 | 1 | done |
@@ -51,3 +53,4 @@
 | 12.60 | Run real Lighthouse CI and fix what it finds | 7 | 5 | 2 | done |
 | 12.00 | Étendre la couverture tests JS à tous les outils (22) | 8 | 6 | 1 | done |
 | 12.00 | Mesurer et documenter le temps de build à l'échelle actuelle | 4 | 3 | 1 | done |
+| 10.50 | Si les citations reviennent : restaurer par lots les guides les plus cités (1 PR par lot de 5) | 7 | 3 | 2 | pending |

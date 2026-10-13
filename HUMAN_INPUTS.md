@@ -264,23 +264,38 @@ ouvert, et il est obligatoire même à 0 € de CA.
 
 ---
 
-## Catégorie F — Contrôle du 2026-11-10 : les citations IA produisent-elles des clics ?
+## Catégorie F — Contrôles datés : les citations IA reviennent-elles, et paient-elles ?
 
-Décidé le 2026-10-13 (council : 1,3k citations Copilot en 90 jours, mais 91 %
-des visites sont « direct » et aucun référent Bing/Copilot). Chaque lien
-partenaire passe maintenant par `/go/<outil>/<partenaire>/`, une page noindex
-que Cloudflare Web Analytics compte. **Règle d'arrêt** : moins de 5 visites sur
-`/go/*` et aucun clic dans le tableau de bord affilié Baremetrics au
-2026-11-10 → le site est mis en maintenance (plus de contenu, plus d'AdSense),
-sans nouvelle revue.
+Décidé le 2026-10-13 (council, 2e tour). Constat : le guide le plus cité par
+Copilot (`/tools/npv-calculator/how-to-choose-discount-rate/`, 720 citations en
+90 jours) avait été redirigé en 301 vers une section de la page NPV le
+2026-08-22. Bing l'a reclassé « redirection, non indexée » au crawl du
+2026-09-23 et les citations sont tombées de 169/jour (2026-09-21) à ~10/jour.
+Ce guide est de nouveau une page à part entière (200) depuis le déploiement de
+la PR de restauration. Chaque lien partenaire passe par `/go/<outil>/<partenaire>/`,
+que Cloudflare Web Analytics compte.
 
-1. Ouvre https://dash.cloudflare.com → Analytics & Logs → Web analytics →
-   foundercalc.dev, période « Last 30 days », onglet **Visits**, bouton **Path**.
-2. Compte les chemins qui commencent par `/go/`. Réussite : tu lis un total
-   (même 0) ; un chemin `/go/npv-calculator/causal/` à 10 visites veut dire
-   que la section guide a été cliquée.
-3. Pour Baremetrics : connecte-toi à son programme d'affiliation (impact.com),
-   rubrique rapports → clics sur le lien `?via=guillaume`.
+**Règle d'arrêt, en deux temps (remplace celle du 2026-11-10) :**
+
+1. **2026-11-03 — retour des citations.** Moyenne des 7 derniers jours des
+   citations de l'URL restaurée **≥ 40/jour**. Sinon : site en maintenance
+   (plus de contenu, plus d'AdSense), sans nouvelle revue.
+2. **2026-11-24 — elles paient-elles ?** Si l'étape 1 est passée : au moins
+   5 visites sur `/go/*` **ou** un clic dans le tableau de bord Baremetrics.
+   Sinon : maintenance.
+
+Étapes pour toi (2 min chacune) :
+
+1. https://www.bing.com/webmasters → foundercalc.dev → **AI Performance** →
+   onglet **Pages** → ligne `…/how-to-choose-discount-rate/`. Réussite : tu lis
+   le nombre de citations et le graphique journalier ; fais la moyenne des
+   7 derniers jours.
+2. https://dash.cloudflare.com → Web analytics → foundercalc.dev → Last 30 days →
+   **Visits** → bouton **Path**. Compte les chemins `/go/…`.
+3. Baremetrics : impact.com → rapports → clics sur `?via=guillaume`.
+
+Si l'étape 1 réussit, l'agent restaure les guides les plus cités par lots
+(voir `backlog.json`).
 
 ---
 
