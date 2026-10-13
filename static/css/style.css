@@ -1744,6 +1744,18 @@ body[data-ads="on"] {
   margin-top: 1.5rem;
   font-size: 0.85rem;
 }
+.deep-dive-cta {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+/* .tool-body a (green prose links) outranks .affiliate-cta, so the button text would vanish. */
+.deep-dive-cta .affiliate-cta {
+  color: var(--accent-contrast);
+  text-decoration: none;
+}
 
 /* Wide rate tables must scroll in their own box rather than widening the page. */
 .table-scroll {

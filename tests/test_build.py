@@ -2815,3 +2815,32 @@ def test_formulas_render_without_latex_escapes():
     for page in (DIST / "tools").glob("*/index.html"):
         for formula in re.findall(r'<div class="ftk-formula">([^<]*)</div>', page.read_text()):
             assert "\\" not in formula, f"{page.parent.name}: {formula}"
+
+
+def test_outbound_partner_links_go_through_the_counted_redirect():
+    """Cloudflare Web Analytics cannot see a click that leaves the site, so
+    every partner link goes through a noindex /go/ page that it can count."""
+    import yaml
+
+    run_build()
+    html = (DIST / "tools" / "npv-calculator" / "index.html").read_text()
+    assert 'href="/go/npv-calculator/causal/"' in html
+    assert "https://www.causal.app" not in html.split('class="affiliate-section"')[0], \
+        "no direct partner href may remain above the Recommended tools block"
+
+    section = html[html.index('id="how-to-choose-discount-rate"'):]
+    assert 'class="deep-dive-cta"' in section[: section.index("</article>")], \
+        "the most-cited guide section must carry its own next-step link"
+
+    affiliates = yaml.safe_load((ROOT / "content" / "affiliates.yaml").read_text())
+    for slug, entries in affiliates.items():
+        for aff in entries:
+            name = re.sub(r"[^a-z0-9]+", "-", aff["name"].lower()).strip("-")
+            page = DIST / "go" / slug / name / "index.html"
+            assert page.exists(), f"missing redirect page for {slug}/{aff['name']}"
+            body = page.read_text()
+            assert 'content="noindex,nofollow"' in body
+            assert f'content="1;url={aff["url"]}"'.replace("&", "&amp;") in body
+
+    assert "/go/" not in (DIST / "sitemap.xml").read_text()
+    assert "X-Robots-Tag: noindex" in (DIST / "_headers").read_text().split("/go/*")[1].split("\n\n")[0]

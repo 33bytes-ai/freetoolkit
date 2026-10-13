@@ -15,6 +15,7 @@ import os
 import re
 import secrets
 import shutil
+from html import escape
 from pathlib import Path
 from urllib.parse import quote, urlparse
 
@@ -281,10 +282,34 @@ def load_tools() -> list[dict]:
 
 def load_affiliates() -> dict[str, list[dict]]:
     affiliates = load_yaml(CONTENT_DIR / "affiliates.yaml") or {}
-    for entries in affiliates.values():
+    for tool_slug, entries in affiliates.items():
         for aff in entries:
             aff["domain"] = urlparse(aff["url"]).netloc.removeprefix("www.")
+            aff["go"] = f"/go/{tool_slug}/{re.sub(r'[^a-z0-9]+', '-', aff['name'].lower()).strip('-')}/"
     return affiliates
+
+
+def write_go_pages(affiliates: dict[str, list[dict]]) -> None:
+    """One noindex page per outbound partner link.
+
+    Cloudflare Web Analytics only sees pages that load its beacon, so a click
+    that leaves the site directly is invisible. Routing it through /go/ makes
+    every click a counted pageview, with its referrer, and the 1 s delay lets
+    the beacon fire before the redirect.
+    """
+    for entries in affiliates.values():
+        for aff in entries:
+            name, url = escape(aff["name"]), escape(aff["url"], quote=True)
+            out = DIST_DIR / aff["go"].strip("/") / "index.html"
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(
+                '<!doctype html><html lang="en"><head><meta charset="utf-8">'
+                '<meta name="robots" content="noindex,nofollow">'
+                f'<meta http-equiv="refresh" content="1;url={url}">'
+                f"<title>Redirecting to {name}</title></head>"
+                f'<body><p>Taking you to {name}… <a href="{url}" rel="sponsored noopener">Continue</a></p></body></html>',
+                encoding="utf-8",
+            )
 
 
 def load_intent_pages() -> list[dict]:
@@ -1070,6 +1095,8 @@ def build() -> Path:
             **common,
         )
 
+    write_go_pages(affiliates)
+
     for page in pages:
         render(
             env,
@@ -1292,6 +1319,9 @@ def write_headers_file() -> None:
         "",
         # Embeds are framed by other sites: drop the anti-framing headers /*
         # sets, and re-send the CSP with only frame-ancestors opened.
+        "/go/*",
+        "  X-Robots-Tag: noindex",
+        "",
         "/embed/*",
         "  ! X-Frame-Options",
         "  ! Content-Security-Policy",

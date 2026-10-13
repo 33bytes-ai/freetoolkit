@@ -58,6 +58,13 @@ The fix was consolidation, and it is a constraint to keep, not a one-off:
 - A page-level `noindex: true` in a content page's front matter keeps it out
   of `robots`-visible indexing *and* the sitemaps (used for `/legal-notice/`).
 
+- **Partner links are counted, not direct.** Every `affiliates.yaml` entry is
+  rendered as `/go/<tool>/<partner>/` (a noindex page with a 1 s meta refresh,
+  `write_go_pages()`), because Cloudflare Web Analytics only counts pages that
+  load its beacon and a click that leaves the site is invisible. Never put a
+  partner URL straight in a template; the guide sections carry a "Next step"
+  link for the same reason.
+
 Two tests enforce the floor — `test_tool_pages_meet_content_depth_budget`
 (every tool page ≥ 600 visible words) and `test_no_indexable_page_is_thin`
 (nothing in `sitemap.xml` under 300). If you add a page, give it substance or
