@@ -264,6 +264,26 @@ ouvert, et il est obligatoire même à 0 € de CA.
 
 ---
 
+## Catégorie F — Contrôle du 2026-11-10 : les citations IA produisent-elles des clics ?
+
+Décidé le 2026-10-13 (council : 1,3k citations Copilot en 90 jours, mais 91 %
+des visites sont « direct » et aucun référent Bing/Copilot). Chaque lien
+partenaire passe maintenant par `/go/<outil>/<partenaire>/`, une page noindex
+que Cloudflare Web Analytics compte. **Règle d'arrêt** : moins de 5 visites sur
+`/go/*` et aucun clic dans le tableau de bord affilié Baremetrics au
+2026-11-10 → le site est mis en maintenance (plus de contenu, plus d'AdSense),
+sans nouvelle revue.
+
+1. Ouvre https://dash.cloudflare.com → Analytics & Logs → Web analytics →
+   foundercalc.dev, période « Last 30 days », onglet **Visits**, bouton **Path**.
+2. Compte les chemins qui commencent par `/go/`. Réussite : tu lis un total
+   (même 0) ; un chemin `/go/npv-calculator/causal/` à 10 visites veut dire
+   que la section guide a été cliquée.
+3. Pour Baremetrics : connecte-toi à son programme d'affiliation (impact.com),
+   rubrique rapports → clics sur le lien `?via=guillaume`.
+
+---
+
 ## Ce qui tourne déjà automatiquement (rien à faire)
 
 - Le site est servi par Cloudflare Pages, aucun serveur ni process backend

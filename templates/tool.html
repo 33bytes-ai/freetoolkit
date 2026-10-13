@@ -213,6 +213,9 @@
     {% else %}
       <div data-i18n-region="dive-body:{{ dive.slug }}">{{ dive.body_html | safe }}</div>
     {% endif %}
+    {% if affiliate_links %}{% set pick = affiliate_links[0] %}
+    <p class="deep-dive-cta">Next step: <a href="{{ pick.go }}" class="affiliate-cta" target="_blank" rel="noopener noreferrer{% if pick.affiliate %} sponsored{% endif %}">{{ pick.cta }}</a>{% if pick.affiliate %} <span class="affiliate-disclosure">Affiliate link</span>{% endif %}</p>
+    {% endif %}
     <p class="deep-dive-back"><a href="#calculator" class="jump-to-calc">↑ Back to calculator</a></p>
   </article>
   {% endfor %}
@@ -232,7 +235,7 @@
           {% if aff.affiliate %}<span class="affiliate-disclosure">Affiliate link</span>{% endif %}
         </div>
         <p>{{ aff.description }}</p>
-        <a href="{{ aff.url }}" class="affiliate-cta" target="_blank" rel="noopener noreferrer{% if aff.affiliate %} sponsored{% endif %}">{{ aff.cta }}</a>
+        <a href="{{ aff.go }}" class="affiliate-cta" target="_blank" rel="noopener noreferrer{% if aff.affiliate %} sponsored{% endif %}">{{ aff.cta }}</a>
       </div>
       {% endfor %}
     </div>
