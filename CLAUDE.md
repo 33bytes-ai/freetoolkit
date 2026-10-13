@@ -65,6 +65,14 @@ The fix was consolidation, and it is a constraint to keep, not a one-off:
   partner URL straight in a template; the guide sections carry a "Next step"
   link for the same reason.
 
+- **Exception: guides AI search cites stay standalone.** AI engines cite by URL,
+  and 301-ing `/tools/npv-calculator/how-to-choose-discount-rate/` into a section
+  took Bing citations from 169/day to ~10/day once it recrawled the redirect.
+  Such a guide lives in `content/pages/` with a slug that includes its parent path,
+  is removed from `intent_pages.yaml` (no duplicate text), and is listed in
+  `STANDALONE_GUIDES` in `tests/test_build.py`. Restore more of them only when the
+  NPV one has shown citations coming back (`backlog.json`).
+
 Two tests enforce the floor — `test_tool_pages_meet_content_depth_budget`
 (every tool page ≥ 600 visible words) and `test_no_indexable_page_is_thin`
 (nothing in `sitemap.xml` under 300). If you add a page, give it substance or
