@@ -1175,16 +1175,16 @@ how-to-improve-fcf-margin:
     | Stripe | 2,9 % | 0,30 $ | SaaS, profils techniques, API |
     | PayPal Standard | 2,99 % | 0,49 $ | Confiance des consommateurs, places de marché |
     | PayPal Checkout | 3,49 % | 0,49 $ | Conversion via le bouton PayPal |
-    | Shopify Basic | 2,0 % | 0,25 $ | E-commerce, forfait à 39 $/mois |
-    | Shopify | 1,7 % | 0,25 $ | E-commerce, forfait à 105 $/mois |
-    | Shopify Advanced | 1,5 % | 0,25 $ | E-commerce à fort volume |
+    | Shopify Basic | 2,9 % | 0,30 $ | E-commerce, forfait à 39 $/mois |
+    | Shopify | 2,7 % | 0,30 $ | E-commerce, forfait à 105 $/mois |
+    | Shopify Advanced | 2,5 % | 0,30 $ | E-commerce à fort volume |
 
     ## Les seuils de rentabilité
 
-    **Shopify Basic contre Stripe** : Shopify Basic (forfait à 39 $/mois) coûte
-    autant que Stripe autour de **3 900 $ de volume mensuel** (l'abonnement de 39 $
-    compense une économie d'environ 1 %). Au-delà, Shopify Basic est moins cher ;
-    en dessous, Stripe l'emporte.
+    **Shopify Basic contre Stripe** : le taux de carte est identique (2,9 % + 0,30 $),
+    donc Stripe, sans abonnement, coûte moins cher sur le seul traitement quel que
+    soit le volume. Shopify Basic ne vaut le coup que si vous vendez via Shopify, où
+    il évite les frais de passerelle tierce de 2 %.
 
     **Shopify contre Stripe à 100 $ la transaction** :
 
@@ -1192,13 +1192,13 @@ how-to-improve-fcf-margin:
     |-----------|-------------|---------|
     | Stripe | 3,20 $ | 96,80 $ |
     | PayPal Standard | 3,48 $ | 96,52 $ |
-    | Shopify Basic | 2,25 $ | 97,75 $ |
-    | Shopify Advanced | 1,75 $ | 98,25 $ |
+    | Shopify Basic | 3,20 $ | 96,80 $ |
+    | Shopify Advanced | 2,80 $ | 97,20 $ |
 
     ## Lequel choisir ?
 
     - **Moins de 2 000 $ de volume mensuel** → Stripe (pas d'abonnement, meilleure expérience développeur)
-    - **E-commerce sur Shopify** → Shopify Payments (taux plus bas, pas de frais de transaction externe)
+    - **E-commerce sur Shopify** → Shopify Payments (pas de frais de transaction externe)
     - **Vente aux particuliers avec beaucoup de paniers abandonnés** → PayPal (le gain de conversion compense le taux)
     - **Plus de 80 000 $ par mois** → négocier avec Stripe ou comparer Stripe à Paddle/FastSpring
 
@@ -1320,10 +1320,10 @@ how-to-improve-fcf-margin:
     | Option | Frais de traitement | Frais de passerelle | Total mensuel |
     |--------|---------------|-------------|---------------|
     | Stripe sur Shopify | 320 $ | +200 $ (2 %) | 520 $ |
-    | Shopify Payments Basic | 225 $ | 0 $ | 225 $ |
+    | Shopify Payments Basic | 320 $ | 0 $ | 320 $ |
 
-    Shopify Payments économise **295 $ par mois** à 10 k$ de volume, ce qui couvre
-    largement le forfait à 39 $/mois.
+    Shopify Payments économise **200 $ par mois** à 10 k$ de volume, uniquement grâce
+    aux frais de passerelle de 2 % : le taux de carte lui-même est identique (2,9 % + 30¢).
 
     ## Quand Stripe hors Shopify est préférable
 
@@ -1491,20 +1491,20 @@ how-to-improve-fcf-margin:
 
     | | Basic (39 $/mois) | Shopify (105 $/mois) | Advanced (399 $/mois) |
     |-|---------------|-----------------|-------------------|
-    | **Taux Shopify Payments** | 2,0 % + 25¢ | 1,7 % + 25¢ | 1,5 % + 25¢ |
-    | **Frais de passerelle tierce** | 2,0 % | 1,0 % | 0,5 % |
+    | **Taux Shopify Payments** | 2,9 % + 30¢ | 2,7 % + 30¢ | 2,5 % + 30¢ |
+    | **Frais de passerelle tierce** | 2,0 % | 1,0 % | 0,6 % |
     | **Taux Amex / cartes internationales** | 3,5 % | 3,5 % | 3,5 % |
 
     ## Quand passer de Basic à Shopify est-il rentable ?
 
     Le changement coûte **66 $ de plus par mois** (105 $ − 39 $). La baisse de
-    frais est de 0,3 point sur les transactions Shopify Payments.
+    frais est de 0,2 point sur les transactions Shopify Payments.
 
     **Formule du point d'équilibre** : le volume d'affaires mensuel pour lequel
-    0,3 % d'économie = 66 $ par mois, soit **22 000 $ de GMV mensuel** (avec
+    0,2 % d'économie = 66 $ par mois, soit **33 000 $ de GMV mensuel** (avec
     Shopify Payments).
 
-    Si votre boutique dépasse 22 000 $ par mois via Shopify Payments, passer au
+    Si votre boutique dépasse 33 000 $ par mois via Shopify Payments, passer au
     forfait Shopify vous fait gagner de l'argent net.
 
     ## Quand passer de Shopify à Advanced est-il rentable ?
@@ -1531,19 +1531,19 @@ how-to-improve-fcf-margin:
     | Abonnement plateforme | 39 $/mois | 0 $ |
     | Hébergement | inclus | 10–25 $/mois |
     | Frais de transaction (Stripe) | 2,0 % (hors SP) ou 0 % (SP) | 0 % |
-    | Traitement carte (Stripe) | 2,0 % + 25¢ (SP) | 2,9 % + 30¢ |
+    | Traitement carte (Stripe) | 2,9 % + 30¢ (SP) | 2,9 % + 30¢ |
     | Nom de domaine | ~2 $/mois | ~2 $/mois |
     | Maintenance / extensions | 0 $ | 10–50 $/mois |
 
     ## À partir de quel GMV WooCommerce devient-il moins cher ?
 
     Avec Shopify Payments (sans frais de transaction), à 22 k$ de GMV mensuel sur Basic :
-    - Shopify : 39 $ + (22 000 $ × 0,02) = 39 $ + 440 $ = **479 $/mois**
+    - Shopify : 39 $ + (22 000 $ × 0,029) = 39 $ + 638 $ = **677 $/mois**
     - WooCommerce + Stripe : 20 $ + (22 000 $ × 0,029) = 20 $ + 638 $ = **658 $/mois**
 
-    À ce volume, Shopify Basic avec Shopify Payments est en fait **moins cher** que
-    WooCommerce + Stripe, car Shopify Payments (2,0 % + 25¢) coûte moins que le
-    tarif standard de Stripe (2,9 % + 30¢).
+    À ce volume, les deux sont à moins de 20 $ par mois d'écart : Shopify Payments
+    (2,9 % + 30¢) applique le même taux de carte que le tarif standard de Stripe
+    (2,9 % + 30¢), l'écart ne vient donc que de l'abonnement à la plateforme.
 
     WooCommerce l'emporte sur :
     - **La flexibilité** : personnalisation illimitée, hébergement au choix, code entièrement à vous
@@ -1565,9 +1565,9 @@ how-to-improve-fcf-margin:
 
     | Forfait | Shopify Payments | Stripe + frais Shopify | Écart |
     |------|-----------------|---------------------|-----------|
-    | Basic | 2,0 % + 25¢ | 2,9 % + 30¢ + 2,0 % = 4,9 % + 30¢ | +2,9 % |
-    | Shopify | 1,7 % + 25¢ | 2,9 % + 30¢ + 1,0 % = 3,9 % + 30¢ | +2,2 % |
-    | Advanced | 1,5 % + 25¢ | 2,9 % + 30¢ + 0,5 % = 3,4 % + 30¢ | +1,9 % |
+    | Basic | 2,9 % + 30¢ | 2,9 % + 30¢ + 2,0 % = 4,9 % + 30¢ | +2,0 % |
+    | Shopify | 2,7 % + 30¢ | 2,9 % + 30¢ + 1,0 % = 3,9 % + 30¢ | +1,2 % |
+    | Advanced | 2,5 % + 30¢ | 2,9 % + 30¢ + 0,5 % = 3,4 % + 30¢ | +0,9 % |
 
     **Shopify Payments est presque toujours moins cher** pour les boutiques qui
     encaissent surtout des cartes Visa/Mastercard américaines. Les seuls frais de

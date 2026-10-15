@@ -905,19 +905,19 @@
 
     | | Basic ($39/mo) | Shopify ($105/mo) | Advanced ($399/mo) |
     |-|---------------|-----------------|-------------------|
-    | **Shopify Payments rate** | 2.0% + 25¢ | 1.7% + 25¢ | 1.5% + 25¢ |
-    | **3rd-party gateway fee** | 2.0% | 1.0% | 0.5% |
+    | **Shopify Payments rate** | 2.9% + 30¢ | 2.7% + 30¢ | 2.5% + 30¢ |
+    | **3rd-party gateway fee** | 2.0% | 1.0% | 0.6% |
     | **Amex / intl card rate** | 3.5% | 3.5% | 3.5% |
 
     ## When does upgrading from Basic to Shopify pay off?
 
     The plan upgrade costs an extra **$66/month** ($105 − $39). The fee reduction
-    is 0.3% on Shopify Payments transactions.
+    is 0.2% on Shopify Payments transactions.
 
-    **Break-even formula**: Monthly GMV where 0.3% savings = $66/month
-    = **$22,000/month GMV** (with Shopify Payments)
+    **Break-even formula**: Monthly GMV where 0.2% savings = $66/month
+    = **$33,000/month GMV** (with Shopify Payments)
 
-    If your store does more than $22,000/month via Shopify Payments, upgrading to
+    If your store does more than $33,000/month via Shopify Payments, upgrading to
     the Shopify plan saves you net money.
 
     ## When does upgrading from Shopify to Advanced pay off?
@@ -945,19 +945,19 @@
     | Platform fee | $39/mo | $0 |
     | Hosting | included | $10–25/mo |
     | Transaction fee (Stripe) | 2.0% (non-SP) or 0% (SP) | 0% |
-    | Card processing (Stripe) | 2.0% + 25¢ (SP) | 2.9% + 30¢ |
+    | Card processing (Stripe) | 2.9% + 30¢ (SP) | 2.9% + 30¢ |
     | Domain | ~$2/mo | ~$2/mo |
     | Maintenance / plugins | $0 | $10–50/mo |
 
     ## At what GMV does WooCommerce become cheaper?
 
     With Shopify Payments (no transaction fee) at $22k/month GMV on Basic:
-    - Shopify: $39 + ($22,000 × 0.02) = $39 + $440 = **$479/mo**
+    - Shopify: $39 + ($22,000 × 0.029) = $39 + $638 = **$677/mo**
     - WooCommerce + Stripe: $20 + ($22,000 × 0.029) = $20 + $638 = **$658/mo**
 
-    At this volume, Shopify Basic with Shopify Payments is actually **cheaper** than
-    WooCommerce + Stripe — because Shopify Payments (2.0% + 25¢) is cheaper than
-    Stripe's standard rate (2.9% + 30¢).
+    At this volume the two are within $20/month: Shopify Payments (2.9% + 30¢) charges
+    the same card rate as Stripe's standard rate (2.9% + 30¢), so the gap is the platform
+    fee alone.
 
     WooCommerce wins on:
     - **Flexibility**: unlimited customization, any hosting, full code ownership
@@ -980,9 +980,9 @@
 
     | Plan | Shopify Payments | Stripe + Shopify fee | Difference |
     |------|-----------------|---------------------|-----------|
-    | Basic | 2.0% + 25¢ | 2.9% + 30¢ + 2.0% = 4.9% + 30¢ | +2.9% |
-    | Shopify | 1.7% + 25¢ | 2.9% + 30¢ + 1.0% = 3.9% + 30¢ | +2.2% |
-    | Advanced | 1.5% + 25¢ | 2.9% + 30¢ + 0.5% = 3.4% + 30¢ | +1.9% |
+    | Basic | 2.9% + 30¢ | 2.9% + 30¢ + 2.0% = 4.9% + 30¢ | +2.0% |
+    | Shopify | 2.7% + 30¢ | 2.9% + 30¢ + 1.0% = 3.9% + 30¢ | +1.2% |
+    | Advanced | 2.5% + 30¢ | 2.9% + 30¢ + 0.5% = 3.4% + 30¢ | +0.9% |
 
     **Shopify Payments is almost always cheaper** for stores primarily processing
     domestic US Visa/Mastercard. The Shopify transaction fee alone (2% on Basic) is
@@ -1632,9 +1632,9 @@
     | Option | Processing fee | Gateway fee | Monthly total |
     |--------|---------------|-------------|---------------|
     | Stripe on Shopify | $320 | +$200 (2%) | $520 |
-    | Shopify Payments Basic | $225 | $0 | $225 |
+    | Shopify Payments Basic | $320 | $0 | $320 |
 
-    Shopify Payments saves **$295/month** at $10k volume — easily covering the $39/mo plan cost.
+    Shopify Payments saves **$200/month** at $10k volume, all of it the 2% gateway fee — the card rate itself is the same (2.9% + 30¢).
 
     ## When Stripe outside Shopify is better
 
@@ -1762,15 +1762,15 @@
     | Stripe | 2.9% | $0.30 | SaaS, developer-first, APIs |
     | PayPal Standard | 2.99% | $0.49 | Consumer trust, marketplace |
     | PayPal Checkout | 3.49% | $0.49 | PayPal-button conversions |
-    | Shopify Basic | 2.0% | $0.25 | eCommerce on $39/mo plan |
-    | Shopify | 1.7% | $0.25 | eCommerce on $105/mo plan |
-    | Shopify Advanced | 1.5% | $0.25 | High-volume eCommerce |
+    | Shopify Basic | 2.9% | $0.30 | eCommerce on $39/mo plan |
+    | Shopify | 2.7% | $0.30 | eCommerce on $105/mo plan |
+    | Shopify Advanced | 2.5% | $0.30 | High-volume eCommerce |
 
     ## The break-even thresholds
 
-    **Shopify Basic vs Stripe**: Shopify Basic ($39/mo plan) costs the same as Stripe
-    at roughly **$3,900/month in volume** (the $39 monthly fee offsets savings of ~1%).
-    Above that, Shopify Basic is cheaper; below it, Stripe wins.
+    **Shopify Basic vs Stripe**: the card rate is identical (2.9% + $0.30), so Stripe,
+    with no monthly fee, is cheaper on processing alone at any volume. Shopify Basic only
+    pays off if you sell through Shopify, where it avoids the 2% third-party gateway fee.
 
     **Shopify vs Stripe at $100/transaction**:
 
@@ -1778,13 +1778,13 @@
     |-----------|-------------|---------|
     | Stripe | $3.20 | $96.80 |
     | PayPal Standard | $3.48 | $96.52 |
-    | Shopify Basic | $2.25 | $97.75 |
-    | Shopify Advanced | $1.75 | $98.25 |
+    | Shopify Basic | $3.20 | $96.80 |
+    | Shopify Advanced | $2.80 | $97.20 |
 
     ## Which should you choose?
 
     - **Under $2,000/month volume** → Stripe (no monthly fee, best developer experience)
-    - **eCommerce on Shopify** → Shopify Payments (lower rates, no external transaction fee)
+    - **eCommerce on Shopify** → Shopify Payments (no external transaction fee)
     - **Consumer-facing with high cart abandonment** → PayPal (conversion uplift offsets rate)
     - **Over $80,000/month** → negotiate with Stripe or evaluate Stripe vs Paddle/FastSpring
 

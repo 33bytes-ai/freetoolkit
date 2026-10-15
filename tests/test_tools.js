@@ -788,12 +788,15 @@ test("payment-fee-comparison: Stripe has lower fee than PayPal Standard on $100"
   assert.ok(stripeResult.net > paypalResult.net, "Stripe should net more than PayPal Standard");
 });
 
-test("payment-fee-comparison: Shopify Basic nets more than Stripe on $100", () => {
-  const shopify = pfc.PROCESSORS.find(p => p.name.startsWith("Shopify Basic"));
+test("payment-fee-comparison: Shopify Basic nets the same as Stripe, Advanced more, on $100", () => {
+  const net = (p) => pfc.calcNet(100, p.rate, p.fixed).net;
   const stripe = pfc.PROCESSORS.find(p => p.name === "Stripe");
-  const shopifyResult = pfc.calcNet(100, shopify.rate, shopify.fixed);
-  const stripeResult = pfc.calcNet(100, stripe.rate, stripe.fixed);
-  assert.ok(shopifyResult.net > stripeResult.net, "Shopify Basic should net more than Stripe");
+  const basic = pfc.PROCESSORS.find(p => p.name.startsWith("Shopify Basic"));
+  const grow = pfc.PROCESSORS.find(p => p.name.startsWith("Shopify ($105"));
+  const advanced = pfc.PROCESSORS.find(p => p.name.startsWith("Shopify Advanced"));
+  assert.ok(Math.abs(net(basic) - net(stripe)) < 0.005);
+  assert.ok(Math.abs(net(grow) - 97.00) < 0.005);
+  assert.ok(Math.abs(net(advanced) - 97.20) < 0.005);
 });
 
 // ---- subscription-churn-revenue ----
