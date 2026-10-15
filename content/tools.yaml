@@ -39,16 +39,17 @@
     | Stripe | 2.9% | + $0.30 |
     | PayPal Standard | 2.99% | + $0.49 |
     | PayPal Checkout | 3.49% | + $0.49 |
-    | Shopify Basic | 2.0% | + $0.25 |
-    | Shopify (Shopify plan) | 1.7% | + $0.25 |
-    | Shopify Advanced | 1.5% | + $0.25 |
+    | Shopify Basic | 2.9% | + $0.30 |
+    | Shopify (Shopify plan) | 2.7% | + $0.30 |
+    | Shopify Advanced | 2.5% | + $0.30 |
 
     ## When Shopify Payments is cheaper
 
-    Shopify Payments beats Stripe on domestic US Visa/Mastercard transactions above
-    roughly $12. At $100, Shopify Basic saves $0.95 per transaction over Stripe. At
-    $500/mo volume on the Basic plan ($39/mo), the math is roughly neutral — but at
-    $50,000/mo the rate savings dwarf the plan fee.
+    On the Basic plan, Shopify Payments charges the same online card rate as Stripe
+    (2.9% + $0.30), so the card rate alone saves nothing. It drops to 2.7% + $0.30 on
+    the Shopify plan and 2.5% + $0.30 on Advanced: at $100 that is $0.20 and $0.40 less
+    per transaction than Stripe. The bigger saving on Shopify is the third-party gateway
+    fee Shopify adds when you use Stripe or PayPal instead.
 
     ## When to stick with Stripe
 
@@ -60,14 +61,15 @@
     ## Frequently asked questions
 
     **Which payment processor charges the lowest fees?**
-    Shopify Payments (Advanced plan) has the lowest rate at 1.5% + $0.25, but requires a
+    Shopify Payments (Advanced plan) has the lowest rate at 2.5% + $0.30, but requires a
     Shopify store and a $399/mo subscription. For businesses not on Shopify, Stripe
     (2.9% + $0.30) beats PayPal Standard (2.99% + $0.49) on transactions above $15.
 
     **How much cheaper is Shopify Payments vs Stripe?**
-    On a $100 transaction: Shopify Basic = $2.25 fee, Stripe = $3.20 fee — Shopify is
-    $0.95 cheaper. But Shopify Basic requires a $39/mo plan. You'd need $4,100+/mo in
-    Stripe volume to break even on the plan cost when comparing to the Stripe savings.
+    On a $100 transaction: Shopify Basic = $3.20 fee, the same as Stripe. The Shopify plan
+    ($3.00) is $0.20 cheaper and Advanced ($2.80) is $0.40 cheaper. Those savings are small
+    next to the $105/mo and $399/mo plan fees, so choose a plan for its features, not for
+    the card rate.
 
     **Does PayPal charge more than Stripe?**
     Yes. PayPal Standard charges 2.99% + $0.49 vs Stripe's 2.9% + $0.30. On a $100
@@ -992,8 +994,8 @@
     to the per-transaction total. At 100 sales/month on the Basic plan, the plan overhead is $0.39/sale.
 
     **Should I upgrade my plan to get lower fees?**
-    The upgrade math: if moving from Basic to Shopify ($66/month more) saves 0.3% + eliminates
-    1% transaction fee (if on 3rd-party): on $66/$0.013 = $5,077/month in sales you break even.
+    The upgrade math: if moving from Basic to Shopify ($66/month more) saves 0.2% + eliminates
+    1% transaction fee (if on 3rd-party): on $66/$0.012 = $5,500/month in sales you break even.
     Above that volume, upgrading pays off.
 
 - slug: freelance-project-estimate
