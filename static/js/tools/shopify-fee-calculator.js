@@ -3,8 +3,8 @@
 
   var PLANS = {
     basic:    { name: "Basic",    monthly: 39,  txFee: 0.020, procRate: 0.029, procFixed: 0.30 },
-    shopify:  { name: "Shopify",  monthly: 105, txFee: 0.010, procRate: 0.026, procFixed: 0.30 },
-    advanced: { name: "Advanced", monthly: 399, txFee: 0.005, procRate: 0.024, procFixed: 0.30 },
+    shopify:  { name: "Shopify",  monthly: 105, txFee: 0.010, procRate: 0.027, procFixed: 0.30 },
+    advanced: { name: "Advanced", monthly: 399, txFee: 0.006, procRate: 0.025, procFixed: 0.30 },
   };
 
   function calculateShopifyFee(saleAmount, planKey, useShopifyPayments) {

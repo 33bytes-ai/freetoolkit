@@ -906,7 +906,7 @@
     | | Basic ($39/mo) | Shopify ($105/mo) | Advanced ($399/mo) |
     |-|---------------|-----------------|-------------------|
     | **Shopify Payments rate** | 2.0% + 25¢ | 1.7% + 25¢ | 1.5% + 25¢ |
-    | **3rd-party gateway fee** | 2.0% | 1.0% | 0.5% |
+    | **3rd-party gateway fee** | 2.0% | 1.0% | 0.6% |
     | **Amex / intl card rate** | 3.5% | 3.5% | 3.5% |
 
     ## When does upgrading from Basic to Shopify pay off?
@@ -926,7 +926,7 @@
     Break-even: **$147,000/month GMV**
 
     Most stores upgrade to Advanced for the custom reporting and lower third-party
-    gateway fee (0.5% vs 1.0%), not the card rate difference.
+    gateway fee (0.6% vs 1.0%), not the card rate difference.
 
 - slug: shopify-fees-vs-woocommerce
   parent_tool: shopify-fee-calculator
