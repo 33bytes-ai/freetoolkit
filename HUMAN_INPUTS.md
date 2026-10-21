@@ -238,6 +238,15 @@ Pour un post par jour automatique (clés X, secrets GitHub, label « Automated �
 2. Me transmettre le handle — je le mets dans `content/config.yaml` (`twitter`)
 3. **Décision stratégique déjà actée :** pas de publicité payante au lancement — miser sur Twitter/IndieHackers/Reddit (gratuit) plutôt que du paid ads, tant que le RPM réel n'est pas connu
 
+### D3. Comptes vidéos courtes : YouTube Shorts, Instagram Reels, TikTok, Snapchat (optionnel, gratuit)
+Une étape par plateforme dans le wizard (`video_youtube`, `video_instagram`,
+`video_tiktok`, `video_snapchat`) : création du compte en mode professionnel,
+bio, lien tracké `utm_source=<plateforme>`, double authentification, nom du
+compte. La vérification passe quand le site déclare le profil en `sameAs`. Le
+format à suivre (9:16, 15-30 s, chiffre à l'écran dès la première image,
+sous-titres incrustés) est dans `docs/SOCIAL.md` § Vidéos courtes. Ouvrir une
+plateforme à la fois.
+
 ---
 
 ## Catégorie E — Administratif / fiscal (France)

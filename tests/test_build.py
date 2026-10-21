@@ -88,6 +88,15 @@ def test_sitemap_contains_all_tool_urls():
         assert f"/tools/{slug}/</loc>" in sitemap, f"Tool {slug} missing from sitemap"
 
 
+def test_organization_sameas_lists_the_configured_accounts():
+    run_build()
+    site = yaml.safe_load((ROOT / "content" / "config.yaml").read_text())["site"]
+    match = re.search(r'"@type":"Organization".*?"sameAs":(\[[^\]]*\])', (DIST / "index.html").read_text())
+    same_as = json.loads(match.group(1))
+    assert f"https://x.com/{site['twitter']}" in same_as
+    assert len(same_as) == 1 + sum(bool(h) for h in site["social"].values())
+
+
 def test_robots_contains_sitemap_reference():
     run_build()
     robots = (DIST / "robots.txt").read_text()
