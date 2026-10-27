@@ -7,7 +7,7 @@
   };
 
   function calculateFee(amount, rate, fixed) {
-    var fee = amount * rate + fixed;
+    var fee = Math.round(Math.round((amount * rate + fixed) * 1e6) / 1e4) / 100;  // rounded to the cent like processors do, so fee + net === amount
     var net = amount - fee;
     return { chargeAmount: amount, fee: fee, net: net };
   }
