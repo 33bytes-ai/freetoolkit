@@ -453,5 +453,14 @@
     "risk": 1,
     "status": "pending",
     "human_input_needed": true
+  },
+  {
+    "title": "Freelance Tax Estimator surestime l'impôt (cotisation SE sans le facteur 92,35 %, pas de déduction forfaitaire, tranches 2024)",
+    "description": "static/js/tools/freelance-tax-estimator.js : SE tax = profit × 15,3 % (IRS : × 92,35 % puis 15,3 %, plafond SS) ; revenu imposable sans standard deduction ; tranches 2024. À 80 000 $ single l'outil affiche 23 547 $ d'impôt. Corriger avec les chiffres IRS de l'année en cours, tests à l'appui. Trouvé en préparant les vidéos video-factory (vidéo écartée pour cette raison).",
+    "impact": 8,
+    "effort": 2,
+    "risk": 1,
+    "status": "pending",
+    "human_input_needed": false
   }
 ]
