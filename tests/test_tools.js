@@ -258,6 +258,12 @@ test("vat: calculate() dispatch", () => {
 // ---- paypal-fee-calculator ----
 const paypal = require(path.join(TOOLS, "paypal-fee-calculator.js"));
 
+test("paypal: fee rounded to the cent, fee + net = amount", () => {
+  const r = paypal.calculateFee(150, 0.0349, 0.49);
+  assert.strictEqual(r.fee, 5.73);
+  assert.strictEqual(Math.round((r.fee + r.net) * 100), 15000);
+});
+
 test("paypal: standard domestic fee 3.49% + $0.49", () => {
   const result = paypal.calculateFee(100, 0.0349, 0.49);
   assert.ok(Math.abs(result.fee - 3.98) < 0.01);
