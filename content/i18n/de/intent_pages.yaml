@@ -1466,7 +1466,7 @@
     | | Basic (39 $/Monat) | Shopify (105 $/Monat) | Advanced (399 $/Monat) |
     |-|---------------|-----------------|-------------------|
     | **Satz Shopify Payments** | 2,0 % + 25¢ | 1,7 % + 25¢ | 1,5 % + 25¢ |
-    | **Gebühr Drittanbieter-Gateway** | 2,0 % | 1,0 % | 0,5 % |
+    | **Gebühr Drittanbieter-Gateway** | 2,0 % | 1,0 % | 0,6 % |
     | **Satz Amex / internationale Karten** | 3,5 % | 3,5 % | 3,5 % |
 
     ## Wann lohnt sich der Wechsel von Basic zu Shopify?
@@ -1487,7 +1487,7 @@
     Shopify Payments. Gewinnschwelle: **147.000 $ GMV pro Monat**
 
     Die meisten Shops wechseln zu Advanced wegen der individuellen Berichte und
-    der niedrigeren Drittanbieter-Gateway-Gebühr (0,5 % statt 1,0 %), nicht wegen
+    der niedrigeren Drittanbieter-Gateway-Gebühr (0,6 % statt 1,0 %), nicht wegen
     des Unterschieds beim Kartensatz.
 "shopify-fees-vs-woocommerce":
   "title": "Shopify-Gebühren vs. WooCommerce: Gesamtkostenvergleich"

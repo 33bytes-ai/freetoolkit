@@ -1492,7 +1492,7 @@ how-to-improve-fcf-margin:
     | | Basic (39 $/mois) | Shopify (105 $/mois) | Advanced (399 $/mois) |
     |-|---------------|-----------------|-------------------|
     | **Taux Shopify Payments** | 2,0 % + 25¢ | 1,7 % + 25¢ | 1,5 % + 25¢ |
-    | **Frais de passerelle tierce** | 2,0 % | 1,0 % | 0,5 % |
+    | **Frais de passerelle tierce** | 2,0 % | 1,0 % | 0,6 % |
     | **Taux Amex / cartes internationales** | 3,5 % | 3,5 % | 3,5 % |
 
     ## Quand passer de Basic à Shopify est-il rentable ?
@@ -1513,7 +1513,7 @@ how-to-improve-fcf-margin:
     Point d'équilibre : **147 000 $ de GMV mensuel**
 
     La plupart des boutiques passent à Advanced pour les rapports personnalisés et
-    des frais de passerelle tierce plus bas (0,5 % au lieu de 1,0 %), pas pour
+    des frais de passerelle tierce plus bas (0,6 % au lieu de 1,0 %), pas pour
     l'écart de taux carte.
 "shopify-fees-vs-woocommerce":
   "title": "Frais Shopify ou WooCommerce : comparaison du coût total"

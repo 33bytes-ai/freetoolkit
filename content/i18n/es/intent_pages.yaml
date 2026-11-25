@@ -1460,7 +1460,7 @@
     | | Basic ($39/mes) | Shopify ($105/mes) | Advanced ($399/mes) |
     |-|---------------|-----------------|-------------------|
     | **Tarifa de Shopify Payments** | 2,0 % + 25¢ | 1,7 % + 25¢ | 1,5 % + 25¢ |
-    | **Comisión de pasarela de terceros** | 2,0 % | 1,0 % | 0,5 % |
+    | **Comisión de pasarela de terceros** | 2,0 % | 1,0 % | 0,6 % |
     | **Tarifa Amex / tarjeta internacional** | 3,5 % | 3,5 % | 3,5 % |
 
     ## ¿Cuándo compensa pasar de Basic a Shopify?
@@ -1481,7 +1481,7 @@
     Payments. Punto de equilibrio: **$147.000 de GMV al mes**
 
     La mayoría de tiendas pasan a Advanced por los informes personalizados y la
-    menor comisión de pasarela de terceros (0,5 % frente a 1,0 %), no por la
+    menor comisión de pasarela de terceros (0,6 % frente a 1,0 %), no por la
     diferencia en la tarifa de tarjeta.
 "shopify-fees-vs-woocommerce":
   "title": "Comisiones de Shopify frente a WooCommerce: comparación del coste total"
