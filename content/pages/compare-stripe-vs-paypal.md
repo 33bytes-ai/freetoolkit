@@ -47,8 +47,8 @@ conversion lift is likely to outweigh the fee difference for your average order 
 
 ## Where Shopify Payments fits in
 
-If you sell through Shopify, Shopify Payments usually beats both Stripe and PayPal
-on domestic card rates (as low as 1.5% + $0.25 on the Advanced plan) and avoids the
+If you sell through Shopify, Shopify Payments matches Stripe's 2.9% + $0.30 on the Basic plan and undercuts both
+Stripe and PayPal on higher plans (as low as 2.5% + $0.30 on Advanced), and avoids the
 0.5–2% third-party gateway surcharge Shopify otherwise charges for using Stripe or
 PayPal directly. Run your own numbers with the [Shopify Fee Calculator](/tools/shopify-fee-calculator/).
 

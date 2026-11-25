@@ -24,8 +24,8 @@ the three most common choices for online businesses: **Stripe**, **PayPal**, and
 | **Stripe** | 2.9% + $0.30 | 4.4% + $0.30 | $0 |
 | **PayPal Standard** | 2.99% + $0.49 | 4.49% + $0.49 | $0 |
 | **PayPal Checkout** | 3.49% + $0.49 | 4.99% + $0.49 | $0 |
-| **Shopify Payments (Basic)** | 2.0% + $0.25 | 3.5% + $0.25 | incl. in $39/mo plan |
-| **Shopify Payments (Shopify)** | 1.7% + $0.25 | 3.5% + $0.25 | incl. in $105/mo plan |
+| **Shopify Payments (Basic)** | 2.9% + $0.30 | 3.5% + $0.25 | incl. in $39/mo plan |
+| **Shopify Payments (Shopify)** | 2.7% + $0.30 | 3.5% + $0.25 | incl. in $105/mo plan |
 
 ## Fee on common transaction amounts
 
@@ -36,7 +36,7 @@ the three most common choices for online businesses: **Stripe**, **PayPal**, and
 | Stripe | $1.75 | $48.25 |
 | PayPal Standard | $1.99 | $48.01 |
 | PayPal Checkout | $2.24 | $47.76 |
-| Shopify Payments (Basic) | $1.25 | $48.75 |
+| Shopify Payments (Basic) | $1.75 | $48.25 |
 
 ### $100 transaction
 
@@ -45,7 +45,7 @@ the three most common choices for online businesses: **Stripe**, **PayPal**, and
 | Stripe | $3.20 | $96.80 |
 | PayPal Standard | $3.48 | $96.52 |
 | PayPal Checkout | $3.98 | $96.02 |
-| Shopify Payments (Basic) | $2.25 | $97.75 |
+| Shopify Payments (Basic) | $3.20 | $96.80 |
 
 ### $500 transaction
 
@@ -54,7 +54,7 @@ the three most common choices for online businesses: **Stripe**, **PayPal**, and
 | Stripe | $14.80 | $485.20 |
 | PayPal Standard | $15.44 | $484.56 |
 | PayPal Checkout | $17.94 | $482.06 |
-| Shopify Payments (Basic) | $10.25 | $489.75 |
+| Shopify Payments (Basic) | $14.80 | $485.20 |
 
 ## Which should you choose?
 
@@ -70,8 +70,8 @@ the three most common choices for online businesses: **Stripe**, **PayPal**, and
 - You need **Venmo integration** for younger consumer audiences
 
 ### Choose Shopify Payments if:
-- You're already on **Shopify** — it eliminates the 0.5–2% third-party gateway fee that Shopify charges for using Stripe directly, making it cheaper than Stripe in most cases
-- Your store is **US-based, consumer-focused** — the rate is genuinely lower than Stripe for domestic Visa/Mastercard
+- You're already on **Shopify** — it eliminates the 0.5–2% third-party gateway fee that Shopify charges for using Stripe directly, so on Shopify it costs less than Stripe or PayPal used as an outside gateway
+- Your store is **US-based, consumer-focused** — the rate matches Stripe on Basic (2.9% + $0.30) and is lower on the Shopify and Advanced plans
 - You want the **simplest setup** — no separate account, disputes handled in Shopify admin
 
 ## Calculating your actual savings

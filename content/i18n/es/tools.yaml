@@ -388,17 +388,18 @@
     | Stripe | 2,9 % | + $0,30 |
     | PayPal Standard | 2,99 % | + $0,49 |
     | PayPal Checkout | 3,49 % | + $0,49 |
-    | Shopify Basic | 2,0 % | + $0,25 |
-    | Shopify (plan Shopify) | 1,7 % | + $0,25 |
-    | Shopify Advanced | 1,5 % | + $0,25 |
+    | Shopify Basic | 2,9 % | + $0,30 |
+    | Shopify (plan Shopify) | 2,7 % | + $0,30 |
+    | Shopify Advanced | 2,5 % | + $0,30 |
 
     ## Cuándo sale más barato Shopify Payments
 
-    Shopify Payments supera a Stripe en transacciones nacionales de EE. UU. con
-    Visa/Mastercard por encima de unos $12. A $100, Shopify Basic ahorra $0,95
-    por transacción frente a Stripe. Con $500 al mes de volumen en el plan Basic
-    ($39/mes), las cuentas quedan más o menos igual; pero con $50.000 al mes el
-    ahorro en tarifa supera con creces la cuota del plan.
+    En el plan Basic, Shopify Payments cobra la misma tarifa online con tarjeta que
+    Stripe (2,9 % + $0,30), así que solo con la tarifa no ahorras nada. Baja a
+    2,7 % + $0,30 en el plan Shopify y a 2,5 % + $0,30 en Advanced: con $100 son
+    $0,20 y $0,40 menos por transacción que con Stripe. El ahorro mayor en Shopify
+    es la comisión de pasarela de terceros que Shopify añade cuando usas Stripe o
+    PayPal.
 
     ## Cuándo quedarse con Stripe
 
@@ -411,16 +412,16 @@
     ## Preguntas frecuentes
 
     **¿Qué procesador de pagos tiene las comisiones más bajas?**
-    Shopify Payments (plan Advanced) tiene la tarifa más baja, 1,5 % + $0,25,
+    Shopify Payments (plan Advanced) tiene la tarifa más baja, 2,5 % + $0,30,
     pero exige una tienda Shopify y una suscripción de $399/mes. Fuera de
     Shopify, Stripe (2,9 % + $0,30) supera a PayPal Standard (2,99 % + $0,49) en
     transacciones de más de $15.
 
     **¿Cuánto más barato es Shopify Payments que Stripe?**
-    En una transacción de $100: Shopify Basic cobra $2,25 y Stripe $3,20, así que
-    Shopify sale $0,95 más barato. Pero Shopify Basic exige un plan de $39/mes.
-    Necesitarías más de $4.100 al mes de volumen para que el ahorro frente a
-    Stripe cubra el plan.
+    En una transacción de $100: Shopify Basic cobra $3,20, lo mismo que Stripe. El
+    plan Shopify ($3,00) sale $0,20 más barato y Advanced ($2,80), $0,40. Es un
+    ahorro pequeño frente a las cuotas de $105 y $399 al mes, así que elige el plan
+    por sus funciones, no por la tarifa de tarjeta.
 
     **¿PayPal cobra más que Stripe?**
     Sí. PayPal Standard cobra 2,99 % + $0,49 frente al 2,9 % + $0,30 de Stripe.
@@ -519,9 +520,9 @@
     ventas al mes en el plan Basic, la cuota supone $0,39 por venta.
 
     **¿Debería subir de plan para pagar menos comisiones?**
-    Las cuentas: si pasar de Basic a Shopify ($66 más al mes) ahorra un 0,3 % y
+    Las cuentas: si pasar de Basic a Shopify ($66 más al mes) ahorra un 0,2 % y
     elimina un 1 % de comisión por transacción (con pasarela de terceros),
-    cubres costes con $66 / 0,013 = $5.077 de ventas al mes. Por encima de ese
+    cubres costes con $66 / 0,012 = $5.500 de ventas al mes. Por encima de ese
     volumen, subir de plan compensa.
 "stripe-fee-calculator":
   "body": |

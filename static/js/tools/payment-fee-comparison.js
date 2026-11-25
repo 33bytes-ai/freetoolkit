@@ -5,9 +5,9 @@
     { name: "Stripe",                  rate: 0.029, fixed: 0.30, plan: "" },
     { name: "PayPal Standard",         rate: 0.0299, fixed: 0.49, plan: "" },
     { name: "PayPal Checkout",         rate: 0.0349, fixed: 0.49, plan: "" },
-    { name: "Shopify Basic ($39/mo)",  rate: 0.020,  fixed: 0.25, plan: "basic" },
-    { name: "Shopify ($105/mo)",       rate: 0.017,  fixed: 0.25, plan: "shopify" },
-    { name: "Shopify Advanced ($399/mo)", rate: 0.015, fixed: 0.25, plan: "advanced" },
+    { name: "Shopify Basic ($39/mo)",  rate: 0.029,  fixed: 0.30, plan: "basic" },
+    { name: "Shopify ($105/mo)",       rate: 0.027,  fixed: 0.30, plan: "shopify" },
+    { name: "Shopify Advanced ($399/mo)", rate: 0.025, fixed: 0.30, plan: "advanced" },
   ];
 
   function calcNet(amount, rate, fixed) {

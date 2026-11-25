@@ -401,17 +401,18 @@ free-cash-flow-calculator:
     | Stripe | 2,9 % | + 0,30 $ |
     | PayPal Standard | 2,99 % | + 0,49 $ |
     | PayPal Checkout | 3,49 % | + 0,49 $ |
-    | Shopify Basic | 2,0 % | + 0,25 $ |
-    | Shopify (forfait Shopify) | 1,7 % | + 0,25 $ |
-    | Shopify Advanced | 1,5 % | + 0,25 $ |
+    | Shopify Basic | 2,9 % | + 0,30 $ |
+    | Shopify (forfait Shopify) | 2,7 % | + 0,30 $ |
+    | Shopify Advanced | 2,5 % | + 0,30 $ |
 
     ## Quand Shopify Payments est moins cher
 
-    Shopify Payments bat Stripe sur les transactions Visa/Mastercard nationales
-    américaines au-delà d'environ 12 $. À 100 $, Shopify Basic économise 0,95 $
-    par transaction par rapport à Stripe. À 500 $ de volume mensuel sur le forfait
-    Basic (39 $/mois), le calcul est à peu près neutre ; mais à 50 000 $ par mois,
-    l'économie sur le taux écrase le coût du forfait.
+    Sur le forfait Basic, Shopify Payments applique le même taux de carte en ligne
+    que Stripe (2,9 % + 0,30 $) : le taux seul n'économise donc rien. Il descend à
+    2,7 % + 0,30 $ sur le forfait Shopify et à 2,5 % + 0,30 $ sur Advanced : à 100 $,
+    cela fait 0,20 $ et 0,40 $ de moins par transaction que Stripe. La plus grosse
+    économie sur Shopify est la commission de passerelle tierce que Shopify ajoute
+    quand vous utilisez Stripe ou PayPal à la place.
 
     ## Quand rester sur Stripe
 
@@ -425,16 +426,16 @@ free-cash-flow-calculator:
     ## Questions fréquentes
 
     **Quel prestataire de paiement a les frais les plus bas ?**
-    Shopify Payments (forfait Advanced) a le taux le plus bas, 1,5 % + 0,25 $, mais
+    Shopify Payments (forfait Advanced) a le taux le plus bas, 2,5 % + 0,30 $, mais
     il faut une boutique Shopify et un abonnement à 399 $/mois. Hors Shopify,
     Stripe (2,9 % + 0,30 $) bat PayPal Standard (2,99 % + 0,49 $) sur les
     transactions de plus de 15 $.
 
     **Combien Shopify Payments coûte-t-il de moins que Stripe ?**
-    Sur une transaction de 100 $ : 2,25 $ de frais chez Shopify Basic contre
-    3,20 $ chez Stripe, soit 0,95 $ d'économie. Mais Shopify Basic exige un
-    forfait à 39 $/mois. Il faut plus de 4 100 $ de volume mensuel pour que
-    l'économie par rapport à Stripe couvre le forfait.
+    Sur une transaction de 100 $ : 3,20 $ de frais chez Shopify Basic, comme chez
+    Stripe. Le forfait Shopify (3,00 $) coûte 0,20 $ de moins et Advanced (2,80 $)
+    0,40 $ de moins. C'est peu face aux forfaits à 105 $ et 399 $ par mois : choisissez
+    le forfait pour ses fonctions, pas pour le taux de carte.
 
     **PayPal coûte-t-il plus cher que Stripe ?**
     Oui. PayPal Standard facture 2,99 % + 0,49 $ contre 2,9 % + 0,30 $ chez
@@ -536,8 +537,8 @@ free-cash-flow-calculator:
 
     **Faut-il passer à un forfait supérieur pour payer moins de frais ?**
     Le calcul : si passer de Basic à Shopify (66 $ de plus par mois) économise
-    0,3 % et supprime 1 % de frais de transaction (avec une passerelle tierce),
-    vous atteignez l'équilibre à 66 $ / 0,013 = 5 077 $ de ventes mensuelles.
+    0,2 % et supprime 1 % de frais de transaction (avec une passerelle tierce),
+    vous atteignez l'équilibre à 66 $ / 0,012 = 5 500 $ de ventes mensuelles.
     Au-delà, le changement de forfait est rentable.
 "stripe-fee-calculator":
   "body": |
