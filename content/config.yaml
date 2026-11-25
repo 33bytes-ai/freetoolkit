@@ -23,7 +23,7 @@ site:
   # Choices consent banner and the named slots all have to render (see
   # docs/MONETIZATION.md). Slots stay blank until the account is approved.
   # Business/SaaS calculator audience commands RPM of $8–20 vs $1–3 for general tools.
-  ads_enabled: true
+  ads_enabled: false
   adsense_client_id: "ca-pub-6294535713639434"
 
   # Ad unit IDs, created in the AdSense dashboard once the account is approved.

@@ -2642,41 +2642,16 @@ def test_merged_sections_start_at_h3_under_their_h2():
     assert "<h3" in section
 
 
-def test_ads_and_ads_txt_are_live_for_review():
-    """AdSense reviews the site as served: it has to find the ad code and a
-    reachable /ads.txt carrying the publisher ID."""
+def test_no_ad_code_ships_while_ads_are_disabled():
+    """Maintenance: AdSense was rejected, so no ad or consent code may load."""
     run_build()
     config = yaml.safe_load((ROOT / "content" / "config.yaml").read_text())
-    client_id = config["site"]["adsense_client_id"]
-    assert config["site"]["ads_enabled"] is True
-
-    ads_txt = (DIST / "ads.txt").read_text()
-    # ads.txt carries the publisher ID, the client ID without "ca-".
-    assert ads_txt.strip() == (
-        f"google.com, {client_id.removeprefix('ca-')}, DIRECT, f08c47fec0942fa0"
-    )
+    assert config["site"]["ads_enabled"] is False
 
     html = (DIST / "tools" / TOOL_SLUGS[0] / "index.html").read_text()
-    assert "pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" in html
-
-    slot_ids = [v for v in (config["site"].get("adsense_slots") or {}).values() if v]
-    if slot_ids:
-        # Consent gathering must load before any ad request in the EEA/UK.
-        assert html.index("fundingchoicesmessages.google.com") < html.index("adsbygoogle.js")
-        assert 'class="adsbygoogle"' in html, "ad unit ID configured but no unit rendered"
-    else:
-        # No ad unit may render against a placeholder slot: it can never fill,
-        # and an empty frame labelled "Advertisement" is a worse review surface
-        # than none. The consent platform stays off with it -- there is nothing
-        # to consent to, and it costs performance on every page.
-        assert "0000000000" not in html
-        assert 'class="adsbygoogle"' not in html, "ad unit rendered with no ad unit ID configured"
-        assert "fundingchoicesmessages.google.com" not in html, (
-            "consent platform shipped while no ad unit can render"
-        )
-        assert 'id="consent-revoke"' not in html, (
-            "consent control shipped without the consent platform that backs it"
-        )
+    assert "adsbygoogle" not in html
+    assert "googlesyndication.com" not in html
+    assert "fundingchoicesmessages.google.com" not in html
 
 
 def test_lighthouse_asserts_on_a_median_of_several_runs():

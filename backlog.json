@@ -429,29 +429,29 @@
   },
   {
     "title": "Contrôle 2026-11-03 : citations Bing du guide NPV restauré (≥ 40/jour en moyenne 7 j, sinon maintenance)",
-    "description": "Lire Bing Webmaster → AI Performance → Pages (Playwright, profil connecté) pour /tools/npv-calculator/how-to-choose-discount-rate/. Moyenne des 7 derniers jours ≥ 40 : passer au lot suivant. Sinon : mettre le site en maintenance (HUMAN_INPUTS § F), plus de contenu ni d'AdSense. Remplace la règle du 2026-11-10 qui mesurait un signal détruit par la redirection.",
+    "description": "Lire Bing Webmaster → AI Performance → Pages (Playwright, profil connecté) pour /tools/npv-calculator/how-to-choose-discount-rate/. Moyenne des 7 derniers jours ≥ 40 : passer au lot suivant. Sinon : mettre le site en maintenance (HUMAN_INPUTS § F), plus de contenu ni d'AdSense. Remplace la règle du 2026-11-10 qui mesurait un signal détruit par la redirection. RÉSULTAT 2026-11-25 : FAIL (7,4 citations/jour site-wide). Maintenance décidée (PR #59).",
     "impact": 8,
     "effort": 1,
     "risk": 1,
-    "status": "pending",
+    "status": "done",
     "human_input_needed": false
   },
   {
     "title": "Si les citations reviennent : restaurer par lots les guides les plus cités (1 PR par lot de 5)",
-    "description": "Classer les URL de Bing AI Performance → Pages par citations, ne garder que les guides (how-to-…, …-by-industry, A-vs-B) ≥ 400 mots. Même mécanique que le guide NPV : content/pages/<slug>.md avec slug tools/<parent>/<guide>, retrait de intent_pages.yaml et des 3 traductions i18n, STANDALONE_GUIDES dans tests. Un lot, puis attendre 2 semaines de données avant le suivant.",
+    "description": "Classer les URL de Bing AI Performance → Pages par citations, ne garder que les guides (how-to-…, …-by-industry, A-vs-B) ≥ 400 mots. Même mécanique que le guide NPV : content/pages/<slug>.md avec slug tools/<parent>/<guide>, retrait de intent_pages.yaml et des 3 traductions i18n, STANDALONE_GUIDES dans tests. Un lot, puis attendre 2 semaines de données avant le suivant. Annulé : contrôle 1 FAIL.",
     "impact": 7,
     "effort": 3,
     "risk": 2,
-    "status": "pending",
+    "status": "done",
     "human_input_needed": false
   },
   {
-    "title": "Contrôle 2026-11-24 : le trafic des guides restaurés clique-t-il ? (≥ 5 visites /go/* ou 1 clic Baremetrics, sinon maintenance)",
-    "description": "Cloudflare Web Analytics → Visits → Path (/go/…) et impact.com pour les clics ?via=guillaume. Seulement si le contrôle du 2026-11-03 est passé.",
+    "title": "Mesurer les clics /go/* et Baremetrics (sert à décider du sort des liens affiliés)",
+    "description": "Lire le compteur /go/ (Cloudflare Web Analytics ou tracker) sur les 30 derniers jours. 0 clic → mettre affiliate: false sur Baremetrics/Gusto, retirer les paramètres de suivi. ≥ 1 clic → garder. RÉSULTAT 2026-11-25 (Cloudflare Web Analytics, 30 j, bots exclus, échantillonné ~10 %) : 140 visites au total ; /go/ visités = woocommerce, carta, totango (liens SANS affiliation). Aucune visite sur les /go/ Baremetrics ni Gusto. Décision : liens gardés (coût nul, site statique), aucun revenu attendu.",
     "impact": 7,
     "effort": 1,
     "risk": 1,
-    "status": "pending",
+    "status": "done",
     "human_input_needed": true
   },
   {
@@ -461,6 +461,33 @@
     "effort": 2,
     "risk": 1,
     "status": "pending",
+    "human_input_needed": false
+  },
+  {
+    "title": "Fin de projet : noter la date de renouvellement de foundercalc.dev",
+    "description": "Cloudflare → Domain Registration → Manage Domains. Relever la date d'échéance et le prix, l'écrire dans HUMAN_INPUTS.md. Fait : échéance 2027-07-25 (RDAP, registre .dev), enregistré le 2026-07-25.",
+    "impact": 3,
+    "effort": 1,
+    "risk": 1,
+    "status": "done",
+    "human_input_needed": true
+  },
+  {
+    "title": "Fin de projet : désactiver le renouvellement auto de foundercalc.dev avant le 2027-06-25 (échéance 2027-07-25)",
+    "description": "Si toujours aucun revenu : désactiver le renouvellement automatique (le site reste en ligne jusqu'à l'échéance). Sinon renouveler. Fait 2026-11-25 : Auto renew désactivé dans Cloudflare (vérifié après rechargement). Le domaine reste actif jusqu'au 2027-07-25.",
+    "impact": 4,
+    "effort": 1,
+    "risk": 1,
+    "status": "done",
+    "human_input_needed": false
+  },
+  {
+    "title": "Fin de projet : désactiver AdSense / retirer le code publicitaire si le compte reste rejeté",
+    "description": "Vérifier que plus aucun script AdSense ne charge ; sinon le retirer (poids de page inutile). Fait : ads_enabled false dans content/config.yaml.",
+    "impact": 2,
+    "effort": 1,
+    "risk": 1,
+    "status": "done",
     "human_input_needed": false
   }
 ]

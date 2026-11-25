@@ -1,7 +1,7 @@
 name: freetoolkit
 priority: 9
 language: python
-enabled: true
+enabled: false
 description: >
   FounderCalc — static site of 105 free business calculators (Stripe/PayPal/
   Shopify fees, MRR/ARR, LTV/CAC, valuation, payroll tax, etc.) for founders,

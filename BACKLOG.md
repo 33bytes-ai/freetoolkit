@@ -3,24 +3,26 @@
 | Score | Titre | Impact | Effort | Risk | Statut |
 |---|---|---|---|---|---|
 | 72.00 | CI : setup-node échouait avant le premier test | 8 | 1 | 1 | done |
-| 72.00 | Contrôle 2026-11-03 : citations Bing du guide NPV restauré (≥ 40/jour en moyenne 7 j, sinon maintenance) | 8 | 1 | 1 | pending |
-| 63.00 | Contrôle 2026-11-24 : le trafic des guides restaurés clique-t-il ? (≥ 5 visites /go/* ou 1 clic Baremetrics, sinon maintenance) | 7 | 1 | 1 | pending |
+| 72.00 | Contrôle 2026-11-03 : citations Bing du guide NPV restauré (≥ 40/jour en moyenne 7 j, sinon maintenance) | 8 | 1 | 1 | done |
+| 63.00 | Mesurer les clics /go/* et Baremetrics (sert à décider du sort des liens affiliés) | 7 | 1 | 1 | done |
 | 45.00 | Respect du DNT dans tracker.js | 5 | 1 | 1 | done |
 | 45.00 | Validation widget manquant au build — erreur explicite | 5 | 1 | 1 | done |
 | 45.00 | CI : Lighthouse recevait des URLs invalides | 5 | 1 | 1 | done |
 | 40.50 | CI/CD GitHub Actions — make test à chaque push | 9 | 2 | 1 | done |
-| 36.00 | Freelance Tax Estimator surestime l'impôt (cotisation SE sans le facteur 92,35 %, pas de déduction forfaitaire, tranches 2024) | 8 | 2 | 1 | pending |
 | 36.00 | Tests dynamiques — lire tools.yaml au lieu de listes hard-codées | 8 | 2 | 1 | done |
 | 36.00 | Remplacer document.execCommand fallback dans common.js | 4 | 1 | 1 | done |
 | 36.00 | Corriger _rejectattr pour supporter d'autres opérateurs | 4 | 1 | 1 | done |
 | 36.00 | Ajouter un champ honeypot anti-spam au formulaire newsletter Formspree | 4 | 1 | 1 | done |
 | 36.00 | Retirer sitemap_retired.xml une fois les anciennes URL sorties de l'index | 4 | 1 | 1 | pending |
+| 36.00 | Freelance Tax Estimator surestime l'impôt (cotisation SE sans le facteur 92,35 %, pas de déduction forfaitaire, tranches 2024) | 8 | 2 | 1 | pending |
+| 36.00 | Fin de projet : désactiver le renouvellement auto de foundercalc.dev avant le 2027-06-25 (échéance 2027-07-25) | 4 | 1 | 1 | done |
 | 31.50 | Remplacer og:image SVG par PNG statique | 7 | 2 | 1 | done |
 | 27.00 | Corriger le compteur d'outils hardcodé (22 → réel) et ajouter un garde-fou [done] | 6 | 2 | 1 | done |
 | 27.00 | Nettoyer les 15 fichiers *_tmp.txt commités par erreur à la racine | 3 | 1 | 1 | done |
 | 27.00 | Intégrer make check-perf dans le pipeline CI | 6 | 2 | 1 | done |
 | 27.00 | Corriger flash() dans common.js pour réinitialiser originalText à chaque appel | 3 | 1 | 1 | done |
 | 27.00 | Le budget de performance mesurait la mauvaise grandeur | 6 | 2 | 1 | done |
+| 27.00 | Fin de projet : noter la date de renouvellement de foundercalc.dev | 3 | 1 | 1 | done |
 | 24.00 | Remove fabricated testimonials with stock avatar photos | 8 | 3 | 1 | done |
 | 24.00 | Search Console API : mesurer l'indexation au lieu de la lire | 8 | 3 | 1 | done |
 | 22.50 | Sitemap avec lastmod dynamique | 5 | 2 | 1 | done |
@@ -29,6 +31,7 @@
 | 22.50 | Vérifier/mettre à jour la palette des images OG générées | 5 | 2 | 1 | done |
 | 21.00 | Header Content-Security-Policy dans nginx.conf | 7 | 3 | 3 | done |
 | 21.00 | WebApplication schema JSON-LD par page outil | 7 | 3 | 1 | done |
+| 21.00 | Si les citations reviennent : restaurer par lots les guides les plus cités (1 PR par lot de 5) | 7 | 3 | 2 | done |
 | 20.25 | FAQ schema JSON-LD sur les pages outils | 9 | 4 | 2 | done |
 | 18.00 | Dark mode CSS via prefers-color-scheme | 6 | 3 | 1 | done |
 | 18.00 | Améliorer new_tool.py — widget numérique cohérent | 6 | 3 | 2 | done |
@@ -37,6 +40,7 @@
 | 18.00 | Derive contact email from site config instead of hardcoding it | 6 | 3 | 1 | done |
 | 18.00 | Étendre les assertions de contenu de test_build.py à tous les 105 outils | 6 | 3 | 1 | done |
 | 18.00 | Habiller visuellement les pages /glossary/ (icônes, hero) | 6 | 3 | 1 | done |
+| 18.00 | Fin de projet : désactiver AdSense / retirer le code publicitaire si le compte reste rejeté | 2 | 1 | 1 | done |
 | 16.20 | Pages pays Stripe programmatiques (UK, CA, AU, EU, IN) | 9 | 5 | 2 | done |
 | 15.75 | Capture email fondateurs (newsletter / lead magnet) | 7 | 4 | 2 | done |
 | 15.75 | Rapport de performance Lighthouse en CI | 7 | 4 | 2 | done |
@@ -54,4 +58,3 @@
 | 12.60 | Run real Lighthouse CI and fix what it finds | 7 | 5 | 2 | done |
 | 12.00 | Étendre la couverture tests JS à tous les outils (22) | 8 | 6 | 1 | done |
 | 12.00 | Mesurer et documenter le temps de build à l'échelle actuelle | 4 | 3 | 1 | done |
-| 10.50 | Si les citations reviennent : restaurer par lots les guides les plus cités (1 PR par lot de 5) | 7 | 3 | 2 | pending |
