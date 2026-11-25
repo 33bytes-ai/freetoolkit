@@ -15,7 +15,7 @@
 | 36.00 | Ajouter un champ honeypot anti-spam au formulaire newsletter Formspree | 4 | 1 | 1 | done |
 | 36.00 | Retirer sitemap_retired.xml une fois les anciennes URL sorties de l'index | 4 | 1 | 1 | pending |
 | 36.00 | Freelance Tax Estimator surestime l'impôt (cotisation SE sans le facteur 92,35 %, pas de déduction forfaitaire, tranches 2024) | 8 | 2 | 1 | pending |
-| 36.00 | Fin de projet : désactiver le renouvellement auto de foundercalc.dev avant le 2027-06-25 (échéance 2027-07-25) | 4 | 1 | 1 | pending |
+| 36.00 | Fin de projet : désactiver le renouvellement auto de foundercalc.dev avant le 2027-06-25 (échéance 2027-07-25) | 4 | 1 | 1 | done |
 | 31.50 | Remplacer og:image SVG par PNG statique | 7 | 2 | 1 | done |
 | 27.00 | Corriger le compteur d'outils hardcodé (22 → réel) et ajouter un garde-fou [done] | 6 | 2 | 1 | done |
 | 27.00 | Nettoyer les 15 fichiers *_tmp.txt commités par erreur à la racine | 3 | 1 | 1 | done |
