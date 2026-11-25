@@ -4,7 +4,7 @@
 |---|---|---|---|---|---|
 | 72.00 | CI : setup-node échouait avant le premier test | 8 | 1 | 1 | done |
 | 72.00 | Contrôle 2026-11-03 : citations Bing du guide NPV restauré (≥ 40/jour en moyenne 7 j, sinon maintenance) | 8 | 1 | 1 | done |
-| 63.00 | Mesurer les clics /go/* et Baremetrics (sert à décider du sort des liens affiliés) | 7 | 1 | 1 | pending |
+| 63.00 | Mesurer les clics /go/* et Baremetrics (sert à décider du sort des liens affiliés) | 7 | 1 | 1 | done |
 | 45.00 | Respect du DNT dans tracker.js | 5 | 1 | 1 | done |
 | 45.00 | Validation widget manquant au build — erreur explicite | 5 | 1 | 1 | done |
 | 45.00 | CI : Lighthouse recevait des URLs invalides | 5 | 1 | 1 | done |

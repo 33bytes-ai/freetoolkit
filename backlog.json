@@ -447,11 +447,11 @@
   },
   {
     "title": "Mesurer les clics /go/* et Baremetrics (sert à décider du sort des liens affiliés)",
-    "description": "Lire le compteur /go/ (Cloudflare Web Analytics ou tracker) sur les 30 derniers jours. 0 clic → mettre affiliate: false sur Baremetrics/Gusto, retirer les paramètres de suivi. ≥ 1 clic → garder.",
+    "description": "Lire le compteur /go/ (Cloudflare Web Analytics ou tracker) sur les 30 derniers jours. 0 clic → mettre affiliate: false sur Baremetrics/Gusto, retirer les paramètres de suivi. ≥ 1 clic → garder. RÉSULTAT 2026-11-25 (Cloudflare Web Analytics, 30 j, bots exclus, échantillonné ~10 %) : 140 visites au total ; /go/ visités = woocommerce, carta, totango (liens SANS affiliation). Aucune visite sur les /go/ Baremetrics ni Gusto. Décision : liens gardés (coût nul, site statique), aucun revenu attendu.",
     "impact": 7,
     "effort": 1,
     "risk": 1,
-    "status": "pending",
+    "status": "done",
     "human_input_needed": true
   },
   {
