@@ -9,6 +9,7 @@
 | 45.00 | Validation widget manquant au build — erreur explicite | 5 | 1 | 1 | done |
 | 45.00 | CI : Lighthouse recevait des URLs invalides | 5 | 1 | 1 | done |
 | 40.50 | CI/CD GitHub Actions — make test à chaque push | 9 | 2 | 1 | done |
+| 36.00 | Freelance Tax Estimator surestime l'impôt (cotisation SE sans le facteur 92,35 %, pas de déduction forfaitaire, tranches 2024) | 8 | 2 | 1 | pending |
 | 36.00 | Tests dynamiques — lire tools.yaml au lieu de listes hard-codées | 8 | 2 | 1 | done |
 | 36.00 | Remplacer document.execCommand fallback dans common.js | 4 | 1 | 1 | done |
 | 36.00 | Corriger _rejectattr pour supporter d'autres opérateurs | 4 | 1 | 1 | done |
