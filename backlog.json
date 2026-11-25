@@ -429,25 +429,25 @@
   },
   {
     "title": "Contrôle 2026-11-03 : citations Bing du guide NPV restauré (≥ 40/jour en moyenne 7 j, sinon maintenance)",
-    "description": "Lire Bing Webmaster → AI Performance → Pages (Playwright, profil connecté) pour /tools/npv-calculator/how-to-choose-discount-rate/. Moyenne des 7 derniers jours ≥ 40 : passer au lot suivant. Sinon : mettre le site en maintenance (HUMAN_INPUTS § F), plus de contenu ni d'AdSense. Remplace la règle du 2026-11-10 qui mesurait un signal détruit par la redirection.",
+    "description": "Lire Bing Webmaster → AI Performance → Pages (Playwright, profil connecté) pour /tools/npv-calculator/how-to-choose-discount-rate/. Moyenne des 7 derniers jours ≥ 40 : passer au lot suivant. Sinon : mettre le site en maintenance (HUMAN_INPUTS § F), plus de contenu ni d'AdSense. Remplace la règle du 2026-11-10 qui mesurait un signal détruit par la redirection. RÉSULTAT 2026-11-25 : FAIL (7,4 citations/jour site-wide). Maintenance décidée (PR #59).",
     "impact": 8,
     "effort": 1,
     "risk": 1,
-    "status": "pending",
+    "status": "done",
     "human_input_needed": false
   },
   {
     "title": "Si les citations reviennent : restaurer par lots les guides les plus cités (1 PR par lot de 5)",
-    "description": "Classer les URL de Bing AI Performance → Pages par citations, ne garder que les guides (how-to-…, …-by-industry, A-vs-B) ≥ 400 mots. Même mécanique que le guide NPV : content/pages/<slug>.md avec slug tools/<parent>/<guide>, retrait de intent_pages.yaml et des 3 traductions i18n, STANDALONE_GUIDES dans tests. Un lot, puis attendre 2 semaines de données avant le suivant.",
+    "description": "Classer les URL de Bing AI Performance → Pages par citations, ne garder que les guides (how-to-…, …-by-industry, A-vs-B) ≥ 400 mots. Même mécanique que le guide NPV : content/pages/<slug>.md avec slug tools/<parent>/<guide>, retrait de intent_pages.yaml et des 3 traductions i18n, STANDALONE_GUIDES dans tests. Un lot, puis attendre 2 semaines de données avant le suivant. Annulé : contrôle 1 FAIL.",
     "impact": 7,
     "effort": 3,
     "risk": 2,
-    "status": "pending",
+    "status": "done",
     "human_input_needed": false
   },
   {
-    "title": "Contrôle 2026-11-24 : le trafic des guides restaurés clique-t-il ? (≥ 5 visites /go/* ou 1 clic Baremetrics, sinon maintenance)",
-    "description": "Cloudflare Web Analytics → Visits → Path (/go/…) et impact.com pour les clics ?via=guillaume. Seulement si le contrôle du 2026-11-03 est passé.",
+    "title": "Mesurer les clics /go/* et Baremetrics (sert à décider du sort des liens affiliés)",
+    "description": "Lire le compteur /go/ (Cloudflare Web Analytics ou tracker) sur les 30 derniers jours. 0 clic → mettre affiliate: false sur Baremetrics/Gusto, retirer les paramètres de suivi. ≥ 1 clic → garder.",
     "impact": 7,
     "effort": 1,
     "risk": 1,
@@ -459,6 +459,33 @@
     "description": "static/js/tools/freelance-tax-estimator.js : SE tax = profit × 15,3 % (IRS : × 92,35 % puis 15,3 %, plafond SS) ; revenu imposable sans standard deduction ; tranches 2024. À 80 000 $ single l'outil affiche 23 547 $ d'impôt. Corriger avec les chiffres IRS de l'année en cours, tests à l'appui. Trouvé en préparant les vidéos video-factory (vidéo écartée pour cette raison).",
     "impact": 8,
     "effort": 2,
+    "risk": 1,
+    "status": "pending",
+    "human_input_needed": false
+  },
+  {
+    "title": "Fin de projet : noter la date de renouvellement de foundercalc.dev",
+    "description": "Cloudflare → Domain Registration → Manage Domains. Relever la date d'échéance et le prix, l'écrire dans HUMAN_INPUTS.md.",
+    "impact": 3,
+    "effort": 1,
+    "risk": 1,
+    "status": "pending",
+    "human_input_needed": true
+  },
+  {
+    "title": "Fin de projet : décider du renouvellement du domaine (≈ 30 jours avant l'échéance)",
+    "description": "Si toujours aucun revenu : désactiver le renouvellement automatique (le site reste en ligne jusqu'à l'échéance). Sinon renouveler.",
+    "impact": 4,
+    "effort": 1,
+    "risk": 1,
+    "status": "pending",
+    "human_input_needed": true
+  },
+  {
+    "title": "Fin de projet : désactiver AdSense / retirer le code publicitaire si le compte reste rejeté",
+    "description": "Vérifier que plus aucun script AdSense ne charge ; sinon le retirer (poids de page inutile).",
+    "impact": 2,
+    "effort": 1,
     "risk": 1,
     "status": "pending",
     "human_input_needed": false
